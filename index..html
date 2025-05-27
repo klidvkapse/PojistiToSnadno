@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klid v kapse – Daniel Verner</title>
+  <style>
+    :root {
+      --primary: #a8d5ba;
+      --secondary: #d7f9db;
+      --background: #fdfdf4;
+      --card: #ffffff;
+      --text: #354f52;
+      --accent: #eaf4e4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    }
+
+    header {
+      background: var(--primary);
+      color: #2f3e46;
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      border-bottom: 4px dashed #b7e4c7;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 0.5rem 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--accent);
+      color: #2f3e46;
+      border: 2px dashed #81b29a;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: #c6f1d6;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: var(--card);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      border: 2px dashed #b5ead7;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #588157;
+      border-bottom: 2px dashed var(--accent);
+      padding-bottom: 0.3rem;
+    }
+
+    p, li {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li::before {
+      content: "🖍️ ";
+      color: #588157;
+    }
+
+    .highlight {
+      background-color: var(--accent);
+      padding: 1.2rem;
+      margin: 1.5rem 0;
+      border-left: 6px solid #81b29a;
+      border-radius: 10px;
+      font-style: italic;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 15px;
+      border: 3px dashed #c6f1d6;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 2px dashed #c6f1d6;
+      background-color: #fcfff5;
+    }
+
+    button {
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      background-color: #a8d5ba;
+      color: #2f3e46;
+      border: 2px dashed #81b29a;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #b7e4c7;
+    }
+
+    .contact {
+      background-color: var(--secondary);
+      padding: 1.5rem;
+      border-left: 5px dashed #588157;
+      border-radius: 10px;
+      margin-top: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .contact a {
+      color: #588157;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Klid v kapse</h1>
+    <p>Vaše jistota v nejistých chvílích – Daniel Verner, specialista Kooperativa</p>
+    <nav>
+      <a href="#pribehy">🎥 Příběhy klientů</a>
+      <a href="#nabidka">🛡️ Nabídka služeb</a>
+      <a href="#kontakt">📞 Kontakt</a>
+    </nav>
+  </header>
+  <main>
+
+    <h2 id="nabidka">O mně</h2>
+    <p>Jmenuji se <strong>Daniel Verner</strong> a jako specialista pojišťovny <strong>Kooperativa</strong> pomáhám lidem získat opravdovou jistotu v životních situacích. Nabízím vám férový a lidský přístup – bez složitých výrazů a zbytečných obav.</p>
+
+    <div class="highlight">
+      ✏️ <strong>Moje práce je jednoduchá:</strong> naslouchat, pochopit vaši situaci a nabídnout vám řešení, které má smysl.
+    </div>
+
+    <h2>S čím vám pomohu</h2>
+    <ul>
+      <li>Životní pojištění s dvojnásobným plněním při infarktu</li>
+      <li>Pojištění dětí, úrazové krytí, nemocenské dávky</li>
+      <li>Kontrola starých smluv a jejich výhodná aktualizace</li>
+      <li>Pojištění majetku i odpovědnosti</li>
+    </ul>
+
+    <h2 id="pribehy">🎬 Reálné příběhy klientů</h2>
+    <p>Podívejte se na skutečné situace, kdy pojištění pomohlo v krizové chvíli. Anonymní, ale autentické příběhy doplněné ručně kresleným videem.</p>
+    <div style="text-align:center;">
+      <iframe src="https://www.youtube.com/embed/RIJNt9sx-Fw"
+              title="Reálný příběh klienta"
+              frameborder="0"
+              allowfullscreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+    </div>
+
+    <h2 id="kontakt">Nezávazný návrh pojištění</h2>
+    <p>Vyplňte pár základních údajů. Ozvu se vám osobně do 24 hodin s návrhem, který bude vycházet z vaší aktuální životní situace.</p>
+    <form>
+      <input type="text" name="name" placeholder="Vaše jméno a příjmení" required>
+      <input type="number" name="age" placeholder="Váš věk" required>
+      <textarea name="message" placeholder="Co vás zajímá? (např. životní pojištění, děti, úraz...)" rows="4" required></textarea>
+      <input type="email" name="email" placeholder="Váš email" required>
+      <input type="tel" name="phone" placeholder="Váš telefon" required>
+      <button type="submit">Odeslat poptávku</button>
+    </form>
+
+    <div class="contact">
+      <h3>Kontakt</h3>
+      <p><strong>Daniel Verner</strong></p>
+      <p>📞 Telefon: <a href="tel:+420733782290">733 782 290</a><br>
+         📩 Email: <a href="mailto:dverner@koop.cz">dverner@koop.cz</a></p>
+      <p>Sídlo: Olomoucký kraj – schůzky domlouvám individuálně.</p>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Daniel Verner – Klid v kapse. Všechna práva vyhrazena.</p>
+  </footer>
+</body>
+</html>
