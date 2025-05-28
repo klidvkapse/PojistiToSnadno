@@ -214,51 +214,38 @@
 
     <div class="form-container">
   <h2>Nezávazný návrh pojištění</h2>
-  <form action="https://formspree.io/f/mjkwnelz" method="POST" onsubmit="return validateForm();">
-    <label for="name">Jméno a příjmení:</label>
-    <input type="text" id="name" name="name" required />
-
-    <label for="age">Věk:</label>
-    <input type="number" id="age" name="age" required min="0" max="120" />
-
-    <label for="message">Zpráva:</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
-
-    <label for="email">E-mail:</label>
-    <input type="email" id="email" name="email" required />
-
-    <label for="phone">Telefon:</label>
-    <input type="tel" id="phone" name="phone" required pattern="[0-9]{9}" title="Zadejte 9místné číslo bez mezer" />
-    <p id="thankyou" style="display:none; color: green; font-weight: bold;">
-    <p id="thankyou" style="display:none; color: green; font-weight: bold;">
-    ✅ Děkujeme! Vaše zpráva byla odeslána.
-  </p>
-
+  <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST" style="max-width: 500px; margin: auto;">
+  <input type="text" name="name" placeholder="Vaše jméno a příjmení" required>
+  <input type="number" name="age" placeholder="Váš věk" required>
+  <textarea name="message" placeholder="Co vás zajímá? (např. životní pojištění, děti, úraz...)" rows="4" required></textarea>
+  <input type="email" name="email" placeholder="Váš email" required>
+  <input type="tel" name="phone" placeholder="Váš telefon (např. 777123456)" pattern="[0-9]{9}" title="Zadejte devítimístné číslo bez předvolby" required>
   <button type="submit">Odeslat poptávku</button>
+  <p id="dekujeme" style="display: none; color: green; margin-top: 1rem;">Děkujeme za odeslání! Ozvu se vám co nejdříve.</p>
+</form>
+
 </form>
 
 <script>
-  const form = document.querySelector("form");
-  const thankyou = document.getElementById("thankyou");
+  document.getElementById("kontakt-formular").addEventListener("submit", function (e) {
+    e.preventDefault(); // Zastaví klasické odeslání
+    const form = e.target;
+    const data = new FormData(form);
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-
-    const response = await fetch(form.action, {
+    fetch(form.action, {
       method: "POST",
-      body: formData,
+      body: data,
       headers: {
         'Accept': 'application/json'
       }
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        document.getElementById("dekujeme").style.display = "block";
+      } else {
+        alert("Chyba při odesílání. Zkuste to prosím znovu.");
+      }
     });
-
-    if (response.ok) {
-      form.reset();
-      thankyou.style.display = "block";
-    } else {
-      alert("Něco se pokazilo. Zkuste to prosím znovu.");
-    }
   });
 </script>
 
