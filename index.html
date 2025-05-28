@@ -214,14 +214,15 @@
 
     <h2 id="kontakt">Nezávazný návrh pojištění</h2>
     <p>Vyplňte pár základních údajů. Ozvu se vám osobně do 24 hodin s návrhem, který bude vycházet z vaší aktuální životní situace.</p>
-    <form>
-      <input type="text" name="name" placeholder="Vaše jméno a příjmení" required>
-      <input type="number" name="age" placeholder="Váš věk" required>
-      <textarea name="message" placeholder="Co vás zajímá? (např. životní pojištění, děti, úraz...)" rows="4" required></textarea>
-      <input type="email" name="email" placeholder="Váš email" required>
-      <input type="tel" name="phone" placeholder="Váš telefon" required>
-      <button type="submit">Odeslat poptávku</button>
-    </form>
+   <form action="https://formspree.io/f/mjkwnelz" method="POST">
+     <input type="text" name="name" placeholder="Vaše jméno a příjmení" required>
+     <input type="number" name="age" placeholder="Váš věk" required>
+     <textarea name="message" placeholder="Co vás zajímá? (např. životní pojištění, děti, úraz...)" rows="4" required></textarea>
+     <input type="email" name="email" placeholder="Váš email" required>
+     <input type="tel" name="phone" placeholder="Váš telefon" required>
+     <button type="submit">Odeslat poptávku</button>
+  </form>
+
 
     <div class="contact">
       <h3>Kontakt</h3>
