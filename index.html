@@ -212,19 +212,52 @@
       </iframe>
     </div>
 
-    <h2 id="kontakt">Nezávazný návrh pojištění</h2>
-    <p>Vyplňte pár základních údajů. Ozvu se vám osobně do 24 hodin s návrhem, který bude vycházet z vaší aktuální životní situace.</p>
-   <form action="https://formspree.io/f/mjkwnelz" method="POST">
-     <input type="text" name="name" placeholder="Vaše jméno a příjmení" required>
-     <input type="number" name="age" placeholder="Váš věk" required>
-     <textarea name="message" placeholder="Co vás zajímá? (např. životní pojištění, děti, úraz...)" rows="4" required></textarea>
-     <input type="email" name="email" placeholder="Váš email" required>
-     <input type="tel" name="phone" placeholder="Váš telefon" required>
-      <p id="thankyou" style="display:none; color: green; font-weight: bold;">
-    ✅ Děkujeme! Vaše zpráva byla odeslána.
-  </p>
+    <div class="form-container">
+  <h2>Nezávazný návrh pojištění</h2>
+  <form action="https://formspree.io/f/mjkwnelz" method="POST" onsubmit="return validateForm();">
+    <label for="name">Jméno a příjmení:</label>
+    <input type="text" id="name" name="name" required />
 
-     <button type="submit">Odeslat poptávku</button>
+    <label for="age">Věk:</label>
+    <input type="number" id="age" name="age" required min="0" max="120" />
+
+    <label for="message">Zpráva:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Telefon:</label>
+    <input type="tel" id="phone" name="phone" required pattern="[0-9]{9}" title="Zadejte 9místné číslo bez mezer" />
+
+    <button type="submit">Odeslat poptávku</button>
+  </form>
+</div>
+
+<style>
+  .form-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #f9fff9;
+    padding: 2rem;
+    border: 2px dashed #b5ead7;
+    border-radius: 15px;
+  }
+
+  .form-container input,
+  .form-container textarea,
+  .form-container button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .form-container label {
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+  }
+</style>
+
   </form>
   <script>
     const form = document.querySelector("form");
@@ -256,7 +289,7 @@
       <h3>Kontakt</h3>
       <p><strong>Daniel Verner</strong></p>
       <p>📞 Telefon: <a href="tel:+420733782290">733 782 290</a><br>
-         📩 Email: <a href="mailto:dverner@koop.cz">dverner@koop.cz</a></p>
+         📩 Email: <a href="mailto:klidvkapse@gmail.com">dklidvkapse@gmail.com</a></p>
       <p>Sídlo: Olomoucký kraj – schůzky domlouvám individuálně.</p>
     </div>
   </main>
