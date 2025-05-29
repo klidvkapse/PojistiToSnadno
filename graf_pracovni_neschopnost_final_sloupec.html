@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Graf pracovní neschopnosti</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h2 style="text-align:center;">Délka pracovní neschopnosti podle krajů</h2>
+    <div id="graph" style="width:90%;max-width:900px;margin:auto;height:500px;"></div>
+    <script>
+        var data = [{
+            x: ['Hl. m. Praha', 'Středočeský', 'Jihočeský', 'Plzeňský', 'Karlovarský',
+                'Ústecký', 'Liberecký', 'Královéhradecký', 'Pardubický', 'Vysočina',
+                'Jihomoravský', 'Olomoucký', 'Zlínský', 'Moravskoslezský'],
+            y: [37.5, 40.2, 41.8, 39.9, 43.5,
+                44.1, 42.0, 40.9, 39.7, 41.2,
+                42.8, 48.3, 43.1, 45.6],
+            type: 'bar',
+            marker: {
+                color: ['#b0d9b1', '#b0d9b1', '#b0d9b1', '#b0d9b1', '#b0d9b1',
+                        '#b0d9b1', '#b0d9b1', '#b0d9b1', '#b0d9b1', '#b0d9b1',
+                        '#b0d9b1', '#588157', '#b0d9b1', '#b0d9b1']
+            }
+        }];
+
+        var layout = {
+            yaxis: {
+                title: 'Počet dnů pracovní neschopnosti',
+                range: [30, 55]
+            },
+            xaxis: {
+                title: 'Kraj'
+            },
+            margin: { t: 30 }
+        };
+
+        Plotly.newPlot('graph', data, layout);
+    </script>
+</body>
+</html>
