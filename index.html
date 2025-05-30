@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Klid v kapse – Daniel Verner</title>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #a8d5ba;
@@ -18,7 +17,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Merriweather', serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
     }
     body {
       background-color: #fdfdf4;
@@ -90,7 +89,7 @@
     }
     .graph-container iframe {
       width: 100%;
-      height: 150px;
+      height: 200px;
       border-radius: 10px;
       border: none;
     }
@@ -112,31 +111,15 @@
     }
     section {
       margin-bottom: 2rem;
-      padding: 1.5rem;
+      padding: 1rem;
       background: var(--accent);
       border: 2px dashed #81b29a;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    section h2 {
-      font-size: 1.8rem;
-      color: #2f3e46;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    section p, section ul li {
-      font-size: 1.15rem;
-      line-height: 1.7;
-      color: #264038;
-    }
-    section ul {
-      padding-left: 1.5rem;
+      border-radius: 10px;
     }
     #kontakt form {
       max-width: 600px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 1rem;
     }
     input, textarea {
@@ -208,3 +191,92 @@
     }
   </style>
 </head>
+<body>
+  <header>
+    <h1>Klid v kapse – Daniel Verner</h1>
+    <nav>
+      <a href="#o-mne" class="nav-button-3d">O mně</a>
+      <a href="#sluzby" class="nav-button-3d">Služby</a>
+      <a href="#video" class="nav-button-3d">Příběh</a>
+      <a href="#kontakt" class="nav-button-3d">Kontakt</a>
+    </nav>
+  </header>
+  <main>
+    <aside>
+      <div class="interesting-box">
+        <h2>Zajímavosti</h2>
+        <p>Statistiky pracovní neschopnosti podle krajů.</p>
+        <div class="graph-container">
+          <iframe id="graf-preview" src="graf_pracovni_neschopnost_final_sloupec.html" title="Graf pracovní neschopnosti"></iframe>
+          <button class="zoom-btn" onclick="document.getElementById('graf-lightbox').classList.add('show')">Zvětšit</button>
+        </div>
+      </div>
+    </aside>
+    <div class="content">
+      <section id="o-mne">
+        <h2>O mně</h2>
+        <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení.</p>
+      </section>
+      <section id="sluzby">
+        <h2>S čím vám pomohu</h2>
+        <ul>
+          <li>Životní pojištění s dvojnásobným plněním při infarktu</li>
+          <li>Pojištění dětí, úrazové krytí, nemocenské dávky</li>
+          <li>Kontrola starých smluv a jejich výhodná aktualizace</li>
+          <li>Pojištění majetku i odpovědnosti</li>
+        </ul>
+      </section>
+      <section id="video">
+        <h2>🎬 Reálný příběh klienta</h2>
+        <iframe src="https://www.youtube.com/embed/ERHjCvcyawo" title="Video klienta" allowfullscreen></iframe>
+      </section>
+      <section id="kontakt">
+        <h2>Nezávazný návrh pojištění</h2>
+        <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
+          <input type="text" name="name" placeholder="Vaše jméno a příjmení" required />
+          <input type="number" name="age" placeholder="Váš věk" required />
+          <textarea name="message" placeholder="Co vás zajímá?" rows="4" required></textarea>
+          <input type="email" name="email" placeholder="Váš email" required />
+          <input type="tel" name="phone" placeholder="Telefon (např. 777123456)" pattern="[0-9]{9}" required />
+          <button type="submit">Odeslat poptávku</button>
+          <p id="dekujeme" style="display: none; color: green;">Děkujeme za odeslání!</p>
+        </form>
+      </section>
+    </div>
+  </main>
+  <div id="graf-lightbox" class="lightbox">
+    <button class="close-btn" onclick="document.getElementById('graf-lightbox').classList.remove('show')">&times;</button>
+    <iframe src="graf_pracovni_neschopnost_final_sloupec.html" title="Graf fullscreen"></iframe>
+  </div>
+  <footer>
+    <p><strong>Kontakt:</strong><br>
+    Daniel Verner<br>
+    📞 <a href="tel:+420733782290">733 782 290</a><br>
+    📩 <a href="mailto:klidvkapse@gmail.com">klidvkapse@gmail.com</a><br>
+    📍 Olomoucký kraj – schůzky domlouvám individuálně.</p>
+    <p>&copy; 2025 Daniel Verner – Klid v kapse</p>
+  </footer>
+  <script>
+    document.getElementById("kontakt-formular").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          document.getElementById("dekujeme").style.display = "block";
+        } else {
+          alert("Chyba při odesílání. Zkuste to prosím znovu.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
