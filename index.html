@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Klid v kapse – Daniel Verner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #a8d5ba;
@@ -17,7 +18,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-family: 'Raleway', sans-serif;
     }
     body {
       background-color: #fdfdf4;
@@ -80,30 +81,16 @@
       border-radius: 10px;
       margin-bottom: 2rem;
     }
-    .interesting-box h2 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+    .video-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .graph-container {
-      position: relative;
-    }
-    .graph-container iframe {
+    .video-gallery iframe {
       width: 100%;
       height: 200px;
       border-radius: 10px;
       border: none;
-    }
-    .zoom-btn {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: #a8d5ba;
-      border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 2px #588157;
     }
     .content {
       flex: 3;
@@ -116,11 +103,32 @@
       border: 2px dashed #81b29a;
       border-radius: 10px;
     }
-    #kontakt form {
-      max-width: 600px;
-      margin: 0 auto;
+    section h2 {
+      font-size: 1.6rem;
+      color: #2f3e46;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    section p, section ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: 10px;
+    }
+    form {
       display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 1rem;
+    }
+    form textarea {
+      grid-column: span 2;
     }
     input, textarea {
       padding: 0.8rem;
@@ -128,9 +136,9 @@
       border-radius: 10px;
       border: 2px dashed #c6f1d6;
       background-color: #fcfff5;
-      width: 100%;
     }
     button {
+      grid-column: span 2;
       padding: 0.8rem;
       font-size: 1.1rem;
       background-color: #a8d5ba;
@@ -143,42 +151,6 @@
     }
     button:hover {
       background-color: #b7e4c7;
-    }
-    iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: none;
-      border-radius: 10px;
-    }
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox iframe {
-      width: 90vw;
-      height: 90vh;
-      border-radius: 10px;
-    }
-    .lightbox.show {
-      display: flex;
-    }
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: white;
-      background: none;
-      border: none;
-      cursor: pointer;
     }
     footer {
       text-align: center;
@@ -197,26 +169,27 @@
     <nav>
       <a href="#o-mne" class="nav-button-3d">O mně</a>
       <a href="#sluzby" class="nav-button-3d">Služby</a>
-      <a href="#video" class="nav-button-3d">Příběh</a>
+      <a href="#pribehy" class="nav-button-3d">Příběhy</a>
       <a href="#kontakt" class="nav-button-3d">Kontakt</a>
     </nav>
   </header>
+
   <main>
     <aside>
-      <div class="interesting-box">
-        <h2>Zajímavosti</h2>
-        <p>Statistiky pracovní neschopnosti podle krajů.</p>
-        <div class="graph-container">
-          <iframe id="graf-preview" src="graf_pracovni_neschopnost_final_sloupec.html" title="Graf pracovní neschopnosti"></iframe>
-          <button class="zoom-btn" onclick="document.getElementById('graf-lightbox').classList.add('show')">Zvětšit</button>
-        </div>
+      <h2>Příběhy klientů</h2>
+      <div class="video-gallery">
+        <iframe src="https://www.youtube.com/embed/ERHjCvcyawo" title="Příběh 1" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Příběh 2" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Příběh 3" allowfullscreen></iframe>
       </div>
     </aside>
+
     <div class="content">
       <section id="o-mne">
         <h2>O mně</h2>
         <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení.</p>
       </section>
+
       <section id="sluzby">
         <h2>S čím vám pomohu</h2>
         <ul>
@@ -226,10 +199,7 @@
           <li>Pojištění majetku i odpovědnosti</li>
         </ul>
       </section>
-      <section id="video">
-        <h2>🎬 Reálný příběh klienta</h2>
-        <iframe src="https://www.youtube.com/embed/ERHjCvcyawo" title="Video klienta" allowfullscreen></iframe>
-      </section>
+
       <section id="kontakt">
         <h2>Nezávazný návrh pojištění</h2>
         <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
@@ -244,10 +214,7 @@
       </section>
     </div>
   </main>
-  <div id="graf-lightbox" class="lightbox">
-    <button class="close-btn" onclick="document.getElementById('graf-lightbox').classList.remove('show')">&times;</button>
-    <iframe src="graf_pracovni_neschopnost_final_sloupec.html" title="Graf fullscreen"></iframe>
-  </div>
+
   <footer>
     <p><strong>Kontakt:</strong><br>
     Daniel Verner<br>
@@ -256,6 +223,7 @@
     📍 Olomoucký kraj – schůzky domlouvám individuálně.</p>
     <p>&copy; 2025 Daniel Verner – Klid v kapse</p>
   </footer>
+
   <script>
     document.getElementById("kontakt-formular").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -279,4 +247,3 @@
   </script>
 </body>
 </html>
-
