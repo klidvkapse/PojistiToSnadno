@@ -80,12 +80,30 @@
       border-radius: 10px;
       margin-bottom: 2rem;
     }
-    aside iframe {
+    .interesting-box h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .graph-container {
+      position: relative;
+    }
+    .graph-container iframe {
       width: 100%;
-      height: 300px;
+      height: 200px;
       border-radius: 10px;
       border: none;
+    }
+    .zoom-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: #a8d5ba;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px #588157;
     }
     .content {
       flex: 3;
@@ -134,31 +152,6 @@
       border: none;
       cursor: pointer;
     }
-    form {
-      display: grid;
-      gap: 1rem;
-    }
-    input, textarea {
-      padding: 0.8rem;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 2px dashed #c6f1d6;
-      background-color: #fcfff5;
-    }
-    button {
-      padding: 0.8rem;
-      font-size: 1.1rem;
-      background-color: #a8d5ba;
-      color: #2f3e46;
-      border: 2px dashed #81b29a;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px #588157;
-    }
-    button:hover {
-      background-color: #b7e4c7;
-    }
     footer {
       text-align: center;
       padding: 2rem;
@@ -180,22 +173,22 @@
       <a href="#kontakt" class="nav-button-3d">Kontakt</a>
     </nav>
   </header>
-
   <main>
     <aside>
-      <h2>Statistiky pracovní neschopnosti</h2>
-      <p>Kliknutím na graf jej zobrazíte přes celou obrazovku.</p>
-      <div id="thumbnail-graph">
-        <iframe src="graf_pracovni_neschopnost_final_sloupec.html" title="Graf pracovní neschopnosti"></iframe>
+      <div class="interesting-box">
+        <h2>Zajímavosti</h2>
+        <p>Statistiky pracovní neschopnosti podle krajů.</p>
+        <div class="graph-container">
+          <iframe id="graf-preview" src="graf_pracovni_neschopnost_final_sloupec.html" title="Graf pracovní neschopnosti"></iframe>
+          <button class="zoom-btn" onclick="document.getElementById('graf-lightbox').classList.add('show')">Zvětšit</button>
+        </div>
       </div>
     </aside>
-
     <div class="content">
       <section id="o-mne">
         <h2>O mně</h2>
         <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení.</p>
       </section>
-
       <section id="sluzby">
         <h2>S čím vám pomohu</h2>
         <ul>
@@ -205,12 +198,10 @@
           <li>Pojištění majetku i odpovědnosti</li>
         </ul>
       </section>
-
       <section id="video">
         <h2>🎬 Reálný příběh klienta</h2>
         <iframe src="https://www.youtube.com/embed/ERHjCvcyawo" title="Video klienta" allowfullscreen></iframe>
       </section>
-
       <section id="kontakt">
         <h2>Nezávazný návrh pojištění</h2>
         <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
@@ -225,47 +216,19 @@
       </section>
     </div>
   </main>
-
   <div id="graf-lightbox" class="lightbox">
-    <button class="close-btn" id="close-lightbox">&times;</button>
+    <button class="close-btn" onclick="document.getElementById('graf-lightbox').classList.remove('show')">&times;</button>
     <iframe src="graf_pracovni_neschopnost_final_sloupec.html" title="Graf fullscreen"></iframe>
   </div>
-
-   <footer>
+  <footer>
     <p><strong>Kontakt:</strong><br>
     Daniel Verner<br>
     📞 <a href="tel:+420733782290">733 782 290</a><br>
     📩 <a href="mailto:klidvkapse@gmail.com">klidvkapse@gmail.com</a><br>
     📍 Olomoucký kraj – schůzky domlouvám individuálně.</p>
- 
     <p>&copy; 2025 Daniel Verner – Klid v kapse</p>
   </footer>
-
   <script>
-    const lightbox = document.getElementById('graf-lightbox');
-    const thumbGraph = document.getElementById('thumbnail-graph');
-    const closeBtn = document.getElementById('close-lightbox');
-
-    thumbGraph.addEventListener('click', function () {
-      lightbox.classList.add('show');
-    });
-
-    closeBtn.addEventListener('click', function () {
-      lightbox.classList.remove('show');
-    });
-
-    window.addEventListener('click', function (e) {
-      if (e.target === lightbox) {
-        lightbox.classList.remove('show');
-      }
-    });
-
-    window.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        lightbox.classList.remove('show');
-      }
-    });
-
     document.getElementById("kontakt-formular").addEventListener("submit", function (e) {
       e.preventDefault();
       const form = e.target;
@@ -288,3 +251,4 @@
   </script>
 </body>
 </html>
+
