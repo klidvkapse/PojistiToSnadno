@@ -19,6 +19,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Raleway', sans-serif;
+      scroll-behavior: smooth;
     }
     body {
       background-color: #fdfdf4;
@@ -72,28 +73,15 @@
       padding: 1rem;
     }
     aside {
-      flex: 1;
-      min-width: 300px;
-      max-width: 400px;
+      flex: 1 1 100%;
       padding: 1rem;
       background: var(--accent);
       border: 2px dashed #81b29a;
       border-radius: 10px;
       margin-bottom: 2rem;
     }
-    .video-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .video-gallery iframe {
-      width: 100%;
-      height: 200px;
-      border-radius: 10px;
-      border: none;
-    }
     .content {
-      flex: 3;
+      flex: 1 1 100%;
       padding: 1rem;
     }
     section {
@@ -121,6 +109,15 @@
       aspect-ratio: 16 / 9;
       border: none;
       border-radius: 10px;
+    }
+    .video-thumbnails {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .video-thumbnails iframe {
+      flex: 1 1 300px;
+      max-width: 100%;
     }
     form {
       display: grid;
@@ -175,15 +172,6 @@
   </header>
 
   <main>
-    <aside>
-      <h2>Příběhy klientů</h2>
-      <div class="video-gallery">
-        <iframe src="https://www.youtube.com/embed/ERHjCvcyawo" title="Příběh 1" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Příběh 2" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Příběh 3" allowfullscreen></iframe>
-      </div>
-    </aside>
-
     <div class="content">
       <section id="o-mne">
         <h2>O mně</h2>
@@ -198,6 +186,14 @@
           <li>Kontrola starých smluv a jejich výhodná aktualizace</li>
           <li>Pojištění majetku i odpovědnosti</li>
         </ul>
+      </section>
+
+      <section id="pribehy">
+        <h2>Příběhy klientů</h2>
+        <div class="video-thumbnails">
+          <iframe src="https://www.youtube.com/embed/ERHjCvcyawo" title="Příběh 1" allowfullscreen></iframe>
+          <!-- Další miniatury videí lze přidat zde -->
+        </div>
       </section>
 
       <section id="kontakt">
