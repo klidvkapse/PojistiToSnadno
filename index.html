@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
@@ -36,12 +35,28 @@
       text-align: center;
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     header h1 {
       font-size: 1.5rem;
     }
-    nav {
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
       margin-top: 0.5rem;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .nav-links a {
+      margin: 0.3rem;
     }
     .nav-button-3d {
       background: linear-gradient(to bottom, var(--button-light-green), #a8d5ba);
@@ -55,7 +70,6 @@
       transition: all 0.2s ease;
       cursor: pointer;
       text-decoration: none;
-      margin: 0.3rem;
       display: inline-block;
     }
     .nav-button-3d:active {
@@ -64,6 +78,18 @@
     }
     .nav-button-3d:hover {
       background: linear-gradient(to bottom, var(--button-light-green-hover), #a8d5ba);
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
     }
     main {
       display: flex;
@@ -104,20 +130,14 @@
     ul {
       padding-left: 1.2rem;
     }
-    iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: none;
-      border-radius: 10px;
-    }
     .video-thumbnails {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
-    .video-thumbnails iframe {
+    .video-thumbnails a img {
       width: 100%;
-      height: 200px;
+      border-radius: 10px;
     }
     form {
       display: grid;
@@ -160,10 +180,18 @@
       margin-top: 2rem;
       border-top: 2px dashed #81b29a;
     }
-    @media (max-width: 600px) {
-      footer {
-        font-size: 1rem;
-        padding: 1.5rem 1rem;
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+      }
+      aside, .content {
+        flex: 1 1 100%;
+      }
+      form {
+        grid-template-columns: 1fr;
+      }
+      button {
+        grid-column: span 1;
       }
     }
   </style>
@@ -171,7 +199,8 @@
 <body>
   <header>
     <h1>Pojištění v kapse – Daniel Verner</h1>
-    <nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav class="nav-links">
       <a href="#o-mne" class="nav-button-3d">O mně</a>
       <a href="#sluzby" class="nav-button-3d">Služby</a>
       <a href="#kontakt" class="nav-button-3d">Kontakt</a>
@@ -182,8 +211,9 @@
     <aside>
       <h2>Příběhy klientů</h2>
       <div class="video-thumbnails">
-        <iframe src="https://www.youtube.com/embed/ERHjCvcyawo" title="Příběh 1" allowfullscreen></iframe>
-        <!-- Další miniatury videí lze přidat zde -->
+        <a href="https://www.youtube.com/watch?v=ERHjCvcyawo" target="_blank">
+          <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
+        </a>
       </div>
     </aside>
 
@@ -222,14 +252,20 @@
 
   <footer>
     <p><strong>Kontakt:</strong><br>
-    Daniel Verner<br>
-    📞 <a href="tel:+420733782290">733 782 290</a><br>
-    📩 <a href="mailto:pojistenivkapse@gmail.com">pojistenivkapse@gmail.com</a><br>
-    📍  <h2>Olomoucký kraj – schůzky domlouvám individuálně.<h2></p>
+      Daniel Verner<br>
+      📞 <a href="tel:+420733782290">733 782 290</a><br>
+      📩 <a href="mailto:pojistenivkapse@gmail.com">pojistenivkapse@gmail.com</a><br>
+      📍 Olomoucký kraj – schůzky domlouvám individuálně.
+    </p>
     <p>&copy; 2025 Daniel Verner – Pojištění v kapse</p>
   </footer>
 
   <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
     document.getElementById("kontakt-formular").addEventListener("submit", function (e) {
       e.preventDefault();
       const form = e.target;
