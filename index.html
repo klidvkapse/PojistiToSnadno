@@ -1,4 +1,5 @@
 
+<!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
@@ -106,6 +107,22 @@
       border-radius: 10px;
       margin-bottom: 2rem;
     }
+    .video-thumbnails {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .video-thumbnails a img {
+      width: 120px;
+      height: auto;
+      border-radius: 10px;
+    }
+    .video-label {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--text);
+    }
     .content {
       flex: 3 1 600px;
       padding: 1rem;
@@ -129,15 +146,6 @@
     }
     ul {
       padding-left: 1.2rem;
-    }
-    .video-thumbnails {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .video-thumbnails a img {
-      width: 100%;
-      border-radius: 10px;
     }
     form {
       display: grid;
@@ -211,6 +219,7 @@
     <aside>
       <h2>Příběhy klientů</h2>
       <div class="video-thumbnails">
+        <div class="video-label">KROUPY</div>
         <a href="https://www.youtube.com/watch?v=ERHjCvcyawo" target="_blank">
           <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
         </a>
@@ -255,7 +264,7 @@
       Daniel Verner<br>
       📞 <a href="tel:+420733782290">733 782 290</a><br>
       📩 <a href="mailto:pojistenivkapse@gmail.com">pojistenivkapse@gmail.com</a><br>
-      📍 Olomoucký kraj – schůzky domlouvám individuálně.
+      📍<h2></h2> Olomoucký kraj – schůzky domlouvám individuálně.</h2>
     </p>
     <p>&copy; 2025 Daniel Verner – Pojištění v kapse</p>
   </footer>
