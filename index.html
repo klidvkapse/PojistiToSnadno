@@ -34,7 +34,7 @@
       scroll-behavior: smooth;
     }
     html, body {
-      width: 100vw;
+      width: 100%;
       max-width: 100%;
       overflow-x: hidden;
       background-color: #fdfdf4;
@@ -101,6 +101,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 1rem;
+      width: 100%;
     }
     aside {
       flex: 1 1 300px;
@@ -114,11 +115,11 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+      flex-wrap: wrap;
       margin-top: 1rem;
     }
     .video-thumbnails a img {
       width: 120px;
-      height: auto;
       border-radius: 10px;
     }
     .video-label {
@@ -141,6 +142,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
+      width: 100%;
     }
     form textarea {
       grid-column: span 2;
@@ -151,6 +153,7 @@
       border-radius: 10px;
       border: 2px dashed #c6f1d6;
       background-color: #fcfff5;
+      width: 100%;
     }
     button {
       grid-column: span 2;
@@ -168,8 +171,7 @@
       background-color: #b7e4c7;
     }
     footer {
-      width: 100vw;
-      max-width: 100%;
+      width: 100%;
       box-sizing: border-box;
       text-align: center;
       padding: 2rem 1rem;
@@ -180,12 +182,15 @@
       border-top: 2px dashed #81b29a;
     }
     @media (max-width: 900px) {
-      main {
+      .nav-links {
+        display: none;
         flex-direction: column;
-        align-items: center;
       }
-      aside, .content {
-        flex: 1 1 100%;
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
       }
       form {
         grid-template-columns: 1fr;
@@ -208,17 +213,6 @@
     </nav>
   </header>
   <main>
-    <aside>
-      <h2>Reálné příběhy klientů</h2>
-      <section id="realne-pribehy">
-        <div class="video-thumbnails">
-          <div class="video-label">KROUPY</div>
-          <a href="https://www.youtube.com/watch?v=ERHjCvcyawo" target="_blank">
-            <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
-          </a>
-        </div>
-      </section>
-    </aside>
     <div class="content">
       <section id="o-mne">
         <h2>O mně</h2>
@@ -248,13 +242,24 @@
         </form>
       </section>
     </div>
+    <aside>
+      <h2>Reálné příběhy klientů</h2>
+      <section id="realne-pribehy">
+        <div class="video-thumbnails">
+          <div class="video-label">KROUPY</div>
+          <a href="https://www.youtube.com/watch?v=ERHjCvcyawo" target="_blank">
+            <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
+          </a>
+        </div>
+      </section>
+    </aside>
   </main>
   <footer>
     <p><strong>Kontakt:</strong><br>
       Daniel Verner<br>
       📞 <a href="tel:+420733782290">733 782 290</a><br>
       📩 <a href="mailto:pojistenivkapse@gmail.com">pojistenivkapse@gmail.com</a><br>
-      📍 <h2>Olomoucký kraj – schůzky domlouvám individuálně.</2h>
+      📍 Olomoucký kraj – schůzky domlouvám individuálně.
     </p>
     <p>&copy; 2025 Daniel Verner – Pojištění v kapse</p>
   </footer>
@@ -285,4 +290,5 @@
   </script>
 </body>
 </html>
+
 
