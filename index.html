@@ -97,19 +97,23 @@
     main {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       max-width: 1200px;
       margin: 0 auto;
       padding: 1rem;
       width: 100%;
     }
     aside {
+      order: -1;
       flex: 1 1 300px;
       padding: 1rem;
       background: var(--accent);
       border: 2px dashed #81b29a;
       border-radius: 10px;
       margin-bottom: 2rem;
+    }
+    .content {
+      flex: 3 1 600px;
+      padding: 1rem;
     }
     .video-thumbnails {
       display: flex;
@@ -126,10 +130,6 @@
       font-size: 1rem;
       font-weight: bold;
       color: var(--text);
-    }
-    .content {
-      flex: 3 1 600px;
-      padding: 1rem;
     }
     section {
       margin-bottom: 2rem;
@@ -208,12 +208,22 @@
     <nav class="nav-links">
       <a href="#o-mne" class="nav-button-3d">O mně</a>
       <a href="#sluzby" class="nav-button-3d">Služby</a>
-      <a href="#realne-pribehy" class="nav-button-3d">Reálné příběhy</a>
       <a href="#kontakt" class="nav-button-3d">Kontakt</a>
-      
+      <a href="#realne-pribehy" class="nav-button-3d">Reálné příběhy</a>
     </nav>
   </header>
   <main>
+    <aside>
+      <h2>Reálné příběhy klientů</h2>
+      <section id="realne-pribehy">
+        <div class="video-thumbnails">
+          <div class="video-label">KROUPY</div>
+          <a href="https://www.youtube.com/watch?v=ERHjCvcyawo" target="_blank">
+            <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
+          </a>
+        </div>
+      </section>
+    </aside>
     <div class="content">
       <section id="o-mne">
         <h2>O mně</h2>
@@ -230,7 +240,7 @@
           <li>Investice</li>
         </ul>
       </section>
-      <section id="sluzby">
+      <section id="kontakt">
         <h2>Nezávazný návrh pojištění</h2>
         <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
           <input type="text" name="name" placeholder="Vaše jméno a příjmení" required />
@@ -243,20 +253,8 @@
         </form>
       </section>
     </div>
-    <aside>
-      <h2>Reálné příběhy klientů</h2>
-      <section id="realne-pribehy">
-        <div class="video-thumbnails">
-          <div class="video-label">KROUPY</div>
-          <a href="https://www.youtube.com/watch?v=ERHjCvcyawo" target="_blank">
-            <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
-          </a>
-        </div>
-      </section>
-    </aside>
   </main>
   <footer>
-    <section id="kontakt">
     <p><strong>Kontakt:</strong><br>
       Daniel Verner<br>
       📞 <a href="tel:+420733782290">733 782 290</a><br>
