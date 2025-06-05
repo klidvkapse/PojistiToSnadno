@@ -12,8 +12,8 @@
   <meta property="og:title" content="Pojištění v kapse – Daniel Verner">
   <meta property="og:description" content="Nezávazné poradenství, přátelský přístup, reálné příběhy klientů a důležité informace o pojištění.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tvujweb.cz/"> <!-- zde doplň pravou URL -->
-  <meta property="og:image" content="https://tvujweb.cz/ikona.png"> <!-- volitelné, doplň odkaz na obrázek/logo -->
+  <meta property="og:url" content="https://tvujweb.cz/">
+  <meta property="og:image" content="https://tvujweb.cz/ikona.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pojištění v kapse – Daniel Verner">
   <meta name="twitter:description" content="Nezávazné pojištění, férový přístup a příběhy klientů.">
@@ -53,12 +53,24 @@
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       flex-wrap: wrap;
     }
+    .logo {
+      height: 48px;
+      width: auto;
+      margin-right: 12px;
+      border-radius: 12px;
+      background: #eaf4e4;
+      box-shadow: 0 2px 8px rgba(80,120,80,0.04);
+      padding: 4px;
+      flex-shrink: 0;
+    }
     header h1 {
       font-size: 1.2rem;
+      flex: 1;
+      text-align: left;
     }
     .hamburger {
       display: none;
@@ -70,6 +82,7 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      margin-left: auto;
     }
     .nav-links a {
       margin: 0.3rem;
@@ -112,7 +125,7 @@
       border-radius: 10px;
       margin-bottom: 2rem;
     }
-   aside {
+    aside {
       order: -1;
       flex: 1 1 300px;
       padding: 1rem;
@@ -201,6 +214,14 @@
       button {
         grid-column: span 1;
       }
+      .logo {
+        height: 36px;
+        padding: 3px;
+        margin-right: 7px;
+      }
+      header h1 {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -237,7 +258,7 @@
         <h2>S čím vám pomohu</h2>
         <ul>
           <li>Životní pojištění s dvojnásobným plněním při infarktu</li>
-          <li>Pojištění dětí, úrazové krytí,pracovní neschopnost</li>
+          <li>Pojištění dětí, úrazové krytí, pracovní neschopnost</li>
           <li>Kontrola starých smluv a jejich výhodná aktualizace</li>
           <li>Pojištění majetku i odpovědnosti</li>
           <li>Úvěry na bydlení</li>
@@ -294,5 +315,3 @@
   </script>
 </body>
 </html>
-
-
