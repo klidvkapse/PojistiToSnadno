@@ -496,14 +496,21 @@
             </div>
             <div class="link-card">
   <div class="link-card-title">Vysvětlení pojistných pojmů</div>
-  <img src="slovnik_uvod.png" alt="Slovník pojistných pojmů" style="width:100%; max-width: 300px; margin: 0 auto 1rem; display:block;" />
-  <p>Zadejte pojem a zobrazí se jeho vysvětlení:</p>
 
-  <input type="text" id="search" placeholder="např. pojistná událost" oninput="showSuggestions()" />
+  <!-- Zmenšený obrázek maskota -->
+  <img src="img/maskot-slovnik.png" alt="Slovník pojistných pojmů" style="width: 50%; max-width: 160px; display: block; margin: 0 auto 1rem;" />
+
+  <p style="margin-bottom: 0.6rem;">Zadejte pojem a zobrazí se jeho vysvětlení:</p>
+
+  <input type="text" id="search" placeholder="např. pojistná událost" oninput="showSuggestions()" style="margin-bottom: 0.7rem;" />
   <div id="suggestions" style="border:1px solid #ccc; border-top: none; background:#fff;"></div>
-  <button onclick="showDefinition()">Zobrazit pojem</button>
+
+  <!-- Sladěné tlačítko s ostatními -->
+  <button class="link-card-btn" onclick="showDefinition()">Zobrazit pojem</button>
+
   <div id="output" style="margin-top:1rem; padding:1rem; background:#fff; border-left:5px solid #a8d5ba; border-radius:4px;"></div>
 </div>
+
 
 
 <script>
