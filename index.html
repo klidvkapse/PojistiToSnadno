@@ -491,12 +491,13 @@
             </div>
             <div class="link-card">
   <div class="link-card-title">Statistiky pojistných událostí</div>
-  <div class="link-card-desc">Statistika škod na majetku za rok 2024. Kliknutím zobrazíte přehled.</div>
+<div class="link-card-desc">Statistika škod na majetku za rok 2024. Kliknutím zobrazíte přehled.</div>
 
-  <button class="link-card-btn" onclick="toggleStatistiky()">Zobrazit statistiky</button>
+<button class="link-card-btn" onclick="toggleStatistiky()">Zobrazit statistiky</button>
 
-  <div id="statistikyBox" style="display:none; margin-top:1rem;">
-    <table style="width:100%; font-size:0.95rem; border-collapse: collapse;">
+<div id="statistikyBox" style="display:none; margin-top:1rem;">
+  <div style="overflow-x: auto;">
+    <table style="width: 100%; font-size: 0.87rem; border-collapse: collapse;">
       <thead>
         <tr style="background:#d2f4dc;">
           <th style="text-align:left; padding: 6px; border-bottom: 1px solid #ccc;">Ukazatel</th>
@@ -506,21 +507,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>Počet pojistných událostí celkem</td><td style="text-align:right;">322 124</td><td style="text-align:right;">424 397</td><td style="text-align:right;">131,75</td></tr>
-        <tr><td>– škody z tíhy sněhu</td><td style="text-align:right;">7 411</td><td style="text-align:right;">1 200</td><td style="text-align:right;">16,19</td></tr>
-        <tr><td>– škody z povodní</td><td style="text-align:right;">7 857</td><td style="text-align:right;">61 846</td><td style="text-align:right;">787,15</td></tr>
-        <tr><td>– škody z vichřice</td><td style="text-align:right;">26 985</td><td style="text-align:right;">36 753</td><td style="text-align:right;">136,20</td></tr>
+        <tr><td>Počet pojistných událostí celkem</td><td style="text-align:right;">322&nbsp;124</td><td style="text-align:right;">424&nbsp;397</td><td style="text-align:right;">131,75</td></tr>
+        <tr><td>– škody z tíhy sněhu</td><td style="text-align:right;">7&nbsp;411</td><td style="text-align:right;">1&nbsp;200</td><td style="text-align:right;">16,19</td></tr>
+        <tr><td>– škody z povodní</td><td style="text-align:right;">7&nbsp;857</td><td style="text-align:right;">61&nbsp;846</td><td style="text-align:right;">787,15</td></tr>
+        <tr><td>– škody z vichřice</td><td style="text-align:right;">26&nbsp;985</td><td style="text-align:right;">36&nbsp;753</td><td style="text-align:right;">136,20</td></tr>
       </tbody>
     </table>
   </div>
 </div>
-
-<script>
-  function toggleStatistiky() {
-    const box = document.getElementById("statistikyBox");
-    box.style.display = box.style.display === "none" ? "block" : "none";
-  }
-</script>
 
             <div class="link-card">
   <div class="link-card-title">Vysvětlení pojistných pojmů</div>
@@ -579,10 +573,7 @@
       def: "Osoba, které je v případě smrti pojištěného vyplaceno pojistné plnění.",
       ex: "Obmyšlenou osobou bývá nejčastěji manžel(ka) nebo děti."
     },
-    "rizikové pojištění": {
-      def: "Pojištění sjednané pro krytí specifických rizik, například úrazu nebo nemoci.",
-      ex: "Rizikové životní pojištění vyplácí peníze pouze při úmrtí nebo trvalých následcích."
-    },
+  
     "likvidace pojistné události": {
       def: "Proces posouzení a vyřízení pojistné události pojišťovnou.",
       ex: "Po nahlášení škody probíhá likvidace pojistné události do několika dnů."
