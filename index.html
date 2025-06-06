@@ -495,10 +495,111 @@
               <a class="link-card-btn" href="https://klidvkapse.github.io/pojistenivkapse/pumajetek2024.xlsx" target="_blank" download>Stáhnout statistiky (XLSX)</a>
             </div>
             <div class="link-card">
-              <div class="link-card-title">Vysvětlení pojistných pojmů</div>
-              <div class="link-card-desc">Slovník pojmů, který vám usnadní orientaci v pojištění.</div>
-              <a class="link-card-btn" href="slovnik.pdf" download>Otevřít slovník (PDF)</a>
-            </div>
+  <h3>Vysvětlení pojistných pojmů</h3>
+  <p>Zadejte pojem a zobrazí se jeho vysvětlení:</p>
+
+  <input type="text" id="search" placeholder="např. pojistná událost" oninput="showSuggestions()" />
+  <div id="suggestions" style="border:1px solid #ccc; border-top: none; background:#fff; position:relative; z-index:10;"></div>
+  <button onclick="showDefinition()">Zobrazit pojem</button>
+  <div id="output" style="margin-top:1rem; padding:1rem; background:#fff; border-left:5px solid #a8d5ba; border-radius:4px;"></div>
+</div>
+
+<script>
+  const terms = {
+    "pojistná smlouva": {
+      def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
+      ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."
+    },
+    "pojistná událost": {
+      def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
+      ex: "Například škoda způsobená krupobitím na pergole je pojistnou událostí."
+    },
+    "pojistné plnění": {
+      def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",
+      ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."
+    },
+    "výluka z pojištění": {
+      def: "Situace, kdy pojištění nepokrývá určité události nebo škody.",
+      ex: "Například škody způsobené úmyslným jednáním bývají výlukou."
+    },
+    "spoluúčast": {
+      def: "Část škody, kterou si klient hradí sám.",
+      ex: "Při havárii se spoluúčastí 1000 Kč klient tuto částku zaplatí sám a zbytek pokryje pojišťovna."
+    },
+    "pojistné": {
+      def: "Částka, kterou platí pojistník pojišťovně za poskytování pojistné ochrany.",
+      ex: "Roční pojistné na pojištění domácnosti činí 2800 Kč."
+    },
+    "pojistník": {
+      def: "Osoba, která uzavřela pojistnou smlouvu a je povinna platit pojistné.",
+      ex: "Manžel uzavřel pojistnou smlouvu – je tedy pojistník, přestože pojištěna je manželka."
+    },
+    "pojištěný": {
+      def: "Osoba, na jejíž život, zdraví, majetek nebo odpovědnost se vztahuje pojištění.",
+      ex: "Dítě je pojištěné v rámci úrazového pojištění sjednaného rodičem."
+    },
+    "obmyšlená osoba": {
+      def: "Osoba, které je v případě smrti pojištěného vyplaceno pojistné plnění.",
+      ex: "Obmyšlenou osobou bývá nejčastěji manžel(ka) nebo děti."
+    },
+    "rizikové pojištění": {
+      def: "Pojištění sjednané pro krytí specifických rizik, například úrazu nebo nemoci.",
+      ex: "Rizikové životní pojištění vyplácí peníze pouze při úmrtí nebo trvalých následcích."
+    },
+    "likvidace pojistné události": {
+      def: "Proces posouzení a vyřízení pojistné události pojišťovnou.",
+      ex: "Po nahlášení škody probíhá likvidace pojistné události do několika dnů."
+    },
+    "indexace": {
+      def: "Automatické navyšování pojistné částky a pojistného, často kvůli inflaci.",
+      ex: "Indexace zajistí, že hodnota pojištění odpovídá cenám v budoucnosti."
+    },
+    "pojistná částka": {
+      def: "Maximální částka, kterou pojišťovna vyplatí při pojistné události.",
+      ex: "Pojistná částka na dům byla stanovena na 2,5 milionu Kč."
+    },
+    "pojistná doba": {
+      def: "Období, na které je pojištění sjednáno.",
+      ex: "Pojistná doba trvá 5 let – po tuto dobu je pojištění aktivní."
+    },
+    "pojistné období": {
+      def: "Období, za které se platí pojistné – např. měsíc, čtvrtletí, rok.",
+      ex: "Pojistné období je jeden rok – pojistné se platí jednou ročně."
+    }
+  };
+
+  function showSuggestions() {
+    const input = document.getElementById('search');
+    const list = document.getElementById('suggestions');
+    const query = input.value.toLowerCase();
+    list.innerHTML = '';
+    if (!query) return;
+    Object.keys(terms).forEach(term => {
+      if (term.includes(query)) {
+        const div = document.createElement('div');
+        div.className = 'suggestion';
+        div.innerText = term;
+        div.onclick = () => {
+          input.value = term;
+          list.innerHTML = '';
+        };
+        list.appendChild(div);
+      }
+    });
+  }
+
+  function showDefinition() {
+    const term = document.getElementById('search').value.toLowerCase();
+    const output = document.getElementById('output');
+    if (terms[term]) {
+      output.innerHTML = `<strong>${term}</strong><br>${terms[term].def}<div style='font-style: italic; color: #555; margin-top: 0.5rem;'>${terms[term].ex}</div>`;
+    } else {
+      output.innerHTML = 'Pojem nebyl nalezen. Zkuste jiný.';
+    }
+  }
+</script>
+
+
             <div class="link-card">
               <div class="link-card-title">Video: Jak postupovat při škodě</div>
               <div class="link-card-desc">Krátký animovaný návod, jak řešit pojistnou událost.</div>
