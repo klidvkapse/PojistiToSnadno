@@ -495,14 +495,16 @@
               <a class="link-card-btn" href="https://klidvkapse.github.io/pojistenivkapse/pumajetek2024.xlsx" target="_blank" download>Stáhnout statistiky (XLSX)</a>
             </div>
             <div class="link-card">
-  <h3>Vysvětlení pojistných pojmů</h3>
+  <div class="link-card-title">Vysvětlení pojistných pojmů</div>
+  <img src="slovnik_uvod.png" alt="Slovník pojistných pojmů" style="width:100%; max-width: 300px; margin: 0 auto 1rem; display:block;" />
   <p>Zadejte pojem a zobrazí se jeho vysvětlení:</p>
 
   <input type="text" id="search" placeholder="např. pojistná událost" oninput="showSuggestions()" />
-  <div id="suggestions" style="border:1px solid #ccc; border-top: none; background:#fff; position:relative; z-index:10;"></div>
+  <div id="suggestions" style="border:1px solid #ccc; border-top: none; background:#fff;"></div>
   <button onclick="showDefinition()">Zobrazit pojem</button>
   <div id="output" style="margin-top:1rem; padding:1rem; background:#fff; border-left:5px solid #a8d5ba; border-radius:4px;"></div>
 </div>
+
 
 <script>
   const terms = {
