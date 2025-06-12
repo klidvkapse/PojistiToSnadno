@@ -419,6 +419,34 @@
         font-size: 1rem; padding: 0.75rem 1.2rem; right: 12px; bottom: 12px;
       }
     }
+    .visitor-counter-box {
+  margin-top: 1.2em;
+  background: #eaf4e4;
+  border-radius: 8px;
+  padding: 0.55em 1.1em;
+  font-size: 1.09rem;
+  color: #34654d;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  box-shadow: 0 2px 6px #bddfc255;
+  border-left: 4px solid #a8d5ba;
+}
+.visitor-counter-icon {
+  font-size: 1.3em;
+  margin-right: 0.6em;
+}
+.visitor-counter-text {
+  margin-right: 0.4em;
+  color: #447360;
+}
+.visitor-counter-number {
+  font-weight: bold;
+  color: #275a3a;
+  font-size: 1.12em;
+}
+
   </style>
 </head>
 <body>
@@ -454,7 +482,7 @@
   </header>
   <main>
     <div class="container">
-      <aside>
+     <aside>
   <h2>Reálné příběhy klientů</h2>
   <section id="realne-pribehy">
     <div class="video-thumbnails">
@@ -464,28 +492,28 @@
       </a>
     </div>
     <!-- POČÍTADLO NÁVŠTĚV POD VIDEEM -->
-    <?php
-    // Soubor pro počet návštěv
-    $soubor = "navstevy.txt";
-    // Seznam IP adres, které nepočítat
-    $ignore_ip = [
-      "10.210.89.125",
-      "10.32.0.105",
-      "10.36.0.105",
-      "10.31.71.101"
-    ];
-    $ip_navstevnika = $_SERVER['REMOTE_ADDR'];
-    if (!in_array($ip_navstevnika, $ignore_ip)) {
-      if (!file_exists($soubor)) file_put_contents($soubor, 0);
-      $pocet = (int)file_get_contents($soubor);
-      $pocet++;
-      file_put_contents($soubor, $pocet);
-    } else {
-      if (!file_exists($soubor)) file_put_contents($soubor, 0);
-      $pocet = (int)file_get_contents($soubor);
-    }
-    echo "<div style='margin-top:1.4em; font-size:1.07rem; color:#39614a; font-weight:bold; text-align:left;'>👁️ Počet návštěv: $pocet</div>";
-    ?>
+    <div class="visitor-counter-box">
+      <?php
+        $soubor = "navstevy.txt";
+        $ignore_ip = [
+          "10.210.89.125",
+          "10.32.0.105",
+          "10.36.0.105",
+          "10.31.71.101"
+        ];
+        $ip_navstevnika = $_SERVER['REMOTE_ADDR'];
+        if (!in_array($ip_navstevnika, $ignore_ip)) {
+          if (!file_exists($soubor)) file_put_contents($soubor, 0);
+          $pocet = (int)file_get_contents($soubor);
+          $pocet++;
+          file_put_contents($soubor, $pocet);
+        } else {
+          if (!file_exists($soubor)) file_put_contents($soubor, 0);
+          $pocet = (int)file_get_contents($soubor);
+        }
+        echo "<span class='visitor-counter-icon'>👁️</span> <span class='visitor-counter-text'>Počet návštěv:</span> <span class='visitor-counter-number'>$pocet</span>";
+      ?>
+    </div>
     <!-- konec počítadla -->
   </section>
 </aside>
