@@ -455,16 +455,41 @@
   <main>
     <div class="container">
       <aside>
-        <h2>Reálné příběhy klientů</h2>
-        <section id="realne-pribehy">
-          <div class="video-thumbnails">
-            <div class="video-label">KROUPY</div>
-            <a href="https://www.youtube.com/watch?v=ERHjCvcyawo" target="_blank">
-              <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
-            </a>
-          </div>
-        </section>
-      </aside>
+  <h2>Reálné příběhy klientů</h2>
+  <section id="realne-pribehy">
+    <div class="video-thumbnails">
+      <div class="video-label">KROUPY</div>
+      <a href="https://www.youtube.com/watch?v=ERHjCvcyawo" target="_blank">
+        <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
+      </a>
+    </div>
+    <!-- POČÍTADLO NÁVŠTĚV POD VIDEEM -->
+    <?php
+    // Soubor pro počet návštěv
+    $soubor = "navstevy.txt";
+    // Seznam IP adres, které nepočítat
+    $ignore_ip = [
+      "10.210.89.125",
+      "10.32.0.105",
+      "10.36.0.105",
+      "10.31.71.101"
+    ];
+    $ip_navstevnika = $_SERVER['REMOTE_ADDR'];
+    if (!in_array($ip_navstevnika, $ignore_ip)) {
+      if (!file_exists($soubor)) file_put_contents($soubor, 0);
+      $pocet = (int)file_get_contents($soubor);
+      $pocet++;
+      file_put_contents($soubor, $pocet);
+    } else {
+      if (!file_exists($soubor)) file_put_contents($soubor, 0);
+      $pocet = (int)file_get_contents($soubor);
+    }
+    echo "<div style='margin-top:1.4em; font-size:1.07rem; color:#39614a; font-weight:bold; text-align:left;'>👁️ Počet návštěv: $pocet</div>";
+    ?>
+    <!-- konec počítadla -->
+  </section>
+</aside>
+
       <div class="content">
         <section id="o-mne">
           <h2>O mně</h2>
