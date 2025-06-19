@@ -359,28 +359,6 @@
               <img src="https://img.youtube.com/vi/ERHjCvcyawo/hqdefault.jpg" alt="Příběh 1">
             </a>
           </div>
-          <div class="visitor-counter-box">
-            <?php
-              $soubor = "navstevy.txt";
-              $ignore_ip = [
-                "10.210.89.125",
-                "10.32.0.105",
-                "10.36.0.105",
-                "10.31.71.101"
-              ];
-              $ip_navstevnika = $_SERVER['REMOTE_ADDR'];
-              if (!in_array($ip_navstevnika, $ignore_ip)) {
-                if (!file_exists($soubor)) file_put_contents($soubor, 0);
-                $pocet = (int)file_get_contents($soubor);
-                $pocet++;
-                file_put_contents($soubor, $pocet);
-              } else {
-                if (!file_exists($soubor)) file_put_contents($soubor, 0);
-                $pocet = (int)file_get_contents($soubor);
-              }
-              echo "<span class='visitor-counter-icon'>👁️</span> <span class='visitor-counter-text'>Počet návštěv:</span> <span class='visitor-counter-number'></span>";
-            ?>
-          </div>
         </section>
       </aside>
       <div class="content">
