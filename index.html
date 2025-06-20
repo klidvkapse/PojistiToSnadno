@@ -19,7 +19,7 @@
   <meta name="twitter:description" content="Nezávazné pojištění, férový přístup a příběhy klientů.">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
+     :root {
       --primary: #a8d5ba;
       --accent: #eaf4e4;
       --text: #354f52;
@@ -63,15 +63,41 @@
       margin: 0 auto;
     }
     .logo {
-  height: 80px;
-  margin-left: 32px;
-  border-radius: var(--radius);
-  background: #eaf4e4;
-  box-shadow: var(--shadow);
-  padding: 3px;
-  flex-shrink: 0;
-  display: block;
-}
+      height: 80px;
+      margin-left: 32px;
+      border-radius: var(--radius);
+      background: #eaf4e4;
+      box-shadow: var(--shadow);
+      padding: 3px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 38px auto 0 auto;
+      padding: 0 32px;
+    }
+    .content {
+      background: var(--accent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.1rem 2rem 2.2rem 2rem;
+      max-width: 100%;
+      flex-grow: 1;
+    }
+    .link-card {
+      align-items: flex-start;
+      text-align: left;
+    }
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1400px;
+        grid-template-columns: 280px 1fr;
+        gap: 48px;
+      }
 .logo-mobile {
   height: 60px !important;
   width: 60px !important;
