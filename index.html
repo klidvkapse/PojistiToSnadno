@@ -73,7 +73,7 @@
   flex-shrink: 0;
   display: block;
 }
-
+}
 .logo-mobile {
   height: 60px !important;
   width: 60px !important;
@@ -324,46 +324,56 @@
     margin-left: 0;
     margin-right: 12px;
     flex-shrink: 0;
-  }.header-title {
-      display: none;
+  }
+  .header-title {
+    font-size: 1rem;
+    margin-left: 0;
+    flex: 1;
+    color: #2b5740;
+  }
+  nav.nav-links {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.3rem;
+    margin-top: 0.6rem;
+    margin-left: 0;
+    width: 100%;
+  }
+
+
+      }
+      .content, aside {
+        padding: 0.8rem 0.3rem 1.3rem 0.3rem;
+        border-radius: 10px;
+      }
+      .links-grid {
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+      .link-card {
+        min-width: unset;
+        max-width: 100%;
+        width: 100%;
+      }
     }
-    nav.nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-left: auto;
-      margin-right: 16px;
+    .floating-action-btn {
+      position: fixed; right: 30px; bottom: 34px;
+      background: linear-gradient(to bottom, #b7e4c7, #81b29a);
+      color: #234b3e; font-weight: 700; font-size: 1.07rem;
+      padding: 1.02rem 1.7rem; border-radius: 32px;
+      box-shadow: 0 4px 18px 0 #81b29a44, 0 1.5px 7px 0 #b8e2cb;
+      border: none; cursor: pointer; text-decoration: none;
+      z-index: 1100; transition: background 0.18s, transform 0.13s;
+      display: inline-block; letter-spacing: 0.01em;
     }
-    .nav-button-3d {
-      background: linear-gradient(to bottom, var(--button-light-green), #a8d5ba);
-      color: #2f3e46;
-      border: none;
-      border-radius: var(--radius);
-      padding: 0.42rem 1.15rem;
-      font-size: 1rem;
-      font-weight: 600;
-      box-shadow: 0 4px #58815733;
-      transition: all 0.17s;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      margin-left: 0.1rem;
+    .floating-action-btn:hover {
+      background: linear-gradient(to bottom, #d2f4dc, #a8d5ba);
+      color: #183a31; transform: scale(1.06) translateY(-2px);
     }
-    .nav-button-3d:hover {
-      background: linear-gradient(to bottom, var(--button-light-green-hover), #a8d5ba);
-      transform: translateY(-1px) scale(1.05);
-      box-shadow: 0 6px #5881571a;
-    }
-    .container {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 32px;
-      max-width: 950px;
-      margin: 78px auto 0 auto;
-      padding: 0 16px;
-    }
-    aside {
-      margin-top: 24px;
+    @media (max-width: 700px) {
+      .floating-action-btn {
+        font-size: 1rem; padding: 0.75rem 1.2rem; right: 12px; bottom: 12px;
+      }
     }
   </style>
 </head>
@@ -371,6 +381,7 @@
   <header>
     <div class="header-desktop">
       <img src="LOGOJA.png" alt="Logo Pojist to Snadno" class="logo">
+     
       <nav class="nav-links">
         <a href="#o-mne" class="nav-button-3d">O mně</a>
         <a href="#sluzby" class="nav-button-3d">Služby</a>
@@ -380,7 +391,6 @@
       </nav>
     </div>
   </header>
-  <main> </header>
   
   <main>
     <div class="container">
