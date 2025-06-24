@@ -5,7 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Pojisti To Snadno – Daniel Verner</title>
-  <meta name="description" content="Pojisti To Snadno – Pomáhám lidem najít jistotu v krizových situacích. Nabízím nezávazné poradenství, aktualizace smluv a osobní přístup.">
+  <meta name="description" content="Pojisti To Snadno – nezávazné poradenství v oblasti životního, majetkového a úrazového pojištění. Profesionální přístup v Olomouckém kraji.">
+  <meta name="keywords" content="pojištění, životní pojištění, majetkové pojištění, úrazové pojištění, poradce, Daniel Verner, Olomoucký kraj">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://pojistitosnadno.cz/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Pojisti To Snadno – Daniel Verner">
+  <meta property="og:description" content="Nezávazné poradenství a reálné příběhy klientů v oblasti pojištění.">
+  <meta property="og:url"         content="https://pojistitosnadno.cz/">
+  <meta property="og:image"       content="https://pojistitosnadno.cz/LOGOJA.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Pojisti To Snadno – Daniel Verner">
+  <meta name="twitter:description" content="Nezávazné poradenství a reálné příběhy klientů v oblasti pojištění.">
+  <meta name="twitter:image"       content="https://pojistitosnadno.cz/LOGOJA.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Pojisti To Snadno",
+    "url": "https://pojistitosnadno.cz/",
+    "logo": "https://pojistitosnadno.cz/LOGOJA.png",
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+420733782290",
+      "contactType": "customer service",
+      "areaServed": "CZ"
+    }]
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -16,6 +50,7 @@
       --button-light-hover: #c6f1d6;
       --shadow: 0 2px 12px rgba(90,120,80,0.08);
       --radius: 14px;
+      --header-height: 120px;
     }
     *, *::before, *::after {
       box-sizing: border-box;
@@ -26,60 +61,74 @@
       background: #fdfdf4;
       color: var(--text);
       font-family: 'Raleway', sans-serif;
-      padding-top: 140px;
-      min-height: 100vh;
+      padding-top: var(--header-height);
       overflow-x: hidden;
     }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
     header {
-      position: fixed; top: 0; left: 0; width: 100vw;
-      background: var(--primary); box-shadow: var(--shadow);
+      position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+      background: var(--primary);
+      box-shadow: var(--shadow);
       z-index: 1200;
     }
     .header-desktop {
       max-width: 1100px; margin: 0 auto;
-      height: 120px; display: flex; align-items: center;
-      gap: 1rem; padding: .5rem 1rem;
+      height: 100%; display: flex; align-items: center;
+      padding: 0 .5rem; gap: 1rem;
     }
     .logo {
-      height: 100px; border-radius: var(--radius);
+      height: calc(var(--header-height) - 20px);
       background: #eaf4e4; box-shadow: var(--shadow);
-      padding: 4px; flex-shrink: 0;
+      border-radius: var(--radius); padding: 4px;
+      flex-shrink: 0;
     }
     nav.nav-links {
-      margin-left: auto; display: flex; gap: .5rem;
+      margin-left: auto; display: flex; gap: .5rem; flex-wrap: wrap;
     }
     .nav-button-3d {
       background: linear-gradient(to bottom, var(--button-light), var(--primary));
       color: #2f3e46; border: none; border-radius: var(--radius);
-      padding: .5rem 1rem; font-weight: 600; box-shadow: 0 4px #58815733;
-      transition: .2s; text-decoration: none; cursor: pointer;
+      padding: .5rem .8rem; font-weight: 600; box-shadow: 0 4px #58815733;
+      transition: .2s; cursor: pointer;
     }
     .nav-button-3d:hover {
       background: linear-gradient(to bottom, var(--button-light-hover), var(--primary));
       transform: translateY(-2px); box-shadow: 0 6px #5881571a;
     }
 
-    .container {
+    main {
       max-width: 950px; margin: 2rem auto; padding: 0 1rem;
     }
-
-    section {
+    section, aside {
       background: var(--accent);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 2rem;
       margin-bottom: 2rem;
+      scroll-margin-top: var(--header-height);
     }
-    section h2 {
-      font-size: 1.4rem; margin-bottom: 1rem; color: #447360;
+    h1, h2 {
+      color: #447360;
+      margin-bottom: 1rem;
     }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.4rem; }
 
-    /* Reálné příběhy klientů */
+    #o-mne p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .content ul {
+      padding-left: 1.2rem; list-style: disc;
+    }
+    .content li { margin-bottom: .5rem; font-size: 1rem; }
+
     .stories-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
       gap: 1rem;
-      margin-top: 1rem;
     }
     .story-card {
       background: #fff;
@@ -87,63 +136,41 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
+      display: flex; flex-direction: column; gap: .5rem;
     }
-    .story-card h3 {
-      font-size: 1.1rem; color: #447360;
-    }
-    .story-card p {
-      font-size: .95rem; line-height: 1.4;
-    }
-    .story-card .amount {
-      font-weight: 600; color: #275a3a;
-    }
-    .story-card .duration {
-      font-weight: 600; color: #2f3e46;
-    }
+    .story-card h3 { font-size: 1.1rem; }
+    .story-card p { font-size: .95rem; line-height: 1.4; }
+    .story-card .amount { font-weight: 600; }
+    .story-card .duration { font-weight: 600; }
 
-    /* Obsahové sekce */
-    .content ul {
-      padding-left: 1.2rem; list-style: disc;
-    }
-    .content li {
-      margin-bottom: .5rem; font-size: 1rem;
-    }
-
-    /* Odkazy */
     .links-grid {
-      display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;
+      display: flex; flex-wrap: wrap; gap: 1rem;
     }
     .link-card {
-      background: #fff; border-radius: var(--radius);
-      box-shadow: var(--shadow); border: 1px solid #b8e2cb;
+      background: #fff; border: 1px solid #b8e2cb;
+      border-radius: var(--radius); box-shadow: var(--shadow);
       padding: 1rem; flex: 1 1 200px;
       display: flex; flex-direction: column;
       transition: transform .2s, box-shadow .2s;
     }
     .link-card:hover {
-      transform: translateY(-4px); box-shadow: 0 8px 20px rgba(60,140,80,0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(60,140,80,0.1);
     }
-    .link-card-title {
-      font-size: 1.2rem; margin-bottom: .6rem; color: #447360;
-    }
-    .link-card-desc {
-      flex: 1; margin-bottom: 1rem;
-    }
+    .link-card-title { font-size: 1.2rem; margin-bottom: .6rem; }
+    .link-card-desc  { flex: 1; margin-bottom: 1rem; }
     .link-card-btn {
-      type: button;
-      align-self: flex-end; background: none;
-      border: 2px dashed #81b29a; border-radius: var(--radius);
-      padding: .5rem 1rem; color: #2f3e46; font-weight: 600;
+      align-self: flex-end;
+      background: none;
+      border: 2px dashed #81b29a;
+      border-radius: var(--radius);
+      padding: .5rem 1rem;
+      font-weight: 600;
       cursor: pointer;
     }
 
-    /* Statistiky */
     #statistikyBox {
-      display: none;
-      margin-top: 1rem;
+      display: none; margin-top: 1rem;
     }
     #statistikyBox table {
       width: 100%; border-collapse: collapse; font-size: .95rem;
@@ -155,7 +182,6 @@
       background: var(--button-light);
     }
 
-    /* Slovník */
     .dict-container { position: relative; }
     #suggestions {
       position: absolute; top: 100%; left: 0; width: 100%;
@@ -168,10 +194,10 @@
     .suggestion:hover { background: var(--button-light); }
     #output {
       margin-top: 1rem; padding: 1rem; background: #fff;
-      border-left: 5px solid var(--button-light); border-radius: 4px;
+      border-left: 5px solid var(--button-light);
+      border-radius: 4px;
     }
 
-    /* Formulář */
     form {
       display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;
     }
@@ -187,44 +213,45 @@
       cursor: pointer; box-shadow: 0 4px #58815733;
       transition: background .2s;
     }
-    button[type="submit"]:hover { background: var(--button-light-hover); }
+    button[type="submit"]:hover {
+      background: var(--button-light-hover);
+    }
     #dekujeme {
       grid-column: 1/3; margin-top: .5rem; color: #27893c;
       font-weight: 600; display: none; text-align: center;
     }
 
-    /* Footer */
     footer {
       background: var(--accent); padding: 2rem 1rem;
-      border-top: 2px dashed var(--button-light); box-shadow: var(--shadow);
+      border-top: 2px dashed var(--button-light);
+      box-shadow: var(--shadow);
       text-align: center; color: #666;
     }
     footer p { margin: .5rem 0; line-height: 1.5; }
-    footer a { color: #447360; text-decoration: none; font-weight: 600; }
-    footer a:hover { text-decoration: underline; }
+    footer a { color: #447360; font-weight: 600; }
     footer small { display: block; margin-top: 1rem; font-size: .9rem; }
 
-    /* Floating button */
     .floating-action-btn {
       position: fixed; right: 1.5rem; bottom: 1.5rem;
       background: var(--button-light); color: #234b3e;
       padding: .8rem 1.2rem; border-radius: 2rem;
       box-shadow: var(--shadow); border: none;
-      font-weight: 600; text-decoration: none;
-      transition: transform .2s; cursor: pointer;
+      font-weight: 600; cursor: pointer;
+      transition: transform .2s;
     }
     .floating-action-btn:hover {
-      background: var(--button-light-hover); transform: translateY(-2px);
+      background: var(--button-light-hover);
+      transform: translateY(-2px);
     }
 
     @media (max-width: 900px) {
-      .container { padding: 0 1rem; }
+      main { padding: 0 1rem; }
     }
     @media (max-width: 500px) {
       .header-desktop { flex-direction: column; height: auto; padding: 1rem; }
       .nav-button-3d { padding: .4rem .8rem; font-size: .9rem; }
-      section h2 { font-size: 1.2rem; }
-      section { padding: 1rem; }
+      h2, h1 { font-size: 1.2rem; }
+      section, aside { padding: 1rem; }
     }
   </style>
 </head>
@@ -233,155 +260,160 @@
   <header>
     <div class="header-desktop">
       <img src="LOGOJA.png" alt="Logo Pojisti To Snadno" class="logo">
-      <nav class="nav-links">
-        <a href="#o-mne" class="nav-button-3d">O mně</a>
-        <a href="#sluzby" class="nav-button-3d">Služby</a>
-        <a href="#realne-pribehy" class="nav-button-3d">Reálné příběhy</a>
-        <a href="#odkazy" class="nav-button-3d">Odkazy</a>
-        <a href="#kontakt" class="nav-button-3d">Kontakt</a>
+      <nav class="nav-links" aria-label="Hlavní navigace">
+        <button class="nav-button-3d" onclick="location.href='#o-mne'">O mně</button>
+        <button class="nav-button-3d" onclick="location.href='#sluzby'">Služby</button>
+        <button class="nav-button-3d" onclick="location.href='#realne-pribehy'">Reálné příběhy</button>
+        <button class="nav-button-3d" onclick="location.href='#odkazy'">Odkazy</button>
+        <button class="nav-button-3d" onclick="location.href='#slovnik'">Slovník</button>
+        <button class="nav-button-3d" onclick="location.href='#kontakt'">Kontakt</button>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="container">
 
-      <section id="o-mne">
-        <h2>O mně</h2>
-        <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení.</p>
-      </section>
+    <section id="o-mne">
+      <h1>O mně</h1>
+      <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení.</p>
+    </section>
 
-      <section id="sluzby">
-        <h2>S čím vám pomohu</h2>
-        <ul>
-          <li>Životní pojištění s dvojnásobným plněním při infarktu</li>
-          <li>Pojištění dětí, úrazové krytí, pracovní neschopnost</li>
-          <li>Kontrola starých smluv a jejich výhodná aktualizace</li>
-          <li>Pojištění majetku i odpovědnosti</li>
-          <li>Úvěry na bydlení</li>
-          <li>Investice</li>
-        </ul>
-      </section>
+    <section id="sluzby" class="content">
+      <h2>S čím vám pomohu</h2>
+      <ul>
+        <li>Životní pojištění s dvojnásobným plněním při infarktu</li>
+        <li>Pojištění dětí, úrazové krytí, pracovní neschopnost</li>
+        <li>Kontrola starých smluv a jejich výhodná aktualizace</li>
+        <li>Pojištění majetku i odpovědnosti</li>
+        <li>Úvěry na bydlení</li>
+        <li>Investice</li>
+      </ul>
+    </section>
 
-      <section id="realne-pribehy">
-        <h2>Reálné příběhy klientů</h2>
-        <div class="stories-grid">
-          <div class="story-card">
-            <h3>Denní odškodné</h3>
-            <p><strong>Příčina:</strong> Dopravní nehoda (mimo výkon povolání)</p>
-            <p class="amount">23 100 Kč</p>
-            <p class="duration">Vyřízení: 7 dní</p>
-          </div>
-          <div class="story-card">
-            <h3>Živelní událost</h3>
-            <p><strong>Příčina:</strong> Krupobití</p>
-            <p class="amount">11 448 Kč</p>
-            <p class="duration">Vyřízení: 2 dny</p>
-          </div>
-          <div class="story-card">
-            <h3>Plnění při ošetřování</h3>
-            <p><strong>Příčina:</strong> Ošetřování dítěte v důsledku úrazu</p>
-            <p class="amount">30 900 Kč</p>
-            <p class="duration">Vyřízení: 112 dní</p>
-          </div>
-          <div class="story-card">
-            <h3>Tělesné poškození</h3>
-            <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
-            <p class="amount">5 000 Kč</p>
-            <p class="duration">Vyřízení: 36 dní</p>
-          </div>
-          <div class="story-card">
-            <h3>Pobyt v nemocnici (nemoc)</h3>
-            <p><strong>Příčina:</strong> Pobyt v nemocnici z důvodu nemoci</p>
-            <p class="amount">900 Kč</p>
-            <p class="duration">Vyřízení: 14 dní</p>
-          </div>
-          <div class="story-card">
-            <h3>Pobyt v nemocnici (ostatní)</h3>>
-            <p><strong>Příčina:</strong> Pobyt v nemocnici z důvodu nemoci – ostatní</p>
-            <p class="amount">1 500 Kč</p>
-            <p class="duration">Vyřízení: 135 dní</p>
-          </div>
-          <div class="story-card">
-            <h3>Poškození skla</h3>>
-            <p><strong>Příčina:</strong> Poškození nebo zničení skla (bez živlu a vandalismu)</p>
-            <p class="amount">6 199 Kč</p>
-            <p class="duration">Vyřízení: 5 dní</p>
-          </div>
-          <div class="story-card">
-            <h3>Tělesné poškození úrazem</h3>>
-            <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
-            <p class="amount">22 500 Kč</p>
-            <p class="duration">Vyřízení: 4 dny</p>
-          </div>
-          <div class="story-card">
-            <h3>Tělesné poškození úrazem</h3>>
-            <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
-            <p class="amount">22 000 Kč</p>
-            <p class="duration">Vyřízení: 15 dní</p>
-          </div>
-          <div class="story-card">
-            <h3>Vodovodní škoda</h3>>
-            <p><strong>Příčina:</strong> Kapání nebo pára unikající z vodovodního systému</p>
-            <p class="amount">6 790 Kč</p>
-            <p class="duration">Vyřízení: 26 dní</p>
+    <aside id="realne-pribehy">
+      <h2>Reálné příběhy klientů</h2>
+      <div class="stories-grid">
+        <div class="story-card">
+          <h3>Denní odškodné</h3>
+          <p><strong>Příčina:</strong> Dopravní nehoda (mimo výkon povolání)</p>
+          <p class="amount">23 100 Kč</p>
+          <p class="duration">Vyřízení: 7 dní</p>
+        </div>
+        <div class="story-card">
+          <h3>Živelní událost</h3>
+          <p><strong>Příčina:</strong> Krupobití</p>
+          <p class="amount">11 448 Kč</p>
+          <p class="duration">Vyřízení: 2 dny</p>
+        </div>
+        <div class="story-card">
+          <h3>Plnění při ošetřování</h3>
+          <p><strong>Příčina:</strong> Ošetřování dítěte v důsledku úrazu</p>
+          <p class="amount">30 900 Kč</p>
+          <p class="duration">Vyřízení: 112 dní</p>
+        </div>
+        <div class="story-card">
+          <h3>Tělesné poškození</h3>
+          <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
+          <p class="amount">5 000 Kč</p>
+          <p class="duration">Vyřízení: 36 dní</p>
+        </div>
+        <div class="story-card">
+          <h3>Pobyt v nemocnici (nemoc)</h3>
+          <p><strong>Příčina:</strong> Pobyt v nemocnici z důvodu nemoci</p>
+          <p class="amount">900 Kč</p>
+          <p class="duration">Vyřízení: 14 dní</p>
+        </div>
+        <div class="story-card">
+          <h3>Pobyt v nemocnici (ostatní)</h3>
+          <p><strong>Příčina:</strong> Pobyt v nemocnici z důvodu nemoci – ostatní</p>
+          <p class="amount">1 500 Kč</p>
+          <p class="duration">Vyřízení: 135 dní</p>
+        </div>
+        <div class="story-card">
+          <h3>Poškození skla</h3>
+          <p><strong>Příčina:</strong> Poškození nebo zničení skla (bez živlu a vandalismu)</p>
+          <p class="amount">6 199 Kč</p>
+          <p class="duration">Vyřízení: 5 dní</p>
+        </div>
+        <div class="story-card">
+          <h3>Tělesné poškození úrazem</h3>
+          <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
+          <p class="amount">22 500 Kč</p>
+          <p class="duration">Vyřízení: 4 dny</p>
+        </div>
+        <div class="story-card">
+          <h3>Tělesné poškození úrazem</h3>
+          <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
+          <p class="amount">22 000 Kč</p>
+          <p class="duration">Vyřízení: 15 dní</p>
+        </div>
+        <div class="story-card">
+          <h3>Vodovodní škoda</h3>
+          <p><strong>Příčina:</strong> Kapání nebo pára unikající z vodovodního systému</p>
+          <p class="amount">6 790 Kč</p>
+          <p class="duration">Vyřízení: 26 dní</p>
+        </div>
+      </div>
+    </aside>
+
+    <section id="odkazy">
+      <h2>Ke stažení a užitečné odkazy</h2>
+      <div class="links-grid">
+        <div class="link-card">
+          <div class="link-card-title">Statistiky pojistných událostí</div>
+          <div class="link-card-desc">Přehled škod na majetku a zdraví za roky 2023–2024.</div>
+          <button class="link-card-btn" onclick="toggleStatistiky()">Zobrazit statistiky</button>
+          <div id="statistikyBox">
+            <table>
+              <thead>
+                <tr>
+                  <th style="text-align:left">Ukazatel</th>
+                  <th style="text-align:right">1–12/2023</th>
+                  <th style="text-align:right">1–12/2024</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Škody na majetku</td><td style="text-align:right">322 124</td><td style="text-align:right">424 397</td></tr>
+                <tr><td>– škody z tíhy sněhu</td><td style="text-align:right">7 411</td><td style="text-align:right">1 200</td></tr>
+                <tr><td>– škody z povodní</td><td style="text-align:right">7 857</td><td style="text-align:right">61 846</td></tr>
+                <tr><td>– škody z vichřice</td><td style="text-align:right">26 985</td><td style="text-align:right">36 753</td></tr>
+                <tr><td><strong>Škody na zdraví</strong></td><td></td><td></td></tr>
+                <tr><td>– pracovní neschopnost</td><td style="text-align:right">2 430 000</td><td style="text-align:right">2 535 000</td></tr>
+                <tr><td>– zranění při dopravních nehodách</td><td style="text-align:right">25 480</td><td style="text-align:right">25 687</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="odkazy">
-        <h2>Ke stažení a užitečné odkazy</h2>
-        <div class="links-grid">
-          <div class="link-card">
-            <div class="link-card-title">Statistiky pojistných událostí</div>
-            <div class="link-card-desc">Přehled škod na majetku a zdraví za roky 2023–2024.</div>
-            <button type="button" class="link-card-btn" onclick="toggleStatistiky()">Zobrazit statistiky</button>
-            <div id="statistikyBox">
-              <table>
-                <thead>
-                  <tr>
-                    <th style="text-align:left">Ukazatel</th>
-                    <th style="text-align:right">1–12/2023</th>
-                    <th style="text-align:right">1–12/2024</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>Škody na majetku</td><td style="text-align:right">322 124</td><td style="text-align:right">424 397</td></tr>
-                  <tr><td>– škody z tíhy sněhu</td><td style="text-align:right">7 411</td><td style="text-align:right">1 200</td></tr>
-                  <tr><td>– škody z povodní</td><td style="text-align:right">7 857</td><td style="text-align:right">61 846</td></tr>
-                  <tr><td>– škody z vichřice</td><td style="text-align:right">26 985</td><td style="text-align:right">36 753</td></tr>
-                  <tr><td><strong>Škody na zdraví</strong></td><td></td><td></td></tr>
-                  <tr><td>– pracovní neschopnost (případy)</td><td style="text-align:right">2 430 000</td><td style="text-align:right">2 535 000</td></tr>
-                  <tr><td>– zranění při dopravních nehodách</td><td style="text-align:right">25 480</td><td style="text-align:right">25 687</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="link-card dict-container">
-            <div class="link-card-title">Vysvětlení pojistných pojmů</div>
-            <div class="link-card-desc">Našeptávač definic pojmů.</div>
-            <input type="text" id="search" placeholder="např. pojistná událost" oninput="showSuggestions()">
-            <div id="suggestions"></div>
-            <button type="button" class="link-card-btn" onclick="showDefinition()">Zobrazit definici</button>
-            <div id="output"></div>
-          </div>
-        </div>
-      </section>
+    <section id="slovnik">
+      <h2>Slovník pojistných pojmů</h2>
+      <img src="cb7dcc5f-8205-42ea-ba1f-be762e2c9fcf.png"
+           alt="Slovník pojistných pojmů"
+           style="max-width:100%; margin-bottom:1rem; border-radius:var(--radius); box-shadow:var(--shadow);">
+      <div class="dict-container">
+        <input type="text" id="search" placeholder="např. pojistná událost" oninput="showSuggestions()"
+               style="padding:.8rem; width:100%; border:2px solid var(--button-light); border-radius:var(--radius);">
+        <div id="suggestions"></div>
+        <button class="link-card-btn" onclick="showDefinition()">Zobrazit definici</button>
+        <div id="output"></div>
+      </div>
+    </section>
 
-      <section id="kontakt">
-        <h2>Nezávazný návrh pojištění</h2>
-        <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
-          <input type="text" name="name" placeholder="Vaše jméno a příjmení" required>
-          <input type="number" name="age" placeholder="Váš věk" required>
-          <textarea name="message" placeholder="Co vás zajímá?" rows="4" required></textarea>
-          <input type="email" name="email" placeholder="Váš email" required>
-          <input type="tel" name="phone" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
-          <button type="submit">Odeslat poptávku</button>
-          <p id="dekujeme">Děkujeme za odeslání!</p>
-        </form>
-      </section>
+    <section id="kontakt">
+      <h2>Nezávazný návrh pojištění</h2>
+      <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
+        <input type="text" name="name" placeholder="Vaše jméno a příjmení" required>
+        <input type="number" name="age" placeholder="Váš věk" required>
+        <textarea name="message" placeholder="Co vás zajímá?" rows="4" required></textarea>
+        <input type="email" name="email" placeholder="Váš email" required>
+        <input type="tel" name="phone" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
+        <button type="submit">Odeslat poptávku</button>
+        <p id="dekujeme">Děkujeme za odeslání!</p>
+      </form>
+    </section>
 
-    </div>
   </main>
 
   <footer>
@@ -395,7 +427,9 @@
     <small>&copy; 2025 Daniel Verner – Pojištění v kapse</small>
   </footer>
 
-  <a href="#kontakt" class="floating-action-btn">Nezávazný návrh pojištění</a>
+  <button class="floating-action-btn" onclick="location.href='#kontakt'">
+    Nezávazný návrh pojištění
+  </button>
 
   <script>
     function toggleStatistiky() {
@@ -404,22 +438,70 @@
     }
 
     const terms = {
-      "pojistná smlouva": { def: "Smluvní dohoda mezi pojišťovnou a klientem, stanovuje podmínky, práva a povinnosti.", ex: "Např. smlouva na rodinný dům." },
-      "pojistná událost":  { def: "Událost krytá pojištěním, která zakládá nárok na plnění.", ex: "Krupobití na pergole." },
-      "pojistné plnění":   { def: "Částka vyplacená pojišťovnou po vzniku pojistné události.", ex: "Úhrada opravy střechy." },
-      "výluka z pojištění":{ def: "Události, které pojištění nepokrývá.", ex: "Úmyslné škody." },
-      "spoluúčast":       { def: "Část škody hrazená klientem.", ex: "1000 Kč spoluúčast." },
-      "pojistné":          { def: "Platba pojištěnce za pojištění.", ex: "Roční pojistné 2800 Kč." },
-      "pojistník":         { def: "Osoba uzavírající smlouvu a platící pojistné.", ex: "Manžel jako pojistník." },
-      "pojištěný":        { def: "Objekt, na který se pojištění vztahuje.", ex: "Dítě v úrazovém pojištění." },
-      "obmyšlená osoba":   { def: "Osoba oprávněná k plnění při smrti pojištěného.", ex: "Manžel(ka) jako obmyšlený." },
-      "likvidace pojistné události":{ def: "Vyřízení a posouzení škody pojišťovnou.", ex: "Výplata do několika dnů." },
-      "indexace":         { def: "Automatické navyšování částky kvůli inflaci.", ex: "Zachování reálné hodnoty pojištění." },
-      "pojistná částka":  { def: "Maximální výše plnění pojišťovny.", ex: "2,5 mil. Kč na dům." },
-      "pojistná doba":    { def: "Období, na které je pojištění sjednáno.", ex: "5 let trvání." },
-      "pojistné období":  { def: "Interval platby pojistného (rok, měsíc).", ex: "Roční pojistné." },
-      "časová cena":      { def: "Cena zohledňující opotřebení věci.", ex: "Televize za 5000 Kč." },
-      "dopravní nehoda":  { def: "Událost v provozu na komunikacích způsobující škodu.", ex: "Srážka na silnici." }
+      "pojistná smlouva": {
+        def: "Smluvní dohoda mezi pojišťovnou a klientem, stanovuje podmínky, práva a povinnosti.",
+        ex: "Např. smlouva na rodinný dům."
+      },
+      "pojistná událost": {
+        def: "Událost krytá pojištěním, která zakládá nárok na plnění.",
+        ex: "Krupobití na pergole."
+      },
+      "pojistné plnění": {
+        def: "Částka vyplacená pojišťovnou po vzniku pojistné události.",
+        ex: "Úhrada opravy střechy."
+      },
+      "výluka z pojištění": {
+        def: "Události, které pojištění nepokrývá.",
+        ex: "Úmyslné škody."
+      },
+      "spoluúčast": {
+        def: "Část škody hrazená klientem.",
+        ex: "1000 Kč spoluúčast."
+      },
+      "pojistné": {
+        def: "Platba pojištěnce za pojištění.",
+        ex: "Roční pojistné 2800 Kč."
+      },
+      "pojistník": {
+        def: "Osoba uzavírající smlouvu a platící pojistné.",
+        ex: "Manžel jako pojistník."
+      },
+      "pojištěný": {
+        def: "Objekt, na který se pojištění vztahuje.",
+        ex: "Dítě v úrazovém pojištění."
+      },
+      "obmyšlená osoba": {
+        def: "Osoba oprávněná k plnění při smrti pojištěného.",
+        ex: "Manžel(ka) jako obmyšlený."
+      },
+      "likvidace pojistné události": {
+        def: "Vyřízení a posouzení škody pojišťovnou.",
+        ex: "Výplata do několika dní."
+      },
+      "indexace": {
+        def: "Automatické navyšování částky kvůli inflaci.",
+        ex: "Zachování reálné hodnoty pojištění."
+      },
+      "pojistná částka": {
+        def: "Maximální výše plnění pojišťovny.",
+        ex: "2,5 mil. Kč na dům."
+      },
+      "pojistná doba": {
+        def: "Období, na které je pojištění sjednáno.",
+        ex: "5 let trvání."
+      },
+      "pojistné období": {
+        def: "Interval platby pojistného (rok, měsíc).",
+        ex: "Roční pojistné."
+      },
+      "časová cena": {
+        def: "Cena zohledňující opotřebení věci.",
+        ex: "Televize za 5000 Kč."
+      },
+      "dopravní nehoda": {
+        def: "Událost v provozu na komunikacích způsobující škodu.",
+        ex: "Srážka na silnici."
+      }
     };
 
     function showSuggestions() {
@@ -465,7 +547,7 @@
             f.reset();
             document.getElementById("dekujeme").style.display = "block";
           } else {
-            alert("Chyba při odesílání. Zkuste to prosím znovu.");
+            alert("Chyba při odeslání. Zkuste to prosím znovu.");
           }
         })
         .catch(() => alert("Síťová chyba."));
