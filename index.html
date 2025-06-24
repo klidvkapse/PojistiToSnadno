@@ -69,7 +69,8 @@
 
     /* HEADER */
     header {
-      position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: var(--header-height);
       background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       transition: height .3s, padding .3s;
@@ -279,7 +280,7 @@
     #dekujeme {
       grid-column: 1/3; margin-top: .5rem; color: #27893c;
       font-weight: 600; display: none; text-align: center;
-    }
+    } 
 
     /* FOOTER */
     footer {
@@ -352,9 +353,8 @@
       <h2>S čím vám pomohu</h2>
       <ul>
         <li>Životní pojištění s dvojnásobným plněním při infarktu</li>
-        <li>Pojištění dětí, úrazové krytí</li>
-        <li>Pracovní neschopnost</li>
-        <li>Kontrola starých smluv a jejich aktualizace</li>
+        <li>Pojištění dětí, úrazové krytí, pracovní neschopnost</li>
+        <li>Kontrola starých smluv a jejich výhodná aktualizace</li>
         <li>Pojištění majetku i odpovědnosti</li>
         <li>Úvěry na bydlení</li>
         <li>Investice</li>
@@ -561,5 +561,119 @@
         ex: "Např. smlouva na rodinný dům."
       },
       "pojistná událost": {
-        def: "Událost krytá pojištěním, která zakládá nárok na p
+        def: "Událost krytá pojištěním, která zakládá nárok na plnění.",
+        ex: "Krupobití na pergole."
+      },
+      "pojistné plnění": {
+        def: "Částka vyplacená pojišťovnou po vzniku pojistné události.",
+        ex: "Úhrada opravy střechy."
+      },
+      "výluka z pojištění": {
+        def: "Události, které pojištění nepokrývá.",
+        ex: "Úmyslné škody."
+      },
+      "spoluúčast": {
+        def: "Část škody hrazená klientem.",
+        ex: "1000 Kč spoluúčast."
+      },
+      "pojistné": {
+        def: "Platba pojištěnce za pojištění.",
+        ex: "Roční pojistné 2800 Kč."
+      },
+      "pojistník": {
+        def: "Osoba uzavírající smlouvu a platící pojistné.",
+        ex: "Manžel jako pojistník."
+      },
+      "pojištěný": {
+        def: "Objekt, na který se pojištění vztahuje.",
+        ex: "Dítě v úrazovém pojištění."
+      },
+      "obmyšlená osoba": {
+        def: "Osoba oprávněná k plnění při smrti pojištěného.",
+        ex: "Manžel(ka) jako obmyšlený."
+      },
+      "likvidace pojistné události": {
+        def: "Vyřízení a posouzení škody pojišťovnou.",
+        ex: "Výplata do několika dnů."
+      },
+      "indexace": {
+        def: "Automatické navyšování částky kvůli inflaci.",
+        ex: "Zachování reálné hodnoty pojištění."
+      },
+      "pojistná částka": {
+        def: "Maximální výše plnění pojišťovny.",
+        ex: "2,5 mil. Kč na dům."
+      },
+      "pojistná doba": {
+        def: "Období, na které je pojištění sjednáno.",
+        ex: "5 let trvání."
+      },
+      "pojistné období": {
+        def: "Interval platby pojistného (rok, měsíc).",
+        ex: "Roční pojistné."
+      },
+      "časová cena": {
+        def: "Cena zohledňující opotřebení věci.",
+        ex: "Televize za 5000 Kč."
+      },
+      "dopravní nehoda": {
+        def: "Událost v provozu na komunikacích způsobující škodu.",
+        ex: "Srážka na silnici."
+      }
+    };
+
+    // Suggest & show definitions
+    function showSuggestions() {
+      const q = document.getElementById('search').value.toLowerCase();
+      const list = document.getElementById('suggestions');
+      list.innerHTML = '';
+      if (!q) return;
+      Object.keys(terms).filter(t => t.includes(q))
+        .forEach(t => {
+          const d = document.createElement('div');
+          d.className = 'suggestion';
+          d.innerText = t;
+          d.onclick = () => {
+            document.getElementById('search').value = t;
+            list.innerHTML = '';
+          };
+          list.appendChild(d);
+        });
+    }
+    function showDefinition() {
+      const k = document.getElementById('search').value.toLowerCase();
+      const out = document.getElementById('output');
+      if (terms[k]) {
+        out.innerHTML = `<strong>${k}</strong><br>${terms[k].def}
+          <div style="margin-top:.5rem;font-style:italic;">${terms[k].ex}</div>`;
+      } else {
+        out.innerText = 'Pojem nebyl nalezen.';
+      }
+    }
+
+    // AJAX form submission
+    document.addEventListener("DOMContentLoaded", () => {
+      const f = document.getElementById("kontakt-formular");
+      if (!f) return;
+      f.addEventListener("submit", e => {
+        e.preventDefault();
+        fetch(f.action, {
+          method: "POST",
+          body: new FormData(f),
+          headers: { "Accept": "application/json" }
+        })
+        .then(r => {
+          if (r.ok) {
+            f.reset();
+            document.getElementById("dekujeme").style.display = "block";
+          } else {
+            alert("Chyba při odeslání. Zkuste to prosím znovu.");
+          }
+        })
+        .catch(() => alert("Síťová chyba."));
+      });
+    });
+  </script>
+</body>
+</html>
 
