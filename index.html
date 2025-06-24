@@ -108,10 +108,12 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
+    /* hamburger + text */
     .hamburger {
       display: none;
       background: none; border: none;
       cursor: pointer; padding: .5rem;
+      align-items: center;
     }
     .hamburger-box { width: 24px; height: 18px; position: relative; }
     .hamburger-inner,
@@ -123,6 +125,11 @@
     .hamburger-inner { top: 50%; transform: translateY(-50%); }
     .hamburger-inner::before { content: ""; top: -8px; }
     .hamburger-inner::after  { content: ""; top:  8px; }
+    .hamburger-text {
+      margin-left: .5rem;
+      color: var(--text);
+      font-weight: 600;
+    }
 
     header.shrink {
       padding: .2rem .5rem;
@@ -134,7 +141,7 @@
 
     /* MOBILE NAV */
     @media (max-width: 800px) {
-      .hamburger { display: block; }
+      .hamburger { display: flex; }
       nav.nav {
         position: absolute; top: 100%; right: 0;
         background: #fff;
@@ -142,7 +149,7 @@
         width: 100%; max-height: 0; overflow: hidden;
         transition: max-height .3s ease-out;
       }
-      nav.nav.open { max-height: 400px; }
+      nav.nav.open { max-height: 500px; }
       .nav-list { flex-direction: column; gap: 0; }
       .nav-list li { border-bottom: 1px solid #e0e0e0; }
       .nav-list a {
@@ -188,12 +195,6 @@
       box-shadow: var(--shadow);
       padding: 1rem;
       display: flex; flex-direction: column; gap: .5rem;
-    }
-    .story-card img {
-      width: 100%; height: auto;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin-bottom: .5rem;
     }
     .story-card h3 { font-size: 1.1rem; }
     .story-card p { font-size: .95rem; line-height: 1.4; }
@@ -326,6 +327,7 @@
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
         </span>
+        <span class="hamburger-text">Menu</span>
       </button>
       <nav class="nav" aria-label="Hlavní navigace">
         <ul class="nav-list">
@@ -343,8 +345,7 @@
   <main id="top">
     <section id="o-mne">
       <h1>O mně</h1>
-      <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení.
-      Schůzky jsou možné osobně i on-line</p>
+      <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení. Schůzky osobně i on-line.</p>
     </section>
 
     <section id="sluzby">
@@ -364,7 +365,7 @@
       <div class="stories-grid">
         <div class="story-card">
           <h3>Denní odškodné</h3>
-          <p><strong>Příčina:</strong> Dopravní nehoda (mimo výkon povolání)</p>
+          <p><strong>Příčina:</strong> Dopravní nehoda</p>
           <p class="amount">23 100 Kč</p>
           <p class="duration">Vyřízení: 4 dny</p>
         </div>
@@ -372,11 +373,11 @@
           <h3>Živelní událost</h3>
           <p><strong>Příčina:</strong> Krupobití</p>
           <p class="amount">11 448 Kč</p>
-          <p class="duration">Vyřízení: 7 hodin </p>
+          <p class="duration">Vyřízení: 7 hodin</p>
         </div>
         <div class="story-card">
           <h3>Plnění při ošetřování</h3>
-          <p><strong>Příčina:</strong> Ošetřování dítěte v důsledku úrazu</p>
+          <p><strong>Příčina:</strong> Ošetřování dítěte</p>
           <p class="amount">30 900 Kč</p>
           <p class="duration">Vyřízení: 7 hodin</p>
         </div>
@@ -400,31 +401,30 @@
         </div>
         <div class="story-card">
           <h3>Poškození skla</h3>
-          <p><strong>Příčina:</strong> Poškození nebo zničení skla</p>
+          <p><strong>Příčina:</strong> Poškození skla</p>
           <p class="amount">6 199 Kč</p>
           <p class="duration">Vyřízení: 4 dny</p>
         </div>
         <div class="story-card">
           <h3>Tělesné poškození úrazem</h3>
-          <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
+          <p><strong>Příčina:</strong> Ostatní úrazy</p>
           <p class="amount">22 500 Kč</p>
           <p class="duration">Vyřízení: 2 dny</p>
         </div>
         <div class="story-card">
           <h3>Tělesné poškození úrazem</h3>
-          <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
+          <p><strong>Příčina:</strong> Ostatní úrazy</p>
           <p class="amount">22 000 Kč</p>
           <p class="duration">Vyřízení: 2 dny</p>
         </div>
         <div class="story-card">
           <h3>Vodovodní škoda</h3>
-          <p><strong>Příčina:</strong> Únik vody z vodovodního systému</p>
+          <p><strong>Příčina:</strong> Únik vody</p>
           <p class="amount">6 790 Kč</p>
           <p class="duration">Vyřízení: 2 dny</p>
         </div>
       </div>
     </aside>
-
 
     <section id="odkazy">
       <h2>Ke stažení a užitečné odkazy</h2>
@@ -443,13 +443,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>Škody na majetku</strong></td><td style="text-align:right">322 124</td><td style="text-align:right">424 397</td></tr>
+                <tr><td>Škody na majetku</td><td style="text-align:right">322 124</td><td style="text-align:right">424 397</td></tr>
                 <tr><td>– škody z tíhy sněhu</td><td style="text-align:right">7 411</td><td style="text-align:right">1 200</td></tr>
                 <tr><td>– škody z povodní</td><td style="text-align:right">7 857</td><td style="text-align:right">61 846</td></tr>
                 <tr><td>– škody z vichřice</td><td style="text-align:right">26 985</td><td style="text-align:right">36 753</td></tr>
                 <tr><td><strong>Škody na zdraví</strong></td><td></td><td></td></tr>
-                <tr><td>– pracovní neschopnost (případy)</td><td style="text-align:right">2 430 000</td><td style="text-align:right">2 535 000</td></tr>
-                <tr><td>– zranění při dopravních nehodách</td><td style="text-align:right">25 480</td><td style="text-align:right">25 687</td></tr>
+                <tr><td>– pracovní neschopnost</td><td style="text-align:right">2 430 000</td><td style="text-align:right">2 535 000</td></tr>
+                <tr><td>– zranění při nehodách</td><td style="text-align:right">25 480</td><td style="text-align:right">25 687</td></tr>
               </tbody>
             </table>
           </div>
@@ -507,15 +507,19 @@
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav.nav');
     const navLinks = document.querySelectorAll('.nav-list a');
+
     hamburger.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', open);
+      const isOpen = nav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.querySelector('.hamburger-text').innerText = isOpen ? 'Zavřít' : 'Menu';
     });
+
     navLinks.forEach(a => {
       a.addEventListener('click', () => {
         if (nav.classList.contains('open')) {
           nav.classList.remove('open');
           hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.querySelector('.hamburger-text').innerText = 'Menu';
         }
       });
     });
@@ -556,118 +560,5 @@
         ex: "Např. smlouva na rodinný dům."
       },
       "pojistná událost": {
-        def: "Událost krytá pojištěním, která zakládá nárok na plnění.",
-        ex: "Krupobití na pergole."
-      },
-      "pojistné plnění": {
-        def: "Částka vyplacená pojišťovnou po vzniku pojistné události.",
-        ex: "Úhrada opravy střechy."
-      },
-      "výluka z pojištění": {
-        def: "Události, které pojištění nepokrývá.",
-        ex: "Úmyslné škody."
-      },
-      "spoluúčast": {
-        def: "Část škody hrazená klientem.",
-        ex: "1000 Kč spoluúčast."
-      },
-      "pojistné": {
-        def: "Platba pojištěnce za pojištění.",
-        ex: "Roční pojistné 2800 Kč."
-      },
-      "pojistník": {
-        def: "Osoba uzavírající smlouvu a platící pojistné.",
-        ex: "Manžel jako pojistník."
-      },
-      "pojištěný": {
-        def: "Objekt, na který se pojištění vztahuje.",
-        ex: "Dítě v úrazovém pojištění."
-      },
-      "obmyšlená osoba": {
-        def: "Osoba oprávněná k plnění při smrti pojištěného.",
-        ex: "Manžel(ka) jako obmyšlený."
-      },
-      "likvidace pojistné události": {
-        def: "Vyřízení a posouzení škody pojišťovnou.",
-        ex: "Výplata do několika dnů."
-      },
-      "indexace": {
-        def: "Automatické navyšování částky kvůli inflaci.",
-        ex: "Zachování reálné hodnoty pojištění."
-      },
-      "pojistná částka": {
-        def: "Maximální výše plnění pojišťovny.",
-        ex: "2,5 mil. Kč na dům."
-      },
-      "pojistná doba": {
-        def: "Období, na které je pojištění sjednáno.",
-        ex: "5 let trvání."
-      },
-      "pojistné období": {
-        def: "Interval platby pojistného (rok, měsíc).",
-        ex: "Roční pojistné."
-      },
-      "časová cena": {
-        def: "Cena zohledňující opotřebení věci.",
-        ex: "Televize za 5000 Kč."
-      },
-      "dopravní nehoda": {
-        def: "Událost v provozu na komunikacích způsobující škodu.",
-        ex: "Srážka na silnici."
-      }
-    };
+        def: "Událost krytá pojištěním, která zakládá nárok na p
 
-    // Suggest & show definitions
-    function showSuggestions() {
-      const q = document.getElementById('search').value.toLowerCase();
-      const list = document.getElementById('suggestions');
-      list.innerHTML = '';
-      if (!q) return;
-      Object.keys(terms).filter(t => t.includes(q))
-        .forEach(t => {
-          const d = document.createElement('div');
-          d.className = 'suggestion';
-          d.innerText = t;
-          d.onclick = () => {
-            document.getElementById('search').value = t;
-            list.innerHTML = '';
-          };
-          list.appendChild(d);
-        });
-    }
-    function showDefinition() {
-      const k = document.getElementById('search').value.toLowerCase();
-      const out = document.getElementById('output');
-      if (terms[k]) {
-        out.innerHTML = `<strong>${k}</strong><br>${terms[k].def}
-          <div style="margin-top:.5rem;font-style:italic;">${terms[k].ex}</div>`;
-      } else {
-        out.innerText = 'Pojem nebyl nalezen.';
-      }
-    }
-
-    // AJAX form submission
-    document.addEventListener("DOMContentLoaded", () => {
-      const f = document.getElementById("kontakt-formular");
-      if (!f) return;
-      f.addEventListener("submit", e => {
-        e.preventDefault();
-        fetch(f.action, {
-          method: "POST",
-          body: new FormData(f),
-          headers: { "Accept": "application/json" }
-        })
-        .then(r => {
-          if (r.ok) {
-            f.reset();
-            document.getElementById("dekujeme").style.display = "block";
-          } else {
-            alert("Chyba při odeslání. Zkuste to prosím znovu.");
-          }
-        })
-        .catch(() => alert("Síťová chyba."));
-      });
-    });
-  </script>
-</body>
-</html>
