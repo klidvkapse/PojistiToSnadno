@@ -556,70 +556,71 @@
 
     // Dictionary terms
     const terms = {
-      "pojistná smlouva": {
-        def: "Smluvní dohoda mezi pojišťovnou a klientem, stanovuje podmínky, práva a povinnosti.",
-        ex: "Např. smlouva na rodinný dům."
+            "pojistná smlouva": {
+        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
+        ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."
       },
       "pojistná událost": {
-        def: "Událost krytá pojištěním, která zakládá nárok na plnění.",
-        ex: "Krupobití na pergole."
+        def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
+        ex: "Například škoda způsobená krupobitím na pergole je pojistnou událostí."
       },
       "pojistné plnění": {
-        def: "Částka vyplacená pojišťovnou po vzniku pojistné události.",
-        ex: "Úhrada opravy střechy."
+        def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",
+        ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."
       },
       "výluka z pojištění": {
-        def: "Události, které pojištění nepokrývá.",
-        ex: "Úmyslné škody."
+        def: "Situace, kdy pojištění nepokrývá určité události nebo škody.",
+        ex: "Například škody způsobené úmyslným jednáním bývají výlukou."
       },
       "spoluúčast": {
-        def: "Část škody hrazená klientem.",
-        ex: "1000 Kč spoluúčast."
+        def: "Část škody, kterou si klient hradí sám.",
+        ex: "Při havárii se spoluúčastí 1000 Kč klient tuto částku zaplatí sám a zbytek pokryje pojišťovna."
       },
       "pojistné": {
-        def: "Platba pojištěnce za pojištění.",
-        ex: "Roční pojistné 2800 Kč."
+        def: "Částka, kterou platí pojistník pojišťovně za poskytování pojistné ochrany.",
+        ex: "Roční pojistné na pojištění domácnosti činí 2800 Kč."
       },
       "pojistník": {
-        def: "Osoba uzavírající smlouvu a platící pojistné.",
-        ex: "Manžel jako pojistník."
+        def: "Osoba, která uzavřela pojistnou smlouvu a je povinna platit pojistné.",
+        ex: "Manžel uzavřel pojistnou smlouvu – je tedy pojistník, přestože pojištěna je manželka."
       },
       "pojištěný": {
-        def: "Objekt, na který se pojištění vztahuje.",
-        ex: "Dítě v úrazovém pojištění."
+        def: "Osoba, na jejíž život, zdraví, majetek nebo odpovědnost se vztahuje pojištění.",
+        ex: "Dítě je pojištěné v rámci úrazového pojištění sjednaného rodičem."
       },
       "obmyšlená osoba": {
-        def: "Osoba oprávněná k plnění při smrti pojištěného.",
-        ex: "Manžel(ka) jako obmyšlený."
+        def: "Osoba, které je v případě smrti pojištěného vyplaceno pojistné plnění.",
+        ex: "Obmyšlenou osobou bývá nejčastěji manžel(ka) nebo děti."
       },
       "likvidace pojistné události": {
-        def: "Vyřízení a posouzení škody pojišťovnou.",
-        ex: "Výplata do několika dnů."
+        def: "Proces posouzení a vyřízení pojistné události pojišťovnou.",
+        ex: "Po nahlášení škody probíhá likvidace pojistné události do několika dnů."
       },
       "indexace": {
-        def: "Automatické navyšování částky kvůli inflaci.",
-        ex: "Zachování reálné hodnoty pojištění."
+        def: "Automatické navyšování pojistné částky a pojistného, často kvůli inflaci.",
+        ex: "Indexace zajistí, že hodnota pojištění odpovídá cenám v budoucnosti."
       },
       "pojistná částka": {
-        def: "Maximální výše plnění pojišťovny.",
-        ex: "2,5 mil. Kč na dům."
+        def: "Maximální částka, kterou pojišťovna vyplatí při pojistné události.",
+        ex: "Pojistná částka na dům byla stanovena na 2,5 milionu Kč."
       },
       "pojistná doba": {
         def: "Období, na které je pojištění sjednáno.",
-        ex: "5 let trvání."
+        ex: "Pojistná doba trvá 5 let – po tuto dobu je pojištění aktivní."
       },
       "pojistné období": {
-        def: "Interval platby pojistného (rok, měsíc).",
-        ex: "Roční pojistné."
+        def: "Období, za které se platí pojistné – např. měsíc, čtvrtletí, rok.",
+        ex: "Pojistné období je jeden rok – pojistné se platí jednou ročně."
       },
       "časová cena": {
-        def: "Cena zohledňující opotřebení věci.",
-        ex: "Televize za 5000 Kč."
+        def: "Časovou cenou se rozumí cena, která se stanoví z nové ceny věci, přičemž se přihlíží ke stupni opotřebení nebo jiného znehodnocení anebo ke zhodnocení věci, k němuž došlo opravou, modernizací nebo jiným způsobem",
+        ex: "Představ si, že máš televizi, která stála před 5 lety 15 000 Kč. Dnes už není nová, možná má nějaké škrábance, ale pořád funguje. Teď bys ji třeba prodal za 5 000 Kč – to je její časová cena."
       },
       "dopravní nehoda": {
-        def: "Událost v provozu na komunikacích způsobující škodu.",
-        ex: "Srážka na silnici."
-      }
+        def: "Dopravní nehoda je definována jako událost v provozu na pozemních komunikacích, například havárie nebo srážka vozidla, která se stala nebo byla započata na pozemní komunikaci. Dále zahrnuje nehody při veřejné hromadné dopravě na železnici, vodních tocích a v letadlech. K pojistné události při dopravní nehodě je nutné doložit záznam státního orgánu o výsledku šetření dopravní nehody a zdravotnickou dokumentaci související s úrazem, pokud k němu došlo ",
+        ex: "Dopravní nehoda je srážka nebo havárie na silnici, ve vlaku, lodi nebo letadle. Může jít i o situaci, kdy je sražen chodec nebo cyklista.Pro vyplacení pojistky je potřeba zpráva od policie a lékařská dokumentace, pokud došlo k úrazu.."
+       }
+
     };
 
     // Suggest & show definitions
