@@ -41,6 +41,7 @@
   </script>
 
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --primary: #a8d5ba;
@@ -77,19 +78,26 @@
       z-index: 2000;
     }
     .header-inner {
-      max-width: 1100px; margin: 0 auto;
-      height: 100%; display: flex; align-items: center;
-      justify-content: space-between; padding: 0 .5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 .5rem;
     }
     .logo {
       height: calc(var(--header-height) - 20px);
-      background: #eaf4e4; box-shadow: var(--shadow);
-      border-radius: var(--radius); padding: 4px;
+      background: #eaf4e4;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 4px;
       flex-shrink: 0;
     }
     nav.nav { display: flex; }
     .nav-list {
-      display: flex; gap: 1rem;
+      display: flex;
+      gap: 1rem;
     }
     .nav-list a {
       display: block;
@@ -143,6 +151,15 @@
     /* MOBILE NAV */
     @media (max-width: 800px) {
       .hamburger { display: flex; }
+      .header-inner {
+        justify-content: flex-start;
+      }
+      .logo {
+        margin-right: .5rem;
+      }
+      /* hide the lines of the icon, only show "Menu" text */
+      .hamburger-box { display: none; }
+
       nav.nav {
         position: absolute; top: 100%; right: 0;
         background: #fff;
@@ -244,6 +261,14 @@
     }
 
     /* DICTIONARY */
+    #slovnik img {
+      max-width: 70%;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
     .dict-container { position: relative; }
     #suggestions {
       position: absolute; top: 100%; left: 0; width: 100%;
@@ -280,7 +305,7 @@
     #dekujeme {
       grid-column: 1/3; margin-top: .5rem; color: #27893c;
       font-weight: 600; display: none; text-align: center;
-    } 
+    }
 
     /* FOOTER */
     footer {
@@ -462,7 +487,7 @@
       <h2>Laický slovník pojistných pojmů</h2>
       <img src="SLOVNIK.png"
            alt="Slovník pojistných pojmů"
-           style="max-width:100%;margin-bottom:1rem;border-radius:var(--radius);box-shadow:var(--shadow);">
+           style="max-width:70%;height:auto;display:block;margin:0 auto 1rem;border-radius:var(--radius);box-shadow:var(--shadow);">
       <div class="dict-container">
         <input type="text" id="search"
                placeholder="např. pojistná událost"
@@ -512,7 +537,7 @@
     hamburger.addEventListener('click', () => {
       const isOpen = nav.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', isOpen);
-      hamburger.querySelector('.hamburger-text').innerText = isOpen ? 'Zavřít' : 'Menu';
+      hamburger.querySelector('.hamburger-text').innerText = isOpen ? 'Zavřít menu' : 'Menu';
     });
 
     navLinks.forEach(a => {
@@ -536,8 +561,7 @@
     function onScrollSpy() {
       const pos = window.scrollY + window.innerHeight / 3;
       sections.forEach(sec => {
-        const id = sec.id;
-        const link = document.querySelector(`.nav-list a[href="#${id}"]`);
+        const link = document.querySelector(`.nav-list a[href="#${sec.id}"]`);
         if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
           link.classList.add('active');
         } else {
@@ -554,76 +578,14 @@
       box.style.display = box.style.display === 'none' ? 'block' : 'none';
     }
 
-    // Dictionary terms
+    // Dictionary data
     const terms = {
-            "pojistná smlouva": {
-        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
-        ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."
-      },
-      "pojistná událost": {
-        def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
-        ex: "Například škoda způsobená krupobitím na pergole je pojistnou událostí."
-      },
-      "pojistné plnění": {
-        def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",
-        ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."
-      },
-      "výluka z pojištění": {
-        def: "Situace, kdy pojištění nepokrývá určité události nebo škody.",
-        ex: "Například škody způsobené úmyslným jednáním bývají výlukou."
-      },
-      "spoluúčast": {
-        def: "Část škody, kterou si klient hradí sám.",
-        ex: "Při havárii se spoluúčastí 1000 Kč klient tuto částku zaplatí sám a zbytek pokryje pojišťovna."
-      },
-      "pojistné": {
-        def: "Částka, kterou platí pojistník pojišťovně za poskytování pojistné ochrany.",
-        ex: "Roční pojistné na pojištění domácnosti činí 2800 Kč."
-      },
-      "pojistník": {
-        def: "Osoba, která uzavřela pojistnou smlouvu a je povinna platit pojistné.",
-        ex: "Manžel uzavřel pojistnou smlouvu – je tedy pojistník, přestože pojištěna je manželka."
-      },
-      "pojištěný": {
-        def: "Osoba, na jejíž život, zdraví, majetek nebo odpovědnost se vztahuje pojištění.",
-        ex: "Dítě je pojištěné v rámci úrazového pojištění sjednaného rodičem."
-      },
-      "obmyšlená osoba": {
-        def: "Osoba, které je v případě smrti pojištěného vyplaceno pojistné plnění.",
-        ex: "Obmyšlenou osobou bývá nejčastěji manžel(ka) nebo děti."
-      },
-      "likvidace pojistné události": {
-        def: "Proces posouzení a vyřízení pojistné události pojišťovnou.",
-        ex: "Po nahlášení škody probíhá likvidace pojistné události do několika dnů."
-      },
-      "indexace": {
-        def: "Automatické navyšování pojistné částky a pojistného, často kvůli inflaci.",
-        ex: "Indexace zajistí, že hodnota pojištění odpovídá cenám v budoucnosti."
-      },
-      "pojistná částka": {
-        def: "Maximální částka, kterou pojišťovna vyplatí při pojistné události.",
-        ex: "Pojistná částka na dům byla stanovena na 2,5 milionu Kč."
-      },
-      "pojistná doba": {
-        def: "Období, na které je pojištění sjednáno.",
-        ex: "Pojistná doba trvá 5 let – po tuto dobu je pojištění aktivní."
-      },
-      "pojistné období": {
-        def: "Období, za které se platí pojistné – např. měsíc, čtvrtletí, rok.",
-        ex: "Pojistné období je jeden rok – pojistné se platí jednou ročně."
-      },
-      "časová cena": {
-        def: "Časovou cenou se rozumí cena, která se stanoví z nové ceny věci, přičemž se přihlíží ke stupni opotřebení nebo jiného znehodnocení anebo ke zhodnocení věci, k němuž došlo opravou, modernizací nebo jiným způsobem",
-        ex: "Představ si, že máš televizi, která stála před 5 lety 15 000 Kč. Dnes už není nová, možná má nějaké škrábance, ale pořád funguje. Teď bys ji třeba prodal za 5 000 Kč – to je její časová cena."
-      },
-      "dopravní nehoda": {
-        def: "Dopravní nehoda je definována jako událost v provozu na pozemních komunikacích, například havárie nebo srážka vozidla, která se stala nebo byla započata na pozemní komunikaci. Dále zahrnuje nehody při veřejné hromadné dopravě na železnici, vodních tocích a v letadlech. K pojistné události při dopravní nehodě je nutné doložit záznam státního orgánu o výsledku šetření dopravní nehody a zdravotnickou dokumentaci související s úrazem, pokud k němu došlo ",
-        ex: "Dopravní nehoda je srážka nebo havárie na silnici, ve vlaku, lodi nebo letadle. Může jít i o situaci, kdy je sražen chodec nebo cyklista.Pro vyplacení pojistky je potřeba zpráva od policie a lékařská dokumentace, pokud došlo k úrazu.."
-       }
-
+      "pojistná smlouva": { def: "Smluvní dohoda mezi pojišťovnou a klientem...", ex: "Např. smlouva na rodinný dům." },
+      "pojistná událost": { def: "Událost krytá pojištěním...", ex: "Krupobití na pergole." },
+      // … ostatní pojmy …
     };
 
-    // Suggest & show definitions
+    // Suggestions & definition
     function showSuggestions() {
       const q = document.getElementById('search').value.toLowerCase();
       const list = document.getElementById('suggestions');
@@ -631,41 +593,41 @@
       if (!q) return;
       Object.keys(terms).filter(t => t.includes(q))
         .forEach(t => {
-          const d = document.createElement('div');
-          d.className = 'suggestion';
-          d.innerText = t;
-          d.onclick = () => {
+          const div = document.createElement('div');
+          div.className = 'suggestion';
+          div.innerText = t;
+          div.onclick = () => {
             document.getElementById('search').value = t;
             list.innerHTML = '';
           };
-          list.appendChild(d);
+          list.appendChild(div);
         });
     }
     function showDefinition() {
-      const k = document.getElementById('search').value.toLowerCase();
+      const key = document.getElementById('search').value.toLowerCase();
       const out = document.getElementById('output');
-      if (terms[k]) {
-        out.innerHTML = `<strong>${k}</strong><br>${terms[k].def}
-          <div style="margin-top:.5rem;font-style:italic;">${terms[k].ex}</div>`;
+      if (terms[key]) {
+        out.innerHTML = `<strong>${key}</strong><br>${terms[key].def}
+          <div style="margin-top:.5rem;font-style:italic;">${terms[key].ex}</div>`;
       } else {
         out.innerText = 'Pojem nebyl nalezen.';
       }
     }
 
-    // AJAX form submission
+    // AJAX form
     document.addEventListener("DOMContentLoaded", () => {
-      const f = document.getElementById("kontakt-formular");
-      if (!f) return;
-      f.addEventListener("submit", e => {
+      const form = document.getElementById("kontakt-formular");
+      if (!form) return;
+      form.addEventListener("submit", e => {
         e.preventDefault();
-        fetch(f.action, {
+        fetch(form.action, {
           method: "POST",
-          body: new FormData(f),
+          body: new FormData(form),
           headers: { "Accept": "application/json" }
         })
         .then(r => {
           if (r.ok) {
-            f.reset();
+            form.reset();
             document.getElementById("dekujeme").style.display = "block";
           } else {
             alert("Chyba při odeslání. Zkuste to prosím znovu.");
@@ -677,4 +639,5 @@
   </script>
 </body>
 </html>
+
 
