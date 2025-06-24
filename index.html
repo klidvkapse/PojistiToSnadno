@@ -41,7 +41,6 @@
   </script>
 
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --primary: #a8d5ba;
@@ -70,59 +69,42 @@
 
     /* HEADER */
     header {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: var(--header-height);
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: height .3s, padding .3s;
-      z-index: 2000;
+      position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+      background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: height .3s, padding .3s; z-index: 2000;
     }
     .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1100px; margin: 0 auto; height: 100%;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 .5rem;
     }
     .logo {
       height: calc(var(--header-height) - 20px);
-      background: #eaf4e4;
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      padding: 4px;
+      background: #eaf4e4; box-shadow: var(--shadow);
+      border-radius: var(--radius); padding: 4px;
       flex-shrink: 0;
     }
     nav.nav { display: flex; }
     .nav-list {
-      display: flex;
-      gap: 1rem;
+      display: flex; gap: 1rem;
     }
     .nav-list a {
-      display: block;
-      padding: .6rem 1rem;
-      background: var(--accent);
-      color: var(--primary);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-      border-radius: var(--radius);
+      display: block; padding: .6rem 1rem;
+      background: var(--accent); color: var(--primary);
+      font-weight: 600; text-transform: uppercase;
+      letter-spacing: .03em; border-radius: var(--radius);
       transition: background .2s, color .2s;
     }
     .nav-list a:hover,
     .nav-list a.active {
-      background: var(--button-light);
-      color: #2f3e46;
+      background: var(--button-light); color: #2f3e46;
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
     /* hamburger + text */
     .hamburger {
-      display: none;
-      background: none; border: none;
-      cursor: pointer; padding: .5rem;
-      align-items: center;
+      display: none; background: none; border: none;
+      cursor: pointer; padding: .5rem; align-items: center;
     }
     .hamburger-box { width: 24px; height: 18px; position: relative; }
     .hamburger-inner,
@@ -135,9 +117,7 @@
     .hamburger-inner::before { content: ""; top: -8px; }
     .hamburger-inner::after  { content: ""; top:  8px; }
     .hamburger-text {
-      margin-left: .5rem;
-      color: var(--text);
-      font-weight: 600;
+      margin-left: .5rem; color: var(--text); font-weight: 600;
     }
 
     header.shrink {
@@ -151,19 +131,13 @@
     /* MOBILE NAV */
     @media (max-width: 800px) {
       .hamburger { display: flex; }
-      .header-inner {
-        justify-content: flex-start;
-      }
-      .logo {
-        margin-right: .5rem;
-      }
-      /* hide the lines of the icon, only show "Menu" text */
+      .header-inner { justify-content: flex-start; }
+      .logo { margin-right: .5rem; }
       .hamburger-box { display: none; }
 
       nav.nav {
         position: absolute; top: 100%; right: 0;
-        background: #fff;
-        flex-direction: column;
+        background: #fff; flex-direction: column;
         width: 100%; max-height: 0; overflow: hidden;
         transition: max-height .3s ease-out;
       }
@@ -171,16 +145,12 @@
       .nav-list { flex-direction: column; gap: 0; }
       .nav-list li { border-bottom: 1px solid #e0e0e0; }
       .nav-list a {
-        background: transparent;
-        color: var(--text);
-        border-radius: 0;
-        margin: 0;
-        padding: 1rem;
+        background: transparent; color: var(--text);
+        border-radius: 0; margin: 0; padding: 1rem;
       }
       .nav-list a.active,
       .nav-list a:hover {
-        background: var(--button-light);
-        color: #2f3e46;
+        background: var(--button-light); color: #2f3e46;
       }
     }
 
@@ -189,37 +159,29 @@
       max-width: 950px; margin: 2rem auto; padding: 0 1rem;
     }
     section, aside {
-      background: var(--accent);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 2rem;
-      margin-bottom: 2rem;
+      background: var(--accent); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 2rem; margin-bottom: 2rem;
       scroll-margin-top: var(--header-height);
     }
     h1, h2 { color: #447360; margin-bottom: 1rem; }
-    h1 { font-size: 1.6rem; }
-    h2 { font-size: 1.4rem; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.4rem; }
 
     /* STORY CARDS */
     .stories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
       gap: 1rem;
     }
     .story-card {
-      background: #fff;
-      border: 1px solid #dfe7e2;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1rem;
-      display: flex; flex-direction: column; gap: .5rem;
+      background: #fff; border: 1px solid #dfe7e2;
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 1rem; display: flex; flex-direction: column; gap: .5rem;
     }
     .story-card h3 { font-size: 1.1rem; }
     .story-card p { font-size: .95rem; line-height: 1.4; }
     .story-card .amount,
     .story-card .duration { font-weight: 600; }
 
-    /* LINKS GRID */
+    /* LINKS GRID */  
     .links-grid {
       display: flex; flex-wrap: wrap; gap: 1rem;
     }
@@ -237,37 +199,26 @@
     .link-card-title { font-size: 1.2rem; margin-bottom: .6rem; }
     .link-card-desc  { flex: 1; margin-bottom: 1rem; }
     .link-card-btn {
-      align-self: flex-end;
-      background: none;
-      border: 2px dashed #81b29a;
-      border-radius: var(--radius);
-      padding: .5rem 1rem;
-      font-weight: 600;
-      cursor: pointer;
+      align-self: flex-end; background: none;
+      border: 2px dashed #81b29a; border-radius: var(--radius);
+      padding: .5rem 1rem; font-weight: 600; cursor: pointer;
     }
 
     /* STATISTICS */
-    #statistikyBox {
-      display: none; margin-top: 1rem;
-    }
+    #statistikyBox { display: none; margin-top: 1rem; }
     #statistikyBox table {
       width: 100%; border-collapse: collapse; font-size: .95rem;
     }
     #statistikyBox th, #statistikyBox td {
       padding: .5rem; border-bottom: 1px solid #ccc;
     }
-    #statistikyBox thead tr {
-      background: var(--button-light);
-    }
+    #statistikyBox thead tr { background: var(--button-light); }
 
     /* DICTIONARY */
     #slovnik img {
-      max-width: 70%;
-      height: auto;
-      display: block;
-      margin: 0 auto 1rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      max-width: 70%; height: auto;
+      display: block; margin: 0 auto 1rem;
+      border-radius: var(--radius); box-shadow: var(--shadow);
     }
     .dict-container { position: relative; }
     #suggestions {
@@ -294,8 +245,9 @@
       font-size: 1rem; width: 100%;
     }
     button[type="submit"] {
-      grid-column: 1/3; padding: .8rem; background: var(--button-light);
-      border: none; border-radius: var(--radius); font-weight: 600;
+      grid-column: 1/3; padding: .8rem;
+      background: var(--button-light); border: none;
+      border-radius: var(--radius); font-weight: 600;
       cursor: pointer; box-shadow: 0 4px #58815733;
       transition: background .2s;
     }
@@ -303,8 +255,9 @@
       background: var(--button-light-hover);
     }
     #dekujeme {
-      grid-column: 1/3; margin-top: .5rem; color: #27893c;
-      font-weight: 600; display: none; text-align: center;
+      grid-column: 1/3; margin-top: .5rem;
+      color: #27893c; font-weight: 600;
+      display: none; text-align: center;
     }
 
     /* FOOTER */
@@ -332,9 +285,7 @@
       transform: translateY(-2px);
     }
 
-    @media (max-width: 900px) {
-      main { padding: 0 1rem; }
-    }
+    @media (max-width: 900px) { main { padding: 0 1rem; } }
     @media (max-width: 500px) {
       .header-inner { flex-direction: column; height: auto; padding: 1rem; }
       h1, h2 { font-size: 1.2rem; }
@@ -453,6 +404,7 @@
       </div>
     </aside>
 
+
     <section id="odkazy">
       <h2>Ke stažení a užitečné odkazy</h2>
       <div class="links-grid">
@@ -476,7 +428,7 @@
                 <tr><td>– škody z vichřice</td><td style="text-align:right">26 985</td><td style="text-align:right">36 753</td></tr>
                 <tr><td><strong>Škody na zdraví</strong></td><td></td><td></td></tr>
                 <tr><td>– pracovní neschopnost</td><td style="text-align:right">2 430 000</td><td style="text-align:right">2 535 000</td></tr>
-                <tr><td>– zranění při nehodách</td><td style="text-align:right">25 480</td><td style="text-align:right">25 687</td></tr>
+                <tr><td>– zranění při dopravních nehodách</td><td style="text-align:right">25 480</td><td style="text-align:right">25 687</td></tr>
               </tbody>
             </table>
           </div>
@@ -496,7 +448,7 @@
                style="padding:.8rem;width:100%;border:2px solid var(--button-light);border-radius:var(--radius);">
         <div id="suggestions"></div>
         <button class="link-card-btn" onclick="showDefinition()">Zobrazit definici</button>
-        <div id="output"></div>
+        <div id="output" data-current=""></div>
       </div>
     </section>
 
@@ -504,9 +456,9 @@
       <h2>Nezávazný návrh pojištění</h2>
       <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
         <input type="text"   name="name"    placeholder="Jméno a příjmení" required>
-        <input type="number" name="age"     placeholder="Váš věk"            required>
+        <input type="number" name="age"     placeholder="Váš věk"          required>
         <textarea name="message" placeholder="Co vás zajímá?" rows="4" required></textarea>
-        <input type="email"  name="email"   placeholder="Váš email"         required>
+        <input type="email"  name="email"   placeholder="Váš email"       required>
         <input type="tel"    name="phone"   placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
         <button type="submit">Odeslat poptávku</button>
         <p id="dekujeme">Děkujeme za odeslání!</p>
@@ -532,24 +484,21 @@
   <script>
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav.nav');
-    const navLinks = document.querySelectorAll('.nav-list a');
+    const nav       = document.querySelector('nav.nav');
+    const navLinks  = document.querySelectorAll('.nav-list a');
 
     hamburger.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen);
-      hamburger.querySelector('.hamburger-text').innerText = isOpen ? 'Zavřít menu' : 'Menu';
+      const open = nav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+      hamburger.querySelector('.hamburger-text').innerText = open ? 'Zavřít menu' : 'Menu';
     });
-
-    navLinks.forEach(a => {
-      a.addEventListener('click', () => {
-        if (nav.classList.contains('open')) {
-          nav.classList.remove('open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          hamburger.querySelector('.hamburger-text').innerText = 'Menu';
-        }
-      });
-    });
+    navLinks.forEach(a => a.addEventListener('click', () => {
+      if (nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded','false');
+        hamburger.querySelector('.hamburger-text').innerText = 'Menu';
+      }
+    }));
 
     // Shrink header on scroll
     window.addEventListener('scroll', () => {
@@ -560,7 +509,7 @@
     // Scroll-spy for active menu
     const sections = document.querySelectorAll('main section, main aside');
     function onScrollSpy() {
-      const pos = window.scrollY + window.innerHeight / 3;
+      const pos = window.scrollY + window.innerHeight/3;
       sections.forEach(sec => {
         const link = document.querySelector(`.nav-list a[href="#${sec.id}"]`);
         if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
@@ -576,10 +525,10 @@
     // Toggle statistics table
     function toggleStatistiky() {
       const box = document.getElementById('statistikyBox');
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+      box.style.display = box.style.display==='none' ? 'block' : 'none';
     }
 
-    // Dictionary data
+    // Dictionary terms
     const terms = {
             "pojistná smlouva": {
         def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
@@ -648,15 +597,16 @@
 
     };
 
-   function showDefinitions() {
-      const key = document.getElementById('search').value.toLowerCase(),
-            out = document.getElementById('output');
-      if(out.innerHTML && out.dataset.current===key) {
-        // druhé kliknutí smaže
-        out.innerHTML=''; out.dataset.current='';
+    // Show / hide definition
+    function showDefinition() {
+      const key = document.getElementById('search').value.toLowerCase();
+      const out = document.getElementById('output');
+      if (out.innerHTML && out.dataset.current === key) {
+        out.innerHTML = '';
+        out.dataset.current = '';
         return;
       }
-      if(terms[key]) {
+      if (terms[key]) {
         out.innerHTML = `<strong>${key}</strong><br>${terms[key].def}
           <div style="margin-top:.5rem;font-style:italic;">${terms[key].ex}</div>`;
         out.dataset.current = key;
@@ -665,20 +615,27 @@
         out.dataset.current = '';
       }
     }
+
+    // Suggestions
     function showSuggestions() {
-      const q = document.getElementById('search').value.toLowerCase(),
-            list = document.getElementById('suggestions');
-      list.innerHTML='';
-      if(!q) return;
-      Object.keys(terms).filter(t=>t.includes(q))
-        .forEach(t=>{
-          const d=document.createElement('div');
-          d.className='suggestion'; d.innerText=t;
-          d.onclick=()=>{document.getElementById('search').value=t; list.innerHTML='';};
+      const q = document.getElementById('search').value.toLowerCase();
+      const list = document.getElementById('suggestions');
+      list.innerHTML = '';
+      if (!q) return;
+      Object.keys(terms).filter(t => t.includes(q))
+        .forEach(t => {
+          const d = document.createElement('div');
+          d.className = 'suggestion';
+          d.innerText = t;
+          d.onclick = () => {
+            document.getElementById('search').value = t;
+            list.innerHTML = '';
+          };
           list.appendChild(d);
         });
     }
-    // AJAX form
+
+    // AJAX form submission
     document.addEventListener("DOMContentLoaded", () => {
       const form = document.getElementById("kontakt-formular");
       if (!form) return;
