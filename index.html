@@ -134,15 +134,29 @@
 
     /* MOBILE NAV */
     @media (max-width: 800px) {
-      .nav {
+      .hamburger { display: block; }
+      nav.nav {
         position: absolute; top: 100%; right: 0;
         background: #fff;
         flex-direction: column;
-        width: 200px; max-height: 0; overflow: hidden;
+        width: 100%; max-height: 0; overflow: hidden;
         transition: max-height .3s ease-out;
       }
-      .nav.open { max-height: 500px; }
-      .hamburger { display: block; }
+      nav.nav.open { max-height: 400px; }
+      .nav-list { flex-direction: column; gap: 0; }
+      .nav-list li { border-bottom: 1px solid #e0e0e0; }
+      .nav-list a {
+        background: transparent;
+        color: var(--text);
+        border-radius: 0;
+        margin: 0;
+        padding: 1rem;
+      }
+      .nav-list a.active,
+      .nav-list a:hover {
+        background: var(--button-light);
+        color: #2f3e46;
+      }
     }
 
     /* MAIN CONTENT */
@@ -157,10 +171,7 @@
       margin-bottom: 2rem;
       scroll-margin-top: var(--header-height);
     }
-    h1, h2 {
-      color: #447360;
-      margin-bottom: 1rem;
-    }
+    h1, h2 { color: #447360; margin-bottom: 1rem; }
     h1 { font-size: 1.6rem; }
     h2 { font-size: 1.4rem; }
 
@@ -299,7 +310,6 @@
     }
     @media (max-width: 500px) {
       .header-inner { flex-direction: column; height: auto; padding: 1rem; }
-      .nav-list { flex-direction: column; gap: .5rem; }
       h1, h2 { font-size: 1.2rem; }
       section, aside { padding: 1rem; }
     }
@@ -309,7 +319,7 @@
 
   <header>
     <div class="header-inner">
-      <a href="#top" class="logo-link" aria-label="Přejít na začátek">
+      <a href="#top" aria-label="Přejít na začátek">
         <img src="LOGOJA.png" alt="Logo Pojisti To Snadno" class="logo">
       </a>
       <button class="hamburger" aria-label="Otevřít menu" aria-expanded="false">
@@ -323,7 +333,7 @@
           <li><a href="#sluzby">Služby</a></li>
           <li><a href="#realne-pribehy">Reálné příběhy</a></li>
           <li><a href="#odkazy">Odkazy</a></li>
-          <li><a href="#slovnik">Laický slovník pojistných pojmů</a></li>
+          <li><a href="#slovnik">Laický slovník</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </nav>
@@ -336,7 +346,7 @@
       <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení.</p>
     </section>
 
-    <section id="sluzby" class="content">
+    <section id="sluzby">
       <h2>S čím vám pomohu</h2>
       <ul>
         <li>Životní pojištění s dvojnásobným plněním při infarktu</li>
@@ -444,6 +454,7 @@
       </div>
     </aside>
 
+
     <section id="odkazy">
       <h2>Ke stažení a užitečné odkazy</h2>
       <div class="links-grid">
@@ -461,12 +472,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>Škody na majetku</strong></td><td style="text-align:right">322 124</td><td style="text-align:right">424 397</td></tr>
+                <tr><td>Škody na majetku</td><td style="text-align:right">322 124</td><td style="text-align:right">424 397</td></tr>
                 <tr><td>– škody z tíhy sněhu</td><td style="text-align:right">7 411</td><td style="text-align:right">1 200</td></tr>
                 <tr><td>– škody z povodní</td><td style="text-align:right">7 857</td><td style="text-align:right">61 846</td></tr>
                 <tr><td>– škody z vichřice</td><td style="text-align:right">26 985</td><td style="text-align:right">36 753</td></tr>
                 <tr><td><strong>Škody na zdraví</strong></td><td></td><td></td></tr>
-                <tr><td>– pracovní neschopnost</td><td style="text-align:right">2 430 000</td><td style="text-align:right">2 535 000</td></tr>
+                <tr><td>– pracovní neschopnost (případy)</td><td style="text-align:right">2 430 000</td><td style="text-align:right">2 535 000</td></tr>
                 <tr><td>– zranění při dopravních nehodách</td><td style="text-align:right">25 480</td><td style="text-align:right">25 687</td></tr>
               </tbody>
             </table>
@@ -477,12 +488,14 @@
 
     <section id="slovnik">
       <h2>Laický slovník pojistných pojmů</h2>
-      <img src="SLOVNIK.png"
+      <img src="cb7dcc5f-8205-42ea-ba1f-be762e2c9fcf.png"
            alt="Slovník pojistných pojmů"
-           style="max-width:100%; margin-bottom:1rem; border-radius:var(--radius); box-shadow:var(--shadow);">
+           style="max-width:100%;margin-bottom:1rem;border-radius:var(--radius);box-shadow:var(--shadow);">
       <div class="dict-container">
-        <input type="text" id="search" placeholder="např. pojistná událost" oninput="showSuggestions()"
-               style="padding:.8rem; width:100%; border:2px solid var(--button-light); border-radius:var(--radius);">
+        <input type="text" id="search"
+               placeholder="např. pojistná událost"
+               oninput="showSuggestions()"
+               style="padding:.8rem;width:100%;border:2px solid var(--button-light);border-radius:var(--radius);">
         <div id="suggestions"></div>
         <button class="link-card-btn" onclick="showDefinition()">Zobrazit definici</button>
         <div id="output"></div>
@@ -492,11 +505,11 @@
     <section id="kontakt">
       <h2>Nezávazný návrh pojištění</h2>
       <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
-        <input type="text" name="name" placeholder="Vaše jméno a příjmení" required>
-        <input type="number" name="age" placeholder="Váš věk" required>
+        <input type="text"   name="name"    placeholder="Vaše jméno a příjmení" required>
+        <input type="number" name="age"     placeholder="Váš věk"            required>
         <textarea name="message" placeholder="Co vás zajímá?" rows="4" required></textarea>
-        <input type="email" name="email" placeholder="Váš email" required>
-        <input type="tel" name="phone" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
+        <input type="email"  name="email"   placeholder="Váš email"         required>
+        <input type="tel"    name="phone"   placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
         <button type="submit">Odeslat poptávku</button>
         <p id="dekujeme">Děkujeme za odeslání!</p>
       </form>
@@ -511,7 +524,7 @@
       📩 <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
       📍 Olomoucký kraj – schůzky domlouvám individuálně.
     </p>
-    <small>&copy; 2025 Daniel Verner – PojistiToSnadno</small>
+    <small>&copy; 2025 Daniel Verner – Pojištění v kapse</small>
   </footer>
 
   <button class="floating-action-btn" onclick="location.href='#kontakt'">
@@ -519,25 +532,33 @@
   </button>
 
   <script>
-    // Mobilní menu toggle
-    document.querySelector('.hamburger').addEventListener('click', e => {
-      const nav = document.querySelector('.nav');
-      const exp = e.currentTarget.getAttribute('aria-expanded') === 'true';
-      e.currentTarget.setAttribute('aria-expanded', String(!exp));
-      nav.classList.toggle('open');
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav.nav');
+    const navLinks = document.querySelectorAll('.nav-list a');
+    hamburger.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    navLinks.forEach(a => {
+      a.addEventListener('click', () => {
+        if (nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
 
-    // Zmenšení hlavičky při scrollu
+    // Shrink header on scroll
     window.addEventListener('scroll', () => {
       document.querySelector('header')
         .classList.toggle('shrink', window.scrollY > 50);
     });
 
-    // Scroll-spy aktivních odkazů
+    // Scroll-spy for active menu
     const sections = document.querySelectorAll('main section, main aside');
-    const links    = document.querySelectorAll('.nav-list a');
     function onScrollSpy() {
-      const pos = window.scrollY + window.innerHeight/3;
+      const pos = window.scrollY + window.innerHeight / 3;
       sections.forEach(sec => {
         const id = sec.id;
         const link = document.querySelector(`.nav-list a[href="#${id}"]`);
@@ -551,13 +572,13 @@
     window.addEventListener('scroll', onScrollSpy);
     onScrollSpy();
 
-    // Statistiky toggle
+    // Toggle statistics table
     function toggleStatistiky() {
       const box = document.getElementById('statistikyBox');
       box.style.display = box.style.display === 'none' ? 'block' : 'none';
     }
 
-    // Slovník pojmů
+    // Dictionary terms
     const terms = {
       "pojistná smlouva": {
         def: "Smluvní dohoda mezi pojišťovnou a klientem, stanovuje podmínky, práva a povinnosti.",
@@ -597,7 +618,7 @@
       },
       "likvidace pojistné události": {
         def: "Vyřízení a posouzení škody pojišťovnou.",
-        ex: "Výplata do několika dní."
+        ex: "Výplata do několika dnů."
       },
       "indexace": {
         def: "Automatické navyšování částky kvůli inflaci.",
@@ -625,23 +646,24 @@
       }
     };
 
+    // Suggest & show definitions
     function showSuggestions() {
       const q = document.getElementById('search').value.toLowerCase();
       const list = document.getElementById('suggestions');
       list.innerHTML = '';
       if (!q) return;
-      Object.keys(terms).filter(t => t.includes(q)).forEach(t => {
-        const d = document.createElement('div');
-        d.className = 'suggestion';
-        d.innerText = t;
-        d.onclick = () => {
-          document.getElementById('search').value = t;
-          list.innerHTML = '';
-        };
-        list.appendChild(d);
-      });
+      Object.keys(terms).filter(t => t.includes(q))
+        .forEach(t => {
+          const d = document.createElement('div');
+          d.className = 'suggestion';
+          d.innerText = t;
+          d.onclick = () => {
+            document.getElementById('search').value = t;
+            list.innerHTML = '';
+          };
+          list.appendChild(d);
+        });
     }
-
     function showDefinition() {
       const k = document.getElementById('search').value.toLowerCase();
       const out = document.getElementById('output');
@@ -653,7 +675,7 @@
       }
     }
 
-    // AJAX form
+    // AJAX form submission
     document.addEventListener("DOMContentLoaded", () => {
       const f = document.getElementById("kontakt-formular");
       if (!f) return;
