@@ -43,6 +43,51 @@
       .links-grid{flex-direction:column;}
       .link-card{width:100%;max-width:none;}
       .gallery-grid{flex-direction:column;}
+      /* --- do vaší <style> sekce přidejte / nahraďte tyto řádky --- */
+
+/* Základní styl patičky */
+footer {
+  background: var(--accent);
+  border-top: 2px dashed var(--button-light-green);
+  box-shadow: var(--shadow);
+  margin-top: 2rem;
+}
+
+/* Kontejnér, který omezuje šířku a centruje obsah */
+.footer-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text);
+}
+
+/* Styl odstavců uvnitř patičky */
+.footer-container p {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Zvýraznění názvu a odkazů */
+.footer-container strong {
+  color: #447360;
+}
+.footer-container a {
+  color: #447360;
+  text-decoration: none;
+  font-weight: 600;
+}
+.footer-container a:hover {
+  text-decoration: underline;
+}
+
+/* Drobný styling pro text copyright */
+.footer-container small {
+  display: block;
+  color: #666;
+  margin-top: 1rem;
+}
+
     }
   </style>
 </head>
@@ -262,8 +307,21 @@
               document.getElementById("dekujeme").style.display = "block";
             } else {
               alert("Chyba při odesílání. Zkuste to prosím znovu.");
+            });
+          <!-- --- vyměňte stávající <footer> za tento blok v těle stránky --- -->
+<footer>
+  <div class="footer-container">
+    <p><strong>Kontakt:</strong></p>
+    <p>
+      Daniel Verner<br>
+      📞 <a href="tel:+420733782290">733 782 290</a><br>
+      📩 <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
+      📍 Olomoucký kraj – schůzky domlouvám individuálně.
+    </p>
+    <small>&copy; 2025 Daniel Verner – Pojištění v kapse</small>
+  </div>
+</footer>
 
-      });
     });
   </script>
 </body>
