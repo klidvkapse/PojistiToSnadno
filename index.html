@@ -67,16 +67,18 @@
     a { color: inherit; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    /* HEADER */
     header {
       position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
-      background: var(--primary);
-      box-shadow: var(--shadow);
-      z-index: 1200;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: height .3s, padding .3s;
+      z-index: 2000;
     }
-    .header-desktop {
+    .header-inner {
       max-width: 1100px; margin: 0 auto;
       height: 100%; display: flex; align-items: center;
-      padding: 0 .5rem; gap: 1rem;
+      justify-content: space-between; padding: 0 .5rem;
     }
     .logo {
       height: calc(var(--header-height) - 20px);
@@ -84,20 +86,66 @@
       border-radius: var(--radius); padding: 4px;
       flex-shrink: 0;
     }
-    nav.nav-links {
-      margin-left: auto; display: flex; gap: .5rem; flex-wrap: wrap;
+    nav.nav { display: flex; }
+    .nav-list {
+      display: flex; gap: 1rem;
     }
-    .nav-button-3d {
-      background: linear-gradient(to bottom, var(--button-light), var(--primary));
-      color: #2f3e46; border: none; border-radius: var(--radius);
-      padding: .5rem .8rem; font-weight: 600; box-shadow: 0 4px #58815733;
-      transition: .2s; cursor: pointer;
+    .nav-list a {
+      display: block;
+      padding: .6rem 1rem;
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      border-radius: var(--radius);
+      transition: background .2s, color .2s;
     }
-    .nav-button-3d:hover {
-      background: linear-gradient(to bottom, var(--button-light-hover), var(--primary));
-      transform: translateY(-2px); box-shadow: 0 6px #5881571a;
+    .nav-list a:hover,
+    .nav-list a.active {
+      background: var(--button-light);
+      color: #2f3e46;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
+    .hamburger {
+      display: none;
+      background: none; border: none;
+      cursor: pointer; padding: .5rem;
+    }
+    .hamburger-box { width: 24px; height: 18px; position: relative; }
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      width: 24px; height: 3px; background-color: #2f3e46;
+      position: absolute; transition: transform .3s;
+    }
+    .hamburger-inner { top: 50%; transform: translateY(-50%); }
+    .hamburger-inner::before { content: ""; top: -8px; }
+    .hamburger-inner::after  { content: ""; top:  8px; }
+
+    header.shrink {
+      padding: .2rem .5rem;
+      height: calc(var(--header-height) - 20px);
+    }
+    header.shrink .logo {
+      height: calc(var(--header-height) - 40px);
+    }
+
+    /* MOBILE NAV */
+    @media (max-width: 800px) {
+      .nav {
+        position: absolute; top: 100%; right: 0;
+        background: #fff;
+        flex-direction: column;
+        width: 200px; max-height: 0; overflow: hidden;
+        transition: max-height .3s ease-out;
+      }
+      .nav.open { max-height: 500px; }
+      .hamburger { display: block; }
+    }
+
+    /* MAIN CONTENT */
     main {
       max-width: 950px; margin: 2rem auto; padding: 0 1rem;
     }
@@ -116,15 +164,7 @@
     h1 { font-size: 1.6rem; }
     h2 { font-size: 1.4rem; }
 
-    #o-mne p {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-    .content ul {
-      padding-left: 1.2rem; list-style: disc;
-    }
-    .content li { margin-bottom: .5rem; font-size: 1rem; }
-
+    /* STORY CARDS */
     .stories-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -138,11 +178,18 @@
       padding: 1rem;
       display: flex; flex-direction: column; gap: .5rem;
     }
+    .story-card img {
+      width: 100%; height: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: .5rem;
+    }
     .story-card h3 { font-size: 1.1rem; }
     .story-card p { font-size: .95rem; line-height: 1.4; }
-    .story-card .amount { font-weight: 600; }
+    .story-card .amount,
     .story-card .duration { font-weight: 600; }
 
+    /* LINKS GRID */
     .links-grid {
       display: flex; flex-wrap: wrap; gap: 1rem;
     }
@@ -169,6 +216,7 @@
       cursor: pointer;
     }
 
+    /* STATISTICS */
     #statistikyBox {
       display: none; margin-top: 1rem;
     }
@@ -182,15 +230,14 @@
       background: var(--button-light);
     }
 
+    /* DICTIONARY */
     .dict-container { position: relative; }
     #suggestions {
       position: absolute; top: 100%; left: 0; width: 100%;
       background: #fff; border: 1px solid #ccc;
       max-height: 180px; overflow-y: auto; z-index: 10;
     }
-    .suggestion {
-      padding: .5rem; cursor: pointer;
-    }
+    .suggestion { padding: .5rem; cursor: pointer; }
     .suggestion:hover { background: var(--button-light); }
     #output {
       margin-top: 1rem; padding: 1rem; background: #fff;
@@ -198,6 +245,7 @@
       border-radius: 4px;
     }
 
+    /* FORM */
     form {
       display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;
     }
@@ -221,6 +269,7 @@
       font-weight: 600; display: none; text-align: center;
     }
 
+    /* FOOTER */
     footer {
       background: var(--accent); padding: 2rem 1rem;
       border-top: 2px dashed var(--button-light);
@@ -231,6 +280,7 @@
     footer a { color: #447360; font-weight: 600; }
     footer small { display: block; margin-top: 1rem; font-size: .9rem; }
 
+    /* FLOATING BUTTON */
     .floating-action-btn {
       position: fixed; right: 1.5rem; bottom: 1.5rem;
       background: var(--button-light); color: #234b3e;
@@ -248,9 +298,9 @@
       main { padding: 0 1rem; }
     }
     @media (max-width: 500px) {
-      .header-desktop { flex-direction: column; height: auto; padding: 1rem; }
-      .nav-button-3d { padding: .4rem .8rem; font-size: .9rem; }
-      h2, h1 { font-size: 1.2rem; }
+      .header-inner { flex-direction: column; height: auto; padding: 1rem; }
+      .nav-list { flex-direction: column; gap: .5rem; }
+      h1, h2 { font-size: 1.2rem; }
       section, aside { padding: 1rem; }
     }
   </style>
@@ -258,21 +308,29 @@
 <body>
 
   <header>
-    <div class="header-desktop">
-      <img src="LOGOJA.png" alt="Logo Pojisti To Snadno" class="logo">
-      <nav class="nav-links" aria-label="Hlavní navigace">
-        <button class="nav-button-3d" onclick="location.href='#o-mne'">O mně</button>
-        <button class="nav-button-3d" onclick="location.href='#sluzby'">Služby</button>
-        <button class="nav-button-3d" onclick="location.href='#realne-pribehy'">Reálné příběhy</button>
-        <button class="nav-button-3d" onclick="location.href='#odkazy'">Odkazy</button>
-        <button class="nav-button-3d" onclick="location.href='#slovnik'">Slovník</button>
-        <button class="nav-button-3d" onclick="location.href='#kontakt'">Kontakt</button>
+    <div class="header-inner">
+      <a href="#top" class="logo-link" aria-label="Přejít na začátek">
+        <img src="LOGOJA.png" alt="Logo Pojisti To Snadno" class="logo">
+      </a>
+      <button class="hamburger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      <nav class="nav" aria-label="Hlavní navigace">
+        <ul class="nav-list">
+          <li><a href="#o-mne">O mně</a></li>
+          <li><a href="#sluzby">Služby</a></li>
+          <li><a href="#realne-pribehy">Reálné příběhy</a></li>
+          <li><a href="#odkazy">Odkazy</a></li>
+          <li><a href="#slovnik">Laický slovník pojistných pojmů</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main>
-
+  <main id="top">
     <section id="o-mne">
       <h1>O mně</h1>
       <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení.</p>
@@ -294,62 +352,92 @@
       <h2>Reálné příběhy klientů</h2>
       <div class="stories-grid">
         <div class="story-card">
+          <a href="DO2.JPG" target="_blank">
+            <img src="DO2.JPG" alt="Denní odškodné – dokument">
+          </a>
           <h3>Denní odškodné</h3>
           <p><strong>Příčina:</strong> Dopravní nehoda (mimo výkon povolání)</p>
           <p class="amount">23 100 Kč</p>
           <p class="duration">Vyřízení: 7 dní</p>
         </div>
         <div class="story-card">
+          <a href="Kroupy.JPG" target="_blank">
+            <img src="Kroupy.JPG" alt="Živelní událost – dokument">
+          </a>
           <h3>Živelní událost</h3>
           <p><strong>Příčina:</strong> Krupobití</p>
           <p class="amount">11 448 Kč</p>
           <p class="duration">Vyřízení: 2 dny</p>
         </div>
         <div class="story-card">
+          <a href="ošetřování.JPG" target="_blank">
+            <img src="ošetřování.JPG" alt="Ošetřování dítěte – dokument">
+          </a>
           <h3>Plnění při ošetřování</h3>
           <p><strong>Příčina:</strong> Ošetřování dítěte v důsledku úrazu</p>
           <p class="amount">30 900 Kč</p>
           <p class="duration">Vyřízení: 112 dní</p>
         </div>
         <div class="story-card">
+          <a href="palec.JPG" target="_blank">
+            <img src="palec.JPG" alt="Tělesné poškození – dokument">
+          </a>
           <h3>Tělesné poškození</h3>
-          <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
+          <p><strong>Příčina:</strong> Úraz palce</p>
           <p class="amount">5 000 Kč</p>
           <p class="duration">Vyřízení: 36 dní</p>
         </div>
         <div class="story-card">
+          <a href="PVN.JPG" target="_blank">
+            <img src="PVN.JPG" alt="Pobyt v nemocnici (nemoc) – dokument">
+          </a>
           <h3>Pobyt v nemocnici (nemoc)</h3>
-          <p><strong>Příčina:</strong> Pobyt v nemocnici z důvodu nemoci</p>
+          <p><strong>Příčina:</strong> Nemoc</p>
           <p class="amount">900 Kč</p>
           <p class="duration">Vyřízení: 14 dní</p>
         </div>
         <div class="story-card">
+          <a href="PVN2.JPG" target="_blank">
+            <img src="PVN2.JPG" alt="Pobyt v nemocnici (ostatní) – dokument">
+          </a>
           <h3>Pobyt v nemocnici (ostatní)</h3>
-          <p><strong>Příčina:</strong> Pobyt v nemocnici z důvodu nemoci – ostatní</p>
+          <p><strong>Příčina:</strong> Jiný důvod</p>
           <p class="amount">1 500 Kč</p>
           <p class="duration">Vyřízení: 135 dní</p>
         </div>
         <div class="story-card">
+          <a href="SKLO.JPG" target="_blank">
+            <img src="SKLO.JPG" alt="Poškození skla – dokument">
+          </a>
           <h3>Poškození skla</h3>
-          <p><strong>Příčina:</strong> Poškození nebo zničení skla (bez živlu a vandalismu)</p>
+          <p><strong>Příčina:</strong> Poškození nebo zničení skla</p>
           <p class="amount">6 199 Kč</p>
           <p class="duration">Vyřízení: 5 dní</p>
         </div>
         <div class="story-card">
+          <a href="TP.JPG" target="_blank">
+            <img src="TP.JPG" alt="Tělesné poškození úrazem – dokument">
+          </a>
           <h3>Tělesné poškození úrazem</h3>
           <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
           <p class="amount">22 500 Kč</p>
           <p class="duration">Vyřízení: 4 dny</p>
         </div>
         <div class="story-card">
+          <a href="TP1.JPG" target="_blank">
+            <img src="TP1.JPG" alt="Tělesné poškození úrazem – dokument">
+          </a>
           <h3>Tělesné poškození úrazem</h3>
           <p><strong>Příčina:</strong> Ostatní příčiny úrazů</p>
           <p class="amount">22 000 Kč</p>
           <p class="duration">Vyřízení: 15 dní</p>
         </div>
         <div class="story-card">
+          <a href="ZATECENI.JPG" target="_blank">
+            <img src="ZATECENI.JPG" alt="Vodovodní škoda – dokument">
+          </a>
           <h3>Vodovodní škoda</h3>
-          <p><strong>Příčina:</strong> Kapání nebo pára unikající z vodovodního systému</p>
+          <p><strong>Příčina:</strong> Únik vody z vodovodního systému</p>
           <p class="amount">6 790 Kč</p>
           <p class="duration">Vyřízení: 26 dní</p>
         </div>
@@ -388,7 +476,7 @@
     </section>
 
     <section id="slovnik">
-      <h2>Slovník pojistných pojmů</h2>
+      <h2>Laický slovník pojistných pojmů</h2>
       <img src="cb7dcc5f-8205-42ea-ba1f-be762e2c9fcf.png"
            alt="Slovník pojistných pojmů"
            style="max-width:100%; margin-bottom:1rem; border-radius:var(--radius); box-shadow:var(--shadow);">
@@ -413,7 +501,6 @@
         <p id="dekujeme">Děkujeme za odeslání!</p>
       </form>
     </section>
-
   </main>
 
   <footer>
@@ -432,11 +519,45 @@
   </button>
 
   <script>
+    // Mobilní menu toggle
+    document.querySelector('.hamburger').addEventListener('click', e => {
+      const nav = document.querySelector('.nav');
+      const exp = e.currentTarget.getAttribute('aria-expanded') === 'true';
+      e.currentTarget.setAttribute('aria-expanded', String(!exp));
+      nav.classList.toggle('open');
+    });
+
+    // Zmenšení hlavičky při scrollu
+    window.addEventListener('scroll', () => {
+      document.querySelector('header')
+        .classList.toggle('shrink', window.scrollY > 50);
+    });
+
+    // Scroll-spy aktivních odkazů
+    const sections = document.querySelectorAll('main section, main aside');
+    const links    = document.querySelectorAll('.nav-list a');
+    function onScrollSpy() {
+      const pos = window.scrollY + window.innerHeight/3;
+      sections.forEach(sec => {
+        const id = sec.id;
+        const link = document.querySelector(`.nav-list a[href="#${id}"]`);
+        if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScrollSpy);
+    onScrollSpy();
+
+    // Statistiky toggle
     function toggleStatistiky() {
       const box = document.getElementById('statistikyBox');
       box.style.display = box.style.display === 'none' ? 'block' : 'none';
     }
 
+    // Slovník pojmů
     const terms = {
       "pojistná smlouva": {
         def: "Smluvní dohoda mezi pojišťovnou a klientem, stanovuje podmínky, práva a povinnosti.",
@@ -532,6 +653,7 @@
       }
     }
 
+    // AJAX form
     document.addEventListener("DOMContentLoaded", () => {
       const f = document.getElementById("kontakt-formular");
       if (!f) return;
