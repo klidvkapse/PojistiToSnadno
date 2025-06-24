@@ -648,35 +648,36 @@
 
     };
 
-    // Suggestions & definition
-    function showSuggestions() {
-      const q = document.getElementById('search').value.toLowerCase();
-      const list = document.getElementById('suggestions');
-      list.innerHTML = '';
-      if (!q) return;
-      Object.keys(terms).filter(t => t.includes(q))
-        .forEach(t => {
-          const div = document.createElement('div');
-          div.className = 'suggestion';
-          div.innerText = t;
-          div.onclick = () => {
-            document.getElementById('search').value = t;
-            list.innerHTML = '';
-          };
-          list.appendChild(div);
-        });
-    }
-    function showDefinition() {
-      const key = document.getElementById('search').value.toLowerCase();
-      const out = document.getElementById('output');
-      if (terms[key]) {
+   function showDefinitions() {
+      const key = document.getElementById('search').value.toLowerCase(),
+            out = document.getElementById('output');
+      if(out.innerHTML && out.dataset.current===key) {
+        // druhé kliknutí smaže
+        out.innerHTML=''; out.dataset.current='';
+        return;
+      }
+      if(terms[key]) {
         out.innerHTML = `<strong>${key}</strong><br>${terms[key].def}
           <div style="margin-top:.5rem;font-style:italic;">${terms[key].ex}</div>`;
+        out.dataset.current = key;
       } else {
         out.innerText = 'Pojem nebyl nalezen.';
+        out.dataset.current = '';
       }
     }
-
+    function showSuggestions() {
+      const q = document.getElementById('search').value.toLowerCase(),
+            list = document.getElementById('suggestions');
+      list.innerHTML='';
+      if(!q) return;
+      Object.keys(terms).filter(t=>t.includes(q))
+        .forEach(t=>{
+          const d=document.createElement('div');
+          d.className='suggestion'; d.innerText=t;
+          d.onclick=()=>{document.getElementById('search').value=t; list.innerHTML='';};
+          list.appendChild(d);
+        });
+    }
     // AJAX form
     document.addEventListener("DOMContentLoaded", () => {
       const form = document.getElementById("kontakt-formular");
