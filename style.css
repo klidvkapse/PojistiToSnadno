@@ -359,139 +359,109 @@ footer small { display: block; margin-top: 1rem; font-size: .9rem; }
   h1, h2 { font-size: 1.2rem; }
   section, aside { padding: 1rem; }
 }/* Přidej do style.css */
-.circular-menu-wrapper {
-  display: none; /* zobrazí se jen na mobilu */
-  position: fixed;
-  left: 50%;
-  top: 52%;
-  transform: translate(-50%,-50%);
-  width: 310px; height: 310px;
-  z-index: 3000;
-  pointer-events: none; /* kvůli overlayi, JS odblokuje při otevření */
+body {
+  min-height: 100vh;
+  background: #F7F6F1;
+  margin: 0;
+  font-family: 'Raleway', Arial, sans-serif;
+  overflow-x: hidden;
 }
-.circular-menu-center {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%,-50%);
-  width: 90px; height: 90px;
+.circle-menu-wrapper {
+  position: relative;
+  width: 340px;
+  height: 400px;
+  margin: 55px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-pic-menu {
+  width: 92px; height: 92px;
   border-radius: 50%;
-  box-shadow: 0 3px 16px rgba(80,40,20,0.10);
-  background: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  border: 3px solid var(--button-light);
-}
-.circular-menu-center img {
-  width: 70px; height: 70px; border-radius: 50%;
+  border: 4px solid #e0d3bc;
+  box-shadow: 0 4px 24px rgba(60,40,20,0.12);
   object-fit: cover;
-}
-.circ-menu-btn {
-  position: absolute;
-  width: 82px; height: 54px;
-  background: var(--button-light);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text);
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.07rem;
-  pointer-events: auto;
-  transition: background .18s, transform .18s;
-  border: 2px solid var(--primary);
-}
-.circ-menu-btn:active, .circ-menu-btn:hover {
-  background: var(--button-light-hover);
-}
-
-/* Rozložení po kruhu */
-.btn1 { left: 50%; top: 0%;    transform: translate(-50%,0);      }
-.btn2 { left: 85%;  top: 20%;  transform: translate(-50%,-50%);   }
-.btn3 { left: 100%; top: 58%;  transform: translate(-100%,-50%);  }
-.btn4 { left: 85%;  top: 87%;  transform: translate(-50%,-50%);   }
-.btn5 { left: 50%;  top: 100%; transform: translate(-50%,-100%);  }
-.btn6 { left: 15%;  top: 87%;  transform: translate(-50%,-50%);   }
-.btn7 { left: 0%;   top: 58%;  transform: translate(0,-50%);      }
-
-@media (max-width: 700px) {
-  .circular-menu-wrapper { display: block; }
-  header, nav.nav, .floating-action-btn { display: none !important; }
-  main { padding-top: 0 !important; }
-}
-.circular-menu-wrapper {
-  display: none; /* pouze na mobilu */
-  position: fixed;
-  left: 50%; top: 56%;
-  transform: translate(-50%,-50%);
-  width: 320px; height: 320px;
-  z-index: 3000;
-  pointer-events: none;
-}
-.circular-menu-center {
   position: absolute;
   left: 50%; top: 50%;
-  transform: translate(-50%,-50%);
-  width: 96px; height: 96px;
-  border-radius: 50%;
-  box-shadow: 0 3px 16px rgba(80,40,20,0.13);
-  background: var(--accent);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  border: 3px solid var(--button-light);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  z-index: 2;
   cursor: pointer;
   transition: box-shadow .2s;
 }
-.circular-menu-center img {
-  width: 75px; height: 75px; border-radius: 50%;
-  object-fit: cover;
+.profile-pic-menu:hover {
+  box-shadow: 0 6px 32px rgba(40,30,10,0.17);
 }
-.circular-menu-label {
-  margin-top: 5px;
-  font-size: 1.07rem;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: 0.03em;
-}
-
-.circ-menu-btn {
+.menu-label {
   position: absolute;
-  width: 85px; height: 50px;
-  background: var(--button-light);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text);
-  font-weight: bold;
+  left: 50%;
+  top: calc(50% + 68px);
+  transform: translateX(-50%);
+  color: #5d583f;
+  font-size: 1.15rem;
   text-align: center;
-  font-size: 1.08rem;
-  pointer-events: auto;
-  border: 2px solid var(--primary);
-  opacity: 0;
+  z-index: 2;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: #f7f6f1c4;
+  border-radius: 8px;
+  padding: 4px 18px 4px 18px;
+  box-shadow: 0 2px 7px rgba(60,40,20,0.08);
+  cursor: pointer;
+  user-select: none;
+}
+
+.circle-menu {
+  width: 270px; height: 270px;
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
   pointer-events: none;
-  transition: background .18s, transform .18s, opacity .22s;
+  z-index: 1;
 }
-.circ-menu-btn:active, .circ-menu-btn:hover {
-  background: var(--button-light-hover);
-}
-
-/* Rozložení po kruhu – 7 tlačítek */
-.btn1 { left: 50%; top: 7%;    transform: translate(-50%,0);}
-.btn2 { left: 85%;  top: 22%;  transform: translate(-50%,-50%);}
-.btn3 { left: 97%;  top: 58%;  transform: translate(-100%,-50%);}
-.btn4 { left: 82%;  top: 89%;  transform: translate(-50%,-50%);}
-.btn5 { left: 50%;  top: 100%; transform: translate(-50%,-100%);}
-.btn6 { left: 18%;  top: 89%;  transform: translate(-50%,-50%);}
-.btn7 { left: 3%;   top: 58%;  transform: translate(0,-50%);}
-
-@media (max-width: 700px) {
-  .circular-menu-wrapper { display: block; pointer-events: auto; }
-  header, nav.nav, .floating-action-btn { display: none !important; }
-  main { padding-top: 0 !important; }
+.circle-link {
+  position: absolute;
+  width: 88px; height: 44px;
+  background: #ece7dd;
+  color: #584b2b;
+  border-radius: 24px;
+  box-shadow: 0 2px 10px rgba(90, 80, 40, 0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.01rem; font-weight: 600;
+  text-decoration: none;
+  transition: background .18s, color .18s, box-shadow .2s, opacity 0.2s;
+  opacity: 0; /* Skrýt před zobrazením */
+  pointer-events: none;
+  border: 2px solid #e2dac6;
 }
 
-/* Aktivace kruhového menu */
-.circular-menu-wrapper.open .circ-menu-btn {
+/* Pozice 7 odkazů v kruhu */
+.circle-link:nth-child(1) { /* O mně */         top: 0;      left: 50%;  transform: translate(-50%, 0);}
+.circle-link:nth-child(2) { /* Služby */        top: 37px;   left: 92%;  transform: translate(-50%, 0);}
+.circle-link:nth-child(3) { /* Reálné příběhy */top: 120px;  left: 100%;  transform: translate(-50%, -50%);}
+.circle-link:nth-child(4) { /* Statistiky */    top: 213px;  left: 82%;  transform: translate(-50%, -50%);}
+.circle-link:nth-child(5) { /* Slovník */       top: 258px;  left: 50%;  transform: translate(-50%, 0);}
+.circle-link:nth-child(6) { /* Články */        top: 215px;  left: 18%;  transform: translate(-50%, -50%);}
+.circle-link:nth-child(7) { /* Kontakt */       top: 42px;   left: 9%;  transform: translate(-50%, 0);}
+
+/* Zobrazení menu */
+.menu-open .circle-link {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* Malé obrazovky (zmenší wrapper) */
+@media (max-width: 400px) {
+  .circle-menu-wrapper { width: 99vw; }
+  .circle-menu { width: 72vw; height: 72vw; min-width: 210px; min-height: 210px; }
+  .circle-link { width: 19vw; min-width: 75px; max-width: 92px; }
+  .profile-pic-menu { width: 80px; height: 80px;}
+}
+
+/* Nepoužívej menu na desktopu, pouze mobile! */
+@media (min-width: 900px) {
+  .circle-menu-wrapper { display: none; }
+}
+
 
 
