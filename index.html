@@ -5,47 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PojistiToSnadno.cz – Daniel Verner</title>
-  <meta name="description" content="Pojisti To Snadno – Pomáhám lidem najít jistotu v krizových situacích. Pojištění, nezávazné poradenství.">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- KRUHOVÉ MENU MOBIL -->
   <header>
-    <!-- Desktop menu -->
-    <div class="header-inner">
-      <img src="portret.png" alt="Daniel Verner" class="logo" id="menuAvatar" tabindex="0">
-      <nav class="nav-desktop">
-        <ul class="nav-list">
-          <li><a href="#o-mne">O mně</a></li>
-          <li><a href="#sluzby">Služby</a></li>
-          <li><a href="#realne-pribehy">Reálné příběhy</a></li>
-          <li><a href="#statistiky">Statistiky škod</a></li>
-          <li><a href="clanky.html">Články</a></li>
-          <li><a href="slovnik.html">Slovník</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-      </nav>
-    </div>
-    <!-- Mobilní kruhové menu -->
-    <div class="circle-menu-bg" id="circleMenuBg">
-      <div class="circle-menu" id="circleMenu">
-        <a href="#o-mne" style="--i:0;">O mně</a>
-        <a href="#sluzby" style="--i:1;">Služby</a>
-        <a href="#realne-pribehy" style="--i:2;">Příběhy</a>
-        <a href="#statistiky" style="--i:3;">Statistiky škod</a>
-        <a href="slovnik.html" style="--i:4;">Slovník</a>
-        <a href="clanky.html" style="--i:5;">Články</a>
-        <a href="#kontakt" style="--i:6;">Kontakt</a>
-        <button class="circle-menu-close" onclick="toggleCircleMenu()" aria-label="Zavřít menu">&times;</button>
+    <div class="circular-menu-wrapper">
+      <img src="img/portret.png" alt="Daniel Verner" class="circle-portrait" id="circlePortrait" onclick="toggleMenu()">
+      <div class="circular-menu" id="circularMenu">
+        <a href="#o-mne"    class="menu-item" style="--i:0">O mně</a>
+        <a href="#sluzby"   class="menu-item" style="--i:1">Služby</a>
+        <a href="#pribehy"  class="menu-item" style="--i:2">Reálné příběhy</a>
+        <a href="#clanky"   class="menu-item" style="--i:3">Články</a>
+        <a href="#slovnik"  class="menu-item" style="--i:4">Slovník</a>
+        <a href="#kontakt"  class="menu-item" style="--i:5">Kontakt</a>
       </div>
+      <span class="menu-label">Menu</span>
     </div>
   </header>
-  
+
+  <!-- KLASICKÉ MENU PRO DESKTOP -->
+  <nav class="top-nav">
+    <img src="img/portret.png" alt="Daniel Verner" class="portrait-desktop">
+    <a href="#o-mne">O mně</a>
+    <a href="#sluzby">Služby</a>
+    <a href="#pribehy">Reálné příběhy</a>
+    <a href="#clanky">Články</a>
+    <a href="#slovnik">Slovník</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
   <main>
     <section id="o-mne">
-      <h1>O mně</h1>
-      <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových životních situacích. Naslouchám, chápu, navrhuji řešení. Schůzky osobně i on-line.</p>
+      <h2>O mně</h2>
+      <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových situacích. Naslouchám, chápu, navrhuji řešení. Schůzky osobně i on-line.</p>
     </section>
+
     <section id="sluzby">
       <h2>S čím vám pomohu</h2>
       <ul>
@@ -58,138 +54,173 @@
         <li>Investice</li>
       </ul>
     </section>
-    <section id="realne-pribehy">
-  <h2>Reálné příběhy klientů</h2>
-  <div class="stories-grid">
-    <div class="story-card">
-      <h3>Denní odškodné</h3>
-      <p><strong>Příčina:</strong> Dopravní nehoda</p>
-      <p><b>23 100 Kč</b></p>
-      <p>Vyřízení: 4 dny</p>
-    </div>
-    <div class="story-card">
-      <h3>Živelná událost</h3>
-      <p><strong>Příčina:</strong> Kroupobití</p>
-      <p><b>11 448 Kč</b></p>
-      <p>Vyřízení: 7 hodin</p>
-    </div>
-    <div class="story-card">
-      <h3>Plnění při ošetřování</h3>
-      <p><strong>Příčina:</strong> Ošetřování dítěte</p>
-      <p><b>30 900 Kč</b></p>
-      <p>Vyřízení: 7 hodin</p>
-    </div>
-    <div class="story-card">
-      <h3>Tělesné poškození</h3>
-      <p><strong>Příčina:</strong> Úraz palce</p>
-      <p><b>5 000 Kč</b></p>
-      <p>Vyřízení: 1 den</p>
-    </div>
-    <div class="story-card">
-      <h3>Pobyt v nemocnici (nemoc)</h3>
-      <p><strong>Příčina:</strong> Nemoc</p>
-      <p><b>900 Kč</b></p>
-      <p>Vyřízení: 1 den</p>
-    </div>
-    <div class="story-card">
-      <h3>Pobyt v nemocnici (ostatní)</h3>
-      <p><strong>Příčina:</strong> Jiný důvod</p>
-      <p><b>1 500 Kč</b></p>
-      <p>Vyřízení: 1 den</p>
-    </div>
-    <div class="story-card">
-      <h3>Poškození skla</h3>
-      <p><strong>Příčina:</strong> Poškození skla</p>
-      <p><b>6 199 Kč</b></p>
-      <p>Vyřízení: 4 dny</p>
-    </div>
-    <div class="story-card">
-      <h3>Tělesné poškození úrazem</h3>
-      <p><strong>Příčina:</strong> Ostatní úrazy</p>
-      <p><b>22 500 Kč</b></p>
-      <p>Vyřízení: 2 dny</p>
-    </div>
-    <div class="story-card">
-      <h3>Tělesné poškození úrazem</h3>
-      <p><strong>Příčina:</strong> Ostatní úrazy</p>
-      <p><b>22 000 Kč</b></p>
-      <p>Vyřízení: 2 dny</p>
-    </div>
-    <div class="story-card">
-      <h3>Vodovodní škoda</h3>
-      <p><strong>Příčina:</strong> Únik vody</p>
-      <p><b>6 790 Kč</b></p>
-      <p>Vyřízení: 2 dny</p>
-    </div>
-  </div>
-</section>
+
+    <section id="pribehy">
+      <h2>Reálné příběhy klientů</h2>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev">&#8678;</button>
+        <div class="carousel-track">
+          <div class="carousel-item">
+            <h3>Denní odškodné</h3>
+            <p><strong>Příčina:</strong> Dopravní nehoda</p>
+            <p><b>23 100 Kč</b></p>
+            <p>Vyřízení: 4 dny</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Živelná událost</h3>
+            <p><strong>Příčina:</strong> Kroupobití</p>
+            <p><b>11 448 Kč</b></p>
+            <p>Vyřízení: 7 hodin</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Plnění při ošetřování</h3>
+            <p><strong>Příčina:</strong> Ošetřování dítěte</p>
+            <p><b>30 900 Kč</b></p>
+            <p>Vyřízení: 7 hodin</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Tělesné poškození</h3>
+            <p><strong>Příčina:</strong> Úraz palce</p>
+            <p><b>5 000 Kč</b></p>
+            <p>Vyřízení: 1 den</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Pobyt v nemocnici (nemoc)</h3>
+            <p><strong>Příčina:</strong> Nemoc</p>
+            <p><b>900 Kč</b></p>
+            <p>Vyřízení: 1 den</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Poškození skla</h3>
+            <p><strong>Příčina:</strong> Poškození skla</p>
+            <p><b>6 199 Kč</b></p>
+            <p>Vyřízení: 4 dny</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Tělesné poškození úrazem</h3>
+            <p><strong>Příčina:</strong> Ostatní úrazy</p>
+            <p><b>22 500 Kč</b></p>
+            <p>Vyřízení: 2 dny</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Tělesné poškození úrazem</h3>
+            <p><strong>Příčina:</strong> Ostatní úrazy</p>
+            <p><b>22 000 Kč</b></p>
+            <p>Vyřízení: 2 dny</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Vodovodní škoda</h3>
+            <p><strong>Příčina:</strong> Únik vody</p>
+            <p><b>6 790 Kč</b></p>
+            <p>Vyřízení: 2 dny</p>
+          </div>
+        </div>
+        <button class="carousel-btn next">&#8680;</button>
+      </div>
+      <div class="carousel-dots"></div>
+    </section>
+
+    <section id="clanky">
+      <h2>Články</h2>
+      <p>Připravujeme novinky a rady!</p>
+    </section>
+
+    <section id="slovnik">
+      <h2>Slovník pojistných pojmů</h2>
+      <p>Pojmy a vysvětlení – nová stránka nebo dialog.</p>
+    </section>
 
     <section id="kontakt">
       <h2>Nezávazný návrh pojištění</h2>
-      <form id="kontakt-formular" action="https://formspree.io/f/mjkwnelz" method="POST">
-        <input type="text" name="name" placeholder="Jméno a příjmení" required>
-        <input type="number" name="age" placeholder="Váš věk" required>
-        <textarea name="message" placeholder="Co vás zajímá?" rows="4" required></textarea>
-        <input type="email" name="email" placeholder="Váš email" required>
-        <input type="tel" name="phone" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
+      <form>
+        <input type="text" placeholder="Jméno a příjmení" required>
+        <input type="number" placeholder="Váš věk" required>
+        <textarea placeholder="Co vás zajímá?" rows="4" required></textarea>
+        <input type="email" placeholder="Váš email" required>
+        <input type="tel" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
         <button type="submit">Odeslat poptávku</button>
-        <p id="dekujeme">Děkujeme za odeslání!</p>
       </form>
     </section>
   </main>
+
   <footer>
     <p>
-      Daniel Verner – PojistiToSnadno.cz<br>
-      📞 <a href="tel:+420733782290">733 782 290</a> | 
-      📩 <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
-      Olomoucký kraj – schůzky individuálně.
+      Daniel Verner<br>
+      📞 733 782 290<br>
+      📩 pojistitosnadno@gmail.com<br>
+      📍 Olomoucký kraj – schůzky individuálně
     </p>
-    <small>&copy; 2025 Daniel Verner</small>
+    <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
   </footer>
-  <button class="floating-action-btn" onclick="location.href='#kontakt'">
-    Nezávazný návrh pojištění
-  </button>
+
   <script>
-    // Statistika toggle
-    function toggleStatistiky() {
-      const box = document.getElementById('statistikyBox');
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    // Toggle kruhové menu
+    function toggleMenu() {
+      document.getElementById('circularMenu').classList.toggle('active');
     }
-    // Mobilní kruhové menu
-    function toggleCircleMenu() {
-      document.getElementById('circleMenuBg').classList.toggle('show');
-    }
-    // Otevři kruhové menu na mobilu po kliknutí na fotku
-    document.getElementById('menuAvatar').addEventListener('click', function() {
-      if (window.innerWidth < 900) toggleCircleMenu();
-    });
-    document.getElementById('menuAvatar').addEventListener('keypress', function(e) {
-      if (window.innerWidth < 900 && (e.key === "Enter" || e.key === " ")) toggleCircleMenu();
-    });
-    // Kliknutí mimo menu = zavřít menu
-    document.getElementById('circleMenuBg').addEventListener('click', function(e) {
-      if (e.target === this) toggleCircleMenu();
-    });
-    // Formspree AJAX
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("kontakt-formular");
-      if (!form) return;
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { "Accept": "application/json" }
-        })
-        .then(r => {
-          if (r.ok) {
-            form.reset();
-            document.getElementById("dekujeme").style.display = "block";
-          } else {
-            alert("Chyba při odeslání. Zkuste to prosím znovu.");
-          }
-        })
-        .catch(() => alert("Síťová chyba."));
+
+    // ===== Carousel =====
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.querySelector('.carousel-track');
+      const items = document.querySelectorAll('.carousel-item');
+      const btnPrev = document.querySelector('.carousel-btn.prev');
+      const btnNext = document.querySelector('.carousel-btn.next');
+      const dotsContainer = document.querySelector('.carousel-dots');
+      let index = 0;
+
+      // Vytvoř tečky
+      for(let i=0; i<items.length; i++){
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot';
+        if(i===0) dot.classList.add('active');
+        dot.addEventListener('click', ()=> goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+      const dots = document.querySelectorAll('.carousel-dot');
+
+      function updateDots(){
+        dots.forEach((d,i)=>d.classList.toggle('active', i===index));
+      }
+
+      function getSlideWidth() {
+        return items[0].offsetWidth +
+          parseInt(getComputedStyle(items[0]).marginLeft) +
+          parseInt(getComputedStyle(items[0]).marginRight);
+      }
+
+      function goToSlide(i){
+        index = i;
+        track.scrollTo({
+          left: getSlideWidth() * i,
+          behavior: "smooth"
+        });
+        updateDots();
+      }
+
+      btnPrev.onclick = () => {
+        if(index>0) {
+          index--;
+          goToSlide(index);
+        }
+      };
+      btnNext.onclick = () => {
+        if(index<items.length-1) {
+          index++;
+          goToSlide(index);
+        }
+      };
+
+      // Swipe pro mobily
+      let startX = null;
+      track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      });
+      track.addEventListener('touchend', (e) => {
+        if(startX === null) return;
+        let diff = e.changedTouches[0].clientX - startX;
+        if(diff > 30 && index > 0) { index--; goToSlide(index);}
+        else if(diff < -30 && index < items.length-1) { index++; goToSlide(index);}
+        startX = null;
       });
     });
   </script>
