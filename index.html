@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -8,35 +7,29 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <header>
-  <div class="circle-menu">
-    <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
-    <div class="circle-menu-label">Menu</div>
-    <nav class="circle-nav">
-      <a href="slovnik.html" class="circle-link">Slovník pojmů</a>
-      <a href="clanky.html" class="circle-link">Články</a>
+  <header>
+    <div class="circle-menu">
+      <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
+      <div class="circle-menu-label">Menu</div>
+      <nav class="circle-nav">
+        <a href="#o-mne" class="circle-link">O mně</a>
+        <a href="#sluzby" class="circle-link">Služby</a>
+        <a href="#pribehy" class="circle-link">Reálné příběhy</a>
+        <a href="clanky.html" class="circle-link">Články</a>
+        <a href="slovnik.html" class="circle-link">Slovník</a>
+        <a href="#kontakt" class="circle-link">Kontakt</a>
+      </nav>
+    </div>
+    <nav class="top-nav">
+      <img src="portret.png" alt="Daniel Verner" class="portrait-desktop">
+      <a href="#o-mne">O mně</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#pribehy">Reálné příběhy</a>
+      <a href="clanky.html">Články</a>
+      <a href="slovnik.html">Slovník</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
-  </div>
-</header>
-
-
-  <main>
-    <!-- ... zde zůstává váš obsah stránky ... -->
-  </main>
-</body>
-</html>
-
-
-  <!-- KLASICKÉ MENU PRO DESKTOP -->
-  <nav class="top-nav">
-    <img src="portret.png" alt="Daniel Verner" class="portrait-desktop">
-    <a href="#o-mne">O mně</a>
-    <a href="#sluzby">Služby</a>
-    <a href="#pribehy">Reálné příběhy</a>
-    <a href="#clanky">Články</a>
-    <a href="#slovnik">Slovník</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
+  </header>
 
   <main>
     <section id="o-mne">
@@ -122,16 +115,6 @@
       <div class="carousel-dots"></div>
     </section>
 
-    <section id="clanky">
-      <h2>Články</h2>
-      <p>Připravujeme novinky a rady!</p>
-    </section>
-
-    <section id="slovnik">
-      <h2>Slovník pojistných pojmů</h2>
-      <p>Pojmy a vysvětlení – nová stránka nebo dialog.</p>
-    </section>
-
     <section id="kontakt">
       <h2>Nezávazný návrh pojištění</h2>
       <form>
@@ -156,11 +139,6 @@
   </footer>
 
   <script>
-    // Toggle kruhové menu
-    function toggleMenu() {
-      document.getElementById('circularMenu').classList.toggle('active');
-    }
-
     // ===== Carousel =====
     document.addEventListener('DOMContentLoaded', function() {
       const track = document.querySelector('.carousel-track');
@@ -228,4 +206,3 @@
   </script>
 </body>
 </html>
-
