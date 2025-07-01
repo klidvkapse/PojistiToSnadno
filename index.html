@@ -844,6 +844,65 @@
         .catch(() => alert("Síťová chyba."));
       });
     });
+    <script>
+const track = document.querySelector('.carousel-track');
+const items = document.querySelectorAll('.carousel-item');
+const btnPrev = document.querySelector('.carousel-btn.prev');
+const btnNext = document.querySelector('.carousel-btn.next');
+const dotsContainer = document.querySelector('.carousel-dots');
+let index = 0;
+
+for(let i=0; i<items.length; i++){
+  const dot = document.createElement('div');
+  dot.className = 'carousel-dot';
+  if(i===0) dot.classList.add('active');
+  dot.addEventListener('click', ()=> goToSlide(i));
+  dotsContainer.appendChild(dot);
+}
+const dots = document.querySelectorAll('.carousel-dot');
+
+function updateDots(){
+  dots.forEach((d,i)=>d.classList.toggle('active', i===index));
+}
+
+function getSlideWidth() {
+  // dynamická šířka kvůli mobile (vw)
+  return items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginLeft) + parseInt(getComputedStyle(items[0]).marginRight);
+}
+
+function goToSlide(i){
+  index = i;
+  track.scrollTo({
+    left: getSlideWidth() * i,
+    behavior: "smooth"
+  });
+  updateDots();
+}
+
+btnPrev.onclick = () => {
+  if(index>0) {
+    index--;
+    goToSlide(index);
+  }
+};
+btnNext.onclick = () => {
+  if(index<items.length-1) {
+    index++;
+    goToSlide(index);
+  }
+};
+
+let startX = null;
+track.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+track.addEventListener('touchend', (e) => {
+  if(startX === null) return;
+  let diff = e.changedTouches[0].clientX - startX;
+  if(diff > 30 && index > 0) { index--; goToSlide(index);}
+  else if(diff < -30 && index < items.length-1) { index++; goToSlide(index);}
+  startX = null;
+});
   </script>
 </body>
 </html>
