@@ -291,6 +291,184 @@
       h1, h2 { font-size: 1.2rem; }
       section, aside { padding: 1rem; }
     }
+    /* Bonus: Logo tučně, vždy na začátku */
+.carousel-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 1.5rem 0 0.8rem 0;
+  width: 100%;
+}
+.carousel-track {
+  display: flex;
+  overflow: hidden;
+  width: 310px;
+  scroll-behavior: smooth;
+  touch-action: pan-x;
+}
+.carousel-item {
+  background: #fff;
+  border-radius: 20px;
+  min-width: 290px;
+  max-width: 290px;
+  margin: 0 0.6rem;
+  box-shadow: 0 2px 12px rgba(40, 120, 180, 0.10);
+  padding: 1.1rem 1.2rem 0.9rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 155px;
+  border: 1px solid #e2e8f0;
+}
+.carousel-btn {
+  background: var(--primary, #58b1f5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin: 0 0.4rem;
+  z-index: 1;
+  transition: background 0.2s;
+}
+.carousel-btn:active {
+  background: #4294d7;
+}
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4em;
+  margin-top: 0.3em;
+}
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b8dffd;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.carousel-dot.active {
+  background: var(--primary, #58b1f5);
+}
+
+@media (min-width: 700px) {
+  .carousel-track {
+    width: 370px;
+  }
+  .carousel-item {
+    min-width: 350px;
+    max-width: 350px;
+  }
+}
+@media (max-width: 399px) {
+  .carousel-track {
+    width: 99vw;
+  }
+  .carousel-item {
+    min-width: 92vw;
+    max-width: 92vw;
+    margin: 0 0.2rem;
+  }
+.carousel-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 1.5rem 0 0.8rem 0;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  overflow: hidden;
+  width: 340px; /* jen jedna karta */
+  scroll-behavior: smooth;
+  touch-action: pan-x;
+}
+
+.carousel-item {
+  background: #fff;
+  border-radius: 20px;
+  min-width: 320px;
+  max-width: 320px;
+  margin: 0 0.6rem;
+  box-shadow: 0 2px 12px rgba(40, 120, 180, 0.10);
+  padding: 1.1rem 1.2rem 0.9rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 170px;
+  border: 1px solid #e2e8f0;
+  transition: box-shadow 0.2s;
+}
+
+.carousel-item h3 {
+  font-size: 1.12rem;
+  margin: 0 0 0.4rem 0;
+  color: #14532d;
+  word-break: break-word;
+}
+
+.carousel-btn {
+  background: var(--primary, #58b1f5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin: 0 0.4rem;
+  z-index: 1;
+  transition: background 0.2s;
+}
+
+.carousel-btn:active {
+  background: #4294d7;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4em;
+  margin-top: 0.3em;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b8dffd;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.carousel-dot.active {
+  background: var(--primary, #58b1f5);
+}
+
+@media (max-width: 399px) {
+  .carousel-track {
+    width: 95vw;
+  }
+  .carousel-item {
+    min-width: 87vw;
+    max-width: 87vw;
+    margin: 0 0.1rem;
+    padding: 0.6rem 0.5rem 0.5rem 0.6rem;
+  }
+  .carousel-item h3 {
+    font-size: 1.01rem;
+  }
+  .carousel-item p, .carousel-item b, .carousel-item strong {
+    font-size: 0.95rem;
+    word-break: break-all;
+  }
+
   </style>
 </head>
 <body>
