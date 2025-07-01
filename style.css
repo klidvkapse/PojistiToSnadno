@@ -35,10 +35,16 @@ header {
   padding: 0 .5rem;
 }
 .logo {
-  height: calc(var(--header-height) - 20px);
-  background: #eaf4e4; box-shadow: var(--shadow);
-  border-radius: var(--radius); padding: 4px;
-  flex-shrink: 0;
+  height: 68px;
+  width: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 12px rgba(90,120,80,0.08);
+  border: 2px solid #c9bfae; /* světlá barva z portrétu */
+  background: #ede3d1;        /* světlý podklad z fotky */
+  padding: 0;
+}
+
 }
 nav.nav { display: flex; }
 .nav-list {
