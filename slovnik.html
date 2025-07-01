@@ -3,27 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Laický slovník pojistných pojmů – PojistiToSnadno</title>
+  <title>Pojisti To Snadno – Daniel Verner</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="header-inner">
-      <a href="index.html" aria-label="Domů">
-        <img src="portret.png" alt="Portrét Daniel Verner" class="logo">
-      </a>
-      <nav class="nav" aria-label="Hlavní navigace">
-        <ul class="nav-list">
-          <li><a href="index.html#o-mne">O mně</a></li>
-          <li><a href="index.html#sluzby">Služby</a></li>
-          <li><a href="index.html#realne-pribehy">Reálné příběhy</a></li>
-          <li><a href="index.html#odkazy">Statistiky škod</a></li>
-          <li><a href="clanky.html">Články</a></li>
-          <li><a href="slovnik.html" class="active">Laický slovník</a></li>
-          <li><a href="index.html#kontakt">Kontakt</a></li>
-        </ul>
+    <!-- Mobilní kruhové menu -->
+    <div class="circle-menu" id="mobileMenu">
+      <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
+      <div class="circle-menu-label">Menu</div>
+      <nav class="circle-nav">
+        <a href="#o-mne" class="circle-link">O mně</a>
+        <a href="#sluzby" class="circle-link">Služby</a>
+        <a href="#pribehy" class="circle-link">Reálné příběhy</a>
+        <a href="clanky.html" class="circle-link">Články</a>
+        <a href="slovnik.html" class="circle-link">Slovník</a>
+        <a href="#kontakt" class="circle-link">Kontakt</a>
       </nav>
     </div>
+    <!-- Desktop menu -->
+    <nav class="top-nav" id="desktopMenu">
+      <img src="portret.png" alt="Daniel Verner" class="portrait-desktop">
+      <a href="#o-mne">O mně</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#pribehy">Reálné příběhy</a>
+      <a href="clanky.html">Články</a>
+      <a href="slovnik.html">Slovník</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
   </header>
   <main style="margin-top:40px;">
     <section id="slovnik">
