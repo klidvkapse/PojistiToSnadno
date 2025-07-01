@@ -45,23 +45,19 @@
 
 </head>
 <body>
- <!-- Kruhové menu: pouze pro mobil -->
-<div class="circular-menu-wrapper" id="mobileMenu">
-  <div class="circular-menu-center" onclick="toggleCircularMenu()">
-    <img src="portret.png" alt="Portrét">
-    <div class="circular-menu-label">Menu</div>
+ <!-- Kruhové menu s fotkou uprostřed -->
+<div class="circle-menu-wrapper" id="circleMenuWrapper">
+  <img src="portret.png" class="profile-pic-menu" alt="Profil" id="profilePicMenu" />
+  <div class="menu-label" id="menuLabel">Menu</div>
+  <div class="circle-menu" id="circleMenu">
+    <a href="#o-mne"      class="circle-link">O mně</a>
+    <a href="#sluzby"     class="circle-link">Služby</a>
+    <a href="#pribehy"    class="circle-link">Reálné příběhy</a>
+    <a href="#statistiky" class="circle-link">Statistiky škod</a>
+    <a href="#slovnik"    class="circle-link">Slovník</a>
+    <a href="#clanky"     class="circle-link">Články</a>
+    <a href="#kontakt"    class="circle-link">Kontakt</a>
   </div>
-  <a href="#o-mne" class="circ-menu-btn btn1">O mně</a>
-  <a href="#sluzby" class="circ-menu-btn btn2">Služby</a>
-  <a href="#realne-pribehy" class="circ-menu-btn btn3">Příběhy</a>
-  <a href="#odkazy" class="circ-menu-btn btn4">Statistiky</a>
-  <a href="clanky.html" class="circ-menu-btn btn5">Články</a>
-  <a href="slovnik.html" class="circ-menu-btn btn6">Slovník</a>
-  <a href="#kontakt" class="circ-menu-btn btn7">Kontakt</a>
-</div>
-
-
-
   <header>
     <div class="header-inner">
       <a href="#top" aria-label="Přejít na začátek">
@@ -493,6 +489,35 @@ function toggleCircularMenu() {
   var menu = document.getElementById('mobileMenu');
   menu.classList.toggle('open');
 }
+</script>
+<script>
+  // Po kliknutí na fotku nebo menu label zobraz menu
+  const wrapper = document.getElementById('circleMenuWrapper');
+  const menu = document.getElementById('circleMenu');
+  const label = document.getElementById('menuLabel');
+  const pic = document.getElementById('profilePicMenu');
+  let open = false;
+
+  function toggleMenu() {
+    open = !open;
+    if(open) {
+      wrapper.classList.add('menu-open');
+      label.innerText = "Zavřít";
+    } else {
+      wrapper.classList.remove('menu-open');
+      label.innerText = "Menu";
+    }
+  }
+  pic.addEventListener('click', toggleMenu);
+  label.addEventListener('click', toggleMenu);
+  // Zavři menu při kliknutí na odkaz
+  document.querySelectorAll('.circle-link').forEach(link => {
+    link.addEventListener('click', () => {
+      wrapper.classList.remove('menu-open');
+      open = false;
+      label.innerText = "Menu";
+    });
+  });
 </script>
 
 
