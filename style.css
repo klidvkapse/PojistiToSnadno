@@ -1,12 +1,14 @@
 :root {
-  --primary: #a8d5ba;
-  --accent: #eaf4e4;
-  --text: #354f52;
-  --button-light: #d2f4dc;
-  --button-light-hover: #c6f1d6;
-  --shadow: 0 2px 12px rgba(90,120,80,0.08);
-  --radius: 14px;
+  --primary: #bfb5a0;            /* hlavní akcent: béžová-šedá z pozadí */
+  --accent: #ede3d1;             /* světlý podklad – světlá béžová z pozadí */
+  --text: #32322f;               /* velmi tmavě šedá až hnědá (z brýlí, vousů) */
+  --button-light: #c9bfae;       /* světlý akcent na tlačítka */
+  --button-light-hover: #b1a792; /* zvýraznění při najetí */
+  --shadow: 0 2px 12px rgba(130,120,80,0.08); /* jemný stín, teplý tón */
+  --radius: 16px;
   --header-height: 120px;
+}
+
 }
 *, *::before, *::after {
   box-sizing: border-box;
@@ -14,11 +16,13 @@
   scroll-behavior: smooth;
 }
 html, body {
-  background: #fdfdf4;
+  background: var(--accent);
   color: var(--text);
   font-family: 'Raleway', sans-serif;
   padding-top: var(--header-height);
   overflow-x: hidden;
+}
+
 }
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
