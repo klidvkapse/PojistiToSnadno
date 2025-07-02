@@ -9,6 +9,7 @@
   --header-height: 145px;
 }
 
+/* Základ */
 body {
   margin: 0;
   background: #f6f4ee;
@@ -17,6 +18,7 @@ body {
   min-height: 100vh;
 }
 
+/* Hlavička */
 header {
   width: 100%;
   background: #f6f4ee;
@@ -117,15 +119,14 @@ header {
   color: #85733a;
 }
 
+/* Kontejner a sekce */
 .container {
   max-width: 1050px;
   margin: 0 auto 2.5rem auto;
   padding: 0 1.3rem 1.5rem 1.3rem;
   background: transparent;
 }
-main {
-  width: 100%;
-}
+main { width: 100%; }
 section {
   background: #fff;
   border-radius: 24px;
@@ -145,7 +146,55 @@ b, strong {
   color: #5d4e1f;
 }
 
-/* CAROUSEL */
+/* Segmenty – rozcestník/tlačítka */
+.segment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  margin-top: 2em;
+}
+.segment-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
+  padding: 2em 1.3em 1.4em 1.3em;
+  min-width: 190px;
+  max-width: 240px;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.segment-card h3 {
+  color: #7d7753;
+  margin-bottom: 1.2em;
+  margin-top: 0;
+  font-size: 1.12em;
+  font-weight: 700;
+  text-align: center;
+}
+.button-main {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.8em 1.7em;
+  font-size: 1.11em;
+  font-weight: 600;
+  color: #474336;
+  background: #e2dbc9;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(120,100,60,0.08);
+  cursor: pointer;
+  transition: background 0.15s;
+  text-decoration: none;
+  text-align: center;
+}
+.button-main:hover {
+  background: #dad0b8;
+}
+
+/* Carousel */
 .carousel-wrap {
   display: flex;
   align-items: center;
@@ -211,6 +260,7 @@ b, strong {
   background: var(--primary);
 }
 
+/* Formulář */
 form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -233,6 +283,7 @@ button[type="submit"] {
   grid-column: 1/3;
 }
 
+/* Footer */
 footer {
   background: var(--accent);
   padding: 2rem 1rem;
@@ -269,6 +320,16 @@ footer small {
   section {
     padding: 1.1em 0.7em;
     border-radius: 14px;
+  }
+  .segment-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+  .segment-card {
+    min-width: 90vw;
+    max-width: 98vw;
+    padding: 1.2em 0.5em 1em 0.5em;
   }
   .carousel-track {
     max-width: 95vw;
