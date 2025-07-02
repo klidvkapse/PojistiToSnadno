@@ -9,18 +9,27 @@
   --header-height: 145px;
 }
 
-/* ----- Základ ----- */
+/* Základní nastavení a box-sizing pro responsivitu */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   background: #f6f4ee;
   color: var(--text);
   font-family: 'Raleway', Arial, sans-serif;
   min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
-/* ----- Hlavička ----- */
+/* HLAVIČKA */
 header {
-  width: 100%;
+  width: 100vw;
   background: #f6f4ee;
   min-height: var(--header-height);
   border-bottom: 1px solid #e2dbc9;
@@ -29,9 +38,9 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
-/* Mobilní menu */
 .circle-menu {
   display: none;
   flex-direction: column;
@@ -83,15 +92,16 @@ header {
   color: #726500;
 }
 
-/* Desktop menu */
 .top-nav {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.1rem;
   background: #f6f4ee;
-  width: 100%;
+  width: 100vw;
   padding: 1.1rem 0 0.3rem 0;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 }
 .portrait-desktop {
   width: 54px;
@@ -119,20 +129,23 @@ header {
   color: #85733a;
 }
 
-/* ----- Kontejner a sekce ----- */
+/* Hlavní kontejner a sekce */
 .container {
-  max-width: 1100px;
+  max-width: 1050px;
   margin: 0 auto 2.5rem auto;
   padding: 0 1.3rem 1.5rem 1.3rem;
   background: transparent;
+  width: 100%;
+  box-sizing: border-box;
 }
-main { width: 100%; }
+main { width: 100vw; }
 section {
   background: #fff;
   border-radius: 24px;
   box-shadow: 0 2px 20px rgba(120,100,60,0.07);
   padding: 2.2em 2em 1.8em 2em;
   margin-bottom: 2.1em;
+  box-sizing: border-box;
 }
 
 h1, h2, h3 {
@@ -146,7 +159,7 @@ b, strong {
   color: #5d4e1f;
 }
 
-/* ----- Segmenty s obrázkem vlevo ----- */
+/* ----------- Segmenty rozcestník ----------- */
 .segment-list {
   display: flex;
   flex-wrap: wrap;
@@ -156,55 +169,28 @@ b, strong {
   margin-top: 2em;
 }
 .segment-card {
-  display: flex;
-  align-items: center;
   background: #fff;
   border-radius: 24px;
   box-shadow: 0 2px 20px rgba(120,100,60,0.07);
-  padding: 1.8em 1.3em;
-  min-width: 290px;
-  max-width: 370px;
-  width: 100%;
-  margin-bottom: 1.2em;
-  transition: box-shadow 0.2s;
-}
-.segment-card:hover {
-  box-shadow: 0 4px 28px rgba(120,100,60,0.13);
-}
-.segment-img {
-  flex: 0 0 auto;
-  margin-right: 1.3em;
-  width: 82px;
-  height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  box-shadow: 0 2px 6px rgba(120,100,60,0.08);
-  background: #f6f4ee;
-}
-.segment-img img, .segment-img svg {
-  width: 82px;
-  height: 82px;
-  border-radius: 50%;
-  object-fit: contain;
-}
-.segment-text {
-  flex: 1 1 auto;
+  padding: 2em 1.3em 1.4em 1.3em;
+  min-width: 190px;
+  max-width: 240px;
+  margin-bottom: 1em;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.1em;
+  align-items: center;
 }
-.segment-text h3 {
+.segment-card h3 {
   color: #7d7753;
-  margin: 0 0 0.4em 0;
-  font-size: 1.18em;
+  margin-bottom: 1.2em;
+  margin-top: 0;
+  font-size: 1.12em;
   font-weight: 700;
-  text-align: left;
+  text-align: center;
 }
 .button-main {
   display: inline-block;
+  margin-top: 1em;
   padding: 0.8em 1.7em;
   font-size: 1.11em;
   font-weight: 600;
@@ -217,47 +203,12 @@ b, strong {
   transition: background 0.15s;
   text-decoration: none;
   text-align: center;
-  margin-left: 0;
 }
 .button-main:hover {
   background: #dad0b8;
 }
 
-/* Animace postavičky - mrkání levým okem */
-.segment-mrk {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 82px;
-  height: 82px;
-  border-radius: 16px;
-  box-shadow: 0 2px 6px rgba(120,100,60,0.08);
-  background: #f6f4ee;
-  transition: box-shadow 0.2s;
-  margin-right: 1.3em;
-}
-.segment-mrk svg .hlava-group {
-  transform-origin: 32px 38px;
-  animation: kolibani 2.6s ease-in-out infinite alternate;
-}
-@keyframes kolibani {
-  0%   { transform: rotate(-6deg) translateY(0px);}
-  48%  { transform: rotate(3deg)  translateY(1.2px);}
-  65%  { transform: rotate(-2deg) translateY(-0.6px);}
-  80%  { transform: rotate(2deg)  translateY(0.5px);}
-  100% { transform: rotate(0deg)  translateY(0px);}
-}
-.segment-mrk:hover svg #okoL {
-  animation: mrkniJednimOkem 0.5s cubic-bezier(.7,0,.5,1.4) 1;
-}
-@keyframes mrkniJednimOkem {
-  0%   { ry:1.5; }
-  10%  { ry:0.2; }
-  80%  { ry:0.2; }
-  100% { ry:1.5; }
-}
-
-/* ------------ CAROUSEL ÚPRAVA – JEDNA KARTA ------------ */
+/* ---------- Carousel jedna karta ---------- */
 .carousel-wrap {
   display: flex;
   align-items: center;
@@ -265,7 +216,7 @@ b, strong {
   position: relative;
   margin: 1.5rem 0 0.8rem 0;
   width: 100%;
-  max-width: 680px;
+  max-width: 480px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -273,12 +224,12 @@ b, strong {
   display: flex;
   overflow: hidden;
   width: 100%;
-  max-width: 440px;   /* šířka jedné karty na desktopu */
+  max-width: 350px;
   scroll-behavior: smooth;
   touch-action: pan-x;
 }
 .carousel-item {
-  flex: 0 0 100%;     /* každá karta zabere celou šířku tracku */
+  flex: 0 0 100%;
   max-width: 100%;
   background: #f6f4ee;
   border-radius: 18px;
@@ -351,7 +302,7 @@ button[type="submit"] {
   grid-column: 1/3;
 }
 
-/* ----- Footer ----- */
+/* Footer */
 footer {
   background: var(--accent);
   padding: 2rem 1rem;
@@ -371,7 +322,7 @@ footer small {
   font-size: .9rem;
 }
 
-/* ----- OBRÁZEK VE SLOVNÍKU ----- */
+/* Obrázek ve slovníku */
 .img-slovnik {
   width: 100%;
   max-width: none;
@@ -383,29 +334,41 @@ footer small {
 }
 @media (min-width: 701px) {
   .img-slovnik {
-    max-width: 180px;    /* malý obrázek na desktopu */
+    max-width: 180px;
     height: auto;
   }
 }
 
-/* RESPONSIVITA */
-@media (max-width: 1100px) {
-  .container {
-    max-width: 98vw;
-    padding: 0.6em 0.2em;
+/* ------ MOBILNÍ RESPONSIVITA ------ */
+@media (max-width: 850px) {
+  .top-nav { display: none !important; }
+  .circle-menu { display: flex !important; }
+}
+@media (min-width: 850px) {
+  .circle-menu { display: none !important; }
+  .top-nav { display: flex !important; }
+}
+@media (max-width: 700px) {
+  .container, main, section {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   section {
-    padding: 1.1em 0.7em;
+    padding: 1em 0.3em 1em 0.3em !important;
     border-radius: 14px;
+    margin-bottom: 1em;
   }
   .segment-list {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     gap: 1em;
   }
   .segment-card {
-    min-width: 220px;
+    min-width: 94vw;
     max-width: 98vw;
-    padding: 1.2em 0.8em;
+    padding: 1.1em 0.2em 1em 0.2em;
   }
   .carousel-wrap {
     max-width: 100vw;
@@ -417,40 +380,34 @@ footer small {
     padding: 1.1rem 0.5rem 1.1rem 0.5rem;
     min-height: 160px;
   }
-}
-
-@media (max-width: 700px) {
-  .segment-list {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2em;
-  }
-  .segment-card {
-    flex-direction: column;
-    align-items: center;
-    min-width: 0;
-    max-width: 98vw;
-    padding: 1.2em 0.5em 1em 0.5em;
-  }
-  .segment-img, .segment-mrk {
-    margin-right: 0;
-    margin-bottom: 0.7em;
-  }
-  .segment-text {
-    align-items: center;
-    gap: 0.7em;
-  }
-  .segment-text h3 {
-    text-align: center;
+  h1, h2 {
     font-size: 1.1em;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    word-break: break-word;
   }
-}
-
-@media (max-width: 480px) {
-  .circle-avatar {
+  .circle-link, .top-nav a {
+    min-width: 45vw;
+    font-size: 1em;
+    padding: 0.42em 0.9em;
+    margin: 0.18em 0.1em;
+  }
+  .circle-avatar, .portrait-desktop {
     width: 48px;
     height: 48px;
   }
-  .circle-link { font-size: 0.89rem; padding: 0.37rem 0.67rem; }
-  section { padding: 0.7rem 0.15rem; }
+}
+@media (max-width: 480px) {
+  .circle-avatar {
+    width: 42px;
+    height: 42px;
+  }
+  .circle-link { font-size: 0.93rem; padding: 0.3rem 0.5rem; }
+  section { padding: 0.7rem 0.09rem !important; }
+}
+
+/* Pro všechny prvky zabránit horizontálnímu přetékání */
+* {
+  box-sizing: border-box;
+  max-width: 100vw;
 }
