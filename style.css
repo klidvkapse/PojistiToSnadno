@@ -268,4 +268,25 @@ footer small {
   }
   section {
     padding: 1.1em 0.7em;
-    border-radius: 
+    border-radius: 14px;
+  }
+  .carousel-track {
+    max-width: 95vw;
+    min-width: 95vw;
+    gap: 0.8em;
+  }
+  .carousel-item {
+    min-width: 85vw;
+    max-width: 87vw;
+    margin: 0 0.1rem;
+    padding: 0.8rem 0.7rem 0.6rem 0.7rem;
+  }
+}
+@media (max-width: 480px) {
+  .circle-avatar {
+    width: 48px;
+    height: 48px;
+  }
+  .circle-link { font-size: 0.89rem; padding: 0.37rem 0.67rem; }
+  section { padding: 0.7rem 0.15rem; }
+}
