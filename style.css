@@ -371,4 +371,38 @@ footer small {
   }
   .circle-link { font-size: 0.89rem; padding: 0.37rem 0.67rem; }
   section { padding: 0.7rem 0.15rem; }
+}.segment-mrk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1em;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(120,100,60,0.08);
+  background: #f6f4ee;
+  transition: box-shadow 0.2s;
 }
+.segment-mrk svg .hlava-group {
+  transform-origin: 32px 38px;
+  animation: kolibani 2.6s ease-in-out infinite alternate;
+}
+@keyframes kolibani {
+  0%   { transform: rotate(-6deg) translateY(0px);}
+  48%  { transform: rotate(3deg)  translateY(1.2px);}
+  65%  { transform: rotate(-2deg) translateY(-0.6px);}
+  80%  { transform: rotate(2deg)  translateY(0.5px);}
+  100% { transform: rotate(0deg)  translateY(0px);}
+}
+
+/* Mrknutí pouze levého oka na hover */
+.segment-mrk:hover svg #okoL {
+  animation: mrkniJednimOkem 0.5s cubic-bezier(.7,0,.5,1.4) 1;
+}
+@keyframes mrkniJednimOkem {
+  0%   { ry:1.5; }
+  10%  { ry:0.2; }
+  80%  { ry:0.2; }
+  100% { ry:1.5; }
+}
+
