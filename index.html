@@ -31,9 +31,8 @@
   </nav>
 </header>
 
-
-   </div>
-   <main>
+<div class="container">
+  <main>
     <section id="o-mne">
       <h2>O mně</h2>
       <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových situacích. Naslouchám, chápu, navrhuji řešení. Schůzky osobně i on-line.</p>
@@ -129,85 +128,72 @@
       </form>
     </section>
   </main>
+</div>
 
-  <footer>
-    <p>
-      Daniel Verner<br>
-      📞 733 782 290<br>
-      📩 pojistitosnadno@gmail.com<br>
-      📍 Olomoucký kraj – schůzky individuálně
-    </p>
-    <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
-  </footer>
+<footer>
+  <p>
+    Daniel Verner<br>
+    📞 733 782 290<br>
+    📩 pojistitosnadno@gmail.com<br>
+    📍 Olomoucký kraj – schůzky domlouvám individuálně
+  </p>
+  <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
+</footer>
 
-  <script>
-    // Responzivní menu – zobrazí mobil/desktop variantu podle šířky
-    function handleMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const desktopMenu = document.getElementById('desktopMenu');
-      if(window.innerWidth < 850) {
-        mobileMenu.style.display = 'flex';
-        desktopMenu.style.display = 'none';
-      } else {
-        mobileMenu.style.display = 'none';
-        desktopMenu.style.display = 'flex';
-      }
+<script>
+  // Carousel
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+    const btnPrev = document.querySelector('.carousel-btn.prev');
+    const btnNext = document.querySelector('.carousel-btn.next');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    let index = 0;
+
+    // Dots
+    for(let i=0; i<items.length; i++){
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot';
+      if(i===0) dot.classList.add('active');
+      dot.addEventListener('click', ()=> goToSlide(i));
+      dotsContainer.appendChild(dot);
     }
-    window.addEventListener('resize', handleMenu);
-    window.addEventListener('DOMContentLoaded', handleMenu);
-
-    // Carousel
-    document.addEventListener('DOMContentLoaded', function() {
-      const track = document.querySelector('.carousel-track');
-      const items = document.querySelectorAll('.carousel-item');
-      const btnPrev = document.querySelector('.carousel-btn.prev');
-      const btnNext = document.querySelector('.carousel-btn.next');
-      const dotsContainer = document.querySelector('.carousel-dots');
-      let index = 0;
-
-      for(let i=0; i<items.length; i++){
-        const dot = document.createElement('div');
-        dot.className = 'carousel-dot';
-        if(i===0) dot.classList.add('active');
-        dot.addEventListener('click', ()=> goToSlide(i));
-        dotsContainer.appendChild(dot);
-      }
-      const dots = document.querySelectorAll('.carousel-dot');
-      function updateDots(){
-        dots.forEach((d,i)=>d.classList.toggle('active', i===index));
-      }
-      function getSlideWidth() {
-        return items[0].offsetWidth +
-          parseInt(getComputedStyle(items[0]).marginLeft) +
-          parseInt(getComputedStyle(items[0]).marginRight);
-      }
-      function goToSlide(i){
-        index = i;
-        track.scrollTo({
-          left: getSlideWidth() * i,
-          behavior: "smooth"
-        });
-        updateDots();
-      }
-      btnPrev.onclick = () => {
-        if(index>0) { index--; goToSlide(index);}
-      };
-      btnNext.onclick = () => {
-        if(index<items.length-1) { index++; goToSlide(index);}
-      };
-      // Swipe na mobilu
-      let startX = null;
-      track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
+    const dots = document.querySelectorAll('.carousel-dot');
+    function updateDots(){
+      dots.forEach((d,i)=>d.classList.toggle('active', i===index));
+    }
+    function getSlideWidth() {
+      return items[0].offsetWidth +
+        parseInt(getComputedStyle(items[0]).marginLeft) +
+        parseInt(getComputedStyle(items[0]).marginRight);
+    }
+    function goToSlide(i){
+      index = i;
+      track.scrollTo({
+        left: getSlideWidth() * i,
+        behavior: "smooth"
       });
-      track.addEventListener('touchend', (e) => {
-        if(startX === null) return;
-        let diff = e.changedTouches[0].clientX - startX;
-        if(diff > 30 && index > 0) { index--; goToSlide(index);}
-        else if(diff < -30 && index < items.length-1) { index++; goToSlide(index);}
-        startX = null;
-      });
+      updateDots();
+    }
+    btnPrev.onclick = () => {
+      if(index>0) { index--; goToSlide(index);}
+    };
+    btnNext.onclick = () => {
+      if(index<items.length-1) { index++; goToSlide(index);}
+    };
+    // Swipe na mobilu
+    let startX = null;
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
     });
-  </script>
+    track.addEventListener('touchend', (e) => {
+      if(startX === null) return;
+      let diff = e.changedTouches[0].clientX - startX;
+      if(diff > 30 && index > 0) { index--; goToSlide(index);}
+      else if(diff < -30 && index < items.length-1) { index++; goToSlide(index);}
+      startX = null;
+    });
+  });
+</script>
 </body>
 </html>
