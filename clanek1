@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Pojisti To Snadno – Daniel Verner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <!-- Mobilní kruhové menu -->
+    <div class="circle-menu" id="mobileMenu">
+      <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
+      <div class="circle-menu-label">Menu</div>
+      <nav class="circle-nav">
+        <a href="#o-mne" class="circle-link">O mně</a>
+        <a href="#sluzby" class="circle-link">Služby</a>
+        <a href="#pribehy" class="circle-link">Reálné příběhy</a>
+        <a href="clanky.html" class="circle-link">Články</a>
+        <a href="slovnik.html" class="circle-link">Slovník</a>
+        <a href="#kontakt" class="circle-link">Kontakt</a>
+      </nav>
+    </div>
+
+<main class="container">
+  <article>
+    <hgroup>
+      <h2>Jak funguje životní pojištění? Praktické příklady a vysvětlení</h2>
+    </hgroup>
+
+    <p>Životní pojištění je často považováno za složité. Pojďme si proto vysvětlit, co kryje a komu se vyplatí.</p>
+
+    <h3>Co je životní pojištění?</h3>
+    <p>Chrání vaši rodinu v případě, že se vám něco stane – například vážná nemoc, invalidita nebo úmrtí.</p>
+
+    <h3>Praktický příklad</h3>
+    <p>Petr (35 let) má hypotéku a dvě děti. Sjednal si životní pojištění na 2 mil. Kč, aby měla rodina finanční jistotu, pokud by se mu něco stalo.</p>
+
+    <h3>Kdy se vyplatí?</h3>
+    <p>✅ Pokud máte děti<br>✅ Pokud máte úvěry<br>✅ Pokud chcete jistotu při nemocech nebo úrazech</p>
+
+    <h3>Závěr</h3>
+    <p>Životní pojištění není o strachu, ale o klidu a jistotě pro vás i vaše blízké.</p>
+
+    <p><strong>👉 Potřebujete poradit s životním pojištěním? Domluvte si konzultaci zdarma.</strong></p>
+  </article>
+</main>
+
+ <footer>
+    <p>
+      Daniel Verner<br>
+      📞 733 782 290<br>
+      📩 pojistitosnadno@gmail.com<br>
+      📍 Olomoucký kraj – schůzky individuálně
+    </p>
+    <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
+  </footer>
+
+</body>
+</html>
