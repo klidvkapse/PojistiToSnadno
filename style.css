@@ -350,4 +350,19 @@ footer small {
   }
   .circle-link { font-size: 0.89rem; padding: 0.37rem 0.67rem; }
   section { padding: 0.7rem 0.15rem; }
+.img-slovnik {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.2rem auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
+
+@media (min-width: 701px) {
+  .img-slovnik {
+    max-width: 340px;
+  }
+}
+
