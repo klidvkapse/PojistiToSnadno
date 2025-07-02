@@ -7,17 +7,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <nav class="top-nav">
-    <img src="portret.png" alt="Daniel Verner" class="portrait-desktop">
+ <header>
+  <!-- Mobilní menu -->
+  <div class="circle-menu" id="mobileMenu">
+    <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
+    <div class="circle-menu-label">Menu</div>
+    <nav class="circle-nav">
+      <a href="index.html#domu" class="circle-link">Domů</a>
+      <a href="clanky.html" class="circle-link">Články</a>
+      <a href="index.html#kontakt" class="circle-link">Kontakt</a>
+    </nav>
+  </div>
+  <!-- Desktop menu -->
+  <nav class="top-nav" id="desktopMenu">
+    <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
     <a href="index.html#domu">Domů</a>
-    <a href="index.html#pribehy">Reálné škody klientů</a>
     <a href="clanky.html">Články</a>
-    <a href="slovnik.html">Slovník</a>
     <a href="index.html#kontakt">Kontakt</a>
   </nav>
 </header>
-
 <main class="container">
   <h2>Pro koho je životní pojištění?</h2>
   <p class="intro">Vyberte si skupinu, které se vás nejvíce týká:</p>
