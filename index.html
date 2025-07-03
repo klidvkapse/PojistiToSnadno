@@ -24,9 +24,7 @@
       overflow-x: hidden;
       transition: background-image 0.4s;
     }
-    .main-wrapper {
-      display: block;
-    }
+    .main-wrapper { display: block; }
     .bg-img-desktop {
       position: fixed;
       z-index: 1;
@@ -147,7 +145,7 @@
       text-decoration: underline;
     }
 
-    /* --- MOBIL: box více doleva a výš, text vlevo --- */
+    /* --- MOBIL: box více doleva a výš, text vlevo + VĚTŠÍ JMÉNO --- */
     @media (max-width: 800px) {
       .bg-img-desktop { display: none !important; }
       body {
@@ -187,27 +185,32 @@
       }
       .main-box {
         position: absolute;
-        left: 2vw;        /* výrazně k levému okraji */
-        bottom: 110px;    /* výš nad patičkou */
+        left: 2vw;
+        bottom: 110px;
         width: 90vw;
         max-width: 410px;
         font-size: 0.97em;
         padding: 1.1em 1em 1.2em 1.2em;
         border-radius: 16px;
         margin: 0;
-        text-align: left; /* text vlevo */
+        text-align: left;
         box-shadow: 0 2px 24px rgba(0,0,0,0.15);
         background: rgba(0,0,0,0.20);
         backdrop-filter: blur(6px);
         pointer-events: auto;
       }
       .main-box h1 {
-        font-size: 1.09em;
-        margin-bottom: 0.55em;
+        font-size: 2.15em;   /* Větší font pouze pro mobil */
+        font-weight: 900;
+        margin-bottom: 0.5em;
         text-align: left;
+        color: #ffe87a;
+        letter-spacing: 0.04em;
+        line-height: 1.13;
+        text-shadow: 0 2px 18px #000, 0 0 2px #b7a97c;
       }
       .main-box .about {
-        font-size: 0.96em;
+        font-size: 0.98em;
         margin-bottom: 1em;
         line-height: 1.25;
         text-align: left;
@@ -248,7 +251,10 @@
         left: 1vw;
         bottom: 80px;
       }
-      .main-box h1 { font-size: 1em; }
+      .main-box h1 { 
+        font-size: 1.5em; 
+        line-height: 1.2;
+      }
       .main-box .about { font-size: 0.89em; }
       .main-box .real-link { font-size: 0.93em; padding: 0.62em 0; }
     }
@@ -261,7 +267,6 @@
       <a href="slovnik.html">Slovník</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <!-- Pozadí desktop -->
     <img src="portret-bg-web.png" alt="Daniel Verner – portrét" class="bg-img-desktop">
     <div class="main-content">
       <div class="main-box">
