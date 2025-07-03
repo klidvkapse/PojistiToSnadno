@@ -5,155 +5,212 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Laický slovník pojistných pojmů | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Pozadí podle zadání */
+    .bg-img-desktop {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover; object-position: center;
+      filter: brightness(0.76) blur(2.5px);
+      opacity: 0.99; z-index: 1;
+      pointer-events: none; user-select: none;
+      transition: all 0.5s;
+      display: block;
+    }
+    .bg-img-mobile { display: none; }
+    @media (max-width: 800px) {
+      .bg-img-desktop { display: none !important; }
+      .bg-img-mobile {
+        display: block !important;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw; height: 100vh;
+        object-fit: cover; object-position: center top;
+        filter: brightness(0.74) blur(2.2px);
+        opacity: 0.98; z-index: 1;
+        pointer-events: none; user-select: none;
+        transition: all 0.5s;
+      }
+    }
+    /* Navigace (tlačítka nahoře) */
+    .main-nav {
+      position: relative;
+      z-index: 10;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      gap: 1.2em;
+      padding: 1.1em 0 0.7em 0;
+      background: transparent;
+    }
+    .main-nav a {
+      background: #e2dbc9;
+      color: #494732;
+      padding: 0.62rem 1.3rem;
+      border-radius: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 2px 12px rgba(120,100,60,0.11);
+      transition: background 0.2s, color 0.2s;
+      font-size: 1.08rem;
+    }
+    .main-nav a:hover, .main-nav a.active {
+      background: #dad0b8;
+      color: #85733a;
+    }
+    @media (max-width: 800px) {
+      .main-nav { gap: 0.6em; padding: 0.8em 0 0.5em 0;}
+      .main-nav a { font-size: 1em; padding: 0.48rem 1.1rem;}
+    }
+    /* Obsah na pozadí */
+    body > *:not(.bg-img-desktop):not(.bg-img-mobile) { position: relative; z-index: 10; }
+  </style>
 </head>
 <body>
+  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
+  <img src="portret.png" alt="" class="bg-img-mobile">
 
-<header>
-  <!-- Menu podle tvého hlavního webu -->
-  <nav class="top-nav">
-    <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
+  <!-- TLAČÍTKA -->
+  <nav class="main-nav">
     <a href="index.html#domu">Domů</a>
     <a href="clanky.html">Články</a>
     <a href="slovnik.html" class="active">Slovník</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
-</header>
 
-<main class="container">
-  <section class="slovnik-section">
-    <h2>Laický slovník pojistných pojmů</h2>
-    <div class="slovnik-row">
-      <div class="img-wrap">
-        <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
-      </div>
-      <div class="dict-container">
-        <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
-        <div id="suggestions"></div>
-        <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
-        <div class="slovnik-tip">
-          <b>Tip:</b> Zadejte libovolný pojem, nebo jeho část.<br>
-          Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+  <main class="container">
+    <section class="slovnik-section">
+      <h2>Laický slovník pojistných pojmů</h2>
+      <div class="slovnik-row">
+        <div class="img-wrap">
+          <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
         </div>
-        <div class="slovnik-missing">
-          <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+        <div class="dict-container">
+          <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
+          <div id="suggestions"></div>
+          <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
+          <div class="slovnik-tip">
+            <b>Tip:</b> Zadejte libovolný pojem, nebo jeho část.<br>
+            Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+          </div>
+          <div class="slovnik-missing">
+            <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+          </div>
+          <div id="output" class="slovnik-output" data-current=""></div>
         </div>
-        <div id="output" class="slovnik-output" data-current=""></div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-<footer>
-  <p>
-    Daniel Verner<br>
-    📞 733 782 290<br>
-    📩 pojistitosnadno@gmail.com<br>
-    📍 Olomoucký kraj – schůzky individuálně
-  </p>
-  <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
-</footer>
+  <footer>
+    <p>
+      Daniel Verner<br>
+      📞 733 782 290<br>
+      📩 pojistitosnadno@gmail.com<br>
+      📍 Olomoucký kraj – schůzky individuálně
+    </p>
+    <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
+  </footer>
 
-<!-- Pokud používáš JS slovník, vlož zde svůj skript nebo nech původní -->
-<script>
-  const terms = {
-    "pojistná smlouva": {
-      def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
-      ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."
-    },
-    "pojistná událost": {
-      def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
-      ex: "Například škoda způsobená krupobitím na pergole je pojistnou událostí."
-    },
-    "pojistné plnění": {
-      def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",
-      ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."
-    },
-    "výluka z pojištění": {
-      def: "Situace, kdy pojištění nepokrývá určité události nebo škody.",
-      ex: "Například škody způsobené úmyslným jednáním bývají výlukou."
-    },
-    "spoluúčast": {
-      def: "Část škody, kterou si klient hradí sám.",
-      ex: "Při havárii se spoluúčastí 1000 Kč klient tuto částku zaplatí sám a zbytek pokryje pojišťovna."
-    },
-    "pojistné": {
-      def: "Částka, kterou platí pojistník pojišťovně za poskytování pojistné ochrany.",
-      ex: "Roční pojistné na pojištění domácnosti činí 2800 Kč."
-    },
-    "pojistník": {
-      def: "Osoba, která uzavřela pojistnou smlouvu a je povinna platit pojistné.",
-      ex: "Manžel uzavřel pojistnou smlouvu – je tedy pojistník, přestože pojištěna je manželka."
-    },
-    "pojištěný": {
-      def: "Osoba, na jejíž život, zdraví, majetek nebo odpovědnost se vztahuje pojištění.",
-      ex: "Dítě je pojištěné v rámci úrazového pojištění sjednaného rodičem."
-    },
-    "obmyšlená osoba": {
-      def: "Osoba, které je v případě smrti pojištěného vyplaceno pojistné plnění.",
-      ex: "Obmyšlenou osobou bývá nejčastěji manžel(ka) nebo děti."
-    },
-    "likvidace pojistné události": {
-      def: "Proces posouzení a vyřízení pojistné události pojišťovnou.",
-      ex: "Po nahlášení škody probíhá likvidace pojistné události do několika dnů."
-    },
-    "indexace": {
-      def: "Automatické navyšování pojistné částky a pojistného, často kvůli inflaci.",
-      ex: "Indexace zajistí, že hodnota pojištění odpovídá cenám v budoucnosti."
-    },
-    "pojistná částka": {
-      def: "Maximální částka, kterou pojišťovna vyplatí při pojistné události.",
-      ex: "Pojistná částka na dům byla stanovena na 2,5 milionu Kč."
-    },
-    "pojistná doba": {
-      def: "Období, na které je pojištění sjednáno.",
-      ex: "Pojistná doba trvá 5 let – po tuto dobu je pojištění aktivní."
-    },
-    "pojistné období": {
-      def: "Období, za které se platí pojistné – např. měsíc, čtvrtletí, rok.",
-      ex: "Pojistné období je jeden rok – pojistné se platí jednou ročně."
-    },
-    "časová cena": {
-      def: "Časovou cenou se rozumí cena, která se stanoví z nové ceny věci, přičemž se přihlíží ke stupni opotřebení nebo jiného znehodnocení anebo ke zhodnocení věci, k němuž došlo opravou, modernizací nebo jiným způsobem",
-      ex: "Představ si, že máš televizi, která stála před 5 lety 15 000 Kč. Dnes už není nová, možná má nějaké škrábance, ale pořád funguje. Teď bys ji třeba prodal za 5 000 Kč – to je její časová cena."
-    },
-    "dopravní nehoda": {
-      def: "Dopravní nehoda je definována jako událost v provozu na pozemních komunikacích, například havárie nebo srážka vozidla, která se stala nebo byla započata na pozemní komunikaci. Dále zahrnuje nehody při veřejné hromadné dopravě na železnici, vodních tocích a v letadlech. K pojistné události při dopravní nehodě je nutné doložit záznam státního orgánu o výsledku šetření dopravní nehody a zdravotnickou dokumentaci související s úrazem, pokud k němu došlo ",
-      ex: "Dopravní nehoda je srážka nebo havárie na silnici, ve vlaku, lodi nebo letadle. Může jít i o situaci, kdy je sražen chodec nebo cyklista.Pro vyplacení pojistky je potřeba zpráva od policie a lékařská dokumentace, pokud došlo k úrazu.."
+  <script>
+    const terms = {
+      "pojistná smlouva": {
+        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
+        ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."
+      },
+      "pojistná událost": {
+        def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
+        ex: "Například škoda způsobená krupobitím na pergole je pojistnou událostí."
+      },
+      "pojistné plnění": {
+        def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",
+        ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."
+      },
+      "výluka z pojištění": {
+        def: "Situace, kdy pojištění nepokrývá určité události nebo škody.",
+        ex: "Například škody způsobené úmyslným jednáním bývají výlukou."
+      },
+      "spoluúčast": {
+        def: "Část škody, kterou si klient hradí sám.",
+        ex: "Při havárii se spoluúčastí 1000 Kč klient tuto částku zaplatí sám a zbytek pokryje pojišťovna."
+      },
+      "pojistné": {
+        def: "Částka, kterou platí pojistník pojišťovně za poskytování pojistné ochrany.",
+        ex: "Roční pojistné na pojištění domácnosti činí 2800 Kč."
+      },
+      "pojistník": {
+        def: "Osoba, která uzavřela pojistnou smlouvu a je povinna platit pojistné.",
+        ex: "Manžel uzavřel pojistnou smlouvu – je tedy pojistník, přestože pojištěna je manželka."
+      },
+      "pojištěný": {
+        def: "Osoba, na jejíž život, zdraví, majetek nebo odpovědnost se vztahuje pojištění.",
+        ex: "Dítě je pojištěné v rámci úrazového pojištění sjednaného rodičem."
+      },
+      "obmyšlená osoba": {
+        def: "Osoba, které je v případě smrti pojištěného vyplaceno pojistné plnění.",
+        ex: "Obmyšlenou osobou bývá nejčastěji manžel(ka) nebo děti."
+      },
+      "likvidace pojistné události": {
+        def: "Proces posouzení a vyřízení pojistné události pojišťovnou.",
+        ex: "Po nahlášení škody probíhá likvidace pojistné události do několika dnů."
+      },
+      "indexace": {
+        def: "Automatické navyšování pojistné částky a pojistného, často kvůli inflaci.",
+        ex: "Indexace zajistí, že hodnota pojištění odpovídá cenám v budoucnosti."
+      },
+      "pojistná částka": {
+        def: "Maximální částka, kterou pojišťovna vyplatí při pojistné události.",
+        ex: "Pojistná částka na dům byla stanovena na 2,5 milionu Kč."
+      },
+      "pojistná doba": {
+        def: "Období, na které je pojištění sjednáno.",
+        ex: "Pojistná doba trvá 5 let – po tuto dobu je pojištění aktivní."
+      },
+      "pojistné období": {
+        def: "Období, za které se platí pojistné – např. měsíc, čtvrtletí, rok.",
+        ex: "Pojistné období je jeden rok – pojistné se platí jednou ročně."
+      },
+      "časová cena": {
+        def: "Časovou cenou se rozumí cena, která se stanoví z nové ceny věci, přičemž se přihlíží ke stupni opotřebení nebo jiného znehodnocení anebo ke zhodnocení věci, k němuž došlo opravou, modernizací nebo jiným způsobem",
+        ex: "Představ si, že máš televizi, která stála před 5 lety 15 000 Kč. Dnes už není nová, možná má nějaké škrábance, ale pořád funguje. Teď bys ji třeba prodal za 5 000 Kč – to je její časová cena."
+      },
+      "dopravní nehoda": {
+        def: "Dopravní nehoda je definována jako událost v provozu na pozemních komunikacích, například havárie nebo srážka vozidla, která se stala nebo byla započata na pozemní komunikaci. Dále zahrnuje nehody při veřejné hromadné dopravě na železnici, vodních tocích a v letadlech. K pojistné události při dopravní nehodě je nutné doložit záznam státního orgánu o výsledku šetření dopravní nehody a zdravotnickou dokumentaci související s úrazem, pokud k němu došlo ",
+        ex: "Dopravní nehoda je srážka nebo havárie na silnici, ve vlaku, lodi nebo letadle. Může jít i o situaci, kdy je sražen chodec nebo cyklista.Pro vyplacení pojistky je potřeba zpráva od policie a lékařská dokumentace, pokud došlo k úrazu.."
+      }
+    };
+    function showDefinition() {
+      const key = document.getElementById('search').value.toLowerCase();
+      const out = document.getElementById('output');
+      if (out.innerHTML && out.dataset.current === key) {
+        out.innerHTML = '';
+        out.dataset.current = '';
+        return;
+      }
+      if (terms[key]) {
+        out.innerHTML = `<strong>${key}</strong><span class="def">${terms[key].def}</span><span class="ex">${terms[key].ex}</span>`;
+        out.dataset.current = key;
+      } else {
+        out.innerHTML = `<span class="def">Pojem nebyl nalezen.</span>`;
+        out.dataset.current = '';
+      }
     }
-  };
-function showDefinition() {
-  const key = document.getElementById('search').value.toLowerCase();
-  const out = document.getElementById('output');
-  if (out.innerHTML && out.dataset.current === key) {
-    out.innerHTML = '';
-    out.dataset.current = '';
-    return;
-  }
-  if (terms[key]) {
-    out.innerHTML = `<strong>${key}</strong><span class="def">${terms[key].def}</span><span class="ex">${terms[key].ex}</span>`;
-    out.dataset.current = key;
-  } else {
-    out.innerHTML = `<span class="def">Pojem nebyl nalezen.</span>`;
-    out.dataset.current = '';
-  }
-}
-function showSuggestions() {
-  const q = document.getElementById('search').value.toLowerCase();
-  const list = document.getElementById('suggestions');
-  list.innerHTML = '';
-  if (!q) return;
-  Object.keys(terms).filter(t => t.includes(q))
-    .forEach(t => {
-      const d = document.createElement('div');
-      d.className = 'suggestion';
-      d.innerText = t;
-      d.onclick = () => {
-        document.getElementById('search').value = t;
-        list.innerHTML = '';
-      };
-      list.appendChild(d);
-    });
-}
-</script>
+    function showSuggestions() {
+      const q = document.getElementById('search').value.toLowerCase();
+      const list = document.getElementById('suggestions');
+      list.innerHTML = '';
+      if (!q) return;
+      Object.keys(terms).filter(t => t.includes(q))
+        .forEach(t => {
+          const d = document.createElement('div');
+          d.className = 'suggestion';
+          d.innerText = t;
+          d.onclick = () => {
+            document.getElementById('search').value = t;
+            list.innerHTML = '';
+          };
+          list.appendChild(d);
+        });
+    }
+  </script>
 </body>
 </html>
