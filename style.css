@@ -307,43 +307,58 @@ footer small {
 /* ----------- SLOVNÍK POJMŮ ----------- */
 
 /* Wrapper obrázku a otazníku */
-.img-wrap {
-  position: relative;
+.slovnik-row {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* obrázek vlevo, otazník vpravo */
-  gap: 0; /* žádná mezera, otazník je opravdu vpravo obrázku */
+  gap: 2.2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.img-wrap {
+  flex-shrink: 0;
+}
+
+.dict-container {
+  flex: 1 1 auto;
+  min-width: 240px;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .slovnik-ikona {
-  position: absolute;
-  right: -55px;         /* více vpravo, větší mezera */
-  bottom: 0;
-  font-size: 3.5rem;    /* větší velikost otazníku */
+  margin-left: 2.8rem;
+  font-size: 4.3rem;    /* ještě větší! */
   color: var(--primary);
-  filter: drop-shadow(0 1px 4px rgba(120,100,60,0.13));
+  filter: drop-shadow(0 2px 12px rgba(120,100,60,0.12));
   animation: hop 1.3s infinite alternate;
   user-select: none;
   pointer-events: none;
   z-index: 2;
+  align-self: flex-end;
 }
 
 @keyframes hop {
   0% { transform: translateY(0);}
-  100% { transform: translateY(-10px);}
+  100% { transform: translateY(-12px);}
 }
 
-@media (max-width: 700px) {
-  .img-wrap {
-    justify-content: flex-start;
+/* Mobil – otazník pod slovníkem, menší */
+@media (max-width: 900px) {
+  .slovnik-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
   }
   .slovnik-ikona {
-    position: static;
-    font-size: 2.3rem;
-    margin-left: 1.1em;
-    margin-bottom: 0;
-    right: unset;
-    bottom: unset;
+    margin-left: 0;
+    margin-top: 1.1em;
+    font-size: 2.5rem;
+    align-self: flex-start;
   }
 
 }
