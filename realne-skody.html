@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Laický slovník pojistných pojmů | PojistiToSnadno</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Pozadí podle zadání */
+    .bg-img-desktop {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover; object-position: center;
+      filter: brightness(0.76) blur(2.5px);
+      opacity: 0.99; z-index: 1;
+      pointer-events: none; user-select: none;
+      transition: all 0.5s;
+      display: block;
+    }
+    .bg-img-mobile { display: none; }
+    @media (max-width: 800px) {
+      .bg-img-desktop { display: none !important; }
+      .bg-img-mobile {
+        display: block !important;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw; height: 100vh;
+        object-fit: cover; object-position: center top;
+        filter: brightness(0.74) blur(2.2px);
+        opacity: 0.98; z-index: 1;
+        pointer-events: none; user-select: none;
+        transition: all 0.5s;
+      }
+    }
+    /* Navigace (tlačítka nahoře) */
+    .main-nav {
+      position: relative;
+      z-index: 10;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      gap: 1.2em;
+      padding: 1.1em 0 0.7em 0;
+      background: transparent;
+    }
+    .main-nav a {
+      background: #e2dbc9;
+      color: #494732;
+      padding: 0.62rem 1.3rem;
+      border-radius: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 2px 12px rgba(120,100,60,0.11);
+      transition: background 0.2s, color 0.2s;
+      font-size: 1.08rem;
+    }
+    .main-nav a:hover, .main-nav a.active {
+      background: #dad0b8;
+      color: #85733a;
+    }
+    @media (max-width: 800px) {
+      .main-nav { gap: 0.6em; padding: 0.8em 0 0.5em 0;}
+      .main-nav a { font-size: 1em; padding: 0.48rem 1.1rem;}
+    }
+    /* Obsah na pozadí */
+    body > *:not(.bg-img-desktop):not(.bg-img-mobile) { position: relative; z-index: 10; }
+  </style>
+</head>
+<body>
+  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
+  <img src="portret.png" alt="" class="bg-img-mobile">
+
+  <!-- TLAČÍTKA -->
+  <nav class="main-nav">
+    <a href="index.html#domu">Domů</a>
+    <a href="clanky.html">Články</a>
+    <a href="slovnik.html" class="active">Slovník</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+ <section id="pribehy">
+      <h2>Reálné škody klientů</h2>
+      <div class="carousel-wrap">
+        <button class="carousel-btn prev">&#8678;</button>
+        <div class="carousel-track">
+          <div class="carousel-item">
+            <h3>Denní odškodné</h3>
+            <p><strong>Příčina:</strong> Dopravní nehoda</p>
+            <p><b>23 100 Kč</b></p>
+            <p>Vyřízení: 4 dny</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Živelná událost</h3>
+            <p><strong>Příčina:</strong> Kroupobití</p>
+            <p><b>11 448 Kč</b></p>
+            <p>Vyřízení: 7 hodin</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Plnění při ošetřování</h3>
+            <p><strong>Příčina:</strong> Ošetřování dítěte</p>
+            <p><b>30 900 Kč</b></p>
+            <p>Vyřízení: 7 hodin</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Tělesné poškození</h3>
+            <p><strong>Příčina:</strong> Úraz palce</p>
+            <p><b>5 000 Kč</b></p>
+            <p>Vyřízení: 1 den</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Pobyt v nemocnici (nemoc)</h3>
+            <p><strong>Příčina:</strong> Nemoc</p>
+            <p><b>900 Kč</b></p>
+            <p>Vyřízení: 1 den</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Poškození skla</h3>
+            <p><strong>Příčina:</strong> Poškození skla</p>
+            <p><b>6 199 Kč</b></p>
+            <p>Vyřízení: 4 dny</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Tělesné poškození úrazem</h3>
+            <p><strong>Příčina:</strong> Ostatní úrazy</p>
+            <p><b>22 500 Kč</b></p>
+            <p>Vyřízení: 2 dny</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Tělesné poškození úrazem</h3>
+            <p><strong>Příčina:</strong> Ostatní úrazy</p>
+            <p><b>22 000 Kč</b></p>
+            <p>Vyřízení: 2 dny</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Vodovodní škoda</h3>
+            <p><strong>Příčina:</strong> Únik vody</p>
+            <p><b>6 790 Kč</b></p>
+            <p>Vyřízení: 2 dny</p>
+          </div>
+        </div>
+        <button class="carousel-btn next">&#8680;</button>
+      </div>
+      <div class="carousel-dots"></div>
+    </section>
+    </main>
+</div>
+
+<footer>
+  <p>
+    Daniel Verner<br>
+    📞 733 782 290<br>
+    📩 pojistitosnadno@gmail.com<br>
+    📍 Olomoucký kraj – schůzky domlouvám individuálně
+  </p>
+  <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
+</footer>
+
+<script>
+  // Carousel
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+    const btnPrev = document.querySelector('.carousel-btn.prev');
+    const btnNext = document.querySelector('.carousel-btn.next');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    let index = 0;
+
+    // Dots
+    for(let i=0; i<items.length; i++){
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot';
+      if(i===0) dot.classList.add('active');
+      dot.addEventListener('click', ()=> goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+    const dots = document.querySelectorAll('.carousel-dot');
+    function updateDots(){
+      dots.forEach((d,i)=>d.classList.toggle('active', i===index));
+    }
+    function getSlideWidth() {
+      return items[0].offsetWidth +
+        parseInt(getComputedStyle(items[0]).marginLeft) +
+        parseInt(getComputedStyle(items[0]).marginRight);
+    }
+    function goToSlide(i){
+      index = i;
+      track.scrollTo({
+        left: getSlideWidth() * i,
+        behavior: "smooth"
+      });
+      updateDots();
+    }
+    btnPrev.onclick = () => {
+      if(index>0) { index--; goToSlide(index);}
+    };
+    btnNext.onclick = () => {
+      if(index<items.length-1) { index++; goToSlide(index);}
+    };
+    // Swipe na mobilu
+    let startX = null;
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+    track.addEventListener('touchend', (e) => {
+      if(startX === null) return;
+      let diff = e.changedTouches[0].clientX - startX;
+      if(diff > 30 && index > 0) { index--; goToSlide(index);}
+      else if(diff < -30 && index < items.length-1) { index++; goToSlide(index);}
+      startX = null;
+    });
+  });
+</script>
+</body>
+</html>
