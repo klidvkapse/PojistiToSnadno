@@ -24,15 +24,16 @@
       overflow: hidden;
     }
     .bg-img {
-      position: fixed;
-      z-index: 1;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      object-position: center;
-      filter: brightness(0.75) blur(1px);
-    }
+  position: fixed;
+  z-index: 1;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: right center;  /* <--- tady je klíč */
+  filter: brightness(0.75) blur(1px);
+}
+
     /* MENU */
     .menu-bar {
       position: fixed;
