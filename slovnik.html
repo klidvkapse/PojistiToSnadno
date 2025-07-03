@@ -31,25 +31,28 @@
   </nav>
 </header>
 
-  <main style="margin-top:40px;">
-    <section id="slovnik">
-      <h2>Laický slovník pojistných pojmů</h2>
+ <main style="margin-top:40px;">
+  <section id="slovnik">
+    <h2>Laický slovník pojistných pojmů</h2>
+    <div class="slovnik-row">
       <img src="SLOVNIK.png"
-     alt="Slovník pojistných pojmů"
-     class="img-slovnik"
-     style="display:block;margin:0 auto 1rem;border-radius:var(--radius);box-shadow:var(--shadow);">
+        alt="Slovník pojistných pojmů"
+        class="img-slovnik" />
 
       <div class="dict-container">
         <input type="text" id="search"
-               placeholder="např. pojistná událost"
-               oninput="showSuggestions()"
-               style="padding:.8rem;width:100%;border:2px solid var(--button-light);border-radius:var(--radius);">
+              placeholder="např. pojistná událost"
+              oninput="showSuggestions()"
+              style="padding:.8rem;width:100%;border:2px solid var(--button-light);border-radius:var(--radius);">
         <div id="suggestions"></div>
         <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
         <div id="output" data-current=""></div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
+
+
   <footer>
     <p><strong>Kontakt:</strong></p>
     <p>
