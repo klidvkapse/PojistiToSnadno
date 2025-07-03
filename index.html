@@ -178,16 +178,28 @@
         background: none;
         align-items: flex-start;
       }
-      .main-box {
-        border-radius: 20px;
-        width: 100%;
-        font-size: 1.05em;
-        padding: 1.15em 0.85em 1.05em 1.0em;
-        margin-top: -22vw;  /* lehké překrytí textu přes spodní část fotky (můžeš vymazat pokud nechceš) */
-        box-shadow: 0 6px 28px 0 rgba(0,0,0,0.14);
-        background: rgba(0,0,0,0.37);
-      }
-      .main-box h1 { font-size: 1.15em;}
+      @media (max-width: 700px) {
+  .main-box {
+    width: 90vw;
+    max-width: 340px;
+    font-size: 0.97em;
+    padding: 0.9em 0.6em 1em 0.7em;
+    border-radius: 14px;
+    margin: 0 auto;
+  }
+  .main-box h1 { font-size: 1.04em; }
+}
+
+@media (max-width: 440px) {
+  .main-box {
+    width: 98vw;
+    max-width: 99vw;
+    font-size: 0.91em;
+    padding: 0.6em 0.2em 0.8em 0.3em;
+  }
+  .main-box h1 { font-size: 0.98em; }
+}
+
       .menu-bar {
         position: static;
         margin-top: 18px;
