@@ -253,7 +253,7 @@ h2 { font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;}
 h3 { font-size: 1.12em; font-weight: 700;}
 b, strong { color: #5d4e1f; }
 
-/* ---------- Carousel a boxy (vrácené původní styly) ---------- */
+/* ---------- Carousel a boxy ---------- */
 .container {
   max-width: 1050px;
   margin: 0 auto 2.5rem auto;
@@ -343,27 +343,91 @@ section {
   background: var(--primary);
 }
 
-/* Footer */
-footer {
-  background: var(--accent);
-  padding: 2rem 1rem;
-  border-top: 2px dashed var(--button);
-  box-shadow: var(--shadow);
-  text-align: center;
-  color: #7c7b63;
+/* ---------- NOVÝ FORMULÁŘ ---------- */
+.nabidka-formular {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
 }
-footer a {
+.nabidka-formular h2 {
   color: #85733a;
-  font-weight: 600;
-  text-decoration: none;
+  margin-bottom: 1.3rem;
+  font-size: 1.28rem;
 }
-footer small {
-  display: block;
-  margin-top: 1rem;
-  font-size: .9rem;
+.nabidka-formular form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.1rem 1.1rem;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
 }
-
-/* Responzivita */
+.nabidka-formular input[type="text"],
+.nabidka-formular input[type="number"],
+.nabidka-formular input[type="email"],
+.nabidka-formular input[type="tel"] {
+  padding: 0.88rem 1.1rem;
+  border: 2px solid var(--button);
+  border-radius: var(--radius);
+  background: #fcfbf6;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+  transition: border 0.2s;
+}
+.nabidka-formular textarea {
+  grid-column: 1 / span 2;
+  padding: 0.88rem 1.1rem;
+  border: 2px solid var(--button);
+  border-radius: var(--radius);
+  background: #fcfbf6;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+  resize: vertical;
+  min-height: 48px;
+  transition: border 0.2s;
+}
+.nabidka-formular input:focus,
+.nabidka-formular textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.nabidka-formular button[type="submit"] {
+  grid-column: 1 / span 4;
+  padding: 1rem;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.09rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  margin-top: 0.8rem;
+  cursor: pointer;
+  transition: background 0.18s;
+  letter-spacing: 0.04em;
+}
+.nabidka-formular button[type="submit"]:hover {
+  background: var(--button-hover);
+  color: var(--text);
+}
+/* Responzivita pro tablety */
+@media (max-width: 950px) {
+  .nabidka-formular form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .nabidka-formular textarea {
+    grid-column: 1 / span 2;
+  }
+  .nabidka-formular button[type="submit"] {
+    grid-column: 1 / span 2;
+  }
+}
+/* Responzivita pro mobily */
 @media (max-width: 700px) {
   .container, main, section {
     max-width: 100vw !important;
@@ -386,102 +450,6 @@ footer small {
     padding: 1.1rem 0.5rem 1.1rem 0.5rem;
     min-height: 160px;
   }
-/* Už žádné globální max-width! */
-/* --- NOVÝ STYL FORMULÁŘE --- */
-.nabidka-formular {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
-}
-
-.nabidka-formular h2 {
-  color: #85733a;
-  margin-bottom: 1.3rem;
-  font-size: 1.28rem;
-}
-
-.nabidka-formular form {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1.1rem 1.1rem;
-  align-items: center;
-  width: 100%;
-  margin-top: 0.5rem;
-}
-
-.nabidka-formular input[type="text"],
-.nabidka-formular input[type="number"],
-.nabidka-formular input[type="email"],
-.nabidka-formular input[type="tel"] {
-  padding: 0.88rem 1.1rem;
-  border: 2px solid var(--button);
-  border-radius: var(--radius);
-  background: #fcfbf6;
-  font-size: 1rem;
-  font-family: inherit;
-  width: 100%;
-  transition: border 0.2s;
-}
-
-.nabidka-formular textarea {
-  grid-column: 1 / span 2;
-  padding: 0.88rem 1.1rem;
-  border: 2px solid var(--button);
-  border-radius: var(--radius);
-  background: #fcfbf6;
-  font-size: 1rem;
-  font-family: inherit;
-  width: 100%;
-  resize: vertical;
-  min-height: 48px;
-  transition: border 0.2s;
-}
-
-.nabidka-formular input:focus,
-.nabidka-formular textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-.nabidka-formular button[type="submit"] {
-  grid-column: 1 / span 4;
-  padding: 1rem;
-  background: var(--primary);
-  color: #fff;
-  font-size: 1.09rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  margin-top: 0.8rem;
-  cursor: pointer;
-  transition: background 0.18s;
-  letter-spacing: 0.04em;
-}
-
-.nabidka-formular button[type="submit"]:hover {
-  background: var(--button-hover);
-  color: var(--text);
-}
-
-/* Responzivita pro tablety */
-@media (max-width: 950px) {
-  .nabidka-formular form {
-    grid-template-columns: 1fr 1fr;
-  }
-  .nabidka-formular textarea {
-    grid-column: 1 / span 2;
-  }
-  .nabidka-formular button[type="submit"] {
-    grid-column: 1 / span 2;
-  }
-}
-
-/* Responzivita pro mobily */
-@media (max-width: 700px) {
   .nabidka-formular form {
     grid-template-columns: 1fr;
     gap: 0.7rem 0;
@@ -490,4 +458,29 @@ footer small {
   .nabidka-formular button[type="submit"] {
     grid-column: 1 / span 1;
   }
+}
+
+/* Footer */
+footer {
+  background: var(--accent);
+  padding: 2rem 1rem;
+  border-top: 2px dashed var(--button);
+  box-shadow: var(--shadow);
+  text-align: center;
+  color: #7c7b63;
+}
+footer a {
+  color: #85733a;
+  font-weight: 600;
+  text-decoration: none;
+}
+footer small {
+  display: block;
+  margin-top: 1rem;
+  font-size: .9rem;
+}
+
+/* Prevence horizontálního přetékání */
+* {
+  max-width: 100vw;
 }
