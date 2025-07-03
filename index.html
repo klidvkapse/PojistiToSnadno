@@ -159,24 +159,19 @@
         min-height: 100vh;
       }
       /* Změna obrázku na mobilu! */
-      .bg-img-desktop {
-        display: none !important;
-      }
-      .bg-img-mobile {
-        display: block !important;
-        position: relative;
-        width: 100vw;
-        height: 48vw;
-        max-height: 320px;
-        min-height: 180px;
-        object-fit: contain;
-        object-position: center top;
-        opacity: 1;
-        filter: brightness(0.82) blur(0.5px);
-        border-radius: 0 0 24px 24px;
-        z-index: 1;
-        background: #181818;
-      }
+      /* Desktop – vše při starém */
+.bg-img-desktop { display: block; }
+.bg-img-mobile { display: none; }
+
+/* Mobil */
+@media (max-width: 800px) {
+  .bg-img-desktop, .bg-img-mobile { display: none !important; }
+  body {
+    background: #181818 url('portret.png') no-repeat center top;
+    background-size: cover;
+  }
+}
+
       .main-content {
         position: static;
         width: 100vw;
