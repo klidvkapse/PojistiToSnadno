@@ -29,9 +29,10 @@
       top: 0; left: 0; right: 0; bottom: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
+      object-fit: contain;      /* DŮLEŽITÉ: zmenší fotku na mobilu */
       object-position: right center;
-      filter: brightness(0.75) blur(1px);
+      filter: brightness(0.76) blur(1px);
+      opacity: 0.98;
     }
     /* MENU */
     .menu-bar {
@@ -60,7 +61,6 @@
       background: #b7a97c;
       color: #181818;
     }
-    /* HLAVNÍ OBSAH VPRAVO */
     .main-content {
       position: absolute;
       z-index: 2;
@@ -74,15 +74,15 @@
       justify-content: center;
       align-items: flex-end;
       padding: 5vw 4vw;
-      background: linear-gradient(270deg, rgba(30,30,30,0.76) 85%, rgba(30,30,30,0.03) 100%);
+      background: linear-gradient(270deg, rgba(30,30,30,0.64) 85%, rgba(30,30,30,0.02) 100%);
     }
     .main-box {
-      background: rgba(0,0,0,0.22); /* průhledný box */
+      background: rgba(0,0,0,0.13); /* JEŠTĚ PRŮHLEDNĚJŠÍ */
       border-radius: 22px;
       padding: 2.2em 2.3em 2.2em 2em;
       max-width: 100%;
-      box-shadow: 0 2px 28px rgba(0,0,0,0.18);
-      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 28px rgba(0,0,0,0.11);
+      backdrop-filter: blur(5px);
     }
     .main-box h1 {
       font-size: 2.3em;
@@ -158,7 +158,7 @@
         margin: 0 auto;
         padding: 1.2em 0.7em 1.3em 0.7em;
         border-radius: 18px;
-        background: rgba(0,0,0,0.30);
+        background: rgba(0,0,0,0.18); /* lehce ztmavený na mobilu */
       }
       .menu-bar {
         position: static;
@@ -176,6 +176,10 @@
       .main-box { font-size: 0.97em;}
       .menu-bar { flex-wrap: wrap; font-size: 0.95em;}
       footer { font-size: 1em; }
+      .bg-img {
+        object-fit: contain;
+        object-position: 80% center;
+      }
     }
   </style>
 </head>
@@ -209,7 +213,7 @@
   </div>
 
   <footer>
-    Kontakt: <a href="mailto:pojistenivkapse@gmail.com">pojistenivkapse@gmail.com</a> |
+    Kontakt: <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a> |
     Tel: <a href="tel:+420733782290">733 782 290</a>
   </footer>
 </body>
