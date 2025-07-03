@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -147,7 +146,7 @@
       color: #fff;
       text-decoration: underline;
     }
-    /* --- MOBIL: ZMENŠIT TEXT, ZAROVNAT DOPRAVA, MENU NAHORU VLEVO --- */
+    /* --- MOBIL: ZMENŠIT TEXT, POSUNOUT DOLŮ, MENU NAHORU VLEVO --- */
     @media (max-width: 800px) {
       .bg-img-desktop { display: none !important; }
       body {
@@ -189,7 +188,7 @@
         font-size: 0.97em;
         padding: 1.1em 1em 1.4em 1em;
         border-radius: 14px;
-        margin: 3.2em 2vw 0 0;
+        margin: 7em auto 0 auto; /* výrazně větší odsazení odshora! */
         text-align: right;
         box-shadow: 0 2px 24px rgba(0,0,0,0.14);
         background: rgba(0,0,0,0.18);
@@ -235,7 +234,7 @@
         font-size: 0.93em;
         padding: 0.8em 0.2em 0.9em 0.2em;
         border-radius: 11px;
-        margin: 3.4em 1vw 0 0;
+        margin: 7.5em auto 0 auto; /* ještě větší na extra malých displejích */
       }
       .main-box h1 { font-size: 1em; }
       .main-box .about { font-size: 0.89em; }
