@@ -146,7 +146,7 @@
       color: #fff;
       text-decoration: underline;
     }
-    /* --- MOBIL: box výš a vlevo --- */
+    /* --- MOBIL: box na patu stránky vpravo --- */
     @media (max-width: 800px) {
       .bg-img-desktop { display: none !important; }
       body {
@@ -178,51 +178,51 @@
         min-width: 0;
         max-width: 100vw;
         left: 0;
+        bottom: 0;
         top: 0;
         background: none;
-        pointer-events: none;
+        pointer-events: none; /* zabrání překryvu */
         z-index: 2;
       }
       .main-box {
         position: absolute;
-        left: 5vw;
-        right: auto;
-        bottom: 170px; /* výš nad patičku */
-        width: 90vw;
-        max-width: 470px;
-        font-size: 1em;
-        padding: 1.15em 1.25em 1.15em 1.25em;
-        border-radius: 19px;
+        right: 0;
+        bottom: 70px; /* výška nad patou stránky */
+        width: 85vw;
+        max-width: 400px;
+        font-size: 0.97em;
+        padding: 1.1em 1em 1.4em 1em;
+        border-radius: 16px 0 0 16px;
         margin: 0;
-        text-align: left;
-        box-shadow: 0 2px 28px rgba(0,0,0,0.16);
-        background: rgba(0,0,0,0.22);
-        backdrop-filter: blur(7px);
-        pointer-events: auto;
+        text-align: right;
+        box-shadow: 0 2px 24px rgba(0,0,0,0.14);
+        background: rgba(0,0,0,0.20);
+        backdrop-filter: blur(5px);
+        pointer-events: auto; /* aby šlo kliknout na odkazy */
       }
       .main-box h1 {
-        font-size: 1.18em;
+        font-size: 1.09em;
         margin-bottom: 0.55em;
-        text-align: left;
+        text-align: right;
       }
       .main-box .about {
-        font-size: 1em;
+        font-size: 0.96em;
         margin-bottom: 1em;
         line-height: 1.25;
-        text-align: left;
+        text-align: right;
       }
       .main-box .services {
-        font-size: 0.96em;
+        font-size: 0.90em;
         margin-bottom: 1.1em;
-        line-height: 1.3;
-        text-align: left;
+        line-height: 1.23;
+        text-align: right;
       }
       .main-box .real-link {
         margin-top: 1em;
         display: block;
         text-align: center;
         width: 100%;
-        font-size: 1.03em;
+        font-size: 1em;
         padding: 0.75em 0;
       }
       footer {
@@ -239,17 +239,16 @@
     }
     @media (max-width: 480px) {
       .main-box {
-        width: 98vw;
+        width: 97vw;
         max-width: 99vw;
-        font-size: 0.95em;
-        padding: 0.7em 0.25em 0.7em 0.55em;
-        border-radius: 12px;
-        left: 1vw;
-        bottom: 120px;
+        font-size: 0.93em;
+        padding: 0.8em 0.2em 0.9em 0.2em;
+        border-radius: 13px 0 0 13px;
+        bottom: 60px;
       }
-      .main-box h1 { font-size: 0.97em; }
-      .main-box .about { font-size: 0.92em; }
-      .main-box .real-link { font-size: 0.95em; padding: 0.65em 0; }
+      .main-box h1 { font-size: 1em; }
+      .main-box .about { font-size: 0.89em; }
+      .main-box .real-link { font-size: 0.93em; padding: 0.62em 0; }
     }
   </style>
 </head>
