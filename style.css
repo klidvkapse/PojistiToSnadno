@@ -21,7 +21,7 @@ body {
   overflow-x: hidden;
 }
 
-/* HLAVIČKA */
+/* --------- HLAVIČKA --------- */
 header {
   width: 100vw;
   background: #f6f4ee;
@@ -32,7 +32,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
 }
 .circle-menu { display: none; }
 .top-nav {
@@ -44,7 +43,6 @@ header {
   width: 100vw;
   padding: 1.1rem 0 0.3rem 0;
   flex-wrap: wrap;
-  box-sizing: border-box;
 }
 .portrait-desktop {
   width: 54px;
@@ -72,13 +70,12 @@ header {
   color: #85733a;
 }
 
-/* ---------- Container & Boxy ---------- */
+/* --------- CONTAINER & BOXY --------- */
 .container {
   max-width: 1050px;
   margin: 0 auto 2.5rem auto;
   padding: 0 1.3rem 1.5rem 1.3rem;
   width: 100%;
-  box-sizing: border-box;
 }
 main { width: 100%; }
 section {
@@ -87,10 +84,9 @@ section {
   box-shadow: 0 2px 20px rgba(120,100,60,0.07);
   padding: 2.2em 2em 1.8em 2em;
   margin-bottom: 2.1em;
-  box-sizing: border-box;
 }
 
-/* ---------- Segmenty – univerzální karty ---------- */
+/* --------- SEGMENTY – KARTY --------- */
 .segment-list {
   display: flex;
   flex-wrap: wrap;
@@ -150,7 +146,124 @@ section {
   color: var(--text);
 }
 
-/* ---------- Carousel ---------- */
+/* --------- SLOVNÍK FLEX --------- */
+.slovnik-section {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
+  padding: 2.2em 2em 1.8em 2em;
+  margin-bottom: 2.1em;
+}
+.slovnik-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.img-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.img-slovnik {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 0;
+  display: block;
+}
+.dict-container {
+  flex: 1 1 280px;
+  min-width: 220px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.dict-container input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  background: #fcfbf6;
+  font-size: 1rem;
+}
+.link-card-btn {
+  padding: 0.75rem 1.4rem;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.2em;
+}
+.link-card-btn:hover {
+  background: var(--button-hover);
+  color: var(--text);
+}
+.slovnik-tip {
+  background: #f7ffef;
+  border-radius: 12px;
+  padding: 0.6em 0.8em;
+  color: #324e1a;
+  font-size: 1em;
+  margin-top: 0.2em;
+  border-left: 4px solid #b7a97c;
+}
+.slovnik-missing {
+  color: #85733a;
+  font-size: 1em;
+  margin-top: 0.5em;
+}
+.slovnik-missing a {
+  color: #85733a;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.slovnik-missing span {
+  color: #e25c89;
+  font-size: 1.2em;
+  margin-right: 0.1em;
+}
+.slovnik-output {
+  background: #f8f6ef;
+  border-radius: 14px;
+  padding: 1em 1.1em;
+  margin-top: 0.8em;
+  font-size: 1.1em;
+  min-height: 2em;
+  border: 1px solid #eee8da;
+}
+.slovnik-output .def {
+  display: block;
+  margin-top: 0.6em;
+}
+.slovnik-output .ex {
+  display: block;
+  font-style: italic;
+  color: #807144;
+  margin-top: 0.3em;
+}
+.suggestion {
+  cursor: pointer;
+  background: #eee;
+  padding: 0.3em 0.5em;
+  border-radius: 8px;
+  margin: 2px 0;
+  font-size: 0.99em;
+}
+.suggestion:hover {
+  background: #e2dbc9;
+}
+
+/* --------- CAROUSEL --------- */
 .carousel-wrap {
   display: flex;
   align-items: center;
@@ -221,7 +334,7 @@ section {
   background: var(--primary);
 }
 
-/* ---------- Formulář ---------- */
+/* --------- FORMULÁŘ --------- */
 form {
   display: flex;
   gap: 0.7em;
@@ -266,7 +379,7 @@ form button[type="submit"]:hover {
   color: var(--text);
 }
 
-/* ---------- Typografie, nadpisy ---------- */
+/* --------- TYPOGRAFIE --------- */
 h1, h2, h3 {
   color: #85733a;
   margin-top: 0;
@@ -276,7 +389,7 @@ h2 { font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;}
 h3 { font-size: 1.12em; font-weight: 700;}
 b, strong { color: #5d4e1f; }
 
-/* ---------- Footer ---------- */
+/* --------- FOOTER --------- */
 footer {
   background: var(--accent);
   padding: 2rem 1rem;
@@ -296,7 +409,7 @@ footer small {
   font-size: .9rem;
 }
 
-/* ---------- Responsivita ---------- */
+/* --------- RESPONSIVITA --------- */
 @media (max-width: 950px) {
   .segment-list {
     gap: 1.1em;
@@ -306,6 +419,22 @@ footer small {
     min-width: 180px;
     max-width: 92vw;
     padding: 1em 0.9em 1em 0.9em;
+  }
+}
+@media (max-width: 900px) {
+  .slovnik-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.2rem;
+  }
+  .img-wrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0.7rem;
+  }
+  .img-slovnik {
+    max-width: 110px;
   }
 }
 @media (max-width: 700px) {
