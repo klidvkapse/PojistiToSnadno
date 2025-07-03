@@ -3,62 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Statistiky pojistných událostí | PojistiToSnadno.cz</title>
+  <title>Statistiky | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    .stats-section {
-      margin-top: 2em;
-      background: #fff;
-      border-radius: 24px;
-      box-shadow: 0 2px 20px rgba(120,100,60,0.07);
-      padding: 2em 1em 2em 1em;
-      max-width: 1050px;
-      margin-left: auto; margin-right: auto;
-    }
-    .stats-row {
-      display: flex; flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2em;
-      margin-bottom: 2em;
-    }
-    .stats-col {
-      flex: 1 1 340px;
-      min-width: 280px;
-      max-width: 480px;
-      background: #fcfbf6;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px rgba(120,100,60,0.06);
-      padding: 1em 1.2em;
-      margin-bottom: 2em;
-    }
-    .stats-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #f6f4ee;
-      margin-top: 1.1em;
-      margin-bottom: 1.2em;
-    }
-    .stats-table th, .stats-table td {
-      padding: 0.5em 0.6em;
-      border-bottom: 1px solid #e2dbc9;
-      text-align: left;
-    }
-    .stats-table th { background: #f1ecd7; }
-    @media (max-width: 900px) {
-      .stats-row { flex-direction: column; gap: 1em; }
-      .stats-col { margin-bottom: 1em; }
-    }
-  </style>
 </head>
 <body>
-  <!-- POZADÍ -->
-  <img src="portret-bg-web.png" class="bg-img-desktop" alt="" />
-  <img src="portret.png" class="bg-img-mobile" alt="" />
+  <!-- Pozadí -->
+  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
+  <img src="portret.png" alt="" class="bg-img-mobile">
 
-  <!-- HLAVIČKA -->
+  <!-- Menu -->
   <nav class="top-nav">
+    <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
     <a href="index.html#domu">Domů</a>
     <a href="clanky.html">Články</a>
     <a href="slovnik.html">Slovník</a>
@@ -67,131 +23,196 @@
   </nav>
 
   <main class="container">
-    <section class="stats-section">
-      <h2 style="text-align:center;">Statistiky reálných pojistných událostí</h2>
 
-      <!-- Přehledné info boxy -->
-      <div class="stats-row" style="gap:1.2em;">
-        <div class="stats-col">
-          <b>Celkový počet škod:</b> <span id="stat-pocet"></span><br>
-          <b>Průměrná výše škody:</b> <span id="stat-prum-skoda"></span> Kč<br>
-          <b>Průměrná doba vyřízení:</b> <span id="stat-prum-doba"></span> dní
+    <!-- BLOK 1: Statistiky škod klientů -->
+    <section>
+      <h2>Reálné škody klientů</h2>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;margin-bottom:2em;">
+          <thead>
+            <tr>
+              <th>Datum škody</th>
+              <th>Typ škody</th>
+              <th>Částka plnění</th>
+              <th>Doba vyřízení (dny)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2024-02-01</td><td>Krupobití</td><td>18 750 Kč</td><td>12</td></tr>
+            <tr><td>2024-03-12</td><td>Požár</td><td>127 000 Kč</td><td>21</td></tr>
+            <tr><td>2024-04-05</td><td>Voda z potrubí</td><td>45 900 Kč</td><td>8</td></tr>
+            <tr><td>2024-04-19</td><td>Vloupání</td><td>36 200 Kč</td><td>18</td></tr>
+            <tr><td>2024-05-03</td><td>Krupobití</td><td>23 600 Kč</td><td>10</td></tr>
+            <tr><td>2024-05-22</td><td>Vichřice</td><td>33 000 Kč</td><td>14</td></tr>
+            <tr><td>2024-06-01</td><td>Požár</td><td>54 800 Kč</td><td>16</td></tr>
+            <tr><td>2024-06-15</td><td>Voda z potrubí</td><td>9 600 Kč</td><td>7</td></tr>
+            <tr><td>2024-07-04</td><td>Vloupání</td><td>51 200 Kč</td><td>19</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="stat-graphs" style="display:flex;flex-wrap:wrap;gap:2em;justify-content:space-between;">
+        <div style="flex:1 1 350px;min-width:290px;max-width:520px;">
+          <canvas id="typSkodyChart"></canvas>
         </div>
-        <div class="stats-col">
-          <b>Největší škoda:</b><br>
-          <span id="stat-max"></span>
+        <div style="flex:1 1 350px;min-width:290px;max-width:520px;">
+          <canvas id="dobaVyreseniChart"></canvas>
         </div>
       </div>
+    </section>
 
-      <!-- GRAF typy škod -->
-      <div class="stats-row">
-        <div class="stats-col">
-          <canvas id="typySkodChart"></canvas>
+    <!-- BLOK 2: Statistiky pracovní neschopnosti (DPN) -->
+    <section>
+      <h2>Statistiky pracovní neschopnosti v ČR <span style="font-size:0.7em;font-weight:normal">(zdroj: ČSSZ)</span></h2>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;margin-bottom:2em;">
+          <thead>
+            <tr>
+              <th>Rok</th>
+              <th>Ukončené případy DPN</th>
+              <th>Prostonané dny</th>
+              <th>Průměrná délka případu (dny)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2023</td><td>2 528 581</td><td>78 376 905</td><td>31,0</td></tr>
+            <tr><td>2022</td><td>3 437 913</td><td>91 027 043</td><td>26,5</td></tr>
+            <tr><td>2021</td><td>2 717 968</td><td>93 699 167</td><td>34,5</td></tr>
+            <tr><td>2020</td><td>2 293 733</td><td>86 457 092</td><td>37,7</td></tr>
+            <tr><td>2019</td><td>1 832 412</td><td>75 058 722</td><td>41,0</td></tr>
+            <tr><td>2018</td><td>1 772 465</td><td>69 964 980</td><td>39,5</td></tr>
+            <tr><td>2017</td><td>1 694 751</td><td>69 938 528</td><td>41,3</td></tr>
+            <tr><td>2016</td><td>1 584 879</td><td>66 840 574</td><td>42,2</td></tr>
+            <tr><td>2015</td><td>1 526 798</td><td>63 186 245</td><td>41,4</td></tr>
+            <tr><td>2014</td><td>1 285 642</td><td>57 542 021</td><td>44,8</td></tr>
+            <tr><td>2013</td><td>1 326 884</td><td>57 132 916</td><td>43,1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="stat-graphs" style="display:flex;flex-wrap:wrap;gap:2em;justify-content:space-between;">
+        <div style="flex:1 1 350px;min-width:290px;max-width:520px;">
+          <canvas id="casesChart"></canvas>
         </div>
-        <div class="stats-col">
-          <canvas id="mesiceChart"></canvas>
+        <div style="flex:1 1 350px;min-width:290px;max-width:520px;">
+          <canvas id="lengthChart"></canvas>
         </div>
       </div>
-
-      <!-- Tabulka top škod -->
-      <h3 style="margin-top:2em;">TOP 5 největších škod</h3>
-      <table class="stats-table" id="topSkodyTable">
-        <thead>
-          <tr>
-            <th>Datum</th>
-            <th>Typ škody</th>
-            <th>Výše škody (Kč)</th>
-            <th>Doba vyřízení (dny)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- řádky doplní JS -->
-        </tbody>
-      </table>
     </section>
   </main>
 
   <footer>
     <p>
       Daniel Verner<br>
-      📞 733 782 290<br>
-      📩 pojistitosnadno@gmail.com<br>
-      📍 Olomoucký kraj – schůzky individuálně
+      📞 <a href="tel:733782290">733 782 290</a><br>
+      📩 <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
+      📍 Olomoucký kraj – schůzky domlouvám individuálně
     </p>
     <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
   </footer>
 
-  <!-- Data & Skript – Vlož zde své hodnoty z Excelu (části upravíš podle svých dat) -->
   <script>
-    // SEM DOPLŇ DATA Z EXCELU!
-    // Ukázkové hodnoty (nahraď reálnými z tabulky):
-    const data = [
-      { datum: "2024-01-14", typ: "Voda", castka: 29500, dny: 7 },
-      { datum: "2024-02-08", typ: "Požár", castka: 176000, dny: 15 },
-      { datum: "2024-03-12", typ: "Krupobití", castka: 62000, dny: 6 },
-      { datum: "2024-03-18", typ: "Krádež", castka: 9800, dny: 5 },
-      { datum: "2024-04-09", typ: "Voda", castka: 15300, dny: 8 },
-      { datum: "2024-04-23", typ: "Vichřice", castka: 54200, dny: 10 },
-      { datum: "2024-05-07", typ: "Požár", castka: 215000, dny: 21 },
-      { datum: "2024-05-30", typ: "Krupobití", castka: 30800, dny: 7 },
-      // ... další řádky dle tvého souboru ...
+    // DATA - ŠKODY KLIENTŮ
+    const dataSkody = [
+      { datum: '2024-02-01', typ: 'Krupobití', castka: 18750, dny: 12 },
+      { datum: '2024-03-12', typ: 'Požár', castka: 127000, dny: 21 },
+      { datum: '2024-04-05', typ: 'Voda z potrubí', castka: 45900, dny: 8 },
+      { datum: '2024-04-19', typ: 'Vloupání', castka: 36200, dny: 18 },
+      { datum: '2024-05-03', typ: 'Krupobití', castka: 23600, dny: 10 },
+      { datum: '2024-05-22', typ: 'Vichřice', castka: 33000, dny: 14 },
+      { datum: '2024-06-01', typ: 'Požár', castka: 54800, dny: 16 },
+      { datum: '2024-06-15', typ: 'Voda z potrubí', castka: 9600, dny: 7 },
+      { datum: '2024-07-04', typ: 'Vloupání', castka: 51200, dny: 19 }
     ];
-
-    // 1. Přehledná čísla
-    document.getElementById("stat-pocet").innerText = data.length;
-    document.getElementById("stat-prum-skoda").innerText = Math.round(data.reduce((a,b)=>a+b.castka,0)/data.length).toLocaleString();
-    document.getElementById("stat-prum-doba").innerText = (data.reduce((a,b)=>a+b.dny,0)/data.length).toFixed(1);
-
-    // 2. Největší škoda
-    let maxSkoda = data.reduce((max, curr) => curr.castka > max.castka ? curr : max, data[0]);
-    document.getElementById("stat-max").innerHTML = `${maxSkoda.castka.toLocaleString()} Kč<br>${maxSkoda.typ}, ${maxSkoda.datum}`;
-
-    // 3. Typy škod - koláč
-    let typy = {};
-    data.forEach(row => typy[row.typ] = (typy[row.typ]||0)+1);
-    new Chart(document.getElementById('typySkodChart'), {
-      type: 'pie',
-      data: {
-        labels: Object.keys(typy),
-        datasets: [{ data: Object.values(typy) }]
-      },
-      options: {
-        plugins: { legend: { position: 'bottom' } },
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    });
-
-    // 4. Škody dle měsíců - sloupcový
-    let mesice = {};
-    data.forEach(row => {
-      let m = new Date(row.datum).toLocaleString('cs-CZ',{month:'short', year:'2-digit'});
-      mesice[m] = (mesice[m]||0)+1;
-    });
-    new Chart(document.getElementById('mesiceChart'), {
+    // GRAF 1: Počet škod dle typu
+    const typy = {};
+    dataSkody.forEach(row => { typy[row.typ] = (typy[row.typ] || 0) + 1; });
+    const typLabels = Object.keys(typy);
+    const typCounts = Object.values(typy);
+    new Chart(document.getElementById('typSkodyChart'), {
       type: 'bar',
       data: {
-        labels: Object.keys(mesice),
+        labels: typLabels,
         datasets: [{
-          label: 'Počet škod',
-          data: Object.values(mesice),
-          backgroundColor: '#b7a97c'
+          label: 'Počet škod podle typu',
+          data: typCounts,
+          borderRadius: 7
         }]
       },
       options: {
-        plugins: { legend: { display: false } },
-        responsive: true,
-        maintainAspectRatio: false
+        plugins: { legend: { display: false }},
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+      }
+    });
+    // GRAF 2: Průměrná doba vyřízení podle typu
+    const dobaByTyp = {};
+    dataSkody.forEach(row => {
+      if (!dobaByTyp[row.typ]) dobaByTyp[row.typ] = [];
+      dobaByTyp[row.typ].push(row.dny);
+    });
+    const dobaTypLabels = Object.keys(dobaByTyp);
+    const dobaAverages = dobaTypLabels.map(t => (
+      Math.round(
+        dobaByTyp[t].reduce((a, b) => a + b, 0) / dobaByTyp[t].length * 10
+      ) / 10
+    ));
+    new Chart(document.getElementById('dobaVyreseniChart'), {
+      type: 'bar',
+      data: {
+        labels: dobaTypLabels,
+        datasets: [{
+          label: 'Průměrná doba vyřízení (dny)',
+          data: dobaAverages,
+          borderRadius: 7
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false }},
+        scales: { y: { beginAtZero: true } }
       }
     });
 
-    // 5. Tabulka top škod
-    let top5 = data.sort((a,b)=>b.castka-a.castka).slice(0,5);
-    let tbody = document.getElementById('topSkodyTable').querySelector('tbody');
-    top5.forEach(row=>{
-      let tr = document.createElement('tr');
-      tr.innerHTML = `<td>${row.datum}</td><td>${row.typ}</td><td>${row.castka.toLocaleString()}</td><td>${row.dny}</td>`;
-      tbody.appendChild(tr);
+    // DATA - DPN ČSSZ
+    const roky = [2023,2022,2021,2020,2019,2018,2017,2016,2015,2014,2013];
+    const pripady = [2528581,3437913,2717968,2293733,1832412,1772465,1694751,1584879,1526798,1285642,1326884];
+    const dny = [78376905,91027043,93699167,86457092,75058722,69964980,69938528,66840574,63186245,57542021,57132916];
+    const prumer = [31.0,26.5,34.5,37.7,41.0,39.5,41.3,42.2,41.4,44.8,43.1];
+    // Graf: Vývoj počtu ukončených případů
+    new Chart(document.getElementById('casesChart'), {
+      type: 'line',
+      data: {
+        labels: roky,
+        datasets: [{
+          label: 'Ukončené případy DPN',
+          data: pripady,
+          borderWidth: 3,
+          pointRadius: 4,
+          tension: 0.12
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false }},
+        scales: {
+          y: { beginAtZero: false, ticks: { callback: v => v.toLocaleString("cs-CZ") } }
+        }
+      }
+    });
+    // Graf: Vývoj průměrné délky případu
+    new Chart(document.getElementById('lengthChart'), {
+      type: 'line',
+      data: {
+        labels: roky,
+        datasets: [{
+          label: 'Průměrná délka případu (dny)',
+          data: prumer,
+          borderWidth: 3,
+          pointRadius: 4,
+          borderDash: [6,2],
+          tension: 0.13
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false }},
+        scales: { y: { beginAtZero: false } }
+      }
     });
   </script>
 </body>
