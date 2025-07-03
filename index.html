@@ -2,196 +2,156 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pojisti To Snadno – Daniel Verner</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Raleway', Arial, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      color: #fff;
+      background: #181818;
+      position: relative;
+      overflow: hidden;
+    }
+    .bg-img {
+      position: fixed;
+      z-index: 1;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.75) blur(1px);
+    }
+    .main-content {
+      position: absolute;
+      z-index: 2;
+      top: 0; left: 0; bottom: 0;
+      width: 48vw;
+      min-width: 340px;
+      max-width: 550px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 5vw 4vw;
+      background: linear-gradient(90deg, rgba(30,30,30,0.76) 85%, rgba(30,30,30,0.03) 100%);
+    }
+    .main-content h1 {
+      font-size: 2.3em;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 14px #000;
+    }
+    .main-content .about {
+      font-size: 1.15em;
+      margin-bottom: 1.1em;
+      font-weight: 400;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px #000;
+    }
+    .main-content .services {
+      font-size: 1.04em;
+      margin-bottom: 1.4em;
+      line-height: 1.5;
+      text-shadow: 0 1px 5px #000;
+    }
+    .main-content .real-link {
+      margin-top: 0.7em;
+      display: inline-block;
+      font-size: 1.1em;
+      background: #b7a97c;
+      color: #222;
+      padding: 0.58em 1.5em;
+      border-radius: 17px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 12px rgba(120,100,60,0.13);
+      transition: background 0.19s, color 0.19s;
+    }
+    .main-content .real-link:hover {
+      background: #e2dbc9;
+      color: #474336;
+    }
+    footer {
+      position: fixed;
+      z-index: 3;
+      left: 0;
+      bottom: 0;
+      width: 100vw;
+      background: rgba(0,0,0,0.27);
+      color: #fff;
+      text-align: center;
+      padding: 18px 0 14px 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      text-shadow: 0 1px 6px #000;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    @media (max-width: 900px) {
+      .main-content {
+        width: 90vw;
+        min-width: unset;
+        max-width: unset;
+        padding: 11vw 4vw 3vw 4vw;
+        background: linear-gradient(90deg, rgba(30,30,30,0.90) 97%, rgba(30,30,30,0.01) 100%);
+      }
+      .main-content h1 {
+        font-size: 1.45em;
+      }
+      .main-content .about,
+      .main-content .services {
+        font-size: 1em;
+      }
+    }
+    @media (max-width: 580px) {
+      .main-content {
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        padding: 16vw 5vw 7vw 5vw;
+        background: rgba(30,30,30,0.96);
+        align-items: flex-start;
+      }
+      .main-content h1 { font-size: 1.13em;}
+    }
+  </style>
 </head>
 <body>
-<header>
-  <!-- Mobilní menu -->
-  <div class="circle-menu">
-    <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
-    <div class="circle-menu-label">Menu</div>
-    <nav class="circle-nav">
-      <a href="index.html#pribehy" class="circle-link">Reálné škody klientů</a>
-      <a href="clanky.html" class="circle-link">Články</a>
-      <a href="slovnik.html" class="circle-link">Slovník</a>
-      <a href="index.html#kontakt" class="circle-link">Kontakt</a>
-    </nav>
+  <img src="portret.jpg" alt="Daniel Verner – portrét" class="bg-img">
+  <div class="main-content">
+    <h1>Daniel Verner</h1>
+    <div class="about">
+      Pojišťovací poradce s osobním přístupem.<br>
+      Pomáhám lidem najít jistotu v krizových situacích.
+    </div>
+    <div class="services">
+      <b>Služby:</b><br>
+      • Nezávazné poradenství a konzultace<br>
+      • Kontrola a aktualizace pojistných smluv<br>
+      • Pojištění života, zdraví, majetku i dětí<br>
+      • Podpora při řešení pojistných událostí
+    </div>
+    <a href="realne-skody.html" class="real-link">Reálné škody klientů</a>
   </div>
-  <!-- Desktop menu -->
-  <nav class="top-nav">
-    <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
-    <a href="index.html#pribehy">Reálné škody klientů</a>
-    <a href="clanky.html">Články</a>
-    <a href="slovnik.html">Slovník</a>
-    <a href="index.html#kontakt">Kontakt</a>
-  </nav>
-</header>
-
-<div class="container">
-  <main>
-    <section id="o-mne">
-      <h2>O mně</h2>
-      <p><strong>Daniel Verner</strong> – pojišťovací poradce, který pomáhá lidem získat jistotu v krizových situacích. Naslouchám, chápu, navrhuji řešení. Schůzky osobně i on-line.</p>
-    </section>
-
-    <section id="sluzby">
-      <h2>S čím vám pomohu</h2>
-      <ul>
-        <li>Životní pojištění </li>
-        <li>Pojištění dětí, úrazové krytí</li>
-        <li>Pracovní neschopnost</li>
-        <li>Kontrola starých smluv a jejich aktualizace</li>
-        <li>Pojištění majetku i odpovědnosti</li>
-        <li>Úvěry na bydlení</li>
-        <li>Investice</li>
-      </ul>
-    </section>
-
-    <section id="pribehy">
-      <h2>Reálné škody klientů</h2>
-      <div class="carousel-wrap">
-        <button class="carousel-btn prev">&#8678;</button>
-        <div class="carousel-track">
-          <div class="carousel-item">
-            <h3>Denní odškodné</h3>
-            <p><strong>Příčina:</strong> Dopravní nehoda</p>
-            <p><b>23 100 Kč</b></p>
-            <p>Vyřízení: 4 dny</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Živelná událost</h3>
-            <p><strong>Příčina:</strong> Kroupobití</p>
-            <p><b>11 448 Kč</b></p>
-            <p>Vyřízení: 7 hodin</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Plnění při ošetřování</h3>
-            <p><strong>Příčina:</strong> Ošetřování dítěte</p>
-            <p><b>30 900 Kč</b></p>
-            <p>Vyřízení: 7 hodin</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Tělesné poškození</h3>
-            <p><strong>Příčina:</strong> Úraz palce</p>
-            <p><b>5 000 Kč</b></p>
-            <p>Vyřízení: 1 den</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Pobyt v nemocnici (nemoc)</h3>
-            <p><strong>Příčina:</strong> Nemoc</p>
-            <p><b>900 Kč</b></p>
-            <p>Vyřízení: 1 den</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Poškození skla</h3>
-            <p><strong>Příčina:</strong> Poškození skla</p>
-            <p><b>6 199 Kč</b></p>
-            <p>Vyřízení: 4 dny</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Tělesné poškození úrazem</h3>
-            <p><strong>Příčina:</strong> Ostatní úrazy</p>
-            <p><b>22 500 Kč</b></p>
-            <p>Vyřízení: 2 dny</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Tělesné poškození úrazem</h3>
-            <p><strong>Příčina:</strong> Ostatní úrazy</p>
-            <p><b>22 000 Kč</b></p>
-            <p>Vyřízení: 2 dny</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Vodovodní škoda</h3>
-            <p><strong>Příčina:</strong> Únik vody</p>
-            <p><b>6 790 Kč</b></p>
-            <p>Vyřízení: 2 dny</p>
-          </div>
-        </div>
-        <button class="carousel-btn next">&#8680;</button>
-      </div>
-      <div class="carousel-dots"></div>
-    </section>
-
-    <section class="nabidka-formular">
-      <h2>Nezávazný návrh pojištění</h2>
-      <form>
-        <input type="text" placeholder="Jméno a příjmení" required>
-        <input type="number" placeholder="Váš věk" required>
-        <textarea placeholder="Co vás zajímá?" rows="3" required></textarea>
-        <input type="email" placeholder="Váš email" required>
-        <input type="tel" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
-        <button type="submit">Odeslat poptávku</button>
-      </form>
-    </section>
-  </main>
-</div>
-
-<footer>
-  <p>
-    Daniel Verner<br>
-    📞 733 782 290<br>
-    📩 pojistitosnadno@gmail.com<br>
-    📍 Olomoucký kraj – schůzky domlouvám individuálně
-  </p>
-  <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
-</footer>
-
-<script>
-  // Carousel
-  document.addEventListener('DOMContentLoaded', function() {
-    const track = document.querySelector('.carousel-track');
-    const items = document.querySelectorAll('.carousel-item');
-    const btnPrev = document.querySelector('.carousel-btn.prev');
-    const btnNext = document.querySelector('.carousel-btn.next');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    let index = 0;
-
-    // Dots
-    for(let i=0; i<items.length; i++){
-      const dot = document.createElement('div');
-      dot.className = 'carousel-dot';
-      if(i===0) dot.classList.add('active');
-      dot.addEventListener('click', ()=> goToSlide(i));
-      dotsContainer.appendChild(dot);
-    }
-    const dots = document.querySelectorAll('.carousel-dot');
-    function updateDots(){
-      dots.forEach((d,i)=>d.classList.toggle('active', i===index));
-    }
-    function getSlideWidth() {
-      return items[0].offsetWidth +
-        parseInt(getComputedStyle(items[0]).marginLeft) +
-        parseInt(getComputedStyle(items[0]).marginRight);
-    }
-    function goToSlide(i){
-      index = i;
-      track.scrollTo({
-        left: getSlideWidth() * i,
-        behavior: "smooth"
-      });
-      updateDots();
-    }
-    btnPrev.onclick = () => {
-      if(index>0) { index--; goToSlide(index);}
-    };
-    btnNext.onclick = () => {
-      if(index<items.length-1) { index++; goToSlide(index);}
-    };
-    // Swipe na mobilu
-    let startX = null;
-    track.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-    });
-    track.addEventListener('touchend', (e) => {
-      if(startX === null) return;
-      let diff = e.changedTouches[0].clientX - startX;
-      if(diff > 30 && index > 0) { index--; goToSlide(index);}
-      else if(diff < -30 && index < items.length-1) { index++; goToSlide(index);}
-      startX = null;
-    });
-  });
-</script>
+  <footer>
+    Kontakt: <a href="mailto:pojistenivkapse@gmail.com">pojistenivkapse@gmail.com</a> |
+    Tel: <a href="tel:+420733782290">733 782 290</a>
+  </footer>
 </body>
 </html>
