@@ -3,66 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Pojisti To Snadno – Daniel Verner</title>
+  <title>Laický slovník pojistných pojmů | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
-  <!-- Mobilní menu -->
-  <div class="circle-menu" id="mobileMenu">
-    <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
-    <div class="circle-menu-label">Menu</div>
-    <nav class="circle-nav">
-      <a href="index.html#domu" class="circle-link">Domů</a>
-      <a href="index.html#pribehy" class="circle-link">Reálné škody klientů</a>
-      <a href="index.html#kontakt" class="circle-link">Kontakt</a>
-    </nav>
-  </div>
-  <!-- Desktop menu -->
-  <nav class="top-nav" id="desktopMenu">
+  <!-- Menu podle tvého hlavního webu -->
+  <nav class="top-nav">
     <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
     <a href="index.html#domu">Domů</a>
-    <a href="index.html#pribehy">Reálné škody klientů</a>
+    <a href="clanky.html">Články</a>
+    <a href="slovnik.html" class="active">Slovník</a>
     <a href="index.html#kontakt">Kontakt</a>
   </nav>
 </header>
 
-<main style="margin-top:40px;">
-  <section id="slovnik">
+<main class="container">
+  <section class="slovnik-section">
     <h2>Laický slovník pojistných pojmů</h2>
     <div class="slovnik-row">
       <div class="img-wrap">
-        <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
-         <span class="slovnik-ikona">❓</span>
+        <img src="slovnik.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
       </div>
       <div class="dict-container">
-        <input type="text" id="search"
-               placeholder="např. pojistná událost"
-               oninput="showSuggestions()">
+        <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
         <div id="suggestions"></div>
         <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
         <div class="slovnik-tip">
-          <b>Tip:</b> Zadejte libovolný pojem, nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+          <b>Tip:</b> Zadejte libovolný pojem, nebo jeho část.<br>
+          Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
         </div>
         <div class="slovnik-missing">
           <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
         </div>
         <div id="output" class="slovnik-output" data-current=""></div>
       </div>
+    </div>
   </section>
 </main>
 
 <footer>
-  <p><strong>Kontakt:</strong></p>
   <p>
     Daniel Verner<br>
-    📞 <a href="tel:+420733782290">733 782 290</a><br>
-    📩 <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
-    📍 Olomoucký kraj – schůzky domlouvám individuálně.
+    📞 733 782 290<br>
+    📩 pojistitosnadno@gmail.com<br>
+    📍 Olomoucký kraj – schůzky individuálně
   </p>
-  <small>&copy; 2025 Daniel Verner – PojistiToSnadno</small>
+  <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
 </footer>
 
+<!-- Pokud používáš JS slovník, vlož zde svůj skript nebo nech původní -->
 <script>
   const terms = {
     "pojistná smlouva": {
@@ -130,45 +120,39 @@
       ex: "Dopravní nehoda je srážka nebo havárie na silnici, ve vlaku, lodi nebo letadle. Může jít i o situaci, kdy je sražen chodec nebo cyklista.Pro vyplacení pojistky je potřeba zpráva od policie a lékařská dokumentace, pokud došlo k úrazu.."
     }
   };
-
-  function showDefinition() {
-    const key = document.getElementById('search').value.toLowerCase();
-    const out = document.getElementById('output');
-    if (out.innerHTML && out.dataset.current === key) {
-      out.innerHTML = '';
-      out.dataset.current = '';
-      return;
-    }
-    if (terms[key]) {
-      out.innerHTML = `
-        <strong>${key}</strong>
-        <span class="def">${terms[key].def}</span>
-        <span class="ex">${terms[key].ex}</span>
-      `;
-      out.dataset.current = key;
-    } else {
-      out.innerHTML = `<span class="def">Pojem nebyl nalezen.</span>`;
-      out.dataset.current = '';
-    }
+function showDefinition() {
+  const key = document.getElementById('search').value.toLowerCase();
+  const out = document.getElementById('output');
+  if (out.innerHTML && out.dataset.current === key) {
+    out.innerHTML = '';
+    out.dataset.current = '';
+    return;
   }
-
-  function showSuggestions() {
-    const q = document.getElementById('search').value.toLowerCase();
-    const list = document.getElementById('suggestions');
-    list.innerHTML = '';
-    if (!q) return;
-    Object.keys(terms).filter(t => t.includes(q))
-      .forEach(t => {
-        const d = document.createElement('div');
-        d.className = 'suggestion';
-        d.innerText = t;
-        d.onclick = () => {
-          document.getElementById('search').value = t;
-          list.innerHTML = '';
-        };
-        list.appendChild(d);
-      });
+  if (terms[key]) {
+    out.innerHTML = `<strong>${key}</strong><span class="def">${terms[key].def}</span><span class="ex">${terms[key].ex}</span>`;
+    out.dataset.current = key;
+  } else {
+    out.innerHTML = `<span class="def">Pojem nebyl nalezen.</span>`;
+    out.dataset.current = '';
   }
+}
+function showSuggestions() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const list = document.getElementById('suggestions');
+  list.innerHTML = '';
+  if (!q) return;
+  Object.keys(terms).filter(t => t.includes(q))
+    .forEach(t => {
+      const d = document.createElement('div');
+      d.className = 'suggestion';
+      d.innerText = t;
+      d.onclick = () => {
+        document.getElementById('search').value = t;
+        list.innerHTML = '';
+      };
+      list.appendChild(d);
+    });
+}
 </script>
 </body>
 </html>
