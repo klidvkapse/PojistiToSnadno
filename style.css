@@ -387,21 +387,36 @@ footer small {
     min-height: 160px;
   }
 /* Už žádné globální max-width! */
-  /* --- FORMULÁŘ STYL --- */
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1rem 1rem;
-  align-items: center;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+/* --- NOVÝ STYL FORMULÁŘE --- */
+.nabidka-formular {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
 }
 
-form input[type="text"],
-form input[type="number"],
-form input[type="email"],
-form input[type="tel"] {
-  padding: 0.85rem 1.1rem;
+.nabidka-formular h2 {
+  color: #85733a;
+  margin-bottom: 1.3rem;
+  font-size: 1.28rem;
+}
+
+.nabidka-formular form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.1rem 1.1rem;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.nabidka-formular input[type="text"],
+.nabidka-formular input[type="number"],
+.nabidka-formular input[type="email"],
+.nabidka-formular input[type="tel"] {
+  padding: 0.88rem 1.1rem;
   border: 2px solid var(--button);
   border-radius: var(--radius);
   background: #fcfbf6;
@@ -411,9 +426,9 @@ form input[type="tel"] {
   transition: border 0.2s;
 }
 
-form textarea {
+.nabidka-formular textarea {
   grid-column: 1 / span 2;
-  padding: 0.85rem 1.1rem;
+  padding: 0.88rem 1.1rem;
   border: 2px solid var(--button);
   border-radius: var(--radius);
   background: #fcfbf6;
@@ -425,51 +440,54 @@ form textarea {
   transition: border 0.2s;
 }
 
-form input:focus,
-form textarea:focus {
+.nabidka-formular input:focus,
+.nabidka-formular textarea:focus {
   outline: none;
   border-color: var(--primary);
 }
 
-form button[type="submit"] {
+.nabidka-formular button[type="submit"] {
   grid-column: 1 / span 4;
   padding: 1rem;
   background: var(--primary);
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.09rem;
   font-weight: 700;
   border: none;
-  border-radius: 16px;
+  border-radius: 18px;
   box-shadow: var(--shadow);
   margin-top: 0.8rem;
   cursor: pointer;
   transition: background 0.18s;
+  letter-spacing: 0.04em;
 }
 
-form button[type="submit"]:hover {
+.nabidka-formular button[type="submit"]:hover {
   background: var(--button-hover);
   color: var(--text);
 }
 
-/* --- Responzivita formuláře --- */
+/* Responzivita pro tablety */
 @media (max-width: 950px) {
-  form {
+  .nabidka-formular form {
     grid-template-columns: 1fr 1fr;
   }
-  form textarea {
+  .nabidka-formular textarea {
     grid-column: 1 / span 2;
   }
-  form button[type="submit"] {
+  .nabidka-formular button[type="submit"] {
     grid-column: 1 / span 2;
-  }
-}
-@media (max-width: 700px) {
-  form {
-    grid-template-columns: 1fr;
-    gap: 0.7rem 0;
-  }
-  form textarea, form button[type="submit"] {
-    grid-column: 1 / span 1;
   }
 }
 
+/* Responzivita pro mobily */
+@media (max-width: 700px) {
+  .nabidka-formular form {
+    grid-template-columns: 1fr;
+    gap: 0.7rem 0;
+  }
+  .nabidka-formular textarea,
+  .nabidka-formular button[type="submit"] {
+    grid-column: 1 / span 1;
+  }
+}
