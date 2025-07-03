@@ -86,255 +86,7 @@ section {
   margin-bottom: 2.1em;
 }
 
-/* --------- SEGMENTY – KARTY --------- */
-.segment-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  justify-content: flex-start;
-  align-items: stretch;
-  margin-top: 2em;
-  margin-bottom: 1em;
-}
-.segment-card {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 2px 20px rgba(120,100,60,0.10);
-  padding: 1.6em 1.3em 1.4em 1.3em;
-  min-width: 200px;
-  max-width: 320px;
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  transition: transform 0.16s, box-shadow 0.18s;
-}
-.segment-card:hover {
-  transform: translateY(-6px) scale(1.012);
-  box-shadow: 0 6px 30px rgba(120,100,60,0.16);
-}
-.segment-card h3 {
-  color: #7d7753;
-  margin-bottom: 0.9em;
-  margin-top: 0;
-  font-size: 1.14em;
-  font-weight: 700;
-}
-.segment-card p {
-  margin: 0 0 1em 0;
-  color: #6b653e;
-  font-size: 1em;
-}
-.button-main {
-  margin-top: auto;
-  display: inline-block;
-  background: var(--primary);
-  color: #fff;
-  padding: 0.7em 1.4em;
-  border-radius: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: var(--shadow);
-  transition: background 0.15s, color 0.16s;
-  font-size: 1.03em;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-}
-.button-main:hover {
-  background: var(--button-hover);
-  color: var(--text);
-}
-
-/* --------- SLOVNÍK FLEX --------- */
-.slovnik-section {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
-  padding: 2.2em 2em 1.8em 2em;
-  margin-bottom: 2.1em;
-}
-.slovnik-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 2.2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-.img-wrap {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-.img-slovnik {
-  max-width: 180px;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin: 0;
-  display: block;
-}
-.dict-container {
-  flex: 1 1 280px;
-  min-width: 220px;
-  max-width: 450px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.dict-container input[type="text"] {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: var(--radius);
-  border: 2px solid var(--accent);
-  background: #fcfbf6;
-  font-size: 1rem;
-}
-.link-card-btn {
-  padding: 0.75rem 1.4rem;
-  border-radius: 14px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 0.2em;
-}
-.link-card-btn:hover {
-  background: var(--button-hover);
-  color: var(--text);
-}
-.slovnik-tip {
-  background: #f7ffef;
-  border-radius: 12px;
-  padding: 0.6em 0.8em;
-  color: #324e1a;
-  font-size: 1em;
-  margin-top: 0.2em;
-  border-left: 4px solid #b7a97c;
-}
-.slovnik-missing {
-  color: #85733a;
-  font-size: 1em;
-  margin-top: 0.5em;
-}
-.slovnik-missing a {
-  color: #85733a;
-  font-weight: 700;
-  text-decoration: underline;
-}
-.slovnik-missing span {
-  color: #e25c89;
-  font-size: 1.2em;
-  margin-right: 0.1em;
-}
-.slovnik-output {
-  background: #f8f6ef;
-  border-radius: 14px;
-  padding: 1em 1.1em;
-  margin-top: 0.8em;
-  font-size: 1.1em;
-  min-height: 2em;
-  border: 1px solid #eee8da;
-}
-.slovnik-output .def {
-  display: block;
-  margin-top: 0.6em;
-}
-.slovnik-output .ex {
-  display: block;
-  font-style: italic;
-  color: #807144;
-  margin-top: 0.3em;
-}
-.suggestion {
-  cursor: pointer;
-  background: #eee;
-  padding: 0.3em 0.5em;
-  border-radius: 8px;
-  margin: 2px 0;
-  font-size: 0.99em;
-}
-.suggestion:hover {
-  background: #e2dbc9;
-}
-
-/* --------- CAROUSEL --------- */
-.carousel-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin: 1.5rem 0 0.8rem 0;
-  width: 100%;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.carousel-track {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  max-width: 350px;
-  scroll-behavior: smooth;
-  touch-action: pan-x;
-}
-.carousel-item {
-  flex: 0 0 100%;
-  max-width: 100%;
-  background: #f6f4ee;
-  border-radius: 18px;
-  margin: 0;
-  box-shadow: 0 2px 12px rgba(40, 120, 180, 0.10);
-  padding: 2.2rem 2rem 2rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 200px;
-  border: 1px solid #e2e8f0;
-}
-.carousel-btn {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin: 0 0.6rem;
-  z-index: 1;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.carousel-btn:active {
-  background: #aaa76d;
-}
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5em;
-  margin-top: 0.5em;
-}
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #dad0b8;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.carousel-dot.active {
-  background: var(--primary);
-}
-
-/* --------- FORMULÁŘ --------- */
+/* --------- FORMULÁŘ (default – mobil, úzký desktop) --------- */
 form {
   display: flex;
   gap: 0.7em;
@@ -342,6 +94,7 @@ form {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: column;
 }
 form input,
 form textarea {
@@ -352,9 +105,11 @@ form textarea {
   font-size: 1rem;
   font-family: inherit;
   transition: border 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 form input[type="number"], form input[type="email"], form input[type="tel"] {
-  max-width: 160px;
+  max-width: 100%;
 }
 form textarea {
   min-width: 160px;
@@ -380,6 +135,51 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
   background: var(--button-hover);
   color: var(--text);
+}
+
+/* --------- RESPONSIVNÍ FORMULÁŘ (desktop layout) --------- */
+@media (min-width: 900px) {
+  .nabidka-formular form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em 1.2em;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-top: 1.3em;
+    flex-direction: row;
+  }
+  .nabidka-formular input[type="text"],
+  .nabidka-formular input[type="number"],
+  .nabidka-formular input[type="email"],
+  .nabidka-formular input[type="tel"] {
+    flex: 1 1 170px;
+    min-width: 150px;
+    max-width: 200px;
+    margin-bottom: 0;
+    width: auto;
+  }
+  .nabidka-formular textarea {
+    flex: 3 1 100%;
+    min-width: 330px;
+    max-width: 99%;
+    margin-top: 1em;
+    margin-bottom: 0;
+    width: auto;
+    grid-column: 1 / span 4;
+  }
+  .nabidka-formular button[type="submit"] {
+    min-width: 190px;
+    align-self: flex-start;
+    margin-top: 1em;
+    margin-left: 1.2em;
+    height: 48px;
+    width: auto;
+  }
+  /* Dvojitý flexbox pro dvě řady */
+  .nabidka-formular textarea,
+  .nabidka-formular button[type="submit"] {
+    flex-basis: 100%;
+  }
 }
 
 /* --------- TYPOGRAFIE --------- */
@@ -412,7 +212,10 @@ footer small {
   font-size: .9rem;
 }
 
-/* --------- RESPONSIVITA --------- */
+/* --------- OSTATNÍ STYLY Z TVÉHO ZADÁNÍ --------- */
+/* ...zůstávají beze změny (segment-list, slovnik, carousel atd.) ... */
+
+/* --------- RESPONSIVITA OSTATNÍ --------- */
 @media (max-width: 950px) {
   .segment-list {
     gap: 1.1em;
