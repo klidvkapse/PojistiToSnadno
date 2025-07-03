@@ -146,7 +146,8 @@
       color: #fff;
       text-decoration: underline;
     }
-    /* --- MOBIL: ZMENŠIT TEXT, POSUNOUT DOLŮ, MENU NAHORU VLEVO --- */
+
+    /* --- MOBIL: POSUNOUT TEXT DOLŮ, MENŠÍ PÍSMO, MENU VLEVO NAHOŘE --- */
     @media (max-width: 800px) {
       .bg-img-desktop { display: none !important; }
       body {
@@ -170,7 +171,7 @@
         gap: 16px;
         box-shadow: 0 2px 14px rgba(0,0,0,0.18);
       }
-      .menu-bar a { font-size: 1.07em; }
+      .menu-bar a { font-size: 1.04em; }
       .main-content {
         position: static;
         width: 100vw;
@@ -181,17 +182,19 @@
         background: none;
         align-items: flex-end;
         justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
       }
       .main-box {
         width: 85vw;
         max-width: 350px;
-        font-size: 0.97em;
+        font-size: 0.95em;
         padding: 1.1em 1em 1.4em 1em;
         border-radius: 14px;
-        margin:20 em auto 0 auto; /* výrazně větší odsazení odshora! */
+        margin: 11em 1.5em 0 auto; /* posunutí boxu dolů a doprava */
         text-align: right;
         box-shadow: 0 2px 24px rgba(0,0,0,0.14);
-        background: rgba(0,0,0,0.18);
+        background: rgba(0,0,0,0.17);
         backdrop-filter: blur(4px);
       }
       .main-box h1 {
@@ -200,13 +203,13 @@
         text-align: right;
       }
       .main-box .about {
-        font-size: 0.96em;
+        font-size: 0.92em;
         margin-bottom: 1em;
         line-height: 1.25;
         text-align: right;
       }
       .main-box .services {
-        font-size: 0.90em;
+        font-size: 0.87em;
         margin-bottom: 1.1em;
         line-height: 1.23;
         text-align: right;
@@ -216,11 +219,11 @@
         display: block;
         text-align: center;
         width: 100%;
-        font-size: 1em;
-        padding: 0.75em 0;
+        font-size: 0.97em;
+        padding: 0.7em 0;
       }
       footer {
-        font-size: 0.97em;
+        font-size: 0.95em;
         margin-top: 1.2em;
         position: static;
         padding: 1.1em 0 0.9em 0;
@@ -231,14 +234,14 @@
       .main-box {
         width: 97vw;
         max-width: 99vw;
-        font-size: 0.93em;
-        padding: 0.8em 0.2em 0.9em 0.2em;
+        font-size: 0.87em;
+        padding: 0.7em 0.2em 0.9em 0.2em;
         border-radius: 11px;
-        margin: 7.5em auto 0 auto; /* ještě větší na extra malých displejích */
+        margin: 8em 0.5em 0 auto; /* posunutí boxu dolů a doprava */
       }
-      .main-box h1 { font-size: 1em; }
-      .main-box .about { font-size: 0.89em; }
-      .main-box .real-link { font-size: 0.93em; padding: 0.62em 0; }
+      .main-box h1 { font-size: 0.97em; }
+      .main-box .about { font-size: 0.83em; }
+      .main-box .real-link { font-size: 0.92em; padding: 0.62em 0; }
     }
   </style>
 </head>
