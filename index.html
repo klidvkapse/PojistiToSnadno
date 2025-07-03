@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -27,7 +28,6 @@
     .main-wrapper {
       display: block;
     }
-    /* --- OBRÁZKY --- */
     .bg-img-desktop {
       position: fixed;
       z-index: 1;
@@ -42,9 +42,6 @@
       display: block;
       pointer-events: none;
       user-select: none;
-    }
-    .bg-img-mobile {
-      display: none !important;
     }
     .menu-bar {
       position: fixed;
@@ -150,13 +147,12 @@
       color: #fff;
       text-decoration: underline;
     }
-    /* --- MOBIL: POZADÍ & ÚPRAVY TEXTU --- */
+    /* --- MOBIL: ZMENŠIT TEXT, ZAROVNAT DOPRAVA, MENU NAHORU VLEVO --- */
     @media (max-width: 800px) {
       .bg-img-desktop { display: none !important; }
       body {
         background: #181818 url('portret.png') no-repeat center top !important;
         background-size: cover !important;
-        transition: background-image 0.4s;
       }
       .main-wrapper {
         display: flex;
@@ -164,6 +160,18 @@
         align-items: stretch;
         min-height: 100vh;
       }
+      .menu-bar {
+        position: fixed;
+        left: 0; top: 0;
+        margin: 0;
+        width: 100vw;
+        justify-content: flex-start;
+        border-radius: 0 0 20px 20px;
+        padding: 10px 10px 10px 16px;
+        gap: 16px;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+      }
+      .menu-bar a { font-size: 1.07em; }
       .main-content {
         position: static;
         width: 100vw;
@@ -172,63 +180,66 @@
         height: auto;
         padding: 0 0 2vw 0;
         background: none;
-        align-items: center;
+        align-items: flex-end;
         justify-content: flex-start;
       }
       .main-box {
-        width: 93vw;
-        max-width: 430px;
-        font-size: 1.02em;
+        width: 85vw;
+        max-width: 350px;
+        font-size: 0.97em;
         padding: 1.1em 1em 1.4em 1em;
         border-radius: 14px;
-        margin: 1.5em 0 0 0;
-        text-align: left;
+        margin: 3.2em 2vw 0 0;
+        text-align: right;
         box-shadow: 0 2px 24px rgba(0,0,0,0.14);
-        background: rgba(0,0,0,0.21);
+        background: rgba(0,0,0,0.18);
         backdrop-filter: blur(4px);
       }
       .main-box h1 {
-        font-size: 1.21em;
+        font-size: 1.09em;
         margin-bottom: 0.55em;
-        text-align: left;
+        text-align: right;
       }
       .main-box .about {
-        font-size: 1.05em;
-        margin-bottom: 1.1em;
-        line-height: 1.45;
+        font-size: 0.96em;
+        margin-bottom: 1em;
+        line-height: 1.25;
+        text-align: right;
       }
       .main-box .services {
-        font-size: 0.98em;
-        margin-bottom: 1.2em;
-        line-height: 1.35;
+        font-size: 0.90em;
+        margin-bottom: 1.1em;
+        line-height: 1.23;
+        text-align: right;
       }
       .main-box .real-link {
-        margin-top: 1.1em;
+        margin-top: 1em;
         display: block;
         text-align: center;
         width: 100%;
-        font-size: 1.13em;
-        padding: 0.85em 0;
+        font-size: 1em;
+        padding: 0.75em 0;
       }
       footer {
         font-size: 0.97em;
-        margin-top: 1.6em;
+        margin-top: 1.2em;
         position: static;
         padding: 1.1em 0 0.9em 0;
-        background: rgba(0,0,0,0.18);
+        background: rgba(0,0,0,0.13);
       }
     }
     @media (max-width: 480px) {
       .main-box {
-        width: 99vw;
+        width: 97vw;
         max-width: 99vw;
-        font-size: 0.96em;
-        padding: 0.8em 0.1em 1em 0.1em;
+        font-size: 0.93em;
+        padding: 0.8em 0.2em 0.9em 0.2em;
         border-radius: 11px;
+        margin: 3.4em 1vw 0 0;
       }
-      .main-box h1 { font-size: 1.04em; }
-      .main-box .about { font-size: 0.98em; }
-      .main-box .real-link { font-size: 0.98em; padding: 0.78em 0; }
+      .main-box h1 { font-size: 1em; }
+      .main-box .about { font-size: 0.89em; }
+      .main-box .real-link { font-size: 0.93em; padding: 0.62em 0; }
     }
   </style>
 </head>
@@ -241,7 +252,6 @@
     </nav>
     <!-- Pozadí desktop -->
     <img src="portret-bg-web.png" alt="Daniel Verner – portrét" class="bg-img-desktop">
-    <!-- (Mobilní obrázek není třeba, řeší CSS) -->
     <div class="main-content">
       <div class="main-box">
         <h1><strong>Daniel Verner</strong></h1>
