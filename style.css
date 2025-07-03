@@ -311,22 +311,41 @@ footer small {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* obrázek vlevo, otazník vpravo */
+  gap: 0; /* žádná mezera, otazník je opravdu vpravo obrázku */
 }
+
 .slovnik-ikona {
   position: absolute;
-  right: -27px;
-  bottom: 10px;
-  font-size: 2.5rem;
+  right: -55px;         /* více vpravo, větší mezera */
+  bottom: 0;
+  font-size: 3.5rem;    /* větší velikost otazníku */
   color: var(--primary);
   filter: drop-shadow(0 1px 4px rgba(120,100,60,0.13));
   animation: hop 1.3s infinite alternate;
   user-select: none;
   pointer-events: none;
+  z-index: 2;
 }
+
 @keyframes hop {
   0% { transform: translateY(0);}
-  100% { transform: translateY(-8px);}
+  100% { transform: translateY(-10px);}
+}
+
+@media (max-width: 700px) {
+  .img-wrap {
+    justify-content: flex-start;
+  }
+  .slovnik-ikona {
+    position: static;
+    font-size: 2.3rem;
+    margin-left: 1.1em;
+    margin-bottom: 0;
+    right: unset;
+    bottom: unset;
+  }
+
 }
 
 /* Tip pod vyhledáváním */
