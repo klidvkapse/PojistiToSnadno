@@ -358,4 +358,139 @@ footer small {
 
 /* Výsledek vyhledávání */
 .slovnik-output {
-  b
+  background: #f9f4e8;
+  border: 1.5px solid var(--accent);
+  border-radius: 14px;
+  margin-top: 0.4em;
+  padding: 1.15em 1em 1.1em 1em;
+  font-size: 1.1em;
+  color: #544f39;
+  box-shadow: 0 2px 12px rgba(120,100,60,0.07);
+  min-height: 52px;
+  transition: background 0.3s;
+  line-height: 1.65;
+}
+.slovnik-output strong {
+  color: #7d7753;
+  font-size: 1.17em;
+}
+.slovnik-output .def {
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+.slovnik-output .ex {
+  color: #7d7753;
+  font-style: italic;
+  margin-top: 0.4em;
+  display: block;
+}
+
+/* Responsive slovník */
+.slovnik-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.dict-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 240px;
+  max-width: 370px;
+}
+.dict-container input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  background: #fcfbf6;
+  font-size: 1rem;
+  margin-bottom: 0.2em;
+}
+.link-card-btn {
+  padding: 0.75rem 1.4rem;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 0.6em;
+}
+.link-card-btn:hover {
+  background: var(--button-hover);
+  color: var(--text);
+}
+.img-slovnik {
+  max-width: 160px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 0;
+  display: block;
+}
+
+/* --- Responsivita --- */
+@media (max-width: 900px) {
+  .slovnik-row { gap: 1.1rem; }
+}
+@media (max-width: 700px) {
+  .slovnik-row { flex-direction: column; align-items: stretch; }
+  .img-wrap { justify-content: flex-start; }
+  .slovnik-ikona { position: static; font-size: 2rem; margin-left: 0.8em;}
+  .dict-container { max-width: 100%; }
+  .container, main, section {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  section {
+    padding: 1em 0.3em 1em 0.3em !important;
+    border-radius: 14px;
+    margin-bottom: 1em;
+  }
+  .segment-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+  .segment-card {
+    min-width: 94vw;
+    max-width: 98vw;
+    padding: 1.1em 0.2em 1em 0.2em;
+  }
+  .carousel-wrap { max-width: 100vw; }
+  .carousel-track { max-width: 96vw; }
+  .carousel-item {
+    padding: 1.1rem 0.5rem 1.1rem 0.5rem;
+    min-height: 160px;
+  }
+  h1, h2 {
+    font-size: 1.1em;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    word-break: break-word;
+  }
+  .circle-link, .top-nav a {
+    min-width: 45vw;
+    font-size: 1em;
+    padding: 0.42em 0.9em;
+    margin: 0.18em 0.1em;
+  }
+  .circle-avatar, .portrait-desktop {
+    width: 48px;
+    height: 48px;
+  }
+}
+@media (max-width: 480px) {
+  .circle-avatar { width: 42px; height: 42px; }
+  .circle-link { font-size: 0.93rem; padding: 0.3rem 0.5rem; }
+  section { padding: 0.7rem 0.09rem !important; }
+}
+
+/* --- Pro všechny prvky zabránit horizontálnímu přetékání --- */
+* { box-sizing: border-box; max-width: 100vw; }
