@@ -323,21 +323,66 @@ footer small {
 }
 
 /* Obrázek ve slovníku */
+.slovnik-row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;                /* mezera mezi obrázkem a hledáním */
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
 .img-slovnik {
-  width: 100%;
-  max-width: none;
-  height: auto;
-  display: block;
-  margin: 0 auto 1.2rem auto;
+  max-width: 170px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  margin: 0;
+  display: block;
 }
-@media (min-width: 701px) {
+
+.dict-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 240px;
+  max-width: 360px;
+}
+
+.dict-container input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  background: #fcfbf6;
+  font-size: 1rem;
+}
+
+.link-card-btn {
+  padding: 0.75rem 1.4rem;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.link-card-btn:hover {
+  background: var(--button-hover);
+  color: var(--text);
+}
+
+/* Responzivita pro mobily */
+@media (max-width: 700px) {
+  .slovnik-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.2rem;
+  }
   .img-slovnik {
-    max-width: 180px;
-    height: auto;
+    margin: 0 auto 0.5rem auto;
   }
 }
+
 
 /* ------ MOBILNÍ RESPONSIVITA ------ */
 @media (max-width: 850px) {
