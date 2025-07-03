@@ -9,7 +9,7 @@
   --header-height: 145px;
 }
 
-/* Základní styl stránky */
+/* Globální základ */
 html {
   box-sizing: border-box;
 }
@@ -253,6 +253,96 @@ h2 { font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;}
 h3 { font-size: 1.12em; font-weight: 700;}
 b, strong { color: #5d4e1f; }
 
+/* ---------- Carousel a boxy (vrácené původní styly) ---------- */
+.container {
+  max-width: 1050px;
+  margin: 0 auto 2.5rem auto;
+  padding: 0 1.3rem 1.5rem 1.3rem;
+  background: transparent;
+  width: 100%;
+  box-sizing: border-box;
+}
+main { width: 100%; }
+section {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
+  padding: 2.2em 2em 1.8em 2em;
+  margin-bottom: 2.1em;
+  box-sizing: border-box;
+}
+
+/* Carousel styl */
+.carousel-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 1.5rem 0 0.8rem 0;
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.carousel-track {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+  scroll-behavior: smooth;
+  touch-action: pan-x;
+}
+.carousel-item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  background: #f6f4ee;
+  border-radius: 18px;
+  margin: 0;
+  box-shadow: 0 2px 12px rgba(40, 120, 180, 0.10);
+  padding: 2.2rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 200px;
+  border: 1px solid #e2e8f0;
+}
+.carousel-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0 0.6rem;
+  z-index: 1;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-btn:active {
+  background: #aaa76d;
+}
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  margin-top: 0.5em;
+}
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #dad0b8;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.carousel-dot.active {
+  background: var(--primary);
+}
+
 /* Footer */
 footer {
   background: var(--accent);
@@ -273,8 +363,29 @@ footer small {
   font-size: .9rem;
 }
 
-/* Zabránění horizontálnímu přetékání */
-* {
-  box-sizing: border-box;
-  max-width: 100vw;
+/* Responzivita */
+@media (max-width: 700px) {
+  .container, main, section {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  section {
+    padding: 1em 0.3em 1em 0.3em !important;
+    border-radius: 14px;
+    margin-bottom: 1em;
+  }
+  .carousel-wrap {
+    max-width: 100vw;
+  }
+  .carousel-track {
+    max-width: 96vw;
+  }
+  .carousel-item {
+    padding: 1.1rem 0.5rem 1.1rem 0.5rem;
+    min-height: 160px;
+  }
 }
+
+/* Už žádné globální max-width! */
