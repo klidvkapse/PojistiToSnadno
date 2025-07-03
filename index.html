@@ -23,11 +23,11 @@
       position: relative;
       overflow-x: hidden;
     }
-    /* FLEX kontejner pro desktop (původní stav) */
     .main-wrapper {
       display: block;
     }
-    .bg-img {
+    /* --- OBRÁZKY --- */
+    .bg-img-desktop {
       position: fixed;
       z-index: 1;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -38,6 +38,10 @@
       filter: brightness(0.76) blur(1px);
       opacity: 0.98;
       transition: all 0.4s;
+      display: block;
+    }
+    .bg-img-mobile {
+      display: none;
     }
     .menu-bar {
       position: fixed;
@@ -154,11 +158,15 @@
         align-items: stretch;
         min-height: 100vh;
       }
-      .bg-img {
+      /* Změna obrázku na mobilu! */
+      .bg-img-desktop {
+        display: none !important;
+      }
+      .bg-img-mobile {
+        display: block !important;
         position: relative;
-        top: 0; left: 0; right: 0; bottom: 0;
         width: 100vw;
-        height: 48vw; /* můžeš změnit na 60vw nebo např. 320px pro vyšší foto */
+        height: 48vw;
         max-height: 320px;
         min-height: 180px;
         object-fit: contain;
@@ -167,6 +175,7 @@
         filter: brightness(0.82) blur(0.5px);
         border-radius: 0 0 24px 24px;
         z-index: 1;
+        background: #181818;
       }
       .main-content {
         position: static;
@@ -178,28 +187,15 @@
         background: none;
         align-items: flex-start;
       }
-      @media (max-width: 700px) {
-  .main-box {
-    width: 90vw;
-    max-width: 340px;
-    font-size: 0.97em;
-    padding: 0.9em 0.6em 1em 0.7em;
-    border-radius: 14px;
-    margin: 0 auto;
-  }
-  .main-box h1 { font-size: 1.04em; }
-}
-
-@media (max-width: 440px) {
-  .main-box {
-    width: 98vw;
-    max-width: 99vw;
-    font-size: 0.91em;
-    padding: 0.6em 0.2em 0.8em 0.3em;
-  }
-  .main-box h1 { font-size: 0.98em; }
-}
-
+      .main-box {
+        width: 90vw;
+        max-width: 340px;
+        font-size: 0.97em;
+        padding: 0.9em 0.6em 1em 0.7em;
+        border-radius: 14px;
+        margin: 0 auto;
+      }
+      .main-box h1 { font-size: 1.04em; }
       .menu-bar {
         position: static;
         margin-top: 18px;
@@ -211,10 +207,15 @@
       }
       footer { font-size: 1em; position: static; padding: 14px 0 12px 0;}
     }
-    @media (max-width: 430px) {
-      .main-box { font-size: 0.93em;}
-      .main-box h1 { font-size: 1em;}
-      .bg-img { min-height: 120px; }
+    @media (max-width: 440px) {
+      .main-box {
+        width: 98vw;
+        max-width: 99vw;
+        font-size: 0.91em;
+        padding: 0.6em 0.2em 0.8em 0.3em;
+      }
+      .main-box h1 { font-size: 0.98em; }
+      .bg-img-mobile { min-height: 120px; }
     }
   </style>
 </head>
@@ -226,8 +227,10 @@
       <a href="slovnik.html">Slovník</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <!-- Portrét jako obrázek – bude nahoře na mobilu -->
-    <img src="portret-bg-web.png" alt="Daniel Verner – portrét" class="bg-img">
+    <!-- Pozadí desktop -->
+    <img src="portret-bg-web.png" alt="Daniel Verner – portrét" class="bg-img-desktop">
+    <!-- Portrét pouze pro mobil -->
+    <img src="portret.png" alt="Daniel Verner – portrét" class="bg-img-mobile">
     <div class="main-content">
       <div class="main-box">
         <h1><strong>Daniel Verner</strong></h1>
