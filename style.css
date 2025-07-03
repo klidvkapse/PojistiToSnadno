@@ -9,10 +9,13 @@
   --header-height: 145px;
 }
 
-/* --- Základní nastavení --- */
-html { box-sizing: border-box; }
-*, *:before, *:after { box-sizing: inherit; }
-
+/* Základní styl stránky */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 body {
   margin: 0;
   background: #f6f4ee;
@@ -23,7 +26,7 @@ body {
   overflow-x: hidden;
 }
 
-/* --- HLAVIČKA --- */
+/* HLAVIČKA */
 header {
   width: 100vw;
   background: #f6f4ee;
@@ -36,55 +39,7 @@ header {
   align-items: center;
   box-sizing: border-box;
 }
-.circle-menu {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1.2rem;
-  margin-bottom: 1.1rem;
-}
-.circle-avatar {
-  width: 82px;
-  height: 82px;
-  border-radius: 50%;
-  border: 4px solid var(--accent);
-  object-fit: cover;
-  box-shadow: 0 2px 16px rgba(60,40,20,0.08);
-  background: #fff;
-  margin-bottom: 0.2rem;
-}
-.circle-menu-label {
-  margin-top: 0.4rem;
-  font-weight: 600;
-  font-size: 1.22rem;
-  letter-spacing: 0.07em;
-  color: #3e3d2b;
-}
-.circle-nav {
-  margin-top: 0.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  justify-content: center;
-}
-.circle-link {
-  padding: 0.6rem 1.2rem;
-  border-radius: 22px;
-  background: var(--accent);
-  color: #222;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 1.05rem;
-  box-shadow: var(--shadow);
-  transition: background 0.22s, color 0.22s;
-  border: none;
-  display: inline-block;
-  text-align: center;
-}
-.circle-link:hover, .circle-link.active {
-  background: var(--button);
-  color: #726500;
-}
+.circle-menu { display: none; }
 .top-nav {
   display: flex;
   align-items: center;
@@ -116,30 +71,179 @@ header {
   font-size: 1.11rem;
   margin: 0 0.1rem;
 }
-.top-nav a:hover, .top-nav a.active {
+.top-nav a:hover,
+.top-nav a.active {
   background: var(--button);
   color: #85733a;
 }
 
-/* --- Hlavní kontejner a sekce --- */
-.container {
-  max-width: 1050px;
-  margin: 0 auto 2.5rem auto;
-  padding: 0 1.3rem 1.5rem 1.3rem;
-  background: transparent;
-  width: 100%;
-  box-sizing: border-box;
-}
-main { }
-section {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
-  padding: 2.2em 2em 1.8em 2em;
-  margin-bottom: 2.1em;
-  box-sizing: border-box;
+/* ----------- SLOVNÍK – FLEX ROZLOŽENÍ ----------- */
+.slovnik-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
+.img-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.img-slovnik {
+  max-width: 150px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 0;
+  display: block;
+}
+
+.slovnik-ikona {
+  font-size: 3.2rem;
+  color: #e25c89;
+  filter: drop-shadow(0 2px 12px rgba(120,100,60,0.12));
+  animation: hop 1.3s infinite alternate;
+  user-select: none;
+  pointer-events: none;
+  margin-left: 0.6rem;
+  margin-top: 0;
+}
+
+@keyframes hop {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(-10px);}
+}
+
+.dict-container {
+  flex: 1 1 auto;
+  min-width: 240px;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dict-container input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  background: #fcfbf6;
+  font-size: 1rem;
+}
+.link-card-btn {
+  padding: 0.75rem 1.4rem;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.2em;
+}
+.link-card-btn:hover {
+  background: var(--button-hover);
+  color: var(--text);
+}
+
+.slovnik-tip {
+  background: #f7ffef;
+  border-radius: 12px;
+  padding: 0.6em 0.8em;
+  color: #324e1a;
+  font-size: 1em;
+  margin-top: 0.2em;
+  border-left: 4px solid #b7a97c;
+}
+
+.slovnik-missing {
+  color: #85733a;
+  font-size: 1em;
+  margin-top: 0.5em;
+}
+.slovnik-missing a {
+  color: #85733a;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.slovnik-missing span {
+  color: #e25c89;
+  font-size: 1.2em;
+  margin-right: 0.1em;
+}
+
+.slovnik-output {
+  background: #f8f6ef;
+  border-radius: 14px;
+  padding: 1em 1.1em;
+  margin-top: 0.8em;
+  font-size: 1.1em;
+  min-height: 2em;
+  border: 1px solid #eee8da;
+}
+.slovnik-output .def {
+  display: block;
+  margin-top: 0.6em;
+}
+.slovnik-output .ex {
+  display: block;
+  font-style: italic;
+  color: #807144;
+  margin-top: 0.3em;
+}
+
+/* ----------- DESKTOP: Otazník vpravo od všeho ----------- */
+@media (min-width: 900px) {
+  .slovnik-row {
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.2rem;
+  }
+  .img-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .slovnik-ikona {
+    position: absolute;
+    right: 2.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    font-size: 4.1rem;
+    color: #e25c89;
+  }
+}
+
+/* ----------- MOBIL: Otazník vedle obrázku ----------- */
+@media (max-width: 899px) {
+  .slovnik-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.2rem;
+  }
+  .img-wrap {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
+    justify-content: flex-start;
+  }
+  .slovnik-ikona {
+    position: static;
+    font-size: 2.2rem;
+    margin-left: 0.7em;
+    margin-top: 0;
+    transform: none;
+    color: #e25c89;
+  }
+}
+
+/* ----------- Další drobnosti ----------- */
 h1, h2, h3 {
   color: #85733a;
   margin-top: 0;
@@ -149,142 +253,7 @@ h2 { font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;}
 h3 { font-size: 1.12em; font-weight: 700;}
 b, strong { color: #5d4e1f; }
 
-/* ----------- Segmenty rozcestník ----------- */
-.segment-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  justify-content: center;
-  align-items: stretch;
-  margin-top: 2em;
-}
-.segment-card {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 2px 20px rgba(120,100,60,0.07);
-  padding: 2em 1.3em 1.4em 1.3em;
-  min-width: 190px;
-  max-width: 240px;
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.segment-card h3 {
-  color: #7d7753;
-  margin-bottom: 1.2em;
-  margin-top: 0;
-  font-size: 1.12em;
-  font-weight: 700;
-  text-align: center;
-}
-.button-main {
-  display: inline-block;
-  margin-top: 1em;
-  padding: 0.8em 1.7em;
-  font-size: 1.11em;
-  font-weight: 600;
-  color: #474336;
-  background: #e2dbc9;
-  border: none;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(120,100,60,0.08);
-  cursor: pointer;
-  transition: background 0.15s;
-  text-decoration: none;
-  text-align: center;
-}
-.button-main:hover {
-  background: #dad0b8;
-}
-
-/* ---------- Carousel jedna karta ---------- */
-.carousel-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin: 1.5rem 0 0.8rem 0;
-  width: 100%;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.carousel-track {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  max-width: 350px;
-  scroll-behavior: smooth;
-  touch-action: pan-x;
-}
-.carousel-item {
-  flex: 0 0 100%;
-  max-width: 100%;
-  background: #f6f4ee;
-  border-radius: 18px;
-  margin: 0;
-  box-shadow: 0 2px 12px rgba(40, 120, 180, 0.10);
-  padding: 2.2rem 2rem 2rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 200px;
-  border: 1px solid #e2e8f0;
-}
-.carousel-btn {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin: 0 0.6rem;
-  z-index: 1;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.carousel-btn:active { background: #aaa76d; }
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5em;
-  margin-top: 0.5em;
-}
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #dad0b8;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.carousel-dot.active { background: var(--primary); }
-
-/* ----------- Formulář ----------- */
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.1rem;
-  margin-top: 1rem;
-}
-form textarea { grid-column: 1/3; }
-input, textarea {
-  padding: 0.8rem;
-  border: 2px solid var(--button);
-  border-radius: var(--radius);
-  background: #fcfbf6;
-  font-size: 1rem;
-  width: 100%;
-  font-family: inherit;
-}
-button[type="submit"] { grid-column: 1/3; }
-
-/* ----------- Footer ----------- */
+/* Footer */
 footer {
   background: var(--accent);
   padding: 2rem 1rem;
@@ -304,227 +273,8 @@ footer small {
   font-size: .9rem;
 }
 
-/* ----------- SLOVNÍK POJMŮ ----------- */
-
-/* Wrapper obrázku a otazníku */
-.slovnik-row {
-  display: flex;
-  align-items: center;
-  gap: 2.2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  justify-content: flex-start;
-  position: relative;
+/* Zabránění horizontálnímu přetékání */
+* {
+  box-sizing: border-box;
+  max-width: 100vw;
 }
-
-.img-wrap {
-  flex-shrink: 0;
-}
-
-.dict-container {
-  flex: 1 1 auto;
-  min-width: 240px;
-  max-width: 370px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.slovnik-ikona {
-  margin-left: 2.8rem;
-  font-size: 4.3rem;    /* ještě větší! */
-  color: var(--primary);
-  filter: drop-shadow(0 2px 12px rgba(120,100,60,0.12));
-  animation: hop 1.3s infinite alternate;
-  user-select: none;
-  pointer-events: none;
-  z-index: 2;
-  align-self: flex-end;
-}
-
-@keyframes hop {
-  0% { transform: translateY(0);}
-  100% { transform: translateY(-12px);}
-}
-
-/* Mobil – otazník pod slovníkem, menší */
-@media (max-width: 900px) {
-  .slovnik-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.7rem;
-  }
-  .slovnik-ikona {
-    margin-left: 0;
-    margin-top: 1.1em;
-    font-size: 2.5rem;
-    align-self: flex-start;
-  }
-
-}
-
-/* Tip pod vyhledáváním */
-.slovnik-tip {
-  background: #f6ffe5;
-  border-left: 4px solid var(--primary);
-  color: #5b5b30;
-  border-radius: 12px;
-  padding: 0.65em 1em;
-  margin-bottom: 0.6em;
-  font-size: 1.03em;
-  box-shadow: 0 2px 8px rgba(120,100,60,0.06);
-}
-
-/* Chybí pojem? */
-.slovnik-missing {
-  margin: 0.4em 0 0.7em 0;
-  font-size: 0.97em;
-  color: #88774d;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-}
-.slovnik-missing a {
-  color: #827200;
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-/* Výsledek vyhledávání */
-.slovnik-output {
-  background: #f9f4e8;
-  border: 1.5px solid var(--accent);
-  border-radius: 14px;
-  margin-top: 0.4em;
-  padding: 1.15em 1em 1.1em 1em;
-  font-size: 1.1em;
-  color: #544f39;
-  box-shadow: 0 2px 12px rgba(120,100,60,0.07);
-  min-height: 52px;
-  transition: background 0.3s;
-  line-height: 1.65;
-}
-.slovnik-output strong {
-  color: #7d7753;
-  font-size: 1.17em;
-}
-.slovnik-output .def {
-  font-weight: 500;
-  margin-bottom: 0.6em;
-  display: block;
-}
-.slovnik-output .ex {
-  color: #7d7753;
-  font-style: italic;
-  margin-top: 0.4em;
-  display: block;
-}
-
-/* Responsive slovník */
-.slovnik-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 3rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-.dict-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  min-width: 240px;
-  max-width: 370px;
-}
-.dict-container input[type="text"] {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: var(--radius);
-  border: 2px solid var(--accent);
-  background: #fcfbf6;
-  font-size: 1rem;
-  margin-bottom: 0.2em;
-}
-.link-card-btn {
-  padding: 0.75rem 1.4rem;
-  border-radius: 14px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-bottom: 0.6em;
-}
-.link-card-btn:hover {
-  background: var(--button-hover);
-  color: var(--text);
-}
-.img-slovnik {
-  max-width: 160px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin: 0;
-  display: block;
-}
-
-/* --- Responsivita --- */
-@media (max-width: 900px) {
-  .slovnik-row { gap: 1.1rem; }
-}
-@media (max-width: 700px) {
-  .slovnik-row { flex-direction: column; align-items: stretch; }
-  .img-wrap { justify-content: flex-start; }
-  .slovnik-ikona { position: static; font-size: 2rem; margin-left: 0.8em;}
-  .dict-container { max-width: 100%; }
-  .container, main, section {
-    max-width: 100vw !important;
-    width: 100vw !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-  section {
-    padding: 1em 0.3em 1em 0.3em !important;
-    border-radius: 14px;
-    margin-bottom: 1em;
-  }
-  .segment-list {
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
-  }
-  .segment-card {
-    min-width: 94vw;
-    max-width: 98vw;
-    padding: 1.1em 0.2em 1em 0.2em;
-  }
-  .carousel-wrap { max-width: 100vw; }
-  .carousel-track { max-width: 96vw; }
-  .carousel-item {
-    padding: 1.1rem 0.5rem 1.1rem 0.5rem;
-    min-height: 160px;
-  }
-  h1, h2 {
-    font-size: 1.1em;
-    padding-left: 0.1em;
-    padding-right: 0.1em;
-    word-break: break-word;
-  }
-  .circle-link, .top-nav a {
-    min-width: 45vw;
-    font-size: 1em;
-    padding: 0.42em 0.9em;
-    margin: 0.18em 0.1em;
-  }
-  .circle-avatar, .portrait-desktop {
-    width: 48px;
-    height: 48px;
-  }
-}
-@media (max-width: 480px) {
-  .circle-avatar { width: 42px; height: 42px; }
-  .circle-link { font-size: 0.93rem; padding: 0.3rem 0.5rem; }
-  section { padding: 0.7rem 0.09rem !important; }
-}
-
-/* --- Pro všechny prvky zabránit horizontálnímu přetékání --- */
-* { box-sizing: border-box; max-width: 100vw; }
