@@ -69,37 +69,39 @@
   <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
   <img src="portret.png" alt="" class="bg-img-mobile">
 
-  <!-- TLAČÍTKA -->
-  <nav class="main-nav">
-    <a href="index.html#domu">Domů</a>
-    <a href="clanky.html">Články</a>
-    <a href="slovnik.html" class="active">Slovník</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
+  <div class="main-content">
+    <!-- TLAČÍTKA -->
+    <nav class="main-nav">
+      <a href="index.html#domu">Domů</a>
+      <a href="clanky.html">Články</a>
+      <a href="slovnik.html" class="active">Slovník</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
 
-  <main class="container">
-    <section class="slovnik-section">
-      <h2>Laický slovník pojistných pojmů</h2>
-      <div class="slovnik-row">
-        <div class="img-wrap">
-          <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
-        </div>
-        <div class="dict-container">
-          <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
-          <div id="suggestions"></div>
-          <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
-          <div class="slovnik-tip">
-            <b>Tip:</b> Zadejte libovolný pojem, nebo jeho část.<br>
-            Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+    <main class="container">
+      <section class="slovnik-section">
+        <h2>Laický slovník pojistných pojmů</h2>
+        <div class="slovnik-row">
+          <div class="img-wrap">
+            <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
           </div>
-          <div class="slovnik-missing">
-            <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+          <div class="dict-container">
+            <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
+            <div id="suggestions"></div>
+            <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
+            <div class="slovnik-tip">
+              <b>Tip:</b> Zadejte libovolný pojem, nebo jeho část.<br>
+              Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+            </div>
+            <div class="slovnik-missing">
+              <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+            </div>
+            <div id="output" class="slovnik-output" data-current=""></div>
           </div>
-          <div id="output" class="slovnik-output" data-current=""></div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  </div> <!-- konec main-content -->
 
   <footer>
     <p>
