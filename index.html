@@ -38,7 +38,6 @@
       pointer-events: none;
       user-select: none;
     }
-    /* Menu bar */
     .menu-bar {
       position: fixed;
       z-index: 50;
@@ -65,7 +64,6 @@
       background: #b7a97c;
       color: #181818;
     }
-    /* --- Hlavní obsah --- */
     .main-content {
       position: absolute;
       z-index: 10;
@@ -112,7 +110,6 @@
       line-height: 1.5;
       text-shadow: 0 1px 5px #000;
     }
-    /* Tlačítka v řádku */
     .button-row {
       margin-top: 1.3em;
       display: flex;
@@ -177,14 +174,15 @@
       }
       .main-box {
         position: fixed;
-        left: 0; bottom: 0;
+        left: 0; right: 0; bottom: 0;
         width: 100vw;
         max-width: 100vw;
-        border-radius: 24px 24px 0 0;
+        border-radius: 22px 22px 0 0;
         background: rgba(0,0,0,0.35);
-        padding: 1.2em 1em 0.9em 1.1em;
+        padding: 1.1em 1em 1em 1.1em;
         margin: 0;
         pointer-events: auto;
+        box-shadow: 0 -4px 18px 0 rgba(0,0,0,0.17);
       }
       .main-box h1 {
         font-size: 1.5em;
@@ -213,6 +211,7 @@
     @media (max-width: 480px) {
       .main-box {
         padding: 0.9em 0.3em 0.8em 0.6em;
+        border-radius: 18px 18px 0 0;
       }
       .button-row {
         gap: 0.3em;
