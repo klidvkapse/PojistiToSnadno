@@ -1,246 +1,19 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pojisti To Snadno – Daniel Verner</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Raleway', Arial, sans-serif;
-    }
-    body {
-      min-height: 100vh;
-      width: 100vw;
-      color: #fff;
-      background: #181818;
-      position: relative;
-      overflow-x: hidden;
-    }
-    .main-wrapper { display: block; }
-
-    .bg-img-desktop {
-      position: fixed;
-      z-index: 1;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      object-position: right center;
-      filter: brightness(0.76) blur(1.5px);
-      opacity: 0.98;
-      transition: all 0.4s;
-      display: block;
-      pointer-events: none;
-      user-select: none;
-    }
-    .menu-bar {
-      position: fixed;
-      z-index: 50;
-      top: 22px; left: 36px;
-      background: rgba(32,32,32,0.82);
-      padding: 12px 32px 12px 20px;
-      border-radius: 22px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.14);
-      display: flex;
-      gap: 24px;
-      align-items: center;
-    }
-    .menu-bar a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.08em;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      padding: 4px 12px;
-      border-radius: 6px;
-      transition: background 0.16s, color 0.16s;
-    }
-    .menu-bar a:hover, .menu-bar a.active {
-      background: #b7a97c;
-      color: #181818;
-    }
-    .main-content {
-      position: absolute;
-      z-index: 10;
-      top: 0; right: 0; bottom: 0;
-      width: 48vw;
-      min-width: 340px;
-      max-width: 550px;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      padding: 5vw 4vw;
-      background: linear-gradient(270deg, rgba(30,30,30,0.54) 85%, rgba(30,30,30,0.02) 100%);
-      pointer-events: none;
-    }
-    .main-box {
-      background: rgba(0,0,0,0.13);
-      border-radius: 22px;
-      padding: 2.2em 2.3em 2.2em 2em;
-      max-width: 100%;
-      box-shadow: 0 2px 28px rgba(0,0,0,0.11);
-      backdrop-filter: blur(6px);
-      pointer-events: auto;
-    }
-    .main-box h1 {
-      font-size: 2.3em;
-      font-weight: 700;
-      margin-bottom: 0.5em;
-      letter-spacing: 0.03em;
-      text-shadow: 0 2px 14px #000;
-      color: #ffe87a;
-    }
-    .main-box .about {
-      font-size: 1.15em;
-      margin-bottom: 1.1em;
-      font-weight: 400;
-      line-height: 1.5;
-      text-shadow: 0 1px 8px #000;
-    }
-    .main-box .services {
-      font-size: 1.04em;
-      margin-bottom: 1.1em;
-      line-height: 1.5;
-      text-shadow: 0 1px 5px #000;
-    }
-    .button-row {
-      margin-top: 1.3em;
-      display: flex;
-      gap: 1em;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-    }
-    .real-link,
-    .pojistit-link {
-      font-size: 1.08em;
-      background: #b7a97c;
-      color: #222;
-      padding: 0.48em 1.2em;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 2px 12px rgba(120,100,60,0.13);
-      transition: background 0.19s, color 0.19s;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      min-width: 120px;
-      flex: 1 1 130px;
-      max-width: 210px;
-      margin-bottom: 0;
-    }
-    .real-link:hover, .pojistit-link:hover {
-      background: #e2dbc9;
-      color: #474336;
-    }
-    /* --------- MOBILNÍ VERZE --------- */
-    @media (max-width: 800px) {
-      .bg-img-desktop { display: none !important; }
-      body {
-        background: #181818 url('portret.png') no-repeat center top !important;
-        background-size: cover !important;
-      }
-      .menu-bar {
-        position: fixed;
-        left: 0; top: 0;
-        margin: 0;
-        width: 100vw;
-        justify-content: flex-start;
-        border-radius: 0 0 20px 20px;
-        padding: 10px 10px 10px 16px;
-        gap: 16px;
-        box-shadow: 0 2px 14px rgba(0,0,0,0.18);
-      }
-      .menu-bar a { font-size: 1.04em; }
-      .main-content {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        left: 0; top: 0; right: 0; bottom: 0;
-        background: none;
-        align-items: flex-start;
-        justify-content: flex-end;
-        padding: 0;
-        pointer-events: none;
-        z-index: 10;
-      }
-      .main-box {
-        position: fixed;
-        left: 0; right: 0; bottom: 0;
-        width: 100vw;
-        max-width: 100vw;
-        border-radius: 22px 22px 0 0;
-        background: rgba(0,0,0,0.35);
-        padding: 1.1em 1em 1em 1.1em;
-        margin: 0;
-        pointer-events: auto;
-        box-shadow: 0 -4px 18px 0 rgba(0,0,0,0.17);
-      }
-      .main-box h1 {
-        font-size: 1.5em;
-        line-height: 1.2;
-        margin-bottom: 0.5em;
-        color: #ffe87a;
-        text-shadow: 0 2px 18px #000, 0 0 2px #b7a97c;
-      }
-      .main-box .about { font-size: 0.97em; }
-      .main-box .services { font-size: 0.90em; }
-      .button-row {
-        flex-direction: row;
-        gap: 0.5em;
-        margin-top: 1.2em;
-      }
-      .real-link, .pojistit-link {
-        font-size: 1em;
-        padding: 0.44em 0.7em;
-        border-radius: 11px;
-        min-width: 110px;
-        max-width: 140px;
-        flex: 1 1 110px;
-        margin-bottom: 0;
-      }
-    }
-    @media (max-width: 480px) {
-      .main-box {
-        padding: 0.9em 0.3em 0.8em 0.6em;
-        border-radius: 18px 18px 0 0;
-      }
-      .button-row {
-        gap: 0.3em;
-      }
-      .real-link, .pojistit-link {
-        font-size: 0.95em;
-        min-width: 95px;
-        max-width: 130px;
-        padding: 0.41em 0.4em;
-      }
-    }
-  </style>
-</head>
 <body>
+  <img src="portret-bg-web.png" alt="Daniel Verner – portrét" class="bg-img-desktop">
   <div class="main-wrapper">
     <nav class="menu-bar">
       <a href="clanky.html">Články</a>
       <a href="slovnik.html">Slovník</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <img src="portret-bg-web.png" alt="Daniel Verner – portrét" class="bg-img-desktop">
     <div class="main-content">
       <div class="main-box">
-        <h1><strong>Daniel Verner</strong></h1>
+        <h1>Daniel Verner</h1>
         <div class="about">
-          Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br>
+          Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br>
           Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br>
           Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.<br>
-          Společně najdeme řešení, které bude dávat smysl právě vám a vašim blízkým.
+          Společně najdeme řešení, které bude dávat smysl právě vám a vašim blízkým
         </div>
         <div class="services">
           <b>Služby:</b><br>
@@ -257,6 +30,14 @@
         </div>
       </div>
     </div>
+    <footer>
+      <p>
+        Daniel Verner<br>
+        📞 <a href="tel:733782290">733 782 290</a><br>
+        📩 <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
+        📍 Olomoucký kraj – schůzky domlouvám individuálně
+      </p>
+      <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
+    </footer>
   </div>
 </body>
-</html>
