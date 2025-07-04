@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,6 @@
   <title>Pojisti To Snadno – Daniel Verner</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Pozadí – desktop */
     .bg-img-desktop {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       width: 100vw; height: 100vh;
@@ -31,7 +30,6 @@
         transition: all 0.5s;
       }
     }
-    /* Navigace – tlačítka */
     .main-nav {
       position: relative;
       z-index: 10;
@@ -68,27 +66,29 @@
   <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
   <img src="portret.png" alt="" class="bg-img-mobile">
 
-  <!-- Horní menu -->
-  <nav class="main-nav">
-    <a href="index.html#domu">Domů</a>
-    <a href="clanky.html">Články</a>
-    <a href="slovnik.html">Slovník</a>
-    <a href="kontakt.html" class="active">Kontakt</a>
-  </nav>
+  <div class="main-content">
+    <!-- Horní menu -->
+    <nav class="main-nav">
+      <a href="index.html#domu">Domů</a>
+      <a href="clanky.html">Články</a>
+      <a href="slovnik.html">Slovník</a>
+      <a href="kontakt.html" class="active">Kontakt</a>
+    </nav>
 
-  <main>
-    <section class="nabidka-formular">
-      <h2>Nezávazný návrh pojištění</h2>
-      <form>
-        <input type="text" placeholder="Jméno a příjmení" required>
-        <input type="number" placeholder="Váš věk" required>
-        <textarea placeholder="Co vás zajímá?" rows="3" required></textarea>
-        <input type="email" placeholder="Váš email" required>
-        <input type="tel" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
-        <button type="submit">Odeslat poptávku</button>
-      </form>
-    </section>
-  </main>
+    <main>
+      <section class="nabidka-formular">
+        <h2>Nezávazný návrh pojištění</h2>
+        <form>
+          <input type="text" placeholder="Jméno a příjmení" required>
+          <input type="number" placeholder="Váš věk" required>
+          <textarea placeholder="Co vás zajímá?" rows="3" required></textarea>
+          <input type="email" placeholder="Váš email" required>
+          <input type="tel" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
+          <button type="submit">Odeslat poptávku</button>
+        </form>
+      </section>
+    </main>
+  </div><!-- konec main-content -->
 
   <footer>
     <p>
