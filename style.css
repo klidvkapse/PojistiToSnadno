@@ -9,6 +9,57 @@
   --header-height: 145px;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f6f4ee;
+  color: var(--text);
+  font-family: 'Raleway', Arial, sans-serif;
+  width: 100vw;
+  overflow-x: hidden;
+}
+.main-content {
+  flex: 1 0 auto;
+}
+
+/* --------- FOOTER --------- */
+footer {
+  background: var(--accent);
+  padding: 2rem 1rem;
+  border-top: 2px dashed var(--button);
+  box-shadow: var(--shadow);
+  text-align: center;
+  color: #7c7b63;
+  flex-shrink: 0;
+}
+footer a {
+  color: #85733a;
+  font-weight: 600;
+  text-decoration: none;
+}
+footer small {
+  display: block;
+  margin-top: 1rem;
+  font-size: .9rem;
+}
+
+:root {
+  --primary: #b7a97c;
+  --accent: #e2dbc9;
+  --text: #474336;
+  --button: #dad0b8;
+  --button-hover: #beb38b;
+  --shadow: 0 2px 12px rgba(120,100,60,0.11);
+  --radius: 18px;
+  --header-height: 145px;
+}
+
 html { box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
 
@@ -49,16 +100,6 @@ html { box-sizing: border-box; }
 }
 /* Vše kromě pozadí má vyšší z-index */
 body > *:not(.bg-img-desktop):not(.bg-img-mobile) { position: relative; z-index: 10; }
-
-body {
-  margin: 0;
-  background: #f6f4ee;
-  color: var(--text);
-  font-family: 'Raleway', Arial, sans-serif;
-  min-height: 100vh;
-  width: 100vw;
-  overflow-x: hidden;
-}
 
 /* --------- HLAVIČKA --------- */
 header {
@@ -477,26 +518,6 @@ h1 { font-size: 1.45rem; }
 h2 { font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;}
 h3 { font-size: 1.12em; font-weight: 700;}
 b, strong { color: #5d4e1f; }
-
-/* --------- FOOTER --------- */
-footer {
-  background: var(--accent);
-  padding: 2rem 1rem;
-  border-top: 2px dashed var(--button);
-  box-shadow: var(--shadow);
-  text-align: center;
-  color: #7c7b63;
-}
-footer a {
-  color: #85733a;
-  font-weight: 600;
-  text-decoration: none;
-}
-footer small {
-  display: block;
-  margin-top: 1rem;
-  font-size: .9rem;
-}
 
 /* --------- RESPONSIVITA OSTATNÍ --------- */
 @media (max-width: 950px) {
