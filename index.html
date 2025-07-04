@@ -264,20 +264,16 @@
         z-index: 10;
       }
     }
-     .main-box {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100vw;
-    max-width: 100vw;
-    z-index: 20;
-    font-size: 0.93em;
-    padding: 0.8em 0.2em 0.9em 0.4em;
-    border-radius: 14px 14px 0 0;
-    background: rgba(0,0,0,0.13);
-    box-shadow: 0 -2px 16px rgba(0,0,0,0.17);
-    margin: 0;
-  }
+    @media (max-width: 480px) {
+      .main-box {
+        width: 97vw;
+        max-width: 99vw;
+        font-size: 0.93em;
+        padding: 0.8em 0.2em 0.9em 0.4em;
+        border-radius: 12px;
+        left: 1vw;
+        bottom: 80px;
+      }
       .main-box h1 { 
         font-size: 1.5em; 
         line-height: 1.2;
