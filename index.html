@@ -69,25 +69,26 @@
     .main-content {
       position: absolute;
       z-index: 2;
-      top: 0; right: 0; bottom: 0;
-      width: 48vw;
-      min-width: 340px;
-      max-width: 550px;
-      height: 100vh;
+      left: 0; right: 0;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      padding: 5vw 4vw;
-      background: linear-gradient(270deg, rgba(30,30,30,0.54) 85%, rgba(30,30,30,0.02) 100%);
+      align-items: center;
+      /* Box bude posunut níže */
+      top: 23vh; /* posune box cca do třetiny stránky, aby portrét zůstal vidět */
+      min-height: 70vh;
+      pointer-events: none;
     }
     .main-box {
       background: rgba(0,0,0,0.13);
       border-radius: 22px;
       padding: 2.2em 2.3em 2.2em 2em;
-      max-width: 100%;
+      max-width: 540px;
+      width: 90vw;
       box-shadow: 0 2px 28px rgba(0,0,0,0.11);
       backdrop-filter: blur(6px);
+      pointer-events: auto;
+      margin: 0 auto;
     }
     .main-box h1 {
       font-size: 2.3em;
@@ -95,6 +96,7 @@
       margin-bottom: 0.5em;
       letter-spacing: 0.03em;
       text-shadow: 0 2px 14px #000;
+      color: #ffe87a;
     }
     .main-box .about {
       font-size: 1.15em;
@@ -109,8 +111,6 @@
       line-height: 1.5;
       text-shadow: 0 1px 5px #000;
     }
-
-    /* Řádek tlačítek */
     .button-row {
       margin-top: 1.3em;
       display: flex;
@@ -142,7 +142,6 @@
       background: #e2dbc9;
       color: #474336;
     }
-
     footer {
       position: fixed;
       z-index: 3;
@@ -161,121 +160,42 @@
       color: #fff;
       text-decoration: underline;
     }
-
-    /* --- MOBIL: box více doleva a výš, text vlevo + VĚTŠÍ JMÉNO, tlačítka vedle sebe --- */
-    @media (max-width: 800px) {
-      .bg-img-desktop { display: none !important; }
-      body {
-        background: #181818 url('portret.png') no-repeat center top !important;
-        background-size: cover !important;
-      }
-      .main-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        min-height: 100vh;
-      }
-      .menu-bar {
-        position: fixed;
-        left: 0; top: 0;
-        margin: 0;
-        width: 100vw;
-        justify-content: flex-start;
-        border-radius: 0 0 20px 20px;
-        padding: 10px 10px 10px 16px;
-        gap: 16px;
-        box-shadow: 0 2px 14px rgba(0,0,0,0.18);
-      }
-      .menu-bar a { font-size: 1.04em; }
+    @media (max-width: 900px) {
       .main-content {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        min-width: 0;
-        max-width: 100vw;
-        left: 0;
-        bottom: 0;
-        top: 0;
-        background: none;
-        pointer-events: none;
-        z-index: 2;
+        top: 33vh;
+        min-height: 60vh;
       }
       .main-box {
-        position: absolute;
-        left: 2vw;
-        bottom: 110px;
-        width: 90vw;
-        max-width: 410px;
-        font-size: 0.97em;
-        padding: 1.1em 1em 1.2em 1.2em;
-        border-radius: 16px;
-        margin: 0;
-        text-align: left;
-        box-shadow: 0 2px 24px rgba(0,0,0,0.15);
-        background: rgba(0,0,0,0.20);
-        backdrop-filter: blur(6px);
-        pointer-events: auto;
-      }
-      .main-box h1 {
-        font-size: 2.15em;   /* Větší font pouze pro mobil */
-        font-weight: 900;
-        margin-bottom: 0.5em;
-        text-align: left;
-        color: #ffe87a;
-        letter-spacing: 0.04em;
-        line-height: 1.13;
-        text-shadow: 0 2px 18px #000, 0 0 2px #b7a97c;
-      }
-      .main-box .about {
-        font-size: 0.98em;
-        margin-bottom: 1em;
-        line-height: 1.25;
-        text-align: left;
-      }
-      .main-box .services {
-        font-size: 0.90em;
-        margin-bottom: 1.1em;
-        line-height: 1.23;
-        text-align: left;
+        max-width: 97vw;
+        padding: 1.2em 1em 1.1em 1em;
       }
       .button-row {
         flex-direction: row;
         gap: 0.5em;
-        margin-top: 1.2em;
+        margin-top: 1.1em;
       }
       .real-link, .pojistit-link {
         font-size: 1em;
-        padding: 0.44em 0.7em;
+        padding: 0.42em 0.7em;
         border-radius: 11px;
-        min-width: 110px;
-        max-width: 140px;
-        flex: 1 1 110px;
+        min-width: 100px;
+        max-width: 130px;
+        flex: 1 1 100px;
         margin-bottom: 0;
-      }
-      footer {
-        font-size: 0.97em;
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: 0;
-        padding: 1.1em 0 0.9em 0;
-        background: rgba(0,0,0,0.13);
-        z-index: 10;
       }
     }
     @media (max-width: 480px) {
+      .main-content {
+        top: 38vh;
+      }
       .main-box {
-        width: 97vw;
-        max-width: 99vw;
         font-size: 0.93em;
         padding: 0.8em 0.2em 0.9em 0.4em;
         border-radius: 12px;
         left: 1vw;
-        bottom: 80px;
       }
-      .main-box h1 { 
-        font-size: 1.5em; 
+      .main-box h1 {
+        font-size: 1.2em;
         line-height: 1.2;
       }
       .main-box .about { font-size: 0.89em; }
