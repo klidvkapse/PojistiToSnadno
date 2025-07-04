@@ -109,9 +109,16 @@
       line-height: 1.5;
       text-shadow: 0 1px 5px #000;
     }
-    .main-box .real-link {
-      margin-top: 0.7em;
-      display: inline-block;
+    .button-row {
+      margin-top: 1em;
+      display: flex;
+      gap: 1.1em;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .real-link,
+    .pojistit-link {
       font-size: 1.1em;
       background: #b7a97c;
       color: #222;
@@ -121,8 +128,12 @@
       font-weight: 600;
       box-shadow: 0 2px 12px rgba(120,100,60,0.13);
       transition: background 0.19s, color 0.19s;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      text-align: center;
     }
-    .main-box .real-link:hover {
+    .real-link:hover, .pojistit-link:hover {
       background: #e2dbc9;
       color: #474336;
     }
@@ -145,7 +156,7 @@
       text-decoration: underline;
     }
 
-    /* --- MOBIL: box více doleva a výš, text vlevo + VĚTŠÍ JMÉNO --- */
+    /* --- MOBIL: box více doleva a výš, text vlevo + VĚTŠÍ JMÉNO + tlačítka pod sebe --- */
     @media (max-width: 800px) {
       .bg-img-desktop { display: none !important; }
       body {
@@ -221,13 +232,16 @@
         line-height: 1.23;
         text-align: left;
       }
-      .main-box .real-link {
-        margin-top: 1em;
-        display: block;
-        text-align: center;
+      .button-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8em;
+      }
+      .real-link, .pojistit-link {
         width: 100%;
-        font-size: 1em;
-        padding: 0.75em 0;
+        text-align: center;
+        font-size: 1.08em;
+        padding: 0.7em 0;
       }
       footer {
         font-size: 0.97em;
@@ -256,7 +270,6 @@
         line-height: 1.2;
       }
       .main-box .about { font-size: 0.89em; }
-      .main-box .real-link { font-size: 0.93em; padding: 0.62em 0; }
     }
   </style>
 </head>
@@ -276,7 +289,6 @@
           Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br>
           Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.<br>
           Společně najdeme řešení, které bude dávat smysl právě vám a vašim blízkým
-         
         </div>
         <div class="services">
           <b>Služby:</b><br>
@@ -286,10 +298,12 @@
           • Podpora při řešení pojistných událostí<br>
           • Investice<br>
           • Úvěry na bydlení
-          
         </div>
-        <a href="realne-skody.html" class="real-link">Reálné škody klientů</a>
-         </div>
+        <div class="button-row">
+          <a href="realne-skody.html" class="real-link">Reálné škody klientů</a>
+          <a href="kontakt.html" class="pojistit-link">Chci pojistit</a>
+        </div>
+      </div>
     </div>
   </div>
 </body>
