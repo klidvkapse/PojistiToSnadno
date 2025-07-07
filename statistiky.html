@@ -25,7 +25,8 @@
   <main class="container">
 
     <!-- 1. Chart.js knihovna -->
-<script>
+
+    <script>
 const grafy = [
   {
     id: 'zivot',
@@ -120,43 +121,47 @@ const grafy = [
   },
 ];
 
-// Pro každý graf:
-grafy.forEach(graf => {
-  const ctx = document.getElementById(graf.id).getContext('2d');
-  const vysvetlivkaDiv = document.getElementById(graf.vysvetlivka);
+// Pro každý graf vlastní scope – IIFE
+grafy.forEach(function(graf) {
+  (function(graf) {
+    const ctx = document.getElementById(graf.id).getContext('2d');
+    const vysvetlivkaDiv = document.getElementById(graf.vysvetlivka);
 
-  // Inicializace grafu
-  const pie = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: graf.labels,
-      datasets: [{
-        data: graf.data,
-        backgroundColor: graf.barvy
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display:true, position:'bottom' },
-        tooltip: { enabled: false }
+    // Inicializace grafu
+    const pie = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: graf.labels,
+        datasets: [{
+          data: graf.data,
+          backgroundColor: graf.barvy
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display:true, position:'bottom' },
+          tooltip: { enabled: false }
+        }
       }
-    }
-  });
+    });
 
-  // Kliknutí na výseč = zobraz vysvětlivku
-  ctx.canvas.addEventListener('click', function(evt) {
-    const points = pie.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
-    if (points.length) {
-      const idx = points[0].index;
-      vysvetlivkaDiv.innerHTML = graf.vysvetlivky[idx];
-    }
-  });
+    // Kliknutí na výseč = zobraz vysvětlivku
+    ctx.canvas.addEventListener('click', function(evt) {
+      const points = pie.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
+      if (points.length) {
+        const idx = points[0].index;
+        vysvetlivkaDiv.innerHTML = graf.vysvetlivky[idx];
+      }
+    });
 
-  // První načtení = defaultní text
-  vysvetlivkaDiv.innerHTML = "Kliknutím na výseč zobrazíte podrobnosti.";
+    // První načtení = defaultní text
+    vysvetlivkaDiv.innerHTML = "Kliknutím na výseč zobrazíte podrobnosti.";
+  })(graf); // <- Tady je uzavřená scope
 });
 </script>
+
+
 
 </body>
 </html>
