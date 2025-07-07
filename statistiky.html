@@ -40,30 +40,40 @@
       }
     }
 
-    /* MENU (zjednodušeně, uprav dle svého stylu) */
-    .top-nav {
-      position: relative; z-index: 10;
-      display: flex; justify-content: center; align-items: center;
-      gap: 1em; padding: 1.1em 0 0.7em 0;
-      background: rgba(255,255,255,0.06);
-      font-weight: bold;
-    }
-    .top-nav a {
-      padding: 0.6em 1.4em; margin: 0 0.15em;
-      border-radius: 22px; text-decoration: none;
-      color: #474336; background: #e2dbc9;
-      transition: background .2s;
-      font-size: 1.08em;
-    }
-    .top-nav .active, .top-nav a:hover {
-      background: #b7a97c;
-      color: #3b3722;
-    }
-    .portrait-desktop {
-      width: 46px; height: 46px; border-radius: 50%;
-      object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
-      box-shadow: 0 2px 8px rgba(100,100,60,0.13);
-    }
+   .top-nav {
+  position: relative; z-index: 10;
+  display: flex; justify-content: center; align-items: center;
+  gap: 1em; padding: 1.1em 0 0.7em 0;
+  background: rgba(255,255,255,0.06);
+  font-weight: bold;
+  flex-direction: row;      /* důležité! vždy řádek */
+  flex-wrap: wrap;          /* umožní zalomení na více řádků, když je málo místa */
+}
+.top-nav a {
+  padding: 0.6em 1.4em; margin: 0 0.15em;
+  border-radius: 22px; text-decoration: none;
+  color: #474336; background: #e2dbc9;
+  transition: background .2s;
+  font-size: 1.08em;
+}
+.top-nav .active, .top-nav a:hover {
+  background: #b7a97c;
+  color: #3b3722;
+}
+.portrait-desktop {
+  width: 46px; height: 46px; border-radius: 50%;
+  object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
+  box-shadow: 0 2px 8px rgba(100,100,60,0.13);
+}
+
+/* Volitelně, menší písmo na úzkých mobilech */
+@media (max-width: 600px) {
+  .top-nav a {
+    padding: 0.45em 0.7em;
+    font-size: 0.98em;
+  }
+}
+
 
     /* Kontejner pro celý obsah */
     .container {
