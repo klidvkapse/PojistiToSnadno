@@ -6,85 +6,85 @@
   <title>Statistiky | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .pojisteni-grafy-box { display:flex; flex-wrap:wrap; justify-content:center; gap:2em; }
+    .graf-karta { max-width:340px; background:#f6f4ee; border-radius:18px; box-shadow:0 2px 12px rgba(120,100,60,0.11); padding:2em 1em; margin:1em 0; }
+    .graf-karta canvas { display:block; margin:0 auto; }
+    .graf-vysvetlivka { min-height:3.2em; margin-top:1em; color:#474336; font-size:1.08em; background:#fffbe7; padding:0.7em 1em; border-radius:12px; text-align:left;}
+    .graf-karta b { display:block; margin-bottom:0.5em; font-size:1.09em;}
+    @media (max-width: 800px) {
+      .pojisteni-grafy-box { flex-direction: column; align-items: center; }
+      .graf-karta { width:90vw; max-width:99vw;}
+    }
+  </style>
 </head>
 <body>
-  <!-- Pozadí -->
-  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
-  <img src="portret.png" alt="" class="bg-img-mobile">
-
-  <!-- Menu -->
+  <!-- Menu (volitelně) -->
   <nav class="top-nav">
     <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
     <a href="index.html#domu">Domů</a>
-    <a href="clanky.html">Články</a>
+    <a href="clanky.html">Zajímavosti</a>
     <a href="slovnik.html">Slovník</a>
-    <a href="statistiky.html" class="active">Statistiky</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
 
   <main class="container">
-    <style>
-  .pojisteni-grafy-box { display:flex; flex-wrap:wrap; justify-content:center; gap:2em; }
-  .graf-karta { max-width:340px; background:#f6f4ee; border-radius:18px; box-shadow:0 2px 12px rgba(120,100,60,0.11); padding:2em 1em; margin:1em 0; }
-  .graf-karta canvas { display:block; margin:0 auto; }
-  .graf-vysvetlivka { min-height:2.2em; margin-top:1em; color:#474336; font-size:1.08em; background:#fffbe7; padding:0.6em 0.8em; border-radius:12px; }
-  .graf-karta b { display:block; margin-bottom:0.5em; font-size:1.09em;}
-</style>
+    <h1 style="text-align:center;margin-top:1em;margin-bottom:0.5em;">Statistiky pojistných událostí (modelová data 2024)</h1>
+    <p style="text-align:center;color:#565342;margin-bottom:2.5em;">
+      Kliknutím na výseč koláče zobrazíte konkrétní počet událostí, průměrnou výplatu a délku vyřízení v dané kategorii.
+    </p>
 
-<div class="pojisteni-grafy-box">
+    <div class="pojisteni-grafy-box">
 
-  <!-- Životní pojištění -->
-  <div class="graf-karta">
-    <b>Životní pojištění</b>
-    <canvas id="zivot" width="260" height="260"></canvas>
-    <div id="vysvetlivka-zivot" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
-  </div>
+      <!-- Životní pojištění -->
+      <div class="graf-karta">
+        <b>Životní pojištění</b>
+        <canvas id="zivot" width="260" height="260"></canvas>
+        <div id="vysvetlivka-zivot" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte statistiku.</div>
+      </div>
 
-  <!-- Pojištění majetku -->
-  <div class="graf-karta">
-    <b>Pojištění majetku</b>
-    <canvas id="majetek" width="260" height="260"></canvas>
-    <div id="vysvetlivka-majetek" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
-  </div>
+      <!-- Pojištění majetku -->
+      <div class="graf-karta">
+        <b>Pojištění majetku</b>
+        <canvas id="majetek" width="260" height="260"></canvas>
+        <div id="vysvetlivka-majetek" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte statistiku.</div>
+      </div>
 
-  <!-- Pojištění vozidel -->
-  <div class="graf-karta">
-    <b>Pojištění vozidel</b>
-    <canvas id="vozidlo" width="260" height="260"></canvas>
-    <div id="vysvetlivka-vozidlo" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
-  </div>
+      <!-- Pojištění vozidel -->
+      <div class="graf-karta">
+        <b>Pojištění vozidel</b>
+        <canvas id="vozidlo" width="260" height="260"></canvas>
+        <div id="vysvetlivka-vozidlo" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte statistiku.</div>
+      </div>
 
-  <!-- Úrazové pojištění -->
-  <div class="graf-karta">
-    <b>Úrazové pojištění</b>
-    <canvas id="uraz" width="260" height="260"></canvas>
-    <div id="vysvetlivka-uraz" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
-  </div>
+      <!-- Úrazové pojištění -->
+      <div class="graf-karta">
+        <b>Úrazové pojištění</b>
+        <canvas id="uraz" width="260" height="260"></canvas>
+        <div id="vysvetlivka-uraz" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte statistiku.</div>
+      </div>
 
-  <!-- Pracovní neschopnost -->
-  <div class="graf-karta">
-    <b>Pracovní neschopnost</b>
-    <canvas id="pn" width="260" height="260"></canvas>
-    <div id="vysvetlivka-pn" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
-  </div>
+      <!-- Pracovní neschopnost -->
+      <div class="graf-karta">
+        <b>Pracovní neschopnost</b>
+        <canvas id="pn" width="260" height="260"></canvas>
+        <div id="vysvetlivka-pn" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte statistiku.</div>
+      </div>
 
-  <!-- Cestovní pojištění -->
-  <div class="graf-karta">
-    <b>Cestovní pojištění</b>
-    <canvas id="cestovni" width="260" height="260"></canvas>
-    <div id="vysvetlivka-cestovni" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
-  </div>
+      <!-- Cestovní pojištění -->
+      <div class="graf-karta">
+        <b>Cestovní pojištění</b>
+        <canvas id="cestovni" width="260" height="260"></canvas>
+        <div id="vysvetlivka-cestovni" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte statistiku.</div>
+      </div>
 
-  <!-- Pojištění odpovědnosti -->
-  <div class="graf-karta">
-    <b>Pojištění odpovědnosti</b>
-    <canvas id="odpovednost" width="260" height="260"></canvas>
-    <div id="vysvetlivka-odpovednost" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
-  </div>
-</div>
-
-
-    <!-- 1. Chart.js knihovna -->
+      <!-- Pojištění odpovědnosti -->
+      <div class="graf-karta">
+        <b>Pojištění odpovědnosti</b>
+        <canvas id="odpovednost" width="260" height="260"></canvas>
+        <div id="vysvetlivka-odpovednost" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte statistiku.</div>
+      </div>
+    </div>
 
     <script>
 const grafy = [
@@ -94,11 +94,11 @@ const grafy = [
     labels: ['Nemoci','Úrazy','Pracovní neschopnost','Úrazy při dopravní nehodě'],
     data: [48,22,18,12],
     barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
-    vysvetlivky: [
-      "Nemoci – Nejčastější důvod plnění z životního pojištění. Patří sem např. rakovina, infarkt, dlouhodobá onemocnění.",
-      "Úrazy – Výplata při dlouhodobých následcích úrazů (např. trvalé následky, závažné úrazy).",
-      "Pracovní neschopnost – Pojištění výpadku příjmů při dlouhodobé nemoci nebo úrazu.",
-      "Úrazy při dopravní nehodě – Plnění za zranění při autonehodách a dalších dopravních událostech."
+    statistiky: [
+      {pocet: 5900, vyplata: '430 000 Kč', doba: '16 dní'},
+      {pocet: 2700, vyplata: '210 000 Kč', doba: '13 dní'},
+      {pocet: 2200, vyplata: '35 000 Kč', doba: '10 dní'},
+      {pocet: 1500, vyplata: '85 000 Kč', doba: '12 dní'},
     ]
   },
   {
@@ -107,11 +107,11 @@ const grafy = [
     labels: ['Počasí','Krádež/vloupání','Požár','Havárie'],
     data: [55,22,13,10],
     barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
-    vysvetlivky: [
-      "Poškození počasím – Bouřky, krupobití, záplavy a vichřice tvoří největší část škod.",
-      "Krádež nebo vloupání – Zahrnuje škody vzniklé krádeží nebo vniknutím cizí osoby.",
-      "Požár – Škody způsobené požárem nebo výbuchem.",
-      "Havárie – Prasklé potrubí, zatečení, technické poruchy."
+    statistiky: [
+      {pocet: 25200, vyplata: '38 000 Kč', doba: '11 dní'},
+      {pocet: 10100, vyplata: '61 000 Kč', doba: '15 dní'},
+      {pocet: 5900, vyplata: '110 000 Kč', doba: '18 dní'},
+      {pocet: 4300, vyplata: '22 000 Kč', doba: '9 dní'},
     ]
   },
   {
@@ -120,11 +120,11 @@ const grafy = [
     labels: ['Dopravní nehoda','Střet se zvěří','Vandalismus','Krádež'],
     data: [68,15,10,7],
     barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
-    vysvetlivky: [
-      "Dopravní nehoda – Nejčastější pojistné události, zahrnuje střety vozidel, škody na zdraví i majetku.",
-      "Střet se zvěří – Typicky sraz srny, divočáka apod., hlavně mimo města.",
-      "Vandalismus – Úmyslné poškození vozidla třetí osobou.",
-      "Krádež – Odcizení vozidla nebo jeho částí."
+    statistiky: [
+      {pocet: 21600, vyplata: '37 000 Kč', doba: '14 dní'},
+      {pocet: 4800, vyplata: '25 000 Kč', doba: '10 dní'},
+      {pocet: 3200, vyplata: '44 000 Kč', doba: '17 dní'},
+      {pocet: 2200, vyplata: '125 000 Kč', doba: '21 dní'},
     ]
   },
   {
@@ -133,11 +133,11 @@ const grafy = [
     labels: ['Pády','Sportovní úrazy','Pracovní úrazy','Dopravní nehody'],
     data: [40,32,18,10],
     barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
-    vysvetlivky: [
-      "Pády v domácnosti – Kluzké podlahy, schody a podobné situace.",
-      "Sportovní úrazy – Úrazy při rekreačním nebo závodním sportu.",
-      "Pracovní úrazy – Zranění během výkonu povolání.",
-      "Dopravní nehody – Zahrnuje úrazy při dopravních nehodách mimo pracovní dobu."
+    statistiky: [
+      {pocet: 3700, vyplata: '18 000 Kč', doba: '8 dní'},
+      {pocet: 2950, vyplata: '24 000 Kč', doba: '9 dní'},
+      {pocet: 1650, vyplata: '31 000 Kč', doba: '11 dní'},
+      {pocet: 900, vyplata: '42 000 Kč', doba: '12 dní'},
     ]
   },
   {
@@ -146,11 +146,11 @@ const grafy = [
     labels: ['Nemoc','Úraz','Psychika','Ostatní'],
     data: [58,25,12,5],
     barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
-    vysvetlivky: [
-      "Nemoc – Většina dlouhodobých pracovních neschopností vzniká kvůli běžným i vážnějším nemocem.",
-      "Úraz – Zlomeniny, výrony, a další tělesná zranění mimo práci.",
-      "Psychické potíže – Vyhoření, deprese, dlouhodobý stres.",
-      "Ostatní – Například karanténa nebo jiné méně časté příčiny."
+    statistiky: [
+      {pocet: 6030, vyplata: '36 000 Kč', doba: '13 dní'},
+      {pocet: 2600, vyplata: '32 000 Kč', doba: '11 dní'},
+      {pocet: 1250, vyplata: '29 000 Kč', doba: '12 dní'},
+      {pocet: 520, vyplata: '27 000 Kč', doba: '10 dní'},
     ]
   },
   {
@@ -159,11 +159,11 @@ const grafy = [
     labels: ['Nemoc','Úraz','Krádež','Storno zájezdu'],
     data: [41,28,19,12],
     barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
-    vysvetlivky: [
-      "Nemoc v zahraničí – Nejčastější pojistné události, včetně hospitalizace.",
-      "Úraz v zahraničí – Zlomeniny, řezné rány, nebo komplikace při sportu.",
-      "Krádež věcí – Odcizení zavazadel, mobilů apod.",
-      "Storno zájezdu – Náhlé zrušení dovolené (nemoc, úmrtí v rodině...)."
+    statistiky: [
+      {pocet: 2380, vyplata: '19 000 Kč', doba: '7 dní'},
+      {pocet: 1625, vyplata: '26 000 Kč', doba: '8 dní'},
+      {pocet: 1100, vyplata: '16 000 Kč', doba: '7 dní'},
+      {pocet: 700, vyplata: '14 000 Kč', doba: '6 dní'},
     ]
   },
   {
@@ -172,16 +172,16 @@ const grafy = [
     labels: ['Škoda na majetku','Škoda na zdraví','Zvíře','Zaměstnání'],
     data: [48,27,16,9],
     barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
-    vysvetlivky: [
-      "Škoda na majetku – Poškození nebo ztráta cizí věci (např. rozbité okno souseda).",
-      "Škoda na zdraví – Poranění jiné osoby (např. cyklista srazí chodce).",
-      "Škoda způsobená zvířetem – Pes roztrhne kalhoty sousedovi apod.",
-      "Škoda v zaměstnání – Způsobená zaměstnavateli při výkonu práce."
+    statistiky: [
+      {pocet: 1960, vyplata: '13 000 Kč', doba: '9 dní'},
+      {pocet: 1100, vyplata: '31 000 Kč', doba: '14 dní'},
+      {pocet: 650, vyplata: '10 000 Kč', doba: '6 dní'},
+      {pocet: 370, vyplata: '12 000 Kč', doba: '8 dní'},
     ]
   },
 ];
 
-// Pro každý graf vlastní scope – IIFE
+// Každý graf ve vlastní scope (funguje vše najednou)
 grafy.forEach(function(graf) {
   (function(graf) {
     const ctx = document.getElementById(graf.id).getContext('2d');
@@ -206,22 +206,26 @@ grafy.forEach(function(graf) {
       }
     });
 
-    // Kliknutí na výseč = zobraz vysvětlivku
+    // Kliknutí na výseč = zobraz statistiku
     ctx.canvas.addEventListener('click', function(evt) {
       const points = pie.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
       if (points.length) {
         const idx = points[0].index;
-        vysvetlivkaDiv.innerHTML = graf.vysvetlivky[idx];
+        const stat = graf.statistiky[idx];
+        vysvetlivkaDiv.innerHTML = `
+          <b>${graf.labels[idx]}</b><br>
+          Počet událostí: <b>${stat.pocet.toLocaleString('cs-CZ')}</b><br>
+          Průměrná výplata: <b>${stat.vyplata}</b><br>
+          Průměrná délka vyřízení: <b>${stat.doba}</b>
+        `;
       }
     });
 
     // První načtení = defaultní text
-    vysvetlivkaDiv.innerHTML = "Kliknutím na výseč zobrazíte podrobnosti.";
-  })(graf); // <- Tady je uzavřená scope
+    vysvetlivkaDiv.innerHTML = "Kliknutím na výseč zobrazíte statistiku.";
+  })(graf); // <- Uzavřená scope
 });
-</script>
-
-
-
+    </script>
+  </main>
 </body>
 </html>
