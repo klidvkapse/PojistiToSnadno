@@ -7,36 +7,152 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    .pojisteni-grafy-box { display:flex; flex-wrap:wrap; justify-content:center; gap:2em; }
-    .graf-karta { max-width:340px; background:#f6f4ee; border-radius:18px; box-shadow:0 2px 12px rgba(120,100,60,0.11); padding:2em 1em; margin:1em 0; }
+    body {
+      color: #e2dbc9;
+      background: #f6f4ee;
+      font-family: 'Raleway', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    /* Pozadí obrázkem přes img, fixně */
+    .bg-img-desktop {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover; object-position: center;
+      filter: brightness(0.78) blur(2.8px);
+      opacity: 0.99; z-index: 1;
+      pointer-events: none; user-select: none;
+      transition: all 0.5s;
+      display: block;
+    }
+    .bg-img-mobile { display: none; }
+    @media (max-width: 800px) {
+      .bg-img-desktop { display: none !important; }
+      .bg-img-mobile {
+        display: block !important;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw; height: 100vh;
+        object-fit: cover; object-position: center;
+        filter: brightness(0.78) blur(1.8px);
+        opacity: 0.99; z-index: 1;
+        pointer-events: none; user-select: none;
+        transition: all 0.5s;
+      }
+    }
+
+    /* MENU (zjednodušeně, uprav dle svého stylu) */
+    .top-nav {
+      position: relative; z-index: 10;
+      display: flex; justify-content: center; align-items: center;
+      gap: 1em; padding: 1.1em 0 0.7em 0;
+      background: rgba(255,255,255,0.06);
+      font-weight: bold;
+    }
+    .top-nav a {
+      padding: 0.6em 1.4em; margin: 0 0.15em;
+      border-radius: 22px; text-decoration: none;
+      color: #474336; background: #e2dbc9;
+      transition: background .2s;
+      font-size: 1.08em;
+    }
+    .top-nav .active, .top-nav a:hover {
+      background: #b7a97c;
+      color: #3b3722;
+    }
+    .portrait-desktop {
+      width: 46px; height: 46px; border-radius: 50%;
+      object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
+      box-shadow: 0 2px 8px rgba(100,100,60,0.13);
+    }
+
+    /* Kontejner pro celý obsah */
+    .container {
+      position: relative;
+      z-index: 5;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.7em 1em 3em 1em;
+    }
+
+    /* Nadpis a popis – bílé a čitelné */
+    .statistika-header,
+    h1 {
+      color: #fff !important;
+      text-align: center;
+      font-size: 2.25em;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      margin-top: 0.4em;
+      margin-bottom: 0.3em;
+      text-shadow: 0 3px 16px rgba(0,0,0,0.23);
+    }
+    .statistika-popis {
+      color: #fff;
+      font-weight: 500;
+      font-size: 1.16em;
+      margin-bottom: 2.5em;
+      text-align: center;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.22);
+    }
+
+    /* Grafy – boxy a rozložení */
+    .pojisteni-grafy-box { 
+      display:flex; flex-wrap:wrap; justify-content:center; gap:2em; 
+      margin-bottom: 2.5em;
+    }
+    .graf-karta { 
+      max-width:340px; width:100%; min-width:240px;
+      background: rgba(255,255,255,0.93);
+      border-radius:18px; 
+      box-shadow:0 2px 12px rgba(120,100,60,0.12);
+      padding:2em 1em 1.1em 1em; 
+      margin:1em 0; 
+      z-index: 10;
+      display: flex; flex-direction: column; align-items: center;
+    }
     .graf-karta canvas { display:block; margin:0 auto; }
-    .graf-vysvetlivka { min-height:3.2em; margin-top:1em; color:#474336; font-size:1.08em; background:#fffbe7; padding:0.7em 1em; border-radius:12px; text-align:left;}
-    .graf-karta b { display:block; margin-bottom:0.5em; font-size:1.09em;}
+    .graf-vysvetlivka { 
+      min-height:3.2em; margin-top:1em; color: #474336; 
+      font-size:1.08em; background:#fffbe7;
+      padding:0.7em 1em; border-radius:12px; text-align:left;
+      box-shadow:0 1px 4px rgba(120,100,60,0.06);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .graf-karta b { 
+      display:block; margin-bottom:0.5em; font-size:1.09em; color:#3b3722;
+    }
+    /* Výraznější údaj v boxu */
+    .graf-vysvetlivka b {
+      color: #b7a97c;
+    }
+    @media (max-width: 980px) {
+      .pojisteni-grafy-box { gap:1.2em; }
+      .graf-karta { max-width: 96vw; }
+    }
     @media (max-width: 800px) {
       .pojisteni-grafy-box { flex-direction: column; align-items: center; }
-      .graf-karta { width:90vw; max-width:99vw;}
+      .graf-karta { width:95vw; min-width: 0; }
     }
   </style>
 </head>
 <body>
   <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
   <img src="portret.png" alt="" class="bg-img-mobile">
-  body {
-  color: #fff; /* bílé písmo */
-}
 
-
-  <!-- Menu (volitelně) -->
+  <!-- Menu (případně uprav cesty k obrázkům a stránkám) -->
   <nav class="top-nav">
+    <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
     <a href="index.html#domu">Domů</a>
     <a href="clanky.html">Zajímavosti</a>
     <a href="slovnik.html">Slovník</a>
+    <a href="statistiky.html" class="active">Statistiky</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
 
   <main class="container">
-    <h1 style="text-align:center;margin-top:1em;margin-bottom:0.5em;">Statistiky pojistných událostí (modelová data 2024)</h1>
-    <p style="text-align:center;color:#565342;margin-bottom:2.5em;">
+    <h1 class="statistika-header">Statistiky pojistných událostí (modelová data 2024)</h1>
+    <p class="statistika-popis">
       Kliknutím na výseč koláče zobrazíte konkrétní počet událostí, průměrnou výplatu a délku vyřízení v dané kategorii.
     </p>
 
@@ -187,13 +303,11 @@ const grafy = [
   },
 ];
 
-// Každý graf ve vlastní scope (funguje vše najednou)
 grafy.forEach(function(graf) {
   (function(graf) {
     const ctx = document.getElementById(graf.id).getContext('2d');
     const vysvetlivkaDiv = document.getElementById(graf.vysvetlivka);
 
-    // Inicializace grafu
     const pie = new Chart(ctx, {
       type: 'pie',
       data: {
@@ -212,7 +326,6 @@ grafy.forEach(function(graf) {
       }
     });
 
-    // Kliknutí na výseč = zobraz statistiku
     ctx.canvas.addEventListener('click', function(evt) {
       const points = pie.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
       if (points.length) {
@@ -227,9 +340,8 @@ grafy.forEach(function(graf) {
       }
     });
 
-    // První načtení = defaultní text
     vysvetlivkaDiv.innerHTML = "Kliknutím na výseč zobrazíte statistiku.";
-  })(graf); // <- Uzavřená scope
+  })(graf);
 });
     </script>
   </main>
