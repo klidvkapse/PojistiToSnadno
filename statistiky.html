@@ -24,196 +24,218 @@
 
   <main class="container">
 
-    <!-- BLOK 1: Statistiky škod klientů -->
-    <section>
-      <h2>Reálné škody klientů</h2>
-      <div style="overflow-x:auto">
-        <table style="width:100%;border-collapse:collapse;margin-bottom:2em;">
-          <thead>
-            <tr>
-              <th>Datum škody</th>
-              <th>Typ škody</th>
-              <th>Částka plnění</th>
-              <th>Doba vyřízení (dny)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>2024-02-01</td><td>Krupobití</td><td>18 750 Kč</td><td>12</td></tr>
-            <tr><td>2024-03-12</td><td>Požár</td><td>127 000 Kč</td><td>21</td></tr>
-            <tr><td>2024-04-05</td><td>Voda z potrubí</td><td>45 900 Kč</td><td>8</td></tr>
-            <tr><td>2024-04-19</td><td>Vloupání</td><td>36 200 Kč</td><td>18</td></tr>
-            <tr><td>2024-05-03</td><td>Krupobití</td><td>23 600 Kč</td><td>10</td></tr>
-            <tr><td>2024-05-22</td><td>Vichřice</td><td>33 000 Kč</td><td>14</td></tr>
-            <tr><td>2024-06-01</td><td>Požár</td><td>54 800 Kč</td><td>16</td></tr>
-            <tr><td>2024-06-15</td><td>Voda z potrubí</td><td>9 600 Kč</td><td>7</td></tr>
-            <tr><td>2024-07-04</td><td>Vloupání</td><td>51 200 Kč</td><td>19</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="stat-graphs" style="display:flex;flex-wrap:wrap;gap:2em;justify-content:space-between;">
-        <div style="flex:1 1 350px;min-width:290px;max-width:520px;">
-          <canvas id="typSkodyChart"></canvas>
-        </div>
-        <div style="flex:1 1 350px;min-width:290px;max-width:520px;">
-          <canvas id="dobaVyreseniChart"></canvas>
-        </div>
-      </div>
-    </section>
+    <!-- 1. Chart.js knihovna -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- BLOK 2: Statistiky pracovní neschopnosti (DPN) -->
-    <section>
-      <h2>Statistiky pracovní neschopnosti v ČR <span style="font-size:0.7em;font-weight:normal">(zdroj: ČSSZ)</span></h2>
-      <div style="overflow-x:auto">
-        <table style="width:100%;border-collapse:collapse;margin-bottom:2em;">
-          <thead>
-            <tr>
-              <th>Rok</th>
-              <th>Ukončené případy DPN</th>
-              <th>Prostonané dny</th>
-              <th>Průměrná délka případu (dny)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>2023</td><td>2 528 581</td><td>78 376 905</td><td>31,0</td></tr>
-            <tr><td>2022</td><td>3 437 913</td><td>91 027 043</td><td>26,5</td></tr>
-            <tr><td>2021</td><td>2 717 968</td><td>93 699 167</td><td>34,5</td></tr>
-            <tr><td>2020</td><td>2 293 733</td><td>86 457 092</td><td>37,7</td></tr>
-            <tr><td>2019</td><td>1 832 412</td><td>75 058 722</td><td>41,0</td></tr>
-            <tr><td>2018</td><td>1 772 465</td><td>69 964 980</td><td>39,5</td></tr>
-            <tr><td>2017</td><td>1 694 751</td><td>69 938 528</td><td>41,3</td></tr>
-            <tr><td>2016</td><td>1 584 879</td><td>66 840 574</td><td>42,2</td></tr>
-            <tr><td>2015</td><td>1 526 798</td><td>63 186 245</td><td>41,4</td></tr>
-            <tr><td>2014</td><td>1 285 642</td><td>57 542 021</td><td>44,8</td></tr>
-            <tr><td>2013</td><td>1 326 884</td><td>57 132 916</td><td>43,1</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="stat-graphs" style="display:flex;flex-wrap:wrap;gap:2em;justify-content:space-between;">
-        <div style="flex:1 1 350px;min-width:290px;max-width:520px;">
-          <canvas id="casesChart"></canvas>
-        </div>
-        <div style="flex:1 1 350px;min-width:290px;max-width:520px;">
-          <canvas id="lengthChart"></canvas>
-        </div>
-      </div>
-    </section>
-  </main>
+<style>
+  .pojisteni-grafy-box { display:flex; flex-wrap:wrap; justify-content:center; gap:2em; }
+  .graf-karta { max-width:340px; background:#f6f4ee; border-radius:18px; box-shadow:0 2px 12px rgba(120,100,60,0.11); padding:2em 1em; margin:1em 0; }
+  .graf-karta canvas { display:block; margin:0 auto; }
+  .graf-vysvetlivka { min-height:2.2em; margin-top:1em; color:#474336; font-size:1.08em; background:#fffbe7; padding:0.6em 0.8em; border-radius:12px; }
+  .graf-karta b { display:block; margin-bottom:0.5em; font-size:1.09em;}
+</style>
 
-  <footer>
-    <p>
-      Daniel Verner<br>
-      📞 <a href="tel:733782290">733 782 290</a><br>
-      📩 <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
-      📍 Olomoucký kraj – schůzky domlouvám individuálně
-    </p>
-    <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
-  </footer>
+<div class="pojisteni-grafy-box">
 
-  <script>
-    // DATA - ŠKODY KLIENTŮ
-    const dataSkody = [
-      { datum: '2024-02-01', typ: 'Krupobití', castka: 18750, dny: 12 },
-      { datum: '2024-03-12', typ: 'Požár', castka: 127000, dny: 21 },
-      { datum: '2024-04-05', typ: 'Voda z potrubí', castka: 45900, dny: 8 },
-      { datum: '2024-04-19', typ: 'Vloupání', castka: 36200, dny: 18 },
-      { datum: '2024-05-03', typ: 'Krupobití', castka: 23600, dny: 10 },
-      { datum: '2024-05-22', typ: 'Vichřice', castka: 33000, dny: 14 },
-      { datum: '2024-06-01', typ: 'Požár', castka: 54800, dny: 16 },
-      { datum: '2024-06-15', typ: 'Voda z potrubí', castka: 9600, dny: 7 },
-      { datum: '2024-07-04', typ: 'Vloupání', castka: 51200, dny: 19 }
-    ];
-    // GRAF 1: Počet škod dle typu
-    const typy = {};
-    dataSkody.forEach(row => { typy[row.typ] = (typy[row.typ] || 0) + 1; });
-    const typLabels = Object.keys(typy);
-    const typCounts = Object.values(typy);
-    new Chart(document.getElementById('typSkodyChart'), {
-      type: 'bar',
-      data: {
-        labels: typLabels,
-        datasets: [{
-          label: 'Počet škod podle typu',
-          data: typCounts,
-          borderRadius: 7
-        }]
+  <!-- Životní pojištění -->
+  <div class="graf-karta">
+    <b>Životní pojištění</b>
+    <canvas id="zivot"></canvas>
+    <div id="vysvetlivka-zivot" class="graf-vysvetlivka">
+      Najetím na výseč zjistíte podrobnosti.
+    </div>
+  </div>
+
+  <!-- Pojištění majetku -->
+  <div class="graf-karta">
+    <b>Pojištění majetku</b>
+    <canvas id="majetek"></canvas>
+    <div id="vysvetlivka-majetek" class="graf-vysvetlivka">
+      Najetím na výseč zjistíte podrobnosti.
+    </div>
+  </div>
+
+  <!-- Pojištění vozidel -->
+  <div class="graf-karta">
+    <b>Pojištění vozidel</b>
+    <canvas id="vozidlo"></canvas>
+    <div id="vysvetlivka-vozidlo" class="graf-vysvetlivka">
+      Najetím na výseč zjistíte podrobnosti.
+    </div>
+  </div>
+
+  <!-- Úrazové pojištění -->
+  <div class="graf-karta">
+    <b>Úrazové pojištění</b>
+    <canvas id="uraz"></canvas>
+    <div id="vysvetlivka-uraz" class="graf-vysvetlivka">
+      Najetím na výseč zjistíte podrobnosti.
+    </div>
+  </div>
+
+  <!-- Pracovní neschopnost -->
+  <div class="graf-karta">
+    <b>Pracovní neschopnost</b>
+    <canvas id="pn"></canvas>
+    <div id="vysvetlivka-pn" class="graf-vysvetlivka">
+      Najetím na výseč zjistíte podrobnosti.
+    </div>
+  </div>
+
+  <!-- Cestovní pojištění -->
+  <div class="graf-karta">
+    <b>Cestovní pojištění</b>
+    <canvas id="cestovni"></canvas>
+    <div id="vysvetlivka-cestovni" class="graf-vysvetlivka">
+      Najetím na výseč zjistíte podrobnosti.
+    </div>
+  </div>
+
+  <!-- Pojištění odpovědnosti -->
+  <div class="graf-karta">
+    <b>Pojištění odpovědnosti</b>
+    <canvas id="odpovednost"></canvas>
+    <div id="vysvetlivka-odpovednost" class="graf-vysvetlivka">
+      Najetím na výseč zjistíte podrobnosti.
+    </div>
+  </div>
+</div>
+
+<script>
+const grafy = [
+  {
+    id: 'zivot',
+    vysvetlivka: 'vysvetlivka-zivot',
+    labels: ['Nemoci','Úrazy','Pracovní neschopnost','Úrazy při dopravní nehodě'],
+    data: [48,22,18,12],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    vysvetlivky: [
+      "Nemoci – Nejčastější důvod plnění z životního pojištění. Patří sem např. rakovina, infarkt, dlouhodobá onemocnění.",
+      "Úrazy – Výplata při dlouhodobých následcích úrazů (např. trvalé následky, závažné úrazy).",
+      "Pracovní neschopnost – Pojištění výpadku příjmů při dlouhodobé nemoci nebo úrazu.",
+      "Úrazy při dopravní nehodě – Plnění za zranění při autonehodách a dalších dopravních událostech."
+    ]
+  },
+  {
+    id: 'majetek',
+    vysvetlivka: 'vysvetlivka-majetek',
+    labels: ['Počasí','Krádež/vloupání','Požár','Havárie'],
+    data: [55,22,13,10],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    vysvetlivky: [
+      "Poškození počasím – Bouřky, krupobití, záplavy a vichřice tvoří největší část škod.",
+      "Krádež nebo vloupání – Zahrnuje škody vzniklé krádeží nebo vniknutím cizí osoby.",
+      "Požár – Škody způsobené požárem nebo výbuchem.",
+      "Havárie – Prasklé potrubí, zatečení, technické poruchy."
+    ]
+  },
+  {
+    id: 'vozidlo',
+    vysvetlivka: 'vysvetlivka-vozidlo',
+    labels: ['Dopravní nehoda','Střet se zvěří','Vandalismus','Krádež'],
+    data: [68,15,10,7],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    vysvetlivky: [
+      "Dopravní nehoda – Nejčastější pojistné události, zahrnuje střety vozidel, škody na zdraví i majetku.",
+      "Střet se zvěří – Typicky sraz srny, divočáka apod., hlavně mimo města.",
+      "Vandalismus – Úmyslné poškození vozidla třetí osobou.",
+      "Krádež – Odcizení vozidla nebo jeho částí."
+    ]
+  },
+  {
+    id: 'uraz',
+    vysvetlivka: 'vysvetlivka-uraz',
+    labels: ['Pády','Sportovní úrazy','Pracovní úrazy','Dopravní nehody'],
+    data: [40,32,18,10],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    vysvetlivky: [
+      "Pády v domácnosti – Kluzké podlahy, schody a podobné situace.",
+      "Sportovní úrazy – Úrazy při rekreačním nebo závodním sportu.",
+      "Pracovní úrazy – Zranění během výkonu povolání.",
+      "Dopravní nehody – Zahrnuje úrazy při dopravních nehodách mimo pracovní dobu."
+    ]
+  },
+  {
+    id: 'pn',
+    vysvetlivka: 'vysvetlivka-pn',
+    labels: ['Nemoc','Úraz','Psychika','Ostatní'],
+    data: [58,25,12,5],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    vysvetlivky: [
+      "Nemoc – Většina dlouhodobých pracovních neschopností vzniká kvůli běžným i vážnějším nemocem.",
+      "Úraz – Zlomeniny, výrony, a další tělesná zranění mimo práci.",
+      "Psychické potíže – Vyhoření, deprese, dlouhodobý stres.",
+      "Ostatní – Například karanténa nebo jiné méně časté příčiny."
+    ]
+  },
+  {
+    id: 'cestovni',
+    vysvetlivka: 'vysvetlivka-cestovni',
+    labels: ['Nemoc','Úraz','Krádež','Storno zájezdu'],
+    data: [41,28,19,12],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    vysvetlivky: [
+      "Nemoc v zahraničí – Nejčastější pojistné události, včetně hospitalizace.",
+      "Úraz v zahraničí – Zlomeniny, řezné rány, nebo komplikace při sportu.",
+      "Krádež věcí – Odcizení zavazadel, mobilů apod.",
+      "Storno zájezdu – Náhlé zrušení dovolené (nemoc, úmrtí v rodině...)."
+    ]
+  },
+  {
+    id: 'odpovednost',
+    vysvetlivka: 'vysvetlivka-odpovednost',
+    labels: ['Škoda na majetku','Škoda na zdraví','Zvíře','Zaměstnání'],
+    data: [48,27,16,9],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    vysvetlivky: [
+      "Škoda na majetku – Poškození nebo ztráta cizí věci (např. rozbité okno souseda).",
+      "Škoda na zdraví – Poranění jiné osoby (např. cyklista srazí chodce).",
+      "Škoda způsobená zvířetem – Pes roztrhne kalhoty sousedovi apod.",
+      "Škoda v zaměstnání – Způsobená zaměstnavateli při výkonu práce."
+    ]
+  },
+];
+
+// Vytvoř grafy
+grafy.forEach(graf => {
+  const ctx = document.getElementById(graf.id).getContext('2d');
+  const vysvetlivkaDiv = document.getElementById(graf.vysvetlivka);
+
+  const pie = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: graf.labels,
+      datasets: [{
+        data: graf.data,
+        backgroundColor: graf.barvy
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display:true, position:'bottom' },
+        tooltip: {
+          enabled: false,
+          external: function(context) {
+            const index = context.tooltip.dataPoints ? context.tooltip.dataPoints[0].dataIndex : null;
+            if (index !== null) {
+              vysvetlivkaDiv.innerHTML = graf.vysvetlivky[index];
+            } else {
+              vysvetlivkaDiv.innerHTML = "Najetím na výseč zjistíte podrobnosti.";
+            }
+          }
+        }
       },
-      options: {
-        plugins: { legend: { display: false }},
-        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
-      }
-    });
-    // GRAF 2: Průměrná doba vyřízení podle typu
-    const dobaByTyp = {};
-    dataSkody.forEach(row => {
-      if (!dobaByTyp[row.typ]) dobaByTyp[row.typ] = [];
-      dobaByTyp[row.typ].push(row.dny);
-    });
-    const dobaTypLabels = Object.keys(dobaByTyp);
-    const dobaAverages = dobaTypLabels.map(t => (
-      Math.round(
-        dobaByTyp[t].reduce((a, b) => a + b, 0) / dobaByTyp[t].length * 10
-      ) / 10
-    ));
-    new Chart(document.getElementById('dobaVyreseniChart'), {
-      type: 'bar',
-      data: {
-        labels: dobaTypLabels,
-        datasets: [{
-          label: 'Průměrná doba vyřízení (dny)',
-          data: dobaAverages,
-          borderRadius: 7
-        }]
-      },
-      options: {
-        plugins: { legend: { display: false }},
-        scales: { y: { beginAtZero: true } }
-      }
-    });
-
-    // DATA - DPN ČSSZ
-    const roky = [2023,2022,2021,2020,2019,2018,2017,2016,2015,2014,2013];
-    const pripady = [2528581,3437913,2717968,2293733,1832412,1772465,1694751,1584879,1526798,1285642,1326884];
-    const dny = [78376905,91027043,93699167,86457092,75058722,69964980,69938528,66840574,63186245,57542021,57132916];
-    const prumer = [31.0,26.5,34.5,37.7,41.0,39.5,41.3,42.2,41.4,44.8,43.1];
-    // Graf: Vývoj počtu ukončených případů
-    new Chart(document.getElementById('casesChart'), {
-      type: 'line',
-      data: {
-        labels: roky,
-        datasets: [{
-          label: 'Ukončené případy DPN',
-          data: pripady,
-          borderWidth: 3,
-          pointRadius: 4,
-          tension: 0.12
-        }]
-      },
-      options: {
-        plugins: { legend: { display: false }},
-        scales: {
-          y: { beginAtZero: false, ticks: { callback: v => v.toLocaleString("cs-CZ") } }
+      onHover: (event, chartElement) => {
+        if (chartElement.length > 0) {
+          pie.options.plugins.tooltip.external({ tooltip: { dataPoints: [chartElement[0]] } });
+        } else {
+          pie.options.plugins.tooltip.external({ tooltip: {} });
         }
       }
-    });
-    // Graf: Vývoj průměrné délky případu
-    new Chart(document.getElementById('lengthChart'), {
-      type: 'line',
-      data: {
-        labels: roky,
-        datasets: [{
-          label: 'Průměrná délka případu (dny)',
-          data: prumer,
-          borderWidth: 3,
-          pointRadius: 4,
-          borderDash: [6,2],
-          tension: 0.13
-        }]
-      },
-      options: {
-        plugins: { legend: { display: false }},
-        scales: { y: { beginAtZero: false } }
-      }
-    });
-  </script>
+    }
+  });
+});
+ </script>
 </body>
 </html>
