@@ -1,69 +1,181 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Pojisti To Snadno – Daniel Verner</title>
+  <title>5 nejčastějších mýtů o životním pojištění | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #f6f4ee;
+      font-family: 'Raleway', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      color: #474336;
+    }
+    .bg-img-desktop {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover; object-position: center;
+      filter: brightness(0.78) blur(2.8px);
+      opacity: 0.97; z-index: 1;
+      pointer-events: none; user-select: none;
+      transition: all 0.5s;
+      display: block;
+    }
+    .bg-img-mobile { display: none; }
+    @media (max-width: 800px) {
+      .bg-img-desktop { display: none !important; }
+      .bg-img-mobile {
+        display: block !important;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw; height: 100vh;
+        object-fit: cover; object-position: center;
+        filter: brightness(0.78) blur(1.8px);
+        opacity: 0.98; z-index: 1;
+        pointer-events: none; user-select: none;
+        transition: all 0.5s;
+      }
+    }
+    /* MENU */
+    .top-nav {
+      position: relative; z-index: 10;
+      display: flex; justify-content: center; align-items: center;
+      gap: 1em; padding: 1.1em 0 0.7em 0;
+      background: rgba(255,255,255,0.06);
+      font-weight: bold;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .top-nav a {
+      padding: 0.6em 1.4em; margin: 0 0.15em;
+      border-radius: 22px; text-decoration: none;
+      color: #474336; background: #e2dbc9;
+      transition: background .2s;
+      font-size: 1.08em;
+    }
+    .top-nav .active, .top-nav a:hover {
+      background: #b7a97c;
+      color: #3b3722;
+    }
+    .portrait-desktop {
+      width: 46px; height: 46px; border-radius: 50%;
+      object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
+      box-shadow: 0 2px 8px rgba(100,100,60,0.13);
+    }
+
+    /* Karta obsahu článku */
+    .main-card {
+      position: relative; z-index: 3;
+      max-width: 820px;
+      margin: 2.5em auto 2em auto;
+      background: rgba(255,255,255,0.93);
+      border-radius: 24px;
+      box-shadow: 0 2px 14px rgba(120,100,60,0.11);
+      padding: 2.7em 2.3em 2.3em 2.3em;
+    }
+    h1 {
+      color: #fff;
+      font-size: 2.08em;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 1.3em;
+      text-align: center;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.18);
+    }
+    .mytus-title {
+      color: #8e7b38;
+      font-weight: 700;
+      margin: 1.3em 0 0.1em 0;
+      font-size: 1.09em;
+      letter-spacing: 0.01em;
+    }
+    .mytus-tip {
+      color: #a18a0b;
+      font-weight: 700;
+      margin: 2.2em 0 1.2em 0;
+      background: #fffbe7;
+      border-radius: 12px;
+      padding: 0.8em 1em;
+      font-size: 1.12em;
+      display: inline-block;
+    }
+    .mytus-link {
+      color: #684fb1;
+      text-decoration: underline;
+      margin-top: 1.1em;
+      display: inline-block;
+      font-size: 1.02em;
+    }
+    @media (max-width: 900px) {
+      .main-card { padding: 1.5em 0.8em 1.2em 0.8em; }
+      h1 { font-size: 1.32em; }
+    }
+    /* Footer */
+    .footer {
+      background: #e2dbc9;
+      color: #474336;
+      text-align: center;
+      font-size: 1em;
+      padding: 2em 0 1.3em 0;
+      margin-top: 4em;
+      border-top: 1px solid #ece6d4;
+      letter-spacing: 0.01em;
+      min-height: 75px;
+    }
+    .footer b { color: #b7a97c; }
+    .footer .contact { margin-bottom: 0.8em; }
+    .footer a { color: #684fb1; text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <header>
-  <!-- Mobilní menu -->
-  <div class="circle-menu" id="mobileMenu">
-    <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
-    <div class="circle-menu-label">Menu</div>
-    <nav class="circle-nav">
-      <a href="index.html#domu" class="circle-link">Domů</a>
-      <a href="clanky.html" class="circle-link">Články</a>
-      <a href="index.html#kontakt" class="circle-link">Kontakt</a>
-    </nav>
-  </div>
-  <!-- Desktop menu -->
-  <nav class="top-nav" id="desktopMenu">
+  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
+  <img src="portret.png" alt="" class="bg-img-mobile">
+
+  <nav class="top-nav">
     <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
     <a href="index.html#domu">Domů</a>
-    <a href="clanky.html">Články</a>
-    <a href="index.html#kontakt">Kontakt</a>
+    <a href="clanky.html" class="active">Zajímavosti</a>
+    <a href="slovnik.html">Slovník</a>
+    <a href="kontakt.html">Kontakt</a>
   </nav>
-</header>
 
-
-<main class="container">
-  <article>
-    <hgroup>
-      <h2>5 nejčastějších mýtů o životním pojištění</h2>
-    </hgroup>
-
-    <h3>Mýtus 1: Je to zbytečné, když mám úspory</h3>
-    <p>Úspory pokryjí výdaje jen omezenou dobu. Pojištění chrání vaši rodinu dlouhodobě.</p>
-
-    <h3>Mýtus 2: Pojišťovna stejně nic nevyplatí</h3>
-    <p>Při správně nastavené smlouvě a doložení dokumentů pojišťovna plní dle podmínek.</p>
-
-    <h3>Mýtus 3: Je to drahé</h3>
-    <p>Cena se dá nastavit podle možností. Již za pár set korun měsíčně lze mít dostatečné krytí.</p>
-
-    <h3>Mýtus 4: Stačí mi pojištění v práci</h3>
-    <p>Skupinové pojištění mívá omezené krytí a není přenosné při změně zaměstnání.</p>
-
-    <h3>Mýtus 5: Je jen na smrt</h3>
-    <p>Moderní životní pojištění kryje i vážné nemoci, invaliditu a pracovní neschopnost.</p>
-
-    <p><strong>👉 Chcete si ověřit, zda máte správně nastavené pojištění? Domluvte si konzultaci zdarma.</strong></p>
-    <a href="index.html#kontakt" class="circle-link">Kontakt</a>
+  <div class="main-card">
+    <h1>5 nejčastějších mýtů o životním pojištění</h1>
     
-  </article>
-</main>
+    <div class="mytus-title">Mýtus 1: Je to zbytečné, když mám úspory</div>
+    <div>Úspory pokryjí výdaje jen omezenou dobu. Pojištění chrání vaši rodinu dlouhodobě.</div>
+    
+    <div class="mytus-title">Mýtus 2: Pojišťovna stejně nic nevyplatí</div>
+    <div>Při správně nastavené smlouvě a doložení dokumentů pojišťovna plní dle podmínek.</div>
+    
+    <div class="mytus-title">Mýtus 3: Je to drahé</div>
+    <div>Cena se dá nastavit podle možností. Již za pár set korun měsíčně lze mít dostatečné krytí.</div>
+    
+    <div class="mytus-title">Mýtus 4: Stačí mi pojištění v práci</div>
+    <div>Skupinové pojištění mívá omezené krytí a není přenosné při změně zaměstnání.</div>
+    
+    <div class="mytus-title">Mýtus 5: Je jen na smrt</div>
+    <div>Moderní životní pojištění kryje i vážné nemoci, invaliditu a pracovní neschopnost.</div>
+    
+    <div class="mytus-tip">
+      👉 Chcete si ověřit, zda máte správně nastavené pojištění? Domluvte si konzultaci zdarma.
+    </div>
+    <br>
+    <a href="kontakt.html" class="mytus-link">Kontakt</a>
+  </div>
 
- <footer>
-    <p>
-      Daniel Verner<br>
-      📞 733 782 290<br>
-      📩 pojistitosnadno@gmail.com<br>
-      📍 Olomoucký kraj – schůzky individuálně
-    </p>
-    <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
-  </footer>
-
+  <div class="footer">
+    <div class="contact">
+      <b>Daniel Verner</b><br>
+      <span style="color:#af4876;">📞 733 782 290</span><br>
+      <span style="color:#684fb1;">📧 pojistitosnadno@gmail.com</span><br>
+      <span style="color:#b7a97c;">📍 Olomoucký kraj – schůzky individuálně</span>
+    </div>
+    <div style="opacity:0.85;">
+      &copy; 2025 Daniel Verner – PojistiToSnadno.cz
+    </div>
+  </div>
 </body>
 </html>
