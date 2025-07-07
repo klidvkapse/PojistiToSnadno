@@ -23,6 +23,66 @@
   </nav>
 
   <main class="container">
+    <style>
+  .pojisteni-grafy-box { display:flex; flex-wrap:wrap; justify-content:center; gap:2em; }
+  .graf-karta { max-width:340px; background:#f6f4ee; border-radius:18px; box-shadow:0 2px 12px rgba(120,100,60,0.11); padding:2em 1em; margin:1em 0; }
+  .graf-karta canvas { display:block; margin:0 auto; }
+  .graf-vysvetlivka { min-height:2.2em; margin-top:1em; color:#474336; font-size:1.08em; background:#fffbe7; padding:0.6em 0.8em; border-radius:12px; }
+  .graf-karta b { display:block; margin-bottom:0.5em; font-size:1.09em;}
+</style>
+
+<div class="pojisteni-grafy-box">
+
+  <!-- Životní pojištění -->
+  <div class="graf-karta">
+    <b>Životní pojištění</b>
+    <canvas id="zivot" width="260" height="260"></canvas>
+    <div id="vysvetlivka-zivot" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
+  </div>
+
+  <!-- Pojištění majetku -->
+  <div class="graf-karta">
+    <b>Pojištění majetku</b>
+    <canvas id="majetek" width="260" height="260"></canvas>
+    <div id="vysvetlivka-majetek" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
+  </div>
+
+  <!-- Pojištění vozidel -->
+  <div class="graf-karta">
+    <b>Pojištění vozidel</b>
+    <canvas id="vozidlo" width="260" height="260"></canvas>
+    <div id="vysvetlivka-vozidlo" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
+  </div>
+
+  <!-- Úrazové pojištění -->
+  <div class="graf-karta">
+    <b>Úrazové pojištění</b>
+    <canvas id="uraz" width="260" height="260"></canvas>
+    <div id="vysvetlivka-uraz" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
+  </div>
+
+  <!-- Pracovní neschopnost -->
+  <div class="graf-karta">
+    <b>Pracovní neschopnost</b>
+    <canvas id="pn" width="260" height="260"></canvas>
+    <div id="vysvetlivka-pn" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
+  </div>
+
+  <!-- Cestovní pojištění -->
+  <div class="graf-karta">
+    <b>Cestovní pojištění</b>
+    <canvas id="cestovni" width="260" height="260"></canvas>
+    <div id="vysvetlivka-cestovni" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
+  </div>
+
+  <!-- Pojištění odpovědnosti -->
+  <div class="graf-karta">
+    <b>Pojištění odpovědnosti</b>
+    <canvas id="odpovednost" width="260" height="260"></canvas>
+    <div id="vysvetlivka-odpovednost" class="graf-vysvetlivka">Kliknutím na výseč zobrazíte podrobnosti.</div>
+  </div>
+</div>
+
 
     <!-- 1. Chart.js knihovna -->
 
