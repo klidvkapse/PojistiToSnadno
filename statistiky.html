@@ -25,82 +25,6 @@
   <main class="container">
 
     <!-- 1. Chart.js knihovna -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<style>
-  .pojisteni-grafy-box { display:flex; flex-wrap:wrap; justify-content:center; gap:2em; }
-  .graf-karta { max-width:340px; background:#f6f4ee; border-radius:18px; box-shadow:0 2px 12px rgba(120,100,60,0.11); padding:2em 1em; margin:1em 0; }
-  .graf-karta canvas { display:block; margin:0 auto; }
-  .graf-vysvetlivka { min-height:2.2em; margin-top:1em; color:#474336; font-size:1.08em; background:#fffbe7; padding:0.6em 0.8em; border-radius:12px; }
-  .graf-karta b { display:block; margin-bottom:0.5em; font-size:1.09em;}
-</style>
-
-<div class="pojisteni-grafy-box">
-
-  <!-- Životní pojištění -->
-  <div class="graf-karta">
-    <b>Životní pojištění</b>
-    <canvas id="zivot"></canvas>
-    <div id="vysvetlivka-zivot" class="graf-vysvetlivka">
-      Najetím na výseč zjistíte podrobnosti.
-    </div>
-  </div>
-
-  <!-- Pojištění majetku -->
-  <div class="graf-karta">
-    <b>Pojištění majetku</b>
-    <canvas id="majetek"></canvas>
-    <div id="vysvetlivka-majetek" class="graf-vysvetlivka">
-      Najetím na výseč zjistíte podrobnosti.
-    </div>
-  </div>
-
-  <!-- Pojištění vozidel -->
-  <div class="graf-karta">
-    <b>Pojištění vozidel</b>
-    <canvas id="vozidlo"></canvas>
-    <div id="vysvetlivka-vozidlo" class="graf-vysvetlivka">
-      Najetím na výseč zjistíte podrobnosti.
-    </div>
-  </div>
-
-  <!-- Úrazové pojištění -->
-  <div class="graf-karta">
-    <b>Úrazové pojištění</b>
-    <canvas id="uraz"></canvas>
-    <div id="vysvetlivka-uraz" class="graf-vysvetlivka">
-      Najetím na výseč zjistíte podrobnosti.
-    </div>
-  </div>
-
-  <!-- Pracovní neschopnost -->
-  <div class="graf-karta">
-    <b>Pracovní neschopnost</b>
-    <canvas id="pn"></canvas>
-    <div id="vysvetlivka-pn" class="graf-vysvetlivka">
-      Najetím na výseč zjistíte podrobnosti.
-    </div>
-  </div>
-
-  <!-- Cestovní pojištění -->
-  <div class="graf-karta">
-    <b>Cestovní pojištění</b>
-    <canvas id="cestovni"></canvas>
-    <div id="vysvetlivka-cestovni" class="graf-vysvetlivka">
-      Najetím na výseč zjistíte podrobnosti.
-    </div>
-  </div>
-
-  <!-- Pojištění odpovědnosti -->
-  <div class="graf-karta">
-    <b>Pojištění odpovědnosti</b>
-    <canvas id="odpovednost"></canvas>
-    <div id="vysvetlivka-odpovednost" class="graf-vysvetlivka">
-      Najetím na výseč zjistíte podrobnosti.
-    </div>
-  </div>
-</div>
-
 <script>
 const grafy = [
   {
@@ -196,11 +120,12 @@ const grafy = [
   },
 ];
 
-// Vytvoř grafy
+// Pro každý graf:
 grafy.forEach(graf => {
   const ctx = document.getElementById(graf.id).getContext('2d');
   const vysvetlivkaDiv = document.getElementById(graf.vysvetlivka);
 
+  // Inicializace grafu
   const pie = new Chart(ctx, {
     type: 'pie',
     data: {
@@ -214,28 +139,24 @@ grafy.forEach(graf => {
       responsive: true,
       plugins: {
         legend: { display:true, position:'bottom' },
-        tooltip: {
-          enabled: false,
-          external: function(context) {
-            const index = context.tooltip.dataPoints ? context.tooltip.dataPoints[0].dataIndex : null;
-            if (index !== null) {
-              vysvetlivkaDiv.innerHTML = graf.vysvetlivky[index];
-            } else {
-              vysvetlivkaDiv.innerHTML = "Najetím na výseč zjistíte podrobnosti.";
-            }
-          }
-        }
-      },
-      onHover: (event, chartElement) => {
-        if (chartElement.length > 0) {
-          pie.options.plugins.tooltip.external({ tooltip: { dataPoints: [chartElement[0]] } });
-        } else {
-          pie.options.plugins.tooltip.external({ tooltip: {} });
-        }
+        tooltip: { enabled: false }
       }
     }
   });
+
+  // Kliknutí na výseč = zobraz vysvětlivku
+  ctx.canvas.addEventListener('click', function(evt) {
+    const points = pie.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
+    if (points.length) {
+      const idx = points[0].index;
+      vysvetlivkaDiv.innerHTML = graf.vysvetlivky[idx];
+    }
+  });
+
+  // První načtení = defaultní text
+  vysvetlivkaDiv.innerHTML = "Kliknutím na výseč zobrazíte podrobnosti.";
 });
- </script>
+</script>
+
 </body>
 </html>
