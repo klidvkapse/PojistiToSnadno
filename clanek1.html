@@ -3,111 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Pojisti To Snadno – Daniel Verner</title>
+  <title>Pro koho je životní pojištění? | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #f6f4ee;
+      font-family: 'Raleway', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      color: #474336;
+    }
+    .top-nav {
+      position: relative; z-index: 10;
+      display: flex; justify-content: center; align-items: center;
+      gap: 1em; padding: 1.1em 0 0.7em 0;
+      background: rgba(255,255,255,0.06);
+      font-weight: bold;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .top-nav a {
+      padding: 0.6em 1.4em; margin: 0 0.15em;
+      border-radius: 22px; text-decoration: none;
+      color: #474336; background: #e2dbc9;
+      transition: background .2s;
+      font-size: 1.08em;
+    }
+    .top-nav .active, .top-nav a:hover {
+      background: #b7a97c;
+      color: #3b3722;
+    }
+    .portrait-desktop {
+      width: 46px; height: 46px; border-radius: 50%;
+      object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
+      box-shadow: 0 2px 8px rgba(100,100,60,0.13);
+    }
+
+    .section-card {
+      max-width: 1200px;
+      margin: 2.4em auto 0 auto;
+      background: rgba(255,255,255,0.96);
+      border-radius: 26px;
+      box-shadow: 0 2px 16px rgba(120,100,60,0.09);
+      padding: 2.2em 2em 2.3em 2em;
+    }
+    .section-card h2 {
+      color: #7a6c30;
+      font-size: 1.35em;
+      font-weight: 800;
+      margin: 0 0 0.2em 0;
+      letter-spacing: 0.01em;
+    }
+    .section-card p {
+      font-size: 1.07em;
+      margin-top: 0.4em;
+      margin-bottom: 2em;
+    }
+
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2em 1.7em;
+      margin-top: 0.5em;
+      justify-items: center;
+    }
+    .group-card {
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 12px rgba(120,100,60,0.11);
+      padding: 1.2em 1.2em 1.4em 1.2em;
+      min-width: 180px;
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .group-card:hover {
+      box-shadow: 0 8px 28px rgba(183,169,124,0.18);
+      transform: translateY(-3px) scale(1.025);
+    }
+    .group-icon {
+      width: 58px; height: 58px;
+      margin-bottom: 0.7em;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #f3efdc;
+      border: 1.8px solid #e2dbc9;
+      display: block;
+      box-shadow: 0 2px 8px rgba(170,150,70,0.08);
+    }
+    .group-title {
+      color: #9b8850;
+      font-size: 1.14em;
+      font-weight: bold;
+      margin-bottom: 0.1em;
+      margin-top: 0.1em;
+    }
+    .group-btn {
+      margin-top: 1.2em;
+      background: #b7a97c;
+      color: #fff;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.07em;
+      font-weight: 700;
+      padding: 0.53em 2.1em;
+      box-shadow: 0 2px 8px rgba(170,150,70,0.09);
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, transform 0.11s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .group-btn:hover, .group-btn:focus {
+      background: #af4876;
+      color: #fff;
+      transform: translateY(-2px) scale(1.03);
+      text-decoration: none;
+    }
+    @media (max-width: 700px) {
+      .section-card { padding: 1.1em 0.4em 1em 0.4em; }
+      .groups-grid { gap: 1em; }
+      .group-card { padding: 0.9em 0.5em 1em 0.5em; }
+    }
+    /* Footer */
+    .footer {
+      background: #e2dbc9;
+      color: #474336;
+      text-align: center;
+      font-size: 1em;
+      padding: 2em 0 1.3em 0;
+      margin-top: 3.5em;
+      border-top: 1px solid #ece6d4;
+      letter-spacing: 0.01em;
+      min-height: 65px;
+    }
+    .footer b { color: #b7a97c; }
+    .footer .contact { margin-bottom: 0.8em; }
+    .footer a { color: #684fb1; text-decoration: underline; }
+  </style>
 </head>
 <body>
- <header>
-  <!-- Mobilní menu -->
-  <div class="circle-menu" id="mobileMenu">
-    <img src="portret.png" alt="Daniel Verner" class="circle-avatar" />
-    <div class="circle-menu-label">Menu</div>
-    <nav class="circle-nav">
-      <a href="index.html#domu" class="circle-link">Domů</a>
-      <a href="clanky.html" class="circle-link">Články</a>
-      <a href="index.html#kontakt" class="circle-link">Kontakt</a>
-    </nav>
-  </div>
-  <!-- Desktop menu -->
-  <nav class="top-nav" id="desktopMenu">
+  <nav class="top-nav">
     <img src="portret.png" alt="Daniel Verner" class="portrait-desktop" />
     <a href="index.html#domu">Domů</a>
-    <a href="clanky.html">Články</a>
-    <a href="index.html#kontakt">Kontakt</a>
+    <a href="clanky.html" class="active">Články</a>
+    <a href="kontakt.html">Kontakt</a>
   </nav>
-</header>
-
-<main class="container">
-  <section>
+  <div class="section-card">
     <h2>Pro koho je životní pojištění?</h2>
     <p>Vyberte si skupinu, které se vás nejvíce týká:</p>
-    <div class="segment-list">
-      <!-- 1. Mladí a svobodní -->
-      <div class="segment-card segment-wide">
-        <span class="segment-img">
-          <!-- SVG avatar mladého muže -->
-          <svg width="92" height="92" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="46" cy="72" rx="24" ry="16" fill="#6EC6CA"/>
-            <rect x="39" y="49" width="14" height="13" rx="7" fill="#FFD9B3"/>
-            <ellipse cx="46" cy="41" rx="15" ry="15" fill="#FFD9B3"/>
-            <path d="M61 40Q60 28 46 25Q32 28 31 40Z" fill="#594438"/>
-            <ellipse cx="41" cy="43" rx="1.8" ry="1.2" fill="#444"/>
-            <ellipse cx="51" cy="43" rx="1.8" ry="1.2" fill="#444"/>
-            <rect x="38.7" y="40.5" width="4" height="1" rx="0.5" fill="#594438"/>
-            <rect x="49.3" y="40.5" width="4" height="1" rx="0.5" fill="#594438"/>
-            <path d="M41 49 Q46 53 51 49" stroke="#C48858" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <ellipse cx="31" cy="43" rx="2" ry="2.5" fill="#FFD9B3"/>
-            <ellipse cx="61" cy="43" rx="2" ry="2.5" fill="#FFD9B3"/>
-          </svg>
-        </span>
-        <div class="segment-text">
-          <h3>Mladí a svobodní</h3>
-          <a href="mladi.html" class="button-main">Zjistit více</a>
-        </div>
+    <div class="groups-grid">
+      <div class="group-card">
+        <img src="mladi-svobodni.png" alt="Mladí a svobodní" class="group-icon">
+        <div class="group-title">Mladí a svobodní</div>
+        <a href="#" class="group-btn">Zjistit více</a>
       </div>
-      <!-- 2. Rodina -->
-      <div class="segment-card segment-wide">
-        <span class="segment-img">
-          <!-- ZDE může být SVG rodiny nebo obrázek -->
-          <img src="rodina.png" alt="Rodina" />
-        </span>
-        <div class="segment-text">
-          <h3>Rodina</h3>
-          <a href="rodina.html" class="button-main">Zjistit více</a>
-        </div>
+      <div class="group-card">
+        <img src="rodina.png" alt="Rodina" class="group-icon">
+        <div class="group-title">Rodina</div>
+        <a href="#" class="group-btn">Zjistit více</a>
       </div>
-      <!-- 3. Podnikatelé -->
-      <div class="segment-card segment-wide">
-        <span class="segment-img">
-          <img src="podnikatel.png" alt="Podnikatel" />
-        </span>
-        <div class="segment-text">
-          <h3>Podnikatelé</h3>
-          <a href="podnikatele.html" class="button-main">Zjistit více</a>
-        </div>
+      <div class="group-card">
+        <img src="podnikatel.png" alt="Podnikatel" class="group-icon">
+        <div class="group-title">Podnikatelé</div>
+        <a href="#" class="group-btn">Zjistit více</a>
       </div>
-      <!-- 4. Zaměstnanci -->
-      <div class="segment-card segment-wide">
-        <span class="segment-img">
-          <img src="zamestnanec.png" alt="Zaměstnanec" />
-        </span>
-        <div class="segment-text">
-          <h3>Zaměstnanci</h3>
-          <a href="zamestnanci.html" class="button-main">Zjistit více</a>
-        </div>
+      <div class="group-card">
+        <img src="zamestnanec.png" alt="Zaměstnanec" class="group-icon">
+        <div class="group-title">Zaměstnanci</div>
+        <a href="#" class="group-btn">Zjistit více</a>
       </div>
-      <!-- 5. Starší a zkušení 50+ -->
-      <div class="segment-card segment-wide">
-        <span class="segment-img">
-          <img src="senior.png" alt="Starší a zkušení 50+" />
-        </span>
-        <div class="segment-text">
-          <h3>Starší a zkušení 50+</h3>
-          <a href="seniori.html" class="button-main">Zjistit více</a>
-        </div>
+      <div class="group-card">
+        <img src="starsi.png" alt="Starší a zkušení 50+" class="group-icon">
+        <div class="group-title">Starší a zkušení 50+</div>
+        <a href="#" class="group-btn">Zjistit více</a>
       </div>
     </div>
-  </section>
-</main>
-
-<footer>
-  <p>
-    Daniel Verner<br>
-    📞 733 782 290<br>
-    📩 pojistitosnadno@gmail.com<br>
-    📍 Olomoucký kraj – schůzky individuálně
-  </p>
-  <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
-</footer>
+  </div>
+  <div class="footer">
+    &copy; 2025 Daniel Verner – PojistiToSnadno.cz
+  </div>
 </body>
 </html>
