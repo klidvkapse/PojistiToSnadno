@@ -6,12 +6,27 @@
   <title>Pro koho je životní pojištění? | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
     body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       background: #f6f4ee;
       font-family: 'Raleway', Arial, sans-serif;
-      margin: 0;
-      min-height: 100vh;
       color: #474336;
+      box-sizing: border-box;
+    }
+    .main-content {
+      flex: 1 0 auto;
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
     }
     .top-nav {
       position: relative; z-index: 10;
@@ -38,7 +53,6 @@
       object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
       box-shadow: 0 2px 8px rgba(100,100,60,0.13);
     }
-
     .section-card {
       max-width: 1200px;
       margin: 2.4em auto 0 auto;
@@ -46,6 +60,7 @@
       border-radius: 26px;
       box-shadow: 0 2px 16px rgba(120,100,60,0.09);
       padding: 2.2em 2em 2.3em 2em;
+      width: 100%;
     }
     .section-card h2 {
       color: #7a6c30;
@@ -59,7 +74,6 @@
       margin-top: 0.4em;
       margin-bottom: 2em;
     }
-
     .groups-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -134,82 +148,82 @@
       text-align: center;
       font-size: 1em;
       padding: 2em 0 1.3em 0;
-      margin-top: 3.5em;
       border-top: 1px solid #ece6d4;
       letter-spacing: 0.01em;
       min-height: 65px;
+      margin-top: 0;
+      flex-shrink: 0;
     }
-    .footer b { color: #b7a97c; }
-    .footer .contact { margin-bottom: 0.8em; }
-    .footer a { color: #684fb1; text-decoration: underline; }
     .bg-img-desktop {
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  width: 100vw; height: 100vh;
-  object-fit: cover; object-position: center;
-  filter: brightness(0.78) blur(2.8px);
-  opacity: 0.97; z-index: 1;
-  pointer-events: none; user-select: none;
-  transition: all 0.5s;
-  display: block;
-}
-.bg-img-mobile { display: none; }
-@media (max-width: 800px) {
-  .bg-img-desktop { display: none !important; }
-  .bg-img-mobile {
-    display: block !important;
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    width: 100vw; height: 100vh;
-    object-fit: cover; object-position: center;
-    filter: brightness(0.78) blur(1.8px);
-    opacity: 0.98; z-index: 1;
-    pointer-events: none; user-select: none;
-    transition: all 0.5s;
-  }
-}
-
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover; object-position: center;
+      filter: brightness(0.78) blur(2.8px);
+      opacity: 0.97; z-index: 1;
+      pointer-events: none; user-select: none;
+      transition: all 0.5s;
+      display: block;
+    }
+    .bg-img-mobile { display: none; }
+    @media (max-width: 800px) {
+      .bg-img-desktop { display: none !important; }
+      .bg-img-mobile {
+        display: block !important;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw; height: 100vh;
+        object-fit: cover; object-position: center;
+        filter: brightness(0.78) blur(1.8px);
+        opacity: 0.98; z-index: 1;
+        pointer-events: none; user-select: none;
+        transition: all 0.5s;
+      }
+    }
   </style>
 </head>
 <body>
+  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
+  <img src="portret.png" alt="" class="bg-img-mobile">
+
   <nav class="top-nav">
     <a href="index.html#domu">Domů</a>
     <a href="clanky.html" class="active">Články</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
-  <body>
-  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
-  <img src="portret.png" alt="" class="bg-img-mobile">
 
-  <div class="section-card">
-    <h2>Pro koho je životní pojištění?</h2>
-    <p>Vyberte si skupinu, které se vás nejvíce týká:</p>
-    <div class="groups-grid">
-      <div class="group-card">
-        <img src="mladi-svobodni.png" alt="Mladí a svobodní" class="group-icon">
-        <div class="group-title">Mladí a svobodní</div>
-        <a href="#" class="group-btn">Zjistit více</a>
-      </div>
-      <div class="group-card">
-        <img src="rodina.png" alt="Rodina" class="group-icon">
-        <div class="group-title">Rodina</div>
-        <a href="#" class="group-btn">Zjistit více</a>
-      </div>
-      <div class="group-card">
-        <img src="podnikatel.png" alt="Podnikatel" class="group-icon">
-        <div class="group-title">Podnikatelé</div>
-        <a href="#" class="group-btn">Zjistit více</a>
-      </div>
-      <div class="group-card">
-        <img src="zamestnanec.png" alt="Zaměstnanec" class="group-icon">
-        <div class="group-title">Zaměstnanci</div>
-        <a href="#" class="group-btn">Zjistit více</a>
-      </div>
-      <div class="group-card">
-        <img src="starsi.png" alt="Starší a zkušení 50+" class="group-icon">
-        <div class="group-title">Starší a zkušení 50+</div>
-        <a href="#" class="group-btn">Zjistit více</a>
+  <div class="main-content">
+    <div class="section-card">
+      <h2>Pro koho je životní pojištění?</h2>
+      <p>Vyberte si skupinu, které se vás nejvíce týká:</p>
+      <div class="groups-grid">
+        <div class="group-card">
+          <img src="mladi-svobodni.png" alt="Mladí a svobodní" class="group-icon">
+          <div class="group-title">Mladí a svobodní</div>
+          <a href="#" class="group-btn">Zjistit více</a>
+        </div>
+        <div class="group-card">
+          <img src="rodina.png" alt="Rodina" class="group-icon">
+          <div class="group-title">Rodina</div>
+          <a href="#" class="group-btn">Zjistit více</a>
+        </div>
+        <div class="group-card">
+          <img src="podnikatel.png" alt="Podnikatel" class="group-icon">
+          <div class="group-title">Podnikatelé</div>
+          <a href="#" class="group-btn">Zjistit více</a>
+        </div>
+        <div class="group-card">
+          <img src="zamestnanec.png" alt="Zaměstnanec" class="group-icon">
+          <div class="group-title">Zaměstnanci</div>
+          <a href="#" class="group-btn">Zjistit více</a>
+        </div>
+        <div class="group-card">
+          <img src="starsi.png" alt="Starší a zkušení 50+" class="group-icon">
+          <div class="group-title">Starší a zkušení 50+</div>
+          <a href="#" class="group-btn">Zjistit více</a>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="footer">
     &copy; 2025 Daniel Verner – PojistiToSnadno.cz
   </div>
