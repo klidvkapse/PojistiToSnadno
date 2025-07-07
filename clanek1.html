@@ -142,6 +142,31 @@
     .footer b { color: #b7a97c; }
     .footer .contact { margin-bottom: 0.8em; }
     .footer a { color: #684fb1; text-decoration: underline; }
+    .bg-img-desktop {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw; height: 100vh;
+  object-fit: cover; object-position: center;
+  filter: brightness(0.78) blur(2.8px);
+  opacity: 0.97; z-index: 1;
+  pointer-events: none; user-select: none;
+  transition: all 0.5s;
+  display: block;
+}
+.bg-img-mobile { display: none; }
+@media (max-width: 800px) {
+  .bg-img-desktop { display: none !important; }
+  .bg-img-mobile {
+    display: block !important;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    object-fit: cover; object-position: center;
+    filter: brightness(0.78) blur(1.8px);
+    opacity: 0.98; z-index: 1;
+    pointer-events: none; user-select: none;
+    transition: all 0.5s;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -151,6 +176,10 @@
     <a href="clanky.html" class="active">Články</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
+  <body>
+  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
+  <img src="portret.png" alt="" class="bg-img-mobile">
+
   <div class="section-card">
     <h2>Pro koho je životní pojištění?</h2>
     <p>Vyberte si skupinu, které se vás nejvíce týká:</p>
