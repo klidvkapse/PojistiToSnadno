@@ -216,8 +216,7 @@
   </div>
   
   <script>
-    // Všechny příklady škod (edituj, doplňuj)
-      const skody = [
+const skody = [
   {
     title: "Denní odškodné po úrazu",
     pricina: "Úraz klienta, vyplacené denní odškodné",
@@ -280,62 +279,43 @@
   }
 ];
 
-        
-      <div class="carousel-card">
-  <div class="carousel-icon">
-    <!-- zde bude ikona/obrázek, např. SVG nebo IMG -->
-  </div>
-  <h3>Denní odškodné po úrazu</h3>
-  <p><strong>Částka:</strong> 10 500 Kč</p>
-  <p>Klient si přivodil úraz, pojišťovna vyplatila denní odškodné.</p>
-  <ul>
-    <li><strong>Doba vyřízení:</strong> 1 den od nahlášení</li>
-    <li><strong>Datum vyřízení:</strong> 12. 7. 2024</li>
-  </ul>
-</div>
+let idx = 0;
+const karta = document.getElementById("skoda-karta");
+const dotsWrap = document.getElementById("carousel-dots");
 
+function zobrazitSkodu(i) {
+  const s = skody[i];
+  karta.innerHTML = `
+    <div class="skoda-title">${s.title}</div>
+    <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${s.pricina}</div>
+    <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${s.castka}</b></div>
+    <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${s.vyrizeni}</div>
+  `;
+  Array.from(dotsWrap.children).forEach((dot, j) => {
+    dot.classList.toggle('active', j === i);
+  });
+}
 
-      }
-    ];
+function vytvorTecky() {
+  dotsWrap.innerHTML = "";
+  skody.forEach((_, i) => {
+    const span = document.createElement('span');
+    span.className = 'dot' + (i === idx ? ' active' : '');
+    span.onclick = () => { idx = i; zobrazitSkodu(idx);}
+    dotsWrap.appendChild(span);
+  });
+}
 
-    let idx = 0;
-    const karta = document.getElementById("skoda-karta");
-    const dotsWrap = document.getElementById("carousel-dots");
+document.querySelector(".carousel-arrow.prev").onclick = function() {
+  idx = (idx - 1 + skody.length) % skody.length;
+  zobrazitSkodu(idx);
+};
+document.querySelector(".carousel-arrow.next").onclick = function() {
+  idx = (idx + 1) % skody.length;
+  zobrazitSkodu(idx);
+};
 
-    function zobrazitSkodu(i) {
-      const s = skody[i];
-      karta.innerHTML = `
-        <div class="skoda-title">${s.title}</div>
-        <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${s.pricina}</div>
-        <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${s.castka}</b></div>
-        <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${s.vyrizeni}</div>
-      `;
-      Array.from(dotsWrap.children).forEach((dot, j) => {
-        dot.classList.toggle('active', j === i);
-      });
-    }
+vytvorTecky();
+zobrazitSkodu(idx);
+</script>
 
-    function vytvorTecky() {
-      dotsWrap.innerHTML = "";
-      skody.forEach((_, i) => {
-        const span = document.createElement('span');
-        span.className = 'dot' + (i === idx ? ' active' : '');
-        span.onclick = () => { idx = i; zobrazitSkodu(idx);}
-        dotsWrap.appendChild(span);
-      });
-    }
-
-    document.querySelector(".carousel-arrow.prev").onclick = function() {
-      idx = (idx - 1 + skody.length) % skody.length;
-      zobrazitSkodu(idx);
-    };
-    document.querySelector(".carousel-arrow.next").onclick = function() {
-      idx = (idx + 1) % skody.length;
-      zobrazitSkodu(idx);
-    };
-
-    vytvorTecky();
-    zobrazitSkodu(idx);
-  </script>
-</body>
-</html>
