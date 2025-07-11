@@ -52,94 +52,8 @@
       width: 46px; height: 46px; border-radius: 50%;
       object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
       box-shadow: 0 2px 8px rgba(100,100,60,0.13);
-    }
-    .section-card {
-      max-width: 1200px;
-      margin: 2.4em auto 0 auto;
-      background: rgba(255,255,255,0.96);
-      border-radius: 26px;
-      box-shadow: 0 2px 16px rgba(120,100,60,0.09);
-      padding: 2.2em 2em 2.3em 2em;
-      width: 100%;
-    }
-    .section-card h2 {
-      color: #7a6c30;
-      font-size: 1.35em;
-      font-weight: 800;
-      margin: 0 0 0.2em 0;
-      letter-spacing: 0.01em;
-    }
-    .section-card p {
-      font-size: 1.07em;
-      margin-top: 0.4em;
-      margin-bottom: 2em;
-    }
-    .groups-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 2em 1.7em;
-      margin-top: 0.5em;
-      justify-items: center;
-    }
-    .group-card {
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 2px 12px rgba(120,100,60,0.11);
-      padding: 1.2em 1.2em 1.4em 1.2em;
-      min-width: 180px;
-      max-width: 280px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .group-card:hover {
-      box-shadow: 0 8px 28px rgba(183,169,124,0.18);
-      transform: translateY(-3px) scale(1.025);
-    }
-    .group-icon {
-      width: 58px; height: 58px;
-      margin-bottom: 0.7em;
-      border-radius: 50%;
-      object-fit: contain;
-      background: #f3efdc;
-      border: 1.8px solid #e2dbc9;
-      display: block;
-      box-shadow: 0 2px 8px rgba(170,150,70,0.08);
-    }
-    .group-title {
-      color: #9b8850;
-      font-size: 1.14em;
-      font-weight: bold;
-      margin-bottom: 0.1em;
-      margin-top: 0.1em;
-    }
-    .group-btn {
-      margin-top: 1.2em;
-      background: #b7a97c;
-      color: #fff;
-      border: none;
-      border-radius: 16px;
-      font-size: 1.07em;
-      font-weight: 700;
-      padding: 0.53em 2.1em;
-      box-shadow: 0 2px 8px rgba(170,150,70,0.09);
-      cursor: pointer;
-      transition: background 0.18s, color 0.18s, transform 0.11s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .group-btn:hover, .group-btn:focus {
-      background: #af4876;
-      color: #fff;
-      transform: translateY(-2px) scale(1.03);
-      text-decoration: none;
-    }
-    @media (max-width: 700px) {
-      .section-card { padding: 1.1em 0.4em 1em 0.4em; }
-      .groups-grid { gap: 1em; }
-      .group-card { padding: 0.9em 0.5em 1em 0.5em; }
+   
+    
     }
     /* Footer */
     .footer {
@@ -190,39 +104,81 @@
     <a href="kontakt.html">Kontakt</a>
   </nav>
 
-  <div class="main-content">
-    <div class="section-card">
-      <h2>Pro koho je životní pojištění?</h2>
-      <p>Vyberte si skupinu, které se vás nejvíce týká:</p>
-      <div class="groups-grid">
-        <div class="group-card">
-          <img src="mladi.png" alt="Mladí a svobodní" class="group-icon">
-          <div class="group-title">Mladí a svobodní</div>
-          <a href="#" class="group-btn">Zjistit více</a>
-        </div>
-        <div class="group-card">
-          <img src="rodina.png" alt="Rodina" class="group-icon">
-          <div class="group-title">Rodina</div>
-          <a href="#" class="group-btn">Zjistit více</a>
-        </div>
-        <div class="group-card">
-          <img src="podnikatel.png" alt="Podnikatel" class="group-icon">
-          <div class="group-title">Podnikatelé</div>
-          <a href="#" class="group-btn">Zjistit více</a>
-        </div>
-        <div class="group-card">
-          <img src="zamestnanec.png" alt="Zaměstnanec" class="group-icon">
-          <div class="group-title">Zaměstnanci</div>
-          <a href="#" class="group-btn">Zjistit více</a>
-        </div>
-        <div class="group-card">
-          <img src="starsi.png" alt="Starší a zkušení 50+" class="group-icon">
-          <div class="group-title">Starší a zkušení 50+</div>
-          <a href="#" class="group-btn">Zjistit více</a>
-        </div>
-      </div>
-    </div>
-  </div>
+ <section class="basic-insurance">
+  <h2>Základní pojistná rizika<br>
+  při dopravní nehodě</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Pojistná událost</th>
+        <th>Pojistná částka</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pobyt v nemocnici</td>
+        <td><strong>3 000 Kč/den</strong></td>
+      </tr>
+      <tr>
+        <td>Smrt následkem úrazu</td>
+        <td><strong>5 000 000 Kč</strong></td>
+      </tr>
+      <tr>
+        <td>Trvalé následky úrazu</td>
+        <td><strong>až 40 000 000 Kč</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="base-price"><h2>Cena za základ: <strong>354 Kč/měs.</h2></strong></div>
+
+</section>
+
+<style>
+  .basic-insurance {
+    background: rgba(255, 255, 255, 0.93);
+    border-radius: 16px;
+    padding: 1.8rem;
+    margin: 2rem auto;
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-family: 'Raleway', Arial, sans-serif;
+    color: #474336;
+  }
+  .basic-insurance h2 {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+    text-align: center;
+    color: #3b3722;
+  }
+  .basic-insurance table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .basic-insurance thead th {
+    background: #e2dbc9;
+    color: #474336;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+  .basic-insurance tbody td {
+    background: #f6f4ee;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #d3e5d3;
+  }
+  .basic-insurance strong {
+    color: #b7a97c;
+  }
+  .base-price {
+    margin-top: 1.5rem;
+    text-align: right;
+    font-size: 1.1rem;
+  }
+  .base-price strong {
+    font-size: 1.2rem;
+    color: #b7a97c;
+  }
+</style>
 
   <div class="footer">
     &copy; 2025 Daniel Verner – PojistiToSnadno.cz
