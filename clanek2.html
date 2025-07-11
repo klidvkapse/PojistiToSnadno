@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>5 nejčastějších mýtů o životním pojištění | PojistiToSnadno</title>
+  <title>Statistiky | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
+      color: #e2dbc9;
       background: #f6f4ee;
       font-family: 'Raleway', Arial, sans-serif;
       margin: 0;
       min-height: 100vh;
-      color: #474336;
     }
     .bg-img-desktop {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       width: 100vw; height: 100vh;
       object-fit: cover; object-position: center;
       filter: brightness(0.78) blur(2.8px);
-      opacity: 0.97; z-index: 1;
+      opacity: 0.99; z-index: 1;
       pointer-events: none; user-select: none;
       transition: all 0.5s;
       display: block;
@@ -32,11 +33,12 @@
         width: 100vw; height: 100vh;
         object-fit: cover; object-position: center;
         filter: brightness(0.78) blur(1.8px);
-        opacity: 0.98; z-index: 1;
+        opacity: 0.99; z-index: 1;
         pointer-events: none; user-select: none;
         transition: all 0.5s;
       }
     }
+
     .top-nav {
       position: relative; z-index: 10;
       display: flex; justify-content: center; align-items: center;
@@ -62,125 +64,71 @@
       object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
       box-shadow: 0 2px 8px rgba(100,100,60,0.13);
     }
-    /* Karty mýtů */
-    .myty-container {
-      max-width: 1100px;
-      margin: 2.6em auto 2em auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2em;
-      justify-content: center;
-      position: relative; z-index: 3;
+    @media (max-width: 600px) {
+      .top-nav a {
+        padding: 0.45em 0.7em;
+        font-size: 0.98em;
+      }
     }
-    .mytus-karta {
-      background: rgba(255,255,255,0.95);
-      border-radius: 24px;
-      box-shadow: 0 2px 14px rgba(120,100,60,0.11);
-      padding: 2em 2em 1.5em 2em;
-      max-width: 300px;
-      min-width: 260px;
-      flex: 1 1 270px;
-      display: flex;
-      flex-direction: column;
-      margin: 0.2em 0;
-      font-size: 1.07em;
+
+    .container {
+      position: relative; z-index: 5;
+      max-width: 1280px; margin: 0 auto;
+      padding: 2.7em 1em 3em 1em;
     }
-    .mytus-cislo {
-      color: #b7a97c;
-      font-size: 1.02em;
-      font-weight: bold;
-      margin-bottom: 0.2em;
-      letter-spacing: 0.01em;
-    }
-    .mytus-title {
-      color: #8e7b38;
-      font-weight: 700;
-      font-size: 1.07em;
-      margin-bottom: 0.4em;
-      letter-spacing: 0.01em;
-    }
-    .mytus-text {
-      color: #474336;
-      font-size: 1.01em;
-      margin-bottom: 0.2em;
-    }
-    .mytus-tip {
-      color: #a18a0b;
-      font-weight: 700;
-      margin: 2em auto 1em auto;
-      background: #fffbe7;
-      border-radius: 12px;
-      padding: 0.8em 1em;
-      font-size: 1.11em;
-      display: block;
-      text-align: center;
-      max-width: 95vw;
-    }
-    .mytus-link {
-      color: #684fb1;
-      text-decoration: underline;
-      margin-top: 1.1em;
-      display: inline-block;
-      font-size: 1.03em;
-      text-align: center;
-    }
+    .statistika-header,
     h1 {
-      color: #fff;
-      font-size: 2.05em;
+      color: #fff !important;
+      text-align: center;
+      font-size: 2.25em;
       font-weight: 800;
+      letter-spacing: 0.03em;
       margin-top: 0.4em;
-      margin-bottom: 1.3em;
+      margin-bottom: 0.3em;
+      text-shadow: 0 3px 16px rgba(0,0,0,0.23);
+    }
+    .statistika-popis {
+      color: #fff;
+      font-weight: 500;
+      font-size: 1.16em;
+      margin-bottom: 2.5em;
       text-align: center;
-      letter-spacing: 0.01em;
-      text-shadow: 0 2px 18px rgba(0,0,0,0.18);
-      z-index: 5;
-      position: relative;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.22);
     }
-    @media (max-width: 900px) {
-      .myty-container { gap: 1em; }
-      .mytus-karta { max-width: 99vw; min-width: 0; padding: 1.2em 0.7em 1em 0.7em; }
-      h1 { font-size: 1.25em; }
+    .pojisteni-grafy-box { 
+      display:flex; flex-wrap:wrap; justify-content:center; gap:2em; 
+      margin-bottom: 2.5em;
     }
-    /* Footer */
-    .footer {
-      background: #e2dbc9;
-      color: #474336;
-      text-align: center;
-      font-size: 1em;
-      padding: 2em 0 1.3em 0;
-      margin-top: 4em;
-      border-top: 1px solid #ece6d4;
-      letter-spacing: 0.01em;
-      min-height: 75px;
+    .graf-karta { 
+      max-width:340px; width:100%; min-width:240px;
+      background: rgba(255,255,255,0.93);
+      border-radius:18px; 
+      box-shadow:0 2px 12px rgba(120,100,60,0.12);
+      padding:2em 1em 1.1em 1em; 
+      margin:1em 0; 
+      z-index: 10;
+      display: flex; flex-direction: column; align-items: center;
     }
-    .footer b { color: #b7a97c; }
-    .footer .contact { margin-bottom: 0.8em; }
-    .footer a { color: #684fb1; text-decoration: underline; }
-    .mytus-btn {
-  display: inline-block;
-  background: #b7a97c;
-  color: #fff !important;
-  padding: 0.6em 2.4em;
-  border-radius: 18px;
-  font-size: 1.14em;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(120,100,60,0.12);
-  transition: background 0.18s, color 0.18s, transform 0.12s;
-  letter-spacing: 0.01em;
-  margin-top: 0.3em;
-  border: none;
-  cursor: pointer;
-}
-
-.mytus-btn:hover,
-.mytus-btn:focus {
-  background: #af4876;
-  color: #fff !important;
-  transform: translateY(-2px) scale(1.03);
-  text-decoration: none;
-}
-
+    .graf-karta canvas { display:block; margin:0 auto; }
+    .graf-vysvetlivka { 
+      min-height:3.2em; margin-top:1em; color: #474336; 
+      font-size:1.08em; background:#fffbe7;
+      padding:0.7em 1em; border-radius:12px; text-align:left;
+      box-shadow:0 1px 4px rgba(120,100,60,0.06);
+      width: 100%; box-sizing: border-box;
+    }
+    .graf-karta b { 
+      display:block; margin-bottom:0.5em; font-size:1.09em; color:#3b3722;
+    }
+    .graf-vysvetlivka b { color: #b7a97c; }
+    @media (max-width: 980px) {
+      .pojisteni-grafy-box { gap:1.2em; }
+      .graf-karta { max-width: 96vw; }
+    }
+    @media (max-width: 800px) {
+      .pojisteni-grafy-box { flex-direction: column; align-items: center; }
+      .graf-karta { width:95vw; min-width: 0; }
+    }
   </style>
 </head>
 <body>
@@ -189,54 +137,206 @@
 
   <nav class="top-nav">
     <a href="index.html#domu">Domů</a>
-    <a href="clanky.html" class="active">Zajímavosti</a>
+    <a href="clanky.html">Zajímavosti</a>
     <a href="slovnik.html">Slovník</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
 
-  <h1>5 nejčastějších mýtů o životním pojištění</h1>
-  <div class="myty-container">
+  <main class="container">
+    <h1 class="statistika-header">Statistiky pojistných událostí (modelová data 2024)</h1>
+    <p class="statistika-popis">
+      Kliknutím na sloupec zobrazíte konkrétní počet událostí, průměrnou výplatu a délku vyřízení v dané kategorii.
+    </p>
 
-    <div class="mytus-karta">
-      <div class="mytus-cislo">Mýtus 1</div>
-      <div class="mytus-title">Je to zbytečné, když mám úspory</div>
-      <div class="mytus-text">Úspory pokryjí výdaje jen omezenou dobu. Pojištění chrání vaši rodinu dlouhodobě.</div>
+    <div class="pojisteni-grafy-box">
+
+      <!-- Životní pojištění -->
+      <div class="graf-karta">
+        <b>Životní pojištění</b>
+        <canvas id="zivot" width="260" height="260"></canvas>
+        <div id="vysvetlivka-zivot" class="graf-vysvetlivka"></div>
+      </div>
+
+      <!-- Pojištění majetku -->
+      <div class="graf-karta">
+        <b>Pojištění majetku</b>
+        <canvas id="majetek" width="260" height="260"></canvas>
+        <div id="vysvetlivka-majetek" class="graf-vysvetlivka"></div>
+      </div>
+
+      <!-- Pojištění vozidel -->
+      <div class="graf-karta">
+        <b>Pojištění vozidel</b>
+        <canvas id="vozidlo" width="260" height="260"></canvas>
+        <div id="vysvetlivka-vozidlo" class="graf-vysvetlivka"></div>
+      </div>
+
+      <!-- Úrazové pojištění -->
+      <div class="graf-karta">
+        <b>Úrazové pojištění</b>
+        <canvas id="uraz" width="260" height="260"></canvas>
+        <div id="vysvetlivka-uraz" class="graf-vysvetlivka"></div>
+      </div>
+
+      <!-- Pracovní neschopnost -->
+      <div class="graf-karta">
+        <b>Pracovní neschopnost</b>
+        <canvas id="pn" width="260" height="260"></canvas>
+        <div id="vysvetlivka-pn" class="graf-vysvetlivka"></div>
+      </div>
+
+      <!-- Cestovní pojištění -->
+      <div class="graf-karta">
+        <b>Cestovní pojištění</b>
+        <canvas id="cestovni" width="260" height="260"></canvas>
+        <div id="vysvetlivka-cestovni" class="graf-vysvetlivka"></div>
+      </div>
+
+      <!-- Pojištění odpovědnosti -->
+      <div class="graf-karta">
+        <b>Pojištění odpovědnosti</b>
+        <canvas id="odpovednost" width="260" height="260"></canvas>
+        <div id="vysvetlivka-odpovednost" class="graf-vysvetlivka"></div>
+      </div>
+
     </div>
 
-    <div class="mytus-karta">
-      <div class="mytus-cislo">Mýtus 2</div>
-      <div class="mytus-title">Pojišťovna stejně nic nevyplatí</div>
-      <div class="mytus-text">Při správně nastavené smlouvě a doložení dokumentů pojišťovna plní dle podmínek.</div>
-       <a href="realne-skody.html" class="mytus-btn">Reálné škody mých klientů</a>
-    </div>
+    <script>
+const grafy = [
+  {
+    id: 'zivot',
+    vysvetlivka: 'vysvetlivka-zivot',
+    labels: ['Nemoci','Úrazy','Pracovní neschopnost','Úrazy při dopravní nehodě'],
+    data: [48,22,18,12],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    statistiky: [
+      {pocet: 5900, vyplata: '430 000 Kč', doba: '16 dní'},
+      {pocet: 2700, vyplata: '210 000 Kč', doba: '13 dní'},
+      {pocet: 2200, vyplata: '35 000 Kč', doba: '10 dní'},
+      {pocet: 1500, vyplata: '85 000 Kč', doba: '12 dní'},
+    ]
+  },
+  {
+    id: 'majetek',
+    vysvetlivka: 'vysvetlivka-majetek',
+    labels: ['Počasí','Krádež/vloupání','Požár','Havárie'],
+    data: [55,22,13,10],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    statistiky: [
+      {pocet: 25200, vyplata: '38 000 Kč', doba: '11 dní'},
+      {pocet: 10100, vyplata: '61 000 Kč', doba: '15 dní'},
+      {pocet: 5900, vyplata: '110 000 Kč', doba: '18 dní'},
+      {pocet: 4300, vyplata: '22 000 Kč', doba: '9 dní'},
+    ]
+  },
+  {
+    id: 'vozidlo',
+    vysvetlivka: 'vysvetlivka-vozidlo',
+    labels: ['Dopravní nehoda','Střet se zvěří','Vandalismus','Krádež'],
+    data: [68,15,10,7],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    statistiky: [
+      {pocet: 21600, vyplata: '37 000 Kč', doba: '14 dní'},
+      {pocet: 4800, vyplata: '25 000 Kč', doba: '10 dní'},
+      {pocet: 3200, vyplata: '44 000 Kč', doba: '17 dní'},
+      {pocet: 2200, vyplata: '125 000 Kč', doba: '21 dní'},
+    ]
+  },
+  {
+    id: 'uraz',
+    vysvetlivka: 'vysvetlivka-uraz',
+    labels: ['Pády','Sportovní úrazy','Pracovní úrazy','Dopravní nehody'],
+    data: [40,32,18,10],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    statistiky: [
+      {pocet: 3700, vyplata: '18 000 Kč', doba: '8 dní'},
+      {pocet: 2950, vyplata: '24 000 Kč', doba: '9 dní'},
+      {pocet: 1650, vyplata: '31 000 Kč', doba: '11 dní'},
+      {pocet: 900, vyplata: '42 000 Kč', doba: '12 dní'},
+    ]
+  },
+  {
+    id: 'pn',
+    vysvetlivka: 'vysvetlivka-pn',
+    labels: ['Nemoc','Úraz','Psychika','Ostatní'],
+    data: [58,25,12,5],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    statistiky: [
+      {pocet: 6030, vyplata: '36 000 Kč', doba: '13 dní'},
+      {pocet: 2600, vyplata: '32 000 Kč', doba: '11 dní'},
+      {pocet: 1250, vyplata: '29 000 Kč', doba: '12 dní'},
+      {pocet: 520, vyplata: '27 000 Kč', doba: '10 dní'},
+    ]
+  },
+  {
+    id: 'cestovni',
+    vysvetlivka: 'vysvetlivka-cestovni',
+    labels: ['Nemoc','Úraz','Krádež','Storno zájezdu'],
+    data: [41,28,19,12],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    statistiky: [
+      {pocet: 2380, vyplata: '19 000 Kč', doba: '7 dní'},
+      {pocet: 1625, vyplata: '26 000 Kč', doba: '8 dní'},
+      {pocet: 1100, vyplata: '16 000 Kč', doba: '7 dní'},
+      {pocet: 700, vyplata: '14 000 Kč', doba: '6 dní'},
+    ]
+  },
+  {
+    id: 'odpovednost',
+    vysvetlivka: 'vysvetlivka-odpovednost',
+    labels: ['Škoda na majetku','Škoda na zdraví','Zvíře','Zaměstnání'],
+    data: [48,27,16,9],
+    barvy: ['#b7a97c','#e2dbc9','#c1cfc2','#a6b89a'],
+    statistiky: [
+      {pocet: 1960, vyplata: '13 000 Kč', doba: '9 dní'},
+      {pocet: 1100, vyplata: '31 000 Kč', doba: '14 dní'},
+      {pocet: 650, vyplata: '10 000 Kč', doba: '6 dní'},
+      {pocet: 370, vyplata: '12 000 Kč', doba: '8 dní'},
+    ]
+  }
+];
 
-    <div class="mytus-karta">
-      <div class="mytus-cislo">Mýtus 3</div>
-      <div class="mytus-title">Je to drahé</div>
-      <div class="mytus-text">Cena se dá nastavit podle možností. Již za pár set korun měsíčně lze mít dostatečné krytí.</div>
-    </div>
+grafy.forEach(graf => {
+  const ctx = document.getElementById(graf.id).getContext('2d');
+  const vysvetlivkaDiv = document.getElementById(graf.vysvetlivka);
 
-    <div class="mytus-karta">
-      <div class="mytus-cislo">Mýtus 4</div>
-      <div class="mytus-title">Stačí mi pojištění v práci</div>
-      <div class="mytus-text">Skupinové pojištění mívá omezené krytí a není přenosné při změně zaměstnání.</div>
-    </div>
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: graf.labels,
+      datasets: [{
+        data: graf.data,
+        backgroundColor: graf.barvy
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false }
+      }
+    }
+  });
 
-    <div class="mytus-karta">
-      <div class="mytus-cislo">Mýtus 5</div>
-      <div class="mytus-title">Je jen na smrt</div>
-      <div class="mytus-text">Moderní životní pojištění kryje i vážné nemoci, invaliditu a pracovní neschopnost.</div>
-    </div>
+  vysvetlivkaDiv.innerHTML = "Kliknutím na sloupec zobrazíte statistiku.";
 
-  </div>
-
-     <div class="mytus-tip">
-  👉 Chcete si ověřit, zda máte správně nastavené pojištění? Domluvte si konzultaci zdarma.
-</div>
-<div style="text-align:center; margin: 1.5em 0 2.2em 0;">
-  <a href="kontakt.html" class="mytus-btn">👉 Kontakt</a>
-</div>
-<div style="text-align:center; color:#b7a97c; font-size:1.08em; opacity:0.85; margin-bottom:1.8em;">
-  &copy; 2025 Daniel Verner – PojistiToSnadno.cz
-</div>
-
+  ctx.canvas.addEventListener('click', evt => {
+    const points = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
+    if (!points.length) return;
+    const idx = points[0].index;
+    const stat = graf.statistiky[idx];
+    vysvetlivkaDiv.innerHTML = `
+      <b>${graf.labels[idx]}</b><br>
+      Počet událostí: <b>${stat.pocet.toLocaleString('cs-CZ')}</b><br>
+      Průměrná výplata: <b>${stat.vyplata}</b><br>
+      Průměrná délka vyřízení: <b>${stat.doba}</b>
+    `;
+  });
+});
+    </script>
+  </main>
+</body>
+</html>
