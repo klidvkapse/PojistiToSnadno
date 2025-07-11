@@ -121,27 +121,46 @@
 
     /* Responsive tweaks */
     @media (max-width: 800px) {
-      .main-content {
-        position: relative;
-        width: 90%;
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      .main-box {
-        padding: 1.2em 1.4em;
-      }
-      .button-row {
-        justify-content: center;
-      }
-      .services-cards {
-        flex-direction: row;
-        top: 70px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
+  .main-content {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+  }
+  .main-box {
+    padding: 0.8em 1em;
+    font-size: 0.85em;
+  }
+  .main-box h1 {
+    font-size: 1.2em;
+  }
+  .button-row {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .button-row a {
+    font-size: 0.9em;
+    padding: 0.4em 0.8em;
+    width: 90%;
+    max-width: 250px;
+  }
+  .services-cards {
+    flex-direction: row;
+    justify-content: center;
+    top: 70px;
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+  .services-cards .card {
+    width: 60px;
+    height: 60px;
+  }
+  .services-cards img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
   </style>
 </head>
 
