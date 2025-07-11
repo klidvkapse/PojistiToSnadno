@@ -63,3 +63,106 @@
     /* Kalkulačka PN alternativní styl */
     .calculator-pn .controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem; }
     .calculator-pn button { background: #e2dbc9; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; transition: background 0.2s; }
+    .calculator-pn button:hover { background: #b7a97c; color: #fff; }
+    .calculator-pn input[type="text"] { width: 80px; text-align: center; font-size: 1.2rem; border: 1px solid #d3e5d3; border-radius: 4px; padding: 0.3rem; background: #fff; }
+    .calculator-pn .price-label { margin-top: 1rem; font-size: 1.25rem; font-weight: bold; color: #3b3722; }
+    /* Tlačítko mimo kalkulačku */
+    .pojistit-link {
+      display: inline-block;
+      margin: 1rem auto;
+      background: #b7a97c;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+      text-align: center;
+    }
+    .pojistit-link:hover { background: #3b3722; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <a href="index.html">Domů</a>
+    <a href="clanky.html" class="active">Články</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <div class="container">
+    <div class="side-by-side">
+      <!-- Základní pojistná rizika -->
+      <section>
+        <h2>Základní pojistná rizika<br>při dopravní nehodě</h2>
+        <table>
+          <thead><tr><th>Pojistná událost</th><th>Pojistná částka</th></tr></thead>
+          <tbody>
+            <tr><td>Pobyt v nemocnici</td><td><strong>3 000 Kč/den</strong></td></tr>
+            <tr><td>Smrt následkem úrazu</td><td><strong>5 000 000 Kč</strong></td></tr>
+            <tr><td>Trvalé následky úrazu</td><td><strong>až 40 000 000 Kč</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="base-price">Cena za základ: <strong>354 Kč/měs.</strong></div>
+      </section>
+      <!-- Příklady trvalých následků -->
+      <div class="examples">
+        <h2>Příklady trvalých následků</h2>
+        <table>
+          <thead><tr><th>Úraz</th><th>Vyplaceno</th></tr></thead>
+          <tbody>
+            <tr><td>Podvrtnutí páteře – 3 % TN</td><td>1 200 000 Kč</td></tr>
+            <tr><td>Meniskus – 6 % TN</td><td>2 400 000 Kč</td></tr>
+            <tr><td>Střední mozkové poškození – 41 % TN</td><td>16 400 000 Kč</td></tr>
+            <tr><td>Ztráta horní končetiny – 70 % TN</td><td>28 000 000 Kč</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Denní odškodné sekce -->
+    <section>
+      <h2>Denní odškodné za méně závažné úrazy</h2>
+      <table>
+        <thead><tr><th>Úraz</th><th>A</th><th>B</th><th>C</th></tr></thead>
+        <tbody>
+          <tr><td>Zlomenina 2–5 žeber (56 dní)</td><td>11 200 Kč</td><td>28 000 Kč</td><td>56 000 Kč</td></tr>
+          <tr><td>Zlomenina prstu (21 dní)</td><td>4 200 Kč</td><td>10 500 Kč</td><td>21 000 Kč</td></tr>
+          <tr><td>Zlomenina krčku stehenní (112 dní)</td><td>22 400 Kč</td><td>56 000 Kč</td><td>112 000 Kč</td></tr>
+          <tr><td>Otřes mozku (21 dní)</td><td>4 200 Kč</td><td>10 500 Kč</td><td>21 000 Kč</td></tr>
+          <tr><td>Přetržení menisku (70 dní)</td><td>14 000 Kč</td><td>35 000 Kč</td><td>70 000 Kč</td></tr>
+          <tr><td>Zlomenina nártu palce (42 dní)</td><td>8 400 Kč</td><td>21 000 Kč</td><td>42 000 Kč</td></tr>
+          <tr class="highlight"><td>Základní rizika + varianta</td><td>395 Kč</td><td>456 Kč</td><td>558 Kč</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <!-- Alternativní kalkulačka pracovní neschopnost -->
+    <section class="calculator-pn">
+      <h2>Přidej si pracovní neschopnost</h2>
+      <div class="controls">
+        <button id="decrease">−</button>
+        <input type="text" id="pnInput" value="100 Kč" readonly>
+        <button id="increase">+</button>
+      </div>
+      <div class="price-label">Cena pojištění: <span id="pnPrice">9 Kč</span> měsíčně</div>
+    </section>
+    <!-- Tlačítko sjednat mimo kalkulačku -->
+    <a href="kontakt.html" class="pojistit-link">Chci pojistit</a>
+  </div>
+  <script>
+    const mapping = {100:9,200:18,300:28,400:37,500:45,600:55,700:65,800:74,900:83,1000:92};
+    let current = 100;
+    const pnInput = document.getElementById('pnInput');
+    const pnPrice = document.getElementById('pnPrice');
+    document.getElementById('increase').addEventListener('click', () => {
+      if (current < 1000) current += 100;
+      update();
+    });
+    document.getElementById('decrease').addEventListener('click', () => {
+      if (current > 100) current -= 100;
+      update();
+    });
+    function update() {
+      pnInput.value = current + ' Kč';
+      pnPrice.textContent = mapping[current] + ' Kč';
+    }
+  </script>
+</body>
+</html>
