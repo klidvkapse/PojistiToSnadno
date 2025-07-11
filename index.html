@@ -8,13 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Raleway', Arial, sans-serif;
-    }
+    html, body { height: 100%; margin: 0; padding: 0; box-sizing: border-box; font-family: 'Raleway', Arial, sans-serif; }
     body {
       min-height: 100vh;
       width: 100vw;
@@ -23,7 +17,6 @@
       background-size: cover;
       position: relative;
       overflow-x: hidden;
-      transition: background-image 0.4s;
     }
     .menu-bar {
       position: fixed;
@@ -66,16 +59,8 @@
       transition: transform 0.2s;
     }
     .services-cards .card:hover { transform: translateX(4px); }
-    .services-cards img {
-      width: 32px;
-      height: 32px;
-      margin-bottom: 6px;
-    }
-    .services-cards span {
-      font-size: 0.8em;
-      font-weight: 600;
-      text-align: center;
-    }
+    .services-cards img { width: 32px; height: 32px; margin-bottom: 6px; }
+    .services-cards span { font-size: 0.8em; font-weight: 600; text-align: center; }
     .main-content {
       position: absolute;
       z-index: 2;
@@ -121,13 +106,38 @@
       line-height: 1.5;
       text-shadow: 0 1px 5px #000;
     }
+    .button-row {
+      margin-top: 1.3em;
+      display: flex;
+      gap: 1em;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .real-link, .pojistit-link {
+      font-size: 1.08em;
+      background: #b7a97c;
+      color: #222;
+      padding: 0.48em 1.2em;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 12px rgba(120,100,60,0.13);
+      transition: background 0.19s, color 0.19s;
+      text-align: center;
+      min-width: 120px;
+      flex: 1 1 130px;
+      max-width: 210px;
+    }
+    .real-link:hover, .pojistit-link:hover {
+      background: #e2dbc9;
+      color: #474336;
+    }
   </style>
 </head>
 <body>
   <div class="main-wrapper">
-    <nav class="menu-bar">
-      <h1>PojistiToSnadno.cz</h1>
-    </nav>
+    <nav class="menu-bar"><h1>PojistiToSnadno.cz</h1></nav>
 
     <div class="services-cards">
       <a href="clanek1.html" class="card">
@@ -144,7 +154,7 @@
       <div class="main-box">
         <h1><strong>Daniel Verner</strong></h1>
         <div class="about">
-          Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br>
+          Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br>
           Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br>
           Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.<br>
           Společně najdeme řešení, které bude dávat smysl právě vám a vašim blízkým
@@ -156,6 +166,10 @@
           • Pojištění majetku<br>
           • Podpora při řešení pojistných událostí<br>
           • Úvěry na bydlení
+        </div>
+        <div class="button-row">
+          <a href="realne-skody.html" class="real-link">Reálné škody klientů</a>
+          <a href="kontakt.html" class="pojistit-link">Chci pojistit</a>
         </div>
       </div>
     </div>
