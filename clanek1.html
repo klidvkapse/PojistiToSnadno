@@ -22,14 +22,27 @@
       gap: 1em; padding: 1em 0;
       background: rgba(255,255,255,0.06);
       flex-wrap: wrap;
+      overflow-x: visible;
     }
     .top-nav a {
       padding: 0.6em 1.4em; margin: 0.2em;
       border-radius: 22px; text-decoration: none;
       font-weight: bold; background: #e2dbc9; color: #474336;
       transition: background 0.2s;
+      flex: 0 0 auto;
     }
     .top-nav a:hover, .top-nav .active { background: #b7a97c; color: #3b3722; }
+    /* Mobilní zobrazení navigace */
+    @media (max-width: 600px) {
+      .top-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 0.5em 0;
+      }
+      .top-nav a {
+        margin: 0 0.5em;
+      }
+    }
     /* Kontejner */
     .container {
       position: relative; z-index: 5;
@@ -53,19 +66,85 @@
     section { flex: 1 1 60%; }
     .examples { flex: 1 1 35%; }
     .calculator-pn { max-width: 400px; margin: 0 auto; text-align: center; }
-    h2 { margin-top: 0; font-size: 1.6rem; color: #3b3722; margin-bottom: 1rem; text-align: center; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
-    thead th { background: #e2dbc9; color: #474336; padding: 0.8rem 1rem; text-align: left; font-weight: 600; font-size: 0.95rem; }
-    tbody td { background: #f6f4ee; padding: 0.75rem 1rem; border-top: 1px solid #d3e5d3; font-size: 0.9rem; }
-    .highlight td { background: #b7a97c; color: #fff; font-weight: 700; font-size: 1.1rem; padding: 1rem; }
-    .base-price { text-align: right; font-size: 1.2rem; font-weight: 600; }
-    .base-price strong { color: #b7a97c; font-size: 1.3rem; }
+    h2 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      color: #3b3722;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    thead th {
+      background: #e2dbc9;
+      color: #474336;
+      padding: 0.8rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    tbody td {
+      background: #f6f4ee;
+      padding: 0.75rem 1rem;
+      border-top: 1px solid #d3e5d3;
+      font-size: 0.9rem;
+    }
+    .highlight td {
+      background: #b7a97c;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 1rem;
+    }
+    .base-price {
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .base-price strong {
+      color: #b7a97c;
+      font-size: 1.3rem;
+    }
     /* Kalkulačka PN alternativní styl */
-    .calculator-pn .controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem; }
-    .calculator-pn button { background: #e2dbc9; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; transition: background 0.2s; }
-    .calculator-pn button:hover { background: #b7a97c; color: #fff; }
-    .calculator-pn input[type="text"] { width: 80px; text-align: center; font-size: 1.2rem; border: 1px solid #d3e5d3; border-radius: 4px; padding: 0.3rem; background: #fff; }
-    .calculator-pn .price-label { margin-top: 1rem; font-size: 1.25rem; font-weight: bold; color: #3b3722; }
+    .calculator-pn .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .calculator-pn button {
+      background: #e2dbc9;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .calculator-pn button:hover {
+      background: #b7a97c;
+      color: #fff;
+    }
+    .calculator-pn input[type="text"] {
+      width: 80px;
+      text-align: center;
+      font-size: 1.2rem;
+      border: 1px solid #d3e5d3;
+      border-radius: 4px;
+      padding: 0.3rem;
+      background: #fff;
+    }
+    .calculator-pn .price-label {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #3b3722;
+    }
     /* Tlačítko mimo kalkulačku */
     .pojistit-link {
       display: inline-block;
@@ -79,7 +158,9 @@
       transition: background 0.2s;
       text-align: center;
     }
-    .pojistit-link:hover { background: #3b3722; }
+    .pojistit-link:hover {
+      background: #3b3722;
+    }
   </style>
 </head>
 <body>
@@ -94,7 +175,9 @@
       <section>
         <h2>Základní pojistná rizika<br>při dopravní nehodě</h2>
         <table>
-          <thead><tr><th>Pojistná událost</th><th>Pojistná částka</th></tr></thead>
+          <thead>
+            <tr><th>Pojistná událost</th><th>Pojistná částka</th></tr>
+          </thead>
           <tbody>
             <tr><td>Pobyt v nemocnici</td><td><strong>3 000 Kč/den</strong></td></tr>
             <tr><td>Smrt následkem úrazu</td><td><strong>5 000 000 Kč</strong></td></tr>
@@ -107,7 +190,9 @@
       <div class="examples">
         <h2>Příklady trvalých následků</h2>
         <table>
-          <thead><tr><th>Úraz</th><th>Vyplaceno</th></tr></thead>
+          <thead>
+            <tr><th>Úraz</th><th>Vyplaceno</th></tr>
+          </thead>
           <tbody>
             <tr><td>Podvrtnutí páteře – 3 % TN</td><td>1 200 000 Kč</td></tr>
             <tr><td>Meniskus – 6 % TN</td><td>2 400 000 Kč</td></tr>
@@ -121,7 +206,9 @@
     <section>
       <h2>Denní odškodné za méně závažné úrazy</h2>
       <table>
-        <thead><tr><th>Úraz</th><th>A</th><th>B</th><th>C</th></tr></thead>
+        <thead>
+          <tr><th>Úraz</th><th>A</th><th>B</th><th>C</th></tr>
+        </thead>
         <tbody>
           <tr><td>Zlomenina 2–5 žeber (56 dní)</td><td>11 200 Kč</td><td>28 000 Kč</td><td>56 000 Kč</td></tr>
           <tr><td>Zlomenina prstu (21 dní)</td><td>4 200 Kč</td><td>10 500 Kč</td><td>21 000 Kč</td></tr>
