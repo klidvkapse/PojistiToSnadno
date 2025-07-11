@@ -3,185 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Pro koho je životní pojištění? | PojistiToSnadno</title>
+  <title>Pojištění úrazu při dopravní nehodě | PojistiToSnadno</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    /* Globální styly */
     body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      background: #f6f4ee;
+      margin: 0;
       font-family: 'Raleway', Arial, sans-serif;
       color: #474336;
-      box-sizing: border-box;
+      background: url('portret-bg-web.png') no-repeat center center fixed, #f6f4ee;
+      background-size: cover;
+      min-height: 100vh;
     }
-    .main-content {
-      flex: 1 0 auto;
-      position: relative;
-      z-index: 3;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
+    /* Navigace */
     .top-nav {
       position: relative; z-index: 10;
       display: flex; justify-content: center; align-items: center;
-      gap: 1em; padding: 1.1em 0 0.7em 0;
+      gap: 1em; padding: 1em 0;
       background: rgba(255,255,255,0.06);
-      font-weight: bold;
-      flex-direction: row;
       flex-wrap: wrap;
     }
     .top-nav a {
-      padding: 0.6em 1.4em; margin: 0 0.15em;
+      padding: 0.6em 1.4em; margin: 0.2em;
       border-radius: 22px; text-decoration: none;
-      color: #474336; background: #e2dbc9;
-      transition: background .2s;
-      font-size: 1.08em;
+      font-weight: bold; background: #e2dbc9; color: #474336;
+      transition: background 0.2s;
     }
-    .top-nav .active, .top-nav a:hover {
-      background: #b7a97c;
-      color: #3b3722;
+    .top-nav a:hover, .top-nav .active { background: #b7a97c; color: #3b3722; }
+    /* Kontejner */
+    .container {
+      position: relative; z-index: 5;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
-    .portrait-desktop {
-      width: 46px; height: 46px; border-radius: 50%;
-      object-fit: cover; margin-right: 1em; border: 2.5px solid #e2dbc9;
-      box-shadow: 0 2px 8px rgba(100,100,60,0.13);
-   
-    
+    .side-by-side {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
     }
-    /* Footer */
-    .footer {
-      background: #e2dbc9;
-      color: #474336;
-      text-align: center;
-      font-size: 1em;
-      padding: 2em 0 1.3em 0;
-      border-top: 1px solid #ece6d4;
-      letter-spacing: 0.01em;
-      min-height: 65px;
-      margin-top: 0;
-      flex-shrink: 0;
+    section, .examples, .calculator-pn {
+      background: rgba(255,255,255,0.93);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    .bg-img-desktop {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw; height: 100vh;
-      object-fit: cover; object-position: center;
-      filter: brightness(0.78) blur(2.8px);
-      opacity: 0.97; z-index: 1;
-      pointer-events: none; user-select: none;
-      transition: all 0.5s;
-      display: block;
-    }
-    .bg-img-mobile { display: none; }
-    @media (max-width: 800px) {
-      .bg-img-desktop { display: none !important; }
-      .bg-img-mobile {
-        display: block !important;
-        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-        width: 100vw; height: 100vh;
-        object-fit: cover; object-position: center;
-        filter: brightness(0.78) blur(1.8px);
-        opacity: 0.98; z-index: 1;
-        pointer-events: none; user-select: none;
-        transition: all 0.5s;
-      }
-    }
-  </style>
-</head>
-<body>
-  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
-  <img src="portret.png" alt="" class="bg-img-mobile">
-
-  <nav class="top-nav">
-    <a href="index.html#domu">Domů</a>
-    <a href="clanky.html" class="active">Články</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
-
- <section class="basic-insurance">
-  <h2>Základní pojistná rizika<br>
-  při dopravní nehodě</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Pojistná událost</th>
-        <th>Pojistná částka</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Pobyt v nemocnici</td>
-        <td><strong>3 000 Kč/den</strong></td>
-      </tr>
-      <tr>
-        <td>Smrt následkem úrazu</td>
-        <td><strong>5 000 000 Kč</strong></td>
-      </tr>
-      <tr>
-        <td>Trvalé následky úrazu</td>
-        <td><strong>až 40 000 000 Kč</strong></td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="base-price"><h2>Cena za základ: <strong>354 Kč/měs.</h2></strong></div>
-
-</section>
-
-<style>
-  .basic-insurance {
-    background: rgba(255, 255, 255, 0.93);
-    border-radius: 16px;
-    padding: 1.8rem;
-    margin: 2rem auto;
-    max-width: 700px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    font-family: 'Raleway', Arial, sans-serif;
-    color: #474336;
-  }
-  .basic-insurance h2 {
-    margin: 0 0 1rem;
-    font-size: 1.6rem;
-    text-align: center;
-    color: #3b3722;
-  }
-  .basic-insurance table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  .basic-insurance thead th {
-    background: #e2dbc9;
-    color: #474336;
-    padding: 0.8rem 1rem;
-    text-align: left;
-    font-weight: 600;
-  }
-  .basic-insurance tbody td {
-    background: #f6f4ee;
-    padding: 0.75rem 1rem;
-    border-top: 1px solid #d3e5d3;
-  }
-  .basic-insurance strong {
-    color: #b7a97c;
-  }
-  .base-price {
-    margin-top: 1.5rem;
-    text-align: right;
-    font-size: 1.1rem;
-  }
-  .base-price strong {
-    font-size: 1.2rem;
-    color: #b7a97c;
-  }
-</style>
-
-  <div class="footer">
-    &copy; 2025 Daniel Verner – PojistiToSnadno.cz
-  </div>
-</body>
-</html>
+    section { flex: 1 1 60%; }
+    .examples { flex: 1 1 35%; }
+    .calculator-pn { max-width: 400px; margin: 0 auto; text-align: center; }
+    h2 { margin-top: 0; font-size: 1.6rem; color: #3b3722; margin-bottom: 1rem; text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+    thead th { background: #e2dbc9; color: #474336; padding: 0.8rem 1rem; text-align: left; font-weight: 600; font-size: 0.95rem; }
+    tbody td { background: #f6f4ee; padding: 0.75rem 1rem; border-top: 1px solid #d3e5d3; font-size: 0.9rem; }
+    .highlight td { background: #b7a97c; color: #fff; font-weight: 700; font-size: 1.1rem; padding: 1rem; }
+    .base-price { text-align: right; font-size: 1.2rem; font-weight: 600; }
+    .base-price strong { color: #b7a97c; font-size: 1.3rem; }
+    /* Kalkulačka PN alternativní styl */
+    .calculator-pn .controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem; }
+    .calculator-pn button { background: #e2dbc9; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; transition: background 0.2s; }
