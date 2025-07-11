@@ -113,66 +113,61 @@
       color: #474336;
     }
 
-  @media (max-width: 800px) {
-  body {
-    background-size: contain !important;
-    background-position: top center !important;
-  }
-  .main-content {
-    position: fixed;
-    bottom: 20px;
-    right: 10px;
-    width: 85%;
-    max-width: 320px;
-    padding: 0;
-  }
-  .main-box {
-    padding: 0.5em 0.8em;
-    font-size: 0.75em;
-    background: rgba(0,0,0,0.5);
-    border-radius: 14px;
-  }
-  .main-box h1 {
-    font-size: 1em;
-    margin-bottom: 0.3em;
-  }
-  .main-box .about {
-    font-size: 0.8em;
-    margin-bottom: 0.5em;
-  }
-  .main-box .services {
-    font-size: 0.75em;
-    margin-bottom: 0.5em;
-  }
-  .button-row {
-    flex-direction: column;
-    gap: 0.3em;
-  }
-  .button-row a {
-    font-size: 0.8em;
-    padding: 0.3em 0.6em;
-    width: 100%;
-    max-width: 220px;
-    text-align: center;
-  }
-  .services-cards {
-    position: fixed;
-    top: 80px;
-    left: 10px;
-    flex-direction: column;
-    gap: 0.6em;
-  }
-  .services-cards .card {
-    width: 50px;
-    height: 50px;
-  }
-  .services-cards img {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-
+    /* MOBILE */
+    @media (max-width: 800px) {
+      body {
+        background-size: contain !important;
+        background-position: top center !important;
+        background-repeat: no-repeat !important;
+      }
+      .main-content {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 85%;
+        max-width: 320px;
+        padding: 0;
+      }
+      .main-box {
+        padding: 0.5em 0.8em;
+        font-size: 0.75em;
+        background: rgba(0,0,0,0.5);
+        border-radius: 14px;
+      }
+      .main-box h1 {
+        font-size: 1em;
+        margin-bottom: 0.3em;
+      }
+      .main-box .about {
+        font-size: 0.8em;
+        margin-bottom: 0.5em;
+      }
+      .main-box .services {
+        font-size: 0.75em;
+        margin-bottom: 0.5em;
+      }
+      .button-row {
+        flex-direction: column;
+        gap: 0.3em;
+      }
+      .button-row a {
+        font-size: 0.8em;
+        padding: 0.3em 0.6em;
+        width: 100%;
+        max-width: 220px;
+        text-align: center;
+      }
+      .services-cards {
+        top: 80px;
+        left: 10px;
+      }
+      .services-cards .card {
+        width: 50px; height: 50px;
+      }
+      .services-cards img {
+        width: 18px; height: 18px;
+      }
+    }
   </style>
 </head>
 
@@ -194,15 +189,16 @@
 
   <div class="main-content">
     <div class="main-box">
-      Jmenuji se
       <h1>Daniel Verner</h1>
       <div class="about">
         Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br>
         Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br>
         Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.<br>
+        Společně najdeme řešení, které bude dávat smysl právě vám a vašim blízkým.
       </div>
       <div class="services">
         <b>Služby:</b><br>
+        • Nezávazné poradenství a konzultace<br>
         • Životní a úrazové pojištění<br>
         • Pojištění majetku<br>
         • Podpora při řešení pojistných událostí<br>
