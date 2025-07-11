@@ -18,29 +18,41 @@
     /* Navigace */
     .top-nav {
       position: relative; z-index: 10;
-      display: flex; justify-content: center; align-items: center;
-      gap: 1em; padding: 1em 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      padding: 1em 0;
       background: rgba(255,255,255,0.06);
-      flex-wrap: wrap;
-      overflow-x: visible;
+      overflow-x: auto;
+      white-space: nowrap;
     }
     .top-nav a {
-      padding: 0.6em 1.4em; margin: 0.2em;
-      border-radius: 22px; text-decoration: none;
-      font-weight: bold; background: #e2dbc9; color: #474336;
-      transition: background 0.2s;
       flex: 0 0 auto;
+      display: inline-block;
+      padding: 0.6em 1.4em;
+      margin: 0 0.5em;
+      border-radius: 22px;
+      text-decoration: none;
+      font-weight: bold;
+      background: #e2dbc9;
+      color: #474336;
+      transition: background 0.2s;
+      white-space: nowrap;
     }
-    .top-nav a:hover, .top-nav .active { background: #b7a97c; color: #3b3722; }
-    /* Mobilní zobrazení navigace */
-    @media (max-width: 600px) {
+    .top-nav a:hover,
+    .top-nav .active {
+      background: #b7a97c;
+      color: #3b3722;
+    }
+    /* Mobilní šířka */
+    @media (max-width:600px) {
       .top-nav {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding: 0.5em 0;
+        justify-content: flex-start;
+        padding: 0.5em;
       }
       .top-nav a {
-        margin: 0 0.5em;
+        margin: 0 0.75em;
       }
     }
     /* Kontejner */
@@ -56,7 +68,9 @@
       gap: 2rem;
       justify-content: space-between;
     }
-    section, .examples, .calculator-pn {
+    section,
+    .examples,
+    .calculator-pn {
       background: rgba(255,255,255,0.93);
       border-radius: 16px;
       padding: 1.8rem;
@@ -175,9 +189,7 @@
       <section>
         <h2>Základní pojistná rizika<br>při dopravní nehodě</h2>
         <table>
-          <thead>
-            <tr><th>Pojistná událost</th><th>Pojistná částka</th></tr>
-          </thead>
+          <thead><tr><th>Pojistná událost</th><th>Pojistná částka</th></tr></thead>
           <tbody>
             <tr><td>Pobyt v nemocnici</td><td><strong>3 000 Kč/den</strong></td></tr>
             <tr><td>Smrt následkem úrazu</td><td><strong>5 000 000 Kč</strong></td></tr>
@@ -190,9 +202,7 @@
       <div class="examples">
         <h2>Příklady trvalých následků</h2>
         <table>
-          <thead>
-            <tr><th>Úraz</th><th>Vyplaceno</th></tr>
-          </thead>
+          <thead><tr><th>Úraz</th><th>Vyplaceno</th></tr></thead>
           <tbody>
             <tr><td>Podvrtnutí páteře – 3 % TN</td><td>1 200 000 Kč</td></tr>
             <tr><td>Meniskus – 6 % TN</td><td>2 400 000 Kč</td></tr>
@@ -206,9 +216,7 @@
     <section>
       <h2>Denní odškodné za méně závažné úrazy</h2>
       <table>
-        <thead>
-          <tr><th>Úraz</th><th>A</th><th>B</th><th>C</th></tr>
-        </thead>
+        <thead><tr><th>Úraz</th><th>A</th><th>B</th><th>C</th></tr></thead>
         <tbody>
           <tr><td>Zlomenina 2–5 žeber (56 dní)</td><td>11 200 Kč</td><td>28 000 Kč</td><td>56 000 Kč</td></tr>
           <tr><td>Zlomenina prstu (21 dní)</td><td>4 200 Kč</td><td>10 500 Kč</td><td>21 000 Kč</td></tr>
