@@ -2,27 +2,24 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pojisti To Snadno – Daniel Verner</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    html, body { height: 100%; margin: 0; padding: 0; box-sizing: border-box; font-family: 'Raleway', Arial, sans-serif; }
-    body {
-      min-height: 100vh;
-      width: 100vw;
-      color: #fff;
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+      font-family: 'Raleway', Arial, sans-serif;
       background: #181818 url('portret-bg-web.png') no-repeat center center fixed;
       background-size: cover;
-      position: relative;
+      color: #fff;
       overflow-x: hidden;
     }
+
     .menu-bar {
       position: fixed;
       z-index: 50;
-      top: 22px;
-      left: 36px;
+      top: 22px; left: 36px;
       background: rgba(32,32,32,0.82);
       padding: 12px 32px;
       border-radius: 22px;
@@ -35,6 +32,7 @@
       color: #fff;
       letter-spacing: 0.04em;
     }
+
     .services-cards {
       position: fixed;
       top: 100px;
@@ -45,130 +43,145 @@
       z-index: 40;
     }
     .services-cards .card {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       border-radius: 12px;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      width: 80px; height: 80px;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-decoration: none;
       color: #474336;
       transition: transform 0.2s;
     }
     .services-cards .card:hover { transform: translateX(4px); }
-    .services-cards img { width: 32px; height: 32px; margin-bottom: 6px; }
-    .services-cards span { font-size: 0.8em; font-weight: 600; text-align: center; }
+    .services-cards img {
+      width: 28px; height: 28px; margin-bottom: 4px;
+    }
+    .services-cards span {
+      font-size: 0.75em;
+      font-weight: 600;
+      text-align: center;
+    }
+
     .main-content {
-      position: absolute;
-      z-index: 2;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 48vw;
-      min-width: 340px;
-      max-width: 550px;
+      position: absolute; z-index: 2;
+      top: 0; right: 0; bottom: 0;
+      width: 45vw; min-width: 300px; max-width: 500px;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      padding: 5vw 4vw;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; align-items: flex-end;
+      padding: 2vw 3vw;
       background: linear-gradient(270deg, rgba(30,30,30,0.54) 85%, rgba(30,30,30,0.02) 100%);
     }
+
     .main-box {
-      background: rgba(0,0,0,0.13);
-      border-radius: 22px;
-      padding: 1.2em 1.5em;
+      background: rgba(0,0,0,0.25);
+      border-radius: 20px;
+      padding: 1.5em 2em;
       max-width: 100%;
-      box-shadow: 0 2px 28px rgba(0,0,0,0.11);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+      backdrop-filter: blur(5px);
     }
     .main-box h1 {
-      font-size: 2.3em;
-      font-weight: 700;
-      margin-bottom: 0.5em;
-      letter-spacing: 0.03em;
-      text-shadow: 0 2px 14px #000;
+      font-size: 2em;
+      margin: 0 0 0.6em 0;
+      letter-spacing: 0.02em;
     }
     .main-box .about {
-      font-size: 1.15em;
-      margin-bottom: 1.1em;
-      font-weight: 400;
-      line-height: 1.5;
-      text-shadow: 0 1px 8px #000;
+      font-size: 1em;
+      margin-bottom: 1em;
+      line-height: 1.4;
     }
     .main-box .services {
-      font-size: 1.04em;
-      margin-bottom: 1.1em;
-      line-height: 1.5;
-      text-shadow: 0 1px 5px #000;
+      font-size: 0.95em;
+      line-height: 1.4;
+      margin-bottom: 1em;
     }
     .button-row {
-      margin-top: 1.3em;
       display: flex;
       gap: 1em;
-      flex-wrap: nowrap;
-      justify-content: center;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-start;
     }
-    .real-link, .pojistit-link {
-      font-size: 1.08em;
+    .button-row a {
+      font-size: 0.95em;
       background: #b7a97c;
       color: #222;
-      padding: 0.48em 1.2em;
-      border-radius: 14px;
+      padding: 0.5em 1.2em;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
       box-shadow: 0 2px 12px rgba(120,100,60,0.13);
-      transition: background 0.19s, color 0.19s;
-      text-align: center;
-      min-width: 120px;
-      flex: 1 1 130px;
-      max-width: 210px;
+      transition: background 0.2s, color 0.2s;
     }
-    .real-link:hover, .pojistit-link:hover {
+    .button-row a:hover {
       background: #e2dbc9;
       color: #474336;
     }
+
+    /* Responsive tweaks */
+    @media (max-width: 800px) {
+      .main-content {
+        position: relative;
+        width: 90%;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .main-box {
+        padding: 1.2em 1.4em;
+      }
+      .button-row {
+        justify-content: center;
+      }
+      .services-cards {
+        flex-direction: row;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="main-wrapper">
-    <nav class="menu-bar"><h1>PojistiToSnadno.cz</h1></nav>
+  <div class="menu-bar">
+    <h1>PojistiToSnadno.cz</h1>
+  </div>
 
-    <div class="services-cards">
-      <a href="clanek1.html" class="card">
-        <img src="calculator-icon.png" alt="Kalkulačka" />
-        <span>Kalkulačka</span>
-      </a>
-      <a href="statistiky.html" class="card">
-        <img src="chart-icon.png" alt="Statistiky" />
-        <span>Statistiky</span>
-      </a>
-    </div>
+  <div class="services-cards">
+    <a href="clanek1.html" class="card">
+      <img src="calculator-icon.png" alt="Kalkulačka" />
+      <span>Kalkulačka</span>
+    </a>
+    <a href="statistiky.html" class="card">
+      <img src="chart-icon.png" alt="Statistiky" />
+      <span>Statistiky</span>
+    </a>
+  </div>
 
-    <div class="main-content">
-      <div class="main-box">
-        <h1><strong>Daniel Verner</strong></h1>
-        <div class="about">
-          Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br>
-          Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br>
-          Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.<br>
-        </div>
-        <div class="services">
-          <b>Služby:</b><br>
-          • Životní a úrazové pojištění<br>
-          • Pojištění majetku<br>
-          • Podpora při řešení pojistných událostí<br>
-          • Úvěry na bydlení
-        </div>
-        <div class="button-row">
-          <a href="realne-skody.html" class="real-link">Reálné škody klientů</a>
-          <a href="kontakt.html" class="pojistit-link">Chci pojistit</a>
-        </div>
+  <div class="main-content">
+    <div class="main-box">
+      <p>Jmenuji se</p>
+      <h1>Daniel Verner</h1>
+      <div class="about">
+        Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br>
+        Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br>
+        Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.<br>
+        Společně najdeme řešení, které bude dávat smysl právě vám a vašim blízkým.
+      </div>
+      <div class="services">
+        <b>Služby:</b><br>
+        • Nezávazné poradenství a konzultace<br>
+        • Životní a úrazové pojištění<br>
+        • Pojištění majetku<br>
+        • Podpora při řešení pojistných událostí<br>
+        • Úvěry na bydlení
+      </div>
+      <div class="button-row">
+        <a href="realne-skody.html">Reálné škody klientů</a>
+        <a href="kontakt.html">Chci pojistit</a>
       </div>
     </div>
   </div>
