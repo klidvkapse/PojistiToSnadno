@@ -21,13 +21,20 @@
       padding: 0;
       font-family: 'Raleway', Arial, sans-serif;
       color: var(--text);
-      background: #181818;
+      background: #181818 url('portret-bg-web.png') no-repeat center center;
       background-size: cover;
       height: 100%;
       min-height: 100vh;
       width: 100vw;
       box-sizing: border-box;
       overflow-x: hidden;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        background: #181818 url('portret.png') no-repeat center top;
+        background-size: cover;
+      }
     }
 
     body::before {
@@ -99,6 +106,32 @@
       box-shadow: 0 4px 22px rgba(184, 160, 92, 0.19);
     }
 
+    .quick-btn svg {
+      width: var(--icon-size);
+      height: var(--icon-size);
+      fill: none;
+      stroke: #4b420d;
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+
+    .btn-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn-title {
+      font-weight: 700;
+      font-size: 1.2em;
+      line-height: 1.3em;
+    }
+
+    .btn-sub {
+      font-weight: 400;
+      font-size: 0.88em;
+      line-height: 1.2em;
+    }
+
     .main-content {
       position: fixed;
       right: 4vw;
@@ -122,6 +155,10 @@
       z-index: 3;
     }
 
+    .about, .services {
+      font-size: 0.95em;
+    }
+
     .highlight-title {
       color: #ffe87a;
       font-size: 1.4em;
@@ -130,83 +167,77 @@
     }
 
     .right-bottom-buttons {
+      width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
       gap: 0.6em;
     }
 
-    .right-bottom-buttons a {
-      font-size: 0.95em;
-    }
-
-    /* === MOBIL – LANDSCAPE === */
-    @media (max-width: 600px) and (orientation: landscape) {
+    /* MOBILNÍ ÚPRAVY */
+    @media (max-width: 600px) {
       .site-title {
-        font-size: 1.2em;
+        font-size: 1.5em;
         margin-left: 2vw;
         white-space: nowrap;
       }
 
-      main {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content: space-between;
-        padding: 0 2vw;
+      .quick-btn {
+        padding: 0.4em 0.6em;
+        font-size: 0.85em;
+        min-width: auto;
+        max-width: 88vw;
+      }
+
+      .btn-title {
+        font-size: 1em;
+      }
+
+      .btn-sub {
+        font-size: 0.75em;
       }
 
       .left-panel {
-        margin-top: 1vh;
         gap: 0.4em;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 48vw;
+        margin-top: 0.6em;
+        margin-left: 1vw;
       }
 
-      .quick-btn {
-        padding: 0.35em 0.6em;
-        font-size: 0.82em;
-        width: 100%;
-        box-sizing: border-box;
+      .left-panel a svg {
+        width: 20px;
+        height: 20px;
       }
 
       .main-content {
-        position: relative;
-        width: 48vw;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding-top: 1vh;
+        width: 100vw;
+        position: fixed;
+        bottom: 62px;
+        left: 0;
+        right: 0;
+        align-items: center;
+        justify-content: flex-end;
       }
 
       .main-box {
-        font-size: 0.75em;
-        padding: 0.8em;
-        max-height: 35vh;
+        max-width: 92vw;
+        font-size: 0.78em;
+        max-height: 28vh;
         overflow-y: auto;
-        margin-bottom: 1vh;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .right-bottom-buttons {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 0.4em;
-        margin-top: 1em;
-      }
-
-      .right-bottom-buttons a {
-        width: 100%;
-        font-size: 0.82em;
+        padding: 0.8em 0.8em 0.6em 0.8em;
       }
 
       .highlight-title {
         font-size: 1em;
+      }
+
+      .about, .services {
+        font-size: 0.8em;
+      }
+
+      .right-bottom-buttons {
+        justify-content: center;
+        gap: 0.3em;
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -217,29 +248,59 @@
   </header>
   <main>
     <div class="left-panel">
-      <a href="#" class="quick-btn">Kalkulačka<br><small>Spočítej si svou úrazovku.</small></a>
-      <a href="#" class="quick-btn">Statistiky<br><small>Mrkni proč se pojistit.</small></a>
-      <a href="#" class="quick-btn">Slovník pojmů<br><small>Přelož si to, ať víš o co jde.</small></a>
+      <a href="#" class="quick-btn">
+        <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4"/><rect x="9" y="8" width="14" height="4" rx="1.5"/><circle cx="12" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><circle cx="20" cy="17" r="1.5"/><circle cx="12" cy="22" r="1.5"/><circle cx="16" cy="22" r="1.5"/><circle cx="20" cy="22" r="1.5"/></svg>
+        <div class="btn-text">
+          <div class="btn-title">Kalkulačka</div>
+          <div class="btn-sub">Spočítej si svou úrazovku.</div>
+        </div>
+      </a>
+      <a href="#" class="quick-btn">
+        <svg viewBox="0 0 32 32"><rect x="7" y="15" width="3" height="10" rx="1"/><rect x="14" y="10" width="3" height="15" rx="1"/><rect x="21" y="7" width="3" height="18" rx="1"/></svg>
+        <div class="btn-text">
+          <div class="btn-title">Statistiky</div>
+          <div class="btn-sub">Mrkni proč se pojistit.</div>
+        </div>
+      </a>
+      <a href="#" class="quick-btn">
+        <svg viewBox="0 0 32 32"><path d="M7 8v16a2 2 0 0 0 2 2h14"/><path d="M25 6H11a2 2 0 0 0-2 2v18"/><path d="M25 6v20"/><path d="M7 8h16"/></svg>
+        <div class="btn-text">
+          <div class="btn-title">Slovník pojmů</div>
+          <div class="btn-sub">Přelož si to, ať víš o co jde.</div>
+        </div>
+      </a>
     </div>
+
     <div class="main-content">
       <div class="main-box">
-        <div>Jmenuji se</div>
+        Jmenuji se
         <h2 class="highlight-title">Daniel Verner</h2>
-        <p>Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br />
-        Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br />
-        Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
-        <b>Služby:</b>
-        <ul>
-          <li>Životní a úrazové pojištění</li>
-          <li>Pojištění pracovní neschopnosti</li>
-          <li>Pojištění majetku a dopravních prostředků</li>
-          <li>Podpora při řešení pojistných událostí</li>
-          <li>Úvěry na bydlení</li>
-        </ul>
+        <div class="about">
+          Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br />
+          Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br />
+          Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.
+        </div>
+        <div class="services">
+          <b>Služby:</b>
+          <ul>
+            <li>Životní a úrazové pojištění</li>
+            <li>Pojištění pracovní neschopnosti</li>
+            <li>Pojištění majetku a dopravních prostředků</li>
+            <li>Podpora při řešení pojistných událostí</li>
+            <li>Úvěry na bydlení</li>
+          </ul>
+        </div>
       </div>
+
       <div class="right-bottom-buttons">
-        <a href="#" class="quick-btn">Reálné škody klientů</a>
-        <a href="#" class="quick-btn">Chci pojistit</a>
+        <a href="#" class="quick-btn">
+          <svg viewBox="0 0 32 32"><polygon points="17 2 6 18 16 18 15 30 26 14 16 14 17 2"/></svg>
+          Reálné škody klientů
+        </a>
+        <a href="#" class="quick-btn">
+          <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
+          Chci pojistit
+        </a>
       </div>
     </div>
   </main>
