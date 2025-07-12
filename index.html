@@ -164,9 +164,8 @@
       justify-content: flex-end;
       gap: 0.6em;
     }
-
-    /* ----- MOBIL NA VÝŠKU ----- */
-    @media (max-width: 600px) and (orientation: portrait) {
+    /* ----- MOBIL ----- */
+    @media (max-width: 600px) {
       html, body {
         min-height: 100vh;
         height: 100vh;
@@ -196,7 +195,7 @@
         position: fixed;
         left: 0;
         right: 0;
-        bottom: 62px; /* box s textem těsně nad tlačítky */
+        bottom: 62px;
         z-index: 10;
         margin: 0;
         pointer-events: none;
@@ -240,73 +239,35 @@
         padding-top: 0.1em;
       }
     }
-
     /* ----- MOBIL NA ŠÍŘKU (LANDSCAPE) ----- */
     @media (max-width: 900px) and (orientation: landscape) {
-      main {
-        flex-direction: column;
-        min-height: 100vh;
-        height: 100vh;
-      }
-      .left-panel {
-        margin-left: 1vw;
-        margin-top: 0.4em;
-        gap: 0.5em;
-        flex-direction: row;
-        align-items: flex-start;
-      }
       .main-content {
         position: fixed;
         right: 2vw;
-        bottom: 75px;
+        bottom: 70px;
         left: unset;
         top: unset;
-        flex-direction: column;
         align-items: flex-end;
         justify-content: flex-end;
         width: auto;
         max-width: 60vw;
-        z-index: 10;
         margin: 0;
+        z-index: 10;
         pointer-events: none;
         background: none;
+        display: flex;
+        flex-direction: column;
       }
       .main-box {
-        max-width: 38vw;
+        max-width: 40vw;
         width: 37vw;
-        min-width: 220px;
-        max-height: 34vh;
-        margin: 0 0 0 0;
+        min-width: 200px;
+        max-height: 28vh;
         font-size: 1em;
         overflow-y: auto;
         pointer-events: auto;
         box-sizing: border-box;
-      }
-      .about, .services {
-        font-size: 0.95em;
-      }
-      .sticky-bottom {
-        bottom: 0;
-        position: fixed;
-        left: 0;
-        right: 0;
-        width: 100vw;
-        z-index: 999;
-        display: flex;
-        justify-content: center;
-        padding-bottom: env(safe-area-inset-bottom, 7px);
-        padding-top: 0.1em;
-        background: transparent;
-      }
-      .right-bottom-buttons {
-        gap: 0.25em;
-        width: 100vw;
-        justify-content: center;
-      }
-      .quick-btn {
-        min-width: 120px;
-        font-size: 1em;
-        padding: 0.45em 1.1em;
+        margin: 0 0 0.5em 0;
       }
     }
   </style>
