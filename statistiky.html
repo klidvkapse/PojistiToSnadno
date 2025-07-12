@@ -1,228 +1,228 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Statistiky | PojistiToSnadno</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Statistiky | PojistiToSnadno.cz</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       margin: 0;
       font-family: 'Raleway', Arial, sans-serif;
-      background-color: #1e1e1e;
-      color: #f2f2f2;
+      background: url('portret-bg-web.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #f6f4ee;
     }
 
-    /* Hlavička */
     header {
-      background: #2b2b2b;
-      padding: 1em 1.5em;
+      background-color: rgba(0, 0, 0, 0.6);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 2rem;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.4em;
-      color: #f2e68c;
-    }
-
-    header a {
-      background: #f2e68c;
-      color: #2b2b2b;
-      text-decoration: none;
-      padding: 0.5em 1.1em;
-      border-radius: 6px;
+    .logo {
+      font-size: 1.6rem;
       font-weight: bold;
-      transition: background 0.3s;
+      color: #f6e27f;
     }
 
-    header a:hover {
-      background: #cfc178;
+    .home-link {
+      background: #f6e27f;
+      color: #1f1f1f;
+      padding: 0.5rem 1.1rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background 0.2s ease;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 2em auto;
-      padding: 0 1em;
+    .home-link:hover {
+      background: #e5cf5e;
     }
 
-    .main-title {
-      font-size: 2em;
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    h1 {
+      color: #f6e27f;
+      font-size: 2.2rem;
       font-weight: 800;
-      text-align: center;
-      margin-bottom: 0.2em;
-      color: #f2e68c;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.4);
     }
 
-    .description {
-      text-align: center;
-      font-size: 1.1em;
-      margin-bottom: 2em;
-      color: #ccc;
+    .popis {
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
-    .charts-wrapper {
+    .grafy-container {
       display: flex;
       flex-wrap: wrap;
+      gap: 2rem;
       justify-content: center;
-      gap: 2em;
     }
 
-    .chart-card {
-      background: #2c2c2c;
-      padding: 1.5em 1em;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    .graf-box {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 14px;
+      padding: 1.5rem;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .chart-card b {
-      display: block;
-      font-size: 1.1em;
-      margin-bottom: 0.6em;
-      color: #f2e68c;
-      text-align: center;
+    .graf-box h3 {
+      margin: 0 0 1rem;
+      color: #f6e27f;
+      font-size: 1.15rem;
     }
 
     canvas {
-      width: 100% !important;
-      height: auto !important;
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.5rem;
     }
 
-    .chart-info {
-      background: #1a1a1a;
-      padding: 0.8em 1em;
+    .vysvetlivka {
+      background: #f6f4ee;
+      color: #1f1f1f;
+      font-size: 0.95rem;
+      margin-top: 1rem;
       border-radius: 8px;
-      margin-top: 1em;
-      font-size: 0.95em;
-      color: #eee;
+      padding: 0.6rem 1rem;
+      text-align: left;
     }
 
-    .chart-info b {
-      color: #f2e68c;
+    .vysvetlivka b {
+      color: #b7a97c;
     }
 
     @media (max-width: 768px) {
-      .charts-wrapper {
+      header {
         flex-direction: column;
-        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>PojistiToSnadno.cz</h1>
-    <a href="index.html">Domů</a>
+    <div class="logo">PojistiToSnadno.cz</div>
+    <a href="index.html" class="home-link">Domů</a>
   </header>
 
-  <main class="container">
-    <div class="main-title">Statistiky pojistných událostí (2024)</div>
-    <div class="description">
-      Pojištění není jen formalita. Tisíce lidí ročně čelí zdravotním, majetkovým či dopravním událostem, které bez pojištění vedou k finančním problémům.<br>
-      Klikněte na libovolný sloupec a podívejte se, jak časté jsou různé události a kolik peněz se běžně vyplácí.
-    </div>
+  <main>
+    <h1>Statistiky pojistných událostí (2024)</h1>
+    <p class="popis">
+      Pojištění není jen formalita. Tisíce lidí ročně čelí zdravotním, majetkovým či dopravním událostem, které bez pojištění vedou k finančním problémům. Klikněte na libovolný sloupec a podívejte se, jak časté jsou různé události a kolik peněz se běžně vyplácí.
+    </p>
 
-    <div class="charts-wrapper">
-      <!-- Jedna karta grafu -->
-      <div class="chart-card">
-        <b>Životní pojištění</b>
-        <canvas id="zivotChart"></canvas>
-        <div class="chart-info" id="info-zivot">Klikněte na sloupec pro detail.</div>
+    <div class="grafy-container">
+      <!-- 1. Graf -->
+      <div class="graf-box">
+        <h3>Životní pojištění</h3>
+        <canvas id="graf1" width="280" height="240"></canvas>
+        <div id="vysvetlivka1" class="vysvetlivka">Klikněte na sloupec pro detail.</div>
       </div>
 
-      <div class="chart-card">
-        <b>Pojištění majetku</b>
-        <canvas id="majetekChart"></canvas>
-        <div class="chart-info" id="info-majetek">Klikněte na sloupec pro detail.</div>
+      <!-- 2. Graf -->
+      <div class="graf-box">
+        <h3>Pojištění majetku</h3>
+        <canvas id="graf2" width="280" height="240"></canvas>
+        <div id="vysvetlivka2" class="vysvetlivka">Klikněte na sloupec pro detail.</div>
       </div>
 
-      <div class="chart-card">
-        <b>Pojištění vozidel</b>
-        <canvas id="vozidloChart"></canvas>
-        <div class="chart-info" id="info-vozidlo">Klikněte na sloupec pro detail.</div>
+      <!-- 3. Graf -->
+      <div class="graf-box">
+        <h3>Pojištění vozidel</h3>
+        <canvas id="graf3" width="280" height="240"></canvas>
+        <div id="vysvetlivka3" class="vysvetlivka">Klikněte na sloupec pro detail.</div>
       </div>
     </div>
   </main>
 
   <script>
-    const chartsData = [
+    const data = [
       {
-        id: 'zivotChart',
-        infoId: 'info-zivot',
+        canvasId: 'graf1',
+        label: 'Životní pojištění',
         labels: ['Nemoci', 'Úrazy', 'Neschopnost', 'Dopravní úraz'],
-        values: [45, 28, 16, 11],
-        stats: [
-          { udalosti: 5000, vyplata: '430 000 Kč', trvani: '16 dní' },
-          { udalosti: 3200, vyplata: '210 000 Kč', trvani: '13 dní' },
-          { udalosti: 1800, vyplata: '35 000 Kč', trvani: '10 dní' },
-          { udalosti: 1200, vyplata: '85 000 Kč', trvani: '12 dní' }
+        values: [48, 32, 18, 12],
+        vysvetlivkaId: 'vysvetlivka1',
+        detaily: [
+          'Počet událostí: 5900<br>Průměrná výplata: 430 000 Kč<br>Doba vyřízení: 16 dní',
+          'Počet událostí: 2700<br>Průměrná výplata: 210 000 Kč<br>Doba vyřízení: 13 dní',
+          'Počet událostí: 2200<br>Průměrná výplata: 35 000 Kč<br>Doba vyřízení: 10 dní',
+          'Počet událostí: 1500<br>Průměrná výplata: 85 000 Kč<br>Doba vyřízení: 12 dní'
         ]
       },
       {
-        id: 'majetekChart',
-        infoId: 'info-majetek',
+        canvasId: 'graf2',
+        label: 'Pojištění majetku',
         labels: ['Počasí', 'Krádež', 'Požár', 'Havárie'],
         values: [55, 22, 13, 10],
-        stats: [
-          { udalosti: 25000, vyplata: '38 000 Kč', trvani: '11 dní' },
-          { udalosti: 9000, vyplata: '61 000 Kč', trvani: '15 dní' },
-          { udalosti: 5100, vyplata: '110 000 Kč', trvani: '18 dní' },
-          { udalosti: 4100, vyplata: '22 000 Kč', trvani: '9 dní' }
+        vysvetlivkaId: 'vysvetlivka2',
+        detaily: [
+          'Počet událostí: 25200<br>Průměrná výplata: 38 000 Kč<br>Doba vyřízení: 11 dní',
+          'Počet událostí: 10100<br>Průměrná výplata: 61 000 Kč<br>Doba vyřízení: 15 dní',
+          'Počet událostí: 5900<br>Průměrná výplata: 110 000 Kč<br>Doba vyřízení: 18 dní',
+          'Počet událostí: 4300<br>Průměrná výplata: 22 000 Kč<br>Doba vyřízení: 9 dní'
         ]
       },
       {
-        id: 'vozidloChart',
-        infoId: 'info-vozidlo',
+        canvasId: 'graf3',
+        label: 'Pojištění vozidel',
         labels: ['Dopravní nehoda', 'Zvěř', 'Vandalismus', 'Krádež'],
         values: [68, 15, 10, 7],
-        stats: [
-          { udalosti: 21000, vyplata: '37 000 Kč', trvani: '14 dní' },
-          { udalosti: 4200, vyplata: '25 000 Kč', trvani: '10 dní' },
-          { udalosti: 3000, vyplata: '44 000 Kč', trvani: '17 dní' },
-          { udalosti: 1900, vyplata: '125 000 Kč', trvani: '21 dní' }
+        vysvetlivkaId: 'vysvetlivka3',
+        detaily: [
+          'Počet událostí: 21600<br>Průměrná výplata: 37 000 Kč<br>Doba vyřízení: 14 dní',
+          'Počet událostí: 4800<br>Průměrná výplata: 25 000 Kč<br>Doba vyřízení: 10 dní',
+          'Počet událostí: 3200<br>Průměrná výplata: 44 000 Kč<br>Doba vyřízení: 17 dní',
+          'Počet událostí: 2200<br>Průměrná výplata: 125 000 Kč<br>Doba vyřízení: 21 dní'
         ]
       }
     ];
 
-    chartsData.forEach(({ id, infoId, labels, values, stats }) => {
-      const ctx = document.getElementById(id).getContext('2d');
-      const infoBox = document.getElementById(infoId);
-
+    data.forEach((graf, i) => {
+      const ctx = document.getElementById(graf.canvasId).getContext('2d');
       const chart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: labels,
+          labels: graf.labels,
           datasets: [{
-            label: 'Podíl událostí (%)',
-            data: values,
-            backgroundColor: ['#f2e68c', '#cfc178', '#a59f7e', '#807b5e']
+            data: graf.values,
+            backgroundColor: ['#f6e27f', '#e2dbc9', '#c1cfc2', '#a6b89a']
           }]
         },
         options: {
-          plugins: {
-            legend: { display: false },
-            tooltip: { enabled: false }
-          },
-          onClick: (e) => {
-            const points = chart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
-            if (points.length) {
-              const i = points[0].index;
-              infoBox.innerHTML = `
-                <b>${labels[i]}</b><br>
-                Počet událostí: <b>${stats[i].udalosti.toLocaleString('cs-CZ')}</b><br>
-                Průměrná výplata: <b>${stats[i].vyplata}</b><br>
-                Průměrná délka vyřízení: <b>${stats[i].trvani}</b>
-              `;
-            }
-          },
-          scales: {
-            y: { beginAtZero: true, ticks: { color: '#ccc' } },
-            x: { ticks: { color: '#ccc' } }
-          }
+          responsive: true,
+          plugins: { legend: { display: false }, tooltip: { enabled: false } },
+          scales: { y: { beginAtZero: true } }
         }
+      });
+
+      ctx.canvas.addEventListener('click', evt => {
+        const points = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
+        if (!points.length) return;
+        const idx = points[0].index;
+        document.getElementById(graf.vysvetlivkaId).innerHTML = graf.detaily[idx];
       });
     });
   </script>
