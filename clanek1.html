@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Pojištění úrazu při dopravní nehodě | PojistiToSnadno</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* Globální styly */
     body {
       margin: 0;
       font-family: 'Raleway', Arial, sans-serif;
@@ -15,7 +13,6 @@
       background-size: cover;
       min-height: 100vh;
     }
-    /* Navigace */
     .top-nav {
       position: relative; z-index: 10;
       display: flex;
@@ -44,25 +41,6 @@
       background: #b7a97c;
       color: #3b3722;
     }
-    /* Mobilní šířka */
-    @media (max-width:600px) {
-      .top-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0.5em 0;
-        overflow: hidden;
-      }
-      .top-nav a {
-        margin: 0.3em;
-        padding: 0.4em 1em;
-        font-size: 0.95rem;
-      }
-    }
-      .top-nav a {
-        margin: 0 0.75em;
-      }
-    }
-    /* Kontejner */
     .container {
       position: relative; z-index: 5;
       max-width: 900px;
@@ -87,6 +65,7 @@
     section { flex: 1 1 60%; }
     .examples { flex: 1 1 35%; }
     .calculator-pn { max-width: 400px; margin: 0 auto; text-align: center; }
+
     h2 {
       margin-top: 0;
       font-size: 1.6rem;
@@ -130,7 +109,6 @@
       color: #b7a97c;
       font-size: 1.8rem;
     }
-    /* Kalkulačka PN alternativní styl */
     .calculator-pn .controls {
       display: flex;
       justify-content: center;
@@ -163,11 +141,10 @@
     }
     .calculator-pn .price-label {
       margin-top: 1rem;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: bold;
       color: #3b3722;
     }
-    /* Tlačítko mimo kalkulačku */
     .pojistit-link {
       display: inline-block;
       margin: 1rem auto;
@@ -183,6 +160,50 @@
     .pojistit-link:hover {
       background: #3b3722;
     }
+
+    @media (max-width: 768px) {
+      .side-by-side {
+        flex-direction: column;
+      }
+      body {
+        background-color: #121212;
+        color: #eaeaea;
+      }
+      section,
+      .examples,
+      .calculator-pn {
+        background: rgba(30, 30, 30, 0.95);
+        color: #f0f0f0;
+      }
+      .top-nav {
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .top-nav a {
+        background: #2c2c2c;
+        color: #f0f0f0;
+      }
+      .top-nav a:hover,
+      .top-nav .active {
+        background: #b7a97c;
+        color: #181818;
+      }
+      table thead th {
+        background-color: #444;
+        color: #fff;
+      }
+      table tbody td {
+        background-color: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .highlight td {
+        background-color: #b7a97c;
+        color: #181818;
+      }
+      .pojistit-link {
+        background: #ffe87a;
+        color: #121212;
+      }
+    }
   </style>
 </head>
 <body>
@@ -193,7 +214,6 @@
   </nav>
   <div class="container">
     <div class="side-by-side">
-      <!-- Základní pojistná rizika -->
       <section>
         <h2>Základní pojistná rizika<br>při dopravní nehodě</h2>
         <table>
@@ -206,7 +226,6 @@
         </table>
         <div class="base-price">Cena za základ: <strong>354 Kč/měs.</strong></div>
       </section>
-      <!-- Příklady trvalých následků -->
       <div class="examples">
         <h2>Příklady trvalých následků</h2>
         <table>
@@ -220,7 +239,6 @@
         </table>
       </div>
     </div>
-    <!-- Denní odškodné sekce -->
     <section>
       <h2>Denní odškodné za méně závažné úrazy</h2>
       <table>
@@ -236,7 +254,6 @@
         </tbody>
       </table>
     </section>
-    <!-- Alternativní kalkulačka pracovní neschopnost -->
     <section class="calculator-pn">
       <h2>Přidej si pracovní neschopnost</h2>
       <div class="controls">
@@ -246,7 +263,6 @@
       </div>
       <div class="price-label">Cena pojištění: <span id="pnPrice">9 Kč</span> měsíčně</div>
     </section>
-    <!-- Tlačítko sjednat mimo kalkulačku -->
     <a href="kontakt.html" class="pojistit-link">Chci pojistit</a>
   </div>
   <script>
