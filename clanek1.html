@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Pojištění úrazu při dopravní nehodě | PojistiToSnadno</title>
+  <title>Pojištění úrazu při dopravní nehodě | PojistiToSnadno.cz</title>
   <style>
     body {
       margin: 0;
@@ -13,78 +13,51 @@
       background-size: cover;
       min-height: 100vh;
     }
-
     .top-nav {
-      position: relative;
-      z-index: 10;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 1em;
-      padding: 1em 0;
       background: rgba(0, 0, 0, 0.3);
-      flex-wrap: wrap;
+      padding: 0.7em 1.5em;
     }
-
-    .top-nav a {
-      flex: 0 0 auto;
-      display: inline-block;
-      padding: 0.6em 1.4em;
-      margin: 0 0.5em;
-      border-radius: 22px;
-      text-decoration: none;
+    .site-title {
+      font-size: 1.5rem;
       font-weight: bold;
+      color: #ffe87a;
+    }
+    .home-button {
       background: #e2dbc9;
       color: #1a1a1a;
-      transition: background 0.2s;
-      white-space: nowrap;
+      padding: 0.5em 1.2em;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
     }
-
-    .top-nav a:hover,
-    .top-nav .active {
-      background: #b7a97c;
-      color: #000;
-    }
-
     .container {
-      position: relative;
-      z-index: 5;
       max-width: 960px;
       margin: 0 auto;
       padding: 4rem 1rem 2rem;
     }
-
     .side-by-side {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
       justify-content: space-between;
     }
-
-    section,
-    .examples,
-    .calculator-pn {
+    section, .examples, .calculator-pn {
       background: rgba(0, 0, 0, 0.72);
       border-radius: 16px;
       padding: 1.8rem;
       margin-bottom: 2rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
-
-    section {
-      flex: 1 1 60%;
-    }
-
-    .examples {
-      flex: 1 1 35%;
-    }
-
+    section { flex: 1 1 60%; }
+    .examples { flex: 1 1 35%; }
     .calculator-pn {
       max-width: 400px;
       margin: 0 auto;
       text-align: center;
     }
-
     h2 {
       margin-top: 0;
       font-size: 1.6rem;
@@ -92,13 +65,11 @@
       margin-bottom: 1rem;
       text-align: center;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 1rem;
     }
-
     thead th {
       background: #3b3722;
       color: #ffe87a;
@@ -107,22 +78,18 @@
       font-weight: 700;
       font-size: 0.95rem;
     }
-
     tbody td {
       background: rgba(255, 255, 255, 0.03);
       padding: 0.75rem 1rem;
       border-top: 1px solid #4d4d4d;
       font-size: 0.9rem;
     }
-
     tbody tr:nth-child(even) td {
       background: rgba(255, 255, 255, 0.05);
     }
-
     tbody td strong {
       color: #f6d772;
     }
-
     .highlight td {
       background: #b7a97c;
       color: #000;
@@ -130,7 +97,6 @@
       font-size: 1.1rem;
       padding: 1rem;
     }
-
     .base-price {
       text-align: center;
       font-size: 1.5rem;
@@ -138,12 +104,10 @@
       margin-top: 2rem;
       color: #fff;
     }
-
     .base-price strong {
       color: #ffe87a;
       font-size: 1.8rem;
     }
-
     .calculator-pn .controls {
       display: flex;
       justify-content: center;
@@ -151,7 +115,6 @@
       gap: 1rem;
       margin-top: 1rem;
     }
-
     .calculator-pn button {
       background: #e2dbc9;
       border: none;
@@ -160,14 +123,11 @@
       height: 40px;
       font-size: 1.2rem;
       cursor: pointer;
-      transition: background 0.2s;
     }
-
     .calculator-pn button:hover {
       background: #b7a97c;
       color: #fff;
     }
-
     .calculator-pn input[type="text"] {
       width: 80px;
       text-align: center;
@@ -178,14 +138,12 @@
       background: #fff;
       color: #000;
     }
-
     .calculator-pn .price-label {
       margin-top: 1rem;
       font-size: 1.25rem;
       font-weight: bold;
       color: #ffe87a;
     }
-
     .pojistit-link {
       display: inline-block;
       margin: 1rem auto;
@@ -195,51 +153,31 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      transition: background 0.2s;
       text-align: center;
     }
-
     .pojistit-link:hover {
       background: #fff;
       color: #000;
     }
-
     @media (max-width: 600px) {
-      h2 {
-        font-size: 1.3rem;
-      }
-
-      .side-by-side {
-        flex-direction: column;
-      }
-
-      .top-nav {
-        gap: 0.5em;
-        padding: 0.7em;
-      }
-
-      .top-nav a {
-        padding: 0.5em 1em;
-        font-size: 0.95rem;
-      }
+      h2 { font-size: 1.3rem; }
+      .side-by-side { flex-direction: column; }
+      .top-nav { flex-direction: column; align-items: flex-start; gap: 0.3em; }
     }
   </style>
 </head>
 <body>
   <nav class="top-nav">
-    <a href="index.html">Domů</a>
-    <a href="clanky.html" class="active">Články</a>
-    <a href="kontakt.html">Kontakt</a>
+    <div class="site-title">PojistiToSnadno.cz</div>
+    <a href="index.html" class="home-button">Domů</a>
   </nav>
 
   <div class="container">
     <div class="side-by-side">
       <section>
-        <h2>Základní pojistná rizika<br>při dopravní nehodě</h2>
+        <h2>Příklad základních rizik <br>při dopravní nehodě</h2>
         <table>
-          <thead>
-            <tr><th>Pojistná událost</th><th>Pojistná částka</th></tr>
-          </thead>
+          <thead><tr><th>Riziko</th><th>Pojistná částka</th></tr></thead>
           <tbody>
             <tr><td>Pobyt v nemocnici</td><td><strong>3 000 Kč/den</strong></td></tr>
             <tr><td>Smrt následkem úrazu</td><td><strong>5 000 000 Kč</strong></td></tr>
@@ -250,9 +188,9 @@
       </section>
 
       <div class="examples">
-        <h2>Příklady trvalých následků</h2>
+        <h2>Příklady plnění trvalých následků</h2>
         <table>
-          <thead><tr><th>Úraz</th><th>Vyplaceno</th></tr></thead>
+          <thead><tr><th>Úraz</th><th>Bude vyplaceno</th></tr></thead>
           <tbody>
             <tr><td>Podvrtnutí páteře – 3 % TN</td><td><strong>1 200 000 Kč</strong></td></tr>
             <tr><td>Meniskus – 6 % TN</td><td><strong>2 400 000 Kč</strong></td></tr>
@@ -264,17 +202,17 @@
     </div>
 
     <section>
-      <h2>Denní odškodné za méně závažné úrazy</h2>
+      <h2>Přidej si denní odškodné za méně závažné úrazy</h2>
       <table>
         <thead><tr><th>Úraz</th><th>A</th><th>B</th><th>C</th></tr></thead>
         <tbody>
-          <tr><td>Zlomenina 2–5 žeber</td><td>11 200 Kč</td><td>28 000 Kč</td><td>56 000 Kč</td></tr>
+          <tr><td>Zlomenina žeber</td><td>11 200 Kč</td><td>28 000 Kč</td><td>56 000 Kč</td></tr>
           <tr><td>Zlomenina prstu</td><td>4 200 Kč</td><td>10 500 Kč</td><td>21 000 Kč</td></tr>
-          <tr><td>Zlomenina stehenní kosti</td><td>22 400 Kč</td><td>56 000 Kč</td><td>112 000 Kč</td></tr>
+          <tr><td>Zlomenina krčku stehenní</td><td>22 400 Kč</td><td>56 000 Kč</td><td>112 000 Kč</td></tr>
           <tr><td>Otřes mozku</td><td>4 200 Kč</td><td>10 500 Kč</td><td>21 000 Kč</td></tr>
           <tr><td>Přetržení menisku</td><td>14 000 Kč</td><td>35 000 Kč</td><td>70 000 Kč</td></tr>
-          <tr><td>Zlomenina palce</td><td>8 400 Kč</td><td>21 000 Kč</td><td>42 000 Kč</td></tr>
-          <tr class="highlight"><td>Základní rizika + varianta</td><td>395 Kč</td><td>456 Kč</td><td>558 Kč</td></tr>
+          <tr><td>Zlomenina nártu palce</td><td>8 400 Kč</td><td>21 000 Kč</td><td>42 000 Kč</td></tr>
+          <tr class="highlight"><td>Cena základní rizika + varianta</td><td>395 Kč</td><td>456 Kč</td><td>558 Kč</td></tr>
         </tbody>
       </table>
     </section>
@@ -282,9 +220,9 @@
     <section class="calculator-pn">
       <h2>Přidej si pracovní neschopnost</h2>
       <div class="controls">
-        <button id="decrease">−</button>
+       vyber si částku na den <button id="decrease">−</button>
         <input type="text" id="pnInput" value="100 Kč" readonly>
-        <button id="increase">+</button>
+        <button id="increase">+</button> 
       </div>
       <div class="price-label">Cena pojištění: <span id="pnPrice">9 Kč</span> měsíčně</div>
     </section>
