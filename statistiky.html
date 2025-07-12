@@ -69,6 +69,14 @@
       text-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
+    .oznameni {
+      font-size: 0.9rem;
+      color: #ddd;
+      font-style: italic;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+    }
+
     .grafy-container {
       display: flex;
       flex-wrap: wrap;
@@ -132,23 +140,21 @@
     <p class="popis">
       Pojištění není jen formalita. Tisíce lidí ročně čelí zdravotním, majetkovým či dopravním událostem, které bez pojištění vedou k finančním problémům. Klikněte na libovolný sloupec a podívejte se, jak časté jsou různé události a kolik peněz se běžně vyplácí.
     </p>
+    <p class="oznameni">Data byla čerpána z veřejně dostupných zdrojů: ČAP, ČSSZ a Policie ČR.</p>
 
     <div class="grafy-container">
-      <!-- 1. Graf -->
       <div class="graf-box">
         <h3>Životní pojištění</h3>
         <canvas id="graf1" width="280" height="240"></canvas>
         <div id="vysvetlivka1" class="vysvetlivka">Klikněte na sloupec pro detail.</div>
       </div>
 
-      <!-- 2. Graf -->
       <div class="graf-box">
         <h3>Pojištění majetku</h3>
         <canvas id="graf2" width="280" height="240"></canvas>
         <div id="vysvetlivka2" class="vysvetlivka">Klikněte na sloupec pro detail.</div>
       </div>
 
-      <!-- 3. Graf -->
       <div class="graf-box">
         <h3>Pojištění vozidel</h3>
         <canvas id="graf3" width="280" height="240"></canvas>
@@ -161,46 +167,43 @@
     const data = [
       {
         canvasId: 'graf1',
-        label: 'Životní pojištění',
         labels: ['Nemoci', 'Úrazy', 'Neschopnost', 'Dopravní úraz'],
-        values: [48, 32, 18, 12],
+        values: [470000, 280000, 340000, 25580],
         vysvetlivkaId: 'vysvetlivka1',
         detaily: [
-          'Počet událostí: 5900<br>Průměrná výplata: 430 000 Kč<br>Doba vyřízení: 16 dní',
-          'Počet událostí: 2700<br>Průměrná výplata: 210 000 Kč<br>Doba vyřízení: 13 dní',
-          'Počet událostí: 2200<br>Průměrná výplata: 35 000 Kč<br>Doba vyřízení: 10 dní',
-          'Počet událostí: 1500<br>Průměrná výplata: 85 000 Kč<br>Doba vyřízení: 12 dní'
+          'Počet událostí: 470 000<br>Celkem vyplaceno: 3,995 mil. Kč',
+          'Počet událostí: 280 000<br>Celkem vyplaceno: 1,820 mil. Kč',
+          'Počet událostí: 340 000<br>Celkem vyplaceno: 3,128 mil. Kč',
+          'Počet událostí: 25 580<br>Celkem vyplaceno: 1,918 mil. Kč'
         ]
       },
       {
         canvasId: 'graf2',
-        label: 'Pojištění majetku',
         labels: ['Počasí', 'Krádež', 'Požár', 'Havárie'],
-        values: [55, 22, 13, 10],
+        values: [192000, 50000, 30000, 35000],
         vysvetlivkaId: 'vysvetlivka2',
         detaily: [
-          'Počet událostí: 25200<br>Průměrná výplata: 38 000 Kč<br>Doba vyřízení: 11 dní',
-          'Počet událostí: 10100<br>Průměrná výplata: 61 000 Kč<br>Doba vyřízení: 15 dní',
-          'Počet událostí: 5900<br>Průměrná výplata: 110 000 Kč<br>Doba vyřízení: 18 dní',
-          'Počet událostí: 4300<br>Průměrná výplata: 22 000 Kč<br>Doba vyřízení: 9 dní'
+          'Počet událostí: 192 000<br>Celkem vyplaceno: 22,080 mil. Kč',
+          'Počet událostí: 50 000<br>Celkem vyplaceno: 1,750 mil. Kč',
+          'Počet událostí: 30 000<br>Celkem vyplaceno: 2,850 mil. Kč',
+          'Počet událostí: 35 000<br>Celkem vyplaceno: 1,470 mil. Kč'
         ]
       },
       {
         canvasId: 'graf3',
-        label: 'Pojištění vozidel',
         labels: ['Dopravní nehoda', 'Zvěř', 'Vandalismus', 'Krádež'],
-        values: [68, 15, 10, 7],
+        values: [92217, 9100, 8000, 7500],
         vysvetlivkaId: 'vysvetlivka3',
         detaily: [
-          'Počet událostí: 21600<br>Průměrná výplata: 37 000 Kč<br>Doba vyřízení: 14 dní',
-          'Počet událostí: 4800<br>Průměrná výplata: 25 000 Kč<br>Doba vyřízení: 10 dní',
-          'Počet událostí: 3200<br>Průměrná výplata: 44 000 Kč<br>Doba vyřízení: 17 dní',
-          'Počet událostí: 2200<br>Průměrná výplata: 125 000 Kč<br>Doba vyřízení: 21 dní'
+          'Počet událostí: 92 217<br>Celkem vyplaceno: 7,991 mil. Kč',
+          'Počet událostí: 9 100<br>Celkem vyplaceno: 0,419 mil. Kč',
+          'Počet událostí: 8 000<br>Celkem vyplaceno: 0,440 mil. Kč',
+          'Počet událostí: 7 500<br>Celkem vyplaceno: 0,450 mil. Kč'
         ]
       }
     ];
 
-    data.forEach((graf, i) => {
+    data.forEach(graf => {
       const ctx = document.getElementById(graf.canvasId).getContext('2d');
       const chart = new Chart(ctx, {
         type: 'bar',
