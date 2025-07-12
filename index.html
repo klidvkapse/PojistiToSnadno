@@ -8,142 +8,86 @@
   <style>
     :root {
       --primary: #b7a97c;
-      --accent: #e2dbc9;
-      --text: #fff;
-      --bg: #181818;
       --button-bg: #c9b475;
       --button-hover: #e2dbc9;
-      --icon-size: 28px;
+      --text: #fff;
       --radius: 18px;
       --shadow: 0 2px 20px rgba(0,0,0,0.14);
+      --icon-size: 24px;
     }
     html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      height: 100%;
-      min-height: 100vh;
       font-family: 'Raleway', Arial, sans-serif;
-      background: var(--bg);
       color: var(--text);
+      background: #181818 url('portret.png') no-repeat center center;
+      background-size: cover;
+      min-height: 100vh;
+      width: 100vw;
       box-sizing: border-box;
     }
-    body {
-      min-height: 100vh;
-      min-width: 100vw;
-      width: 100vw;
-      position: relative;
-      overflow-x: hidden;
-      /* --- Portrét v pozadí (vždy na celou obrazovku) --- */
-      background: #181818 url('156d68a9-5045-41fd-b416-924d8ca57242.png') no-repeat center center;
-      background-size: cover;
+    /* Mobilní pozadí */
+    @media (max-width: 800px) {
+      body {
+        background: #181818 url('portret-bg-web.png') no-repeat center top;
+        background-size: cover;
+      }
     }
-    /* Překryv pro stmavení pozadí */
     body::before {
-      content: '';
+      content: "";
       position: fixed;
-      z-index: 1;
       left: 0; top: 0; right: 0; bottom: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.48);
+      background: rgba(0,0,0,0.54);
+      z-index: 1;
       pointer-events: none;
     }
     header {
-      width: 100vw;
-      padding: 28px 0 18px 0;
-      background: rgba(32,32,32,0.92);
-      text-align: left;
-      box-shadow: var(--shadow);
-      z-index: 10;
       position: relative;
-      letter-spacing: 0.03em;
+      z-index: 10;
+      width: 100vw;
+      padding: 28px 0 14px 0;
+      background: rgba(32,32,32,0.85);
+      text-align: center;
+      box-shadow: var(--shadow);
     }
     .site-title {
-      font-size: 2.1em;
+      font-size: 2em;
       font-weight: 900;
       color: #ffe87a;
+      letter-spacing: 0.08em;
       text-shadow: 0 4px 18px #000, 0 0 2px #b7a97c;
-      margin-left: 6vw;
+      margin: 0;
       user-select: none;
     }
-
     main {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      min-height: 70vh;
-      width: 100vw;
-      margin-top: 2vw;
-      gap: 0;
-    }
-
-    .main-content {
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       align-items: flex-start;
-      margin-left: 6vw;
-      margin-top: 3vw;
-      gap: 3vw;
-      width: 100%;
-      max-width: 100vw;
+      width: 100vw;
+      min-height: 84vh;
+      position: relative;
+      z-index: 2;
+      margin-top: 0;
     }
-    .main-box {
-      background: rgba(0,0,0,0.39);
-      backdrop-filter: blur(7px);
-      border-radius: var(--radius);
-      box-shadow: 0 2px 18px rgba(0,0,0,0.27);
-      max-width: 420px;
-      min-width: 290px;
-      width: 100%;
-      padding: 2em 2em 1.2em 2em;
+    /* Levý panel - vždy sloupec */
+    .left-panel {
+      margin-left: 4vw;
+      margin-top: 2vw;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      gap: 1em;
       z-index: 2;
     }
-    .main-box h2 {
-      margin: 0 0 0.3em 0;
-      font-size: 1.37em;
-      font-weight: 700;
-      color: #ffe87a;
-      letter-spacing: 0.03em;
-      text-shadow: 0 2px 14px #000;
-    }
-    .about {
-      font-size: 1.07em;
-      margin-bottom: 1.1em;
-      font-weight: 400;
-      line-height: 1.5;
-      text-shadow: 0 1px 8px #000;
-    }
-    .services {
-      font-size: 1em;
-      margin-bottom: 1em;
-      line-height: 1.5;
-      text-shadow: 0 1px 5px #000;
-    }
-    .services ul {
-      margin: 0.5em 0 0.6em 0.6em;
-      padding: 0 0 0 1em;
-    }
-
-    .side-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1em;
-      align-items: flex-start;
-      margin-left: 2vw;
-      margin-top: 0.5vw;
-      min-width: 210px;
-    }
-    .quick-btn, .spec-btn {
+    .quick-btn {
       display: flex;
       align-items: center;
-      gap: 0.8em;
+      gap: 0.7em;
       background: var(--button-bg);
       color: #262319;
-      padding: 0.59em 1.3em;
+      padding: 0.68em 1.1em;
       font-size: 1.07em;
       font-weight: 700;
       text-decoration: none;
@@ -155,76 +99,141 @@
       cursor: pointer;
       justify-content: flex-start;
     }
-    .quick-btn:hover, .spec-btn:hover {
+    .quick-btn:hover {
       background: var(--button-hover);
       color: #222;
       box-shadow: 0 4px 22px rgba(184,160,92,0.19);
     }
-    .quick-btn svg, .spec-btn svg {
+    .quick-btn svg {
       width: var(--icon-size);
       height: var(--icon-size);
       fill: none;
       stroke: #4b420d;
       stroke-width: 2;
+      flex-shrink: 0;
     }
-
-    /* --- Dvě speciální tlačítka ve spodní části panelu --- */
-    .spec-panel {
+    /* Pravý obsah */
+    .main-content {
+      margin-top: 3vw;
+      margin-right: 6vw;
+      max-width: 500px;
+      width: 40vw;
       display: flex;
       flex-direction: column;
-      gap: 0.7em;
-      margin-top: 1.7em;
-      width: 100%;
+      align-items: flex-end;
+      flex-grow: 1;
+      position: relative;
     }
-
+    .main-box {
+      background: rgba(0,0,0,0.38);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 18px rgba(0,0,0,0.25);
+      padding: 2em 2em 1.2em 2em;
+      width: 100%;
+      margin-bottom: 1.2em;
+      z-index: 3;
+    }
+    .main-box h2 {
+      margin: 0 0 0.5em 0;
+      font-size: 1.35em;
+      font-weight: 700;
+      color: #ffe87a;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 14px #000;
+    }
+    .about {
+      font-size: 1.06em;
+      margin-bottom: 1.1em;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px #000;
+    }
+    .services {
+      font-size: 1em;
+      margin-bottom: 0.7em;
+      line-height: 1.45;
+      text-shadow: 0 1px 5px #000;
+    }
+    .services ul {
+      margin: 0.5em 0 0.6em 0.8em;
+      padding-left: 1em;
+    }
+    /* Pravý dolní box s dvěma tlačítky */
+    .right-bottom-buttons {
+      margin-top: 0.5em;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 1em;
+    }
+    @media (max-width: 1100px) {
+      .main-content { width: 50vw; max-width: 95vw; }
+      .main-box {padding: 1.3em 1em 1em 1.2em;}
+    }
     @media (max-width: 900px) {
-      .site-title { font-size: 1.13em; margin-left: 4vw;}
-      .main-content { 
+      main {
         flex-direction: column;
         align-items: stretch;
-        margin-left: 0;
-        gap: 2vw;
+        min-height: 90vh;
       }
-      main {margin-top: 0;}
-      .main-box {
-        max-width: 96vw;
-        margin: 0 auto;
-        font-size: 0.99em;
-        padding: 1.2em 0.7em 1em 1em;
-        border-radius: 13px;
-      }
-      .side-panel {
-        flex-direction: row;
-        gap: 0.7em;
-        margin-left: 0;
-        margin-top: 1em;
-        justify-content: center;
+      .left-panel {
+        margin-left: 2vw;
+        margin-top: 1.2em;
+        gap: 0.8em;
+        flex-direction: column;
         align-items: flex-start;
+      }
+      .main-content {
+        margin: 1.8em auto 0 auto;
+        align-items: stretch;
         width: 99vw;
-        flex-wrap: wrap;
+        max-width: 99vw;
       }
-      .spec-panel {
-        flex-direction: row;
-        gap: 0.7em;
-        margin-top: 1em;
+      .main-box {max-width: 100vw;}
+      .right-bottom-buttons {
         justify-content: center;
+        gap: 0.7em;
       }
-      .quick-btn, .spec-btn { min-width: 125px; font-size: 0.99em;}
     }
     @media (max-width: 600px) {
-      header { padding: 10px 0 10px 0; }
+      header { padding: 10px 0 8px 0; }
+      .site-title { font-size: 1.18em;}
+      .main-content {margin-top: 1.1em;}
       .main-box {padding: 1em 0.6em 1em 0.7em;}
-      .side-panel {gap: 0.5em; min-width: 90vw; width: 99vw;}
-      .spec-panel {gap: 0.5em;}
-      .quick-btn, .spec-btn {padding: 0.48em 0.4em;}
+      .left-panel {
+        margin-left: 1vw;
+        margin-top: 1em;
+        gap: 0.5em;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .right-bottom-buttons {gap: 0.3em;}
+      .quick-btn {padding: 0.49em 0.4em; font-size: 0.96em; min-width: 100px;}
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="site-title">pojistit0snadno.cz</div>
+    <div class="site-title">pojistitosnadno.cz</div>
   </header>
   <main>
+    <!-- Levý panel - 3 tlačítka vždy pod sebou -->
+    <div class="left-panel">
+      <a href="clanek1.html" class="quick-btn" title="Kalkulačka">
+        <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4"/><rect x="9" y="8" width="14" height="4" rx="1.5"/><circle cx="12" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><circle cx="20" cy="17" r="1.5"/><circle cx="12" cy="22" r="1.5"/><circle cx="16" cy="22" r="1.5"/><circle cx="20" cy="22" r="1.5"/></svg>
+        Kalkulačka
+      </a>
+      <a href="statistiky.html" class="quick-btn" title="Statistiky">
+        <svg viewBox="0 0 32 32"><rect x="7" y="15" width="3" height="10" rx="1"/><rect x="14" y="10" width="3" height="15" rx="1"/><rect x="21" y="7" width="3" height="18" rx="1"/></svg>
+        Statistiky
+      </a>
+      <a href="slovnik.html" class="quick-btn" title="Slovník pojmů">
+        <svg viewBox="0 0 32 32"><path d="M7 8v16a2 2 0 0 0 2 2h14"/><path d="M25 6H11a2 2 0 0 0-2 2v18"/><path d="M25 6v20"/><path d="M7 8h16"/></svg>
+        Slovník pojmů
+      </a>
+    </div>
+    <!-- Pravý box s obsahem a dvěma tlačítky dole -->
     <div class="main-content">
       <div class="main-box">
         <h2>Daniel Verner</h2>
@@ -245,34 +254,15 @@
           </ul>
         </div>
       </div>
-      <div class="side-panel">
-        <a href="clanek1.html" class="quick-btn" title="Kalkulačka">
-          <!-- Kalkulačka ikona -->
-          <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4"/><rect x="9" y="8" width="14" height="4" rx="1.5"/><circle cx="12" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><circle cx="20" cy="17" r="1.5"/><circle cx="12" cy="22" r="1.5"/><circle cx="16" cy="22" r="1.5"/><circle cx="20" cy="22" r="1.5"/></svg>
-          Kalkulačka
+      <div class="right-bottom-buttons">
+        <a href="realne-skody.html" class="quick-btn" title="Reálné škody klientů">
+          <svg viewBox="0 0 32 32"><polygon points="17 2 6 18 16 18 15 30 26 14 16 14 17 2"/></svg>
+          Reálné škody klientů
         </a>
-        <a href="statistiky.html" class="quick-btn" title="Statistiky">
-          <!-- Graf ikona -->
-          <svg viewBox="0 0 32 32"><rect x="7" y="15" width="3" height="10" rx="1"/><rect x="14" y="10" width="3" height="15" rx="1"/><rect x="21" y="7" width="3" height="18" rx="1"/></svg>
-          Statistiky
+        <a href="kontakt.html" class="quick-btn" title="Chci pojistit">
+          <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
+          Chci pojistit
         </a>
-        <a href="slovnik.html" class="quick-btn" title="Slovník">
-          <!-- Kniha ikona -->
-          <svg viewBox="0 0 32 32"><path d="M7 8v16a2 2 0 0 0 2 2h14"/><path d="M25 6H11a2 2 0 0 0-2 2v18"/><path d="M25 6v20"/><path d="M7 8h16"/></svg>
-          Slovník pojmů
-        </a>
-        <div class="spec-panel">
-          <a href="kontakt.html" class="spec-btn" title="Chci pojistit">
-            <!-- Ikona srdce -->
-            <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
-            Chci pojistit
-          </a>
-          <a href="realne-skody.html" class="spec-btn" title="Reálné škody klientů">
-            <!-- Ikona blesk -->
-            <svg viewBox="0 0 32 32"><polygon points="17 2 6 18 16 18 15 30 26 14 16 14 17 2"/></svg>
-            Reálné škody klientů
-          </a>
-        </div>
       </div>
     </div>
   </main>
