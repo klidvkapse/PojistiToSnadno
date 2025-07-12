@@ -61,19 +61,17 @@
       font-family: 'Raleway', Arial, sans-serif;
     }
     main {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
       width: 100vw;
       min-height: 80vh;
       position: relative;
       z-index: 2;
       margin-top: 0;
+      height: calc(100vh - 60px);
     }
     .left-panel {
-      margin-left: 4vw;
-      margin-top: 2vw;
+      position: absolute;
+      left: 4vw;
+      top: 40px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -111,84 +109,71 @@
       stroke-width: 2;
       flex-shrink: 0;
     }
-
-    /* ------- DESKTOP: pravý dolní box a tlačítka -------- */
-    @media (min-width: 601px) {
-      .main-content {
-        position: fixed;
-        right: 4vw;
-        bottom: 6vw;
-        width: 350px;
-        max-width: 95vw;
-        margin: 0;
-        align-items: flex-end;
-        z-index: 20;
-        display: flex;
-        flex-direction: column;
-        background: none;
-        pointer-events: auto;
-      }
-      .main-box {
-        background: rgba(0,0,0,0.38);
-        backdrop-filter: blur(6px);
-        border-radius: var(--radius);
-        box-shadow: 0 2px 18px rgba(0,0,0,0.25);
-        padding: 1.1em 1.1em 0.7em 1.1em;
-        width: 100%;
-        margin-bottom: 0.9em;
-        z-index: 3;
-        max-width: 350px;
-      }
-      .right-bottom-buttons {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        gap: 0.6em;
-        margin: 0;
-      }
-      /* Skryj sticky na desktopu */
-      .sticky-bottom {
-        display: none !important;
-      }
+    /* Box s textem a desktop sticky tlačítka vpravo dole */
+    .desktop-box-wrap {
+      position: absolute;
+      right: 4vw;
+      bottom: 4vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      z-index: 10;
+      max-width: 24vw;
+      min-width: 270px;
     }
-
-    /* ---------- MOBIL (portrait) zůstává beze změn ---------- */
-    @media (max-width: 600px) and (orientation: portrait) {
-      html, body {
-        min-height: 100vh;
-        height: 100vh;
-        overflow-x: hidden;
-      }
-      header { padding: 8px 0 7px 0; }
-      .site-title { font-size: 1.1em; margin-left: 2vw;}
-      main {
-        flex-direction: column;
-        min-height: 100vh;
-        height: 100vh;
-      }
-      .left-panel {
-        margin-left: 1vw;
-        margin-top: 1em;
-        gap: 0.5em;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .main-content {
+    .main-box {
+      background: rgba(0,0,0,0.38);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 18px rgba(0,0,0,0.25);
+      padding: 0.8em 1em 0.7em 1em;
+      width: 100%;
+      margin-bottom: 0.7em;
+      z-index: 3;
+      box-sizing: border-box;
+    }
+    .main-box h2 {
+      margin: 0 0 0.5em 0;
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #ffe87a;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 14px #000;
+    }
+    .about {
+      font-size: 0.98em;
+      margin-bottom: 1em;
+      line-height: 1.48;
+      text-shadow: 0 1px 8px #000;
+    }
+    .services {
+      font-size: 0.93em;
+      margin-bottom: 0.6em;
+      line-height: 1.38;
+      text-shadow: 0 1px 5px #000;
+    }
+    .services ul {
+      margin: 0.4em 0 0.5em 0.8em;
+      padding-left: 1em;
+    }
+    .right-bottom-buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 0.6em;
+    }
+    .sticky-bottom {
+      display: none;
+    }
+    /* -------- MOBIL -------- */
+    @media (max-width: 600px) {
+      .desktop-box-wrap {
+        position: static;
+        max-width: none;
+        min-width: 0;
         align-items: stretch;
-        width: 100vw;
-        max-width: 100vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 62px;
-        z-index: 10;
         margin: 0;
-        pointer-events: none;
-        background: none;
       }
       .main-box {
         padding: 0.5em 0.28em 0.45em 0.4em;
@@ -201,19 +186,8 @@
         box-sizing: border-box;
         pointer-events: auto;
       }
-      .about, .services {
-        font-size: 0.89em;
-      }
       .right-bottom-buttons {
-        gap: 0.18em;
-        width: 100vw;
-        margin: 0 auto;
-        justify-content: center;
-      }
-      .quick-btn {
-        padding: 0.39em 0.25em;
-        font-size: 0.91em;
-        min-width: 110px;
+        display: none !important;
       }
       .sticky-bottom {
         position: fixed;
@@ -223,81 +197,39 @@
         width: 100vw;
         background: transparent;
         z-index: 999;
-        display: flex;
+        display: flex !important;
         justify-content: center;
         padding-bottom: env(safe-area-inset-bottom, 7px);
         padding-top: 0.1em;
       }
-    }
-
-    /* ---------- MOBIL (landscape) zůstává beze změn ---------- */
-    @media (max-width: 600px) and (orientation: landscape) {
-      main {
-        flex-direction: row;
-        min-height: 100vh;
-        height: 100vh;
+      .quick-btn {
+        padding: 0.39em 0.25em;
+        font-size: 0.91em;
+        min-width: 110px;
+      }
+      .about, .services {
+        font-size: 0.89em;
       }
       .left-panel {
+        position: static;
         margin-left: 1vw;
-        margin-top: 0.5em;
+        margin-top: 1em;
         gap: 0.5em;
         flex-direction: column;
         align-items: flex-start;
       }
-      .main-content {
-        position: fixed;
-        right: 2vw;
-        bottom: 70px;
-        left: unset;
-        top: unset;
-        align-items: flex-end;
-        justify-content: flex-end;
-        width: auto;
-        max-width: 60vw;
-        margin: 0;
-        z-index: 10;
-        pointer-events: none;
-        background: none;
-        display: flex;
-        flex-direction: column;
+      main {
+        display: block;
+        height: auto;
       }
+    }
+    @media (max-width: 600px) and (orientation: landscape) {
       .main-box {
         max-width: 40vw;
         width: 37vw;
         min-width: 180px;
         max-height: 32vh;
         font-size: 1em;
-        overflow-y: auto;
-        pointer-events: auto;
-        box-sizing: border-box;
-        margin: 0 0 0.5em 0;
-      }
-      .about, .services {
-        font-size: 0.95em;
-      }
-      .right-bottom-buttons {
-        gap: 0.18em;
-        width: 100vw;
-        margin: 0 auto;
-        justify-content: center;
-      }
-      .quick-btn {
-        padding: 0.39em 0.25em;
-        font-size: 0.91em;
-        min-width: 110px;
-      }
-      .sticky-bottom {
-        bottom: 0;
-        position: fixed;
-        left: 0;
-        right: 0;
-        width: 100vw;
-        z-index: 999;
-        display: flex;
-        justify-content: center;
-        padding-bottom: env(safe-area-inset-bottom, 7px);
-        padding-top: 0.1em;
-        background: transparent;
       }
     }
   </style>
@@ -321,7 +253,8 @@
         Slovník pojmů
       </a>
     </div>
-    <div class="main-content">
+    <!-- Desktop vpravo dole -->
+    <div class="desktop-box-wrap">
       <div class="main-box">
         <h2>Daniel Verner</h2>
         <div class="about">
@@ -341,6 +274,7 @@
           </ul>
         </div>
       </div>
+      <!-- Desktop tlačítka pod boxem -->
       <div class="right-bottom-buttons">
         <a href="realne-skody.html" class="quick-btn" title="Reálné škody klientů">
           <svg viewBox="0 0 32 32"><polygon points="17 2 6 18 16 18 15 30 26 14 16 14 17 2"/></svg>
@@ -352,7 +286,7 @@
         </a>
       </div>
     </div>
-    <!-- Sticky pouze pro mobil -->
+    <!-- Sticky tlačítka dole na mobilu -->
     <div class="sticky-bottom">
       <div class="right-bottom-buttons">
         <a href="realne-skody.html" class="quick-btn" title="Reálné škody klientů">
