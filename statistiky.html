@@ -20,16 +20,18 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .logo {
       font-size: 1.6rem;
       font-weight: bold;
-      color: #f6e27f;
+      color: #d8c25f;
     }
 
     .home-link {
-      background: #f6e27f;
+      background: #d8c25f;
       color: #1f1f1f;
       padding: 0.5rem 1.1rem;
       text-decoration: none;
@@ -39,7 +41,7 @@
     }
 
     .home-link:hover {
-      background: #e5cf5e;
+      background: #c4b050;
     }
 
     main {
@@ -52,7 +54,7 @@
     }
 
     h1 {
-      color: #f6e27f;
+      color: #d8c25f;
       font-size: 2.2rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
@@ -95,7 +97,7 @@
 
     .graf-box h3 {
       margin: 0 0 1rem;
-      color: #f6e27f;
+      color: #d8c25f;
       font-size: 1.15rem;
     }
 
@@ -121,9 +123,13 @@
 
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .home-link {
+        margin: 0.3rem;
       }
     }
   </style>
@@ -132,8 +138,8 @@
 
   <header>
     <div class="logo">PojistiToSnadno.cz</div>
-    <a href="index.html" class="home-link">Domů</a><a href="kontakt.html" class="home-link">Chci pojistit</a>
-     
+    <a href="index.html" class="home-link">Domů</a>
+    <a href="kontakt.html" class="home-link">Chci pojistit</a>
   </header>
 
   <main>
@@ -212,7 +218,7 @@
           labels: graf.labels,
           datasets: [{
             data: graf.values,
-            backgroundColor: ['#f6e27f', '#e2dbc9', '#c1cfc2', '#a6b89a']
+            backgroundColor: ['#d8c25f', '#e2dbc9', '#c1cfc2', '#a6b89a']
           }]
         },
         options: {
