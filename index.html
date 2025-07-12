@@ -12,12 +12,11 @@
       --button-hover: #e2dbc9;
       --text: #fff;
       --radius: 18px;
-      --shadow: 0 2px 20px rgba(0, 0, 0, 0.14);
+      --shadow: 0 2px 20px rgba(0,0,0,0.14);
       --icon-size: 24px;
     }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       font-family: 'Raleway', Arial, sans-serif;
@@ -51,7 +50,6 @@
       position: relative;
       z-index: 10;
       padding: 18px 0 10px 0;
-      background: transparent;
       text-align: left;
       width: 100%;
     }
@@ -151,14 +149,13 @@
       backdrop-filter: blur(6px);
       border-radius: var(--radius);
       box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
-      padding: 1.1em 1.1em 0.7em 1.1em;
+      padding: 1.1em;
       width: 100%;
       margin-bottom: 0.9em;
       z-index: 3;
     }
 
-    .about,
-    .services {
+    .about, .services {
       font-size: 0.95em;
     }
 
@@ -177,6 +174,7 @@
       gap: 0.6em;
     }
 
+    /* MOBILNÍ ÚPRAVY */
     @media (max-width: 600px) {
       .quick-btn {
         padding: 0.4em 0.6em;
@@ -216,17 +214,24 @@
 
       .main-box {
         max-width: 92vw;
-        font-size: 0.85em;
+        font-size: 0.78em;
+        max-height: 28vh;
+        overflow-y: auto;
+        padding: 0.8em 0.8em 0.6em 0.8em;
+      }
+
+      .highlight-title {
+        font-size: 1em;
+      }
+
+      .about, .services {
+        font-size: 0.8em;
       }
 
       .right-bottom-buttons {
         justify-content: center;
         gap: 0.3em;
         flex-wrap: wrap;
-      }
-
-      .highlight-title {
-        font-size: 1.1em;
       }
     }
   </style>
