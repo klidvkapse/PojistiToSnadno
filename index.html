@@ -165,8 +165,8 @@
       gap: 0.6em;
     }
 
-    /* ----- MOBIL NA VÝŠKU ----- */
-    @media (max-width: 600px) and (orientation: portrait) {
+    /* ----- MOBIL ----- */
+    @media (max-width: 600px) {
       html, body {
         min-height: 100vh;
         height: 100vh;
@@ -226,6 +226,7 @@
         font-size: 0.91em;
         min-width: 110px;
       }
+      /* Sticky spodní pruh na tlačítka pouze pro mobil */
       .sticky-bottom {
         position: fixed;
         left: 0;
@@ -238,71 +239,6 @@
         justify-content: center;
         padding-bottom: env(safe-area-inset-bottom, 7px);
         padding-top: 0.1em;
-      }
-    }
-
-    /* ----- MOBIL NA ŠÍŘKU (LANDSCAPE) ----- */
-    @media (max-width: 900px) and (orientation: landscape) {
-      main {
-        flex-direction: column;
-        min-height: 100vh;
-        height: 100vh;
-      }
-      .left-panel {
-        margin-left: 1vw;
-        margin-top: 0.4em;
-        gap: 0.5em;
-        flex-direction: row;
-        align-items: flex-start;
-      }
-      .main-content {
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: center;
-        bottom: 72px;
-        width: 100vw;
-        left: 0;
-        right: 0;
-        position: fixed;
-        margin: 0;
-        z-index: 10;
-        pointer-events: none;
-      }
-      .main-box {
-        max-width: 55vw;
-        width: 52vw;
-        min-width: 230px;
-        max-height: 28vh;
-        margin: 0 1vw 1vw 1vw;
-        font-size: 1em;
-        overflow-y: auto;
-        pointer-events: auto;
-      }
-      .about, .services {
-        font-size: 0.95em;
-      }
-      .sticky-bottom {
-        bottom: 0;
-        position: fixed;
-        left: 0;
-        right: 0;
-        width: 100vw;
-        z-index: 999;
-        display: flex;
-        justify-content: center;
-        padding-bottom: env(safe-area-inset-bottom, 7px);
-        padding-top: 0.1em;
-        background: transparent;
-      }
-      .right-bottom-buttons {
-        gap: 0.25em;
-        width: 100vw;
-        justify-content: center;
-      }
-      .quick-btn {
-        min-width: 120px;
-        font-size: 1em;
-        padding: 0.45em 1.1em;
       }
     }
   </style>
