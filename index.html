@@ -45,19 +45,20 @@
       position: relative;
       z-index: 10;
       width: 100vw;
-      padding: 28px 0 14px 0;
-      background: rgba(32,32,32,0.85);
-      text-align: center;
-      box-shadow: var(--shadow);
+      padding: 18px 0 10px 0;
+      background: transparent;
+      text-align: left;
+      /* zrušen box-shadow a background */
     }
     .site-title {
-      font-size: 2em;
+      font-size: 2.5em;
       font-weight: 900;
       color: #ffe87a;
-      letter-spacing: 0.08em;
-      text-shadow: 0 4px 18px #000, 0 0 2px #b7a97c;
-      margin: 0;
+      letter-spacing: 0.06em;
+      text-shadow: 0 2px 16px #000, 0 0 2px #b7a97c;
+      margin: 0 0 0 4vw;
       user-select: none;
+      font-family: 'Raleway', Arial, sans-serif;
     }
     main {
       display: flex;
@@ -65,7 +66,7 @@
       justify-content: space-between;
       align-items: flex-start;
       width: 100vw;
-      min-height: 84vh;
+      min-height: 80vh;
       position: relative;
       z-index: 2;
       margin-top: 0;
@@ -112,9 +113,9 @@
     }
     .main-content {
       margin-top: 3vw;
-      margin-right: 9vw;
-      max-width: 370px;
-      width: 32vw;
+      margin-right: 3vw;
+      max-width: 340px;
+      width: 28vw;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -126,44 +127,48 @@
       backdrop-filter: blur(6px);
       border-radius: var(--radius);
       box-shadow: 0 2px 18px rgba(0,0,0,0.25);
-      padding: 1.2em 1.2em 0.9em 1.2em;
+      padding: 1.1em 1.1em 0.7em 1.1em;
       width: 100%;
-      margin-bottom: 1.2em;
+      margin-bottom: 1.1em;
       z-index: 3;
     }
     .main-box h2 {
       margin: 0 0 0.5em 0;
-      font-size: 1.35em;
+      font-size: 1.2em;
       font-weight: 700;
       color: #ffe87a;
       letter-spacing: 0.03em;
       text-shadow: 0 2px 14px #000;
     }
     .about {
-      font-size: 1.03em;
+      font-size: 1.01em;
       margin-bottom: 1.1em;
       line-height: 1.5;
       text-shadow: 0 1px 8px #000;
     }
     .services {
-      font-size: 0.99em;
+      font-size: 0.95em;
       margin-bottom: 0.7em;
-      line-height: 1.45;
+      line-height: 1.4;
       text-shadow: 0 1px 5px #000;
     }
     .services ul {
-      margin: 0.5em 0 0.6em 0.8em;
+      margin: 0.4em 0 0.5em 0.8em;
       padding-left: 1em;
     }
     .right-bottom-buttons {
-      margin-top: 0.5em;
+      margin-top: 0.3em;
       width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      gap: 1em;
+      gap: 0.6em;
     }
     @media (max-width: 900px) {
+      .site-title {
+        font-size: 1.5em;
+        margin-left: 2vw;
+      }
       main {
         flex-direction: column;
         align-items: stretch;
@@ -177,10 +182,10 @@
         align-items: flex-start;
       }
       .main-content {
-        margin: 1.8em auto 0 auto;
+        margin: 1.5em auto 0 auto;
         align-items: stretch;
-        width: 97vw;
-        max-width: 99vw;
+        width: 99vw;
+        max-width: 97vw;
       }
       .main-box {max-width: 97vw;}
       .right-bottom-buttons {
@@ -189,17 +194,17 @@
       }
     }
     @media (max-width: 600px) {
-      header { padding: 10px 0 8px 0; }
-      .site-title { font-size: 1.18em;}
-      .main-content {margin-top: 1.1em;}
+      header { padding: 8px 0 7px 0; }
+      .site-title { font-size: 1.1em; margin-left: 2vw;}
+      .main-content {margin-top: 1.1em; margin-right: 1vw; max-width: 98vw; width: 99vw;}
       .main-box {
-        padding: 0.7em 0.4em 0.7em 0.5em;
+        padding: 0.5em 0.3em 0.5em 0.3em;
         font-size: 0.97em;
-        max-width: 97vw;
+        max-width: 99vw;
         width: 99vw;
       }
       .about, .services {
-        font-size: 0.93em;
+        font-size: 0.89em;
       }
       .left-panel {
         margin-left: 1vw;
