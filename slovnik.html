@@ -8,25 +8,23 @@
     :root {
       --text-color: #3b2f1a;
       --highlight: #fce788;
-      --highlight-hover: #fff3b0;
-      --background-light: #fffdf5;
-      --accent-green: #e6f9da;
-      --button-bg: #d6c88d;
-      --button-hover: #c8bb7e;
-      --button-text: #3b2f1a;
-      --link-color: #5b4c2b;
-      --footer-bg: #f4f1e5;
+      --background: #fffdf5;
+      --accent: #e6f9da;
+      --btn-bg: #d6c88d;
+      --btn-hover: #c8bb7e;
+      --btn-text: #3b2f1a;
+      --link-color: #4d3b21;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: transparent;
       color: var(--text-color);
-      font-size: 16px;
-      line-height: 1.6;
     }
 
     .bg-img-desktop, .bg-img-mobile {
@@ -40,210 +38,175 @@
       pointer-events: none;
       user-select: none;
     }
-
     .bg-img-mobile { display: none; }
     @media (max-width: 800px) {
       .bg-img-desktop { display: none; }
       .bg-img-mobile { display: block; filter: brightness(0.74) blur(2.2px); }
     }
 
-    header {
-      text-align: center;
-      margin-top: 1.5em;
-      position: relative;
+    .top-nav {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
       z-index: 10;
     }
 
-    header img {
-      max-height: 80px;
-      vertical-align: middle;
-      margin-right: 1em;
+    .top-nav a {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 0.5em 1em;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 0.5em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    h2.title {
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      padding-top: 3rem;
+      z-index: 10;
+      position: relative;
+      text-align: center;
+    }
+
+    .header img {
+      height: 90px;
+    }
+
+    .header h1 {
       font-size: 2em;
       color: var(--highlight);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    .main-nav {
-      position: absolute;
-      top: 1.5em;
-      right: 2em;
-      z-index: 10;
-    }
-
-    .main-nav a {
-      background: var(--button-bg);
-      color: var(--button-text);
-      padding: 0.6em 1.2em;
-      border-radius: 18px;
-      font-weight: bold;
-      text-decoration: none;
-      margin-left: 0.5em;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      transition: background 0.2s ease;
-    }
-
-    .main-nav a:hover {
-      background: var(--button-hover);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+      margin: 0;
     }
 
     .main-content {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: var(--background);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       position: relative;
       z-index: 10;
-      display: flex;
-      justify-content: center;
-      margin-top: 2em;
     }
 
-    .container {
-      max-width: 800px;
-      width: 100%;
-      background: var(--background-light);
-      border-radius: 12px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.1);
-      padding: 2em;
-    }
-
-    input {
+    input[type="text"] {
       width: 100%;
       padding: 0.8em;
       font-size: 1em;
       border: 1px solid #ccc;
       border-radius: 8px;
-      margin-bottom: 1em;
     }
 
-    .link-card-btn {
-      background: var(--button-bg);
-      color: var(--button-text);
-      padding: 0.7em 1.2em;
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--btn-bg);
       border: none;
       border-radius: 8px;
       font-weight: bold;
-      font-size: 1rem;
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      transition: background 0.2s ease;
-      margin-bottom: 1em;
+      color: var(--btn-text);
     }
 
-    .link-card-btn:hover {
-      background: var(--button-hover);
+    button:hover {
+      background: var(--btn-hover);
     }
 
-    #suggestions {
-      background: white;
-      border: 1px solid #ccc;
-      max-height: 200px;
-      overflow-y: auto;
-      border-radius: 6px;
-      margin-bottom: 1em;
+    .tip, .missing {
+      margin-top: 1rem;
+      background: var(--accent);
+      padding: 1rem;
+      border-radius: 8px;
     }
 
-    #suggestions div {
-      padding: 0.5em 1em;
-      cursor: pointer;
-    }
-
-    #suggestions div:hover {
-      background: #f4f4f4;
-    }
-
-    .slovnik-tip {
-      background: var(--accent-green);
-      padding: 0.8em;
-      margin-bottom: 1em;
+    .missing {
+      background: transparent;
       font-size: 0.95em;
-      border-left: 3px solid #7cb342;
-      border-radius: 6px;
     }
 
-    .slovnik-missing {
-      font-size: 0.9em;
-      margin-top: 1em;
-    }
-
-    .slovnik-missing a {
+    .missing a {
       color: var(--link-color);
       font-weight: bold;
-      text-decoration: underline;
+      text-decoration: none;
     }
 
-    .slovnik-missing a:hover {
-      color: #2c1f0e;
+    .output {
+      background: white;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: 10px;
+      border-left: 4px solid var(--btn-bg);
     }
 
-    .slovnik-output {
-      margin-top: 1em;
-      background: #ffffff;
-      border-left: 4px solid var(--button-bg);
-      padding: 1em;
-      border-radius: 6px;
-    }
-
-    .slovnik-output strong {
+    .output strong {
       font-size: 1.2em;
-      color: var(--text-color);
-      text-transform: capitalize;
+    }
+
+    .output .def::before {
+      content: '📘 Definice: ';
+      font-weight: bold;
+    }
+
+    .output .ex::before {
+      content: '💡 Příklad: ';
+      font-weight: bold;
+      display: block;
+      margin-top: 0.5em;
     }
 
     footer {
-      background: var(--footer-bg);
-      padding: 1.5em;
       text-align: center;
+      padding: 2em 1em;
+      background: rgba(255,255,255,0.8);
       font-size: 0.9em;
-      margin-top: 2em;
-    }
-
-    @media (max-width: 600px) {
-      .container { padding: 1em; }
-      footer { font-size: 0.8em; padding: 1em; }
+      position: relative;
+      z-index: 10;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
-  <img src="portret-bg-web.png" alt="" class="bg-img-desktop" />
-  <img src="portret.png" alt="" class="bg-img-mobile" />
+  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
+  <img src="portret.png" alt="" class="bg-img-mobile">
 
-  <header>
-    <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
-    <h2 class="title">Laický slovník pojistných pojmů</h2>
-  </header>
-
-  <nav class="main-nav">
+  <div class="top-nav">
     <a href="index.html">Domů</a>
     <a href="kontakt.html">Kontakt</a>
-  </nav>
+  </div>
+
+  <div class="header">
+    <img src="SLOVNIK.png" alt="Slovník pojmů" />
+    <h1>Laický slovník pojistných pojmů</h1>
+  </div>
 
   <div class="main-content">
-    <div class="container">
-      <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()" />
-      <div id="suggestions"></div>
-      <button class="link-card-btn" onclick="showDefinition()">Zobrazit</button>
+    <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()" />
+    <button onclick="showDefinition()">Zobrazit</button>
 
-      <div class="slovnik-tip">
-        <b>Tip:</b> Zadejte libovolný pojem nebo jeho část.<br />
-        Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
-      </div>
-
-      <div class="slovnik-missing">
-        ❔ Nenašli jste výraz?
-        <a href="mailto:pojistitosnadno@gmail.com?subject=Navrh%20pojmu%20do%20slovniku&body=Navrhuji%20doplnit%20pojem%3A%20">Navrhněte ho zde</a>
-      </div>
-
-      <div id="output" class="slovnik-output" data-current=""></div>
+    <div class="tip">
+      <b>Tip:</b> Zadejte libovolný pojem nebo jeho část.<br/>
+      Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
     </div>
+
+    <div class="missing">
+      ❓ Nenašli jste výraz?
+      <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+    </div>
+
+    <div id="output" class="output" data-current=""></div>
   </div>
 
   <footer>
     <p>
-      Daniel Verner<br />
-      📞 733 782 290<br />
-      📩 pojistitosnadno@gmail.com<br />
+      Daniel Verner<br/>
+      📞 733 782 290<br/>
+      📩 pojistitosnadno@gmail.com<br/>
       📍 Olomoucký kraj – schůzky individuálně
     </p>
     <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
@@ -251,52 +214,41 @@
 
   <script>
     const terms = {
-      "pojistná smlouva": {
-        def: "Smlouva mezi pojišťovnou a klientem o podmínkách pojištění.",
-        ex: "Například pojištění bytu, auta nebo života."
-      },
       "pojistná událost": {
-        def: "Událost, kterou pojištění kryje a zakládá nárok na plnění.",
-        ex: "Krupobití poškodilo auto – to je pojistná událost."
+        def: "Událost, kterou pojištění kryje a zakládá nárok na výplatu.",
+        ex: "Krupobití rozbije sklo – máte nárok na pojistné plnění."
+      },
+      "spoluúčast": {
+        def: "Část škody, kterou hradí pojištěný sám.",
+        ex: "Při škodě 10 000 Kč a spoluúčasti 1 000 Kč – klient platí tisíc."
+      },
+      "výluka z pojištění": {
+        def: "Situace, kdy pojištění škodu nekryje.",
+        ex: "Úmyslně způsobená škoda bývá výlukou."
       }
     };
 
     function showDefinition() {
-      const key = document.getElementById("search").value.toLowerCase().trim();
-      const out = document.getElementById("output");
-      if (out.innerHTML && out.dataset.current === key) {
-        out.innerHTML = "";
-        out.dataset.current = "";
+      const key = document.getElementById('search').value.toLowerCase();
+      const out = document.getElementById('output');
+      if (out.dataset.current === key) {
+        out.innerHTML = '';
+        out.dataset.current = '';
         return;
       }
       if (terms[key]) {
-        out.innerHTML = `
-          <strong>${key}</strong>
-          <div class="def">📘 <b>Definice:</b> ${terms[key].def}</div>
-          <div class="ex">💡 <b>Příklad:</b> ${terms[key].ex}</div>
-        `;
+        out.innerHTML = `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}</strong>
+        <div class="def">${terms[key].def}</div>
+        <div class="ex">${terms[key].ex}</div>`;
         out.dataset.current = key;
       } else {
-        out.innerHTML = `<div class="def">❗ Pojem nebyl nalezen.</div>`;
-        out.dataset.current = "";
+        out.innerHTML = `<div class="def">Pojem nebyl nalezen.</div>`;
+        out.dataset.current = '';
       }
     }
 
     function showSuggestions() {
-      const q = document.getElementById("search").value.toLowerCase();
-      const list = document.getElementById("suggestions");
-      list.innerHTML = "";
-      if (!q) return;
-      Object.keys(terms).filter(t => t.includes(q)).forEach(t => {
-        const d = document.createElement("div");
-        d.innerText = t;
-        d.onclick = () => {
-          document.getElementById("search").value = t;
-          list.innerHTML = "";
-          showDefinition();
-        };
-        list.appendChild(d);
-      });
+      // Místo pro vylepšení automatických návrhů pojmů
     }
   </script>
 </body>
