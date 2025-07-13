@@ -15,6 +15,7 @@
       --button-hover: #c8bb7e;
       --button-text: #3b2f1a;
       --link-color: #5b4c2b;
+      --footer-bg: #f4f1e5;
     }
 
     * { box-sizing: border-box; }
@@ -41,20 +42,34 @@
     }
 
     .bg-img-mobile { display: none; }
-
     @media (max-width: 800px) {
       .bg-img-desktop { display: none; }
-      .bg-img-mobile {
-        display: block;
-        filter: brightness(0.74) blur(2.2px);
-      }
+      .bg-img-mobile { display: block; filter: brightness(0.74) blur(2.2px); }
+    }
+
+    header {
+      text-align: center;
+      margin-top: 1.5em;
+      position: relative;
+      z-index: 10;
+    }
+
+    header img {
+      max-height: 100px;
+    }
+
+    h2.title {
+      font-size: 2em;
+      margin-top: 0.5em;
+      color: var(--highlight);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
 
     .main-nav {
       display: flex;
       justify-content: center;
       gap: 1em;
-      padding: 1em 0;
+      margin-top: 1em;
       position: relative;
       z-index: 10;
     }
@@ -78,51 +93,17 @@
       position: relative;
       z-index: 10;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      margin-top: 2em;
     }
 
     .container {
-      max-width: 980px;
-      background: #fffdf5;
+      max-width: 800px;
+      width: 100%;
+      background: var(--background-light);
       border-radius: 12px;
       box-shadow: 0 2px 16px rgba(0,0,0,0.1);
-      padding: 2em 1.5em;
-      margin: 1.5em;
-    }
-
-    .slovnik-section h2 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 1.5em;
-      color: var(--highlight);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-    }
-
-    .slovnik-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2em;
-      justify-content: center;
-    }
-
-    .img-wrap {
-      flex: 1 1 180px;
-      text-align: center;
-    }
-
-    .img-slovnik {
-      max-width: 160px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .dict-container {
-      flex: 2 1 400px;
-      background: var(--background-light);
-      padding: 1.5em;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 2em;
     }
 
     input {
@@ -170,20 +151,6 @@
       background: #f4f4f4;
     }
 
-    .slovnik-output {
-      margin-top: 1em;
-      background: #ffffff;
-      border-left: 4px solid var(--button-bg);
-      padding: 1em;
-      border-radius: 6px;
-    }
-
-    .slovnik-output strong {
-      font-size: 1.2em;
-      color: var(--text-color);
-      text-transform: capitalize;
-    }
-
     .slovnik-tip {
       background: var(--accent-green);
       padding: 0.8em;
@@ -208,19 +175,31 @@
       color: #2c1f0e;
     }
 
-    footer {
-      text-align: center;
+    .slovnik-output {
+      margin-top: 1em;
+      background: #ffffff;
+      border-left: 4px solid var(--button-bg);
       padding: 1em;
-      background: #f4f4f4;
-      font-size: 0.85em;
+      border-radius: 6px;
+    }
+
+    .slovnik-output strong {
+      font-size: 1.2em;
+      color: var(--text-color);
+      text-transform: capitalize;
+    }
+
+    footer {
+      background: var(--footer-bg);
+      padding: 1.5em;
+      text-align: center;
+      font-size: 0.9em;
       margin-top: 2em;
     }
 
     @media (max-width: 600px) {
-      footer {
-        font-size: 0.75em;
-        padding: 0.5em;
-      }
+      .container { padding: 1em; }
+      footer { font-size: 0.8em; padding: 1em; }
     }
   </style>
 </head>
@@ -228,99 +207,70 @@
   <img src="portret-bg-web.png" alt="" class="bg-img-desktop" />
   <img src="portret.png" alt="" class="bg-img-mobile" />
 
+  <header>
+    <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
+    <h2 class="title">Laický slovník pojistných pojmů</h2>
+  </header>
+
+  <nav class="main-nav">
+    <a href="index.html">Domů</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+
   <div class="main-content">
-    <nav class="main-nav">
-      <a href="index.html">Domů</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
+    <div class="container">
+      <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()" />
+      <div id="suggestions"></div>
+      <button class="link-card-btn" onclick="showDefinition()">Zobrazit</button>
 
-    <main class="container">
-      <section class="slovnik-section">
-        <h2>Laický slovník pojistných pojmů</h2>
+      <div class="slovnik-tip">
+        <b>Tip:</b> Zadejte libovolný pojem nebo jeho část.<br />
+        Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+      </div>
 
-        <div class="slovnik-row">
-          <div class="img-wrap">
-            <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
-          </div>
+      <div class="slovnik-missing">
+        ❔ Nenašli jste výraz?
+        <a href="mailto:pojistitosnadno@gmail.com?subject=Navrh%20pojmu%20do%20slovniku&body=Navrhuji%20doplnit%20pojem%3A%20">Navrhněte ho zde</a>
+      </div>
 
-          <div class="dict-container">
-            <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()" />
-            <div id="suggestions"></div>
-            <button class="link-card-btn" onclick="showDefinition()">Zobrazit</button>
-
-            <div class="slovnik-tip">
-              <b>Tip:</b> Zadejte libovolný pojem nebo jeho část.<br />
-              Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
-            </div>
-
-            <div class="slovnik-missing">
-              ❔ Nenašli jste výraz?
-              <a href="mailto:pojistitosnadno@gmail.com?subject=Navrh%20pojmu%20do%20slovniku&body=Navrhuji%20doplnit%20pojem%3A%20">Navrhněte ho zde</a>
-            </div>
-
-            <div id="output" class="slovnik-output" data-current=""></div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>
-        Daniel Verner<br />
-        📞 733 782 290<br />
-        📩 pojistitosnadno@gmail.com<br />
-        📍 Olomoucký kraj – schůzky individuálně
-      </p>
-      <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
-    </footer>
+      <div id="output" class="slovnik-output" data-current=""></div>
+    </div>
   </div>
+
+  <footer>
+    <p>
+      Daniel Verner<br />
+      📞 733 782 290<br />
+      📩 pojistitosnadno@gmail.com<br />
+      📍 Olomoucký kraj – schůzky individuálně
+    </p>
+    <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
+  </footer>
 
   <script>
     const terms = {
       "pojistná smlouva": {
-        def: "Dohoda mezi pojišťovnou a klientem o podmínkách pojištění.",
-        ex: "Např. smlouva na dům pokrývá požár, vodu, krádež."
+        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění.",
+        ex: "Například smlouva o pojištění majetku, auta nebo života."
       },
       "pojistná událost": {
-        def: "Událost, kterou pojištění kryje a zakládá nárok na výplatu.",
-        ex: "Krupobití rozbije sklo – máte nárok na pojistné plnění."
-      },
-      "pojistné plnění": {
-        def: "Částka, kterou pojišťovna vyplatí při škodě.",
-        ex: "Po nehodě vám pojišťovna proplatí opravu auta."
-      },
-      "spoluúčast": {
-        def: "Část škody, kterou hradí pojištěný sám.",
-        ex: "Při škodě 10 000 Kč a spoluúčasti 1 000 Kč – klient platí tisíc."
-      },
-      "pojistné": {
-        def: "Poplatek, který klient platí za pojištění.",
-        ex: "Měsíční pojistné např. 350 Kč za domácnost."
-      },
-      "pojistník": {
-        def: "Ten, kdo sjednal pojištění a platí pojistné.",
-        ex: "Otec uzavřel smlouvu – je pojistník, ale syn je pojištěný."
+        def: "Událost, kterou pojištění kryje a zakládá nárok na pojistné plnění.",
+        ex: "Krupobití poškodilo střechu – to je pojistná událost."
       },
       "výluka z pojištění": {
-        def: "Situace, kdy pojištění škodu nekryje.",
-        ex: "Úmyslně způsobená škoda bývá výlukou."
-      },
-      "likvidace pojistné události": {
-        def: "Proces vyřízení události a výplaty peněz.",
-        ex: "Po nahlášení škody pojišťovna likviduje událost do 14 dnů."
+        def: "Situace, kdy pojištění danou událost nekryje.",
+        ex: "Úmyslné poškození bývá typicky výlukou."
       }
     };
 
     function showDefinition() {
       const key = document.getElementById("search").value.toLowerCase().trim();
       const out = document.getElementById("output");
-
       if (out.innerHTML && out.dataset.current === key) {
         out.innerHTML = "";
         out.dataset.current = "";
         return;
       }
-
       if (terms[key]) {
         out.innerHTML = `
           <strong>${key}</strong>
@@ -339,7 +289,6 @@
       const list = document.getElementById("suggestions");
       list.innerHTML = "";
       if (!q) return;
-
       Object.keys(terms).filter(t => t.includes(q)).forEach(t => {
         const d = document.createElement("div");
         d.innerText = t;
