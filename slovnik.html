@@ -55,22 +55,23 @@
     }
 
     header img {
-      max-height: 100px;
+      max-height: 80px;
+      vertical-align: middle;
+      margin-right: 1em;
     }
 
     h2.title {
       font-size: 2em;
-      margin-top: 0.5em;
       color: var(--highlight);
       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .main-nav {
-      display: flex;
-      justify-content: center;
-      gap: 1em;
-      margin-top: 1em;
-      position: relative;
+      position: absolute;
+      top: 1.5em;
+      right: 2em;
       z-index: 10;
     }
 
@@ -81,6 +82,7 @@
       border-radius: 18px;
       font-weight: bold;
       text-decoration: none;
+      margin-left: 0.5em;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       transition: background 0.2s ease;
     }
@@ -250,16 +252,12 @@
   <script>
     const terms = {
       "pojistná smlouva": {
-        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění.",
-        ex: "Například smlouva o pojištění majetku, auta nebo života."
+        def: "Smlouva mezi pojišťovnou a klientem o podmínkách pojištění.",
+        ex: "Například pojištění bytu, auta nebo života."
       },
       "pojistná událost": {
-        def: "Událost, kterou pojištění kryje a zakládá nárok na pojistné plnění.",
-        ex: "Krupobití poškodilo střechu – to je pojistná událost."
-      },
-      "výluka z pojištění": {
-        def: "Situace, kdy pojištění danou událost nekryje.",
-        ex: "Úmyslné poškození bývá typicky výlukou."
+        def: "Událost, kterou pojištění kryje a zakládá nárok na plnění.",
+        ex: "Krupobití poškodilo auto – to je pojistná událost."
       }
     };
 
