@@ -4,15 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Slovník pojistných pojmů | PojistiToSnadno</title>
-
   <style>
     :root {
-      --text-color: #5b4c2b;      /* Barva z tvého webu */
+      --text-color: #3b2f1a;
+      --highlight: #fce788;
+      --highlight-hover: #fff3b0;
       --background-light: #fffdf5;
       --accent-green: #e6f9da;
-      --button-bg: #a2936f;
-      --button-hover: #8a7a59;
-      --shadow: rgba(0,0,0,0.1);
+      --button-bg: #d6c88d;
+      --button-hover: #c8bb7e;
+      --button-text: #3b2f1a;
       font-family: 'Segoe UI', sans-serif;
     }
 
@@ -26,7 +27,6 @@
       font-size: 16px;
     }
 
-    /* Pozadí */
     .bg-img-desktop {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -57,7 +57,6 @@
       }
     }
 
-    /* Navigace */
     .main-nav {
       display: flex;
       justify-content: center;
@@ -68,13 +67,18 @@
     }
 
     .main-nav a {
-      background: #e2dbc9;
-      color: var(--text-color);
+      background: var(--button-bg);
+      color: var(--button-text);
       padding: 0.6em 1.2em;
       border-radius: 18px;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 2px 12px var(--shadow);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: background 0.2s ease;
+    }
+
+    .main-nav a:hover {
+      background: var(--button-hover);
     }
 
     .main-content {
@@ -88,12 +92,12 @@
       padding: 2em 1em;
     }
 
-    /* Nadpis */
     .slovnik-section h2 {
       text-align: center;
       font-size: 1.8em;
       margin-bottom: 1.5em;
-      color: var(--text-color);
+      color: var(--highlight);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
     }
 
     .slovnik-row {
@@ -111,7 +115,7 @@
     .img-slovnik {
       max-width: 160px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px var(--shadow);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .dict-container {
@@ -119,7 +123,7 @@
       background: var(--background-light);
       padding: 1.5em;
       border-radius: 12px;
-      box-shadow: 0 2px 10px var(--shadow);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
     .dict-container input {
@@ -133,13 +137,16 @@
 
     .link-card-btn {
       background: var(--button-bg);
-      color: white;
+      color: var(--button-text);
       padding: 0.7em 1.2em;
       border: none;
       border-radius: 8px;
       font-weight: bold;
+      font-size: 1rem;
       cursor: pointer;
       margin-bottom: 1em;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background 0.2s ease;
     }
 
     .link-card-btn:hover {
@@ -189,16 +196,17 @@
 
     .slovnik-missing {
       font-size: 0.9em;
+      margin-top: 1em;
     }
 
     .slovnik-missing a {
-      color: var(--text-color);
+      color: var(--highlight);
       font-weight: bold;
       text-decoration: underline;
     }
 
     .slovnik-missing a:hover {
-      color: #3e341f;
+      color: var(--highlight-hover);
     }
 
     footer {
@@ -211,15 +219,13 @@
   </style>
 </head>
 <body>
-  <!-- Pozadí -->
   <img src="portret-bg-web.png" alt="" class="bg-img-desktop" />
   <img src="portret.png" alt="" class="bg-img-mobile" />
 
   <div class="main-content">
-    <!-- Navigace -->
     <nav class="main-nav">
-      <a href="#">Domů</a>
-      <a href="mailto:pojistitosnadno@gmail.com">Kontakt</a>
+      <a href="index.html">Domů</a>
+      <a href="kontakt.html">Kontakt</a>
     </nav>
 
     <main class="container">
@@ -243,7 +249,7 @@
 
             <div class="slovnik-missing">
               ❔ Nenašli jste výraz?
-              <a href="mailto:pojistitosnadno@gmail.com?subject=Nový%20pojem%20do%20slovníku">Navrhněte ho zde</a>
+              <a href="mailto:pojistitosnadno@gmail.com?subject=Navrh%20pojmu%20do%20slovniku&body=Navrhuji%20doplnit%20pojem%3A%20">Navrhněte ho zde</a>
             </div>
 
             <div id="output" class="slovnik-output" data-current=""></div>
