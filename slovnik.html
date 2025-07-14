@@ -1,111 +1,256 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laický slovník pojistných pojmů | PojistiToSnadno</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slovník pojistných pojmů | PojistiToSnadno</title>
   <style>
     body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #121212;
       color: #f0f0e9;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
     }
-    .main-nav {
+
+    header {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      padding: 1em;
+      padding: 1.1rem 1.4rem;
     }
-    .main-nav .logo {
-      font-size: 1.6rem;
+
+    .logo {
+      font-size: 1.5rem;
       font-weight: bold;
       color: #ffe87a;
-      margin-bottom: 0.5em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
+
     .nav-buttons {
       display: flex;
-      gap: 0.8em;
+      gap: 1rem;
     }
+
     .nav-buttons a {
       background: #d1b85c;
       color: #1e1e1e;
-      padding: 0.6rem 1.3rem;
-      border-radius: 16px;
       text-decoration: none;
-      font-weight: bold;
+      padding: 0.5rem 1.2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
-    .slovnik-section {
-      padding: 2rem 1rem;
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem;
       text-align: center;
     }
-    .img-slovnik {
-      max-width: 220px;
-      border-radius: 20px;
+
+    h2 {
+      color: #f3da80;
+      margin-bottom: 1rem;
     }
+
+    .slovnik-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .img-wrap img {
+      max-width: 200px;
+      border-radius: 16px;
+    }
+
+    .dict-container {
+      flex: 1;
+      min-width: 280px;
+      text-align: left;
+    }
+
     input[type="text"] {
-      width: 80%;
-      padding: 0.6rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background-color: #f4f4f4;
-      color: #222;
+      width: 100%;
+      padding: 0.7rem;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 1px solid #444;
+      background: #fff;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+
+    #suggestions {
+      background: #eee;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    #suggestions div {
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+    }
+
+    #suggestions div:hover {
+      background-color: #ddd;
+    }
+
+    .link-card-btn {
+      background-color: #d1b85c;
+      color: #000;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .link-card-btn:hover {
+      background-color: #f3e39a;
+    }
+
+    .slovnik-tip {
+      font-size: 0.92rem;
+      color: #ddd;
       margin-top: 1rem;
     }
-    #output {
-      margin-top: 1rem;
-      background: #2a2a2a;
+
+    .slovnik-missing {
+      font-size: 0.92rem;
+      margin-top: 0.6rem;
+    }
+
+    .slovnik-missing a {
+      color: #f3da80;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .slovnik-output {
+      background: #2e2e2e;
+      color: #fff;
       padding: 1rem;
       border-radius: 12px;
-      color: #fff;
+      margin-top: 1.2rem;
+      border-left: 5px solid #d1b85c;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: #999;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-buttons {
+        margin-top: 1rem;
+        flex-direction: column;
+      }
+
+      .img-wrap img {
+        max-width: 140px;
+      }
+
+      .dict-container {
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
-  <nav class="main-nav">
+
+  <header>
     <div class="logo">PojistiToSnadno.cz</div>
     <div class="nav-buttons">
       <a href="#">Domů</a>
       <a href="#">Kontakt</a>
     </div>
-  </nav>
+  </header>
 
   <main>
-    <section class="slovnik-section">
-      <h2>Laický slovník pojistných pojmů</h2>
-      <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
-      <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showDefinition()">
-      <div id="output"></div>
-    </section>
+    <h2>Laický slovník pojistných pojmů</h2>
+    <div class="slovnik-row">
+      <div class="img-wrap">
+        <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
+      </div>
+      <div class="dict-container">
+        <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
+        <div id="suggestions"></div>
+        <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
+        <div class="slovnik-tip">
+          <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+        </div>
+        <div class="slovnik-missing">
+          ❔ Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+        </div>
+        <div id="output" class="slovnik-output" data-current=""></div>
+      </div>
+    </div>
   </main>
+
+  <footer>
+    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
+  </footer>
 
   <script>
     const terms = {
       "pojistná smlouva": {
-        def: "Smlouva mezi pojišťovnou a klientem určující podmínky pojištění.",
-        ex: "Např. smlouva na životní pojištění obsahuje práva a povinnosti klienta."
+        def: "Smlouva mezi pojišťovnou a klientem, která určuje podmínky pojištění.",
+        ex: "Např. smlouva na životní pojištění uzavřená na 10 let."
       },
       "pojistná událost": {
-        def: "Situace, která zakládá nárok na pojistné plnění.",
-        ex: "Například požár domu může být pojistnou událostí."
+        def: "Událost, kterou pojištění kryje a zakládá nárok na plnění.",
+        ex: "Např. dopravní nehoda krytá havarijním pojištěním."
       },
       "spoluúčast": {
-        def: "Částka, kterou si klient hradí z vlastní kapsy.",
-        ex: "Při nehodě se spoluúčastí 1 000 Kč si klient tuto částku platí sám."
+        def: "Částka, kterou si klient při škodě hradí sám.",
+        ex: "Při škodě 10 000 Kč a spoluúčasti 1 000 Kč pojišťovna vyplatí 9 000 Kč."
       }
+      // ← sem můžete doplňovat další pojmy...
     };
 
+    function showSuggestions() {
+      const q = document.getElementById('search').value.toLowerCase();
+      const list = document.getElementById('suggestions');
+      list.innerHTML = '';
+      if (!q) return;
+      Object.keys(terms).filter(t => t.includes(q)).forEach(t => {
+        const d = document.createElement('div');
+        d.textContent = t;
+        d.onclick = () => {
+          document.getElementById('search').value = t;
+          list.innerHTML = '';
+        };
+        list.appendChild(d);
+      });
+    }
+
     function showDefinition() {
-      const query = document.getElementById('search').value.toLowerCase();
-      const output = document.getElementById('output');
-      const entry = terms[query];
-      if (entry) {
-        output.innerHTML = `<strong>${query}</strong><br><strong>📘 Definice:</strong> ${entry.def}<br><strong>💡 Příklad:</strong> ${entry.ex}`;
+      const key = document.getElementById('search').value.toLowerCase();
+      const out = document.getElementById('output');
+      const suggestions = document.getElementById('suggestions');
+      suggestions.innerHTML = '';
+      if (terms[key]) {
+        out.innerHTML = `<strong>${key}</strong><br><div class="def">${terms[key].def}</div><div class="ex">${terms[key].ex}</div>`;
+        out.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
-        output.innerHTML = "<em>Zadejte celý název pojmu (např. 'pojistná smlouva').</em>";
+        out.innerHTML = `<div class="def">Pojem nebyl nalezen.</div>`;
       }
     }
   </script>
+
 </body>
 </html>
