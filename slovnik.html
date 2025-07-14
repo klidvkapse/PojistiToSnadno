@@ -189,7 +189,7 @@
     }
 
     footer {
-      background: #1a1a1a;
+      background: transparent;
       color: #999;
       text-align: center;
       padding: 2rem 1rem;
@@ -234,7 +234,7 @@
     <h2>Laický slovník pojistných pojmů</h2>
     <div class="slovnik-row">
       <div class="img-wrap">
-        <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
+        <img src="slovnik.png" alt="Slovník pojistných pojmů" />
       </div>
       <div class="dict-container">
         <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
@@ -251,7 +251,9 @@
     </div>
   </main>
 
- 
+  <footer>
+    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
+  </footer>
 
   <script>
     const terms = {
@@ -293,22 +295,26 @@
       });
     }
 
+    let resultShown = false;
+
     function showDefinition() {
-      const key = document.getElementById('search').value.toLowerCase();
+      const input = document.getElementById('search');
+      const key = input.value.toLowerCase();
       const out = document.getElementById('output');
       const suggestions = document.getElementById('suggestions');
-      suggestions.innerHTML = '';
-      if (terms[key]) {
+
+      if (!resultShown && terms[key]) {
+        suggestions.innerHTML = '';
         out.innerHTML = `<strong>${key}</strong><br><div class="def">${terms[key].def}</div><div class="ex">${terms[key].ex}</div>`;
         out.scrollIntoView({ behavior: "smooth", block: "center" });
+        resultShown = true;
       } else {
-        out.innerHTML = `<div class="def">Pojem nebyl nalezen.</div>`;
+        input.value = '';
+        out.innerHTML = '';
+        suggestions.innerHTML = '';
+        resultShown = false;
       }
     }
   </script>
-
 </body>
-   <footer>
-    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
-  </footer>
 </html>
