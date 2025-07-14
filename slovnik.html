@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Laický slovník pojistných pojmů | PojistiToSnadno</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laický slovník pojistných pojmů | PojistiToSnadno.cz</title>
   <style>
     body {
       background-color: #121212;
@@ -17,55 +16,54 @@
     .bg-img-desktop, .bg-img-mobile {
       filter: brightness(0.35) blur(2.6px);
       opacity: 0.96;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -1;
     }
 
     .main-nav {
-      position: relative;
-      z-index: 10;
-      width: 100vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1em 2em;
+      padding: 1rem 1.5rem;
       background: transparent;
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: bold;
       color: #ffe87a;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 
-    .nav-links {
+    .main-nav-links {
       display: flex;
       gap: 1em;
     }
 
-    .nav-links a {
+    .main-nav a {
       background: #d1b85c;
       color: #121212;
-      padding: 0.6rem 1.3rem;
+      padding: 0.62rem 1.3rem;
       border-radius: 18px;
       font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-      font-size: 1.08rem;
-      transition: background 0.2s, color 0.2s;
+      font-size: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
+    .main-nav a:hover {
       background: #f3e39a;
       color: #000;
     }
 
     .slovnik-section {
       background: #1e1e1e;
-      padding: 2rem;
+      padding: 2rem 1rem;
       border-radius: 16px;
       max-width: 960px;
-      margin: 0 auto;
+      margin: 2rem auto;
       box-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
     }
 
@@ -98,25 +96,31 @@
       padding: 0.8rem;
       font-size: 1em;
       border-radius: 10px;
-      border: 1.5px solid #444;
-      background-color: #2a2a2a;
-      color: #f0f0f0;
+      border: 1.5px solid #888;
+      background-color: #f0f0e9;
+      color: #121212;
       margin-bottom: 1rem;
     }
 
-    #suggestions .suggestion {
-      background-color: #2a2a2a;
-      color: #f0f0f0;
-      padding: 0.6rem 1rem;
-      margin-bottom: 4px;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 1px solid #444;
-      transition: background-color 0.2s;
+    input[type="text"]::placeholder {
+      color: #777;
     }
 
-    #suggestions .suggestion:hover {
-      background-color: #3a3a3a;
+    #suggestions {
+      margin-top: 0.2rem;
+    }
+
+    .suggestion {
+      background: #f0f0e9;
+      color: #121212;
+      padding: 0.5em 1em;
+      border-radius: 10px;
+      margin-bottom: 6px;
+      cursor: pointer;
+    }
+
+    .suggestion:hover {
+      background: #e1e1e1;
     }
 
     button.link-card-btn {
@@ -128,7 +132,6 @@
       font-weight: bold;
       cursor: pointer;
       margin-bottom: 1rem;
-      transition: background 0.2s;
     }
 
     button.link-card-btn:hover {
@@ -136,18 +139,22 @@
     }
 
     .slovnik-tip {
-      font-size: 0.95em;
-      margin-bottom: 1rem;
-      color: #e5e5e5;
-      background: #2d2d2d;
-      padding: 0.8em 1em;
+      background: #1f1f1f;
+      color: #ddd;
+      padding: 1em;
       border-radius: 10px;
+      margin-bottom: 1rem;
+      font-size: 0.96em;
+    }
+
+    .slovnik-tip b {
+      color: #f3da80;
     }
 
     .slovnik-missing {
       font-size: 0.95em;
-      margin-bottom: 1rem;
       color: #dcdcdc;
+      margin-bottom: 1rem;
     }
 
     .slovnik-missing a {
@@ -184,7 +191,6 @@
       color: #ccc;
       font-size: 1em;
       padding: 2em 0 1.5em 0;
-      margin-top: 3rem;
       border-top: 1px solid #333;
     }
 
@@ -193,16 +199,27 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 768px) {
       .main-nav {
         flex-direction: column;
-        gap: 0.5em;
         align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .main-nav-links {
+        flex-direction: row;
+        gap: 0.8rem;
+        width: 100%;
+        justify-content: center;
       }
 
       .slovnik-row {
         flex-direction: column;
         align-items: center;
+      }
+
+      .dict-container {
+        width: 100%;
       }
     }
   </style>
@@ -211,56 +228,57 @@
   <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
   <img src="portret.png" alt="" class="bg-img-mobile">
 
-  <div class="main-content">
-    <!-- Navigace -->
-    <nav class="main-nav">
-      <div class="logo">PojistiToSnadno.cz</div>
-      <div class="nav-links">
-        <a href="index.html#domu">Domů</a>
-        <a href="kontakt.html">Kontakt</a>
-      </div>
-    </nav>
+  <nav class="main-nav">
+    <div class="logo">PojistiToSnadno.cz</div>
+    <div class="main-nav-links">
+      <a href="index.html#domu">Domů</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+  </nav>
 
-    <main class="container">
-      <section class="slovnik-section">
-        <h2>Laický slovník pojistných pojmů</h2>
-        <div class="slovnik-row">
-          <div class="img-wrap">
-            <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
-          </div>
-          <div class="dict-container">
-            <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
-            <div id="suggestions"></div>
-            <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
-            <div class="slovnik-tip">
-              <b>Tip:</b> Zadejte libovolný pojem, nebo jeho část.<br>
-              Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
-            </div>
-            <div class="slovnik-missing">
-              <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
-            </div>
-            <div id="output" class="slovnik-output" data-current=""></div>
-          </div>
+  <main>
+    <section class="slovnik-section">
+      <h2>Laický slovník pojistných pojmů</h2>
+      <div class="slovnik-row">
+        <div class="img-wrap">
+          <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
         </div>
-      </section>
-    </main>
-  </div>
+        <div class="dict-container">
+          <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()" />
+          <div id="suggestions"></div>
+          <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
+          <div class="slovnik-tip">
+            <b>Tip:</b> Zadejte libovolný pojem nebo jeho část.<br>
+            Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+          </div>
+          <div class="slovnik-missing">
+            <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+          </div>
+          <div id="output" class="slovnik-output" data-current=""></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <footer role="contentinfo">
+  <footer>
     <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
   </footer>
 
   <script>
     const terms = {
       "pojistná smlouva": {
-        def: "Smluvní dohoda mezi pojišťovnou a klientem...",
-        ex: "Pojistná smlouva na rodinný dům obsahuje..."
+        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
+        ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."
       },
       "pojistná událost": {
-        def: "Událost, která je krytá pojištěním...",
-        ex: "Například škoda způsobená krupobitím..."
+        def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
+        ex: "Například škoda způsobená krupobitím na pergole je pojistnou událostí."
       },
-      // ... další pojmy zde
+      "pojistné plnění": {
+        def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",
+        ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."
+      }
+      // … Doplň další pojmy dle potřeby
     };
 
     function showDefinition() {
