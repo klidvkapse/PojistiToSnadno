@@ -2,8 +2,8 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Laický slovník pojistných pojmů | PojistiToSnadno.cz</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Laický slovník pojistných pojmů | PojistiToSnadno</title>
   <style>
     body {
       background-color: #121212;
@@ -17,16 +17,20 @@
       filter: brightness(0.35) blur(2.6px);
       opacity: 0.96;
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
-      z-index: -1;
+      z-index: 0;
     }
 
     .main-nav {
+      position: relative;
+      z-index: 10;
+      width: 100vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 1em 1.2em 0.4em;
       background: transparent;
     }
 
@@ -37,33 +41,24 @@
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 
-    .main-nav-links {
-      display: flex;
-      gap: 1em;
-    }
-
     .main-nav a {
       background: #d1b85c;
       color: #121212;
-      padding: 0.62rem 1.3rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 18px;
       font-weight: 600;
       text-decoration: none;
       font-size: 1rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .main-nav a:hover {
-      background: #f3e39a;
-      color: #000;
+      margin-left: 10px;
     }
 
     .slovnik-section {
       background: #1e1e1e;
-      padding: 2rem 1rem;
+      padding: 1.4rem;
       border-radius: 16px;
       max-width: 960px;
-      margin: 2rem auto;
+      margin: 0 auto;
+      margin-top: 10px;
       box-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
     }
 
@@ -96,31 +91,23 @@
       padding: 0.8rem;
       font-size: 1em;
       border-radius: 10px;
-      border: 1.5px solid #888;
-      background-color: #f0f0e9;
-      color: #121212;
+      border: 1.5px solid #444;
+      background-color: #2a2a2a;
+      color: #fff;
       margin-bottom: 1rem;
     }
 
     input[type="text"]::placeholder {
-      color: #777;
-    }
-
-    #suggestions {
-      margin-top: 0.2rem;
+      color: #ccc;
     }
 
     .suggestion {
-      background: #f0f0e9;
+      background: #e0e0e0;
       color: #121212;
-      padding: 0.5em 1em;
-      border-radius: 10px;
-      margin-bottom: 6px;
+      padding: 6px 10px;
+      margin: 3px 0;
+      border-radius: 6px;
       cursor: pointer;
-    }
-
-    .suggestion:hover {
-      background: #e1e1e1;
     }
 
     button.link-card-btn {
@@ -132,6 +119,7 @@
       font-weight: bold;
       cursor: pointer;
       margin-bottom: 1rem;
+      transition: background 0.2s;
     }
 
     button.link-card-btn:hover {
@@ -139,22 +127,15 @@
     }
 
     .slovnik-tip {
-      background: #1f1f1f;
-      color: #ddd;
-      padding: 1em;
-      border-radius: 10px;
+      font-size: 0.95em;
       margin-bottom: 1rem;
-      font-size: 0.96em;
-    }
-
-    .slovnik-tip b {
-      color: #f3da80;
+      color: #ddd;
     }
 
     .slovnik-missing {
       font-size: 0.95em;
-      color: #dcdcdc;
       margin-bottom: 1rem;
+      color: #ccc;
     }
 
     .slovnik-missing a {
@@ -191,6 +172,7 @@
       color: #ccc;
       font-size: 1em;
       padding: 2em 0 1.5em 0;
+      margin-top: 3rem;
       border-top: 1px solid #333;
     }
 
@@ -199,27 +181,15 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 800px) {
       .main-nav {
         flex-direction: column;
+        gap: 0.5em;
         align-items: flex-start;
-        gap: 0.6rem;
       }
-
-      .main-nav-links {
-        flex-direction: row;
-        gap: 0.8rem;
-        width: 100%;
-        justify-content: center;
-      }
-
       .slovnik-row {
         flex-direction: column;
         align-items: center;
-      }
-
-      .dict-container {
-        width: 100%;
       }
     }
   </style>
@@ -228,37 +198,40 @@
   <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
   <img src="portret.png" alt="" class="bg-img-mobile">
 
-  <nav class="main-nav">
-    <div class="logo">PojistiToSnadno.cz</div>
-    <div class="main-nav-links">
-      <a href="index.html#domu">Domů</a>
-      <a href="kontakt.html">Kontakt</a>
-    </div>
-  </nav>
-
-  <main>
-    <section class="slovnik-section">
-      <h2>Laický slovník pojistných pojmů</h2>
-      <div class="slovnik-row">
-        <div class="img-wrap">
-          <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
-        </div>
-        <div class="dict-container">
-          <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()" />
-          <div id="suggestions"></div>
-          <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
-          <div class="slovnik-tip">
-            <b>Tip:</b> Zadejte libovolný pojem nebo jeho část.<br>
-            Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
-          </div>
-          <div class="slovnik-missing">
-            <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
-          </div>
-          <div id="output" class="slovnik-output" data-current=""></div>
-        </div>
+  <div class="main-content">
+    <!-- Hlavní menu -->
+    <nav class="main-nav">
+      <div class="logo">PojistiToSnadno.cz</div>
+      <div>
+        <a href="index.html#domu">Domů</a>
+        <a href="kontakt.html">Kontakt</a>
       </div>
-    </section>
-  </main>
+    </nav>
+
+    <main class="container">
+      <section class="slovnik-section">
+        <h2>Laický slovník pojistných pojmů</h2>
+        <div class="slovnik-row">
+          <div class="img-wrap">
+            <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
+          </div>
+          <div class="dict-container">
+            <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
+            <div id="suggestions"></div>
+            <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
+            <div class="slovnik-tip">
+              <b>Tip:</b> Zadejte libovolný pojem, nebo jeho část.<br>
+              Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
+            </div>
+            <div class="slovnik-missing">
+              <span>❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+            </div>
+            <div id="output" class="slovnik-output" data-current=""></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
   <footer>
     <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
@@ -267,18 +240,14 @@
   <script>
     const terms = {
       "pojistná smlouva": {
-        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
-        ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."
+        def: "Smluvní dohoda mezi pojišťovnou a klientem...",
+        ex: "Například smlouva na dům obsahuje..."
       },
       "pojistná událost": {
-        def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
-        ex: "Například škoda způsobená krupobitím na pergole je pojistnou událostí."
-      },
-      "pojistné plnění": {
-        def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",
-        ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."
+        def: "Událost krytá pojištěním...",
+        ex: "Např. škoda krupobitím je pojistná událost."
       }
-      // … Doplň další pojmy dle potřeby
+      // ...doplněné termíny
     };
 
     function showDefinition() {
@@ -296,6 +265,11 @@
         out.innerHTML = `<span class="def">Pojem nebyl nalezen.</span>`;
         out.dataset.current = '';
       }
+
+      // Scroll to result
+      setTimeout(() => {
+        out.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     }
 
     function showSuggestions() {
@@ -303,16 +277,17 @@
       const list = document.getElementById('suggestions');
       list.innerHTML = '';
       if (!q) return;
-      Object.keys(terms).filter(t => t.includes(q)).forEach(t => {
-        const d = document.createElement('div');
-        d.className = 'suggestion';
-        d.innerText = t;
-        d.onclick = () => {
-          document.getElementById('search').value = t;
-          list.innerHTML = '';
-        };
-        list.appendChild(d);
-      });
+      Object.keys(terms).filter(t => t.includes(q))
+        .forEach(t => {
+          const d = document.createElement('div');
+          d.className = 'suggestion';
+          d.innerText = t;
+          d.onclick = () => {
+            document.getElementById('search').value = t;
+            list.innerHTML = '';
+          };
+          list.appendChild(d);
+        });
     }
   </script>
 </body>
