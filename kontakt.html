@@ -6,166 +6,147 @@
   <title>Pojisti To Snadno – Daniel Verner</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .bg-img-desktop {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw; height: 100vh;
-      object-fit: cover; object-position: center;
-      filter: brightness(0.78) blur(2.8px);
-      opacity: 0.99; z-index: 1;
-      pointer-events: none; user-select: none;
-      transition: all 0.5s;
-      display: block;
-    }
-    .bg-img-mobile { display: none; }
-    @media (max-width: 800px) {
-      .bg-img-desktop { display: none !important; }
-      .bg-img-mobile {
-        display: block !important;
-        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-        width: 100vw; height: 100vh;
-        object-fit: cover; object-position: center top;
-        filter: brightness(0.75) blur(2.3px);
-        opacity: 0.98; z-index: 1;
-        pointer-events: none; user-select: none;
-        transition: all 0.5s;
-      }
-    }
-    .main-nav {
-      position: relative;
-      z-index: 10;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      gap: 1.2em;
-      padding: 1.1em 0 0.7em 0;
-      background: transparent;
-    }
-    .main-nav a {
-      background: #e2dbc9;
-      color: #494732;
-      padding: 0.62rem 1.3rem;
-      border-radius: 18px;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: 0 2px 12px rgba(120,100,60,0.11);
-      transition: background 0.2s, color 0.2s;
-      font-size: 1.08rem;
-    }
-    .main-nav a:hover, .main-nav a.active {
-      background: #dad0b8;
-      color: #85733a;
-    }
-    @media (max-width: 800px) {
-      .main-nav { gap: 0.6em; padding: 0.8em 0 0.5em 0;}
-      .main-nav a { font-size: 1em; padding: 0.48rem 1.1rem;}
-    }
-    body > *:not(.bg-img-desktop):not(.bg-img-mobile) { position: relative; z-index: 10; }
+  body {
+    background-color: #121212;
+    color: #f0f0e9;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* --- FORM STYLY --- */
+  .bg-img-desktop, .bg-img-mobile {
+    filter: brightness(0.4) blur(3px);
+    opacity: 0.95;
+  }
+
+  .main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.2em;
+    padding: 1em 0;
+    z-index: 10;
+    position: relative;
+  }
+
+  .main-nav a {
+    background: #d1b85c;
+    color: #1e1e1e;
+    padding: 0.6rem 1.3rem;
+    border-radius: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+  }
+
+  .main-nav a:hover, .main-nav a.active {
+    background: #f3e39a;
+    color: #000;
+  }
+
+  .nabidka-formular {
+    background: #1d1d1d;
+    color: #f0f0e9;
+    border-radius: 24px;
+    max-width: 900px;
+    margin: 32px auto 0 auto;
+    padding: 36px 32px;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.6);
+  }
+
+  .nabidka-formular h2 {
+    color: #f3da80;
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  input, textarea {
+    background-color: #2a2a2a;
+    border: 1.5px solid #444;
+    border-radius: 12px;
+    color: #fff;
+    padding: 13px 16px;
+    font-size: 1.07em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, textarea:focus {
+    border-color: #d1b85c;
+    outline: none;
+  }
+
+  .form-row, .form-row-bottom {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .form-row-single {
+    display: flex;
+    width: 100%;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+  }
+
+  button[type="submit"] {
+    background-color: #d1b85c;
+    color: #000;
+    border: none;
+    padding: 12px 36px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #f3e39a;
+  }
+
+  footer {
+    background: #1e1e1e;
+    color: #ccc;
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 1.05em;
+    border-top: 1px solid #444;
+  }
+
+  footer a {
+    color: #f3da80;
+    text-decoration: underline;
+  }
+
+  footer small {
+    display: block;
+    color: #888;
+    margin-top: 6px;
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 700px) {
     .nabidka-formular {
-      background: #fff;
-      border-radius: 24px;
-      box-shadow: 0 2px 18px rgba(120,100,60,0.09);
-      max-width: 900px;
-      margin: 32px auto 0 auto;
-      padding: 36px 32px 28px 32px;
-      color: #494732;
+      padding: 20px 16px;
     }
-    .nabidka-formular h2 {
-      margin-top: 0;
-      margin-bottom: 24px;
-      font-size: 1.38em;
-      color: #a19061;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-    .nabidka-formular form {
-      display: flex;
+    .form-row, .form-row-bottom {
       flex-direction: column;
-      gap: 18px;
     }
-    .form-row {
-      display: flex;
-      gap: 20px;
+    button[type="submit"] {
       width: 100%;
     }
-    .form-row input,
-    .form-row textarea {
-      font-size: 1.07em;
-      border: 1.5px solid #e2dbc9;
-      border-radius: 13px;
-      background: #faf8f0;
-      padding: 13px 16px;
-      color: #494732;
-      outline: none;
-      transition: border 0.2s;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .form-row input:focus,
-    .form-row textarea:focus {
-      border-color: #b7a97c;
-    }
-    .form-row textarea {
-      resize: vertical;
-      min-height: 45px;
-      max-height: 120px;
-    }
-    .form-row-single {
-      width: 100%;
-      display: flex;
-    }
-    .form-row-single textarea { width: 100%; }
+  }
+</style>
 
-    .form-row-bottom {
-      display: flex;
-      gap: 20px;
-      width: 100%;
-    }
-
-    .form-actions {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 4px;
-    }
-    .nabidka-formular button[type="submit"] {
-      background: #b7a97c;
-      color: #fff;
-      border: none;
-      border-radius: 13px;
-      padding: 13px 38px;
-      font-size: 1.09em;
-      font-weight: 600;
-      box-shadow: 0 2px 12px rgba(120,100,60,0.11);
-      transition: background 0.17s;
-      cursor: pointer;
-    }
-    .nabidka-formular button[type="submit"]:hover {
-      background: #9e9068;
-    }
-
-    /* RESPONSIVNÍ FORM */
-    @media (max-width: 700px) {
-      .nabidka-formular { padding: 18px 4vw 18px 4vw; }
-      .form-row, .form-row-bottom { flex-direction: column; gap: 10px; }
-      .form-actions { justify-content: stretch; }
-      .nabidka-formular button[type="submit"] { width: 100%; padding: 13px 0; }
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      background: rgba(255,255,255,0.82);
-      color: #474336;
-      font-size: 1.11em;
-      letter-spacing: 0.02em;
-      box-shadow: 0 -1px 10px rgba(120,100,60,0.06);
-      margin-top: 44px;
-      padding: 18px 0 12px 0;
-    }
-    footer a { color: #85733a; text-decoration: underline; }
-    footer small { color: #b7a97c; font-size: 0.97em; }
-  </style>
 </head>
 <body>
   <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
