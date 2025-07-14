@@ -31,7 +31,6 @@
       justify-content: space-between;
       align-items: center;
       padding: 1em 1.2em 0.4em;
-      background: transparent;
     }
 
     .logo {
@@ -199,7 +198,6 @@
   <img src="portret.png" alt="" class="bg-img-mobile">
 
   <div class="main-content">
-    <!-- Hlavní menu -->
     <nav class="main-nav">
       <div class="logo">PojistiToSnadno.cz</div>
       <div>
@@ -213,7 +211,7 @@
         <h2>Laický slovník pojistných pojmů</h2>
         <div class="slovnik-row">
           <div class="img-wrap">
-            <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" class="img-slovnik" />
+            <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
           </div>
           <div class="dict-container">
             <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
@@ -240,14 +238,14 @@
   <script>
     const terms = {
       "pojistná smlouva": {
-        def: "Smluvní dohoda mezi pojišťovnou a klientem...",
-        ex: "Například smlouva na dům obsahuje..."
+        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění.",
+        ex: "Například smlouva na dům zahrnuje pojištění proti požáru."
       },
       "pojistná událost": {
-        def: "Událost krytá pojištěním...",
-        ex: "Např. škoda krupobitím je pojistná událost."
+        def: "Událost, která zakládá nárok na pojistné plnění.",
+        ex: "Např. krupobití na pergolu je pojistnou událostí."
       }
-      // ...doplněné termíny
+      // ... další termíny můžeš přidat sem
     };
 
     function showDefinition() {
