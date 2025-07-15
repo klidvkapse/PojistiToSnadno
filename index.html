@@ -3,329 +3,307 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- SEO: Title + Description -->
-  <title>PojistiToSnadno.cz – Snadné a férové pojištění online</title>
-  <meta name="description" content="PojistiToSnadno.cz nabízí snadné online sjednání úrazového, majetkového i životního pojištění. Získejte kalkulaci ještě dnes!"/>
-
-  <!-- Open Graph / Twitter Card -->
+  <title>PojistiToSnadno.cz – Online pojištění snadno, rychle a férově</title>
+  <meta name="description" content="Online pojištění snadno a rychle – úrazové, životní i majetkové pojištění. Kalkulačka, zkušenosti klientů a odborné poradenství. Vše online a lidsky."/>
+  <meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, kalkulačka pojištění, pojišťovací poradce Brno, majetkové pojištění, sjednání pojištění online"/>
   <meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění"/>
   <meta property="og:description" content="Online pojištění úrazové, majetkové i životní. Rychlá kalkulace a osobní přístup."/>
-  <meta property="og:image"   content="https://pojistitostnadno.cz/og-image.jpg"/>
-  <meta property="og:url"     content="https://pojistitostnadno.cz/"/>
-  <meta property="og:type"    content="website"/>
-  <meta name="twitter:card"   content="summary_large_image"/>
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://pojistitostnadno.cz/"/>
-
-  <!-- Preconnect & Preload fontů -->
+  <meta property="og:image" content="https://pojistitosnadno.cz/og-image.jpg"/>
+  <meta property="og:url" content="https://pojistitosnadno.cz/"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://pojistitosnadno.cz/"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daniel Verner",
+    "jobTitle": "Pojišťovací poradce",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "PojistiToSnadno.cz"
+    },
+    "url": "https://pojistitosnadno.cz/",
+    "email": "pojistenivkapse@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Brno",
+      "addressCountry": "CZ"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"/>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'"/>
-
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
-    :root {
-      --primary: #b7a97c;
-      --button-bg: #c9b475;
-      --button-hover: #e2dbc9;
-      --text: #fff;
-      --radius: 18px;
-      --shadow: 0 2px 20px rgba(0,0,0,0.14);
-      --icon-size: 24px;
-    }
+body {
+  background: #181818 url('portret-bg-web.png') no-repeat center center;
+  background-size: cover;
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Raleway', Arial, sans-serif;
+  color: #ffe87a;
+}
+.container {
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+.main-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100vw;
+  gap: 0;
+  margin: 0;
+  padding: 0 0 0 0;
+  box-sizing: border-box;
+}
+.left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 270px;
+  max-width: 320px;
+  margin: 0;
+  padding: 0 0 0 2vw;
+}
+.site-title {
+  font-size: 2em;
+  font-weight: 900;
+  color: #ffe87a;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 16px #000, 0 0 2px #b7a97c;
+  margin: 0 0 1.0em 0;
+}
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  width: 100%;
+}
+.quick-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.38em;
+  background: rgba(255, 232, 122, 0.92);
+  color: #29250f;
+  padding: 0.22em 0.55em;
+  font-size: 0.89em;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 1px 7px rgba(120, 100, 60, 0.07);
+  border: none;
+  min-width: 92px;
+  max-width: 170px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.quick-btn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+.btn-title {
+  font-weight: 700;
+  font-size: 0.97em;
+  color: #29250f;
+}
+.btn-sub {
+  font-weight: 400;
+  font-size: 0.84em;
+  color: #655d2b;
+}
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Raleway', Arial, sans-serif;
-      color: var(--text);
-      background: #181818 url('portret-bg-web.png') no-repeat center center;
-      background-size: cover;
-      height: 100%;
-      min-height: 100vh;
-      width: 100vw;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-
-    @media (max-width: 800px) {
-      body {
-        background: #181818 url('portret.png') no-repeat center top;
-        background-size: cover;
-      }
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.28);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    header {
-      position: relative;
-      z-index: 10;
-      padding: 18px 0 10px 0;
-      text-align: left;
-      width: 100%;
-    }
-
-    .site-title {
-      font-size: 2.5em;
-      font-weight: 900;
-      color: #ffe87a;
-      letter-spacing: 0.06em;
-      text-shadow: 0 2px 16px #000, 0 0 2px #b7a97c;
-      margin-left: 4vw;
-    }
-
-    main {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      min-height: 80vh;
-      position: relative;
-      z-index: 2;
-    }
-
-    .left-panel {
-      margin-left: 4vw;
-      margin-top: 2vw;
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-      z-index: 2;
-    }
-
-    .quick-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.7em;
-      background: var(--button-bg);
-      color: #262319;
-      padding: 0.68em 1.1em;
-      font-size: 1.07em;
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: 15px;
-      box-shadow: 0 2px 14px rgba(120, 100, 60, 0.13);
-      border: none;
-      min-width: 160px;
-      cursor: pointer;
-      justify-content: flex-start;
-    }
-
-    .quick-btn:hover {
-      background: var(--button-hover);
-      color: #222;
-      box-shadow: 0 4px 22px rgba(184, 160, 92, 0.19);
-    }
-
-    .quick-btn svg {
-      width: var(--icon-size);
-      height: var(--icon-size);
-      fill: none;
-      stroke: #4b420d;
-      stroke-width: 2;
-      flex-shrink: 0;
-    }
-
-    .btn-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .btn-title {
-      font-weight: 700;
-      font-size: 1.2em;
-      line-height: 1.3em;
-    }
-
-    .btn-sub {
-      font-weight: 400;
-      font-size: 0.88em;
-      line-height: 1.2em;
-    }
-
-    .main-content {
-      position: fixed;
-      right: 4vw;
-      bottom: 6vw;
-      width: 350px;
-      max-width: 95vw;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      z-index: 20;
-    }
-
-    .main-box {
-      background: rgba(0, 0, 0, 0.38);
-      backdrop-filter: blur(6px);
-      border-radius: var(--radius);
-      box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
-      padding: 1.1em;
-      width: 100%;
-      margin-bottom: 0.9em;
-      z-index: 3;
-    }
-
-    .about, .services {
-      font-size: 0.95em;
-    }
-
-    .highlight-title {
-      color: #ffe87a;
-      font-size: 1.4em;
-      font-weight: 700;
-      margin-top: 0.2em;
-    }
-
-    .right-bottom-buttons {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      gap: 0.6em;
-    }
-
-    /* MOBILNÍ ÚPRAVY */
-    @media (max-width: 600px) {
-      .site-title {
-        font-size: 1.5em;
-        margin-left: 2vw;
-        white-space: nowrap;
-      }
-
-      .quick-btn {
-        padding: 0.4em 0.6em;
-        font-size: 0.85em;
-        min-width: auto;
-        max-width: 88vw;
-      }
-
-      .btn-title {
-        font-size: 1em;
-      }
-
-      .btn-sub {
-        font-size: 0.75em;
-      }
-
-      .left-panel {
-        gap: 0.4em;
-        margin-top: 0.6em;
-        margin-left: 1vw;
-      }
-
-      .left-panel a svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      .main-content {
-        width: 100vw;
-        position: fixed;
-        bottom: 62px;
-        left: 0;
-        right: 0;
-        align-items: center;
-        justify-content: flex-end;
-      }
-
-      .main-box {
-        max-width: 92vw;
-        font-size: 0.78em;
-        max-height: 28vh;
-        overflow-y: auto;
-        padding: 0.8em 0.8em 0.6em 0.8em;
-      }
-
-      .highlight-title {
-        font-size: 1em;
-      }
-
-      .about, .services {
-        font-size: 0.8em;
-      }
-
-      .right-bottom-buttons {
-        justify-content: center;
-        gap: 0.3em;
-        flex-wrap: wrap;
-      }
-    }
+.right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 0;           /* OPRAVA: umožní smrštění boxu */
+  max-width: 520px;
+  width: 32vw;
+  margin: 0;
+  padding: 0 2vw 0 0;
+  box-sizing: border-box;
+}
+.main-box {
+  border-radius: 18px;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.19);
+  background: rgba(32, 30, 20, 0.92);
+  color: #ffe87a;
+  padding: 1.1em 1.3em 1.1em 1.3em;
+  margin-bottom: 1em;
+  width: 100%;
+  min-width: 0;           /* OPRAVA: umožní smrštění boxu */
+  backdrop-filter: blur(2px);
+  box-sizing: border-box;
+}
+.highlight-title {
+  color: #ffe87a;
+  font-size: 1.2em;
+  font-weight: 800;
+  margin-bottom: 0.32em;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 8px #000;
+  display: block;
+}
+.about { font-size: 1em; color: #fffad1; margin-bottom: 0.3em; }
+.services { font-size: 0.96em; color: #fffde3; margin-top: 0.5em; }
+.services ul { margin: 0.23em 0 0 1.1em; padding: 0; }
+.services li { margin-bottom: 0.08em; }
+.why-online {
+  background: rgba(255, 232, 122, 0.13);
+  border-left: 4px solid #b7a97c;
+  color: #fffbe3;
+  font-size: 1.02em;
+  border-radius: 15px;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.07);
+  padding: 0.75em 1.1em 0.8em 1.1em;
+  margin-bottom: 0.7em;
+  width: 100%;
+  min-width: 0;           /* OPRAVA: umožní smrštění boxu */
+  box-sizing: border-box;
+}
+.why-online h2 {
+  margin-top: 0;
+  font-size: 1.06em;
+  color: #ffe87a;
+  font-weight: 800;
+}
+.why-online ul { margin: 0.09em 0 0 1.1em; padding: 0; }
+.why-online li { margin: 0.14em 0; font-size: 0.97em; }
+.action-buttons {
+  display: flex;
+  gap: 0.7em;
+  width: 100%;
+  justify-content: flex-end;
+  margin-top: 0.1em;
+}
+.action-btn {
+  background: rgba(255, 232, 122, 0.97);
+  color: #29250f;
+  padding: 0.55em 1.05em;
+  font-weight: 800;
+  border-radius: 11px;
+  font-size: 0.98em;
+  text-decoration: none;
+  transition: background 0.18s;
+  box-shadow: 0 2px 10px rgba(120, 100, 60, 0.10);
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.action-btn:hover { background: #fffbe3; color: #77681f; }
+footer {
+  width: 100vw;
+  text-align: center;
+  font-size: 0.98em;
+  background: rgba(26,22,12,0.18);
+  color: #ffe87a;
+  padding: 16px 0 7px 0;
+  margin-top: 2.4em;
+  letter-spacing: 0.01em;
+}
+footer a { color: #ffe87a; text-decoration: underline; }
+footer a:hover { color: #b7a97c; }
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .main-flex { flex-direction: column; align-items: center; gap: 1em; }
+  .right-col, .left-col, .main-box, .why-online {
+    max-width: 98vw;
+    min-width: 0;
+    width: 98vw;
+  }
+}
+@media (max-width: 700px) {
+  .main-flex { flex-direction: column; align-items: center; gap: 0.6em; }
+  .right-col, .left-col, .main-box, .why-online {
+    max-width: 100vw;
+    min-width: 0;
+    width: 99vw;
+  }
+  .site-title { font-size: 1em; margin-bottom: 0.7em;}
+  .main-box, .why-online { font-size: 0.91em; padding: 0.45em 0.18em 0.45em 0.45em; }
+  .action-btn { font-size: 0.97em; padding: 0.44em 0.7em;}
+  .action-buttons { flex-direction: column; gap: 0.3em; align-items: stretch; margin-bottom: 0.5em; }
+  .quick-btn { font-size: 0.86em; padding: 0.13em 0.29em; min-width: 78px; max-width: 99vw;}
+  .quick-btn svg { width: 14px; height: 14px;}
+  .btn-title { font-size: 0.93em; }
+  .btn-sub { font-size: 0.80em; }
+  .left-panel { gap: 0.3em;}
+  .left-col { padding-left: 0.7vw; }
+}
   </style>
 </head>
 <body>
-  <header>
-    <div class="site-title">PojistiToSnadno.cz</div>
-  </header>
-  <main>
-    <div class="left-panel">
-      <a href="clanek1.html" class="quick-btn">
-        <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4"/><rect x="9" y="8" width="14" height="4" rx="1.5"/><circle cx="12" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><circle cx="20" cy="17" r="1.5"/><circle cx="12" cy="22" r="1.5"/><circle cx="16" cy="22" r="1.5"/><circle cx="20" cy="22" r="1.5"/></svg>
-        <div class="btn-text">
-          <div class="btn-title">Kalkulačka</div>
-          <div class="btn-sub">Spočítej si svou úrazovku.</div>
+  <div class="container">
+    <div class="main-flex">
+      <div class="left-col">
+        <h1 class="site-title">PojistiToSnadno.cz</h1>
+        <div class="left-panel">
+          <a href="clanek1.html" class="quick-btn">
+            <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4" fill="none" stroke="#655d2b" stroke-width="2"/><rect x="9" y="8" width="14" height="4" rx="1.5" fill="#ffe87a"/><circle cx="12" cy="17" r="1.5" fill="#c9b475"/><circle cx="16" cy="17" r="1.5" fill="#c9b475"/><circle cx="20" cy="17" r="1.5" fill="#c9b475"/><circle cx="12" cy="22" r="1.5" fill="#c9b475"/><circle cx="16" cy="22" r="1.5" fill="#c9b475"/><circle cx="20" cy="22" r="1.5" fill="#c9b475"/></svg>
+            <div class="btn-text">
+              <div class="btn-title">Kalkulačka</div>
+              <div class="btn-sub">Spočítej si svou úrazovku.</div>
+            </div>
+          </a>
+          <a href="statistiky.html" class="quick-btn">
+            <svg viewBox="0 0 32 32"><rect x="7" y="15" width="3" height="10" rx="1" fill="#b7a97c"/><rect x="14" y="10" width="3" height="15" rx="1" fill="#c9b475"/><rect x="21" y="7" width="3" height="18" rx="1" fill="#ffe87a"/></svg>
+            <div class="btn-text">
+              <div class="btn-title">Statistiky</div>
+              <div class="btn-sub">Mrkni proč se pojistit.</div>
+            </div>
+          </a>
+          <a href="slovnik.html" class="quick-btn">
+            <svg viewBox="0 0 32 32"><rect x="6" y="6" width="20" height="20" rx="3" fill="none" stroke="#655d2b" stroke-width="2"/><rect x="10" y="12" width="12" height="3" rx="1.2" fill="#ffe87a"/><rect x="10" y="18" width="12" height="2" rx="1" fill="#c9b475"/></svg>
+            <div class="btn-text">
+              <div class="btn-title">Slovník pojmů</div>
+              <div class="btn-sub">Přelož si to, ať víš o co jde.</div>
+            </div>
+          </a>
         </div>
-      </a>
-      <a href="statistiky.html" class="quick-btn">
-        <svg viewBox="0 0 32 32"><rect x="7" y="15" width="3" height="10" rx="1"/><rect x="14" y="10" width="3" height="15" rx="1"/><rect x="21" y="7" width="3" height="18" rx="1"/></svg>
-        <div class="btn-text">
-          <div class="btn-title">Statistiky</div>
-          <div class="btn-sub">Mrkni proč se pojistit.</div>
+      </div>
+      <div class="right-col">
+        <div class="main-box">
+          <span class="highlight-title">Daniel Verner</span>
+          <div class="about">
+            <strong>Jsem pojišťovací poradce v Brně</strong> a pomáhám lidem <b>online i osobně sjednat správné úrazové, životní i majetkové pojištění</b>.<br>
+            Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br>
+            Kvalitní pojištění je jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.
+          </div>
+          <div class="services">
+            <b>Služby:</b>
+            <ul>
+              <li>Životní a úrazové pojištění online</li>
+              <li>Pojištění pracovní neschopnosti</li>
+              <li>Pojištění majetku a dopravních prostředků</li>
+              <li>Podpora při řešení pojistných událostí</li>
+              <li>Úvěry na bydlení</li>
+            </ul>
+          </div>
         </div>
-      </a>
-      <a href="slovnik.html" class="quick-btn">
-        <svg viewBox="0 0 32 32"><path d="M7 8v16a2 2 0 0 0 2 2h14"/><path d="M25 6H11a2 2 0 0 0-2 2v18"/><path d="M25 6v20"/><path d="M7 8h16"/></svg>
-        <div class="btn-text">
-          <div class="btn-title">Slovník pojmů</div>
-          <div class="btn-sub">Přelož si to, ať víš o co jde.</div>
-        </div>
-      </a>
-    </div>
-
-    <div class="main-content">
-      <div class="main-box">
-        Jmenuji se
-        <h2 class="highlight-title">Daniel Verner</h2>
-        <div class="about">
-          Pracuji jako pojišťovací poradce jedné z největších pojišťoven v ČR.<br />
-          Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br />
-          Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.
-        </div>
-        <div class="services">
-          <b>Služby:</b>
+        <div class="why-online">
+          <h2>Proč sjednat pojištění online?</h2>
           <ul>
-            <li>Životní a úrazové pojištění</li>
-            <li>Pojištění pracovní neschopnosti</li>
-            <li>Pojištění majetku a dopravních prostředků</li>
-            <li>Podpora při řešení pojistných událostí</li>
-            <li>Úvěry na bydlení</li>
+            <li>Možnost online kalkulace a sjednání pojištění</li>
+            <li>Žádné papírování, vše vyřídíte pohodlně z domova nebo mobilu</li>
+            <li>Osobní přístup a férové podmínky</li>
+            <li>Konzultace s certifikovaným pojišťovacím poradcem osobně i online</li>
           </ul>
         </div>
-      </div>
-
-      <div class="right-bottom-buttons">
-        <a href="realne-skody.html" class="quick-btn">
-          <svg viewBox="0 0 32 32"><polygon points="17 2 6 18 16 18 15 30 26 14 16 14 17 2"/></svg>
-          Reálné škody klientů
-        </a>
-        <a href="kontakt.html" class="quick-btn">
-          <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
-          Chci pojistit
-        </a>
+        <div class="action-buttons">
+          <a href="realne-skody.html" class="action-btn">Reálné škody klientů</a>
+          <a href="kontakt.html" class="action-btn">Chci pojistit</a>
+        </div>
       </div>
     </div>
-  </main>
+    <footer>
+      <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena | <a href="mailto:pojistitosnadnoe@gmail.com">pojistenivkapse@gmail.com</a></p>
+    </footer>
+  </div>
 </body>
-   <footer role="contentinfo">
-    <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
-  </footer>
 </html>
