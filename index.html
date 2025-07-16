@@ -26,12 +26,13 @@
       --radius: 18px;
       --shadow: 0 2px 20px rgba(0,0,0,0.14);
       --icon-size: 24px;
-      --qr-width: 225px;
-      --qr-margin-top: 42px;
-      --panel-gap: 48px;
-      --panel-side: 4vw;
-      --right-panel-width: 410px;
-      --right-gap: 38px;
+      --panel-side: 84px;
+      --panel-gap: 38px;
+      --right-panel-width: 425px;
+      --right-gap: 72px;
+      --qr-width: 235px;
+      --qr-margin-top: 46px;
+      --qr-box-gap: 32px;
     }
     html, body {
       margin: 0;
@@ -89,12 +90,12 @@
       box-sizing: border-box;
     }
     .left-panel {
+      margin-left: var(--panel-side);
+      margin-top: 42px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 1.2em;
-      margin-left: var(--panel-side);
-      margin-top: 34px;
+      gap: 2.2em;
     }
     .quick-btn {
       display: flex;
@@ -152,8 +153,8 @@
       background: rgba(71, 67, 54, 0.82);
       border-radius: 14px;
       box-shadow: 0 2px 18px rgba(0,0,0,0.13);
-      padding: 18px 22px 12px 22px;
-      margin-bottom: 25px;
+      padding: 22px 26px 14px 26px;
+      margin-bottom: var(--qr-box-gap);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -188,9 +189,8 @@
       backdrop-filter: blur(6px);
       border-radius: var(--radius);
       box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
-      padding: 1.1em;
-      margin-bottom: 0.8em;
-      margin-top: 0;
+      padding: 1.3em 1.3em 1em 1.3em;
+      margin-bottom: 1.7em;
       width: 100%;
       max-width: 410px;
       z-index: 3;
@@ -207,7 +207,7 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      gap: 0.6em;
+      gap: 1em;
       max-width: 410px;
     }
     @media (max-width: 1050px) {
@@ -344,8 +344,4 @@
       </div>
     </div>
   </main>
-  <footer role="contentinfo">
-    <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
-  </footer>
-</body>
-</html>
+  <
