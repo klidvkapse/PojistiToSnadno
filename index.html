@@ -19,26 +19,22 @@
         rel="stylesheet" media="print" onload="this.media='all'"/>
   <style>
     :root {
-      --primary: #b7a97c;
-      --button-bg: #c9b475;
-      --button-hover: #e2dbc9;
-      --text: #fff;
-      --radius: 18px;
-      --shadow: 0 2px 20px rgba(0,0,0,0.14);
-      --icon-size: 24px;
-      --panel-side: 84px;
+      --panel-side: 56px;        /* menší odsazení od levého okraje */
       --panel-gap: 38px;
+      --panel-btn-margin-top: 32px;
+      --panel-btn-gap: 32px;    /* mezery mezi tlačítky */
+      --qr-panel-gap: 68px;     /* mezera QR od horního okraje */
       --right-panel-width: 425px;
-      --right-gap: 72px;
-      --qr-width: 235px;
-      --qr-margin-top: 46px;
-      --qr-box-gap: 32px;
+      --right-gap: 84px;        /* větší mezera QR od pravého okraje */
+      --qr-width: 210px;
+      --qr-box-gap: 30px;       /* mezera QR a textového boxu */
+      --main-box-gap: 48px;     /* mezera mezi QR+boxem a tlačítky */
     }
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Raleway', Arial, sans-serif;
-      color: var(--text);
+      color: #fff;
       background: #181818 url('portret-bg-web.png') no-repeat center center;
       background-size: cover;
       min-height: 100vh;
@@ -68,7 +64,7 @@
       width: 100%;
     }
     .site-title {
-      font-size: 2.5em;
+      font-size: 2.6em;
       font-weight: 900;
       color: #ffe87a;
       letter-spacing: 0.06em;
@@ -84,44 +80,40 @@
       min-height: 80vh;
       position: relative;
       z-index: 2;
-      max-width: 1600px;
+      max-width: 1700px;
       margin: 0 auto;
-      padding-top: 12px;
+      padding-top: 18px;
       box-sizing: border-box;
     }
     .left-panel {
       margin-left: var(--panel-side);
-      margin-top: 42px;
+      margin-top: 22px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 2.2em;
     }
     .quick-btn {
       display: flex;
       align-items: center;
       gap: 0.7em;
-      background: var(--button-bg);
+      background: var(--button-bg,#c9b475);
       color: #262319;
       padding: 0.68em 1.1em;
-      font-size: 1.07em;
+      font-size: 1.1em;
       font-weight: 700;
       text-decoration: none;
       border-radius: 15px;
       box-shadow: 0 2px 14px rgba(120, 100, 60, 0.13);
       border: none;
-      min-width: 186px;
+      min-width: 250px;
       cursor: pointer;
       justify-content: flex-start;
+      margin-top: var(--panel-btn-margin-top);
     }
-    .quick-btn:hover {
-      background: var(--button-hover);
-      color: #222;
-      box-shadow: 0 4px 22px rgba(184, 160, 92, 0.19);
-    }
+    .quick-btn + .quick-btn { margin-top: var(--panel-btn-gap); }
     .quick-btn svg {
-      width: var(--icon-size);
-      height: var(--icon-size);
+      width: 27px;
+      height: 27px;
       fill: none;
       stroke: #4b420d;
       stroke-width: 2;
@@ -147,13 +139,13 @@
       align-items: flex-end;
       width: var(--right-panel-width);
       margin-right: var(--right-gap);
-      margin-top: var(--qr-margin-top);
+      margin-top: var(--qr-panel-gap);
     }
     .qr-vizitka {
       background: rgba(71, 67, 54, 0.82);
       border-radius: 14px;
       box-shadow: 0 2px 18px rgba(0,0,0,0.13);
-      padding: 22px 26px 14px 26px;
+      padding: 20px 26px 14px 26px;
       margin-bottom: var(--qr-box-gap);
       display: flex;
       flex-direction: column;
@@ -169,7 +161,7 @@
       letter-spacing: 0.01em;
     }
     .qr-vizitka img {
-      max-width: 148px;
+      max-width: 140px;
       width: 100%;
       border-radius: 9px;
       background: #fff;
@@ -190,7 +182,7 @@
       border-radius: var(--radius);
       box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
       padding: 1.3em 1.3em 1em 1.3em;
-      margin-bottom: 1.7em;
+      margin-bottom: var(--main-box-gap);
       width: 100%;
       max-width: 410px;
       z-index: 3;
@@ -207,7 +199,7 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      gap: 1em;
+      gap: 1.2em;
       max-width: 410px;
     }
     @media (max-width: 1050px) {
@@ -344,4 +336,4 @@
       </div>
     </div>
   </main>
-  <
+  <footer role
