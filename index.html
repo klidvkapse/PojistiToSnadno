@@ -314,10 +314,15 @@
   border-radius: 8px;
   background: #fff;
   padding: 6px;
- 
+  .desktop-only {
+  display: block;
+}
 
-
-    }
+@media (max-width: 800px) {
+  .desktop-only {
+    display: none !important;
+  }
+ }
   </style>
 </head>
 <body>
