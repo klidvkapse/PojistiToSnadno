@@ -75,7 +75,7 @@ html, body {
 @media (max-width: 800px) {
   body {
     background: #181818 url('portret.png') no-repeat center top;
-    background-size: contain; /* !!! změněno z cover na contain pro větší portrét !!! */
+    background-size: cover;
   }
 }
 
@@ -224,29 +224,40 @@ main {
   margin-top: 60px;
 }
 
-/* === MOBILNÍ ÚPRAVY === */
+/* ====== MOBILNÍ ÚPRAVY ====== */
 @media (max-width: 600px) {
 
   main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: unset; /* důležité! */
+    min-height: unset;
   }
 
   .site-title {
     font-size: 1.5em;
     margin-left: 2vw;
-    margin-top: 8px;       /* přidáno */
-    margin-bottom: 6px;    /* přidáno */
+    margin-top: 8px;
+    margin-bottom: 6px;
     white-space: nowrap;
   }
 
   .quick-btn {
     padding: 0.4em 0.6em;
-    font-size: 0.85em;
-    min-width: auto;
-    max-width: 88vw;
+    font-size: 0.92em;
+    min-width: 110px;
+    max-width: 90vw;
+    border-radius: 12px;
+  }
+
+  .quick-btn svg {
+    width: 21px;
+    height: 21px;
+    min-width: 21px;
+    min-height: 21px;
+    max-width: 24px;
+    max-height: 24px;
+    margin-right: 4px;
   }
 
   .btn-title {
@@ -259,8 +270,8 @@ main {
 
   .left-panel {
     gap: 0.4em;
-    margin-top: 0.2em;    /* menší mezera nahoře */
-    margin-left: 0.5vw;   /* menší okraj vlevo */
+    margin-top: 0.2em;
+    margin-left: 1vw;
   }
 
   .left-panel a svg {
@@ -282,7 +293,7 @@ main {
 
   .main-box {
     max-width: 92vw;
-    font-size: 0.78em;
+    font-size: 0.89em;
     max-height: none;
     overflow-y: visible;
     padding: 0.8em 0.8em 0.6em 0.8em;
@@ -299,9 +310,34 @@ main {
   .right-bottom-buttons {
     width: 100%;
     justify-content: center;
-    gap: 0.3em;
+    gap: 0.2em;
     flex-wrap: wrap;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
+    position: static;
+  }
+  .right-bottom-buttons a {
+    flex: 1 1 44vw;
+    max-width: 46vw;
+    min-width: 120px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1em;
+    padding: 0.85em 0.6em;
+    border-radius: 13px;
+    margin: 2px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+  }
+  .right-bottom-buttons svg {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 22px;
+    max-height: 22px;
+    margin-right: 3px;
   }
 
   .main-buttons {
@@ -314,7 +350,7 @@ main {
 
   .qr-vizitka {
     border-radius: 14px;
-    padding: 18px 22px;
+    padding: 14px 18px;
     margin-top: 18px;
     display: flex;
     flex-direction: column;
@@ -331,7 +367,7 @@ main {
   }
 }
 
-/* === PRVKY POUZE NA DESKTOPU === */
+/* ====== PRVKY POUZE NA DESKTOPU ====== */
 .desktop-only {
   display: block;
 }
@@ -339,38 +375,9 @@ main {
   .desktop-only {
     display: none !important;
   }
-  @media (max-width: 600px) {
-
-  .right-bottom-buttons {
-    width: 100%;
-    justify-content: center;
-    gap: 0.3em;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-    position: static;
-  }
-  .right-bottom-buttons a {
-    flex: 1 1 42vw;
-    max-width: 44vw;
-    min-width: 120px;
-    box-sizing: border-box;
-    text-align: center;
-    margin: 2px 4px;
-    font-size: 1em;
-    padding: 0.8em 0.6em;
-  }
-  .right-bottom-buttons svg {
-    width: 26px;
-    height: 26px;
-    min-width: 26px;
-    min-height: 26px;
-    max-width: 32px;
-    max-height: 32px;
-    margin-right: 4px;
-  }
-
-
 }
+
+
 
 </style>
 </head>
