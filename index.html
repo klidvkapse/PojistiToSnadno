@@ -47,284 +47,295 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'"/>
   <style>
-    :root {
-      --primary: #b7a97c;
-      --button-bg: #c9b475;
-      --button-hover: #e2dbc9;
-      --text: #fff;
-      --radius: 18px;
-      --shadow: 0 2px 20px rgba(0,0,0,0.14);
-      --icon-size: 24px;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Raleway', Arial, sans-serif;
-      color: var(--text);
-      background: #181818 url('portret-bg-web.png') no-repeat center center;
-      background-size: cover;
-      height: 100%;
-      min-height: 100vh;
-      width: 100vw;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-
-    @media (max-width: 800px) {
-      body {
-        background: #181818 url('portret.png') no-repeat center top;
-        background-size: cover;
-      }
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.28);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    header {
-      position: relative;
-      z-index: 10;
-      padding: 18px 0 10px 0;
-      text-align: left;
-      width: 100%;
-    }
-
-    .site-title {
-      font-size: 2.5em;
-      font-weight: 900;
-      color: #ffe87a;
-      letter-spacing: 0.06em;
-      text-shadow: 0 2px 16px #000, 0 0 2px #b7a97c;
-      margin-left: 4vw;
-    }
-
-    main {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      min-height: 80vh;
-      position: relative;
-      z-index: 2;
-    }
-
-    .left-panel {
-      margin-left: 4vw;
-      margin-top: 2vw;
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-      z-index: 2;
-    }
-
-    .quick-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.7em;
-      background: var(--button-bg);
-      color: #262319;
-      padding: 0.68em 1.1em;
-      font-size: 1.07em;
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: 15px;
-      box-shadow: 0 2px 14px rgba(120, 100, 60, 0.13);
-      border: none;
-      min-width: 160px;
-      cursor: pointer;
-      justify-content: flex-start;
-    }
-
-    .quick-btn:hover {
-      background: var(--button-hover);
-      color: #222;
-      box-shadow: 0 4px 22px rgba(184, 160, 92, 0.19);
-    }
-
-    .quick-btn svg {
-      width: var(--icon-size);
-      height: var(--icon-size);
-      fill: none;
-      stroke: #4b420d;
-      stroke-width: 2;
-      flex-shrink: 0;
-    }
-
-    .btn-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .btn-title {
-      font-weight: 700;
-      font-size: 1.2em;
-      line-height: 1.3em;
-    }
-
-    .btn-sub {
-      font-weight: 400;
-      font-size: 0.88em;
-      line-height: 1.2em;
-    }
-
-    .main-content {
-      position: fixed;
-      right: 4vw;
-      bottom: 6vw;
-      width: 350px;
-      max-width: 95vw;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      z-index: 20;
-    }
-
-    .main-box {
-      background: rgba(0, 0, 0, 0.38);
-      backdrop-filter: blur(6px);
-      border-radius: var(--radius);
-      box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
-      padding: 1.1em;
-      width: 100%;
-      margin-bottom: 0.9em;
-      z-index: 3;
-    }
-
-    .about, .services {
-      font-size: 0.95em;
-    }
-
-    .highlight-title {
-      color: #ffe87a;
-      font-size: 1.4em;
-      font-weight: 700;
-      margin-top: 0.2em;
-    }
-
-    .right-bottom-buttons {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      gap: 0.6em;
-    }
-    .main-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  margin-top: 60px; /* případně uprav dle potřeby */
+  :root {
+  --primary: #b7a97c;
+  --button-bg: #c9b475;
+  --button-hover: #e2dbc9;
+  --text: #fff;
+  --radius: 18px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.14);
+  --icon-size: 24px;
 }
 
-
-
-
-    /* MOBILNÍ ÚPRAVY */
-    @media (max-width: 600px) {
-      .site-title {
-        font-size: 1.5em;
-        margin-left: 2vw;
-        white-space: nowrap;
-      }
-
-      .quick-btn {
-        padding: 0.4em 0.6em;
-        font-size: 0.85em;
-        min-width: auto;
-        max-width: 88vw;
-      }
-
-      .btn-title {
-        font-size: 1em;
-      }
-
-      .btn-sub {
-        font-size: 0.75em;
-      }
-
-      .left-panel {
-        gap: 0.4em;
-        margin-top: 0.6em;
-        margin-left: 1vw;
-      }
-
-      .left-panel a svg {
-        width: 10px;
-        height: 20px;
-      }
-
-      .main-content {
-        width: 100vw;
-        position: fixed;
-        bottom: 62px;
-        left: 0;
-        right: 0;
-        align-items: center;
-        justify-content: flex-end;
-      }
-
-      .main-box {
-        max-width: 92vw;
-        font-size: 0.78em;
-        max-height: 28vh;
-        overflow-y: auto;
-        padding: 0.8em 0.8em 0.6em 0.8em;
-      }
-
-      .highlight-title {
-        font-size: 1em;
-      }
-
-      .about, .services {
-        font-size: 0.8em;
-      }
-
-      .right-bottom-buttons {
-        justify-content: center;
-        gap: 0.3em;
-        flex-wrap: wrap;
-      }
-      .main-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  margin-top: 10px; /* případně uprav dle potřeby */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', Arial, sans-serif;
+  color: var(--text);
+  background: #181818 url('portret-bg-web.png') no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-.qr-vizitka {
-  border-radius: 14px;
-  padding: 18px 22px;
-  margin-top: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 90px;
+@media (max-width: 800px) {
+  body {
+    background: #181818 url('portret.png') no-repeat center top;
+    background-size: cover;
+  }
 }
 
-.qr-vizitka img {
-  max-width:90px;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  z-index: 1;
+  pointer-events: none;
+}
+
+header {
+  position: relative;
+  z-index: 10;
+  padding: 18px 0 10px 0;
+  text-align: left;
   width: 100%;
-  border-radius: 8px;
-  background: #fff;
-  padding: 6px;
- } 
-  .desktop-only {
+}
+
+.site-title {
+  font-size: 2.5em;
+  font-weight: 900;
+  color: #ffe87a;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 16px #000, 0 0 2px #b7a97c;
+  margin-left: 4vw;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 80vh;
+  position: relative;
+  z-index: 2;
+}
+
+.left-panel {
+  margin-left: 4vw;
+  margin-top: 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  z-index: 2;
+}
+
+.quick-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  background: var(--button-bg);
+  color: #262319;
+  padding: 0.68em 1.1em;
+  font-size: 1.07em;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 15px;
+  box-shadow: 0 2px 14px rgba(120, 100, 60, 0.13);
+  border: none;
+  min-width: 160px;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+
+.quick-btn:hover {
+  background: var(--button-hover);
+  color: #222;
+  box-shadow: 0 4px 22px rgba(184, 160, 92, 0.19);
+}
+
+.quick-btn svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  fill: none;
+  stroke: #4b420d;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.btn-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-title {
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.3em;
+}
+
+.btn-sub {
+  font-weight: 400;
+  font-size: 0.88em;
+  line-height: 1.2em;
+}
+
+.main-content {
+  position: fixed;
+  right: 4vw;
+  bottom: 6vw;
+  width: 350px;
+  max-width: 95vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 20;
+}
+
+.main-box {
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
+  padding: 1.1em;
+  width: 100%;
+  margin-bottom: 0.9em;
+  z-index: 3;
+}
+
+.about, .services {
+  font-size: 0.95em;
+}
+
+.highlight-title {
+  color: #ffe87a;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-top: 0.2em;
+}
+
+.right-bottom-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 0.6em;
+}
+.main-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 60px;
+}
+
+/* === MOBILNÍ ÚPRAVY === */
+@media (max-width: 600px) {
+
+  main {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .site-title {
+    font-size: 1.5em;
+    margin-left: 2vw;
+    white-space: nowrap;
+  }
+
+  .quick-btn {
+    padding: 0.4em 0.6em;
+    font-size: 0.85em;
+    min-width: auto;
+    max-width: 88vw;
+  }
+
+  .btn-title {
+    font-size: 1em;
+  }
+
+  .btn-sub {
+    font-size: 0.75em;
+  }
+
+  .left-panel {
+    gap: 0.4em;
+    margin-top: 0.6em;
+    margin-left: 1vw;
+  }
+
+  .left-panel a svg {
+    width: 10px;
+    height: 20px;
+  }
+
+  .main-content {
+    width: 100vw;
+    position: static;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: flex-end;
+    max-width: 100vw;
+    margin: 0;
+  }
+
+  .main-box {
+    max-width: 92vw;
+    font-size: 0.78em;
+    max-height: none;
+    overflow-y: visible;
+    padding: 0.8em 0.8em 0.6em 0.8em;
+  }
+
+  .highlight-title {
+    font-size: 1em;
+  }
+
+  .about, .services {
+    font-size: 0.8em;
+  }
+
+  .right-bottom-buttons {
+    width: 100%;
+    justify-content: center;
+    gap: 0.3em;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .main-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  .qr-vizitka {
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 90px;
+  }
+
+  .qr-vizitka img {
+    max-width:90px;
+    width: 100%;
+    border-radius: 8px;
+    background: #fff;
+    padding: 6px;
+  }
+}
+
+/* === PRVKY POUZE NA DESKTOPU === */
+.desktop-only {
   display: block;
 }
-
 @media (max-width: 800px) {
   .desktop-only {
     display: none !important;
   }
- }
-  </style>
+}
+</style>
 </head>
 <body>
   <header>
