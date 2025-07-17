@@ -48,6 +48,7 @@
         rel="stylesheet" media="print" onload="this.media='all'"/>
   <style>
   :root {
+  :root {
   --primary: #b7a97c;
   --button-bg: #c9b475;
   --button-hover: #e2dbc9;
@@ -74,7 +75,7 @@ html, body {
 @media (max-width: 800px) {
   body {
     background: #181818 url('portret.png') no-repeat center top;
-    background-size: cover;
+    background-size: contain; /* !!! změněno z cover na contain pro větší portrét !!! */
   }
 }
 
@@ -214,6 +215,7 @@ main {
   justify-content: flex-end;
   gap: 0.6em;
 }
+
 .main-buttons {
   display: flex;
   flex-direction: column;
@@ -229,11 +231,14 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    min-height: unset; /* důležité! */
   }
 
   .site-title {
     font-size: 1.5em;
     margin-left: 2vw;
+    margin-top: 8px;       /* přidáno */
+    margin-bottom: 6px;    /* přidáno */
     white-space: nowrap;
   }
 
@@ -254,8 +259,8 @@ main {
 
   .left-panel {
     gap: 0.4em;
-    margin-top: 0.6em;
-    margin-left: 1vw;
+    margin-top: 0.2em;    /* menší mezera nahoře */
+    margin-left: 0.5vw;   /* menší okraj vlevo */
   }
 
   .left-panel a svg {
@@ -335,6 +340,7 @@ main {
     display: none !important;
   }
 }
+
 </style>
 </head>
 <body>
