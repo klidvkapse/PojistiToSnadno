@@ -271,63 +271,122 @@
       }
 
       .main-box {
-        max-width: 92vw;
-        font-size: 0.78em;
-        max-height: 28vh;
-        overflow-y: auto;
-        padding: 0.8em 0.8em 0.6em 0.8em;
-      }
-
-      .highlight-title {
-        font-size: 1em;
-      }
-
-      .about, .services {
-        font-size: 0.8em;
-      }
-
-      .right-bottom-buttons {
-        justify-content: center;
-        gap: 0.3em;
-        flex-wrap: wrap;
-      }
-      .main-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  margin-top: 10px; /* případně uprav dle potřeby */
-}
-
-.qr-vizitka {
-  border-radius: 14px;
-  padding: 18px 22px;
-  margin-top: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 90px;
-}
-
-.qr-vizitka img {
-  max-width:90px;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25); /* STÍN NA DESKTOPU */
+  padding: 1.1em;
   width: 100%;
-  border-radius: 8px;
-  background: #fff;
-  padding: 6px;
- } 
-  .desktop-only {
+  margin-bottom: 0.9em;
+  z-index: 3;
+}
+
+/* === Ostatní mobilní úpravy z tvého kódu nech bez změny === */
+
+.desktop-only {
   display: block;
 }
 
+/* === MOBILNÍ ÚPRAVY (do 600px) === */
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 1.5em;
+    margin-left: 2vw;
+    white-space: nowrap;
+  }
+
+  .quick-btn {
+    padding: 0.4em 0.6em;
+    font-size: 0.85em;
+    min-width: auto;
+    max-width: 88vw;
+  }
+
+  .btn-title {
+    font-size: 1em;
+  }
+
+  .btn-sub {
+    font-size: 0.75em;
+  }
+
+  .left-panel {
+    gap: 0.4em;
+    margin-top: 0.6em;
+    margin-left: 1vw;
+  }
+
+  .left-panel a svg {
+    width: 10px;
+    height: 20px;
+  }
+
+  .main-content {
+    width: 100vw;
+    position: fixed;
+    bottom: 62px;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .main-box {
+    max-width: 92vw;
+    font-size: 0.78em;
+    max-height: 28vh;
+    overflow-y: auto;
+    padding: 0.8em 0.8em 0.6em 0.8em;
+  }
+
+  .highlight-title {
+    font-size: 1em;
+  }
+
+  .about, .services {
+    font-size: 0.8em;
+  }
+
+  .right-bottom-buttons {
+    justify-content: center;
+    gap: 0.3em;
+    flex-wrap: wrap;
+  }
+  .main-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 10px;
+  }
+  .qr-vizitka {
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 90px;
+  }
+  .qr-vizitka img {
+    max-width:90px;
+    width: 100%;
+    border-radius: 8px;
+    background: #fff;
+    padding: 6px;
+  }
+}
+
+/* === OMEZENÍ FUNKCÍ NA MOBILECH DO 800PX === */
 @media (max-width: 800px) {
   .desktop-only {
     display: none !important;
-     }
+  }
   .main-box {
     box-shadow: none !important;
   }
- }
+}
+
 
 </style>
 </head>
