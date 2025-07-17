@@ -339,6 +339,37 @@ main {
   .desktop-only {
     display: none !important;
   }
+  @media (max-width: 600px) {
+
+  .right-bottom-buttons {
+    width: 100%;
+    justify-content: center;
+    gap: 0.3em;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    position: static;
+  }
+  .right-bottom-buttons a {
+    flex: 1 1 42vw;
+    max-width: 44vw;
+    min-width: 120px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 2px 4px;
+    font-size: 1em;
+    padding: 0.8em 0.6em;
+  }
+  .right-bottom-buttons svg {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-height: 26px;
+    max-width: 32px;
+    max-height: 32px;
+    margin-right: 4px;
+  }
+
+
 }
 
 </style>
