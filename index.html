@@ -179,7 +179,6 @@ main {
   z-index: 20;
 }
 
-/* JEDINÝ správný styl pro .main-box */
 .main-box {
   background: rgba(0, 0, 0, 0.38);
   backdrop-filter: blur(6px);
@@ -236,7 +235,6 @@ main {
   padding: 6px;
 }
 
-/* Defaultně je .desktop-only viditelný */
 .desktop-only {
   display: block;
 }
@@ -249,7 +247,10 @@ main {
   }
   .desktop-only {
     display: none !important;
-
+  }
+  .main-box {
+    box-shadow: none !important;
+  }
 }
 
 /* Další mobilní úpravy pro menší obrazovky */
@@ -259,33 +260,27 @@ main {
     margin-left: 2vw;
     white-space: nowrap;
   }
-
   .quick-btn {
     padding: 0.4em 0.6em;
     font-size: 0.85em;
     min-width: auto;
     max-width: 88vw;
   }
-
   .btn-title {
     font-size: 1em;
   }
-
   .btn-sub {
     font-size: 0.75em;
   }
-
   .left-panel {
     gap: 0.4em;
     margin-top: 0.6em;
     margin-left: 1vw;
   }
-
   .left-panel a svg {
     width: 10px;
     height: 20px;
   }
-
   .main-content {
     width: 100vw;
     position: fixed;
@@ -295,24 +290,19 @@ main {
     align-items: center;
     justify-content: flex-end;
   }
-
   .main-box {
     max-width: 92vw;
     font-size: 0.78em;
     max-height: 28vh;
     overflow-y: auto;
     padding: 0.8em 0.8em 0.6em 0.8em;
-    /* Stín zde NEUVÁDĚJ! */
   }
-
   .highlight-title {
     font-size: 1em;
   }
-
   .about, .services {
     font-size: 0.8em;
   }
-
   .right-bottom-buttons {
     justify-content: center;
     gap: 0.3em;
@@ -325,13 +315,8 @@ main {
     gap: 16px;
     margin-top: 10px;
   }
-  @media (max-width: 800px) {
-  .main-box {
-    box-shadow: none !important;
-  }
 }
 
-}
 
 </style>
 </head>
