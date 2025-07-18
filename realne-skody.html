@@ -45,7 +45,6 @@
       background: #b7a97c;
       color: #fff;
     }
-
     .realne-skody-header {
       text-align: center;
       margin: 1.3em 0 2.2em 0;
@@ -55,7 +54,6 @@
       letter-spacing: 0.01em;
       text-shadow: 0 2px 14px rgba(0,0,0,0.13);
     }
-
     .main-content {
       width: 100%;
       max-width: 1440px;
@@ -67,7 +65,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     /* DESKTOP GRID + FLIP */
     .skody-grid {
       display: grid;
@@ -133,7 +130,6 @@
       text-shadow: 0 2px 12px rgba(40,40,20,0.12);
       font-size: 1.08em;
     }
-
     /* CTA BUTTON FIXED */
     .cta-fixed {
       position: fixed;
@@ -184,7 +180,6 @@
       box-shadow: 0 2px 8px rgba(80,60,30,0.11);
       letter-spacing: 0.01em;
     }
-
     /* Footer */
     .footer {
       background: #e2dbc9;
@@ -239,11 +234,8 @@
 <body>
   <nav class="top-nav">
     <a href="index.html">Domů</a>
-    <!-- Na mobilu zůstává CTA nahoře, na desktopu je fix dole -->
-    <a href="kontakt.html" class="cta-nav-mobile" style="display:none;">Chci pojistit</a>
   </nav>
   <div class="realne-skody-header">Reálné škody klientů</div>
-
   <div class="main-content">
     <!-- DESKTOP GRID -->
     <div class="skody-grid" id="skody-grid"></div>
@@ -269,7 +261,6 @@
   <footer class="footer">
     <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
   </footer>
-
   <script>
     // DATA
     const skody = [
@@ -320,4 +311,47 @@
       const grid = document.getElementById('skody-grid');
       grid.innerHTML = skody.map(s => `
         <div class="flip-card" tabindex="0">
-          <div class="flip-card-inner
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="skoda-title">${s.title}</div>
+              <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${s.pricina}</div>
+              <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${s.castka}</b></div>
+              <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${s.vyrizeni}</div>
+            </div>
+            <div class="flip-card-back">
+              <div class="motivation">${s.motivace}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+    // MOBILNÍ CAROUSEL
+    let idx = 0;
+    function zobrazitSkodu(i) {
+      const s = skody[i];
+      document.getElementById("carousel-box").innerHTML = `
+        <div class="skoda-title">${s.title}</div>
+        <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${s.pricina}</div>
+        <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${s.castka}</b></div>
+        <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${s.vyrizeni}</div>
+        <div class="motivation" style="margin-top:1.1em;">${s.motivace}</div>
+      `;
+      const dotsWrap = document.getElementById("carousel-dots");
+      dotsWrap.innerHTML = skody.map((_, j) => `<span class="dot${j===i?" active":""}" onclick="zobrazitSkodu(${j})"></span>`).join('');
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+      renderGrid();
+      zobrazitSkodu(0);
+      document.querySelector(".carousel-arrow.prev").onclick = function() {
+        idx = (idx - 1 + skody.length) % skody.length;
+        zobrazitSkodu(idx);
+      };
+      document.querySelector(".carousel-arrow.next").onclick = function() {
+        idx = (idx + 1) % skody.length;
+        zobrazitSkodu(idx);
+      };
+    });
+    window.zobrazitSkodu = zobrazitSkodu; // for dot click
+  </script>
+</body>
+</html>
