@@ -3,319 +3,233 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Reálné škody klientů | PojistiToSnadno</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap">
+  <title>Reálné škody klientů | PojistiToSnadno.cz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #b7a97c;
+      --primary-dark: #968749;
+      --button-bg: #c9b475;
+      --button-hover: #e2dbc9;
+      --text: #fff;
+      --radius: 18px;
+      --shadow: 0 2px 20px rgba(0,0,0,0.14);
+      --icon-size: 22px;
+      --card-bg: rgba(40, 38, 30, 0.80);
+      --accent: #af4876;
+    }
     html, body {
-      height: 100%;
       margin: 0;
       padding: 0;
-      background: #f6f4ee;
+      font-family: 'Raleway', Arial, sans-serif;
+      color: var(--text);
+      background: #181818;
+      height: 100%;
+      min-height: 100vh;
+      width: 100vw;
+      box-sizing: border-box;
+      overflow-x: hidden;
     }
     body {
+      position: relative;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      font-family: 'Raleway', Arial, sans-serif;
-      color: #474336;
-      box-sizing: border-box;
-      position: relative;
-      overflow-x: hidden;
     }
     .bg-img {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      position: fixed;
+      inset: 0;
       width: 100vw; height: 100vh;
       object-fit: cover;
       object-position: center;
-      filter: brightness(0.78) blur(2.5px);
-      opacity: 0.98;
-      z-index: 1;
+      z-index: 0;
+      filter: brightness(0.75);
       pointer-events: none;
       user-select: none;
     }
-    .bg-gradient {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw; height: 100vh;
-      z-index: 2;
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(30, 29, 22, 0.43);
+      z-index: 1;
       pointer-events: none;
-      background: radial-gradient(ellipse at 65% 50%, rgba(246,244,238,0.91) 0%, rgba(246,244,238,0.10) 80%, rgba(246,244,238,0.04) 100%);
     }
-    @media (max-width: 800px) {
-      .bg-gradient {
-        background: linear-gradient(to bottom, rgba(246,244,238,0.98) 0%, rgba(246,244,238,0.01) 90%);
-      }
-      .bg-img {
-        filter: brightness(0.84) blur(1.2px);
-        opacity: 0.98;
-      }
+    .topbar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 1.4em;
+      padding: 2.1em 0 1em 3vw;
+      font-size: 2em;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--primary);
+      text-shadow: 0 3px 16px rgba(0,0,0,0.16);
+      user-select: none;
     }
     .main-content {
       flex: 1 0 auto;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: stretch;
-      position: relative;
-      z-index: 10;
-      width: 100vw;
-    }
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
       flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding-top: 3em;
-      gap: 3vw;
-      width: 95vw;
-      min-height: 60vh;
-    }
-    .hero-left {
-      flex: 1 1 400px;
-      display: flex;
-      flex-direction: column;
       justify-content: flex-start;
-      align-items: flex-end;
-      margin-left: 2vw;
-      min-width: 260px;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+      width: 100vw;
+      min-height: 70vh;
     }
-    .headline-box {
-      margin-bottom: 1.5em;
-      margin-right: 0.6em;
-      text-align: right;
-    }
-    .headline-box h1 {
-      font-size: 2.2em;
-      color: #6a5e2c;
-      margin: 0 0 0.3em 0;
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      text-shadow: 0 3px 14px rgba(0,0,0,0.11);
-    }
-    .headline-box p {
-      font-size: 1.13em;
-      color: #655b2a;
-      font-weight: 500;
-      margin: 0;
-      opacity: 0.93;
-      letter-spacing: 0.01em;
-    }
-    .carousel-wrap {
-      margin-top: 1em;
-      min-width: 220px;
-      max-width: 420px;
+    .left-col {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      z-index: 12;
+      align-items: flex-start;
+      margin: 0 0 0 3vw;
+      gap: 2.2em;
+      min-width: 340px;
+      max-width: 400px;
     }
-    .realne-skody-header {
+    .skody-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5em 2em 1.4em 2em;
+      margin-bottom: 1em;
+      width: 100%;
+      min-width: 270px;
+      max-width: 380px;
       color: #fff;
-      font-size: 1.1em;
-      font-weight: bold;
-      margin-bottom: 0.36em;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.13);
-      letter-spacing: 0.01em;
-      text-align: left;
+      font-size: 1.11em;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-left: 4px solid var(--primary);
+      position: relative;
     }
-    .realne-skody-carousel {
+    .carousel-arrows {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.3em;
+      gap: 1em;
+      margin-bottom: 0.7em;
       width: 100%;
+      justify-content: space-between;
     }
     .carousel-arrow {
-      background: #b7a97c;
+      background: var(--primary);
       color: #fff;
       border: none;
       border-radius: 50%;
-      font-size: 1.28em;
-      width: 44px;
-      height: 44px;
+      font-size: 1.5em;
+      width: 38px; height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 2px 7px rgba(120,100,60,0.11);
-      transition: background 0.17s, transform 0.12s;
+      box-shadow: 0 2px 8px rgba(120,100,60,0.11);
+      transition: background 0.18s, transform 0.13s;
       outline: none;
+      margin: 0 0.7em 0 0.1em;
     }
     .carousel-arrow:hover, .carousel-arrow:focus {
-      background: #af4876;
-      transform: scale(1.08);
+      background: var(--accent);
       color: #fff;
-    }
-    .skoda-karta {
-      background: #fcfbf7;
-      border-radius: 20px;
-      box-shadow: 0 6px 24px rgba(120,100,60,0.19);
-      padding: 2em 2.2em 1.7em 2.2em;
-      min-width: 280px;
-      max-width: 380px;
-      text-align: left;
-      margin: 0 0.9em;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      font-size: 1.16em;
-      position: relative;
-      z-index: 10;
-      border: 2px solid #b7a97c;
-      transition: box-shadow .2s, border .2s;
-    }
-    .skoda-title {
-      color: #827235;
-      font-size: 1.18em;
-      font-weight: bold;
-      margin-bottom: 0.7em;
-    }
-    .skoda-row {
-      margin-bottom: 0.41em;
-      font-size: 1em;
-    }
-    .skoda-label {
-      color: #988543;
-      font-weight: 600;
-      margin-right: 0.18em;
+      transform: scale(1.08);
     }
     .carousel-dots {
       display: flex;
-      justify-content: center;
-      margin-top: 1em;
-      gap: 0.34em;
+      gap: 0.32em;
+      margin-top: 0.5em;
     }
     .dot {
-      width: 13px;
-      height: 13px;
-      background: #d5d0b9;
+      width: 10px; height: 10px;
+      background: #928749;
+      opacity: 0.47;
       border-radius: 50%;
-      display: inline-block;
-      transition: background 0.18s, transform 0.12s;
       cursor: pointer;
+      transition: opacity 0.15s, background 0.15s;
     }
     .dot.active {
-      background: #af4876;
-      transform: scale(1.15);
+      background: var(--accent);
+      opacity: 1;
     }
-    .hero-right {
-      flex: 1 1 480px;
-      max-width: 480px;
-      margin-right: 3vw;
+    .skoda-title {
+      color: var(--primary);
+      font-size: 1.19em;
+      font-weight: 700;
+      margin-bottom: 0.7em;
       margin-top: 0.5em;
-      align-self: flex-start;
     }
-    .popis-box {
-      background: rgba(255,255,255,0.97);
-      border-radius: 20px;
-      box-shadow: 0 2px 18px rgba(80,60,30,0.10);
-      padding: 2.4em 2.2em 2.1em 2.3em;
-      color: #463f25;
-      font-size: 1.15em;
-      z-index: 16;
-      word-break: break-word;
-      line-height: 1.6;
+    .skoda-row { margin-bottom: 0.33em; }
+    .skoda-label { color: #b7a97c; font-weight: 700; margin-right: 0.2em;}
+    .skoda-emotivum {
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: 0.7em;
+      margin-bottom: 0.2em;
     }
-    .popis-box h2 {
-      margin-top: 0;
-      margin-bottom: 0.65em;
-      font-size: 1.23em;
-      color: #827235;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-    }
-    .popis-box .tip {
-      font-size: 1em;
-      color: #aa8e1c;
-      margin-top: 0.8em;
-      font-style: italic;
-      opacity: 0.93;
-    }
-    .cta-row {
-      display: flex;
-      align-items: center;
-      margin-top: 2.1em;
-      gap: 1em;
-      flex-wrap: wrap;
-    }
-    .cta-btn {
-      background: #b7a97c;
+    .benefity-box {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.4em 2em 1.3em 2em;
       color: #fff;
+      margin-bottom: 0.7em;
+      font-size: 1.09em;
+      width: 100%;
+      min-width: 270px;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-left: 4px solid var(--primary-dark);
+    }
+    .benefity-box h2 {
+      color: var(--primary);
+      font-size: 1.13em;
+      font-weight: 800;
+      margin: 0 0 0.7em 0;
+    }
+    .benefity-list {
+      margin: 0 0 1em 0; padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+      font-size: 1em;
+    }
+    .benefit-ico { margin-right: 0.5em; font-size: 1.17em; }
+    .cta-btn {
+      background: var(--button-bg);
+      color: #39372e;
       border: none;
-      border-radius: 25px;
-      padding: 0.96em 2.1em;
-      font-size: 1.14em;
+      border-radius: 22px;
+      padding: 0.9em 2.3em;
+      font-size: 1.12em;
       font-weight: bold;
       letter-spacing: 0.01em;
       cursor: pointer;
-      transition: background 0.18s, box-shadow 0.14s;
-      box-shadow: 0 2px 10px rgba(80,60,30,0.07);
-      margin-right: 0.5em;
+      margin-top: 0.95em;
+      margin-bottom: 0.2em;
+      transition: background 0.18s, color 0.16s;
     }
     .cta-btn:hover, .cta-btn:focus {
-      background: #af4876;
-      color: #fff;
-      box-shadow: 0 4px 18px rgba(120,100,60,0.18);
-      transform: translateY(-2px) scale(1.04);
+      background: var(--button-hover);
+      color: #181818;
     }
-    .benefity-list {
-      margin: 1.3em 0 0 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 1.7em 2.6em;
-    }
-    .benefit-ico {
-      font-size: 1.47em;
-      color: #b7a97c;
-      margin-right: 0.3em;
-      vertical-align: middle;
-      position: relative;
-      top: 2px;
-    }
-    .benefity-list li {
-      font-size: 0.98em;
-      color: #675d31;
-      font-weight: 600;
-      margin: 0 0 0.5em 0;
-      flex: 1 1 120px;
-      min-width: 120px;
-      display: flex;
-      align-items: center;
-      opacity: 0.94;
-    }
-    .duvera-bar {
-      margin: 3.2em auto 1em auto;
-      padding: 1.1em 2em;
-      background: #fcfbf7e6;
-      border-radius: 19px;
-      box-shadow: 0 2px 12px rgba(180,170,120,0.10);
-      max-width: 660px;
-      display: flex;
-      gap: 2.8em;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1em;
-      color: #665d3a;
-      font-weight: bold;
-      z-index: 20;
-      position: relative;
-    }
-    .duvera-item {
-      display: flex;
-      align-items: center;
-      gap: 0.7em;
+    .cta-row {
       font-size: 1em;
-      font-weight: 600;
+      color: var(--primary);
+      margin-top: 0.3em;
+      font-weight: 500;
+      opacity: 0.93;
     }
-    .duvera-ico {
-      font-size: 1.55em;
-      color: #b7a97c;
-      margin-right: 0.1em;
+    .cta-row b { color: var(--text); background: var(--primary); border-radius: 6px; padding: 0.08em 0.26em;}
+    @media (max-width: 900px) {
+      .main-content { flex-direction: column; align-items: center; }
+      .left-col { margin: 0; align-items: center;}
+      .skody-card, .benefity-box { max-width: 96vw; min-width: 0;}
+    }
+    @media (max-width: 600px) {
+      .topbar { font-size: 1.4em; padding: 1em 0 1em 2vw;}
+      .skody-card, .benefity-box { padding: 1em 0.7em;}
     }
     /* Footer */
     footer {
@@ -323,81 +237,47 @@
       color: #474336;
       text-align: center;
       font-size: 1em;
-      padding: 1em 0 0.7em 0;
+      padding: 1em 0 0.5em 0;
       border-top: 1px solid #ece6d4;
       letter-spacing: 0.01em;
-      min-height: 32px;
+      min-height: 24px;
       flex-shrink: 0;
       z-index: 30;
       margin-top: auto;
       width: 100vw;
-    }
-    @media (max-width: 900px) {
-      .hero { flex-direction: column; align-items: center; padding-top: 1.5em; gap: 0;}
-      .hero-left, .hero-right { margin: 0; max-width: 97vw;}
-      .headline-box { text-align: center; margin: 0 0 1.1em 0;}
-      .carousel-wrap { align-items: center; margin-top: 0;}
-      .popis-box { margin: 0 auto 1em auto; padding: 1.5em 1em;}
-      .duvera-bar { flex-direction: column; gap: 1.2em; font-size: 1em;}
-    }
-    @media (max-width: 600px) {
-      .hero { width: 99vw; }
-      .headline-box h1 { font-size: 1.3em;}
-      .skoda-karta { min-width: 90vw; max-width: 98vw; padding: 1.1em 0.7em;}
-      .popis-box { font-size: 1em;}
-      .duvera-bar { font-size: 0.97em;}
+      position: relative;
     }
   </style>
 </head>
 <body>
   <img src="portret-bg-web.png" alt="" class="bg-img" />
-  <div class="bg-gradient"></div>
+  <div class="overlay"></div>
+  <div class="topbar">PojistiToSnadno.cz</div>
   <div class="main-content">
-    <div class="hero">
-      <!-- Levý sloupec: headline, carousel -->
-      <div class="hero-left">
-        <div class="headline-box">
-          <h1>Pojistné příběhy, které mají <span style="color:#b7a97c">skutečný dopad</span></h1>
-          <p>Opravdové případy. Rychlé vyplacení. Žádná anonymita – jen konkrétní pomoc v pravý čas.</p>
-        </div>
-        <div class="carousel-wrap">
-          <div class="realne-skody-header">
-            Reálné škody klientů
-          </div>
-          <div class="realne-skody-carousel">
-            <button class="carousel-arrow prev">&#8592;</button>
-            <div class="skoda-karta" id="skoda-karta"></div>
-            <button class="carousel-arrow next">&#8594;</button>
-          </div>
+    <div class="left-col">
+      <div class="skody-card">
+        <div style="font-size:1.04em; font-weight:700; color:#fff; margin-bottom:0.2em;">Reálné škody klientů</div>
+        <div class="carousel-arrows">
+          <button class="carousel-arrow prev">&#8592;</button>
           <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-arrow next">&#8594;</button>
         </div>
+        <div class="skoda-karta" id="skoda-karta"></div>
       </div>
-      <!-- Pravý sloupec: text a CTA -->
-      <div class="hero-right">
-        <div class="popis-box">
-          <h2>Víc než jen smlouva.<br>Jistota, že vás v tom nenechám.</h2>
-          <ul class="benefity-list">
-            <li><span class="benefit-ico">💬</span>Individuální lidský přístup</li>
-            <li><span class="benefit-ico">⚡</span>Rychlé vyřízení pojistných událostí</li>
-            <li><span class="benefit-ico">🔒</span>Diskrétnost a ochrana soukromí (GDPR)</li>
-            <li><span class="benefit-ico">🤝</span>Konkrétní příběhy, žádná anonymita</li>
-          </ul>
-          <p class="tip">
-            <strong>Všechny příběhy jsou anonymizovány s ohledem na GDPR.</strong>
-          </p>
-          <div class="cta-row">
-            <button class="cta-btn" onclick="window.location.href='kontakt.html'">Chci poradit s pojištěním</button>
-            <span style="font-size:1.07em; color:#827235;">nebo volejte <b>733 782 290</b></span>
-          </div>
-          <p style="margin-top:1em; color:#8b7d42; font-size:0.99em;">Nezávazná konzultace zdarma. Pomohu vám i při řešení pojistné události.</p>
+      <div class="benefity-box">
+        <h2>Víc než jen smlouva. Jistota, že vás v tom nenechám.</h2>
+        <ul class="benefity-list">
+          <li><span class="benefit-ico">💬</span> Individuální lidský přístup</li>
+          <li><span class="benefit-ico">⚡</span> Rychlé vyřízení pojistných událostí</li>
+          <li><span class="benefit-ico">🔒</span> Diskrétnost a ochrana soukromí (GDPR)</li>
+          <li><span class="benefit-ico">🤝</span> Konkrétní příběhy, žádná anonymita</li>
+        </ul>
+        <div style="color:#ffde85; font-size:1em; font-style:italic; margin-top:0.4em;">
+          Všechny příběhy jsou anonymizovány s ohledem na GDPR.
         </div>
+        <button class="cta-btn" onclick="window.location.href='kontakt.html'">Chci poradit s pojištěním</button>
+        <div class="cta-row">nebo volejte <b>733 782 290</b></div>
       </div>
-    </div>
-    <!-- DŮVĚRA BAR -->
-    <div class="duvera-bar">
-      <div class="duvera-item"><span class="duvera-ico">🌟</span> 15+ let zkušeností</div>
-      <div class="duvera-item"><span class="duvera-ico">👥</span> 900+ spokojených klientů</div>
-      <div class="duvera-item"><span class="duvera-ico">⚡</span> Průměrné vyřízení: <b>48 hodin</b></div>
     </div>
   </div>
   <footer>
@@ -476,11 +356,9 @@ const skody = [
     emotivum: "Škoda na zařízení byla proplacena v plné výši."
   }
 ];
-
 let idx = 0;
 const karta = document.getElementById("skoda-karta");
 const dotsWrap = document.getElementById("carousel-dots");
-
 function zobrazitSkodu(i) {
   const s = skody[i];
   karta.innerHTML = `
@@ -488,7 +366,7 @@ function zobrazitSkodu(i) {
     <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${s.pricina}</div>
     <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${s.castka}</b></div>
     <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${s.vyrizeni}</div>
-    <div style="margin-top:0.5em; color:#af4876; font-weight:bold;">${s.emotivum ?? ""}</div>
+    <div class="skoda-emotivum">${s.emotivum ?? ""}</div>
   `;
   Array.from(dotsWrap.children).forEach((dot, j) => {
     dot.classList.toggle('active', j === i);
@@ -503,16 +381,5 @@ function vytvorTecky() {
     dotsWrap.appendChild(span);
   });
 }
-document.querySelector(".carousel-arrow.prev").onclick = function() {
-  idx = (idx - 1 + skody.length) % skody.length;
-  zobrazitSkodu(idx);
-};
-document.querySelector(".carousel-arrow.next").onclick = function() {
-  idx = (idx + 1) % skody.length;
-  zobrazitSkodu(idx);
-};
-vytvorTecky();
-zobrazitSkodu(idx);
-</script>
-</body>
-</html>
+document.querySelector(".
+ </script>
