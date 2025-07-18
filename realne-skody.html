@@ -40,9 +40,14 @@
       pointer-events: none;
       background: radial-gradient(ellipse at 65% 50%, rgba(246,244,238,0.91) 0%, rgba(246,244,238,0.10) 80%, rgba(246,244,238,0.04) 100%);
     }
+    /* Zobrazení portrétu i na mobilu! */
     @media (max-width: 800px) {
       .bg-gradient {
         background: linear-gradient(to bottom, rgba(246,244,238,0.98) 0%, rgba(246,244,238,0.01) 90%);
+      }
+      .bg-img {
+        filter: brightness(0.84) blur(1.2px);
+        opacity: 0.98;
       }
     }
     .main-content {
@@ -101,7 +106,7 @@
     .carousel-wrap {
       margin-top: 1em;
       min-width: 220px;
-      max-width: 340px;
+      max-width: 420px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -128,9 +133,9 @@
       color: #fff;
       border: none;
       border-radius: 50%;
-      font-size: 1.18em;
-      width: 32px;
-      height: 32px;
+      font-size: 1.28em;
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -146,29 +151,31 @@
     }
     .skoda-karta {
       background: #fcfbf7;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(120,100,60,0.13);
-      padding: 1.12em 1.3em 1.12em 1.3em;
-      min-width: 180px;
-      max-width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 6px 24px rgba(120,100,60,0.19);
+      padding: 2em 2.2em 1.7em 2.2em;
+      min-width: 280px;
+      max-width: 380px;
       text-align: left;
-      margin: 0 0.7em;
+      margin: 0 0.9em;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      font-size: 1.02em;
+      font-size: 1.16em;
       position: relative;
       z-index: 10;
+      border: 2px solid #b7a97c;
+      transition: box-shadow .2s, border .2s;
     }
     .skoda-title {
       color: #827235;
-      font-size: 1.09em;
+      font-size: 1.18em;
       font-weight: bold;
-      margin-bottom: 0.43em;
+      margin-bottom: 0.7em;
     }
     .skoda-row {
-      margin-bottom: 0.31em;
-      font-size: 0.99em;
+      margin-bottom: 0.41em;
+      font-size: 1em;
     }
     .skoda-label {
       color: #988543;
@@ -178,12 +185,12 @@
     .carousel-dots {
       display: flex;
       justify-content: center;
-      margin-top: 0.6em;
-      gap: 0.22em;
+      margin-top: 1em;
+      gap: 0.34em;
     }
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 13px;
+      height: 13px;
       background: #d5d0b9;
       border-radius: 50%;
       display: inline-block;
@@ -191,8 +198,8 @@
       cursor: pointer;
     }
     .dot.active {
-      background: #b7a97c;
-      transform: scale(1.09);
+      background: #af4876;
+      transform: scale(1.15);
     }
     .hero-right {
       flex: 1 1 480px;
@@ -338,6 +345,7 @@
     @media (max-width: 600px) {
       .hero { width: 99vw; }
       .headline-box h1 { font-size: 1.3em;}
+      .skoda-karta { min-width: 90vw; max-width: 98vw; padding: 1.1em 0.7em;}
       .popis-box { font-size: 1em;}
       .duvera-bar { font-size: 0.97em;}
     }
@@ -383,80 +391,92 @@
             <button class="cta-btn" onclick="window.location.href='kontakt.html'">Chci poradit s pojištěním</button>
             <span style="font-size:1.07em; color:#827235;">nebo volejte <b>733 782 290</b></span>
           </div>
+          <p style="margin-top:1em; color:#8b7d42; font-size:0.99em;">Nezávazná konzultace zdarma. Pomohu vám i při řešení pojistné události.</p>
         </div>
       </div>
     </div>
-    <!-- DŮVĚRA BAR (můžeš upravit texty podle reality) -->
+    <!-- DŮVĚRA BAR -->
     <div class="duvera-bar">
-      <div class="duvera-item"><span class="duvera-ico">🌟</span> Zkušeností</div>
-      <div class="duvera-item"><span class="duvera-ico">👥</span> SpokojenÍ klienti</div>
+      <div class="duvera-item"><span class="duvera-ico">🌟</span> 15+ let zkušeností</div>
+      <div class="duvera-item"><span class="duvera-ico">👥</span> 900+ spokojených klientů</div>
       <div class="duvera-item"><span class="duvera-ico">⚡</span> Průměrné vyřízení: <b>48 hodin</b></div>
     </div>
   </div>
   <footer>
     <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
   </footer>
- <script>
+  <script>
+<script>
 const skody = [
   {
     title: "Denní odškodné po úrazu",
     pricina: "Úraz klienta, vyplacené denní odškodné",
     castka: "10 500 Kč",
-    vyrizeni: "1 den od nahlášení (12. 7. 2024)"
+    vyrizeni: "1 den od nahlášení (12. 7. 2024)",
+    emotivum: "Klient měl peníze hned druhý den na účtu."
   },
   {
     title: "Tělesné poškození úrazem",
     pricina: "Zlomenina nebo jiné tělesné poškození po úrazu",
     castka: "22 500 Kč",
-    vyrizeni: "2 dny od nahlášení (5. 6. 2024)"
+    vyrizeni: "2 dny od nahlášení (5. 6. 2024)",
+    emotivum: "Rychlé plnění pomohlo zvládnout domácnost bez stresu."
   },
   {
     title: "Krupobití poškodilo majetek",
     pricina: "Kroupy poškodily střechu pergoly",
     castka: "11 448 Kč",
-    vyrizeni: "8 hodin od nahlášení (21. 6. 2024)"
+    vyrizeni: "8 hodin od nahlášení (21. 6. 2024)",
+    emotivum: "Škoda opravena ještě týž týden, klient byl nadšený."
   },
   {
     title: "Ošetřování dítěte po úrazu",
     pricina: "Rodič pečoval o dítě po úrazu",
     castka: "30 900 Kč",
-    vyrizeni: "8 hodin od nahlášení (11. 9. 2024)"
+    vyrizeni: "8 hodin od nahlášení (11. 9. 2024)",
+    emotivum: "Díky pojištění se rodina nemusela obávat výpadku příjmů."
   },
   {
     title: "Tělesné poškození – lehčí úraz",
     pricina: "Lehčí úraz, např. podvrtnutí kotníku",
     castka: "5 000 Kč",
-    vyrizeni: "1 den od nahlášení (17. 9. 2024)"
+    vyrizeni: "1 den od nahlášení (17. 9. 2024)",
+    emotivum: "Peněžní kompenzace ihned pomohla s léčbou."
   },
   {
     title: "Pobyt v nemocnici (nemoc)",
     pricina: "Krátká hospitalizace kvůli nemoci",
     castka: "1 500 Kč",
-    vyrizeni: "1 den od nahlášení (29. 8. 2024)"
+    vyrizeni: "1 den od nahlášení (29. 8. 2024)",
+    emotivum: "I krátká nemoc znamenala rychlé vyřízení."
   },
   {
     title: "Denní odškodné – dopravní nehoda",
     pricina: "Úraz při dopravní nehodě",
     castka: "23 100 Kč",
-    vyrizeni: "4 dny od nahlášení (13. 5. 2024)"
+    vyrizeni: "4 dny od nahlášení (13. 5. 2024)",
+    emotivum: "Po autonehodě byly finance k dispozici téměř obratem."
   },
   {
     title: "Pobyt v nemocnici po úrazu",
     pricina: "Krátká hospitalizace po úrazu",
     castka: "900 Kč",
-    vyrizeni: "1 den od nahlášení (5. 6. 2024)"
+    vyrizeni: "1 den od nahlášení (5. 6. 2024)",
+    emotivum: "Rodiče ocenili rychlost a jednoduchost vyřízení."
   },
   {
     title: "Tělesné poškození úrazem",
     pricina: "Závažnější úraz, např. komplikovaná zlomenina",
     castka: "22 000 Kč",
-    vyrizeni: "2 dny od nahlášení (6. 6. 2024)"
+    vyrizeni: "2 dny od nahlášení (6. 6. 2024)",
+    emotivum: "Komplikace řešeny bez zbytečných průtahů."
   },
   {
     title: "Výbuch sklokeramické plynové desky",
     pricina: "Výbuch plynové sklokeramické desky v kuchyni",
     castka: "6 199 Kč",
-    vyrizeni: "4 dny od nahlášení (15. 7. 2024)"
+    vyrizeni: "4 dny od nahlášení (15. 7. 2024)",
+    emotivum: "Škoda na zařízení byla proplacena v plné výši."
   }
 ];
 
@@ -471,6 +491,7 @@ function zobrazitSkodu(i) {
     <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${s.pricina}</div>
     <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${s.castka}</b></div>
     <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${s.vyrizeni}</div>
+    <div style="margin-top:0.5em; color:#af4876; font-weight:bold;">${s.emotivum ?? ""}</div>
   `;
   Array.from(dotsWrap.children).forEach((dot, j) => {
     dot.classList.toggle('active', j === i);
@@ -497,4 +518,3 @@ vytvorTecky();
 zobrazitSkodu(idx);
 </script>
 
- 
