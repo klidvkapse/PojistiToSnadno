@@ -40,7 +40,6 @@
       pointer-events: none;
       background: radial-gradient(ellipse at 65% 50%, rgba(246,244,238,0.91) 0%, rgba(246,244,238,0.10) 80%, rgba(246,244,238,0.04) 100%);
     }
-    /* Zobrazení portrétu i na mobilu! */
     @media (max-width: 800px) {
       .bg-gradient {
         background: linear-gradient(to bottom, rgba(246,244,238,0.98) 0%, rgba(246,244,238,0.01) 90%);
@@ -333,7 +332,6 @@
       margin-top: auto;
       width: 100vw;
     }
-    /* Mobilní rozvržení */
     @media (max-width: 900px) {
       .hero { flex-direction: column; align-items: center; padding-top: 1.5em; gap: 0;}
       .hero-left, .hero-right { margin: 0; max-width: 97vw;}
@@ -402,12 +400,10 @@
       <div class="duvera-item"><span class="duvera-ico">⚡</span> Průměrné vyřízení: <b>48 hodin</b></div>
     </div>
   </div>
-</body>
   <footer>
     <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
   </footer>
   <script>
-<script>
 const skody = [
   {
     title: "Denní odškodné po úrazu",
@@ -518,4 +514,5 @@ document.querySelector(".carousel-arrow.next").onclick = function() {
 vytvorTecky();
 zobrazitSkodu(idx);
 </script>
-
+</body>
+</html>
