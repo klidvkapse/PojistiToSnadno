@@ -381,5 +381,16 @@ function vytvorTecky() {
     dotsWrap.appendChild(span);
   });
 }
-document.querySelector(".
- </script>
+document.querySelector(".carousel-arrow.prev").onclick = function() {
+  idx = (idx - 1 + skody.length) % skody.length;
+  zobrazitSkodu(idx);
+};
+document.querySelector(".carousel-arrow.next").onclick = function() {
+  idx = (idx + 1) % skody.length;
+  zobrazitSkodu(idx);
+};
+vytvorTecky();
+zobrazitSkodu(idx);
+  </script>
+</body>
+</html>
