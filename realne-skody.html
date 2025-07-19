@@ -66,7 +66,7 @@
     .karty-skody-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
-      gap: 6em 5em; /* ještě větší mezery mezi kartami */
+      gap: 6em 5em;
       justify-items: center;
       max-width: 1520px;
       margin: 0 auto;
@@ -85,7 +85,7 @@
       position: relative;
       width: 100%;
       height: 100%;
-      transition: transform 0.9s cubic-bezier(.17,.67,.54,.88) 0.35s; /* pomalejší, s prodlevou */
+      transition: transform 0.9s cubic-bezier(.17,.67,.54,.88) 0.35s;
       transform-style: preserve-3d;
     }
     .skoda-karta-flip:hover .skoda-karta-inner,
@@ -134,13 +134,13 @@
       margin-right: 0.2em;
     }
 
-    /* CTA na konci stránky, zarovnané vpravo, NENÍ fixed! */
+    /* CTA pod gridem, zarovnaná vpravo a těsně pod kartami */
     .cta-right-static {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      margin: 2.8em 0 1.4em 0;
+      margin: 1.7em 0 0.6em 0; /* menší mezera než dřív */
       z-index: 10;
       position: relative;
     }
@@ -186,23 +186,69 @@
       70% { box-shadow: 0 0 0 15px rgba(183,169,124,0);}
       100% { box-shadow: 0 0 0 0 rgba(183,169,124,0);}
     }
-    /* CTA pod gridem – pro mobil/tablet */
-    .cta-mobile {
-      width: 100%;
+
+    /* Mobilní carousel + CTA pod ním */
+    .carousel-wrap {
       display: none;
+      width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+    }
+    .carousel-card {
+      width: 92vw;
+      min-width: 92vw;
+      max-width: 96vw;
+      margin: 0.4em auto 0.7em auto;
+      min-height: 260px;
+      perspective: 1100px;
+      cursor: pointer;
+    }
+    .carousel-controls {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5em auto 0.4em auto;
+      max-width: 420px;
+    }
+    .carousel-arrow {
+      font-size: 2.2em;
+      background: transparent;
+      border: none;
+      color: #b7a97c;
+      cursor: pointer;
+      transition: color 0.13s;
+      user-select: none;
+      padding: 0.14em 0.32em;
+    }
+    .carousel-arrow:disabled {
+      color: #ccc;
+      opacity: 0.45;
+      cursor: default;
+    }
+    .carousel-idx {
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+    .carousel-cta-mobile {
+      margin: 1.3em 0 0.5em 0;
+      width: 100%;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 2.2em 0 0 0;
-      z-index: 10;
-      position: relative;
     }
-    .cta-mobile .cta-txt {
+    .carousel-cta-mobile .cta-txt {
       text-align: center;
-      margin-bottom: 0.25em;
+      margin-bottom: 0.23em;
       border-radius: 13px 13px 0 0;
       padding: 0.8em 1.1em 0.7em 1.1em;
     }
+
     .footer {
       background: #e2dbc9;
       color: #474336;
@@ -217,29 +263,19 @@
       z-index: 20;
       position: relative;
     }
-    /* RESPONSIVE: Mobile Carousel místo gridu */
+    /* RESPONSIVE: Mobil = carousel */
     @media (max-width: 900px) {
       .realne-skody-hlavicka { font-size: 1.2em;}
+      .blok-skody-obal { margin-top: 0.5em;}
       .karty-skody-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        max-width: 100vw;
-        padding: 0;
-      }
-      .skoda-karta-flip {
-        min-width: 90vw;
-        max-width: 95vw;
-        margin: 0.7em 0;
+        display: none !important;
       }
       .cta-right-static {
         display: none !important;
       }
-      .cta-mobile {
+      .carousel-wrap {
         display: flex;
       }
-      .blok-skody-obal { margin-top: 0.5em;}
     }
   </style>
 </head>
@@ -249,19 +285,7 @@
   </nav>
   <div class="blok-skody-obal">
     <div class="realne-skody-hlavicka">Reálné škody klientů</div>
-    <div class="karty-skody-grid" id="skodyGrid">
-      <!-- Karty budou vloženy JS -->
-    </div>
-    <!-- CTA pod gridem pro mobil -->
-    <div class="cta-mobile">
-      <div class="cta-txt">
-        Chraňte, na čem vám záleží. Sjednejte si pojištění ještě dnes!
-      </div>
-      <button class="cta-btn" onclick="window.location.href='kontakt.html'">
-        Chci poradit s pojištěním
-      </button>
-    </div>
-    <!-- CTA statické vpravo dole na konci gridu (desktop) -->
+    <div class="karty-skody-grid" id="skodyGrid"></div>
     <div class="cta-right-static">
       <div class="cta-txt">
         Chraňte, na čem vám záleží. Sjednejte si pojištění ještě dnes!
@@ -269,6 +293,24 @@
       <button class="cta-btn" onclick="window.location.href='kontakt.html'">
         Chci poradit s pojištěním
       </button>
+    </div>
+
+    <!-- Mobilní carousel -->
+    <div class="carousel-wrap" id="carouselWrap" style="display:none;">
+      <div class="carousel-card" id="carouselCard"></div>
+      <div class="carousel-controls">
+        <button class="carousel-arrow" id="carouselPrev">&#8592;</button>
+        <div class="carousel-idx" id="carouselIdx"></div>
+        <button class="carousel-arrow" id="carouselNext">&#8594;</button>
+      </div>
+      <div class="carousel-cta-mobile">
+        <div class="cta-txt">
+          Chraňte, na čem vám záleží. Sjednejte si pojištění ještě dnes!
+        </div>
+        <button class="cta-btn" onclick="window.location.href='kontakt.html'">
+          Chci poradit s pojištěním
+        </button>
+      </div>
     </div>
   </div>
   <footer class="footer">
@@ -349,7 +391,7 @@
       }
     ];
 
-    // Vložení karet do gridu
+    // Desktop grid:
     const grid = document.getElementById("skodyGrid");
     skody.forEach(s => {
       const el = document.createElement('div');
@@ -368,6 +410,48 @@
       `;
       grid.appendChild(el);
     });
+
+    // Mobilní carousel:
+    function showCarousel(idx) {
+      const wrap = document.getElementById("carouselWrap");
+      const card = document.getElementById("carouselCard");
+      const idxEl = document.getElementById("carouselIdx");
+      card.innerHTML = `
+        <div class="skoda-karta-flip" tabindex="0">
+          <div class="skoda-karta-inner">
+            <div class="skoda-karta-front">
+              <div class="skoda-title">${skody[idx].title}</div>
+              <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${skody[idx].pricina}</div>
+              <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${skody[idx].castka}</b></div>
+              <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${skody[idx].vyrizeni}</div>
+            </div>
+            <div class="skoda-karta-back">${skody[idx].back}</div>
+          </div>
+        </div>
+      `;
+      idxEl.textContent = `${idx + 1} / ${skody.length}`;
+      document.getElementById("carouselPrev").disabled = idx === 0;
+      document.getElementById("carouselNext").disabled = idx === skody.length - 1;
+    }
+    let curr = 0;
+    if (window.innerWidth <= 900) {
+      document.getElementById("carouselWrap").style.display = "flex";
+      showCarousel(curr);
+    }
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 900) {
+        document.getElementById("carouselWrap").style.display = "flex";
+        showCarousel(curr);
+      } else {
+        document.getElementById("carouselWrap").style.display = "none";
+      }
+    });
+    document.getElementById("carouselPrev").onclick = () => {
+      if (curr > 0) { curr--; showCarousel(curr);}
+    };
+    document.getElementById("carouselNext").onclick = () => {
+      if (curr < skody.length - 1) { curr++; showCarousel(curr);}
+    };
   </script>
 </body>
 </html>
