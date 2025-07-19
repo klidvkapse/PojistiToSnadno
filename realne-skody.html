@@ -62,7 +62,6 @@
       position: relative;
       line-height: 1.11;
     }
-    /* DESKTOP GRID */
     .karty-skody-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
@@ -134,15 +133,17 @@
       margin-right: 0.2em;
     }
 
-    /* CTA pod gridem, zarovnaná vpravo a těsně pod kartami */
+    /* CTA box vpravo dole, zarovnaný k gridu */
     .cta-right-static {
       width: 100%;
+      max-width: 1520px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      margin: 1.7em 0 0.6em 0; /* menší mezera než dřív */
+      margin: 1.4em auto 0.8em auto;
       z-index: 10;
       position: relative;
+      padding-right: 2vw;
     }
     .cta-txt {
       background: rgba(50,50,50,0.23);
@@ -174,6 +175,7 @@
       margin-bottom: 0;
       animation: pulse 2.4s infinite;
       transition: background 0.18s, box-shadow 0.14s, transform 0.19s;
+      align-self: flex-end;
     }
     .cta-btn:hover, .cta-btn:focus {
       background: #af4876;
@@ -197,13 +199,21 @@
       align-items: center;
     }
     .carousel-card {
-      width: 92vw;
-      min-width: 92vw;
-      max-width: 96vw;
+      width: 80vw;
+      min-width: 80vw;
+      max-width: 85vw;
       margin: 0.4em auto 0.7em auto;
-      min-height: 260px;
-      perspective: 1100px;
-      cursor: pointer;
+      min-height: 160px;
+      perspective: none;
+      cursor: default;
+    }
+    .carousel-karta-inner {
+      position: relative;
+      width: 100%;
+      min-height: 160px;
+      /* ŽÁDNÝ efekt otáčení v mobilu! */
+      transform: none !important;
+      transition: none !important;
     }
     .carousel-controls {
       display: flex;
@@ -247,8 +257,14 @@
       margin-bottom: 0.23em;
       border-radius: 13px 13px 0 0;
       padding: 0.8em 1.1em 0.7em 1.1em;
+      max-width: 340px;
+      font-size: 0.99em;
     }
-
+    .carousel-cta-mobile .cta-btn {
+      font-size: 1.08em;
+      padding: 0.85em 1.9em;
+      margin-top: 0.3em;
+    }
     .footer {
       background: #e2dbc9;
       color: #474336;
@@ -263,18 +279,29 @@
       z-index: 20;
       position: relative;
     }
-    /* RESPONSIVE: Mobil = carousel */
+    /* RESPONSIVE: Mobil = carousel, portret.png */
     @media (max-width: 900px) {
+      html, body {
+        background: #181818 url('portret.png') no-repeat center center !important;
+        background-size: cover !important;
+      }
       .realne-skody-hlavicka { font-size: 1.2em;}
       .blok-skody-obal { margin-top: 0.5em;}
-      .karty-skody-grid {
-        display: none !important;
-      }
+      .karty-skody-grid,
       .cta-right-static {
         display: none !important;
       }
       .carousel-wrap {
-        display: flex;
+        display: flex !important;
+      }
+      .carousel-card {
+        width: 88vw; min-width: 88vw; max-width: 92vw;
+        margin: 0.2em auto 0.6em auto;
+        min-height: 135px;
+      }
+      .carousel-karta-inner {
+        min-height: 135px;
+        font-size: 0.95em;
       }
     }
   </style>
@@ -297,7 +324,9 @@
 
     <!-- Mobilní carousel -->
     <div class="carousel-wrap" id="carouselWrap" style="display:none;">
-      <div class="carousel-card" id="carouselCard"></div>
+      <div class="carousel-card">
+        <div class="carousel-karta-inner" id="carouselCard"></div>
+      </div>
       <div class="carousel-controls">
         <button class="carousel-arrow" id="carouselPrev">&#8592;</button>
         <div class="carousel-idx" id="carouselIdx"></div>
@@ -391,7 +420,7 @@
       }
     ];
 
-    // Desktop grid:
+    // Desktop grid
     const grid = document.getElementById("skodyGrid");
     skody.forEach(s => {
       const el = document.createElement('div');
@@ -413,39 +442,35 @@
 
     // Mobilní carousel:
     function showCarousel(idx) {
-      const wrap = document.getElementById("carouselWrap");
       const card = document.getElementById("carouselCard");
-      const idxEl = document.getElementById("carouselIdx");
       card.innerHTML = `
-        <div class="skoda-karta-flip" tabindex="0">
-          <div class="skoda-karta-inner">
-            <div class="skoda-karta-front">
-              <div class="skoda-title">${skody[idx].title}</div>
-              <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${skody[idx].pricina}</div>
-              <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${skody[idx].castka}</b></div>
-              <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${skody[idx].vyrizeni}</div>
-            </div>
-            <div class="skoda-karta-back">${skody[idx].back}</div>
+        <div class="carousel-karta-inner">
+          <div class="skoda-karta-front">
+            <div class="skoda-title">${skody[idx].title}</div>
+            <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${skody[idx].pricina}</div>
+            <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${skody[idx].castka}</b></div>
+            <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${skody[idx].vyrizeni}</div>
           </div>
         </div>
       `;
-      idxEl.textContent = `${idx + 1} / ${skody.length}`;
+      document.getElementById("carouselIdx").textContent = `${idx + 1} / ${skody.length}`;
       document.getElementById("carouselPrev").disabled = idx === 0;
       document.getElementById("carouselNext").disabled = idx === skody.length - 1;
     }
     let curr = 0;
-    if (window.innerWidth <= 900) {
+    function setupMobile() {
       document.getElementById("carouselWrap").style.display = "flex";
       showCarousel(curr);
     }
-    window.addEventListener('resize', () => {
-      if (window.innerWidth <= 900) {
-        document.getElementById("carouselWrap").style.display = "flex";
-        showCarousel(curr);
-      } else {
-        document.getElementById("carouselWrap").style.display = "none";
-      }
-    });
+    function setupDesktop() {
+      document.getElementById("carouselWrap").style.display = "none";
+    }
+    function handleResize() {
+      if (window.innerWidth <= 900) setupMobile();
+      else setupDesktop();
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
     document.getElementById("carouselPrev").onclick = () => {
       if (curr > 0) { curr--; showCarousel(curr);}
     };
