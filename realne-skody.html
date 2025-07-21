@@ -192,202 +192,144 @@
       100% { box-shadow: 0 0 0 0 rgba(183,169,124,0);}
     }
     /* Mobilní carousel + CTA pod ním */
-    .carousel-wrap {
-      display: none;
-      width: 100vw;
-      overflow-x: hidden;
-      position: relative;
-      flex-direction: column;
-      align-items: center;
-    }
-    .carousel-card {
-      width: 80vw;
-      min-width: 80vw;
-      max-width: 85vw;
-      margin: 0.3em auto 0.7em auto;
-      min-height: 120px;
-      perspective: none;
-      cursor: default;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .carousel-karta-inner {
-      position: relative;
-      width: 100%;
-      min-height: 120px;
-      transform: none !important;
-      transition: none !important;
-    }
-    .carousel-controls {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0.5em auto 0.4em auto;
-      max-width: 420px;
-    }
-    .carousel-arrow {
-      font-size: 2.2em;
-      background: transparent;
-      border: none;
-      color: #b7a97c;
-      cursor: pointer;
-      transition: color 0.13s;
-      user-select: none;
-      padding: 0.14em 0.32em;
-    }
-    .carousel-arrow:disabled {
-      color: #ccc;
-      opacity: 0.45;
-      cursor: default;
-    }
-    .carousel-idx {
-      color: #fff;
-      font-size: 1em;
-      font-weight: bold;
-      letter-spacing: 0.04em;
-    }
-    .carousel-cta-mobile {
-      margin: 1.1em 0 0.4em 0;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .carousel-cta-mobile .cta-txt {
-      text-align: center;
-      margin-bottom: 0.23em;
-      border-radius: 13px 13px 0 0;
-      padding: 0.8em 1.1em 0.7em 1.1em;
-      max-width: 340px;
-      font-size: 0.99em;
-    }
-    .carousel-cta-mobile .cta-btn {
-      font-size: 1.08em;
-      padding: 0.85em 1.9em;
-      margin-top: 0.3em;
-    }
-    .footer {
-      background: #e2dbc9;
-      color: #474336;
-      text-align: center;
-      font-size: 1em;
-      padding: 1.1em 0 0.9em 0;
-      border-top: 1px solid #ece6d4;
-      letter-spacing: 0.01em;
-      min-height: 36px;
-      margin-top: 0;
-      flex-shrink: 0;
-      z-index: 20;
-      position: relative;
-    }
-    /* RESPONSIVE: Mobil = carousel, portret.png */
    @media (max-width: 900px) {
-  html, body {
-    background: #181818 url('portret.png') no-repeat center center !important;
-    background-size: cover !important;
-    height: 100%;
-  }
-  body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100vh;
-  }
-  .blok-skody-obal {
-    margin-top: 0.5em;
-    flex: 1 0 auto;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .realne-skody-hlavicka { font-size: 1.18em; }
-  .karty-skody-grid,
-  .cta-right-static {
-    display: none !important;
-  }
-  .carousel-wrap {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    flex: 1 0 auto;
-    justify-content: center;
-  }
-  .carousel-card {
-    width: 77vw !important;
-    min-width: 77vw !important;
-    max-width: 80vw !important;
-    margin: 0.1em auto 0.2em auto !important;
-    min-height: 80px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .carousel-karta-inner {
-    min-height: 80px !important;
-    font-size: 0.87em !important;
-  }
-  .carousel-controls {
-    margin: 0.12em auto 0.18em auto;
-    width: 100vw;
-    max-width: 350px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .carousel-arrow {
-    font-size: 2.95em !important;
-    color: #af4876 !important;
-    text-shadow: 0 2px 16px rgba(175,72,118,0.16);
-    transition: color 0.14s;
-    padding: 0.1em 0.32em !important;
-  }
-  .carousel-arrow:disabled {
-    color: #f0d3e0 !important;
-    opacity: 0.38 !important;
-  }
-  .carousel-idx {
-    font-size: 1.1em;
-    color: #af4876;
-    font-weight: bold;
-    letter-spacing: 0.06em;
-  }
-  .carousel-cta-mobile {
-    margin: 0.7em 0 0.3em 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .carousel-cta-mobile .cta-btn {
-    margin-left: 0;
-    align-self: center;
-    width: auto;
-    margin-right: 0;
-    justify-content: center;
-    font-size: 1em;
-    padding: 0.6em 1.5em;
-  }
-  .carousel-cta-mobile .cta-txt {
-    font-size: 0.93em;
-    padding: 0.5em 0.9em 0.5em 0.9em;
-    margin-bottom: 0.13em;
-    max-width: 92vw;
-  }
-  .footer {
-    margin-top: auto !important;
-    padding: 0.65em 0 0.35em 0;
-    min-height: 23px;
-    font-size: 0.95em;
-    width: 100vw;
-  }
+      html, body {
+        background: #181818 url('portret.png') no-repeat center center !important;
+        background-size: cover !important;
+        min-height: 100vh;
+        height: 100%;
+      }
+      body {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100vh;
+      }
+      .blok-skody-obal {
+        margin-top: 0.7em;
+        flex: 1 0 auto;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .realne-skody-hlavicka { font-size: 1.18em; }
+      .karty-skody-grid,
+      .cta-right-static {
+        display: none !important;
+      }
+      .carousel-wrap {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        flex: 1 0 auto;
+        justify-content: center;
+      }
+      .carousel-card {
+        width: 78vw !important;
+        min-width: 78vw !important;
+        max-width: 82vw !important;
+        margin: 0.1em auto 0.2em auto !important;
+        min-height: 85px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .carousel-karta-inner {
+        min-height: 85px !important;
+        font-size: 0.88em !important;
+      }
+      .carousel-controls {
+        margin: 0.15em auto 0.18em auto;
+        width: 90vw;
+        max-width: 350px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .carousel-arrow {
+        font-size: 3em !important;
+        color: #af4876 !important;
+        background: #232323 !important;
+        border-radius: 12px;
+        border: none;
+        box-shadow: 0 2px 20px rgba(175,72,118,0.19);
+        transition: color 0.14s, background 0.13s;
+        padding: 0.06em 0.32em !important;
+        outline: none;
+        min-width: 54px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .carousel-arrow:disabled {
+        color: #f0d3e0 !important;
+        background: #888 !important;
+        opacity: 0.38 !important;
+      }
+      .carousel-idx {
+        font-size: 1.08em;
+        color: #af4876;
+        font-weight: bold;
+        letter-spacing: 0.06em;
+      }
+      .carousel-cta-mobile {
+        margin: 0.7em 0 0.35em 0;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .carousel-cta-mobile .cta-btn {
+        margin-left: 0;
+        align-self: center;
+        width: auto;
+        margin-right: 0;
+        justify-content: center;
+        font-size: 1em;
+        padding: 0.6em 1.5em;
+        margin-top: 0.33em;
+        margin-bottom: 0.35em;
+        background: #b7a97c;
+        color: #fff;
+        border: none;
+        border-radius: 36px;
+        font-weight: bold;
+        letter-spacing: 0.01em;
+        box-shadow: 0 8px 40px rgba(80,60,30,0.13);
+        transition: background 0.18s, box-shadow 0.14s, transform 0.19s;
+      }
+      .carousel-cta-mobile .cta-btn:active,
+      .carousel-cta-mobile .cta-btn:focus,
+      .carousel-cta-mobile .cta-btn:hover {
+        background: #af4876 !important;
+        color: #fff !important;
+        box-shadow: 0 12px 50px rgba(120,100,60,0.22);
+        transform: scale(1.07);
+      }
+      .carousel-cta-mobile .cta-txt {
+        font-size: 0.93em;
+        padding: 0.5em 0.9em 0.5em 0.9em;
+        margin-bottom: 0.13em;
+        max-width: 92vw;
+        text-align: center;
+      }
+      .footer {
+        margin-top: auto !important;
+        padding: 0.6em 0 0.35em 0;
+        min-height: 23px;
+        font-size: 0.95em;
+        width: 100vw;
+        text-align: center;
+        position: static !important;
+        bottom: 0;
+      }
 }
 
   </style>
