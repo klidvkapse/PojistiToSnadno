@@ -61,12 +61,16 @@
       color: #3b3722;
     }
 
+    /* odstraněn bílý box pod carousel */
     .realne-skody-section {
       max-width: 700px;
       margin: 3.2em auto 0;
       position: relative; z-index: 4;
       width: 100%; flex: 1 0 auto;
       display: flex; flex-direction: column; align-items: center;
+      background: transparent;    /* <-- */
+      box-shadow: none;           /* <-- */
+      padding: 0;                 /* <-- */
     }
     .realne-skody-header h2 {
       margin: 0 0 1.2em;
@@ -121,7 +125,6 @@
       background: #b7a97c; transform: scale(1.13);
     }
 
-    /* CTA pod carousel, mobil i desktop */
     .cta-center {
       width: 100%; display: flex;
       justify-content: center; margin: 2em 0;
@@ -165,15 +168,12 @@
     <div class="realne-skody-header">
       <h2>Reálné škody klientů</h2>
     </div>
-
     <div class="realne-skody-carousel">
       <button class="carousel-arrow prev">&#8592;</button>
       <div class="skoda-karta" id="skoda-karta"></div>
       <button class="carousel-arrow next">&#8594;</button>
     </div>
-
     <div class="carousel-dots" id="carousel-dots"></div>
-
     <div class="cta-center">
       <button class="cta-btn" onclick="location.href='kontakt.html'">
         Chci poradit s pojištěním
@@ -187,11 +187,67 @@
 
   <script>
     const skody = [
-      { title: "Denní odškodné po úrazu", pricina: "Úraz klienta, vyplacené denní odškodné", castka: "10 500 Kč", vyrizeni: "1 den od nahlášení (12. 7. 2024)" },
-      { title: "Tělesné poškození úrazem", pricina: "Zlomenina..."},
-      /* ... další položky ... */
+       {
+    title: "Denní odškodné po úrazu",
+    pricina: "Úraz klienta, vyplacené denní odškodné",
+    castka: "10 500 Kč",
+    vyrizeni: "1 den od nahlášení (12. 7. 2024)"
+  },
+  {
+    title: "Tělesné poškození úrazem",
+    pricina: "Zlomenina nebo jiné tělesné poškození po úrazu",
+    castka: "22 500 Kč",
+    vyrizeni: "2 dny od nahlášení (5. 6. 2024)"
+  },
+  {
+    title: "Krupobití poškodilo majetek",
+    pricina: "Kroupy poškodily střechu pergoly",
+    castka: "11 448 Kč",
+    vyrizeni: "8 hodin od nahlášení (21. 6. 2024)"
+  },
+  {
+    title: "Ošetřování dítěte po úrazu",
+    pricina: "Rodič pečoval o dítě po úrazu",
+    castka: "30 900 Kč",
+    vyrizeni: "8 hodin od nahlášení (11. 9. 2024)"
+  },
+  {
+    title: "Tělesné poškození – lehčí úraz",
+    pricina: "Lehčí úraz, např. podvrtnutí kotníku",
+    castka: "5 000 Kč",
+    vyrizeni: "1 den od nahlášení (17. 9. 2024)"
+  },
+  {
+    title: "Pobyt v nemocnici (nemoc)",
+    pricina: "Krátká hospitalizace kvůli nemoci",
+    castka: "1 500 Kč",
+    vyrizeni: "1 den od nahlášení (29. 8. 2024)"
+  },
+  {
+    title: "Denní odškodné – dopravní nehoda",
+    pricina: "Úraz při dopravní nehodě",
+    castka: "23 100 Kč",
+    vyrizeni: "4 dny od nahlášení (13. 5. 2024)"
+  },
+  {
+    title: "Pobyt v nemocnici po úrazu",
+    pricina: "Krátká hospitalizace po úrazu",
+    castka: "900 Kč",
+    vyrizeni: "1 den od nahlášení (5. 6. 2024)"
+  },
+  {
+    title: "Tělesné poškození úrazem",
+    pricina: "Závažnější úraz, např. komplikovaná zlomenina",
+    castka: "22 000 Kč",
+    vyrizeni: "2 dny od nahlášení (6. 6. 2024)"
+  },
+  {
+    title: "Výbuch sklokeramické plynové desky",
+    pricina: "Výbuch plynové sklokeramické desky v kuchyni",
+    castka: "6 199 Kč",
+    vyrizeni: "4 dny od nahlášení (15. 7. 2024)"
+  }
     ];
-
     let idx = 0;
     const karta = document.getElementById("skoda-karta");
     const dotsWrap = document.getElementById("carousel-dots");
