@@ -4,496 +4,316 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Reálné škody klientů | PojistiToSnadno</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #f6f4ee;
       font-family: 'Raleway', Arial, sans-serif;
-      background: #181818 url('portret-bg-web.png') no-repeat center center;
-      background-size: cover;
       color: #474336;
       box-sizing: border-box;
     }
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      position: relative;
+    .bg-img-desktop {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover; object-position: center;
+      filter: brightness(0.78) blur(2.8px);
+      opacity: 0.97; z-index: 1;
+      pointer-events: none; user-select: none;
+      transition: all 0.5s;
+      display: block;
+    }
+    .bg-img-mobile { display: none; }
+    @media (max-width: 800px) {
+      .bg-img-desktop { display: none !important; }
+      .bg-img-mobile {
+        display: block !important;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        width: 100vw; height: 100vh;
+        object-fit: cover; object-position: center;
+        filter: brightness(0.78) blur(1.8px);
+        opacity: 0.98; z-index: 1;
+        pointer-events: none; user-select: none;
+        transition: all 0.5s;
+      }
     }
     .top-nav {
-      position: relative; z-index: 20;
-      display: flex; justify-content: flex-end; align-items: center;
-      gap: 1em; padding: 1.2em 2.1em 0.7em 0;
-      background: rgba(0,0,0,0.04);
+      position: relative; z-index: 10;
+      display: flex; justify-content: center; align-items: center;
+      gap: 1em; padding: 1.1em 0 0.7em 0;
+      background: rgba(255,255,255,0.06);
+      font-weight: bold;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
     .top-nav a {
       padding: 0.6em 1.4em; margin: 0 0.15em;
       border-radius: 22px; text-decoration: none;
       color: #474336; background: #e2dbc9;
       transition: background .2s;
-      font-size: 1.08em; font-weight: bold;
+      font-size: 1.08em;
     }
     .top-nav .active, .top-nav a:hover {
       background: #b7a97c;
       color: #3b3722;
     }
-    .blok-skody-obal {
-      margin-top: 1.4em;
-      margin-bottom: 1em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .realne-skody-section {
+      max-width: 700px;
+      margin: 3.2em auto 0 auto;
+      position: relative;
       z-index: 4;
-      position: relative;
-    }
-    .realne-skody-hlavicka {
-      margin-bottom: 1.1em;
-      text-align: center;
-      font-size: 2.6em;
-      color: #fff;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.19);
-      z-index: 3;
-      position: relative;
-      line-height: 1.11;
-    }
-    /* DESKTOP GRID */
-    .karty-skody-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6em 5em;
-      justify-items: center;
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 2vw 0 2vw;
-      position: relative;
-      z-index: 3;
-      transition: gap .3s;
-    }
-    .skoda-karta-flip {
       width: 100%;
-      min-width: 340px;
-      min-height: 180px;
-      perspective: 1100px;
-      cursor: pointer;
-    }
-    .skoda-karta-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.9s cubic-bezier(.17,.67,.54,.88) 0.35s;
-      transform-style: preserve-3d;
-    }
-    .skoda-karta-flip:hover .skoda-karta-inner,
-    .skoda-karta-flip:focus .skoda-karta-inner {
-      transform: rotateY(180deg);
-    }
-    .skoda-karta-front, .skoda-karta-back {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100%; min-height: 180px;
-      background: rgba(252,251,247,0.98);
-      border-radius: 22px;
-      box-shadow: 0 4px 24px rgba(120,100,60,0.15);
-      padding: 2.1em 1.8em 2.1em 1.8em;
+      flex: 1 0 auto;
+      min-height: 400px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      backface-visibility: hidden;
-      font-size: 1.13em;
-    }
-    .skoda-karta-back {
-      background: rgba(248,231,190,0.98);
-      color: #7b5e26;
-      transform: rotateY(180deg);
-      justify-content: center;
       align-items: center;
-      font-weight: bold;
-      font-size: 1.15em;
+    }
+    .realne-skody-header h2 {
+      margin: 0 0 1.2em 0;
+      color: #ffffff;
+      font-size: 1.32em;
+      font-weight: 800;
+      text-align: left;
+      padding-left: 0.2em;
       letter-spacing: 0.01em;
-      box-shadow: 0 4px 22px rgba(168,120,20,0.11);
-      text-align: center;
-      /* ZDE NOVÉ MOTIVAČNÍ VĚTY, VLOŽ DLE POTŘEBY */
+    }
+    .realne-skody-carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.3em;
+      width: 100%;
+    }
+    .carousel-arrow {
+      background: #b7a97c;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 2.0em;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 7px rgba(120,100,60,0.10);
+      transition: background 0.17s, transform 0.12s;
+      outline: none;
+      z-index: 2;
+    }
+    .carousel-arrow:hover, .carousel-arrow:focus {
+      background: #af4876;
+      transform: scale(1.11);
+      color: #fff;
+    }
+    .skoda-karta {
+      background: #fcfbf7;
+      border-radius: 22px;
+      box-shadow: 0 4px 24px rgba(120,100,60,0.13);
+      padding: 2em 2.5em 2em 2.5em;
+      min-width: 320px;
+      max-width: 370px;
+      text-align: left;
+      margin: 0 0.7em;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
     .skoda-title {
       color: #827235;
-      font-size: 1.12em;
+      font-size: 1.19em;
       font-weight: bold;
-      margin-bottom: 0.6em;
+      margin-bottom: 0.7em;
     }
     .skoda-row {
-      margin-bottom: 0.36em;
-      font-size: 1em;
+      margin-bottom: 0.5em;
+      font-size: 1.06em;
     }
     .skoda-label {
       color: #988543;
       font-weight: 600;
-      margin-right: 0.2em;
+      margin-right: 0.3em;
     }
-    /* CTA box zarovnaný k pravému okraji gridu */
-    .cta-right-static {
-      width: 100%;
-      max-width: 1140px;
-      margin: 0 auto;
+    .carousel-dots {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      z-index: 10;
-      position: relative;
-      padding-right: 0vw;
-      margin-top: -9em; /* posunout nahoru těsně pod grid */
-      margin-bottom: 7em;
+      justify-content: center;
+      margin-top: 1.2em;
+      gap: 0.38em;
+      z-index: 2;
     }
-    .cta-txt {
-      background: rgba(50,50,50,0.23);
-      color: #fff;
-      border-radius: 13px 13px 0 0;
-      padding: 0.92em 1.35em 0.7em 1.35em;
-      font-size: 1.09em;
-      margin-bottom: 0.2em;
-      text-align: right;
-      box-shadow: 0 6px 19px rgba(0,0,0,0.11);
-      font-style: italic;
-      letter-spacing: 0.01em;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.19);
-      max-width: 470px;
+    .dot {
+      width: 11px;
+      height: 11px;
+      background: #d5d0b9;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background 0.18s, transform 0.12s;
+      cursor: pointer;
     }
-    .cta-btn {
+    .dot.active {
       background: #b7a97c;
-      color: #fff;
-      border: none;
-      border-radius: 36px;
-      padding: 1.21em 2.9em;
-      font-size: 1.38em;
-      font-weight: bold;
-      letter-spacing: 0.01em;
-      cursor: pointer;
-      box-shadow: 0 8px 40px rgba(80,60,30,0.13);
-      outline: none;
-      margin-top: 0;
-      margin-bottom: 0;
-      animation: pulse 2.4s infinite;
-      transition: background 0.18s, box-shadow 0.14s, transform 0.19s;
-      align-self: flex-end;
+      transform: scale(1.13);
     }
-    .cta-btn:hover, .cta-btn:focus {
-      background: #af4876;
-      color: #fff;
-      box-shadow: 0 12px 50px rgba(120,100,60,0.22);
-      transform: scale(1.08);
+    @media (max-width: 700px) {
+      .realne-skody-section { max-width: 98vw; }
+      .skoda-karta { padding: 1em 0.6em 1em 0.6em; min-width: 0; max-width: 99vw;}
+      .carousel-arrow { font-size: 1.3em; width: 34px; height: 34px;}
+      .realne-skody-header h2 { font-size: 1.09em; }
     }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(183,169,124,0.34);}
-      70% { box-shadow: 0 0 0 15px rgba(183,169,124,0);}
-      100% { box-shadow: 0 0 0 0 rgba(183,169,124,0);}
-    }
-    /* Mobilní carousel + CTA pod ním */
-    .carousel-wrap {
-      display: none;
-      width: 100vw;
-      overflow-x: hidden;
-      position: relative;
-      flex-direction: column;
-      align-items: center;
-    }
-    .carousel-card {
-      width: 80vw;
-      min-width: 80vw;
-      max-width: 85vw;
-      margin: 0.3em auto 0.7em auto;
-      min-height: 120px;
-      perspective: none;
-      cursor: default;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .carousel-karta-inner {
-      position: relative;
-      width: 100%;
-      min-height: 120px;
-      transform: none !important;
-      transition: none !important;
-    }
-    .carousel-controls {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0.5em auto 0.4em auto;
-      max-width: 420px;
-    }
-    .carousel-arrow {
-      font-size: 2.2em;
-      background: transparent;
-      border: none;
-      color: #b7a97c;
-      cursor: pointer;
-      transition: color 0.13s;
-      user-select: none;
-      padding: 0.14em 0.32em;
-    }
-    .carousel-arrow:disabled {
-      color: #ccc;
-      opacity: 0.45;
-      cursor: default;
-    }
-    .carousel-idx {
-      color: #fff;
-      font-size: 1em;
-      font-weight: bold;
-      letter-spacing: 0.04em;
-    }
-    .carousel-cta-mobile {
-      margin: 1.1em 0 0.4em 0;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .carousel-cta-mobile .cta-txt {
-      text-align: center;
-      margin-bottom: 0.23em;
-      border-radius: 13px 13px 0 0;
-      padding: 0.8em 1.1em 0.7em 1.1em;
-      max-width: 340px;
-      font-size: 0.99em;
-    }
-    .carousel-cta-mobile .cta-btn {
-      font-size: 1.08em;
-      padding: 0.85em 1.9em;
-      margin-top: 0.3em;
-    }
+    /* Footer */
     .footer {
       background: #e2dbc9;
       color: #474336;
       text-align: center;
       font-size: 1em;
-      padding: 1.1em 0 0.9em 0;
+      padding: 2em 0 1.3em 0;
       border-top: 1px solid #ece6d4;
       letter-spacing: 0.01em;
-      min-height: 36px;
+      min-height: 65px;
       margin-top: 0;
       flex-shrink: 0;
-      z-index: 20;
-      position: relative;
-    }
-    /* RESPONSIVE: Mobil = carousel, portret.png */
-    @media (max-width: 900px) {
-      html, body {
-        background: #181818 url('portret.png') no-repeat center center !important;
-        background-size: cover !important;
-      }
-      .realne-skody-hlavicka { font-size: 1.2em;}
-      .blok-skody-obal { margin-top: 0.5em;}
-      .karty-skody-grid,
-      .cta-right-static {
-        display: none !important;
-      }
-      .carousel-wrap {
-        display: flex !important;
-      }
-      .carousel-card {
-        width: 95vw; min-width: 95vw; max-width: 97vw;
-        margin: 0.18em auto 0.48em auto;
-        min-height: 110px;
-        justify-content: center;
-        align-items: center;
-      }
-      .carousel-karta-inner {
-        min-height: 110px;
-        font-size: 0.94em;
-      }
-      .carousel-cta-mobile .cta-btn {
-        margin-left: 0;
-        align-self: center;
-        width: auto;
-        margin-right: 0;
-        justify-content: center;
-      }
-      .footer {
-        padding: 0.7em 0 0.4em 0;
-        min-height: 23px;
-        font-size: 0.95em;
-      }
+      z-index: 10;
     }
   </style>
 </head>
 <body>
+  <img src="portret-bg-web.png" alt="" class="bg-img-desktop">
+  <img src="portret.png" alt="" class="bg-img-mobile">
+
   <nav class="top-nav">
     <a href="index.html#domu">Domů</a>
+    <a href="kontakt.html">Chci pojistit</a>
   </nav>
-  <div class="blok-skody-obal">
-    <div class="realne-skody-hlavicka">Reálné škody klientů</div>
-    <div class="karty-skody-grid" id="skodyGrid"></div>
-    <div class="cta-right-static">
-      <div class="cta-txt">
-        Chraňte, na čem vám záleží. Sjednejte si pojištění ještě dnes!
-      </div>
-      <button class="cta-btn" onclick="window.location.href='kontakt.html'">
-        Chci poradit s pojištěním
-      </button>
+
+  <div class="realne-skody-section">
+    <div class="realne-skody-header">
+      <h2>Reálné škody klientů</h2>
     </div>
-    <!-- Mobilní carousel -->
-    <div class="carousel-wrap" id="carouselWrap" style="display:none;">
-      <div class="carousel-card">
-        <div class="carousel-karta-inner" id="carouselCard"></div>
+    <div class="realne-skody-carousel">
+      <button class="carousel-arrow prev">&#8592;</button>
+      <div class="skoda-karta" id="skoda-karta">
+        <!-- Obsah škody se doplní skriptem -->
       </div>
-      <div class="carousel-controls">
-        <button class="carousel-arrow" id="carouselPrev">&#8592;</button>
-        <div class="carousel-idx" id="carouselIdx"></div>
-        <button class="carousel-arrow" id="carouselNext">&#8594;</button>
-      </div>
-      <div class="carousel-cta-mobile">
-        <div class="cta-txt">
-          Chraňte, na čem vám záleží. Sjednejte si pojištění ještě dnes!
-        </div>
-        <button class="cta-btn" onclick="window.location.href='kontakt.html'">
-          Chci poradit s pojištěním
-        </button>
-      </div>
+      <button class="carousel-arrow next">&#8594;</button>
+    </div>
+    <div class="carousel-dots" id="carousel-dots">
+      <!-- Tečky budou vygenerovány JS -->
     </div>
   </div>
-  <footer class="footer">
+  
+  <script>
+const skody = [
+  {
+    title: "Denní odškodné po úrazu",
+    pricina: "Úraz klienta, vyplacené denní odškodné",
+    castka: "10 500 Kč",
+    vyrizeni: "1 den od nahlášení (12. 7. 2024)"
+  },
+  {
+    title: "Tělesné poškození úrazem",
+    pricina: "Zlomenina nebo jiné tělesné poškození po úrazu",
+    castka: "22 500 Kč",
+    vyrizeni: "2 dny od nahlášení (5. 6. 2024)"
+  },
+  {
+    title: "Krupobití poškodilo majetek",
+    pricina: "Kroupy poškodily střechu pergoly",
+    castka: "11 448 Kč",
+    vyrizeni: "8 hodin od nahlášení (21. 6. 2024)"
+  },
+  {
+    title: "Ošetřování dítěte po úrazu",
+    pricina: "Rodič pečoval o dítě po úrazu",
+    castka: "30 900 Kč",
+    vyrizeni: "8 hodin od nahlášení (11. 9. 2024)"
+  },
+  {
+    title: "Tělesné poškození – lehčí úraz",
+    pricina: "Lehčí úraz, např. podvrtnutí kotníku",
+    castka: "5 000 Kč",
+    vyrizeni: "1 den od nahlášení (17. 9. 2024)"
+  },
+  {
+    title: "Pobyt v nemocnici (nemoc)",
+    pricina: "Krátká hospitalizace kvůli nemoci",
+    castka: "1 500 Kč",
+    vyrizeni: "1 den od nahlášení (29. 8. 2024)"
+  },
+  {
+    title: "Denní odškodné – dopravní nehoda",
+    pricina: "Úraz při dopravní nehodě",
+    castka: "23 100 Kč",
+    vyrizeni: "4 dny od nahlášení (13. 5. 2024)"
+  },
+  {
+    title: "Pobyt v nemocnici po úrazu",
+    pricina: "Krátká hospitalizace po úrazu",
+    castka: "900 Kč",
+    vyrizeni: "1 den od nahlášení (5. 6. 2024)"
+  },
+  {
+    title: "Tělesné poškození úrazem",
+    pricina: "Závažnější úraz, např. komplikovaná zlomenina",
+    castka: "22 000 Kč",
+    vyrizeni: "2 dny od nahlášení (6. 6. 2024)"
+  },
+  {
+    title: "Výbuch sklokeramické plynové desky",
+    pricina: "Výbuch plynové sklokeramické desky v kuchyni",
+    castka: "6 199 Kč",
+    vyrizeni: "4 dny od nahlášení (15. 7. 2024)"
+  }
+];
+
+let idx = 0;
+const karta = document.getElementById("skoda-karta");
+const dotsWrap = document.getElementById("carousel-dots");
+
+function zobrazitSkodu(i) {
+  const s = skody[i];
+  karta.innerHTML = `
+    <div class="skoda-title">${s.title}</div>
+    <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${s.pricina}</div>
+    <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${s.castka}</b></div>
+    <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${s.vyrizeni}</div>
+  `;
+  Array.from(dotsWrap.children).forEach((dot, j) => {
+    dot.classList.toggle('active', j === i);
+  });
+}
+
+function vytvorTecky() {
+  dotsWrap.innerHTML = "";
+  skody.forEach((_, i) => {
+    const span = document.createElement('span');
+    span.className = 'dot' + (i === idx ? ' active' : '');
+    span.onclick = () => { idx = i; zobrazitSkodu(idx);}
+    dotsWrap.appendChild(span);
+  });
+}
+
+document.querySelector(".carousel-arrow.prev").onclick = function() {
+  idx = (idx - 1 + skody.length) % skody.length;
+  zobrazitSkodu(idx);
+};
+document.querySelector(".carousel-arrow.next").onclick = function() {
+  idx = (idx + 1) % skody.length;
+  zobrazitSkodu(idx);
+};
+
+vytvorTecky();
+zobrazitSkodu(idx);
+</script>
+</body>
+   <footer role="contentinfo">
     <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
   </footer>
-  <script>
-    // Data škod – zde můžeš změnit motivační věty na zadní straně karet podle potřeby
-    const skody = [
-      {
-        title: "Denní odškodné po úrazu",
-        pricina: "Úraz klienta, vyplacené denní odškodné",
-        castka: "10 500 Kč",
-        vyrizeni: "1 den od nahlášení (12. 7. 2024)",
-        back: "Díky pojištění se nemusíte bát nečekaných výdajů."
-      },
-      {
-        title: "Tělesné poškození úrazem",
-        pricina: "Zlomenina nebo jiné tělesné poškození po úrazu",
-        castka: "22 500 Kč",
-        vyrizeni: "2 dny od nahlášení (5. 6. 2024)",
-        back: "Rychlá pomoc i při závažných úrazech – jistota pro vaši rodinu."
-      },
-      {
-        title: "Krupobití poškodilo majetek",
-        pricina: "Kroupy poškodily střechu pergoly",
-        castka: "11 448 Kč",
-        vyrizeni: "8 hodin od nahlášení (21. 6. 2024)",
-        back: "Když příroda úřaduje, pojištění vás ochrání před ztrátou."
-      },
-      {
-        title: "Ošetřování dítěte po úrazu",
-        pricina: "Rodič pečoval o dítě po úrazu",
-        castka: "30 900 Kč",
-        vyrizeni: "8 hodin od nahlášení (11. 9. 2024)",
-        back: "Vaše děti mají vždy oporu – i v těžkých chvílích."
-      },
-      {
-        title: "Tělesné poškození – lehčí úraz",
-        pricina: "Lehčí úraz, např. podvrtnutí kotníku",
-        castka: "5 000 Kč",
-        vyrizeni: "1 den od nahlášení (17. 9. 2024)",
-        back: "Pojištění kryje i drobné nehody – žádný výpadek příjmů."
-      },
-      {
-        title: "Pobyt v nemocnici (nemoc)",
-        pricina: "Krátká hospitalizace kvůli nemoci",
-        castka: "1 500 Kč",
-        vyrizeni: "1 den od nahlášení (29. 8. 2024)",
-        back: "Finanční jistota i při nemoci – zaměřte se jen na uzdravení."
-      },
-      {
-        title: "Denní odškodné – dopravní nehoda",
-        pricina: "Úraz při dopravní nehodě",
-        castka: "23 100 Kč",
-        vyrizeni: "4 dny od nahlášení (13. 5. 2024)",
-        back: "I na cestách můžete být v klidu – pojištění vám kryje záda."
-      },
-      {
-        title: "Pobyt v nemocnici po úrazu",
-        pricina: "Krátká hospitalizace po úrazu",
-        castka: "900 Kč",
-        vyrizeni: "1 den od nahlášení (5. 6. 2024)",
-        back: "Ztracený čas v nemocnici vám pojištění kompenzuje."
-      },
-      {
-        title: "Tělesné poškození úrazem",
-        pricina: "Závažnější úraz, např. komplikovaná zlomenina",
-        castka: "22 000 Kč",
-        vyrizeni: "2 dny od nahlášení (6. 6. 2024)",
-        back: "Překážky překonáte snadněji – s dobrou pojistkou."
-      },
-      {
-        title: "Výbuch sklokeramické plynové desky",
-        pricina: "Výbuch plynové sklokeramické desky v kuchyni",
-        castka: "6 199 Kč",
-        vyrizeni: "4 dny od nahlášení (15. 7. 2024)",
-        back: "Nečekané události řešte s klidem – pojištění pomůže."
-      }
-    ];
-
-    // Desktop grid
-    const grid = document.getElementById("skodyGrid");
-    skody.forEach(s => {
-      const el = document.createElement('div');
-      el.className = "skoda-karta-flip";
-      el.tabIndex = 0;
-      el.innerHTML = 
-        <div class="skoda-karta-inner">
-          <div class="skoda-karta-front">
-            <div class="skoda-title">${s.title}</div>
-            <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${s.pricina}</div>
-            <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${s.castka}</b></div>
-            <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${s.vyrizeni}</div>
-          </div>
-          <div class="skoda-karta-back">${s.back}</div>
-        </div>
-      ;
-      grid.appendChild(el);
-    });
-
-    // Mobilní carousel:
-    function showCarousel(idx) {
-      const card = document.getElementById("carouselCard");
-      card.innerHTML = 
-        <div class="carousel-karta-inner">
-          <div class="skoda-karta-front">
-            <div class="skoda-title">${skody[idx].title}</div>
-            <div class="skoda-row"><span class="skoda-label">Příčina:</span> ${skody[idx].pricina}</div>
-            <div class="skoda-row"><span class="skoda-label">Částka:</span> <b>${skody[idx].castka}</b></div>
-            <div class="skoda-row"><span class="skoda-label">Vyřízení:</span> ${skody[idx].vyrizeni}</div>
-          </div>
-        </div>
-      ;
-      document.getElementById("carouselIdx").textContent = ${idx + 1} / ${skody.length};
-      document.getElementById("carouselPrev").disabled = idx === 0;
-      document.getElementById("carouselNext").disabled = idx === skody.length - 1;
-    }
-    let curr = 0;
-    function setupMobile() {
-      document.getElementById("carouselWrap").style.display = "flex";
-      showCarousel(curr);
-    }
-    function setupDesktop() {
-      document.getElementById("carouselWrap").style.display = "none";
-    }
-    function handleResize() {
-      if (window.innerWidth <= 900) setupMobile();
-      else setupDesktop();
-    }
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    document.getElementById("carouselPrev").onclick = () => {
-      if (curr > 0) { curr--; showCarousel(curr);}
-    };
-    document.getElementById("carouselNext").onclick = () => {
-      if (curr < skody.length - 1) { curr++; showCarousel(curr);}
-    };
-  </script>
-</body>
-</html> 
+</html>
