@@ -34,8 +34,7 @@
       border-radius: 22px; text-decoration: none;
       color: #474336; background: #e2dbc9;
       transition: background .2s;
-      font-size: 1.08em;
-      font-weight: bold;
+      font-size: 1.08em; font-weight: bold;
     }
     .top-nav .active, .top-nav a:hover {
       background: #b7a97c;
@@ -62,12 +61,13 @@
       position: relative;
       line-height: 1.11;
     }
+    /* DESKTOP GRID */
     .karty-skody-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 6em 5em;
       justify-items: center;
-      max-width: 1520px;
+      max-width: 1140px;
       margin: 0 auto;
       padding: 0 2vw 0 2vw;
       position: relative;
@@ -76,6 +76,7 @@
     }
     .skoda-karta-flip {
       width: 100%;
+      min-width: 340px;
       min-height: 180px;
       perspective: 1100px;
       cursor: pointer;
@@ -116,6 +117,7 @@
       letter-spacing: 0.01em;
       box-shadow: 0 4px 22px rgba(168,120,20,0.11);
       text-align: center;
+      /* ZDE NOVÉ MOTIVAČNÍ VĚTY, VLOŽ DLE POTŘEBY */
     }
     .skoda-title {
       color: #827235;
@@ -132,18 +134,19 @@
       font-weight: 600;
       margin-right: 0.2em;
     }
-
-    /* CTA box vpravo dole, zarovnaný k gridu */
+    /* CTA box zarovnaný k pravému okraji gridu */
     .cta-right-static {
       width: 100%;
-      max-width: 1520px;
+      max-width: 1140px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      margin: 1.4em auto 0.8em auto;
       z-index: 10;
       position: relative;
-      padding-right: 2vw;
+      padding-right: 0vw;
+      margin-top: -9em; /* posunout nahoru těsně pod grid */
+      margin-bottom: 7em;
     }
     .cta-txt {
       background: rgba(50,50,50,0.23);
@@ -188,7 +191,6 @@
       70% { box-shadow: 0 0 0 15px rgba(183,169,124,0);}
       100% { box-shadow: 0 0 0 0 rgba(183,169,124,0);}
     }
-
     /* Mobilní carousel + CTA pod ním */
     .carousel-wrap {
       display: none;
@@ -202,16 +204,18 @@
       width: 80vw;
       min-width: 80vw;
       max-width: 85vw;
-      margin: 0.4em auto 0.7em auto;
-      min-height: 160px;
+      margin: 0.3em auto 0.7em auto;
+      min-height: 120px;
       perspective: none;
       cursor: default;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .carousel-karta-inner {
       position: relative;
       width: 100%;
-      min-height: 160px;
-      /* ŽÁDNÝ efekt otáčení v mobilu! */
+      min-height: 120px;
       transform: none !important;
       transition: none !important;
     }
@@ -245,7 +249,7 @@
       letter-spacing: 0.04em;
     }
     .carousel-cta-mobile {
-      margin: 1.3em 0 0.5em 0;
+      margin: 1.1em 0 0.4em 0;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -270,10 +274,10 @@
       color: #474336;
       text-align: center;
       font-size: 1em;
-      padding: 2em 0 1.3em 0;
+      padding: 1.1em 0 0.9em 0;
       border-top: 1px solid #ece6d4;
       letter-spacing: 0.01em;
-      min-height: 65px;
+      min-height: 36px;
       margin-top: 0;
       flex-shrink: 0;
       z-index: 20;
@@ -295,12 +299,26 @@
         display: flex !important;
       }
       .carousel-card {
-        width: 88vw; min-width: 88vw; max-width: 92vw;
-        margin: 0.2em auto 0.6em auto;
-        min-height: 135px;
+        width: 95vw; min-width: 95vw; max-width: 97vw;
+        margin: 0.18em auto 0.48em auto;
+        min-height: 110px;
+        justify-content: center;
+        align-items: center;
       }
       .carousel-karta-inner {
-        min-height: 135px;
+        min-height: 110px;
+        font-size: 0.94em;
+      }
+      .carousel-cta-mobile .cta-btn {
+        margin-left: 0;
+        align-self: center;
+        width: auto;
+        margin-right: 0;
+        justify-content: center;
+      }
+      .footer {
+        padding: 0.7em 0 0.4em 0;
+        min-height: 23px;
         font-size: 0.95em;
       }
     }
@@ -321,7 +339,6 @@
         Chci poradit s pojištěním
       </button>
     </div>
-
     <!-- Mobilní carousel -->
     <div class="carousel-wrap" id="carouselWrap" style="display:none;">
       <div class="carousel-card">
@@ -346,77 +363,77 @@
     <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
   </footer>
   <script>
-    // Data škod
+    // Data škod – zde můžeš změnit motivační věty na zadní straně karet podle potřeby
     const skody = [
       {
         title: "Denní odškodné po úrazu",
         pricina: "Úraz klienta, vyplacené denní odškodné",
         castka: "10 500 Kč",
         vyrizeni: "1 den od nahlášení (12. 7. 2024)",
-        back: "Klient měl peníze hned druhý den na účtu."
+        back: "Díky pojištění se nemusíte bát nečekaných výdajů."
       },
       {
         title: "Tělesné poškození úrazem",
         pricina: "Zlomenina nebo jiné tělesné poškození po úrazu",
         castka: "22 500 Kč",
         vyrizeni: "2 dny od nahlášení (5. 6. 2024)",
-        back: "Pojištění pokrylo i rehabilitace bez doplatků."
+        back: "Rychlá pomoc i při závažných úrazech – jistota pro vaši rodinu."
       },
       {
         title: "Krupobití poškodilo majetek",
         pricina: "Kroupy poškodily střechu pergoly",
         castka: "11 448 Kč",
         vyrizeni: "8 hodin od nahlášení (21. 6. 2024)",
-        back: "Rychlá oprava a žádný stres. Vše zařídím za vás!"
+        back: "Když příroda úřaduje, pojištění vás ochrání před ztrátou."
       },
       {
         title: "Ošetřování dítěte po úrazu",
         pricina: "Rodič pečoval o dítě po úrazu",
         castka: "30 900 Kč",
         vyrizeni: "8 hodin od nahlášení (11. 9. 2024)",
-        back: "V krizi vám pomůže dobré pojištění i lidský přístup."
+        back: "Vaše děti mají vždy oporu – i v těžkých chvílích."
       },
       {
         title: "Tělesné poškození – lehčí úraz",
         pricina: "Lehčí úraz, např. podvrtnutí kotníku",
         castka: "5 000 Kč",
         vyrizeni: "1 den od nahlášení (17. 9. 2024)",
-        back: "I menší úraz může znamenat výpadek příjmů – pojištění kryje."
+        back: "Pojištění kryje i drobné nehody – žádný výpadek příjmů."
       },
       {
         title: "Pobyt v nemocnici (nemoc)",
         pricina: "Krátká hospitalizace kvůli nemoci",
         castka: "1 500 Kč",
         vyrizeni: "1 den od nahlášení (29. 8. 2024)",
-        back: "Nepodceňujte běžná rizika – pojištění kryje i hospitalizaci."
+        back: "Finanční jistota i při nemoci – zaměřte se jen na uzdravení."
       },
       {
         title: "Denní odškodné – dopravní nehoda",
         pricina: "Úraz při dopravní nehodě",
         castka: "23 100 Kč",
         vyrizeni: "4 dny od nahlášení (13. 5. 2024)",
-        back: "I neočekávané události řeším za vás, abyste byli v klidu."
+        back: "I na cestách můžete být v klidu – pojištění vám kryje záda."
       },
       {
         title: "Pobyt v nemocnici po úrazu",
         pricina: "Krátká hospitalizace po úrazu",
         castka: "900 Kč",
         vyrizeni: "1 den od nahlášení (5. 6. 2024)",
-        back: "I krátkodobé komplikace umí pojištění rychle vyřešit."
+        back: "Ztracený čas v nemocnici vám pojištění kompenzuje."
       },
       {
         title: "Tělesné poškození úrazem",
         pricina: "Závažnější úraz, např. komplikovaná zlomenina",
         castka: "22 000 Kč",
         vyrizeni: "2 dny od nahlášení (6. 6. 2024)",
-        back: "Myslete na zadní vrátka – život je plný překvapení."
+        back: "Překážky překonáte snadněji – s dobrou pojistkou."
       },
       {
         title: "Výbuch sklokeramické plynové desky",
         pricina: "Výbuch plynové sklokeramické desky v kuchyni",
         castka: "6 199 Kč",
         vyrizeni: "4 dny od nahlášení (15. 7. 2024)",
-        back: "I domácí nehody řeším za vás. Klienti mají vždy jistotu."
+        back: "Nečekané události řešte s klidem – pojištění pomůže."
       }
     ];
 
