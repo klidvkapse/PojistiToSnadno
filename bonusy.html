@@ -8,73 +8,177 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
     :root {
+      --primary: #b7a97c;
       --button-bg: #c9b475;
       --button-hover: #e2dbc9;
-      --text-light: #fff;
       --text-dark: #262319;
+      --text-light: #fff;
       --accent: #ffe87a;
       --radius: 18px;
-      --shadow: 0 4px 18px rgba(0,0,0,0.25);
+      --shadow: 0 4px 18px rgba(0,0,0,0.15);
+      --bg-page: #f6f4ee;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Raleway', Arial, sans-serif;
-      color: var(--text-light);
-      background: #181818 url('portretcb.png') no-repeat center center;
-      background-size: cover;
-      position: relative;
-      min-height: 100vh;
+      background: var(--bg-page);
+      color: var(--text-dark);
+      line-height: 1.5;
     }
-    .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
-    header { position: relative; z-index: 2; padding: 1.5em; text-align: center; }
-    .site-title { font-size: 2rem; color: var(--accent); }
-    main { position: relative; z-index: 2; max-width: 760px; margin: 2em auto; padding: 2em; background: rgba(0,0,0,0.6); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .hero { display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em; }
-    .hero svg { width: 48px; height: 48px; stroke: var(--accent); fill: none; stroke-width: 2; }
-    .hero-text { font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
-    p, ul, .feature-text { color: var(--text-light); }
-    h2 { margin-top: 1.5em; font-size: 1.3rem; color: var(--accent); }
-    ul { margin: 0.5em 0 1.2em 1.2em; }
-    .highlight { color: var(--accent); font-weight: 700; }
-    .feature { display: flex; align-items: flex-start; gap: 0.8em; margin-bottom: 1em; }
-    .feature svg { width: 28px; height: 28px; stroke: var(--accent); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 4px; }
-    .feature-text { font-size: 1rem; line-height: 1.4; }
-    .cta { text-align: center; margin-top: 2em; }
+    header {
+      background: var(--accent);
+      padding: 1em 2em;
+      text-align: center;
+      border-bottom: 4px solid var(--primary);
+    }
+    .site-title {
+      font-size: 2rem;
+      color: var(--text-dark);
+      letter-spacing: 0.05em;
+    }
+    .hero-img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: var(--radius) var(--radius) 0 0;
+      box-shadow: var(--shadow);
+    }
+    main {
+      max-width: 800px;
+      margin: 1.5em auto;
+      background: var(--text-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      position: relative;
+    }
+    .hero-text {
+      position: absolute;
+      bottom: 1em;
+      left: 1em;
+      background: rgba(255,234,122,0.9);
+      padding: 0.5em 1em;
+      border-radius: var(--radius);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    section {
+      padding: 1.5em 2em;
+    }
+    h2 {
+      color: var(--primary);
+      margin-bottom: 0.5em;
+      font-size: 1.3rem;
+    }
+    ul { margin: 0.5em 0 1em 1.2em; }
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1em;
+    }
+    .feature-item {
+      background: var(--bg-page);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1em;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8em;
+      box-shadow: var(--shadow);
+    }
+    .feature-item svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .feature-item p {
+      margin: 0;
+      font-size: 1rem;
+    }
+    .cta {
+      text-align: center;
+      padding: 1.5em;
+      background: var(--bg-page);
+      border-top: 1px dashed var(--primary);
+    }
     .cta a {
-      display: inline-flex; align-items: center; gap: 0.6em;
-      background: var(--button-bg); color: var(--text-dark);
-      padding: 0.8em 1.6em; font-size: 1.1rem; font-weight: 700;
-      text-decoration: none; border-radius: var(--radius); box-shadow: var(--shadow);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6em;
+      background: var(--button-bg);
+      color: var(--text-dark);
+      padding: 0.8em 1.6em;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       transition: background 0.2s;
     }
     .cta a:hover { background: var(--button-hover); }
-    .cta svg { width: 24px; height: 24px; stroke: var(--text-dark); fill: none; stroke-width: 2; }
+    .cta svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--text-dark);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    @media (max-width: 600px) {
+      .hero-text { font-size: 1.2rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
   <header>
     <h1 class="site-title">Roční Cestovní Karta</h1>
   </header>
+
   <main>
     <div class="hero">
-      <svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg>
-      <div class="hero-text">Cestujte bez hranic<br><span class="highlight">12 měsíců neomezeně</span></div>
+      <img src="cestovko.png" alt="Cestování" class="hero-img" />
+      <div class="hero-text">12 měsíců neomezeně po Evropě</div>
     </div>
-    <p>Zabezpečíme vám kompletní zdravotní, asistenční a úrazové krytí po celou dobu – s velkorysou <span class="highlight">63&nbsp;% slevou</span>.</p>
-    <h2>Co získáte?</h2>
-    <div class="feature">
-      <svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg>
-      <div class="feature-text"><b>Trvalé krytí</b><br />Jedna pojistka, nekonečno cest po Evropě.</div>
-    </div>
-    <div class="feature">
-      <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg>
-      <div class="feature-text"><b>Výhodná cena</b><br />Neomezené roční krytí za zlomek ceny jednorázových tarifů.</div>
-    </div>
-    <div class="feature">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
-      <div class="feature-text"><b>Svoboda pohybu</b><br />Cestujte kdykoli, kamkoli v rámci Evropy bez starostí.</div>
-    </div>
+
+    <section>
+      <h2>Proč si ji zamilujete?</h2>
+      <ul>
+        <li><span class="highlight">Jedna pojistka</span> kryje všechny vaše cesty.</li>
+        <li><span class="highlight">Asistenční služby</span> nonstop, kdekoli v Evropě.</li>
+        <li><span class="highlight">Děti do 6 let</span> mají krytí zdarma.</li>
+        <li><span class="highlight">Až 63 %</span> sleva oproti jednorázovým tarifům.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Hlavní výhody</h2>
+      <div class="feature-list">
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg>
+          <p><b>Volnost pohybu</b><br />Cestujte bez omezení až 12 měsíců.</p>
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg>
+          <p><b>Jednoduché sjednání</b><br />Online během pár minut, bez papírů.</p>
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg>
+          <p><b>Výhodná cena</b><br />Roční ochrana za zlomek jednorázové ceny.</p>
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
+          <p><b>Komplexní krytí</b><br />Zdravotní, úrazové i asistenční služby.</p>
+        </div>
+      </div>
+    </section>
+
     <div class="cta">
       <a href="kontakt.html">
         <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
