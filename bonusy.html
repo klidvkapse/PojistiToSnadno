@@ -10,39 +10,35 @@
     :root {
       --button-bg: #c9b475;
       --button-hover: #e2dbc9;
+      --text-light: #fff;
       --text-dark: #262319;
+      --accent: #ffe87a;
       --radius: 18px;
       --shadow: 0 4px 18px rgba(0,0,0,0.25);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Raleway', Arial, sans-serif;
-      color: #333;
-      background: #181818 url('cestovko.png') no-repeat center center;
+      color: var(--text-light);
+      background: #181818 url('portretcb.png') no-repeat center center;
       background-size: cover;
       position: relative;
       min-height: 100vh;
     }
-    /* světelný filtr pro lepší čitelnost textu */
-    .overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.85); }
+    .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
     header { position: relative; z-index: 2; padding: 1.5em; text-align: center; }
-    .site-title { font-size: 2rem; color: #006a2e; }
-    main { position: relative; z-index: 2; max-width: 800px; margin: 1em auto 2em; padding: 1.5em; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
-    .hero {
-      display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em;
-    }
-    .hero svg { width: 48px; height: 48px; stroke: #006a2e; fill: none; stroke-width: 2; flex-shrink: 0; }
-    .hero-text { font-size: 1.4rem; font-weight: 700; color: #006a2e; }
-    h2 { margin-top: 1em; font-size: 1.2rem; color: #004d1a; }
-    p { margin: 0.5em 0; line-height: 1.5; }
-    ul { margin: 0.5em 0 1em 1.2em; }
-    .highlight { color: #006a2e; font-weight: 700; }
-    .feature {
-      display: flex; align-items: flex-start; gap: 0.8em; margin-bottom: 1em;
-    }
-    .feature svg { width: 28px; height: 28px; stroke: #006a2e; fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 4px; }
-    .feature-text { flex: 1; }
-    .feature-text b { color: #006a2e; }
+    .site-title { font-size: 2rem; color: var(--accent); }
+    main { position: relative; z-index: 2; max-width: 760px; margin: 2em auto; padding: 2em; background: rgba(0,0,0,0.6); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hero { display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em; }
+    .hero svg { width: 48px; height: 48px; stroke: var(--accent); fill: none; stroke-width: 2; }
+    .hero-text { font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
+    p, ul, .feature-text { color: var(--text-light); }
+    h2 { margin-top: 1.5em; font-size: 1.3rem; color: var(--accent); }
+    ul { margin: 0.5em 0 1.2em 1.2em; }
+    .highlight { color: var(--accent); font-weight: 700; }
+    .feature { display: flex; align-items: flex-start; gap: 0.8em; margin-bottom: 1em; }
+    .feature svg { width: 28px; height: 28px; stroke: var(--accent); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 4px; }
+    .feature-text { font-size: 1rem; line-height: 1.4; }
     .cta { text-align: center; margin-top: 2em; }
     .cta a {
       display: inline-flex; align-items: center; gap: 0.6em;
@@ -62,36 +58,29 @@
   </header>
   <main>
     <div class="hero">
-      <!-- ikona letadla -->
       <svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg>
-      <div class="hero-text">Neomezené cesty po Evropě<br><span class="highlight">až 12 měsíců</span></div>
+      <div class="hero-text">Cestujte bez hranic<br><span class="highlight">12 měsíců neomezeně</span></div>
     </div>
-    <p>Získejte naši exkluzivní <b>Roční cestovní kartu</b> se slevou <span class="highlight">63&nbsp;%</span> na veškeré zdravotní a asistenční služby v zahraničí.</p>
-
-    <h2>Proč si vybrat roční kartu?</h2>
+    <p>Zabezpečíme vám kompletní zdravotní, asistenční a úrazové krytí po celou dobu – s velkorysou <span class="highlight">63&nbsp;% slevou</span>.</p>
+    <h2>Co získáte?</h2>
     <div class="feature">
-      <!-- ikona s perem -->
       <svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg>
-      <div class="feature-text"><b>Celoroční ochrana</b><br />Jedna pojistka kryje všechny vaše cesty během 12 měsíců.</div>
+      <div class="feature-text"><b>Trvalé krytí</b><br />Jedna pojistka, nekonečno cest po Evropě.</div>
     </div>
     <div class="feature">
-      <!-- ikona peněženky -->
       <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg>
-      <div class="feature-text"><b>Finanční úspora</b><br />Neomezené cesty, jedna cena – velká úspora oproti jednorázovým pojistkám.</div>
+      <div class="feature-text"><b>Výhodná cena</b><br />Neomezené roční krytí za zlomek ceny jednorázových tarifů.</div>
     </div>
     <div class="feature">
-      <!-- ikona kompasu -->
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
-      <div class="feature-text"><b>Flexibilita</b><br />Cestujte kam chcete, kdy chcete, a kdekoli v Evropě.</div>
+      <div class="feature-text"><b>Svoboda pohybu</b><br />Cestujte kdykoli, kamkoli v rámci Evropy bez starostí.</div>
     </div>
-
     <div class="cta">
       <a href="kontakt.html">
         <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
-        Kontaktujte nás pro nabídku
+        Objednat Roční Kartu
       </a>
     </div>
   </main>
 </body>
 </html>
-
