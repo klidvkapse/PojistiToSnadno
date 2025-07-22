@@ -163,6 +163,14 @@
           <div class="feature-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg><p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p></div>
         </div>
       </div>
+      <!-- Mobile: search with autocomplete -->
+      <div class="mobile-search">
+        <label for="state-search" style="display:block; margin-bottom:0.5em; color:var(--primary); font-weight:700;">Vyhledat stát</label>
+        <input type="text" id="state-search" list="states" placeholder="Začněte psát název..." style="width:100%; padding:0.6em; border-radius:4px; border:none; font-size:1rem;" />
+        <datalist id="states">
+          <option value="Albánie"><option value="Andorra"><option value="Belgie"><option value="Bělorusko"><option value="Bosna a Hercegovina"><option value="Bulharsko"><option value="Černá Hora"><option value="Dánsko (+ Faerské ostrovy)"><option value="Estonsko"><option value="Finsko (+ Alandy)"><option value="Francie"><option value="Chorvatsko"><option value="Irsko"><option value="Island"><option value="Itálie"><option value="Kosovo"><option value="Lichtenštejnsko"><option value="Litva"><option value="Lotyšsko"><option value="Lucembursko"><option value="Maďarsko"><option value="Malta"><option value="Moldavsko"><option value="Monako"><option value="Německo"><option value="Nizozemsko"><option value="Norsko (+ Špicberky)"><option value="Polsko"><option value="Portugalsko (+ Azorské ostrovy, Madeira)"><option value="Rakousko"><option value="Rumunsko"><option value="Rusko – evropská část (po pohoří Ural a řeku Ural)"><option value="Řecko"><option value="San Marino"><option value="Severní Makedonie"><option value="Slovensko"><option value="Slovinsko"><option value="Srbsko"><option value="Španělsko (+ Baleárské ostrovy, Kanárské ostrovy)"><option value="Švédsko"><option value="Švýcarsko"><option value="Ukrajina"><option value="Vatikán"><option value="Velká Británie (Anglie, Wales, Severní Irsko, Skotsko + ostrov Man, Gibraltar a Normanské ostrovy)"><option value="Egypt"><option value="Izrael"><option value="Jordánsko"><option value="Kapverdy"><option value="Kypr"><option value="Maroko"><option value="Tunisko"><option value="Turecko">
+        </datalist>
+      </div>
       <div class="info-row">
         <div class="info-box states">
           <h3>1. Přehled států</h3>
@@ -217,7 +225,7 @@
         <div class="info-box rates">
           <h3>Bonusová roční karta</h3>
           <!-- Osoby do 75 let -->
-          <p><strong>Sazebník pro osoby do 75 let</strong></p>
+       
           <p><em>Varianta: KLASIK, aktivní sport (pojistné v Kč)</em></p>
           <table>
             <tr><th>Územní platnost</th><th>Evropa</th><th>svět bez USA</th><th>svět včetně USA</th></tr>
