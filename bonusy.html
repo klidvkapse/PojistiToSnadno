@@ -171,17 +171,7 @@
       height: 100%;
       object-fit: cover;
     }
-    .plane-icon {
-      display: block;
-      position: absolute;
-      bottom: 1em;
-      right: 1em;
-      width: 48px;
-      height: 48px;
-      stroke: var(--text-light);
-      fill: none;
-      stroke-width: 2;
-    }
+    /* Removed plane-icon */
     footer {
       text-align: center;
       padding: 1em 0;
@@ -259,7 +249,7 @@
         <label for="state-search-input">Vyhledat stát</label>
         <input list="states" id="state-search-input" placeholder="Zadejte stát, kde chcete cestovat..." />
         <datalist id="states">
-          <!-- options shortened for brevity -->
+          <!-- options here -->
         </datalist>
         <div class="hint">Vaše karta platí v zadaném státě.(upřesnění platnosti EVROPA)</div>
       </div>
@@ -270,15 +260,15 @@
           <table>
             <tr><th>Územní platnost</th><th>Evropa</th><th>Svět bez USA</th><th>Svět včetně USA</th></tr>
             <tr><td>LVZ</td><td>585</td><td>nelze</td><td>nelze</td></tr>
-            <tr><td>LVZ + ÚZO</td><td>827</td><td>1 197</td><td>1 937</td></tr>
-            <tr><td>LVZ + ÚZO + STORNO</td><td>1 627</td><td>1 997</td><td>3 137</td></tr>
+            <tr><td>LVZ + ÚZO</td><td>827</td><td>1 197</td><td>1 937</td></tr>
+            <tr><td>LVZ + ÚZO + STORNO</td><td>1 627</td><td>1 997</td><td>3 137</td></tr>
           </table>
           <p><em>Varianta: PLUS, aktivní sport (pojistné v Kč)</em></p>
           <table>
             <tr><th>Územní platnost</th><th>Evropa</th><th>Svět bez USA</th><th>Svět včetně USA</th></tr>
             <tr><td>LVZ</td><td>845</td><td>nelze</td><td>nelze</td></tr>
-            <tr><td>LVZ + ÚZO</td><td>1 197</td><td>1 937</td><td>2 677</td></tr>
-            <tr><td>LVZ + ÚZO + STORNO</td><td>1 997</td><td>2 737</td><td>3 877</td></tr>
+            <tr><td>LVZ + ÚZO</td><td>1 197</td><td>1 937</td><td>2 677</td></tr>
+            <tr><td>LVZ + ÚZO + STORNO</td><td>1 997</td><td>2 737</td><td>3 877</td></tr>
           </table>
         </div>
       </div>
@@ -291,9 +281,8 @@
     </div>
     <div class="hero-image-container">
       <img src="cestovko.png" alt="Cestování" class="hero-img" />
-      <svg class="plane-icon" viewBox="0 0 24 24"><path d="M13 10V3l8 8-8 8v-7H3v-2h10z"/></svg>
     </div>
   </main>
-  <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
+  <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
 </body>
 </html>
