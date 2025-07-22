@@ -223,6 +223,29 @@
   gap: 16px;
   margin-top: 60px; /* případně uprav dle potřeby */
 }
+    /* ————————————————————————————————
+   Tlačítko BONUSY (fixed v pravém horním rohu)
+   ———————————————————————————————— */
+.bonus-btn {
+  position: fixed;
+  top: 4vw;
+  right: 4vw;
+  background: var(--button-bg);
+  color: #262319;
+  padding: 0.68em 1.1em;
+  font-size: 1.07em;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 14px rgba(120,100,60,0.13);
+  z-index: 15;
+  transition: background 0.2s ease;
+}
+
+.bonus-btn:hover {
+  background: #af4876;
+}
+
 
 
 
@@ -333,6 +356,8 @@
   <header>
     <h1 class="site-title">PojistiToSnadno.cz</h1>
   </header>
+  <!-- === NOVÉ TLAČÍTKO BONUSY === -->
+  <a href="bonusy.html" class="bonus-btn">Bonusy</a>
   <main>
     <div class="left-panel">
       <a href="clanek1.html" class="quick-btn">
