@@ -3,97 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roční Cestovní Karta | PojistiToSnadno.cz</title>
-  <link rel="canonical" href="https://pojistitostnadno.cz/cestovko.html" />
+  <title>Roční Cestovní Karta</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
     :root {
-       /* Barvy z hlavní stránky */
+     /* Barvy z hlavní stránky */
   --primary: #ffe87a;      /* žlutá pro nadpisy a akcenty */
   --button-bg: #c9b475;    /* pozadí tlačítek */
   --button-hover: #e2dbc9; /* hover tlačítek */
   --text-light: #fff;      /* světlý text na tmavém podkladu */
   --text-dark: #262319;    /* tmavý text na světlém podkladu */
-      --accent: #ffe87a;
       --radius: 18px;
-      --shadow: 0 4px 18px rgba(0,0,0,0.15);
-      --bg-page: #f6f4ee;
+      --shadow: 0 4px 18px rgba(0,0,0,0.2);
+      --text-light: #f6f4ee;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Raleway', Arial, sans-serif;
-      background: var(--bg-page);
+      background-color: var(--bg-color);
+      background-image: url('cestovko.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 20% auto;
       color: var(--text-light);
       line-height: 1.5;
-    }
-    header {
-      background: var(--accent);
-      padding: 1em 2em;
-      text-align: center;
-      border-bottom: 4px solid var(--primary);
-    }
-    .site-title {
-      font-size: 2rem;
-      color: var(--text-dark);
-      letter-spacing: 0.05em;
-    }
-    .hero-img {
-      width: 100%;
-      max-height: 350px;
-      object-fit: cover;
-      border-radius: var(--radius) var(--radius) 0 0;
-      box-shadow: var(--shadow);
+      min-height: 100vh;
     }
     main {
       max-width: 800px;
-      margin: 1.5em auto;
-      background: var(--text-light);
+      margin: 2em auto;
+      padding: 1.5em;
+      background: rgba(0,0,0,0.6);
       border-radius: var(--radius);
-      overflow: hidden;
       box-shadow: var(--shadow);
     }
-    .hero {
-      position: relative;
-    }
-    .hero-text {
-      position: absolute;
-      bottom: 1em;
-      left: 1em;
-      background: rgba(255,234,122,0.9);
-      padding: 0.5em 1em;
-      border-radius: var(--radius);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-dark);
+    h1 {
+      font-size: 2rem;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 1em;
     }
     section {
-      padding: 1.5em 2em;
+      margin-bottom: 1.5em;
     }
     h2 {
       color: var(--primary);
-      margin-bottom: 0.5em;
       font-size: 1.3rem;
+      margin-bottom: 0.5em;
     }
-    ul { margin: 0.5em 0 1em 1.2em; }
+    ul { margin-left: 1.2em; }
+    ul li {
+      margin-bottom: 0.4em;
+    }
     .feature-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1em;
     }
     .feature-item {
-      background: var(--bg-page);
-      border: 2px solid var(--primary);
-      border-radius: var(--radius);
-      padding: 1em;
       display: flex;
-      align-items: flex-start;
-      gap: 0.8em;
-      box-shadow: var(--shadow);
+      align-items: start;
+      gap: 0.6em;
     }
     .feature-item svg {
-      width: 32px;
-      height: 32px;
-      stroke: var(--primary);
+      width: 28px;
+      height: 28px;
+      stroke: var(--accent);
       fill: none;
       stroke-width: 2;
       flex-shrink: 0;
@@ -102,19 +77,18 @@
     .feature-item p {
       margin: 0;
       font-size: 1rem;
+      color: var(--text-light);
     }
     .cta {
       text-align: center;
-      padding: 1.5em;
-      background: var(--bg-page);
-      border-top: 1px dashed var(--primary);
+      margin-top: 1.5em;
     }
     .cta a {
       display: inline-flex;
       align-items: center;
       gap: 0.6em;
       background: var(--button-bg);
-      color: var(--text-dark);
+      color: var(--bg-color);
       padding: 0.8em 1.6em;
       font-size: 1.1rem;
       font-weight: 700;
@@ -127,59 +101,49 @@
     .cta svg {
       width: 24px;
       height: 24px;
-      stroke: var(--text-dark);
+      stroke: var(--bg-color);
       fill: none;
       stroke-width: 2;
     }
-
     @media (max-width: 600px) {
-      .hero-text { font-size: 1.2rem; }
+      body { background-size: 30% auto; }
+      h1 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1 class="site-title">Roční Cestovní Karta</h1>
-  </header>
-
   <main>
-    <div class="hero">
-      <img src="cestovko.png" alt="Cestování" class="hero-img" />
-      <div class="hero-text">12 měsíců neomezeně po Evropě</div>
-    </div>
-
+    <h1>Roční Cestovní Karta</h1>
     <section>
       <h2>Proč si ji zamilujete?</h2>
       <ul>
-        <li><span class="highlight">Jedna pojistka</span> kryje všechny vaše cesty.</li>
-        <li><span class="highlight">Asistenční služby</span> nonstop, kdekoli v Evropě.</li>
-        <li><span class="highlight">Děti do 6 let</span> mají krytí zdarma.</li>
-        <li><span class="highlight">Až 63 %</span> sleva oproti jednorázovým tarifům.</li>
+        <li>Jedna pojistka kryje všechny vaše cesty.</li>
+        <li>Asistenční služby nonstop, kdekoli v Evropě.</li>
+        <li>Děti do 6 let mají krytí zdarma.</li>
+        <li>Až 63 % sleva oproti jednorázovým tarifům.</li>
       </ul>
     </section>
-
     <section>
       <h2>Hlavní výhody</h2>
       <div class="feature-list">
         <div class="feature-item">
           <svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg>
-          <p><b>Volnost pohybu</b><br />Cestujte bez omezení až 12 měsíců.</p>
+          <p><b>Volnost pohybu</b> – cestujte bez omezení až 12 měsíců.</p>
         </div>
         <div class="feature-item">
           <svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg>
-          <p><b>Jednoduché sjednání</b><br />Online během pár minut, bez papírů.</p>
+          <p><b>Jednoduché sjednání</b> – online během minut, bez papírů.</p>
         </div>
         <div class="feature-item">
           <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg>
-          <p><b>Výhodná cena</b><br />Roční ochrana za zlomek jednorázové ceny.</p>
+          <p><b>Výhodná cena</b> – roční ochrana za zlomek jednorázové ceny.</p>
         </div>
         <div class="feature-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
-          <p><b>Komplexní krytí</b><br />Zdravotní, úrazové i asistenční služby.</p>
+          <p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p>
         </div>
       </div>
     </section>
-
     <div class="cta">
       <a href="kontakt.html">
         <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
