@@ -12,58 +12,75 @@
       --button-hover: #e2dbc9;
       --text-light: #fff;
       --text-dark: #262319;
-      --overlay: rgba(0, 0, 0, 0.5);
+      --overlay: rgba(0, 0, 0, 0.6);
       --radius: 18px;
       --shadow: 0 4px 18px rgba(0,0,0,0.2);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Raleway', Arial, sans-serif;
       background: url('pozcest.png') no-repeat center center fixed;
       background-size: cover;
       color: var(--text-light);
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin: 2em auto;
+      max-width: 900px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      position: relative;
       display: flex;
       flex-direction: column;
     }
-    /* hlavní blok s mírným přesahem overlay pro čitelnost */
-    main {
-      background: var(--overlay);
-      margin: auto;
-      padding: 2em;
-      max-width: 800px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    /* integrovaná ilustrace */
-    .hero-img {
-      display: block;
+    .hero-image-container {
+      position: relative;
       width: 100%;
-      height: auto;
-      border-radius: var(--radius);
-      margin-bottom: 1.5em;
-      box-shadow: var(--shadow);
+    }
+    .hero-img {
+      width: 100%;
+      display: block;
+    }
+    .plane-icon {
+      display: none;
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      stroke: var(--text-light);
+      fill: none;
+      stroke-width: 2;
+      bottom: 1em;
+      right: 1em;
+    }
+    .text-box {
+      background: var(--overlay);
+      padding: 1.5em;
     }
     h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: var(--primary);
-      text-align: center;
-      margin-bottom: 1em;
-    }
-    section {
-      margin-bottom: 1.5em;
+      margin-bottom: 0.8em;
     }
     h2 {
       font-size: 1.3rem;
       color: var(--primary);
       margin-bottom: 0.5em;
     }
-    ul { margin-left: 1.2em; }
+    ul { margin-left: 1.2em; margin-bottom: 1em; }
     ul li { margin-bottom: 0.4em; }
     .feature-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1em;
+      margin-top: 1em;
     }
     .feature-item {
       display: flex;
@@ -86,7 +103,8 @@
     }
     .cta {
       text-align: center;
-      margin-top: 2em;
+      padding: 1.5em;
+      background: var(--overlay);
     }
     .cta a {
       display: inline-flex;
@@ -113,50 +131,91 @@
     footer {
       text-align: center;
       padding: 1em 0;
+      background: var(--overlay);
       color: var(--text-light);
       font-size: 0.9rem;
     }
-    @media (max-width: 600px) {
-      body { background-position: top center; }
-      main { margin: 1em; padding: 1em; }
+    /* Desktop: image and text side by side, icon visible */
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row-reverse;
+      }
+      .hero-image-container {
+        width: 50%;
+      }
+      .hero-img {
+        height: 100%;
+        object-fit: cover;
+      }
+      .text-box {
+        width: 50%;
+      }
+      .feature-list {
+        grid-template-columns: 1fr 1fr;
+      }
+      .plane-icon {
+        display: block;
+      }
+    }
+    /* Mobile: text-box at bottom of image, full width */
+    @media (max-width: 767px) {
+      .text-box {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0 0 var(--radius) var(--radius);
+      }
+      main {
+        max-width: 100%;
+        margin: 1em;
+      }
       h1 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
   <main>
-    <img src="cestovko.png" alt="Cestování" class="hero-img" />
-    <h1>Roční Cestovní Karta</h1>
-    <section>
-      <h2>Proč si ji zamilujete?</h2>
-      <ul>
-        <li>Jedna pojistka kryje všechny vaše cesty.</li>
-        <li>Asistenční služby nonstop, kdekoli v Evropě.</li>
-        <li>Děti do 6 let mají krytí zdarma.</li>
-        <li>Až 63 % sleva oproti jednorázovým tarifům.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Hlavní výhody</h2>
-      <div class="feature-list">
-        <div class="feature-item">
-          <svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg>
-          <p><b>Volnost pohybu</b> – cestujte bez omezení až 12 měsíců.</p>
-        </div>
-        <div class="feature-item">
-          <svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg>
-          <p><b>Jednoduché sjednání</b> – online během minut, bez papírů.</p>
-        </div>
-        <div class="feature-item">
-          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg>
-          <p><b>Výhodná cena</b> – roční ochrana za zlomek jednorázové ceny.</p>
-        </div>
-        <div class="feature-item">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
-          <p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p>
-        </div>
+    <div class="hero">
+      <div class="hero-image-container">
+        <img src="cestovko.png" alt="Cestování" class="hero-img" />
+        <!-- Letadlo icon overlay -->
+        <svg class="plane-icon" viewBox="0 0 24 24"><path d="M2 12l19-7-7 7 7 7-19-7z"/></svg>
       </div>
-    </section>
+      <div class="text-box">
+        <h1>Roční Cestovní Karta</h1>
+        <section>
+          <h2>Proč si ji zamilujete?</h2>
+          <ul>
+            <li>Jedna pojistka kryje všechny vaše cesty.</li>
+            <li>Asistenční služby nonstop, kdekoli v Evropě.</li>
+            <li>Děti do 6 let mají krytí zdarma.</li>
+            <li>Až 63 % sleva oproti jednorázovým tarifům.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Hlavní výhody</h2>
+          <div class="feature-list">
+            <div class="feature-item">
+              <svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg>
+              <p><b>Volnost pohybu</b> – cestujte bez omezení až 12 měsíců.</p>
+            </div>
+            <div class="feature-item">
+              <svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg>
+              <p><b>Jednoduché sjednání</b> – online během minut, bez papírů.</p>
+            </div>
+            <div class="feature-item">
+              <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg>
+              <p><b>Výhodná cena</b> – roční ochrana za zlomek jednorázové ceny.</p>
+            </div>
+            <div class="feature-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
+              <p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
     <div class="cta">
       <a href="kontakt.html">
         <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
