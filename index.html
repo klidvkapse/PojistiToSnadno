@@ -358,6 +358,16 @@
   .desktop-only {
   display: block;
 }
+      .bonus-btn {
+    /* posuneme trochu blíž ke kraji, pokud je potřeba */
+    top: 2vw;
+    right: 2vw;
+    /* menší padding a font */
+    padding: 0.4em 0.6em;
+    font-size: 0.85em;
+    /* aby šířka netrčela */
+    min-width: auto;
+  }
 
 @media (max-width: 800px) {
   .desktop-only {
@@ -372,7 +382,7 @@
     <h1 class="site-title">PojistiToSnadno.cz</h1>
   </header>
   <!-- === NOVÉ TLAČÍTKO BONUSY === -->
-  <a href="bonusy.html" class="bonus-btn">Bonusy
+  <a href="bonusy.html" class="bonus-btn">
      <svg viewBox="0 0 32 32">
       <!-- jednoduchá “dárek” ikonka: krabička s mašlí -->
       <path d="M4 12h24v16H4z"/>
