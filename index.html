@@ -226,15 +226,18 @@
     /* ————————————————————————————————
    Tlačítko BONUSY (fixed v pravém horním rohu)
    ———————————————————————————————— */
+/* BONUSY button */
 .bonus-btn {
   position: fixed;
   top: 4vw;
   right: 4vw;
+  display: flex;            /* ← nově flex */
+  align-items: center;      /* ← vycentrovat iconku s textem */
+  gap: 0.7em;               /* ← mezera mezi svg a textem */
   background: var(--button-bg);
   color: #262319;
-  padding: 1em 2em;      /* bylo 0.68em 1.1em */
-  font-size: 1.3em;         /* bylo 1.07em */
-  min-width: 180px;         /* nová minimální šířka */
+  padding: 1em 2em;
+  font-size: 1.3em;
   font-weight: 700;
   text-decoration: none;
   border-radius: var(--radius);
@@ -246,6 +249,17 @@
 .bonus-btn:hover {
   background: #af4876;
 }
+
+/* samotná svg velikost dědí z .quick-btn */
+.bonus-btn svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  fill: none;
+  stroke: #4b420d;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
 
 
 
@@ -358,7 +372,16 @@
     <h1 class="site-title">PojistiToSnadno.cz</h1>
   </header>
   <!-- === NOVÉ TLAČÍTKO BONUSY === -->
-  <a href="bonusy.html" class="bonus-btn">Bonusy</a>
+  <a href="bonusy.html" class="bonus-btn">Bonusy
+     <svg viewBox="0 0 32 32">
+      <!-- jednoduchá “dárek” ikonka: krabička s mašlí -->
+      <path d="M4 12h24v16H4z"/>
+      <path d="M16 12v16"/>
+      <path d="M16 12l6-6"/>
+      <path d="M16 12l-6-6"/>
+    </svg>
+    <span>Bonusy</span>
+  </a>
   <main>
     <div class="left-panel">
       <a href="clanek1.html" class="quick-btn">
