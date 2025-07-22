@@ -52,8 +52,8 @@
     .plane-icon {
       display: none;
       position: absolute;
-      width: 36px;
-      height: 36px;
+      width: 48px;
+      height: 48px;
       stroke: var(--text-light);
       fill: none;
       stroke-width: 2;
@@ -157,11 +157,11 @@
         display: block;
       }
     }
-    /* Mobile: text-box at bottom of image, full width */
+    /* Mobile: text-box overlaps bottom 20% of image */
     @media (max-width: 767px) {
       .text-box {
         position: absolute;
-        bottom: 0;
+        bottom: 20%;  /* překrývá spodních 20% obrázku */
         left: 0;
         right: 0;
         border-radius: 0 0 var(--radius) var(--radius);
@@ -179,8 +179,8 @@
     <div class="hero">
       <div class="hero-image-container">
         <img src="cestovko.png" alt="Cestování" class="hero-img" />
-        <!-- Letadlo icon overlay -->
-        <svg class="plane-icon" viewBox="0 0 24 24"><path d="M2 12l19-7-7 7 7 7-19-7z"/></svg>
+        <!-- Dopravní letadlo icon overlay -->
+        <svg class="plane-icon" viewBox="0 0 24 24"><path d="M13 10V3l8 8-8 8v-7H3v-2h10z"/></svg>
       </div>
       <div class="text-box">
         <h1>Roční Cestovní Karta</h1>
