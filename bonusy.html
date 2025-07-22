@@ -18,97 +18,151 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Raleway', Arial, sans-serif;
-      background: url('pozcest.png') no-repeat center center fixed;
-      background-size: cover;
+      background: url('pozcest.png') center/cover fixed;
       color: var(--text-light);
-      display: flex; flex-direction: column; min-height: 100vh;
+      display: flex; flex-direction: column;
+      min-height: 100vh;
     }
     main {
       flex: 1;
+      display: flex;
       margin: 2em auto;
       max-width: 1200px;
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-    /* Mobile first: single column */
-    .container {
+    /* Content column */
+    .content {
+      width: 60%;
+      background: var(--overlay);
+      padding: 2em;
       display: flex;
       flex-direction: column;
+      gap: 1.5em;
     }
-    .text-box, .info-row, .hero-image-container {
-      width: 100%;
+    .content h1 {
+      font-size: 2rem;
+      color: var(--primary);
     }
+    .content h2 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 0.5em;
+    }
+    .content ul { margin-left: 1.2em; }
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+    }
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 0.6em;
+    }
+    .feature-item svg {
+      width: 28px; height: 28px;
+      stroke: var(--primary); fill: none; stroke-width: 2;
+      flex-shrink: 0; margin-top: 4px;
+    }
+    .feature-item p { margin: 0; font-size: 1rem; }
+    .info-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+    }
+    .info-box {
+      background: var(--overlay);
+      padding: 1em;
+      border-radius: var(--radius);
+    }
+    .info-box h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 0.5em;
+    }
+    .info-box ol { padding-left: 1.2em; margin-bottom: 0.8em; }
+    .info-box table { width: 100%; border-collapse: collapse; }
+    .info-box th, .info-box td {
+      border: 1px solid var(--text-light);
+      padding: 0.4em;
+      text-align: left;
+    }
+    .cta {
+      margin-top: auto;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-flex; align-items: center; gap: 0.6em;
+      background: var(--button-bg);
+      color: var(--text-dark);
+      padding: 0.8em 1.6em;
+      font-size: 1.1rem; font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: background 0.2s;
+    }
+    .cta a:hover { background: var(--button-hover); }
+    .cta svg {
+      width: 24px; height: 24px;
+      stroke: var(--text-dark); fill: none; stroke-width: 2;
+    }
+    /* Image column */
     .hero-image-container {
+      width: 40%;
       position: relative;
     }
     .hero-img {
-      width: 100%; display: block;
-      border-radius: 0 0 var(--radius) var(--radius);
+      width: 100%; height: 100%; object-fit: cover;
     }
     .plane-icon {
-      display: none;
+      display: block;
+      position: absolute;
+      bottom: 1em; right: 1em;
+      width: 48px; height: 48px;
+      stroke: var(--text-light); fill: none; stroke-width: 2;
     }
-    .text-box {
+    footer {
+      text-align: center;
+      padding: 1em 0;
       background: var(--overlay);
-      padding: 1.5em;
-      border-radius: var(--radius) var(--radius) 0 0;
+      color: var(--text-light);
+      font-size: 0.9rem;
     }
-    h1 { font-size:1.8rem; color:var(--primary); margin-bottom:0.8em; }
-    h2 { font-size:1.3rem; color:var(--primary); margin-bottom:0.5em; }
-    ul { margin:0.5em 0 1em 1.2em; }
-    .feature-list { display:grid; gap:1em; margin-top:1em; grid-template-columns:1fr; }
-    .feature-item { display:flex; align-items:flex-start; gap:0.6em; }
-    .feature-item svg { width:28px; height:28px; stroke:var(--primary); fill:none; stroke-width:2; flex-shrink:0; margin-top:4px; }
-    .feature-item p { color:var(--text-light); font-size:1rem; margin:0; }
-    .info-row { display:none; }
-    .info-box { background:var(--overlay); padding:1em; border-radius:var(--radius); margin:1em 0; }
-    .info-box h3 { font-size:1.1rem; color:var(--primary); margin-bottom:0.5em; }
-    .info-box ol { padding-left:1.2em; margin-bottom:0.8em; }
-    .info-box table { width:100%; border-collapse:collapse; }
-    .info-box th, .info-box td { border:1px solid #fff; padding:0.4em; text-align:left; }
-    .cta { text-align:center; padding:1.5em; background:var(--overlay); }
-    .cta a { display:inline-flex; align-items:center; gap:0.6em; background:var(--button-bg); color:var(--text-light); padding:0.8em 1.6em; font-size:1.1rem; font-weight:700; text-decoration:none; border-radius:var(--radius); box-shadow:var(--shadow); transition:background 0.2s; }
-    .cta a:hover { background:var(--button-hover); }
-    .cta svg { width:24px; height:24px; stroke:var(--text-light); fill:none; stroke-width:2; }
-    footer { text-align:center; padding:1em 0; background:var(--overlay); color:var(--text-light); font-size:0.9rem; }
-    /* Desktop: three columns layout */
-    @media(min-width:768px){
-      .container { flex-direction: row; }
-      .text-box { width:35%; border-radius: var(--radius) 0 0 var(--radius); }
-      .info-row { display:flex; width:25%; flex-direction:column; padding:1.5em; }
-      .info-box { margin:0 0 1em 0; }
-      .hero-image-container { width:40%; }
-      .hero-img { border-radius: 0 var(--radius) var(--radius) 0; height:100%; object-fit:cover; }
-      .plane-icon { display:block; position:absolute; width:48px; height:48px; stroke:var(--text-light); fill:none; stroke-width:2; bottom:1em; right:1em; }
+    /* Mobile adjustments */
+    @media(max-width: 767px) {
+      main { flex-direction: column; margin: 1em; }
+      .content { width: 100%; padding: 1.5em; }
+      .features { grid-template-columns: 1fr; }
+      .info-row { display: none; }
+      .hero-image-container { width: 100%; }
+      .hero-img { height: auto; }
+      .content { position: absolute; bottom: 20%; width: 100%; border-radius: 0 0 var(--radius) var(--radius); }
     }
   </style>
 </head>
 <body>
   <main>
-    <div class="container">
-      <div class="text-box">
-        <h1>Roční Cestovní Karta</h1>
-        <section>
-          <h2>Proč si ji zamilujete?</h2>
-          <ul>
-            <li>Jedna pojistka kryje všechny vaše cesty.</li>
-            <li>Asistenční služby nonstop, kdekoli v Evropě.</li>
-            <li>Děti do 6 let mají krytí zdarma.</li>
-            <li>Až 63 % sleva oproti jednorázovým tarifům.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Hlavní výhody</h2>
-          <div class="feature-list">
-            <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg><p><b>Volnost pohybu</b> – cestujte bez omezení až 12 měsíců.</p></div>
-            <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg><p><b>Jednoduché sjednání</b> – online během minut, bez papírů.</p></div>
-            <div class="feature-item"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg><p><b>Výhodná cena</b> – roční ochrana za zlomek jednorázové ceny.</p></div>
-            <div class="feature-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg><p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p></div>
-          </div>
-        </section>
+    <div class="content">
+      <h1>Roční Cestovní Karta</h1>
+      <div>
+        <h2>Proč si ji zamilujete?</h2>
+        <ul>
+          <li>Jedna pojistka kryje všechny vaše cesty.</li>
+          <li>Asistenční služby nonstop, kdekoli v Evropě.</li>
+          <li>Děti do 6 let mají krytí zdarma.</li>
+          <li>Až 63 % sleva oproti jednorázovým tarifům.</li>
+        </ul>
       </div>
-      <!-- Info boxes placed in center column -->
+      <div>
+        <h2>Hlavní výhody</h2>
+        <div class="features">
+          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg><p><b>Volnost pohybu</b> – cestujte bez omezení až 12 měsíců.</p></div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg><p><b>Jednoduché sjednání</b> – online během minut, bez papírů.</p></div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg><p><b>Výhodná cena</b> – roční ochrana za zlomek jednorázové ceny.</p></div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg><p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p></div>
+        </div>
+      </div>
       <div class="info-row">
         <div class="info-box states">
           <h3>1. Přehled států</h3>
@@ -124,17 +178,17 @@
             <tr><th>Pokrytí</th><th>Evropa</th><th>svět bez USA</th><th>svět včetně USA</th></tr>
             <tr><td>LVZ</td><td>585 Kč</td><td>nelze</td><td>nelze</td></tr>
             <tr><td>LVZ + ÚZO</td><td>827 Kč</td><td>?</td><td>?</td></tr>
-            <tr><td>LVZ + ÚZO + STORNO</td><td>1 627 Kč</td><td>?</td><td>?</td></tr>
+            <tr><td>LVZ + ÚZO + STORNO</td><td>1 627 Kč</td><td>?</td><td>?</td></tr>
           </table>
         </div>
       </div>
-      <div class="hero-image-container">
-        <img src="cestovko.png" alt="Cestování" class="hero-img" />
-        <svg class="plane-icon" viewBox="0 0 24 24"><path d="M13 10V3l8 8-8 8v-7H3v-2h10z"/></svg>
-      </div>
+      <div class="cta"><a href="kontakt.html"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>Objednat Roční Kartu</a></div>
     </div>
-    <div class="cta"><a href="kontakt.html"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>Objednat Roční Kartu</a></div>
+    <div class="hero-image-container">
+      <img src="cestovko.png" alt="Cestování" class="hero-img" />
+      <svg class="plane-icon" viewBox="0 0 24 24"><path d="M13 10V3l8 8-8 8v-7H3v-2h10z"/></svg>
+    </div>
   </main>
-  <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
+  <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
 </body>
 </html>
