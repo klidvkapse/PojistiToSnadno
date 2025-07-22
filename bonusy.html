@@ -175,14 +175,18 @@
     /* Responsive adjustments */
     @media(max-width: 767px) {
       main { flex-direction: column; margin: 1em; }
-      .hero-image-container { width: 100%; }
+      .hero-image-container { width: 100%;
+        order: -1;           /* přesuň před .content */
+    width: 100%;
+    margin-bottom: 1em;                    
+      }
       .hero-img { height: auto; }
       .content {
-        width: 100%;
-        padding: 1.5em;
-        position: static;
-        margin-top: 1em;
-        border-radius: 0 0 var(--radius) var(--radius);
+       order: 0;
+    width: 100%;
+    padding: 1.5em;
+    margin-top: 0;       /* zruší defaultní odsazení */
+    border-radius: 0 0 var(--radius) var(--radius);
       }
       .features { grid-template-columns: 1fr; }
       .info-row { display: none; }
