@@ -20,21 +20,22 @@
       font-family: 'Raleway', Arial, sans-serif;
       background: url('pozcest.png') center/cover fixed;
       color: var(--text-light);
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
     }
     main {
       flex: 1;
       display: flex;
       margin: 2em auto;
-      max-width: 1200px;
+      max-width: 1400px;
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
     }
     /* Content column */
     .content {
-      width: 60%;
+      width: 55%;
       background: var(--overlay);
       padding: 2em;
       display: flex;
@@ -57,46 +58,79 @@
       gap: 1em;
     }
     .feature-item {
-      display: flex; align-items: flex-start; gap: 0.6em;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6em;
     }
     .feature-item svg {
-      width: 28px; height: 28px;
-      stroke: var(--primary); fill: none; stroke-width: 2;
-      flex-shrink: 0; margin-top: 4px;
+      width: 28px;
+      height: 28px;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+      margin-top: 4px;
     }
     .feature-item p { margin: 0; font-size: 1rem; }
+    /* Always show search with hint */
+    .state-search {
+      margin-bottom: 1.5em;
+      width: 100%;
+    }
+    .state-search label {
+      display: block;
+      margin-bottom: 0.5em;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .state-search input,
+    .state-search select {
+      width: 100%;
+      padding: 0.6em;
+      border-radius: 4px;
+      border: none;
+      font-size: 1rem;
+    }
+    .state-search .hint {
+      margin-top: 0.5em;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    /* Rates box */
     .info-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1em;
+      display: block;
     }
     .info-box {
       background: var(--overlay);
       padding: 1em;
       border-radius: var(--radius);
+      margin-bottom: 1em;
     }
     .info-box h3 {
       font-size: 1.1rem;
       color: var(--primary);
       margin-bottom: 0.5em;
     }
-    .info-box ol { padding-left: 1.2em; margin-bottom: 0.8em; }
-    .info-box table { width: 100%; border-collapse: collapse; }
+    .info-box table { width: 100%; border-collapse: collapse; margin-bottom: 0.8em; }
     .info-box th, .info-box td {
       border: 1px solid var(--text-light);
       padding: 0.4em;
       text-align: left;
+      font-size: 0.9rem;
     }
     .cta {
       margin-top: auto;
       text-align: center;
     }
     .cta a {
-      display: inline-flex; align-items: center; gap: 0.6em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6em;
       background: var(--button-bg);
       color: var(--text-dark);
       padding: 0.8em 1.6em;
-      font-size: 1.1rem; font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 700;
       text-decoration: none;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -104,23 +138,32 @@
     }
     .cta a:hover { background: var(--button-hover); }
     .cta svg {
-      width: 24px; height: 24px;
-      stroke: var(--text-dark); fill: none; stroke-width: 2;
+      width: 24px;
+      height: 24px;
+      stroke: var(--text-dark);
+      fill: none;
+      stroke-width: 2;
     }
     /* Image column */
     .hero-image-container {
-      width: 40%;
+      width: 45%;
       position: relative;
     }
     .hero-img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .plane-icon {
       display: block;
       position: absolute;
-      bottom: 1em; right: 1em;
-      width: 48px; height: 48px;
-      stroke: var(--text-light); fill: none; stroke-width: 2;
+      bottom: 1em;
+      right: 1em;
+      width: 48px;
+      height: 48px;
+      stroke: var(--text-light);
+      fill: none;
+      stroke-width: 2;
     }
     footer {
       text-align: center;
@@ -129,15 +172,20 @@
       color: var(--text-light);
       font-size: 0.9rem;
     }
-    /* Mobile adjustments */
+    /* Responsive adjustments */
     @media(max-width: 767px) {
       main { flex-direction: column; margin: 1em; }
-      .content { width: 100%; padding: 1.5em; }
-      .features { grid-template-columns: 1fr; }
-      .info-row { display: none; }
       .hero-image-container { width: 100%; }
       .hero-img { height: auto; }
-      .content { position: absolute; bottom: 20%; width: 100%; border-radius: 0 0 var(--radius) var(--radius); }
+      .content {
+        width: 100%;
+        padding: 1.5em;
+        position: static;
+        margin-top: 1em;
+        border-radius: 0 0 var(--radius) var(--radius);
+      }
+      .features { grid-template-columns: 1fr; }
+      .info-row { display: none; }
     }
   </style>
 </head>
@@ -163,69 +211,20 @@
           <div class="feature-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg><p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p></div>
         </div>
       </div>
-      <!-- Mobile: search with autocomplete -->
-      <div class="mobile-search">
-        <label for="state-search" style="display:block; margin-bottom:0.5em; color:var(--primary); font-weight:700;">Vyhledat stát</label>
-        <input type="text" id="state-search" list="states" placeholder="Začněte psát název..." style="width:100%; padding:0.6em; border-radius:4px; border:none; font-size:1rem;" />
+      <!-- State search with hint -->
+      <div class="state-search">
+        <label for="state-search-input">Vyhledat stát</label>
+        <input list="states" id="state-search-input" placeholder="Zadejte stát, kde chcete cestovat..." />
         <datalist id="states">
           <option value="Albánie"><option value="Andorra"><option value="Belgie"><option value="Bělorusko"><option value="Bosna a Hercegovina"><option value="Bulharsko"><option value="Černá Hora"><option value="Dánsko (+ Faerské ostrovy)"><option value="Estonsko"><option value="Finsko (+ Alandy)"><option value="Francie"><option value="Chorvatsko"><option value="Irsko"><option value="Island"><option value="Itálie"><option value="Kosovo"><option value="Lichtenštejnsko"><option value="Litva"><option value="Lotyšsko"><option value="Lucembursko"><option value="Maďarsko"><option value="Malta"><option value="Moldavsko"><option value="Monako"><option value="Německo"><option value="Nizozemsko"><option value="Norsko (+ Špicberky)"><option value="Polsko"><option value="Portugalsko (+ Azorské ostrovy, Madeira)"><option value="Rakousko"><option value="Rumunsko"><option value="Rusko – evropská část (po pohoří Ural a řeku Ural)"><option value="Řecko"><option value="San Marino"><option value="Severní Makedonie"><option value="Slovensko"><option value="Slovinsko"><option value="Srbsko"><option value="Španělsko (+ Baleárské ostrovy, Kanárské ostrovy)"><option value="Švédsko"><option value="Švýcarsko"><option value="Ukrajina"><option value="Vatikán"><option value="Velká Británie (Anglie, Wales, Severní Irsko, Skotsko + ostrov Man, Gibraltar a Normanské ostrovy)"><option value="Egypt"><option value="Izrael"><option value="Jordánsko"><option value="Kapverdy"><option value="Kypr"><option value="Maroko"><option value="Tunisko"><option value="Turecko">
         </datalist>
+        <div class="hint">Vaše karta platí v zadaném státě.</div>
       </div>
+      <!-- Rates info box -->
       <div class="info-row">
-        <div class="info-box states">
-          <h3>1. Přehled států</h3>
-          <ol>
-            <li>Albánie</li>
-            <li>Andorra</li>
-            <li>Belgie</li>
-            <li>Bělorusko</li>
-            <li>Bosna a Hercegovina</li>
-            <li>Bulharsko</li>
-            <li>Černá Hora</li>
-            <li>Dánsko (+ Faerské ostrovy)</li>
-            <li>Estonsko</li>
-            <li>Finsko (+ Alandy)</li>
-            <li>Francie</li>
-            <li>Chorvatsko</li>
-            <li>Irsko</li>
-            <li>Island</li>
-            <li>Itálie</li>
-            <li>Kosovo</li>
-            <li>Lichtenštejnsko</li>
-            <li>Litva</li>
-            <li>Lotyšsko</li>
-            <li>Lucembursko</li>
-            <li>Maďarsko</li>
-            <li>Malta</li>
-            <li>Moldavsko</li>
-            <li>Monako</li>
-            <li>Německo</li>
-            <li>Nizozemsko</li>
-            <li>Norsko (+ Špicberky)</li>
-            <li>Polsko</li>
-            <li>Portugalsko (+ Azorské ostrovy, Madeira)</li>
-            <li>Rakousko</li>
-            <li>Rumunsko</li>
-            <li>Rusko – evropská část (po pohoří Ural a řeku Ural)</li>
-            <li>Řecko</li>
-            <li>San Marino</li>
-            <li>Severní Makedonie</li>
-            <li>Slovensko</li>
-            <li>Slovinsko</li>
-            <li>Srbsko</li>
-            <li>Španělsko (+ Baleárské ostrovy, Kanárské ostrovy)</li>
-            <li>Švédsko</li>
-            <li>Švýcarsko</li>
-            <li>Ukrajina</li>
-            <li>Vatikán</li>
-            <li>Velká Británie (Anglie, Wales, Severní Irsko, Skotsko + ostrov Man, Gibraltar a Normanské ostrovy)</li>
-          </ol>
-          <p>a dále: Egypt, Izrael, Jordánsko, Kapverdy, Kypr, Maroko, Tunisko, Turecko</p>
-        </div>
         <div class="info-box rates">
           <h3>Bonusová roční karta</h3>
-          <!-- Osoby do 75 let -->
-       
+          <!-- Sazebník -->
           <p><em>Varianta: KLASIK, aktivní sport (pojistné v Kč)</em></p>
           <table>
             <tr><th>Územní platnost</th><th>Evropa</th><th>svět bez USA</th><th>svět včetně USA</th></tr>
@@ -239,8 +238,6 @@
             <tr><td>LVZ</td><td>845</td><td>nelze</td><td>nelze</td></tr>
             <tr><td>LVZ + ÚZO</td><td>1 197</td><td>1 937</td><td>2 677</td></tr>
             <tr><td>LVZ + ÚZO + STORNO</td><td>1 997</td><td>2 737</td><td>3 877</td></tr>
-          
-          
           </table>
         </div>
       </div>
