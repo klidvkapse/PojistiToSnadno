@@ -154,7 +154,17 @@
       height: 100%;
       object-fit: cover;
     }
-    
+    .plane-icon {
+      display: block;
+      position: absolute;
+      bottom: 1em;
+      right: 1em;
+      width: 48px;
+      height: 48px;
+      stroke: var(--text-light);
+      fill: none;
+      stroke-width: 2;
+    }
     footer {
       text-align: center;
       padding: 1em 0;
@@ -165,18 +175,14 @@
     /* Responsive adjustments */
     @media(max-width: 767px) {
       main { flex-direction: column; margin: 1em; }
-      .hero-image-container { width: 100%;
-        order: -1;           /* přesuň před .content */
-    width: 100%;
-    margin-bottom: -10em;                    
-      }
+      .hero-image-container { width: 100%; }
       .hero-img { height: auto; }
       .content {
-       order: 0;
-    width: 100%;
-    padding: 1.5em;
-    margin-top: 0;       /* zruší defaultní odsazení */
-    border-radius: 0 0 var(--radius) var(--radius);
+        width: 100%;
+        padding: 1.5em;
+        position: static;
+        margin-top: 1em;
+        border-radius: 0 0 var(--radius) var(--radius);
       }
       .features { grid-template-columns: 1fr; }
       .info-row { display: none; }
@@ -223,25 +229,25 @@
           <table>
             <tr><th>Územní platnost</th><th>Evropa</th><th>svět bez USA</th><th>svět včetně USA</th></tr>
             <tr><td>LVZ</td><td>585</td><td>nelze</td><td>nelze</td></tr>
-            <tr><td>LVZ + ÚZO</td><td>827</td><td>1 197</td><td>1 937</td></tr>
-            <tr><td>LVZ + ÚZO + STORNO</td><td>1 627</td><td>1 997</td><td>3 137</td></tr>
+            <tr><td>LVZ + ÚZO</td><td>827</td><td>1 197</td><td>1 937</td></tr>
+            <tr><td>LVZ + ÚZO + STORNO</td><td>1 627</td><td>1 997</td><td>3 137</td></tr>
           </table>
           <p><em>Varianta: PLUS, aktivní sport (pojistné v Kč)</em></p>
           <table>
             <tr><th>Územní platnost</th><th>Evropa</th><th>svět bez USA</th><th>svět včetně USA</th></tr>
             <tr><td>LVZ</td><td>845</td><td>nelze</td><td>nelze</td></tr>
-            <tr><td>LVZ + ÚZO</td><td>1 197</td><td>1 937</td><td>2 677</td></tr>
-            <tr><td>LVZ + ÚZO + STORNO</td><td>1 997</td><td>2 737</td><td>3 877</td></tr>
+            <tr><td>LVZ + ÚZO</td><td>1 197</td><td>1 937</td><td>2 677</td></tr>
+            <tr><td>LVZ + ÚZO + STORNO</td><td>1 997</td><td>2 737</td><td>3 877</td></tr>
           </table>
         </div>
       </div>
-      <div class="cta"><a href="kontakt.html"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>Objednat Roční Kartu</a></div>
+      <div class="cta"><a href="kontakt.html"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>Objednat Roční Kartu</a></div>
     </div>
     <div class="hero-image-container">
       <img src="cestovko.png" alt="Cestování" class="hero-img" />
       <svg class="plane-icon" viewBox="0 0 24 24"><path d="M13 10V3l8 8-8 8v-7H3v-2h10z"/></svg>
     </div>
   </main>
-  <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
+  <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
 </body>
 </html>
