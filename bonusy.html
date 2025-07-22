@@ -7,39 +7,46 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
     :root {
-     /* Barvy z hlavní stránky */
-  --primary: #ffe87a;      /* žlutá pro nadpisy a akcenty */
-  --button-bg: #c9b475;    /* pozadí tlačítek */
-  --button-hover: #e2dbc9; /* hover tlačítek */
-  --text-light: #fff;      /* světlý text na tmavém podkladu */
-  --text-dark: #262319;    /* tmavý text na světlém podkladu */
+      --primary: #ffe87a;
+      --button-bg: #c9b475;
+      --button-hover: #e2dbc9;
+      --text-light: #fff;
+      --text-dark: #262319;
+      --overlay: rgba(0, 0, 0, 0.5);
       --radius: 18px;
       --shadow: 0 4px 18px rgba(0,0,0,0.2);
-      --text-light: #f6f4ee;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Raleway', Arial, sans-serif;
-      background-color: var(--bg-color);
-      background-image: url('cestovko.png');
-      background-repeat: no-repeat;
-      background-position: left center;
-      background-size: 20% auto;
+      background: url('pozcest.png') no-repeat center center fixed;
+      background-size: cover;
       color: var(--text-light);
-      line-height: 1.5;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
+    /* hlavní blok s mírným přesahem overlay pro čitelnost */
     main {
+      background: var(--overlay);
+      margin: auto;
+      padding: 2em;
       max-width: 800px;
-      margin: 2em auto;
-      padding: 1.5em;
-      background: rgba(0,0,0,0.6);
       border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    /* integrovaná ilustrace */
+    .hero-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      margin-bottom: 1.5em;
       box-shadow: var(--shadow);
     }
     h1 {
       font-size: 2rem;
-      color: var(--accent);
+      color: var(--primary);
       text-align: center;
       margin-bottom: 1em;
     }
@@ -47,14 +54,12 @@
       margin-bottom: 1.5em;
     }
     h2 {
-      color: var(--primary);
       font-size: 1.3rem;
+      color: var(--primary);
       margin-bottom: 0.5em;
     }
     ul { margin-left: 1.2em; }
-    ul li {
-      margin-bottom: 0.4em;
-    }
+    ul li { margin-bottom: 0.4em; }
     .feature-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -62,13 +67,13 @@
     }
     .feature-item {
       display: flex;
-      align-items: start;
+      align-items: flex-start;
       gap: 0.6em;
     }
     .feature-item svg {
       width: 28px;
       height: 28px;
-      stroke: var(--accent);
+      stroke: var(--primary);
       fill: none;
       stroke-width: 2;
       flex-shrink: 0;
@@ -81,14 +86,14 @@
     }
     .cta {
       text-align: center;
-      margin-top: 1.5em;
+      margin-top: 2em;
     }
     .cta a {
       display: inline-flex;
       align-items: center;
       gap: 0.6em;
       background: var(--button-bg);
-      color: var(--bg-color);
+      color: var(--text-dark);
       padding: 0.8em 1.6em;
       font-size: 1.1rem;
       font-weight: 700;
@@ -101,18 +106,26 @@
     .cta svg {
       width: 24px;
       height: 24px;
-      stroke: var(--bg-color);
+      stroke: var(--text-dark);
       fill: none;
       stroke-width: 2;
     }
+    footer {
+      text-align: center;
+      padding: 1em 0;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
     @media (max-width: 600px) {
-      body { background-size: 30% auto; }
+      body { background-position: top center; }
+      main { margin: 1em; padding: 1em; }
       h1 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
   <main>
+    <img src="cestovko.png" alt="Cestování" class="hero-img" />
     <h1>Roční Cestovní Karta</h1>
     <section>
       <h2>Proč si ji zamilujete?</h2>
@@ -151,5 +164,8 @@
       </a>
     </div>
   </main>
+  <footer>
+    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
+  </footer>
 </body>
 </html>
