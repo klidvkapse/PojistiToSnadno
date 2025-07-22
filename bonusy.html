@@ -21,46 +21,38 @@
       background: url('pozcest.png') no-repeat center center fixed;
       background-size: cover;
       color: var(--text-light);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      display: flex; flex-direction: column; min-height: 100vh;
     }
     main {
       flex: 1;
       margin: 2em auto;
-      max-width: 900px;
+      max-width: 1200px;
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      background: transparent;
     }
-    .hero {
-      position: relative;
+    /* Mobile first: single column */
+    .container {
       display: flex;
       flex-direction: column;
     }
-    .hero-image-container {
-      position: relative;
+    .text-box, .info-row, .hero-image-container {
       width: 100%;
     }
+    .hero-image-container {
+      position: relative;
+    }
     .hero-img {
-      width: 100%;
-      display: block;
+      width: 100%; display: block;
+      border-radius: 0 0 var(--radius) var(--radius);
     }
     .plane-icon {
       display: none;
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      stroke: var(--text-light);
-      fill: none;
-      stroke-width: 2;
-      bottom: 1em;
-      right: 1em;
     }
     .text-box {
       background: var(--overlay);
       padding: 1.5em;
+      border-radius: var(--radius) var(--radius) 0 0;
     }
     h1 { font-size:1.8rem; color:var(--primary); margin-bottom:0.8em; }
     h2 { font-size:1.3rem; color:var(--primary); margin-bottom:0.5em; }
@@ -69,9 +61,8 @@
     .feature-item { display:flex; align-items:flex-start; gap:0.6em; }
     .feature-item svg { width:28px; height:28px; stroke:var(--primary); fill:none; stroke-width:2; flex-shrink:0; margin-top:4px; }
     .feature-item p { color:var(--text-light); font-size:1rem; margin:0; }
-    /* Info row: two boxes side by side on desktop */
-    .info-row { display:none; margin-top:1.5em; }
-    .info-box { background:rgba(0,0,0,0.5); padding:1em; border-radius:var(--radius); flex:1; }
+    .info-row { display:none; }
+    .info-box { background:var(--overlay); padding:1em; border-radius:var(--radius); margin:1em 0; }
     .info-box h3 { font-size:1.1rem; color:var(--primary); margin-bottom:0.5em; }
     .info-box ol { padding-left:1.2em; margin-bottom:0.8em; }
     .info-box table { width:100%; border-collapse:collapse; }
@@ -81,30 +72,21 @@
     .cta a:hover { background:var(--button-hover); }
     .cta svg { width:24px; height:24px; stroke:var(--text-light); fill:none; stroke-width:2; }
     footer { text-align:center; padding:1em 0; background:var(--overlay); color:var(--text-light); font-size:0.9rem; }
-    @media(min-width:768px) {
-      .hero { flex-direction:row-reverse; }
+    /* Desktop: three columns layout */
+    @media(min-width:768px){
+      .container { flex-direction: row; }
+      .text-box { width:35%; border-radius: var(--radius) 0 0 var(--radius); }
+      .info-row { display:flex; width:25%; flex-direction:column; padding:1.5em; }
+      .info-box { margin:0 0 1em 0; }
       .hero-image-container { width:40%; }
-      .hero-img { height:100%; object-fit:cover; }
-      .plane-icon { display:block; }
-      .text-box { width:60%; }
-      .feature-list { grid-template-columns:1fr 1fr; }
-      .info-row { display:flex; gap:1em; }
-    }
-    @media(max-width:767px) {
-      .text-box { position:absolute; bottom:20%; left:0; right:0; border-radius:0 0 var(--radius) var(--radius); }
-      .info-row { display:none; }
-      main { margin:1em; }
-      h1 { font-size:1.6rem; }
+      .hero-img { border-radius: 0 var(--radius) var(--radius) 0; height:100%; object-fit:cover; }
+      .plane-icon { display:block; position:absolute; width:48px; height:48px; stroke:var(--text-light); fill:none; stroke-width:2; bottom:1em; right:1em; }
     }
   </style>
 </head>
 <body>
   <main>
-    <div class="hero">
-      <div class="hero-image-container">
-        <img src="cestovko.png" alt="Cestování" class="hero-img" />
-        <svg class="plane-icon" viewBox="0 0 24 24"><path d="M13 10V3l8 8-8 8v-7H3v-2h10z"/></svg>
-      </div>
+    <div class="container">
       <div class="text-box">
         <h1>Roční Cestovní Karta</h1>
         <section>
@@ -125,26 +107,30 @@
             <div class="feature-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg><p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p></div>
           </div>
         </section>
-        <!-- Info row pro desktop: červený a modrý box -->
-        <div class="info-row">
-          <div class="info-box states">
-            <h3>1. Přehled států</h3>
-            <ol>
-              <li>Albánie</li><li>Andorra</li><li>Belgie</li><li>Bělorusko</li><li>Bosna a Hercegovina</li>
-            </ol>
-            <p>a dále: Egypt, Izrael, Jordánsko, Kapverdy, Kypr, Maroko, Tunisko, Turecko</p>
-          </div>
-          <div class="info-box rates">
-            <h3>4. KOLUMBUS ABONENT Bonus+</h3>
-            <p><strong>Sazebník (osoby do 75 let, varianta KLASIK)</strong></p>
-            <table>
-              <tr><th>Pokrytí</th><th>Evropa</th><th>svět bez USA</th><th>svět včetně USA</th></tr>
-              <tr><td>LVZ</td><td>585 Kč</td><td>nelze</td><td>nelze</td></tr>
-              <tr><td>LVZ + ÚZO</td><td>827 Kč</td><td>?</td><td>?</td></tr>
-              <tr><td>LVZ + ÚZO + STORNO</td><td>1 627 Kč</td><td>?</td><td>?</td></tr>
-            </table>
-          </div>
+      </div>
+      <!-- Info boxes placed in center column -->
+      <div class="info-row">
+        <div class="info-box states">
+          <h3>1. Přehled států</h3>
+          <ol>
+            <li>Albánie</li><li>Andorra</li><li>Belgie</li><li>Bělorusko</li><li>Bosna a Hercegovina</li>
+          </ol>
+          <p>a dále: Egypt, Izrael, Jordánsko, Kapverdy, Kypr, Maroko, Tunisko, Turecko</p>
         </div>
+        <div class="info-box rates">
+          <h3>4. KOLUMBUS ABONENT Bonus+</h3>
+          <p><strong>Sazebník (osoby do 75 let, varianta KLASIK)</strong></p>
+          <table>
+            <tr><th>Pokrytí</th><th>Evropa</th><th>svět bez USA</th><th>svět včetně USA</th></tr>
+            <tr><td>LVZ</td><td>585 Kč</td><td>nelze</td><td>nelze</td></tr>
+            <tr><td>LVZ + ÚZO</td><td>827 Kč</td><td>?</td><td>?</td></tr>
+            <tr><td>LVZ + ÚZO + STORNO</td><td>1 627 Kč</td><td>?</td><td>?</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="hero-image-container">
+        <img src="cestovko.png" alt="Cestování" class="hero-img" />
+        <svg class="plane-icon" viewBox="0 0 24 24"><path d="M13 10V3l8 8-8 8v-7H3v-2h10z"/></svg>
       </div>
     </div>
     <div class="cta"><a href="kontakt.html"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>Objednat Roční Kartu</a></div>
