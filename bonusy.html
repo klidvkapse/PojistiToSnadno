@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roční Cestovní Karta | PojistiToSnadno.cz</title>
+  <link rel="canonical" href="https://pojistitostnadno.cz/cestovko.html" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+    :root {
+      --button-bg: #c9b475;
+      --button-hover: #e2dbc9;
+      --text-dark: #262319;
+      --radius: 18px;
+      --shadow: 0 4px 18px rgba(0,0,0,0.25);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Raleway', Arial, sans-serif;
+      color: #333;
+      background: #181818 url('cestovko.png') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      min-height: 100vh;
+    }
+    /* světelný filtr pro lepší čitelnost textu */
+    .overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.85); }
+    header { position: relative; z-index: 2; padding: 1.5em; text-align: center; }
+    .site-title { font-size: 2rem; color: #006a2e; }
+    main { position: relative; z-index: 2; max-width: 800px; margin: 1em auto 2em; padding: 1.5em; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hero {
+      display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em;
+    }
+    .hero svg { width: 48px; height: 48px; stroke: #006a2e; fill: none; stroke-width: 2; flex-shrink: 0; }
+    .hero-text { font-size: 1.4rem; font-weight: 700; color: #006a2e; }
+    h2 { margin-top: 1em; font-size: 1.2rem; color: #004d1a; }
+    p { margin: 0.5em 0; line-height: 1.5; }
+    ul { margin: 0.5em 0 1em 1.2em; }
+    .highlight { color: #006a2e; font-weight: 700; }
+    .feature {
+      display: flex; align-items: flex-start; gap: 0.8em; margin-bottom: 1em;
+    }
+    .feature svg { width: 28px; height: 28px; stroke: #006a2e; fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 4px; }
+    .feature-text { flex: 1; }
+    .feature-text b { color: #006a2e; }
+    .cta { text-align: center; margin-top: 2em; }
+    .cta a {
+      display: inline-flex; align-items: center; gap: 0.6em;
+      background: var(--button-bg); color: var(--text-dark);
+      padding: 0.8em 1.6em; font-size: 1.1rem; font-weight: 700;
+      text-decoration: none; border-radius: var(--radius); box-shadow: var(--shadow);
+      transition: background 0.2s;
+    }
+    .cta a:hover { background: var(--button-hover); }
+    .cta svg { width: 24px; height: 24px; stroke: var(--text-dark); fill: none; stroke-width: 2; }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <header>
+    <h1 class="site-title">Roční Cestovní Karta</h1>
+  </header>
+  <main>
+    <div class="hero">
+      <!-- ikona letadla -->
+      <svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg>
+      <div class="hero-text">Neomezené cesty po Evropě<br><span class="highlight">až 12 měsíců</span></div>
+    </div>
+    <p>Získejte naši exkluzivní <b>Roční cestovní kartu</b> se slevou <span class="highlight">63&nbsp;%</span> na veškeré zdravotní a asistenční služby v zahraničí.</p>
+
+    <h2>Proč si vybrat roční kartu?</h2>
+    <div class="feature">
+      <!-- ikona s perem -->
+      <svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg>
+      <div class="feature-text"><b>Celoroční ochrana</b><br />Jedna pojistka kryje všechny vaše cesty během 12 měsíců.</div>
+    </div>
+    <div class="feature">
+      <!-- ikona peněženky -->
+      <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg>
+      <div class="feature-text"><b>Finanční úspora</b><br />Neomezené cesty, jedna cena – velká úspora oproti jednorázovým pojistkám.</div>
+    </div>
+    <div class="feature">
+      <!-- ikona kompasu -->
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
+      <div class="feature-text"><b>Flexibilita</b><br />Cestujte kam chcete, kdy chcete, a kdekoli v Evropě.</div>
+    </div>
+
+    <div class="cta">
+      <a href="kontakt.html">
+        <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+        Kontaktujte nás pro nabídku
+      </a>
+    </div>
+  </main>
+</body>
+</html>
 
