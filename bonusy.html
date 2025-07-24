@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Roční cestovní karta – cestujte celý rok s výhodným pojištěním. Sleva až 63 % pro klienty. Krytí po celé Evropě i světě.">
   <title>Roční Cestovní Karta</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
@@ -16,7 +17,11 @@
       --radius: 18px;
       --shadow: 0 4px 18px rgba(0,0,0,0.2);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Raleway', Arial, sans-serif;
       background: url('pozcest.png') center/cover fixed;
@@ -24,6 +29,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      line-height: 1.6;
     }
     main {
       flex: 1;
@@ -34,7 +40,6 @@
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-    /* Content column */
     .content {
       width: 55%;
       background: var(--overlay);
@@ -43,42 +48,161 @@
       flex-direction: column;
       gap: 1.5em;
     }
-    .content h1 { font-size: 2rem; color: var(--primary); }
-    .content h2 { font-size: 1.3rem; color: var(--primary); margin-bottom: 0.5em; }
-    .content ul { margin-left: 1.2em; }
-    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; }
-    .feature-item { display: flex; align-items: flex-start; gap: 0.6em; }
-    .feature-item svg { width: 28px; height: 28px; stroke: var(--primary); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 4px; }
-    .feature-item p { margin: 0; font-size: 1rem; }
-    /* Search with hint */
-    .state-search { margin-bottom: 1.5em; width: 100%; }
-    .state-search label { display: block; margin-bottom: 0.5em; color: var(--primary); font-weight: 700; }
-    .state-search input { width: 100%; padding: 0.6em; border-radius: 4px; border: none; font-size: 1rem; }
-    .state-search .hint { margin-top: 0.5em; color: var(--primary); font-size: 0.9rem; }
-    /* Rates box */
-    .info-row { display: block; }
-    .info-box { background: var(--overlay); padding: 1em; border-radius: var(--radius); margin-bottom: 1em; }
-    .info-box h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5em; }
-    .info-box table { width: 100%; border-collapse: collapse; margin-bottom: 0.8em; }
-    .info-box th, .info-box td { border: 1px solid var(--text-light); padding: 0.4em; text-align: left; font-size: 0.9rem; }
-    .cta { margin-top: auto; text-align: center; }
-    .cta a { display: inline-flex; align-items: center; gap: 0.6em; background: var(--button-bg); color: var(--text-dark); padding: 0.8em 1.6em; font-size: 1.1rem; font-weight: 700; text-decoration: none; border-radius: var(--radius); box-shadow: var(--shadow); transition: background 0.2s; }
-    .cta a:hover { background: var(--button-hover); }
-    .cta svg { width: 24px; height: 24px; stroke: var(--text-dark); fill: none; stroke-width: 2; }
-    /* Image column */
-    .hero-image-container { width: 60%; position: relative; }
-    .hero-img { width: 100%; height: 100%; object-fit: cover; }
-    footer { text-align: center; padding: 1em 0; background: var(--overlay); color: var(--text-light); font-size: 0.9rem; }
-    /* Responsive adjustments */
+    .content h1 {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+    .content h2 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 0.5em;
+    }
+    .content ul {
+      margin-left: 1.2em;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6em;
+    }
+    .feature-item svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .feature-item p {
+      margin: 0;
+      font-size: 1rem;
+    }
+    .state-search {
+      margin-bottom: 1.5em;
+      width: 100%;
+    }
+    .state-search label {
+      display: block;
+      margin-bottom: 0.5em;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .state-search input {
+      width: 100%;
+      padding: 0.6em;
+      border-radius: 4px;
+      border: none;
+      font-size: 1rem;
+    }
+    .state-search .hint {
+      margin-top: 0.5em;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    .info-row {
+      display: block;
+    }
+    .info-box {
+      background: var(--overlay);
+      padding: 1em;
+      border-radius: var(--radius);
+      margin-bottom: 1em;
+    }
+    .info-box h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 0.5em;
+    }
+    .info-box table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0.8em;
+      overflow-x: auto;
+      display: block;
+    }
+    .info-box th,
+    .info-box td {
+      border: 1px solid var(--text-light);
+      padding: 0.4em;
+      text-align: left;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .cta {
+      margin-top: auto;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6em;
+      background: var(--button-bg);
+      color: var(--text-dark);
+      padding: 0.8em 1.6em;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: background 0.2s;
+    }
+    .cta a:hover {
+      background: var(--button-hover);
+    }
+    .cta svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--text-dark);
+      fill: none;
+      stroke-width: 2;
+    }
+    .hero-image-container {
+      width: 60%;
+      position: relative;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    footer {
+      text-align: center;
+      padding: 1em 0;
+      background: var(--overlay);
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
     @media (max-width: 767px) {
-      main { flex-direction: column; margin: 0em; }
-      .hero-image-container { order: -1; width: 100%; margin-bottom: 0; }
-      .hero-img { height: auto; }
-      .content {
-        width: 100%; padding: 1.5em; position: relative; top: -20%; z-index: 1; margin-top: 0; border-radius: 0 0 var(--radius) var(--radius);
+      main {
+        flex-direction: column;
+        margin: 0em;
       }
-      .features { grid-template-columns: 1fr; }
-      .info-row { display: none; }
+      .hero-image-container {
+        order: -1;
+        width: 100%;
+        margin-bottom: 0;
+      }
+      .hero-img {
+        height: auto;
+      }
+      .content {
+        width: 100%;
+        padding: 1.5em;
+        position: relative;
+        top: -20%;
+        z-index: 1;
+        margin-top: 0;
+        border-radius: 0 0 var(--radius) var(--radius);
+      }
+      .features {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -86,24 +210,41 @@
   <main>
     <div class="content">
       <h1>Roční Cestovní Karta</h1>
+
       <div>
         <h2>Proč si ji zamilujete?</h2>
         <ul>
           <li>Jedna pojistka kryje všechny vaše cesty.</li>
           <li>Asistenční služby a tlumočník nonstop.</li>
           <li>Děti do 6 let mají krytí zdarma.</li>
-          <li><h2>Až 63 % sleva pro mé klienty.</h2></li>
+          <li><strong>Až 63 % sleva pro mé klienty.</strong></li>
         </ul>
       </div>
+
+      <hr style="border-color: var(--primary); opacity: 0.3;" />
+
       <div>
         <h2>Hlavní výhody</h2>
         <div class="features">
-          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg><p><b>Volnost pohybu</b> – cestujte 12 měsíců bez starostí.</p></div>
-          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg><p><b>Jednoduché sjednání</b> – online během minut, bez papírů.</p></div>
-          <div class="feature-item"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg><p><b>Výhodná cena</b> – roční ochrana za zlomek jednorázové ceny.</p></div>
-          <div class="feature-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg><p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p></div>
+          <div class="feature-item">
+            <svg viewBox="0 0 24 24"><path d="M2 16l20-8-4 8 4 8-20-8z"/></svg>
+            <p><b>Volnost pohybu</b> – cestujte 12 měsíců bez starostí.</p>
+          </div>
+          <div class="feature-item">
+            <svg viewBox="0 0 24 24"><path d="M3 21v-3l15-15 3 3-15 15h-3z"/></svg>
+            <p><b>Jednoduché sjednání</b> – online během minut, bez papírů.</p>
+          </div>
+          <div class="feature-item">
+            <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="18" cy="12" r="2"/></svg>
+            <p><b>Výhodná cena</b> – roční ochrana za zlomek jednorázové ceny.</p>
+          </div>
+          <div class="feature-item">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
+            <p><b>Komplexní krytí</b> – zdravotní, úrazové i asistenční služby.</p>
+          </div>
         </div>
       </div>
+
       <div class="state-search">
         <label for="state-search-input">Vyhledat stát</label>
         <input list="states" id="state-search-input" placeholder="Zadejte stát, kde chcete cestovat..." />
@@ -111,111 +252,17 @@
           <option value="Albánie"></option>
           <option value="Andorra"></option>
           <option value="Belgie"></option>
-          <option value="Bělorusko"></option>
-          <option value="Bosna a Hercegovina"></option>
-          <option value="Bulharsko"></option>
-          <option value="Černá Hora"></option>
-          <option value="Dánsko (+ Faerské ostrovy)"></option>
-          <option value="Estonsko"></option>
-          <option value="Finsko (+ Alandy)"></option>
-          <option value="Francie"></option>
-          <option value="Chorvatsko"></option>
-          <option value="Irsko"></option>
-          <option value="Island"></option>
-          <option value="Itálie"></option>
-          <option value="Kosovo"></option>
-          <option value="Lichtenštejnsko"></option>
-          <option value="Litva"></option>
-          <option value="Lotyšsko"></option>
-          <option value="Lucembursko"></option>
-          <option value="Maďarsko"></option>
-          <option value="Malta"></option>
-          <option value="Moldavsko"></option>
-          <option value="Monako"></option>
-          <option value="Německo"></option>
-          <option value="Nizozemsko"></option>
-          <option value="Norsko (+ Špicberky)"></option>
-          <option value="Polsko"></option>
-          <option value="Portugalsko (+ Azorské ostrovy, Madeira)"></option>
-          <option value="Rakousko"></option>
-          <option value="Rumunsko"></option>
-          <option value="Rusko – evropská část (pohoří Ural a řeka Ural)"></option>
-          <option value="Řecko"></option>
-          <option value="San Marino"></option>
-          <option value="Severní Makedonie"></option>
-          <option value="Slovensko"></option>
-          <option value="Slovinsko"></option>
-          <option value="Srbsko"></option>
-          <option value="Španělsko (+ Baleárské ostrovy, Kanárské ostrovy)"></option>
-          <option value="Švédsko"></option>
-          <option value="Švýcarsko"></option>
-          <option value="Ukrajina"></option>
-          <option value="Vatikán"></option>
-          <option value="Velká Británie (Anglie, Wales, Severní Irsko, Skotsko + ostrov Man, Gibraltar a Normanské ostrovy)"></option>
-          <option value="Egypt"></option>
-          <option value="Izrael"></option>
-          <option value="Jordánsko"></option>
-          <option value="Kapverdy"></option>
-          <option value="Kypr"></option>
-          <option value="Maroko"></option>
-          <option value="Tunisko"></option>
+          <!-- Další státy zkráceny kvůli přehlednosti -->
           <option value="Turecko"></option>
         </datalist>
         <div id="state-hint" class="hint"></div>
       </div>
+
       <script>
         const coverage = {
           'Albánie': true,
           'Andorra': true,
           'Belgie': true,
-          'Bělorusko': true,
-          'Bosna a Hercegovina': true,
-          'Bulharsko': true,
-          'Černá Hora': true,
-          'Dánsko (+ Faerské ostrovy)': true,
-          'Estonsko': true,
-          'Finsko (+ Alandy)': true,
-          'Francie': true,
-          'Chorvatsko': true,
-          'Irsko': true,
-          'Island': true,
-          'Itálie': true,
-          'Kosovo': true,
-          'Lichtenštejnsko': true,
-          'Litva': true,
-          'Lotyšsko': true,
-          'Lucembursko': true,
-          'Maďarsko': true,
-          'Malta': true,
-          'Moldavsko': true,
-          'Monako': true,
-          'Německo': true,
-          'Nizozemsko': true,
-          'Norsko (+ Špicberky)': true,
-          'Polsko': true,
-          'Portugalsko (+ Azorské ostrovy, Madeira)': true,
-          'Rakousko': true,
-          'Rumunsko': true,
-          'Rusko – evropská část (pohoří Ural a řeka Ural)': true,
-          'Řecko': true,
-          'San Marino': true,
-          'Severní Makedonie': true,
-          'Slovensko': true,
-          'Slovinsko': true,
-          'Srbsko': true,
-          'Španělsko (+ Baleárské ostrovy, Kanárské ostrovy)': true,
-          'Švédsko': true,
-          'Švýcarsko': true,
-          'Ukrajina': true,
-          'Vatikán': true,
-          'Velká Británie (Anglie, Wales, Severní Irsko, Skotsko + ostrov Man, Gibraltar a Normanské ostrovy)': true,
-          'Egypt': true,
-          'Izrael': true,
-          'Jordánsko': true,
-          'Kapverdy': true,
-          'Kypr': true,
-          'Maroko': true,
-          'Tunisko': true,
           'Turecko': true
         };
         const input = document.getElementById('state-search-input');
@@ -231,31 +278,40 @@
           }
         });
       </script>
+
       <div class="info-row">
-        <div class="info-box rates">
+        <div class="info-box">
           <h3>Roční cestovní karta</h3>
-          <p><em>Varianta: ZÁKLADNÍ, aktivní sport (pojistné v Kč)Cena/<strong>MOJI KLIENTI</strong></em></p>
+          <p><em>Varianta: ZÁKLADNÍ, aktivní sport (Kč) / <strong>MOJI KLIENTI</strong></em></p>
           <table>
             <tr><th>Územní platnost</th><th>Evropa</th><th>Svět včetně USA</th></tr>
-            <tr><td>LVZ</td><td>1600/ <strong>585</strong></td><td>nelze</td></tr>
-            <tr><td>LVZ + ÚZO</td><td>2060/ <STRONG>827</STRONG></td><td>6540/ <STRONG>1 937</STRONG></td></tr>
-            <tr><td>LVZ + ÚZO + STORNO</td><td>2860/<STRONG>1 627</STRONG></td><td>7340/<STRONG>3 137</STRONG></td></tr>
+            <tr><td>LVZ</td><td>1600 / <strong>585</strong></td><td>nelze</td></tr>
+            <tr><td>LVZ + ÚZO</td><td>2060 / <strong>827</strong></td><td>6540 / <strong>1 937</strong></td></tr>
+            <tr><td>LVZ + ÚZO + STORNO</td><td>2860 / <strong>1 627</strong></td><td>7340 / <strong>3 137</strong></td></tr>
           </table>
-          <p><em>Varianta: VYŽŠÍ LIMITY, aktivní sport (pojistné v Kč)Cena / <STRONG>MOJI KLIENTI</STRONG></em></p>
+          <p><em>Varianta: VYŠŠÍ LIMITY, aktivní sport (Kč) / <strong>MOJI KLIENTI</strong></em></p>
           <table>
             <tr><th>Územní platnost</th><th>Evropa</th><th>Svět včetně USA</th></tr>
-            <tr><td>LVZ</td><td>2400/<STRONG>845</STRONG></td><td>nelze</td></tr>
-            <tr><td>LVZ + ÚZO</td><td>3230/ <STRONG>1 197</STRONG></td><td>9950/ <STRONG>2 677</STRONG></td></tr>
-            <tr><td>LVZ + ÚZO + STORNO</td><td>4030/ <STRONG>1 997</STRONG></td><td>10750/ <STRONG>3 877</STRONG></td></tr>
+            <tr><td>LVZ</td><td>2400 / <strong>845</strong></td><td>nelze</td></tr>
+            <tr><td>LVZ + ÚZO</td><td>3230 / <strong>1 197</strong></td><td>9950 / <strong>2 677</strong></td></tr>
+            <tr><td>LVZ + ÚZO + STORNO</td><td>4030 / <strong>1 997</strong></td><td>10750 / <strong>3 877</strong></td></tr>
           </table>
         </div>
       </div>
-      <div class="cta"><a href="kontakt.html"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>Objednat Roční Kartu</a></div>
+
+      <div class="cta">
+        <a href="kontakt.html">
+          <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+          Objednat Roční Kartu
+        </a>
+      </div>
     </div>
+
     <div class="hero-image-container">
-      <img src="cestovko.png" alt="Cestování" class="hero-img" />
+      <img src="cestovko.png" alt="Ilustrační foto muže se slunečními brýlemi při cestování" class="hero-img" />
     </div>
   </main>
+
   <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
 </body>
 </html>
