@@ -179,31 +179,46 @@
       font-size: 0.9rem;
     }
     @media (max-width: 767px) {
-      main {
-        flex-direction: column;
-        margin: 0em;
-      }
-      .hero-image-container {
-        order: -1;
-        width: 100%;
-        margin-bottom: 0;
-      }
-      .hero-img {
-        height: auto;
-      }
-      .content {
-        width: 100%;
-        padding: 1.5em;
-        position: relative;
-        top: -20%;
-        z-index: 1;
-        margin-top: 0;
-        border-radius: 0 0 var(--radius) var(--radius);
-      }
-      .features {
-        grid-template-columns: 1fr;
-      }
-    }
+  main {
+    flex-direction: column;
+    margin: 0;
+    position: relative;
+  }
+
+  .hero-image-container {
+    order: -1;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .hero-img {
+    height: auto;
+  }
+
+  .content {
+    position: absolute;
+    top: 62%; /* uprav si dle skutečné výšky ikony obytného vozu */
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1.5em;
+    z-index: 2;
+    background: var(--overlay);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
   </style>
 </head>
 <body>
