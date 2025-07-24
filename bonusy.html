@@ -230,12 +230,19 @@
       .cta {
         margin-bottom: 1em;
       }
-       footer {
-      text-align: center;
-      padding: 1em 0;
-      background: var(--overlay);
-      color: var(--text-light);
-      font-size: 0.9rem;
+       html, body {
+    height: 100%;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1 0 auto;
+  }
+  footer {
+    flex-shrink: 0;
       }
     }
     @media (min-width: 768px) {
