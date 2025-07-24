@@ -183,29 +183,32 @@
     flex-direction: column;
     margin: 0;
     position: relative;
+    min-height: 100vh;
   }
 
   .hero-image-container {
     order: -1;
     width: 100%;
-    margin-bottom: 0;
+    height: auto;
   }
 
   .hero-img {
+    width: 100%;
     height: auto;
+    display: block;
   }
 
   .content {
     position: absolute;
-    top: 62%; /* uprav si dle skutečné výšky ikony obytného vozu */
-    width: 90%;
+    top: 36%; /* TĚSNĚ pod červenou čáru */
     left: 50%;
     transform: translateX(-50%);
-    padding: 1.5em;
+    width: 92%;
     z-index: 2;
     background: var(--overlay);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    padding: 1.5em;
   }
 
   .features {
@@ -216,6 +219,14 @@
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    background: var(--overlay);
+    padding: 1em 0;
+    font-size: 0.9rem;
   }
 }
 
