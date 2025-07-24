@@ -191,6 +191,10 @@
     width: 100%;
     height: auto;
   }
+      .hero-image-container {
+  height: 80vh;
+}
+
 
   .hero-img {
     width: 100%;
@@ -199,17 +203,15 @@
   }
 
   .content {
-    position: absolute;
-    top: 53%; /* TĚSNĚ pod červenou čáru */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    z-index: 2;
-    background: var(--overlay);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 1.5em;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
 
   .features {
     grid-template-columns: 1fr;
