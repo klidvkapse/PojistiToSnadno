@@ -41,9 +41,8 @@
       box-shadow: var(--shadow);
     }
     .content {
-      width: 55%;
-      background: var(--overlay);
-      padding: 2em;
+  width: 60%; /* původně 55% nebo 50% */
+  padding: 2.5em 3em;
       display: flex;
       flex-direction: column;
       gap: 1.5em;
@@ -131,10 +130,14 @@
       overflow-x: auto;
       display: block;
     }
+    .info-box table.desktop-only {
+  min-width: 500px; /* zajistí, že sloupce se nerozpadnou */
+  table-layout: auto;
+}
     .info-box th,
     .info-box td {
       border: 1px solid var(--text-light);
-      padding: 0.4em;
+      padding: 0.6em 1em;
       text-align: left;
       font-size: 0.9rem;
       white-space: nowrap;
@@ -168,7 +171,7 @@
       stroke-width: 2;
     }
     .hero-image-container {
-      width: 60%;
+     width: 40%; /* původně 60% */
       position: relative;
     }
     .hero-img {
