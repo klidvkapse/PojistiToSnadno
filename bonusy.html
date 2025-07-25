@@ -44,7 +44,6 @@ main {
   max-width: 100%;
   height: 100vh;
   overflow: hidden;
-  box-shadow: none;
 }
 
 .content {
@@ -178,15 +177,18 @@ main {
   stroke-width: 2;
 }
 .hero-image-container {
-  width: 60%;
+  width: 45%;
   position: relative;
+  overflow: hidden;
 }
+
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center
+  object-fit: cover;
+  object-position: center;
 }
+
 footer {
   text-align: center;
   padding: 1em 0;
