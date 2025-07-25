@@ -176,7 +176,8 @@
     position: relative;
     display: flex;
     align-items: flex-end;
-    padding-bottom: 60px;
+    justify-content: center;
+    padding-bottom: 0;
   }
   .hero-img {
     width: 100%;
@@ -202,19 +203,21 @@
     .hero-image-container {
       order: -1;
       width: 100%;
-      height: auto;
-      padding-bottom: 0;
+      height: 100vh;
+      padding: 0;
+      position: relative;
     }
     .hero-img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
+      object-fit: cover;
     }
     .top-buttons {
-      position: relative;
+      position: absolute;
+      top: 1.2em;
+      left: 1.2em;
+      z-index: 1000;
       display: flex;
-      justify-content: flex-start;
-      padding: 1em;
       gap: 1em;
     }
     .top-buttons a {
@@ -230,8 +233,14 @@
     .content {
       width: 95%;
       margin: 0 auto;
-      padding: 1.2em;
-      max-height: unset;
+      padding: 1.5em 1.2em;
+      background: var(--overlay);
+      position: absolute;
+      top: 56%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      max-height: 44vh;
+      overflow-y: auto;
     }
     .features {
       grid-template-columns: 1fr;
