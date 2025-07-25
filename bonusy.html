@@ -336,73 +336,83 @@
       </div>
 
       <script>
-        const coverage = {
-          'Albánie': true,
-          'Andorra': true,
-          'Belgie': true,
-          'Bělorusko': true,
-          'Bosna a Hercegovina': true,
-          'Bulharsko': true,
-          'Černá Hora': true,
-          'Dánsko (+ Faerské ostrovy)': true,
-          'Estonsko': true,
-          'Finsko (+ Alandy)': true,
-          'Francie': true,
-          'Chorvatsko': true,
-          'Irsko': true,
-          'Island': true,
-          'Itálie': true,
-          'Kosovo': true,
-          'Lichtenštejnsko': true,
-          'Litva': true,
-          'Lotyšsko': true,
-          'Lucembursko': true,
-          'Maďarsko': true,
-          'Malta': true,
-          'Moldavsko': true,
-          'Monako': true,
-          'Německo': true,
-          'Nizozemsko': true,
-          'Norsko (+ Špicberky)': true,
-          'Polsko': true,
-          'Portugalsko (+ Azorské ostrovy, Madeira)': true,
-          'Rakousko': true,
-          'Rumunsko': true,
-          'Rusko – evropská část (pohoří Ural a řeka Ural)': true,
-          'Řecko': true,
-          'San Marino': true,
-          'Severní Makedonie': true,
-          'Slovensko': true,
-          'Slovinsko': true,
-          'Srbsko': true,
-          'Španělsko (+ Baleárské ostrovy, Kanárské ostrovy)': true,
-          'Švédsko': true,
-          'Švýcarsko': true,
-          'Ukrajina': true,
-          'Vatikán': true,
-          'Velká Británie (Anglie, Wales, Severní Irsko, Skotsko + ostrov Man, Gibraltar a Normanské ostrovy)': true,
-          'Egypt': true,
-          'Izrael': true,
-          'Jordánsko': true,
-          'Kapverdy': true,
-          'Kypr': true,
-          'Maroko': true,
-          'Tunisko': true,
-          'Turecko': true
-        };
-        const input = document.getElementById('state-search-input');
-        const hint = document.getElementById('state-hint');
-        input.addEventListener('input', () => {
-          const val = input.value.trim();
-          if (coverage[val] === true) {
-            hint.textContent = 'Vaše karta na tento stát platí. ✅';
-          } else if (coverage[val] === false) {
-            hint.textContent = 'Bohužel, na tento stát pojištění neplatí. ❌';
-          } else {
-            hint.textContent = '';
-          }
-        });
-      </script>
+        <script>
+  const normalize = (str) =>
+    str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+  const coverage = {
+    'albánie': true,
+    'andorra': true,
+    'belgie': true,
+    'bělorusko': true,
+    'bosna a hercegovina': true,
+    'bulharsko': true,
+    'černá hora': true,
+    'dánsko (+ faerské ostrovy)': true,
+    'estonsko': true,
+    'finsko (+ alandy)': true,
+    'francie': true,
+    'chorvatsko': true,
+    'irsko': true,
+    'island': true,
+    'itálie': true,
+    'kosovo': true,
+    'lichtenštejnsko': true,
+    'litva': true,
+    'lotyšsko': true,
+    'lucembursko': true,
+    'maďarsko': true,
+    'malta': true,
+    'moldavsko': true,
+    'monako': true,
+    'německo': true,
+    'nizozemsko': true,
+    'norsko (+ špicberky)': true,
+    'polsko': true,
+    'portugalsko (+ azorské ostrovy, madeira)': true,
+    'rakousko': true,
+    'rumunsko': true,
+    'rusko – evropská část (pohoří ural a řeka ural)': true,
+    'řecko': true,
+    'san marino': true,
+    'severní makedonie': true,
+    'slovensko': true,
+    'slovinsko': true,
+    'srbsko': true,
+    'španělsko (+ baleárské ostrovy, kanárské ostrovy)': true,
+    'švédsko': true,
+    'švýcarsko': true,
+    'ukrajina': true,
+    'vatikán': true,
+    'velká británie (anglie, wales, severní irsko, skotsko + ostrov man, gibraltar a normanské ostrovy)': true,
+    'egypt': true,
+    'izrael': true,
+    'jordánsko': true,
+    'kapverdy': true,
+    'kypr': true,
+    'maroko': true,
+    'tunisko': true,
+    'turecko': true
+  };
+
+  const input = document.getElementById('state-search-input');
+  const hint = document.getElementById('state-hint');
+
+  input.addEventListener('input', () => {
+    const userInput = normalize(input.value.trim());
+    const keys = Object.keys(coverage);
+    const match = keys.find(k => normalize(k) === userInput);
+
+    if (match && coverage[match]) {
+      hint.textContent = 'Vaše karta na tento stát platí. ✅';
+    } else if (match && coverage[match] === false) {
+      hint.textContent = 'Bohužel, na tento stát pojištění neplatí. ❌';
+    } else {
+      hint.textContent = '';
+    }
+  });
+</script>
+
 
       
       <div class="cta">
