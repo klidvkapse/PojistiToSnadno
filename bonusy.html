@@ -228,13 +228,13 @@ footer {
 @media (max-width: 767px) {
   main {
     flex-direction: column;
+    position: relative;
   }
 
   .hero-image-container {
     width: 100%;
     height: 60vh;
     position: relative;
-    display: block;
     overflow: hidden;
     z-index: 1;
   }
@@ -244,6 +244,7 @@ footer {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    display: block;
   }
 
   .top-buttons {
@@ -263,16 +264,18 @@ footer {
     color: var(--text-dark);
     text-decoration: none;
     font-weight: bold;
+    box-shadow: var(--shadow);
   }
 
   .content {
     width: 100%;
     padding: 1.2em 1.5em;
-    margin-top: -9vh; /* cca 15 % překrytí obrázku */
+    margin-top: -9vh; /* překrytí 15 % z 60vh */
+    position: relative;
     background: var(--overlay);
     z-index: 2;
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
   }
 
   .state-search {
