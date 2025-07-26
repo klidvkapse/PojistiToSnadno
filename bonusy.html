@@ -164,12 +164,48 @@ main {
   overflow: hidden;
 }
 
-  .hero-img {
+.hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left 20%;
-  transform: scale(0.95); /* 🪄 zmenší obrázek ale zachová pokrytí */
+  object-position: center; /* celý obraz na střed */
+}
+
+/* tlačítko uvnitř obrázku */
+.hero-image-container .cta {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  z-index: 10;
+}
+
+.hero-image-container .cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  background: var(--button-bg);
+  color: var(--text-dark);
+  padding: 0.8em 1.6em;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: background 0.2s;
+}
+
+.hero-image-container .cta a:hover {
+  background: var(--button-hover);
+}
+
+.hero-image-container .cta svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--text-dark);
+  fill: none;
+  stroke-width: 2;
+
 }
 
 .top-buttons {
@@ -440,17 +476,20 @@ main {
 
 
       
-      <div class="cta">
-        <a href="kontakt.html">
-          <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
-          Objednat Roční Kartu
-        </a>
-      </div>
+      
     </div>
 
     <div class="hero-image-container">
-      <img src="cestovko.png" alt="Ilustrační foto muže se slunečními brýlemi při cestování" class="hero-img" />
-    </div>
+  <img src="cestovko.png" alt="Ilustrační foto muže" class="hero-img" />
+
+  <div class="cta">
+    <a href="kontakt.html">
+      <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+      Objednat Roční Kartu
+    </a>
+  </div>
+</div>
+
   </main>
 
   <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
