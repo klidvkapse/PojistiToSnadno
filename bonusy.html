@@ -134,7 +134,7 @@ main {
   font-size: 0.85rem;
 }
 
-/* Pravá část s obrázkem – plné pokrytí bez černých pruhů */
+/* Pravá část s obrázkem */
 .hero-image-container {
   width: 55%;
   position: relative;
@@ -148,9 +148,10 @@ main {
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* zpět na "cover", aby vyplnil celý blok */
+  object-fit: cover;
   object-position: center -50px;
 }
+
 /* Tlačítko v obrázku */
 .hero-image-container .cta {
   position: absolute;
@@ -191,7 +192,7 @@ main {
 .top-buttons {
   position: fixed;
   top: 20px;
-  right: 20px; /* změna z "left" */
+  right: 20px;
   z-index: 999;
   display: flex;
   gap: 1em;
@@ -219,10 +220,11 @@ footer {
   color: var(--primary);
   padding: 0.4em 0;
   background: transparent;
-  margin: 0;
 }
 
-/* RESPONSIVE */
+/* ---------------------------------
+   RESPONSIVE STYLY PRO MOBIL
+----------------------------------- */
 @media (max-width: 767px) {
   main {
     display: flex;
@@ -230,7 +232,6 @@ footer {
     overflow-x: hidden;
   }
 
-  /* 1. Obrázek nahoře */
   .hero-image-container {
     width: 100%;
     height: auto;
@@ -240,13 +241,12 @@ footer {
 
   .hero-img {
     width: 100%;
-    height: auto; /* důležité pro viditelnost */
+    height: auto;
     display: block;
     object-fit: cover;
     object-position: center 30%;
   }
 
-  /* 2. Navigační tlačítka – Domů a ZPĚT v pravém horním rohu obrázku */
   .top-buttons {
     position: absolute;
     top: 12px;
@@ -266,21 +266,18 @@ footer {
     font-weight: bold;
   }
 
-  /* 3. Content */
   .content {
     order: 2;
     width: 100%;
     padding: 1.2em 1.5em;
   }
 
-  /* 4. Vyhledávač států */
   .search-box {
     order: 3;
     padding: 0 1.5em;
     margin-top: 1em;
   }
 
-  /* 5. Tlačítko Objednat Roční Kartu – již není fixované k obrázku */
   .cta {
     order: 4;
     text-align: center;
@@ -301,7 +298,6 @@ footer {
     text-decoration: none;
   }
 
-  /* 6. Footer */
   footer {
     order: 5;
     text-align: center;
@@ -309,6 +305,9 @@ footer {
     font-size: 0.85rem;
     color: var(--primary);
     background: transparent;
+  }
+}
+
 /* Skryj na mobilech */
 @media (max-width: 767px) {
   .desktop-only {
@@ -432,6 +431,14 @@ footer {
         </datalist>
         <div id="state-hint" class="hint"></div>
       </div>
+      <!-- Pouze pro mobil -->
+<div class="cta mobile-only">
+  <a href="kontakt.html">
+    <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+    Objednat Roční Kartu
+  </a>
+</div>
+
         <script>
   const normalize = (str) =>
     str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
