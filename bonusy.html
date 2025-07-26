@@ -134,7 +134,7 @@ main {
   font-size: 0.85rem;
 }
 
-/* PRAVÁ STRANA S OBRÁZKEM */
+/* Pravá část s obrázkem – plné pokrytí bez černých pruhů */
 .hero-image-container {
   width: 55%;
   position: relative;
@@ -148,10 +148,9 @@ main {
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
+  object-fit: cover; /* zpět na "cover", aby vyplnil celý blok */
+  object-position: center center;
 }
-
 /* Tlačítko v obrázku */
 .hero-image-container .cta {
   position: absolute;
@@ -192,7 +191,7 @@ main {
 .top-buttons {
   position: fixed;
   top: 20px;
-  left: 20px;
+  right: 20px; /* změna z "left" */
   z-index: 999;
   display: flex;
   gap: 1em;
