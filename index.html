@@ -250,69 +250,115 @@
       gap: 0.5em;
     }
 
-    /* ===== Mobilní rozvržení ===== */
-    @media (max-width: 768px) {
-      header {
-        padding: 8px 0;
-      }
-
+    /* MOBILNÍ ÚPRAVY */
+    @media (max-width: 600px) {
       .site-title {
         font-size: 1.5em;
-        margin-left: 3vw;
-      }
-
-      .left-panel {
-        top: 60px;
-        left: 2vw;
-        flex-direction: column;
-        gap: 8px;
-        max-height: none;
-        overflow: visible;
+        margin-left: 2vw;
+        white-space: nowrap;
       }
 
       .quick-btn {
-        font-size: 0.85em;
         padding: 0.4em 0.6em;
+        font-size: 0.85em;
         min-width: auto;
-        max-width: 90vw;
+        max-width: 88vw;
       }
 
-      .qr-vizitka {
-        max-width: 90px;
-        margin-top: 10px;
+      .btn-title {
+        font-size: 1em;
+      }
+
+      .btn-sub {
+        font-size: 0.75em;
+      }
+
+      .left-panel {
+        gap: 0.4em;
+        margin-top: 0.6em;
+        margin-left: 1vw;
+      }
+
+      .left-panel a svg {
+        width: 10px;
+        height: 20px;
       }
 
       .main-content {
         width: 100vw;
+        position: fixed;
+        bottom: 62px;
+        left: 0;
         right: 0;
-        bottom: 90px;
-        padding: 0 4vw;
         align-items: center;
+        justify-content: flex-end;
       }
 
       .main-box {
-        width: 100%;
-        margin-bottom: 0.8em;
+        max-width: 92vw;
+        font-size: 0.78em;
+        max-height: 28vh;
+        overflow-y: auto;
+        padding: 0.8em 0.8em 0.6em 0.8em;
+      }
+
+      .highlight-title {
+        font-size: 1em;
+      }
+
+      .about, .services {
+        font-size: 0.8em;
       }
 
       .right-bottom-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5em;
+        justify-content: center;
+        gap: 0.3em;
+        flex-wrap: wrap;
       }
+      .main-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 10px; /* případně uprav dle potřeby */
+}
 
+.qr-vizitka {
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 90px;
+}
+
+.qr-vizitka img {
+  max-width:90px;
+  width: 100%;
+  border-radius: 8px;
+  background: #fff;
+  padding: 6px;
+ } 
+  .desktop-only {
+  display: block;
+}
       .bonus-btn {
-        top: 10px;
-        right: 2vw;
-        padding: 0.5em 0.8em;
-        font-size: 0.85em;
-      }
+    /* posuneme trochu blíž ke kraji, pokud je potřeba */
+    top: 2vw;
+    right: 2vw;
+    /* menší padding a font */
+    padding: 0.4em 0.6em;
+    font-size: 0.85em;
+    /* aby šířka netrčela */
+    min-width: auto;
+  }
 
-      footer {
-        font-size: 0.75em;
-        padding: 6px 0;
-      }
-    }
+@media (max-width: 800px) {
+  .desktop-only {
+    display: none !important;
+  }
+ }
   </style>
 </head>
 
