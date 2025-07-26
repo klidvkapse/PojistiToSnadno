@@ -232,12 +232,14 @@ footer {
     overflow-x: hidden;
   }
 
-  .hero-image-container {
+ .hero-image-container {
     width: 100%;
     height: auto;
     position: relative;
     order: 1;
     margin-bottom: 1em;
+    display: block; /* zajistí zobrazení */
+    visibility: visible; /* zajistí viditelnost */
   }
 
   .hero-img {
@@ -245,7 +247,7 @@ footer {
     height: auto;
     display: block;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center center;
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
   }
