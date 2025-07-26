@@ -228,30 +228,22 @@ footer {
 @media (max-width: 767px) {
   .hero-image-container {
     width: 100%;
-    height: 60vh; /* výška obrázku – můžeš upravit */
+    height: 60vh;
     position: relative;
-    order: 1;
     display: block;
     overflow: hidden;
-  }
-
-  .hero-image-container {
-    width: 100%;
-    height: auto !important;
-    display: block !important;
-    visibility: visible !important;
-    position: relative;
     order: 1;
     margin-bottom: 1em;
   }
 
- .hero-img {
+  .hero-img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
     object-position: center center;
   }
+
   .top-buttons {
     position: absolute;
     top: 12px;
@@ -271,39 +263,33 @@ footer {
     font-weight: bold;
   }
 
- .content {
-  order: 2;
-  width: 100%;
-  padding: 1.2em 1.5em;
-  margin-top: -9vh; /* 15 % z 60vh */
-  position: relative;
-  background: var(--overlay);
-  z-index: 2;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
+  .content {
+    order: 2;
+    width: 100%;
+    padding: 1.2em 1.5em;
+    margin-top: -9vh; /* 15 % z 60vh */
+    position: relative;
+    background: var(--overlay);
+    z-index: 2;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
   }
 
-  .search-box {
+  .state-search {
     order: 3;
-  padding: 0 1.5em;
-  margin-top: 1em;
-  z-index: 2;
-}
+    padding: 0 1.5em;
+    margin-top: 1em;
+    z-index: 2;
+  }
 
-.cta.mobile-only {
-  order: 4;
-  text-align: center;
-  margin: 1.5em auto;
-  width: 85%;
-
-  .cta {
+  .cta.mobile-only {
     order: 4;
     text-align: center;
     margin: 1.5em auto;
     width: 85%;
   }
 
-  .cta a {
+  .cta.mobile-only a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -320,11 +306,11 @@ footer {
     transition: background 0.2s ease;
   }
 
-  .cta a:hover {
+  .cta.mobile-only a:hover {
     background: var(--button-hover);
   }
 
-  .cta svg {
+  .cta.mobile-only svg {
     width: 20px;
     height: 20px;
     stroke: var(--text-dark);
@@ -340,34 +326,18 @@ footer {
     background: transparent;
   }
 
-
-/* Skryj na mobilech */
-@media (max-width: 767px) {
+  /* Skryj na mobilech */
   .desktop-only {
     display: none !important;
   }
 }
-
-/* Skryj na desktopu */
-@media (min-width: 768px) {
-  .mobile-only {
-    display: none !important;
-  }
-}
-
-
-
 </style>
-
-
 </head>
 <body>
   <div class="top-buttons">
   <a href="index.html">Domů</a>
   <a href="rozcestnik.html">ZPĚT</a>
 </div>
-
-  <main>
     <main>
   <div class="hero-image-container">
     <img src="cestovko.png" alt="Ilustrační foto muže" class="hero-img" />
