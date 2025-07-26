@@ -244,25 +244,23 @@ footer {
    RESPONSIVE STYLY PRO MOBIL
 ----------------------------------- */
 @media (max-width: 767px) {
-  html, body {
+  body, html {
     margin: 0;
     padding: 0;
     height: auto;
   }
 
   main {
-    display: block;
-    overflow: visible;
-    height: auto;
+    display: flex;
+    flex-direction: column-reverse; /* ⬅️ Obrátíme pořadí – img bude nahoře */
   }
 
   .hero-image-container {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    order: -1; /* obrátí pořadí */
   }
 
   .hero-img {
@@ -277,7 +275,7 @@ footer {
     width: 100%;
     background: var(--overlay);
     padding: 1.2em 1.5em;
-    margin-top: -30vh; /* překrytí 30 % obrázku */
+    margin-top: -30vh; /* ⬅️ překryje 30 % obrázku */
     z-index: 2;
     position: relative;
     border-top-left-radius: var(--radius);
