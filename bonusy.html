@@ -309,8 +309,20 @@ footer {
     font-size: 0.85rem;
     color: var(--primary);
     background: transparent;
+/* Skryj na mobilech */
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none !important;
   }
 }
+
+/* Skryj na desktopu */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
 
 
 </style>
@@ -512,6 +524,14 @@ footer {
       Objednat Roční Kartu
     </a>
   </div>
+      <!-- Mobile only – mimo obrázek, níže -->
+<div class="cta mobile-only">
+  <a href="kontakt.html">
+    <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+    Objednat Roční Kartu
+  </a>
+</div>
+
 </div>
 
 
