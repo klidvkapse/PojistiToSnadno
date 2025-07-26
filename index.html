@@ -68,9 +68,13 @@
       width: 100vw;
       overflow: hidden;
     }
-
+    @media (max-width: 800px) {
+      body {
+        background: #181818 url('portret.png') no-repeat center top;
+        background-size: cover;
+    }
     body::before {
-      content: "";
+      content: ""; 
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.28);
@@ -395,8 +399,8 @@
       <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
       Kontakt
     </a>
-    <div class="qr-vizitka">
-      <img src="qr-vizitka.jpg" alt="QR kód" />
+    <div class="qr-vizitka desktop-only">
+    <img src="qr-vizitka.jpg" alt="QR kód – elektronická vizitka" />
       <div>Naskenujte pro kontakt</div>
     </div>
   </div>
