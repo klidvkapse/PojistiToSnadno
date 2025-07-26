@@ -69,11 +69,12 @@
       overflow: hidden;
     }
     @media (max-width: 800px) {
-      body {
-        background: #181818 url('portret.png') no-repeat center top;
-        background-size: cover;
-        }
-    }
+  body {
+    background: #181818 url('portret.png') no-repeat center top;
+    background-size: cover;
+  } /* ← chyběla tato závorka */
+}
+
     body::before {
       content: ""; 
       position: fixed;
