@@ -230,7 +230,7 @@ footer {
     overflow-x: hidden;
   }
 
-  /* Obrázek nahoře, celá šířka */
+  /* 1. Obrázek nahoře */
   .hero-image-container {
     width: 100%;
     height: auto;
@@ -240,18 +240,18 @@ footer {
 
   .hero-img {
     width: 100%;
-    height: auto;
+    height: auto; /* důležité pro viditelnost */
+    display: block;
     object-fit: cover;
     object-position: center 30%;
-    display: block;
   }
 
-  /* Tlačítko "Domů" vpravo nahoře v rámci obrázku */
+  /* 2. Navigační tlačítka – Domů a ZPĚT v pravém horním rohu obrázku */
   .top-buttons {
     position: absolute;
     top: 12px;
     right: 12px;
-    z-index: 1000;
+    z-index: 999;
     display: flex;
     gap: 0.5em;
   }
@@ -266,21 +266,21 @@ footer {
     font-weight: bold;
   }
 
-  /* Content – textová část */
+  /* 3. Content */
   .content {
+    order: 2;
     width: 100%;
     padding: 1.2em 1.5em;
-    order: 2;
   }
 
-  /* Vyhledávač států */
+  /* 4. Vyhledávač států */
   .search-box {
     order: 3;
     padding: 0 1.5em;
     margin-top: 1em;
   }
 
-  /* Tlačítko Objednat Roční Kartu – pod contentem a vyhledáváním */
+  /* 5. Tlačítko Objednat Roční Kartu – již není fixované k obrázku */
   .cta {
     order: 4;
     text-align: center;
@@ -301,7 +301,7 @@ footer {
     text-decoration: none;
   }
 
-  /* Footer */
+  /* 6. Footer */
   footer {
     order: 5;
     text-align: center;
