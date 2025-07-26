@@ -226,11 +226,13 @@ footer {
    RESPONSIVE STYLY PRO MOBIL
 ----------------------------------- */
 @media (max-width: 767px) {
-  main {
-    display: flex;
-    flex-direction: column;
-    overflow: visible !important;
-    height: auto !important;
+  .hero-image-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    order: 1;
+    display: block;
+    margin: 0; /* odstraní spodní mezeru */
   }
 
   .hero-image-container {
@@ -244,13 +246,12 @@ footer {
   }
 
   .hero-img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-    border-bottom-left-radius: 18px;
-    border-bottom-right-radius: 18px;
+    .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
   }
   .top-buttons {
     position: absolute;
@@ -275,6 +276,12 @@ footer {
     order: 2;
     width: 100%;
     padding: 1.2em 1.5em;
+    margin-top: -15vw; /* překrytí cca 15 % výšky obrázku */
+    background: var(--overlay); /* volitelné – tmavé pozadí pro čitelnost */
+    z-index: 5;
+    position: relative;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
   }
 
   .search-box {
