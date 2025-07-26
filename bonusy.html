@@ -6,193 +6,11 @@
   <meta name="description" content="Roční cestovní karta – cestujte celý rok s výhodným pojištěním. Sleva až 63 % pro klienty. Krytí po celé Evropě i světě.">
   <title>Roční Cestovní Karta</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
-
-:root {
-  --primary: #ffe87a;
-  --button-bg: #c9b475;
-  --button-hover: #e2dbc9;
-  --text-light: #fff;
-  --text-dark: #000;
-  --overlay: rgba(0, 0, 0, 0.6);
-  --radius: 18px;
-  --shadow: 0 4px 18px rgba(0,0,0,0.2);
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Raleway', Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  background: url('pozcest.png') center/cover fixed;
-  color: var(--text-light);
-}
-
-main {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-  height: 100%;
-}
-
-.content {
-  width: 45%;
-  background: var(--overlay);
-  padding: 1.5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.content h1 {
-  font-size: 1.7rem;
-  color: var(--primary);
-}
-
-.content h2 {
-  font-size: 1.2rem;
-  color: var(--primary);
-  margin-bottom: 0.5em;
-}
-
-.content h3 {
-  font-size: 1rem;
-  color: var(--primary);
-  margin-bottom: 0.5em;
-}
-
-.content ul {
-  margin-left: 1.2em;
-  font-size: 0.95rem;
-}
-
-.content li {
-  margin-bottom: 0.4em;
-}
-
-.features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
-}
-
-.feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6em;
-}
-
-.feature-item svg {
-  width: 24px;
-  height: 24px;
-  stroke: var(--primary);
-  fill: none;
-  stroke-width: 2;
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-.feature-item p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.state-search {
-  margin-top: 1.2em;
-}
-
-.state-search label {
-  display: block;
-  margin-bottom: 0.4em;
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.state-search input {
-  width: 100%;
-  padding: 0.6em;
-  border-radius: 4px;
-  border: none;
-  font-size: 1rem;
-}
-
-.state-search .hint {
-  margin-top: 0.3em;
-  color: var(--primary);
-  font-size: 0.85rem;
-}
-
-/* PRAVÁ STRANA S OBRÁZKEM */
-.hero-image-container {
-  width: 55%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  height: 100%;
-}
-
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
-}
-
-/* Tlačítko v obrázku */
-.hero-image-container .cta {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  margin: 0;
-  z-index: 10;
-}
-
-.hero-image-container .cta a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  background: var(--button-bg);
-  color: var(--text-dark);
-  padding: 0.8em 1.6em;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: background 0.2s;
-}
-
-.hero-image-container .cta a:hover {
-  background: var(--button-hover);
-}
-
-.hero-image-container .cta svg {
-  width: 22px;
-  height: 22px;
-  stroke: var(--text-dark);
-  fill: none;
-  stroke-width: 2;
-}
-
-/* Navigační odkazy nahoře */
+/* Tlačítka DOMŮ / ZPĚT - přemístění doprava nahoře */
 .top-buttons {
   position: fixed;
   top: 20px;
-  left: 20px;
+  right: 20px; /* změna z "left" */
   z-index: 999;
   display: flex;
   gap: 1em;
@@ -213,53 +31,22 @@ main {
   background-color: var(--button-hover);
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--primary);
-  padding: 0.4em 0;
-  background: transparent;
-  margin: 0;
+/* Pravá část s obrázkem – plné pokrytí bez černých pruhů */
+.hero-image-container {
+  width: 55%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
 }
 
-/* RESPONSIVE */
-@media (max-width: 767px) {
-  main {
-    flex-direction: column;
-  }
-
-  .content {
-    width: 100%;
-    padding: 1.5em;
-    order: 2;
-  }
-
-  .hero-image-container {
-    width: 100%;
-    height: auto;
-    order: 1;
-  }
-
-  .hero-img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: center bottom;
-  }
-
-  /* Tlačítko přesunout nad footer */
-  .hero-image-container .cta {
-    position: static;
-    margin: 1.5em auto 0 auto;
-    text-align: center;
-  }
-
-  .top-buttons {
-    top: 1em;
-    left: 1em;
-    flex-direction: row;
-  }
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* zpět na "cover", aby vyplnil celý blok */
+  object-position: center center;
 }
 
 
