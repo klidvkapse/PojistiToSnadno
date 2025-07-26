@@ -251,13 +251,13 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 15vh; /* překryje pouze 15 % spodní části */
+    height: 30vh; /* ⬅️ zvýšené překrytí na 30 % */
     background: var(--overlay);
     padding: 1.2em 1.5em;
     z-index: 2;
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
-    overflow-y: auto;
+    overflow: hidden; /* ⬅️ odstraněno scrollování */
   }
 
   .state-search {
@@ -330,6 +330,7 @@ footer {
     display: none !important;
   }
 }
+
 
 </style>
 </head>
