@@ -237,6 +237,7 @@ footer {
     height: auto;
     position: relative;
     order: 1;
+    margin-bottom: 1em;
   }
 
   .hero-img {
@@ -245,6 +246,8 @@ footer {
     display: block;
     object-fit: cover;
     object-position: center 30%;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
   }
 
   .top-buttons {
@@ -282,20 +285,35 @@ footer {
     order: 4;
     text-align: center;
     margin: 1.5em auto;
+    width: 85%;
   }
 
   .cta a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 0.9em 1.6em;
-    font-size: 1rem;
+    padding: 1em 1.4em;
+    font-size: 1.05rem;
     border-radius: 18px;
     background: var(--button-bg);
     color: var(--text-dark);
     font-weight: bold;
     box-shadow: var(--shadow);
     text-decoration: none;
+    width: 100%;
+    max-width: 400px;
+    transition: background 0.2s ease;
+  }
+
+  .cta a:hover {
+    background: var(--button-hover);
+  }
+
+  .cta svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--text-dark);
+    margin-right: 0.6em;
   }
 
   footer {
@@ -306,7 +324,7 @@ footer {
     color: var(--primary);
     background: transparent;
   }
-}
+
 
 /* Skryj na mobilech */
 @media (max-width: 767px) {
