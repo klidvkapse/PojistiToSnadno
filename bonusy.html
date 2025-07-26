@@ -229,10 +229,11 @@ footer {
   main {
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    overflow: visible !important;
+    height: auto !important;
   }
 
- .hero-image-container {
+  .hero-image-container {
     width: 100%;
     height: auto !important;
     display: block !important;
@@ -251,7 +252,6 @@ footer {
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
   }
-
   .top-buttons {
     position: absolute;
     top: 12px;
