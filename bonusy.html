@@ -226,6 +226,7 @@ footer {
 @media (max-width: 767px) {
   main {
     flex-direction: column;
+    overflow-x: hidden;
   }
 
   .content {
@@ -238,28 +239,61 @@ footer {
     width: 100%;
     height: auto;
     order: 1;
+    position: relative;
   }
 
   .hero-img {
     width: 100%;
     height: auto;
-    object-fit: contain;
-    object-position: center bottom;
+    object-fit: cover;
+    object-position: center 30%;
   }
 
-  /* Tlačítko přesunout nad footer */
+  /* Tlačítko "Objednat Roční Kartu" */
   .hero-image-container .cta {
-    position: static;
-    margin: 1.5em auto 0 auto;
+    position: relative;
     text-align: center;
+    margin: 1em auto 1.5em auto;
   }
 
+  .hero-image-container .cta a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.9em 1.6em;
+    font-size: 1rem;
+    border-radius: 18px;
+    background: var(--button-bg);
+    color: var(--text-dark);
+    font-weight: bold;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+
+  /* Navigační tlačítka - přesun výše a na střed */
   .top-buttons {
-    top: 1em;
-    left: 1em;
-    flex-direction: row;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    gap: 1em;
+  }
+
+  .top-buttons a {
+    font-size: 0.9rem;
+    padding: 0.4em 0.8em;
+  }
+
+  footer {
+    text-align: center;
+    padding: 0.5em 0 1em 0;
+    font-size: 0.85rem;
+    color: var(--primary);
+    background: transparent;
   }
 }
+
 
 </style>
 
