@@ -217,6 +217,8 @@
       text-decoration: none;
       box-shadow: 0 2px 12px rgba(120,100,60,0.13);
       transition: background 0.2s ease, color 0.2s ease;
+       /* 💡 PULZUJÍCÍ ANIMACE */
+      animation: pulse 2s infinite
     }
 
     .bonus-btn:hover {
@@ -280,6 +282,21 @@
     .bonus-btn:hover {
   background: #af4876;
 }
+    @keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(201, 180, 117, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(201, 180, 117, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(201, 180, 117, 0.0);
+  }
+}
+
 
     /* MOBILNÍ ÚPRAVY */
     @media (max-width: 600px) {
