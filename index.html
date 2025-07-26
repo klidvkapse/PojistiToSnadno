@@ -111,7 +111,7 @@
 
     .left-panel {
       position: fixed;
-      top: 70px;
+      top: 90px;
       left: 4vw;
       display: flex;
       flex-direction: column;
@@ -155,7 +155,7 @@
       border-radius: 12px;
       padding: 10px;
       margin-top: 10px;
-      max-width: 80px;
+      max-width: 100px;
       background: rgba(255,255,255,0.05);
     }
 
@@ -163,7 +163,7 @@
       width: 100%;
       border-radius: 6px;
       background: #fff;
-      padding: 4px;
+      padding: 6px;
     }
 
     .qr-vizitka div {
@@ -188,10 +188,12 @@
       z-index: 15;
       text-decoration: none;
       box-shadow: 0 2px 12px rgba(120,100,60,0.13);
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
     .bonus-btn:hover {
-      background: #af4876;
+      background: var(--button-hover);
+      color: #222;
     }
 
     .bonus-btn svg {
@@ -247,6 +249,70 @@
       justify-content: flex-end;
       gap: 0.5em;
     }
+
+    /* ===== Mobilní rozvržení ===== */
+    @media (max-width: 768px) {
+      header {
+        padding: 8px 0;
+      }
+
+      .site-title {
+        font-size: 1.5em;
+        margin-left: 3vw;
+      }
+
+      .left-panel {
+        top: 60px;
+        left: 2vw;
+        flex-direction: column;
+        gap: 8px;
+        max-height: none;
+        overflow: visible;
+      }
+
+      .quick-btn {
+        font-size: 0.85em;
+        padding: 0.4em 0.6em;
+        min-width: auto;
+        max-width: 90vw;
+      }
+
+      .qr-vizitka {
+        max-width: 90px;
+        margin-top: 10px;
+      }
+
+      .main-content {
+        width: 100vw;
+        right: 0;
+        bottom: 90px;
+        padding: 0 4vw;
+        align-items: center;
+      }
+
+      .main-box {
+        width: 100%;
+        margin-bottom: 0.8em;
+      }
+
+      .right-bottom-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5em;
+      }
+
+      .bonus-btn {
+        top: 10px;
+        right: 2vw;
+        padding: 0.5em 0.8em;
+        font-size: 0.85em;
+      }
+
+      footer {
+        font-size: 0.75em;
+        padding: 6px 0;
+      }
+    }
   </style>
 </head>
 
@@ -268,7 +334,7 @@
 
   <div class="left-panel">
     <a href="#" class="quick-btn">
-      <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4"/><rect x="9" y="8" width="14" height="4" rx="1.5"/><circle cx="12" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><circle cx="20" cy="17" r="1.5"/><circle cx="12" cy="22" r="1.5"/><circle cx="16" cy="22" r="1.5"/><circle cx="20" cy="22" r="1.5"/></svg>
+      <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4"/></svg>
       Kalkulačka
     </a>
     <a href="#" class="quick-btn">
