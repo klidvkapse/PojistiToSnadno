@@ -48,6 +48,7 @@
         rel="stylesheet" media="print" onload="this.media='all'"/>
   <style>
 
+    <style>
     :root {
       --primary: #b7a97c;
       --button-bg: #c9b475;
@@ -55,28 +56,19 @@
       --text: #fff;
       --radius: 18px;
       --shadow: 0 2px 20px rgba(0,0,0,0.14);
-      --icon-size: 24px;
+      --icon-size: 20px;
     }
 
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Raleway', Arial, sans-serif;
-      color: var(--text);
       background: #181818 url('portret-bg-web.png') no-repeat center center;
       background-size: cover;
+      color: var(--text);
       height: 100%;
-      min-height: 100vh;
       width: 100vw;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-
-    @media (max-width: 800px) {
-      body {
-        background: #181818 url('portret.png') no-repeat center top;
-        background-size: cover;
-      }
+      overflow: hidden;
     }
 
     body::before {
@@ -89,101 +81,140 @@
     }
 
     header {
-      position: relative;
-      z-index: 10;
-      padding: 18px 0 10px 0;
-      text-align: left;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
+      padding: 12px 0;
+      z-index: 100;
+      text-align: left;
     }
 
     .site-title {
-      font-size: 2.5em;
+      font-size: 2em;
       font-weight: 900;
       color: #ffe87a;
-      letter-spacing: 0.06em;
-      text-shadow: 0 2px 16px #000, 0 0 2px #b7a97c;
       margin-left: 4vw;
+      text-shadow: 0 2px 10px #000;
     }
 
-    main {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
       width: 100%;
-      min-height: 80vh;
-      position: relative;
-      z-index: 2;
+      padding: 10px 0;
+      background: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      font-size: 0.9em;
+      color: #f5f5f5;
+      z-index: 100;
     }
 
     .left-panel {
-      margin-left: 4vw;
-      margin-top: 2vw;
+      position: fixed;
+      top: 70px;
+      left: 4vw;
       display: flex;
       flex-direction: column;
-      gap: 1em;
-      z-index: 2;
+      gap: 10px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      z-index: 10;
     }
 
     .quick-btn {
       display: flex;
       align-items: center;
-      gap: 0.7em;
+      gap: 0.5em;
       background: var(--button-bg);
       color: #262319;
-      padding: 0.68em 1.1em;
-      font-size: 1.07em;
+      padding: 0.5em 0.8em;
+      font-size: 0.9em;
       font-weight: 700;
       text-decoration: none;
-      border-radius: 15px;
-      box-shadow: 0 2px 14px rgba(120, 100, 60, 0.13);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(120, 100, 60, 0.13);
       border: none;
       min-width: 160px;
       cursor: pointer;
-      justify-content: flex-start;
     }
 
     .quick-btn:hover {
       background: var(--button-hover);
-      color: #222;
-      box-shadow: 0 4px 22px rgba(184, 160, 92, 0.19);
     }
 
     .quick-btn svg {
       width: var(--icon-size);
       height: var(--icon-size);
-      fill: none;
       stroke: #4b420d;
       stroke-width: 2;
+      fill: none;
       flex-shrink: 0;
     }
 
-    .btn-text {
-      display: flex;
-      flex-direction: column;
+    .qr-vizitka {
+      border-radius: 12px;
+      padding: 10px;
+      margin-top: 10px;
+      max-width: 80px;
+      background: rgba(255,255,255,0.05);
     }
 
-    .btn-title {
+    .qr-vizitka img {
+      width: 100%;
+      border-radius: 6px;
+      background: #fff;
+      padding: 4px;
+    }
+
+    .qr-vizitka div {
+      font-size: 11px;
+      margin-top: 5px;
+      color: #f0f0f0;
+    }
+
+    .bonus-btn {
+      position: fixed;
+      top: 20px;
+      right: 4vw;
+      background: var(--button-bg);
+      color: #262319;
+      padding: 0.7em 1.2em;
+      font-size: 1em;
       font-weight: 700;
-      font-size: 1.2em;
-      line-height: 1.3em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      border-radius: var(--radius);
+      z-index: 15;
+      text-decoration: none;
+      box-shadow: 0 2px 12px rgba(120,100,60,0.13);
     }
 
-    .btn-sub {
-      font-weight: 400;
-      font-size: 0.88em;
-      line-height: 1.2em;
+    .bonus-btn:hover {
+      background: #af4876;
+    }
+
+    .bonus-btn svg {
+      width: var(--icon-size);
+      height: var(--icon-size);
+      stroke: #4b420d;
+      stroke-width: 2;
+      fill: none;
     }
 
     .main-content {
       position: fixed;
+      bottom: 80px;
       right: 4vw;
-      bottom: 6vw;
+      max-height: none;
       width: 350px;
-      max-width: 95vw;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      z-index: 20;
+      justify-content: flex-end;
+      z-index: 10;
     }
 
     .main-box {
@@ -191,200 +222,44 @@
       backdrop-filter: blur(6px);
       border-radius: var(--radius);
       box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
-      padding: 1.1em;
+      padding: 1em;
       width: 100%;
-      margin-bottom: 0.9em;
-      z-index: 3;
-    }
-
-    .about, .services {
-      font-size: 0.95em;
-      
+      margin-bottom: 0.8em;
+      overflow: visible;
+      max-height: none;
     }
 
     .highlight-title {
       color: #ffe87a;
-      font-size: 1.4em;
-      font-weight: 700;
-      margin-top: 0.2em;
+      font-size: 1.3em;
+      margin: 0.4em 0;
+    }
+
+    .about, .services {
+      font-size: 0.9em;
+    }
+
+    .services ul {
+      padding-left: 1.2em;
+      margin: 0.5em 0;
     }
 
     .right-bottom-buttons {
-      width: 100%;
       display: flex;
-      flex-direction: row;
       justify-content: flex-end;
-      gap: 0.6em;
+      gap: 0.5em;
     }
-    .main-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  margin-top: 60px; /* případně uprav dle potřeby */
-}
-    /* ————————————————————————————————
-   Tlačítko BONUSY (fixed v pravém horním rohu)
-   ———————————————————————————————— */
-/* BONUSY button */
-.bonus-btn {
-  position: fixed;
-  top: 4vw;
-  right: 4vw;
-  display: flex;            /* ← nově flex */
-  align-items: center;      /* ← vycentrovat iconku s textem */
-  gap: 0.7em;               /* ← mezera mezi svg a textem */
-  background: var(--button-bg);
-  color: #262319;
-  padding: 1em 2em;
-  font-size: 1.3em;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: var(--radius);
-  box-shadow: 0 2px 14px rgba(120,100,60,0.13);
-  z-index: 15;
-  transition: background 0.2s ease;
-}
-
-.bonus-btn:hover {
-  background: #af4876;
-}
-
-/* samotná svg velikost dědí z .quick-btn */
-.bonus-btn svg {
-  width: var(--icon-size);
-  height: var(--icon-size);
-  fill: none;
-  stroke: #4b420d;
-  stroke-width: 2;
-  flex-shrink: 0;
-}
-
-
-
-
-
-
-    /* MOBILNÍ ÚPRAVY */
-    @media (max-width: 600px) {
-      .site-title {
-        font-size: 1.5em;
-        margin-left: 2vw;
-        white-space: nowrap;
-      }
-
-      .quick-btn {
-        padding: 0.4em 0.6em;
-        font-size: 0.85em;
-        min-width: auto;
-        max-width: 88vw;
-      }
-
-      .btn-title {
-        font-size: 1em;
-      }
-
-      .btn-sub {
-        font-size: 0.75em;
-      }
-
-      .left-panel {
-        gap: 0.4em;
-        margin-top: 0.6em;
-        margin-left: 1vw;
-      }
-
-      .left-panel a svg {
-        width: 10px;
-        height: 20px;
-      }
-
-      .main-content {
-        width: 100vw;
-        position: fixed;
-        bottom: 62px;
-        left: 0;
-        right: 0;
-        align-items: center;
-        justify-content: flex-end;
-      }
-
-      .main-box {
-        max-width: 92vw;
-        font-size: 0.78em;
-        max-height: 28vh;
-        overflow-y: auto;
-        padding: 0.8em 0.8em 0.6em 0.8em;
-      }
-
-      .highlight-title {
-        font-size: 1em;
-      }
-
-      .about, .services {
-        font-size: 0.8em;
-      }
-
-      .right-bottom-buttons {
-        justify-content: center;
-        gap: 0.3em;
-        flex-wrap: wrap;
-      }
-      .main-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  margin-top: 10px; /* případně uprav dle potřeby */
-}
-
-.qr-vizitka {
-  border-radius: 14px;
-  padding: 18px 22px;
-  margin-top: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 90px;
-}
-
-.qr-vizitka img {
-  max-width:90px;
-  width: 100%;
-  border-radius: 8px;
-  background: #fff;
-  padding: 6px;
- } 
-  .desktop-only {
-  display: block;
-}
-      .bonus-btn {
-    /* posuneme trochu blíž ke kraji, pokud je potřeba */
-    top: 2vw;
-    right: 2vw;
-    /* menší padding a font */
-    padding: 0.4em 0.6em;
-    font-size: 0.85em;
-    /* aby šířka netrčela */
-    min-width: auto;
-  }
-
-@media (max-width: 800px) {
-  .desktop-only {
-    display: none !important;
-  }
- }
-
-</style>
+  </style>
 </head>
+
 <body>
+
   <header>
     <h1 class="site-title">PojistiToSnadno.cz</h1>
   </header>
-  <!-- === NOVÉ TLAČÍTKO BONUSY === -->
+
   <a href="bonusy.html" class="bonus-btn">
-     <svg viewBox="0 0 32 32">
-      <!-- jednoduchá “dárek” ikonka: krabička s mašlí -->
+    <svg viewBox="0 0 32 32">
       <path d="M4 12h24v16H4z"/>
       <path d="M16 12v16"/>
       <path d="M16 12l6-6"/>
@@ -392,76 +267,64 @@
     </svg>
     <span>Bonusy</span>
   </a>
-  <main>
-    <div class="left-panel">
-      <a href="clanek1.html" class="quick-btn">
-        <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4"/><rect x="9" y="8" width="14" height="4" rx="1.5"/><circle cx="12" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><circle cx="20" cy="17" r="1.5"/><circle cx="12" cy="22" r="1.5"/><circle cx="16" cy="22" r="1.5"/><circle cx="20" cy="22" r="1.5"/></svg>
-        <div class="btn-text">
-          <div class="btn-title">Kalkulačka</div>
-          <div class="btn-sub">Spočítej si svou úrazovku.</div>
-        </div>
-      </a>
-      <a href="statistiky.html" class="quick-btn">
-        <svg viewBox="0 0 32 32"><rect x="7" y="15" width="3" height="10" rx="1"/><rect x="14" y="10" width="3" height="15" rx="1"/><rect x="21" y="7" width="3" height="18" rx="1"/></svg>
-        <div class="btn-text">
-          <div class="btn-title">Statistiky</div>
-          <div class="btn-sub">Mrkni proč se pojistit.</div>
-        </div>
-      </a>
-      <a href="slovnik.html" class="quick-btn">
-        <svg viewBox="0 0 32 32"><path d="M7 8v16a2 2 0 0 0 2 2h14"/><path d="M25 6H11a2 2 0 0 0-2 2v18"/><path d="M25 6v20"/><path d="M7 8h16"/></svg>
-        <div class="btn-text">
-          <div class="btn-title">Slovník pojmů</div>
-          <div class="btn-sub">Přelož si to, ať víš o co jde.</div>
-        </div>
-      </a>
-      <a href="kontakt.html" class="quick-btn desktop-only">
-          <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
-          Kontakt
-        </a>
-      <div class="qr-vizitka desktop-only">
-    <img src="qr-vizitka.jpg" alt="QR kód – elektronická vizitka" />
-    <div style="font-size:13px; color:#f6f4ee; margin-top:8px;">Naskenujte pro uložení kontaktu</div>
+
+  <div class="left-panel">
+    <a href="#" class="quick-btn">
+      <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="4"/><rect x="9" y="8" width="14" height="4" rx="1.5"/><circle cx="12" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><circle cx="20" cy="17" r="1.5"/><circle cx="12" cy="22" r="1.5"/><circle cx="16" cy="22" r="1.5"/><circle cx="20" cy="22" r="1.5"/></svg>
+      Kalkulačka
+    </a>
+    <a href="#" class="quick-btn">
+      <svg viewBox="0 0 32 32"><rect x="7" y="15" width="3" height="10" rx="1"/><rect x="14" y="10" width="3" height="15" rx="1"/><rect x="21" y="7" width="3" height="18" rx="1"/></svg>
+      Statistiky
+    </a>
+    <a href="#" class="quick-btn">
+      <svg viewBox="0 0 32 32"><path d="M7 8v16a2 2 0 0 0 2 2h14"/><path d="M25 6H11a2 2 0 0 0-2 2v18"/><path d="M25 6v20"/><path d="M7 8h16"/></svg>
+      Slovník pojmů
+    </a>
+    <a href="#" class="quick-btn">
+      <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
+      Kontakt
+    </a>
+    <div class="qr-vizitka">
+      <img src="qr-vizitka.jpg" alt="QR kód" />
+      <div>Naskenujte pro kontakt</div>
+    </div>
   </div>
-     
-</div>
-    </div>
 
-    <div class="main-content">
-      <div class="main-box">
-        Jmenuji se
-        <h2 class="highlight-title">Daniel Verner</h2>
-        <div class="about">
-          Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR.<br />
-          Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.<br />
-          Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.
-        </div>
-        <div class="services">
-          <b>Služby:</b>
-          <ul>
-            <li>Životní a úrazové pojištění</li>
-            <li>Pojištění pracovní neschopnosti</li>
-            <li>Pojištění majetku a dopravních prostředků</li>
-            <li>Podpora při řešení pojistných událostí</li>
-            <li>Úvěry na bydlení</li>
-          </ul>
-        </div>
+  <div class="main-content">
+    <div class="main-box">
+      <div>Jmenuji se</div>
+      <h2 class="highlight-title">Daniel Verner</h2>
+      <div class="about">
+        Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR.
+        Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.
       </div>
-
-      <div class="right-bottom-buttons">
-        <a href="realne-skody.html" class="quick-btn">
-          <svg viewBox="0 0 32 32"><polygon points="17 2 6 18 16 18 15 30 26 14 16 14 17 2"/></svg>
-          Reálné škody klientů
-        </a>
-        <a href="kontakt.html" class="quick-btn">
-          <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
-          Chci pojistit
-        </a>
+      <div class="services">
+        <b>Služby:</b>
+        <ul>
+          <li>Životní a úrazové pojištění</li>
+          <li>Pojištění pracovní neschopnosti</li>
+          <li>Pojištění majetku a dopravních prostředků</li>
+          <li>Podpora při řešení pojistných událostí</li>
+          <li>Úvěry na bydlení</li>
+        </ul>
       </div>
     </div>
-  </main>
-  <footer role="contentinfo">
-    <p>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</p>
+    <div class="right-bottom-buttons">
+      <a href="#" class="quick-btn">
+        <svg viewBox="0 0 32 32"><polygon points="17 2 6 18 16 18 15 30 26 14 16 14 17 2"/></svg>
+        Reálné škody klientů
+      </a>
+      <a href="#" class="quick-btn">
+        <svg viewBox="0 0 32 32"><path d="M23.5 6a6.5 6.5 0 0 0-5.5 3A6.5 6.5 0 0 0 6.5 18c0 7 9.5 11 9.5 11s9.5-4 9.5-11a6.5 6.5 0 0 0-6.5-6z"/></svg>
+        Chci pojistit
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
   </footer>
+
 </body>
 </html>
