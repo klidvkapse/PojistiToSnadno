@@ -224,6 +224,16 @@ footer {
   .pulse {
   animation: pulse 2s infinite;
 }
+  @keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 0, 0, 0.2); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 0, 0, 0.2); }
+}
+
+.cta a {
+  animation: pulse 2s infinite;
+}
+
 
 
 /* ---------------------------------
