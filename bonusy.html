@@ -225,21 +225,17 @@ footer {
 /* RESPONSIVE */
 @media (max-width: 767px) {
   main {
+    display: flex;
     flex-direction: column;
     overflow-x: hidden;
   }
 
-  .content {
-    width: 100%;
-    padding: 1.5em;
-    order: 2;
-  }
-
+  /* Obrázek nahoře, celá šířka */
   .hero-image-container {
     width: 100%;
     height: auto;
-    order: 1;
     position: relative;
+    order: 1;
   }
 
   .hero-img {
@@ -247,16 +243,51 @@ footer {
     height: auto;
     object-fit: cover;
     object-position: center 30%;
+    display: block;
   }
 
-  /* Tlačítko "Objednat Roční Kartu" */
-  .hero-image-container .cta {
-    position: relative;
+  /* Tlačítko "Domů" vpravo nahoře v rámci obrázku */
+  .top-buttons {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1000;
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .top-buttons a {
+    font-size: 0.85rem;
+    padding: 0.4em 0.8em;
+    border-radius: var(--radius);
+    background-color: var(--button-bg);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Content – textová část */
+  .content {
+    width: 100%;
+    padding: 1.2em 1.5em;
+    order: 2;
+  }
+
+  /* Vyhledávač států */
+  .search-box {
+    order: 3;
+    padding: 0 1.5em;
+    margin-top: 1em;
+  }
+
+  /* Tlačítko Objednat Roční Kartu – pod contentem a vyhledáváním */
+  .cta {
+    order: 4;
     text-align: center;
-    margin: 1em auto 1.5em auto;
+    margin: 1.5em auto;
   }
 
-  .hero-image-container .cta a {
+  .cta a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -270,24 +301,11 @@ footer {
     text-decoration: none;
   }
 
-  /* Navigační tlačítka - přesun výše a na střed */
-  .top-buttons {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-    gap: 1em;
-  }
-
-  .top-buttons a {
-    font-size: 0.9rem;
-    padding: 0.4em 0.8em;
-  }
-
+  /* Footer */
   footer {
+    order: 5;
     text-align: center;
-    padding: 0.5em 0 1em 0;
+    padding: 0.7em 0;
     font-size: 0.85rem;
     color: var(--primary);
     background: transparent;
