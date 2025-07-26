@@ -228,11 +228,11 @@ footer {
 @media (max-width: 767px) {
   .hero-image-container {
     width: 100%;
-    height: auto;
+    height: 60vh; /* výška obrázku – můžeš upravit */
     position: relative;
     order: 1;
     display: block;
-    margin: 0; /* odstraní spodní mezeru */
+    overflow: hidden;/
   }
 
   .hero-image-container {
@@ -245,10 +245,9 @@ footer {
     margin-bottom: 1em;
   }
 
-  .hero-img {
-    .hero-img {
+ .hero-img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
     object-position: center center;
@@ -272,14 +271,14 @@ footer {
     font-weight: bold;
   }
 
-  .content {
+ .content {
     order: 2;
     width: 100%;
     padding: 1.2em 1.5em;
-    margin-top: -15vw; /* překrytí cca 15 % výšky obrázku */
-    background: var(--overlay); /* volitelné – tmavé pozadí pro čitelnost */
-    z-index: 5;
+    margin-top: -9vh; /* cca 15 % překrytí z 60vh (60 * 0.15 = 9) */
     position: relative;
+    background: var(--overlay); /* pro čitelnost */
+    z-index: 2;
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
   }
