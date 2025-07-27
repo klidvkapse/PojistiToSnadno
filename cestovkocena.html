@@ -5,16 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ceník roční cestovní karty</title>
   <style>
-    /* Tohle je nejdůležitější – upravte cestu, pokud je PNG v podsložce */
+    /* Pozadí celé stránky */
     body {
       margin: 0;
       padding: 2em;
       font-family: Arial, sans-serif;
       line-height: 1.5;
+      /* zde je obrázek pozadí */
       background: url('pozacest.png') no-repeat center center fixed;
       background-size: cover;
     }
-    /* pro čitelnost hlavního panelu */
+
+    nav a {
+      text-decoration: none;
+      color: #0366d6;
+      margin-bottom: 1em;
+      display: inline-block;
+      background: rgba(255,255,255,0.8);
+      padding: 0.5em 1em;
+      border-radius: 4px;
+    }
+
     main {
       max-width: 800px;
       margin: auto;
@@ -22,40 +33,108 @@
       padding: 1.5em;
       border-radius: 6px;
     }
-    nav a {
-      text-decoration: none;
-      color: #0366d6;
-      background: rgba(255,255,255,0.8);
-      padding: 0.5em 1em;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 1em;
+
+    /* zvýraznění cen a nápisu MOJI KLIENTI */
+    strong {
+      color: #d9534f;
     }
-    /* zvýraznění cen pro klienty */
-    strong { color: #d9534f; }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 2em;
     }
+
     th, td {
       border: 1px solid #ccc;
       padding: 0.5em;
       text-align: center;
     }
-    th { background-color: #f5f5f5; }
-    h1, h3 { margin-top: 1.5em; }
-    em { display: block; margin: 0.5em 0 1em; }
+
+    th {
+      background-color: #f5f5f5;
+    }
+
+    h1, h3 {
+      margin-top: 1.5em;
+    }
+
+    em {
+      display: block;
+      margin: 0.5em 0 1em;
+    }
   </style>
 </head>
 <body>
+
   <nav>
     <a href="rocnicestovnikarta.html">← Zpět na stránku o roční cestovní kartě</a>
   </nav>
+
   <main>
     <h1>Ceník roční cestovní karty</h1>
-    <!-- ... vaše tabulky ... -->
+
+    <section>
+      <h3>Roční cestovní karta</h3>
+      <p><em>Varianta: ZÁKLADNÍ, aktivní sport (pojistné v Kč) Cena / <strong>MOJI KLIENTI</strong></em></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Územní platnost</th>
+            <th>Evropa</th>
+            <th>Svět včetně USA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LVZ</td>
+            <td>1600 / <strong>585</strong></td>
+            <td>nelze</td>
+          </tr>
+          <tr>
+            <td>LVZ + ÚZO</td>
+            <td>2060 / <strong>827</strong></td>
+            <td>6540 / <strong>1 937</strong></td>
+          </tr>
+          <tr>
+            <td>LVZ + ÚZO + STORNO</td>
+            <td>2860 / <strong>1 627</strong></td>
+            <td>7340 / <strong>3 137</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <p><em>Varianta: VYŠŠÍ LIMITY, aktivní sport (pojistné v Kč) Cena / <strong>MOJI KLIENTI</strong></em></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Územní platnost</th>
+            <th>Evropa</th>
+            <th>Svět včetně USA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LVZ</td>
+            <td>2400 / <strong>845</strong></td>
+            <td>nelze</td>
+          </tr>
+          <tr>
+            <td>LVZ + ÚZO</td>
+            <td>3230 / <strong>1 197</strong></td>
+            <td>9950 / <strong>2 677</strong></td>
+          </tr>
+          <tr>
+            <td>LVZ + ÚZO + STORNO</td>
+            <td>4030 / <strong>1 997</strong></td>
+            <td>10750 / <strong>3 877</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </main>
+
 </body>
 </html>
