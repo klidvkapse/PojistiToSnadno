@@ -10,19 +10,14 @@
     body {
       margin: 0;
       padding: 0;
-      background-image: url('letiste-bg-web.jpg') no-repeat center center; /* ← Vyměň za svou cestu */
+      background-image: url('background.jpg'); /* ← Vyměň za svou cestu */
       background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: #fff1d0;
       font-family: system-ui, sans-serif;
-       height: 100%;
-      width: 100vw;
-      overflow: hidden;
     }
- @media (max-width: 800px) {
-  body {
-    background: url('letiste.png') no-repeat center top;
-    background-size: cover;
-  } /* ← chyběla tato závorka */
+
     .overlay {
       backdrop-filter: brightness(0.4);
       min-height: 100vh;
@@ -147,10 +142,6 @@
       nav ul li {
         padding: 0.2rem;
       }
-      @media (max-width: 800px) {
-  .desktop-only {
-    display: none !important
-    }
     }
   </style>
 </head>
@@ -175,12 +166,12 @@
       </hgroup>
       <p>
         Zobrazujeme ceny pro běžné klienty i výhodné ceny pro
-        <strong style="color:#ff5555;">MOJE KLIENTY</strong>.
+        <strong style="color:#ff5555;">MOJI KLIENTI</strong>.
       </p>
 
       <!-- Tabulka 1 -->
       <div class="flight-board">
-        <caption>ZÁKLADNÍ + Aktivní sport</caption>
+        <caption>ZÁKLADNÍ – Aktivní sport</caption>
         <table>
           <thead>
             <tr>
@@ -211,7 +202,7 @@
 
       <!-- Tabulka 2 -->
       <div class="flight-board">
-        <caption>VYŠŠÍ LIMITY + Aktivní sport</caption>
+        <caption>VYŠŠÍ LIMITY – Aktivní sport</caption>
         <table>
           <thead>
             <tr>
