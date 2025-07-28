@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ceník Roční Cestovní Karty</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-image: url('letiste.jpg'); /* ← Nahraď svou cestou k obrázku */
+      background-image: url('background.jpg'); /* ← Nahraď svou cestou */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -19,7 +19,7 @@
     }
 
     .overlay {
-      backdrop-filter: brightness(0.4);
+      backdrop-filter: brightness(0.7);
       min-height: 100vh;
       padding: 2rem;
     }
@@ -29,12 +29,34 @@
     }
 
     nav, footer {
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.85);
       border-radius: 0.5rem;
     }
 
+    nav a {
+      color: #ffcc33 !important;
+    }
+
+    nav a[role="button"],
+    nav a.button,
+    button,
+    .sound-button button {
+      background-color: #d5c26b !important;
+      color: #000 !important;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      box-shadow: none;
+    }
+
+    nav a[role="button"]:hover,
+    button:hover {
+      background-color: #e3d47c !important;
+    }
+
     main.container {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 2rem;
       border-radius: 1rem;
       box-shadow: 0 0 30px rgba(0,0,0,0.4);
@@ -42,14 +64,13 @@
       margin: 2rem auto;
     }
 
-    /* Tabulky ve stylu letištní tabule */
     .flight-board {
       background-color: #111;
       border-radius: 10px;
       padding: 1rem;
-      font-family: 'VT323', monospace;
-      font-size: 1.8rem;
-      letter-spacing: 1px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
       box-shadow: 0 0 20px rgba(255, 204, 51, 0.2);
       margin-bottom: 2rem;
     }
@@ -87,7 +108,7 @@
       text-align: left;
       padding-bottom: 0.5rem;
       font-weight: bold;
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: #ffcc33;
     }
 
@@ -98,10 +119,24 @@
       font-weight: bold;
     }
 
-    /* Styl tlačítka zvuku */
     .sound-button {
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 1rem;
+    }
+
+    .sound-button button {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.6rem;
+      margin-top: 1rem;
+      background-color: transparent;
+      color: #ffcc33 !important;
+      border: 1px solid #ffcc33;
+      border-radius: 5px;
+    }
+
+    .sound-button button:hover {
+      background-color: #ffcc33;
+      color: #000 !important;
     }
   </style>
 </head>
@@ -113,9 +148,9 @@
         <li><strong>Roční Cestovní Karta</strong></li>
       </ul>
       <ul>
-        <li><a href="#">Domů</a></li>
+        <li><a href="index.html">Domů</a></li>
         <li><a href="#">Výhody</a></li>
-        <li><a href="#" role="button">Kontakt</a></li>
+        <li><a href="kontakt.html" role="button">Kontakt</a></li>
       </ul>
     </nav>
 
@@ -191,15 +226,14 @@
         </table>
       </div>
 
-      <!-- Zvuková sekce -->
+      <!-- Sekce zvuku -->
       <div class="sound-button">
         <audio id="airportSound">
           <source src="airport-gong.mp3" type="audio/mpeg" />
           Váš prohlížeč nepodporuje přehrávání zvuku.
         </audio>
-        <button onclick="document.getElementById('airportSound').play()">🔊 Přehrát letištní zvuk</button>
+        <button onclick="document.getElementById('airportSound').play()">🔈 zvuk</button>
       </div>
-
     </main>
 
     <footer class="container">
