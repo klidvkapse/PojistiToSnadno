@@ -21,6 +21,39 @@
       color: #fff1d0;
     }
 
+    /* Obrázek pouze pro mobil */
+    .hero-img {
+      width: 100%;
+      object-fit: cover;
+      height: 60vh;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .mobile-only {
+        display: block;
+      }
+
+      body {
+        background: #000; /* na mobilech se skryje pozadí background-image */
+      }
+
+      main.container {
+        margin-top: -10vh;
+        position: relative;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.75);
+      }
+
+      .flight-board {
+        font-size: 1.2rem;
+        background-color: rgba(0,0,0,0.85);
+      }
+    }
+
     nav.container-fluid {
       background: transparent;
       box-shadow: none;
@@ -112,40 +145,14 @@
       color: var(--yellow);
       font-weight: bold;
     }
-
-    /* Mobilní vzhled */
-    @media screen and (max-width: 768px) {
-      body {
-        background: #000;
-      }
-
-      .hero-img {
-        display: block;
-        width: 100%;
-        object-fit: cover;
-        height: 60vh;
-      }
-
-      main.container {
-        margin-top: -12vh;
-        position: relative;
-        z-index: 2;
-        background: rgba(0, 0, 0, 0.75);
-      }
-
-      .flight-board {
-        background-color: rgba(0, 0, 0, 0.85);
-        font-size: 1.2rem;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Hero IMG only for mobile -->
-  <img src="letiste.png" alt="Letiště" class="hero-img" />
+  <!-- Hero IMG pouze pro mobilní zobrazení -->
+  <img src="letiste.png" alt="Letiště" class="hero-img mobile-only" />
 
-  <!-- SOUND ICON -->
+  <!-- Ikona pro přehrání zvuku -->
   <div class="sound-icon">
     <audio id="airportSound">
       <source src="airport-gong.mp3" type="audio/mpeg" />
@@ -153,7 +160,7 @@
     <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" alt="Zvuk" onclick="document.getElementById('airportSound').play()" />
   </div>
 
-  <!-- HEADER -->
+  <!-- Navigace -->
   <nav class="container-fluid">
     <ul>
       <li><strong>Roční Cestovní Karta</strong></li>
@@ -165,7 +172,7 @@
     </ul>
   </nav>
 
-  <!-- MAIN -->
+  <!-- Hlavní obsah -->
   <main class="container">
     <hgroup>
       <h1>Ceník roční cestovní karty</h1>
@@ -175,9 +182,9 @@
       Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <strong style="color: var(--highlight)">MOJI KLIENTI</strong>.
     </p>
 
-    <!-- TABULKA 1 -->
+    <!-- Tabulka ZÁKLADNÍ -->
     <div class="flight-board">
-      <caption>ZÁKLADNÍ + Aktivní sport</caption>
+      <caption>ZÁKLADNÍ – Aktivní sport</caption>
       <table>
         <thead>
           <tr>
@@ -206,9 +213,9 @@
       </table>
     </div>
 
-    <!-- TABULKA 2 -->
+    <!-- Tabulka VYŠŠÍ LIMITY -->
     <div class="flight-board">
-      <caption>VYŠŠÍ LIMITY + Aktivní sport</caption>
+      <caption>VYŠŠÍ LIMITY – Aktivní sport</caption>
       <table>
         <thead>
           <tr>
@@ -238,6 +245,7 @@
     </div>
   </main>
 
+  <!-- Paticka -->
   <footer>
     © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
   </footer>
