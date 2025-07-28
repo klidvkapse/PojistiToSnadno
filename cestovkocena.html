@@ -4,30 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ceník Roční Cestovní Karty</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: "Share Tech Mono", monospace;
+      font-family: 'Share Tech Mono', monospace;
       color: #f3d14c;
-      background: url('letiste.png') no-repeat center center fixed;
+      background: url('letiste.png') no-repeat center top;
       background-size: cover;
+    }
+
+    .mobile-only {
+      display: none;
     }
 
     header {
       position: absolute;
       top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.2); /* Transparentní hlavička */
+      background: rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(4px);
+      z-index: 1000;
     }
 
     header h1 {
@@ -39,6 +43,7 @@
     nav {
       display: flex;
       gap: 1rem;
+      align-items: center;
     }
 
     nav a {
@@ -49,7 +54,7 @@
 
     .btn {
       background: #d5c26b;
-      color: #000;
+      color: black;
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 10px;
@@ -57,7 +62,7 @@
     }
 
     main {
-      margin: 6rem auto 2rem auto;
+      margin: 9rem auto 2rem auto;
       max-width: 1100px;
       background: rgba(0, 0, 0, 0.7);
       border-radius: 20px;
@@ -66,7 +71,6 @@
 
     h2 {
       font-size: 2.5rem;
-      margin-bottom: 0.2rem;
       color: #ffd42a;
     }
 
@@ -89,7 +93,7 @@
       width: 100%;
       margin-top: 2rem;
       border-collapse: collapse;
-      background: rgba(20, 20, 20, 0.9);
+      background: rgba(20, 20, 20, 0.95);
     }
 
     th, td {
@@ -101,15 +105,10 @@
 
     th {
       background: #2b2b2b;
-      font-size: 1rem;
     }
 
     td span.red {
       color: #f85a5a;
-    }
-
-    .table-section {
-      margin-bottom: 3rem;
     }
 
     .sound-button {
@@ -125,12 +124,7 @@
       color: #ffd42a;
     }
 
-    /* Mobilní rozhraní */
-    .mobile-only {
-      display: none;
-    }
-
-    @media screen and (max-width: 768px) {
+    @media (max-width: 768px) {
       body {
         background: #000;
       }
@@ -143,24 +137,22 @@
 
       header {
         position: absolute;
-        top: 0;
-        width: 100%;
-        justify-content: center;
+        top: 2rem;
         flex-direction: column;
         background: none;
         backdrop-filter: none;
       }
 
       nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.2rem;
+        flex-direction: row;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
       }
 
       main {
-        margin-top: -20%;
+        margin-top: -30%;
         padding: 1rem;
-        background: rgba(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.78);
       }
     }
   </style>
@@ -185,57 +177,21 @@
       Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <span class="highlight">MOJI KLIENTI</span>.
     </p>
 
-    <div class="table-section">
-      <h3>ZÁKLADNÍ – Aktivní sport</h3>
-      <table>
-        <tr>
-          <th>ÚZEMNÍ PLATNOST</th>
-          <th>EVROPA</th>
-          <th>SVĚT VČETNĚ USA</th>
-        </tr>
-        <tr>
-          <td>LVZ</td>
-          <td>1600 / <span class="red">585</span></td>
-          <td>nelze</td>
-        </tr>
-        <tr>
-          <td>LVZ + ÚZO</td>
-          <td>2060 / <span class="red">827</span></td>
-          <td>6540 / <span class="red">1937</span></td>
-        </tr>
-        <tr>
-          <td>LVZ + ÚZO + STORNO</td>
-          <td>2860 / <span class="red">1627</span></td>
-          <td>7340 / <span class="red">3137</span></td>
-        </tr>
-      </table>
-    </div>
+    <h3>ZÁKLADNÍ – Aktivní sport</h3>
+    <table>
+      <tr><th>ÚZEMNÍ PLATNOST</th><th>EVROPA</th><th>SVĚT VČETNĚ USA</th></tr>
+      <tr><td>LVZ</td><td>1600 / <span class="red">585</span></td><td>nelze</td></tr>
+      <tr><td>LVZ + ÚZO</td><td>2060 / <span class="red">827</span></td><td>6540 / <span class="red">1937</span></td></tr>
+      <tr><td>LVZ + ÚZO + STORNO</td><td>2860 / <span class="red">1627</span></td><td>7340 / <span class="red">3137</span></td></tr>
+    </table>
 
-    <div class="table-section">
-      <h3>VYŠŠÍ LIMITY – Aktivní sport</h3>
-      <table>
-        <tr>
-          <th>ÚZEMNÍ PLATNOST</th>
-          <th>EVROPA</th>
-          <th>SVĚT VČETNĚ USA</th>
-        </tr>
-        <tr>
-          <td>LVZ</td>
-          <td>2400 / <span class="red">845</span></td>
-          <td>nelze</td>
-        </tr>
-        <tr>
-          <td>LVZ + ÚZO</td>
-          <td>3230 / <span class="red">1197</span></td>
-          <td>9950 / <span class="red">2677</span></td>
-        </tr>
-        <tr>
-          <td>LVZ + ÚZO + STORNO</td>
-          <td>4030 / <span class="red">1997</span></td>
-          <td>10750 / <span class="red">3877</span></td>
-        </tr>
-      </table>
-    </div>
+    <h3>VYŠŠÍ LIMITY – Aktivní sport</h3>
+    <table>
+      <tr><th>ÚZEMNÍ PLATNOST</th><th>EVROPA</th><th>SVĚT VČETNĚ USA</th></tr>
+      <tr><td>LVZ</td><td>2400 / <span class="red">845</span></td><td>nelze</td></tr>
+      <tr><td>LVZ + ÚZO</td><td>3230 / <span class="red">1197</span></td><td>9950 / <span class="red">2677</span></td></tr>
+      <tr><td>LVZ + ÚZO + STORNO</td><td>4030 / <span class="red">1997</span></td><td>10750 / <span class="red">3877</span></td></tr>
+    </table>
 
     <div class="sound-button">
       <audio id="airportSound">
@@ -244,5 +200,6 @@
       <button onclick="document.getElementById('airportSound').play()">🔈</button>
     </div>
   </main>
+
 </body>
 </html>
