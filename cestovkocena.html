@@ -7,35 +7,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --yellow: #ffcc33;
+      --highlight: #ff5555;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background-image: url('letiste.png'); /* ← Vyměň za svou cestu */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #fff1d0;
       font-family: system-ui, sans-serif;
-    }
-
-    .overlay {
-      backdrop-filter: brightness(0.4);
-      min-height: 100vh;
-      padding: 2rem;
-    }
-
-    h1, h2, h3 {
-      color: #ffcc33;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0,0,0,0.8)), url('letiste.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff1d0;
     }
 
     nav.container-fluid {
-      background: transparent !important;
+      background: transparent;
       box-shadow: none;
-      margin-bottom: 1rem;
     }
 
     nav a {
-      color: #ffcc33 !important;
+      color: var(--yellow) !important;
     }
 
     nav a[role="button"] {
@@ -43,27 +35,29 @@
       color: #000 !important;
       font-weight: bold;
       border-radius: 10px;
-      padding: 0.6rem 1.2rem;
     }
 
     main.container {
       background-color: rgba(0, 0, 0, 0.5);
       padding: 2rem;
       border-radius: 1rem;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
       max-width: 960px;
       margin: 2rem auto;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    }
+
+    h1, h2, h3 {
+      color: var(--yellow);
     }
 
     .flight-board {
-      background-color: #111;
+      background-color: rgba(0,0,0,0.6);
       border-radius: 10px;
       padding: 1rem;
       font-family: 'Share Tech Mono', monospace;
       font-size: 1.5rem;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 20px rgba(255, 204, 51, 0.2);
       margin-bottom: 2rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
 
     .flight-board table {
@@ -76,7 +70,7 @@
       padding: 0.75rem;
       text-align: center;
       border-bottom: 1px solid #333;
-      color: #ffcc33;
+      color: var(--yellow);
     }
 
     .flight-board th {
@@ -84,23 +78,14 @@
       text-transform: uppercase;
     }
 
-    .flight-board .client-price {
-      color: #ff5555;
+    .client-price {
+      color: var(--highlight);
       animation: blink 1.5s infinite alternate;
     }
 
     @keyframes blink {
       from { opacity: 1; }
       to { opacity: 0.6; }
-    }
-
-    .flight-board caption {
-      caption-side: top;
-      text-align: left;
-      padding-bottom: 0.5rem;
-      font-weight: bold;
-      font-size: 1.8rem;
-      color: #ffcc33;
     }
 
     .sound-icon {
@@ -124,126 +109,138 @@
     footer {
       text-align: center;
       padding: 1rem;
-      color: #ffcc33;
+      color: var(--yellow);
       font-weight: bold;
     }
 
-    /* RESPONSIVITA */
-    @media screen and (max-width: 600px) {
-      .overlay {
-        backdrop-filter: brightness(0.2);
-        padding: 1rem;
+    /* Mobilní vzhled */
+    @media screen and (max-width: 768px) {
+      body {
+        background: #000;
+      }
+
+      .hero-img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        height: 60vh;
+      }
+
+      main.container {
+        margin-top: -12vh;
+        position: relative;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.75);
       }
 
       .flight-board {
+        background-color: rgba(0, 0, 0, 0.85);
         font-size: 1.2rem;
-      }
-
-      nav ul li {
-        padding: 0.2rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="overlay">
 
-    <nav class="container-fluid">
-      <ul>
-        <li><strong>Roční Cestovní Karta</strong></li>
-      </ul>
-      <ul>
-        <li><a href="index.html">Domů</a></li>
-        <li><a href="#">Výhody</a></li>
-        <li><a href="kontakt.html" role="button">Kontakt</a></li>
-      </ul>
-    </nav>
+  <!-- Hero IMG only for mobile -->
+  <img src="letiste.png" alt="Letiště" class="hero-img" />
 
-    <main class="container">
-      <hgroup>
-        <h1>Ceník roční cestovní karty</h1>
-        <h2>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h2>
-      </hgroup>
-      <p>
-        Zobrazujeme ceny pro běžné klienty i výhodné ceny pro
-        <strong style="color:#ff5555;">MOJI KLIENTI</strong>.
-      </p>
-
-      <!-- Tabulka 1 -->
-      <div class="flight-board">
-        <caption>ZÁKLADNÍ – Aktivní sport</caption>
-        <table>
-          <thead>
-            <tr>
-              <th>Územní platnost</th>
-              <th>Evropa</th>
-              <th>Svět včetně USA</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>LVZ</td>
-              <td>1600 / <span class="client-price">585</span></td>
-              <td>nelze</td>
-            </tr>
-            <tr>
-              <td>LVZ + ÚZO</td>
-              <td>2060 / <span class="client-price">827</span></td>
-              <td>6540 / <span class="client-price">1 937</span></td>
-            </tr>
-            <tr>
-              <td>LVZ + ÚZO + STORNO</td>
-              <td>2860 / <span class="client-price">1 627</span></td>
-              <td>7340 / <span class="client-price">3 137</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Tabulka 2 -->
-      <div class="flight-board">
-        <caption>VYŠŠÍ LIMITY – Aktivní sport</caption>
-        <table>
-          <thead>
-            <tr>
-              <th>Územní platnost</th>
-              <th>Evropa</th>
-              <th>Svět včetně USA</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>LVZ</td>
-              <td>2400 / <span class="client-price">845</span></td>
-              <td>nelze</td>
-            </tr>
-            <tr>
-              <td>LVZ + ÚZO</td>
-              <td>3230 / <span class="client-price">1 197</span></td>
-              <td>9950 / <span class="client-price">2 677</span></td>
-            </tr>
-            <tr>
-              <td>LVZ + ÚZO + STORNO</td>
-              <td>4030 / <span class="client-price">1 997</span></td>
-              <td>10750 / <span class="client-price">3 877</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Mini zvuková ikona -->
-      <div class="sound-icon">
-        <audio id="airportSound">
-          <source src="airport-gong.mp3" type="audio/mpeg" />
-        </audio>
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" alt="Zvuk" onclick="document.getElementById('airportSound').play()" />
-      </div>
-    </main>
-
-    <footer class="container">
-      © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
-    </footer>
-
+  <!-- SOUND ICON -->
+  <div class="sound-icon">
+    <audio id="airportSound">
+      <source src="airport-gong.mp3" type="audio/mpeg" />
+    </audio>
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" alt="Zvuk" onclick="document.getElementById('airportSound').play()" />
   </div>
+
+  <!-- HEADER -->
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>Roční Cestovní Karta</strong></li>
+    </ul>
+    <ul>
+      <li><a href="index.html">Domů</a></li>
+      <li><a href="#">Výhody</a></li>
+      <li><a href="kontakt.html" role="button">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="container">
+    <hgroup>
+      <h1>Ceník roční cestovní karty</h1>
+      <h2>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h2>
+    </hgroup>
+    <p>
+      Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <strong style="color: var(--highlight)">MOJI KLIENTI</strong>.
+    </p>
+
+    <!-- TABULKA 1 -->
+    <div class="flight-board">
+      <caption>ZÁKLADNÍ – Aktivní sport</caption>
+      <table>
+        <thead>
+          <tr>
+            <th>Územní platnost</th>
+            <th>Evropa</th>
+            <th>Svět včetně USA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LVZ</td>
+            <td>1600 / <span class="client-price">585</span></td>
+            <td>nelze</td>
+          </tr>
+          <tr>
+            <td>LVZ + ÚZO</td>
+            <td>2060 / <span class="client-price">827</span></td>
+            <td>6540 / <span class="client-price">1 937</span></td>
+          </tr>
+          <tr>
+            <td>LVZ + ÚZO + STORNO</td>
+            <td>2860 / <span class="client-price">1 627</span></td>
+            <td>7340 / <span class="client-price">3 137</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TABULKA 2 -->
+    <div class="flight-board">
+      <caption>VYŠŠÍ LIMITY – Aktivní sport</caption>
+      <table>
+        <thead>
+          <tr>
+            <th>Územní platnost</th>
+            <th>Evropa</th>
+            <th>Svět včetně USA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LVZ</td>
+            <td>2400 / <span class="client-price">845</span></td>
+            <td>nelze</td>
+          </tr>
+          <tr>
+            <td>LVZ + ÚZO</td>
+            <td>3230 / <span class="client-price">1 197</span></td>
+            <td>9950 / <span class="client-price">2 677</span></td>
+          </tr>
+          <tr>
+            <td>LVZ + ÚZO + STORNO</td>
+            <td>4030 / <span class="client-price">1 997</span></td>
+            <td>10750 / <span class="client-price">3 877</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
+  </footer>
+
 </body>
 </html>
