@@ -9,6 +9,7 @@
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       font-family: 'Share Tech Mono', monospace;
@@ -37,6 +38,10 @@
     header h1 {
       margin: 0;
       font-size: 1.5rem;
+    }
+
+    header h1 a {
+      text-decoration: none;
       color: white;
     }
 
@@ -60,6 +65,25 @@
       border: none;
       border-radius: 10px;
       font-weight: bold;
+    }
+
+    .pulse {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.08);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     main {
@@ -111,6 +135,10 @@
     td span.red {
       color: #f85a5a;
       font-weight: bold;
+    }
+
+    td span.red.pulse {
+      display: inline-block;
     }
 
     .sound-button {
@@ -169,11 +197,11 @@
   <img src="letiste.png" alt="Letiště" class="mobile-only" />
 
   <header>
-    <h1>Roční Cestovní Karta</h1>
+    <h1><a href="bonusy.html">Roční Cestovní Karta</a></h1>
     <nav>
       <a href="index.html">Domů</a>
       <a href="#">Výhody</a>
-      <a href="kontakt.html" class="btn">Kontakt</a>
+      <a href="kontakt.html" class="btn pulse">Chci roční cestovní kartu</a>
     </nav>
   </header>
 
@@ -181,23 +209,23 @@
     <h2>Ceník roční cestovní karty</h2>
     <h3>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h3>
     <p class="subtext">
-      Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <span class="highlight">MOJI KLIENTI</span>.
+      Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <span class="highlight pulse">MOJI KLIENTI</span>.
     </p>
 
     <h3>ZÁKLADNÍ – Aktivní sport</h3>
     <table>
       <tr><th>ÚZEMNÍ PLATNOST</th><th>EVROPA</th><th>SVĚT VČETNĚ USA</th></tr>
-      <tr><td>LVZ</td><td>1600 / <span class="red">585</span></td><td>nelze</td></tr>
-      <tr><td>LVZ + ÚZO</td><td>2060 / <span class="red">827</span></td><td>6540 / <span class="red">1937</span></td></tr>
-      <tr><td>LVZ + ÚZO + STORNO</td><td>2860 / <span class="red">1627</span></td><td>7340 / <span class="red">3137</span></td></tr>
+      <tr><td>LVZ</td><td>1600 / <span class="red pulse">585</span></td><td>nelze</td></tr>
+      <tr><td>LVZ + ÚZO</td><td>2060 / <span class="red pulse">827</span></td><td>6540 / <span class="red pulse">1937</span></td></tr>
+      <tr><td>LVZ + ÚZO + STORNO</td><td>2860 / <span class="red pulse">1627</span></td><td>7340 / <span class="red pulse">3137</span></td></tr>
     </table>
 
     <h3>VYŠŠÍ LIMITY – Aktivní sport</h3>
     <table>
       <tr><th>ÚZEMNÍ PLATNOST</th><th>EVROPA</th><th>SVĚT VČETNĚ USA</th></tr>
-      <tr><td>LVZ</td><td>2400 / <span class="red">845</span></td><td>nelze</td></tr>
-      <tr><td>LVZ + ÚZO</td><td>3230 / <span class="red">1197</span></td><td>9950 / <span class="red">2677</span></td></tr>
-      <tr><td>LVZ + ÚZO + STORNO</td><td>4030 / <span class="red">1997</span></td><td>10750 / <span class="red">3877</span></td></tr>
+      <tr><td>LVZ</td><td>2400 / <span class="red pulse">845</span></td><td>nelze</td></tr>
+      <tr><td>LVZ + ÚZO</td><td>3230 / <span class="red pulse">1197</span></td><td>9950 / <span class="red pulse">2677</span></td></tr>
+      <tr><td>LVZ + ÚZO + STORNO</td><td>4030 / <span class="red pulse">1997</span></td><td>10750 / <span class="red pulse">3877</span></td></tr>
     </table>
 
     <div class="sound-button">
