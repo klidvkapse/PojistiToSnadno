@@ -5,71 +5,133 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ceník Roční Cestovní Karty</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #1d1d1d, #2d2d2d);
+      margin: 0;
+      padding: 0;
+      background-image: url('background.jpg'); /* ← Nahraď svou cestou k obrázku */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: #fff1d0;
+      font-family: system-ui, sans-serif;
     }
-    nav, footer {
-      background-color: #111;
+
+    .overlay {
+      backdrop-filter: brightness(0.4);
+      min-height: 100vh;
+      padding: 2rem;
     }
-    nav a, footer a {
-      color: #ffcc33 !important;
-    }
+
     h1, h2, h3 {
       color: #ffcc33;
     }
-    .card {
-      background-color: #2c2c2c;
-      border-radius: 1rem;
-      padding: 2rem;
-      box-shadow: 0 0 20px rgba(255, 204, 51, 0.2);
-    }
-    table {
-      width: 100%;
-      color: #fff;
-    }
-    th {
-      background-color: #444;
-    }
-    td {
-      background-color: #333;
-    }
-    .highlight {
-      color: #ff6b6b;
-    }
-    a.button-link {
-      color: #000;
-      background-color: #ffcc33;
-      padding: 0.5rem 1rem;
+
+    nav, footer {
+      background-color: rgba(0, 0, 0, 0.7);
       border-radius: 0.5rem;
-      text-decoration: none;
+    }
+
+    main.container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      max-width: 960px;
+      margin: 2rem auto;
+    }
+
+    /* Tabulky ve stylu letištní tabule */
+    .flight-board {
+      background-color: #111;
+      border-radius: 10px;
+      padding: 1rem;
+      font-family: 'VT323', monospace;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px rgba(255, 204, 51, 0.2);
+      margin-bottom: 2rem;
+    }
+
+    .flight-board table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .flight-board th,
+    .flight-board td {
+      padding: 0.75rem;
+      text-align: center;
+      border-bottom: 1px solid #333;
+      color: #ffcc33;
+    }
+
+    .flight-board th {
+      background-color: #222;
+      text-transform: uppercase;
+    }
+
+    .flight-board .client-price {
+      color: #ff5555;
+      animation: blink 1.5s infinite alternate;
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0.6; }
+    }
+
+    .flight-board caption {
+      caption-side: top;
+      text-align: left;
+      padding-bottom: 0.5rem;
+      font-weight: bold;
+      font-size: 2rem;
+      color: #ffcc33;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #ffcc33;
+      font-weight: bold;
+    }
+
+    /* Styl tlačítka zvuku */
+    .sound-button {
+      text-align: center;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
+  <div class="overlay">
 
-  <nav class="container-fluid">
-    <ul>
-      <li><strong>Roční Cestovní Karta</strong></li>
-    </ul>
-    <ul>
-      <li><a href="index.html">Domů</a></li>
-      <li><a href="rozcestník.html">Bonusy</a></li>
-      <li><a href="kontakt.html" role="button">Kontakt</a></li>
-    </ul>
-  </nav>
+    <nav class="container-fluid">
+      <ul>
+        <li><strong>Roční Cestovní Karta</strong></li>
+      </ul>
+      <ul>
+        <li><a href="#">Domů</a></li>
+        <li><a href="#">Výhody</a></li>
+        <li><a href="#" role="button">Kontakt</a></li>
+      </ul>
+    </nav>
 
-  <main class="container">
-    <div class="grid">
-      <section class="card">
-        <hgroup>
-          <h2>Ceník roční cestovní karty</h2>
-          <h3>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h3>
-        </hgroup>
-        <p>Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <strong>MOJE KLIENTI</strong>.</p>
+    <main class="container">
+      <hgroup>
+        <h1>Ceník roční cestovní karty</h1>
+        <h2>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h2>
+      </hgroup>
+      <p>
+        Zobrazujeme ceny pro běžné klienty i výhodné ceny pro
+        <strong style="color:#ff5555;">MOJI KLIENTI</strong>.
+      </p>
 
-        <h3>ZÁKLADNÍ varianta – Aktivní sport</h3>
+      <!-- Tabulka 1 -->
+      <div class="flight-board">
+        <caption>ZÁKLADNÍ – Aktivní sport</caption>
         <table>
           <thead>
             <tr>
@@ -81,23 +143,26 @@
           <tbody>
             <tr>
               <td>LVZ</td>
-              <td>1600 / <span class="highlight">585</span></td>
+              <td>1600 / <span class="client-price">585</span></td>
               <td>nelze</td>
             </tr>
             <tr>
               <td>LVZ + ÚZO</td>
-              <td>2060 / <span class="highlight">827</span></td>
-              <td>6540 / <span class="highlight">1 937</span></td>
+              <td>2060 / <span class="client-price">827</span></td>
+              <td>6540 / <span class="client-price">1 937</span></td>
             </tr>
             <tr>
               <td>LVZ + ÚZO + STORNO</td>
-              <td>2860 / <span class="highlight">1 627</span></td>
-              <td>7340 / <span class="highlight">3 137</span></td>
+              <td>2860 / <span class="client-price">1 627</span></td>
+              <td>7340 / <span class="client-price">3 137</span></td>
             </tr>
           </tbody>
         </table>
+      </div>
 
-        <h3>VYŠŠÍ LIMITY varianta – Aktivní sport</h3>
+      <!-- Tabulka 2 -->
+      <div class="flight-board">
+        <caption>VYŠŠÍ LIMITY – Aktivní sport</caption>
         <table>
           <thead>
             <tr>
@@ -109,50 +174,38 @@
           <tbody>
             <tr>
               <td>LVZ</td>
-              <td>2400 / <span class="highlight">845</span></td>
+              <td>2400 / <span class="client-price">845</span></td>
               <td>nelze</td>
             </tr>
             <tr>
               <td>LVZ + ÚZO</td>
-              <td>3230 / <span class="highlight">1 197</span></td>
-              <td>9950 / <span class="highlight">2 677</span></td>
+              <td>3230 / <span class="client-price">1 197</span></td>
+              <td>9950 / <span class="client-price">2 677</span></td>
             </tr>
             <tr>
               <td>LVZ + ÚZO + STORNO</td>
-              <td>4030 / <span class="highlight">1 997</span></td>
-              <td>10750 / <span class="highlight">3 877</span></td>
+              <td>4030 / <span class="client-price">1 997</span></td>
+              <td>10750 / <span class="client-price">3 877</span></td>
             </tr>
           </tbody>
         </table>
+      </div>
 
-        <p style="margin-top: 2rem;">
-          <a href="bonusy.html" class="button-link">Zpět na hlavní stránku karty</a>
-        </p>
-      </section>
-    </div>
-  </main>
+      <!-- Zvuková sekce -->
+      <div class="sound-button">
+        <audio id="airportSound">
+          <source src="airport-gong.mp3" type="audio/mpeg" />
+          Váš prohlížeč nepodporuje přehrávání zvuku.
+        </audio>
+        <button onclick="document.getElementById('airportSound').play()">🔊 Přehrát letištní zvuk</button>
+      </div>
 
-  <section aria-label="Subscribe example">
-    <div class="container">
-      <article>
-        <hgroup>
-          <h2>Zůstaňte v obraze</h2>
-          <h3>Zadejte svůj e-mail a nepropásněte žádné novinky</h3>
-        </hgroup>
-        <form class="grid">
-          <input type="text" id="firstname" name="firstname" placeholder="Vaše jméno" aria-label="Jméno" required />
-          <input type="email" id="email" name="email" placeholder="Váš e-mail" aria-label="E-mail" required />
-          <button type="submit" onclick="event.preventDefault()">Odebírat</button>
-        </form>
-      </article>
-    </div>
-  </section>
+    </main>
 
-  <footer class="container">
-    <small>
-      <a href="#">Zásady ochrany osobních údajů</a> • <a href="#">Obchodní podmínky</a>
-    </small>
-  </footer>
+    <footer class="container">
+      © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
+    </footer>
 
+  </div>
 </body>
 </html>
