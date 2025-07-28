@@ -1,237 +1,212 @@
 <!DOCTYPE html>
 <html lang="cs">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Roční Cestovní Karta</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
-    />
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ceník Roční Cestovní Karty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      color: #f3d14c;
+      background: url('letiste.png') no-repeat center top;
+      background-size: cover;
+    }
 
+    .mobile-only {
+      display: none;
+    }
+
+    header {
+      position: absolute;
+      top: 0.5rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0.5rem 1.5rem;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #f3d14c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn {
+      background: #d5c26b;
+      color: black;
+      padding: 0.5rem 1.1rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    main {
+      margin: 9rem auto 2rem auto;
+      max-width: 1100px;
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #ffd42a;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: #f1c93a;
+    }
+
+    .subtext {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .highlight {
+      color: #ff6f6f;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 2rem;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: center;
+      color: #ffd42a;
+      border-bottom: 1px solid #444;
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    td span.red {
+      color: #f85a5a;
+      font-weight: bold;
+    }
+
+    .sound-button {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .sound-button button {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #ffd42a;
+    }
+
+    @media (max-width: 768px) {
       body {
-        margin: 0;
-        font-family: 'Share Tech Mono', monospace;
-        background-image: url('letiste.png');
-        background-size: cover;
-        background-position: center top;
-        background-repeat: no-repeat;
-        color: #ffe873;
+        background: #000;
+      }
+
+      .mobile-only {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      header {
+        position: absolute;
+        top: 1rem;
+        flex-direction: column;
+        align-items: center;
+        background: none;
+        backdrop-filter: none;
+        z-index: 1001;
       }
 
       nav {
-        position: absolute;
-        width: 100%;
-        top: 1rem;
-        left: 0;
-        background: transparent;
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 100;
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
       }
 
-      nav ul {
-        display: flex;
-        gap: 1rem;
-        list-style: none;
-        margin: 0;
-      }
-
-      nav strong {
-        color: #ffe873;
-        font-size: 1.2rem;
-      }
-
-      nav a {
-        color: #ffe873;
-        font-weight: bold;
-        text-decoration: none;
-      }
-
-      nav a.button {
-        background: #d4c178;
-        color: black;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-      }
-
-      .hero-img {
-        display: none;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-      }
-
-      main.container {
-        margin-top: 13rem;
-        padding: 3rem;
-        background: rgba(30, 30, 30, 0.85);
-        border-radius: 1rem;
-      }
-
-      h1,
-      h2,
-      h3 {
-        font-family: 'Share Tech Mono', monospace;
-        color: #ffe873;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        background: rgba(255, 255, 255, 0.08);
-        margin-top: 2.5rem;
-      }
-
-      th,
-      td {
+      main {
+        margin-top: -40%;
         padding: 1rem;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(0, 0, 0, 0.8);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
       }
+    }
+  </style>
+</head>
+<body>
 
-      th {
-        background: rgba(0, 0, 0, 0.6);
-        color: #ffe873;
-        font-weight: bold;
-      }
+  <img src="letiste.png" alt="Letiště" class="mobile-only" />
 
-      td {
-        color: #ffe873;
-      }
-
-      td span.client {
-        color: #f55;
-      }
-
-      .sound-icon {
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        width: 24px;
-        height: 24px;
-        opacity: 0.7;
-        cursor: pointer;
-      }
-
-      @media screen and (max-width: 768px) {
-        .hero-img {
-          display: block;
-        }
-
-        nav {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        nav ul {
-          flex-direction: row;
-          margin-top: 0.5rem;
-        }
-
-        main.container {
-          margin-top: -30vh;
-        }
-      }
-
-      @media screen and (min-width: 769px) {
-        main.container {
-          margin-top: 15rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Obrázek pro mobil -->
-    <img src="letiste.png" alt="Letiště" class="hero-img" />
-
-    <!-- Navigace -->
+  <header>
+    <h1>Roční Cestovní Karta</h1>
     <nav>
-      <strong>Roční Cestovní Karta</strong>
-      <ul>
-        <li><a href="index.html">Domů</a></li>
-        <li><a href="#">Výhody</a></li>
-        <li><a href="kontakt.html" class="button">Kontakt</a></li>
-      </ul>
+      <a href="index.html">Domů</a>
+      <a href="#">Výhody</a>
+      <a href="kontakt.html" class="btn">Kontakt</a>
     </nav>
+  </header>
 
-    <!-- Hlavní obsah -->
-    <main class="container">
-      <h1>Ceník roční cestovní karty</h1>
-      <h3>Varianta <strong>ZÁKLADNÍ</strong> a <strong>VYŠŠÍ LIMITY</strong></h3>
-      <p>
-        Zobrazujeme ceny pro běžné klienty i výhodné ceny pro
-        <span style="color: #f55; font-weight: bold;">MOJI KLIENTI.</span>
-      </p>
+  <main>
+    <h2>Ceník roční cestovní karty</h2>
+    <h3>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h3>
+    <p class="subtext">
+      Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <span class="highlight">MOJI KLIENTI</span>.
+    </p>
 
-      <h3>ZÁKLADNÍ – Aktivní sport</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>ÚZEMNÍ PLATNOST</th>
-            <th>EVROPA</th>
-            <th>SVĚT VČETNĚ USA</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>LVZ</td>
-            <td>1600 / <span class="client">585</span></td>
-            <td>nelze</td>
-          </tr>
-          <tr>
-            <td>LVZ + ÚZO</td>
-            <td>2060 / <span class="client">827</span></td>
-            <td>6540 / <span class="client">1937</span></td>
-          </tr>
-          <tr>
-            <td>LVZ + ÚZO + STORNO</td>
-            <td>2860 / <span class="client">1627</span></td>
-            <td>7340 / <span class="client">3137</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <h3>ZÁKLADNÍ – Aktivní sport</h3>
+    <table>
+      <tr><th>ÚZEMNÍ PLATNOST</th><th>EVROPA</th><th>SVĚT VČETNĚ USA</th></tr>
+      <tr><td>LVZ</td><td>1600 / <span class="red">585</span></td><td>nelze</td></tr>
+      <tr><td>LVZ + ÚZO</td><td>2060 / <span class="red">827</span></td><td>6540 / <span class="red">1937</span></td></tr>
+      <tr><td>LVZ + ÚZO + STORNO</td><td>2860 / <span class="red">1627</span></td><td>7340 / <span class="red">3137</span></td></tr>
+    </table>
 
-      <h3>VYŠŠÍ LIMITY – Aktivní sport</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>ÚZEMNÍ PLATNOST</th>
-            <th>EVROPA</th>
-            <th>SVĚT VČETNĚ USA</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>LVZ</td>
-            <td>2020 / <span class="client">1150</span></td>
-            <td>nelze</td>
-          </tr>
-          <tr>
-            <td>LVZ + ÚZO</td>
-            <td>2470 / <span class="client">1397</span></td>
-            <td>6970 / <span class="client">2377</span></td>
-          </tr>
-          <tr>
-            <td>LVZ + ÚZO + STORNO</td>
-            <td>3270 / <span class="client">2150</span></td>
-            <td>7770 / <span class="client">3510</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
+    <h3>VYŠŠÍ LIMITY – Aktivní sport</h3>
+    <table>
+      <tr><th>ÚZEMNÍ PLATNOST</th><th>EVROPA</th><th>SVĚT VČETNĚ USA</th></tr>
+      <tr><td>LVZ</td><td>2400 / <span class="red">845</span></td><td>nelze</td></tr>
+      <tr><td>LVZ + ÚZO</td><td>3230 / <span class="red">1197</span></td><td>9950 / <span class="red">2677</span></td></tr>
+      <tr><td>LVZ + ÚZO + STORNO</td><td>4030 / <span class="red">1997</span></td><td>10750 / <span class="red">3877</span></td></tr>
+    </table>
 
-    <!-- Ikona pro zvuk -->
-    <img
-      src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
-      alt="Přehrát zvuk"
-      class="sound-icon"
-      onclick="document.getElementById('airport-sound').play()"
-    />
-    <audio id="airport-sound" src="letiste-sound.mp3"></audio>
-  </body>
+    <div class="sound-button">
+      <audio id="airportSound">
+        <source src="airport-gong.mp3" type="audio/mpeg" />
+      </audio>
+      <button onclick="document.getElementById('airportSound').play()">🔈</button>
+    </div>
+  </main>
+
+</body>
 </html>
