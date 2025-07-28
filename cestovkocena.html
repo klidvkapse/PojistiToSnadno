@@ -4,251 +4,245 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ceník Roční Cestovní Karty</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --yellow: #ffcc33;
-      --highlight: #ff5555;
-    }
-
     body {
       margin: 0;
-      padding: 0;
-      font-family: system-ui, sans-serif;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0,0,0,0.8)), url('letiste.png') no-repeat center center fixed;
+      font-family: "Share Tech Mono", monospace;
+      color: #f3d14c;
+      background: url('letiste.png') no-repeat center center fixed;
       background-size: cover;
-      color: #fff1d0;
     }
 
-    /* Obrázek pouze pro mobil */
-    .hero-img {
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.2); /* Transparentní hlavička */
+      backdrop-filter: blur(4px);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: #f3d14c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn {
+      background: #d5c26b;
+      color: #000;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    main {
+      margin: 6rem auto 2rem auto;
+      max-width: 1100px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+      color: #ffd42a;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: #f1c93a;
+    }
+
+    .subtext {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .highlight {
+      color: #ff6f6f;
+      font-weight: bold;
+    }
+
+    table {
       width: 100%;
-      object-fit: cover;
-      height: 60vh;
+      margin-top: 2rem;
+      border-collapse: collapse;
+      background: rgba(20, 20, 20, 0.9);
     }
 
+    th, td {
+      padding: 1rem;
+      text-align: center;
+      color: #ffd42a;
+      border-bottom: 1px solid #444;
+    }
+
+    th {
+      background: #2b2b2b;
+      font-size: 1rem;
+    }
+
+    td span.red {
+      color: #f85a5a;
+    }
+
+    .table-section {
+      margin-bottom: 3rem;
+    }
+
+    .sound-button {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .sound-button button {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #ffd42a;
+    }
+
+    /* Mobilní rozhraní */
     .mobile-only {
       display: none;
     }
 
     @media screen and (max-width: 768px) {
+      body {
+        background: #000;
+      }
+
       .mobile-only {
         display: block;
+        width: 100%;
+        height: auto;
       }
 
-      body {
-        background: #000; /* na mobilech se skryje pozadí background-image */
+      header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        background: none;
+        backdrop-filter: none;
       }
 
-      main.container {
-        margin-top: -10vh;
-        position: relative;
-        z-index: 2;
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+      }
+
+      main {
+        margin-top: -20%;
+        padding: 1rem;
         background: rgba(0, 0, 0, 0.75);
       }
-
-      .flight-board {
-        font-size: 1.2rem;
-        background-color: rgba(0,0,0,0.85);
-      }
-    }
-
-    nav.container-fluid {
-      background: transparent;
-      box-shadow: none;
-    }
-
-    nav a {
-      color: var(--yellow) !important;
-    }
-
-    nav a[role="button"] {
-      background-color: #d5c26b !important;
-      color: #000 !important;
-      font-weight: bold;
-      border-radius: 10px;
-    }
-
-    main.container {
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 2rem;
-      border-radius: 1rem;
-      max-width: 960px;
-      margin: 2rem auto;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    }
-
-    h1, h2, h3 {
-      color: var(--yellow);
-    }
-
-    .flight-board {
-      background-color: rgba(0,0,0,0.6);
-      border-radius: 10px;
-      padding: 1rem;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    }
-
-    .flight-board table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .flight-board th,
-    .flight-board td {
-      padding: 0.75rem;
-      text-align: center;
-      border-bottom: 1px solid #333;
-      color: var(--yellow);
-    }
-
-    .flight-board th {
-      background-color: #222;
-      text-transform: uppercase;
-    }
-
-    .client-price {
-      color: var(--highlight);
-      animation: blink 1.5s infinite alternate;
-    }
-
-    @keyframes blink {
-      from { opacity: 1; }
-      to { opacity: 0.6; }
-    }
-
-    .sound-icon {
-      text-align: right;
-      margin-top: -1.5rem;
-      margin-bottom: 2rem;
-      margin-right: 1rem;
-    }
-
-    .sound-icon img {
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      opacity: 0.8;
-    }
-
-    .sound-icon img:hover {
-      opacity: 1;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      color: var(--yellow);
-      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero IMG pouze pro mobilní zobrazení -->
-  <img src="letiste.png" alt="Letiště" class="hero-img mobile-only" />
+  <img src="letiste.png" alt="Letiště" class="mobile-only" />
 
-  <!-- Ikona pro přehrání zvuku -->
-  <div class="sound-icon">
-    <audio id="airportSound">
-      <source src="airport-gong.mp3" type="audio/mpeg" />
-    </audio>
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" alt="Zvuk" onclick="document.getElementById('airportSound').play()" />
-  </div>
+  <header>
+    <h1>Roční Cestovní Karta</h1>
+    <nav>
+      <a href="index.html">Domů</a>
+      <a href="#">Výhody</a>
+      <a href="kontakt.html" class="btn">Kontakt</a>
+    </nav>
+  </header>
 
-  <!-- Navigace -->
-  <nav class="container-fluid">
-    <ul>
-      <li><strong>Roční Cestovní Karta</strong></li>
-    </ul>
-    <ul>
-      <li><a href="index.html">Domů</a></li>
-      <li><a href="#">Výhody</a></li>
-      <li><a href="kontakt.html" role="button">Kontakt</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hlavní obsah -->
-  <main class="container">
-    <hgroup>
-      <h1>Ceník roční cestovní karty</h1>
-      <h2>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h2>
-    </hgroup>
-    <p>
-      Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <strong style="color: var(--highlight)">MOJI KLIENTI</strong>.
+  <main>
+    <h2>Ceník roční cestovní karty</h2>
+    <h3>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h3>
+    <p class="subtext">
+      Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <span class="highlight">MOJI KLIENTI</span>.
     </p>
 
-    <!-- Tabulka ZÁKLADNÍ -->
-    <div class="flight-board">
-      <caption>ZÁKLADNÍ – Aktivní sport</caption>
+    <div class="table-section">
+      <h3>ZÁKLADNÍ – Aktivní sport</h3>
       <table>
-        <thead>
-          <tr>
-            <th>Územní platnost</th>
-            <th>Evropa</th>
-            <th>Svět včetně USA</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>LVZ</td>
-            <td>1600 / <span class="client-price">585</span></td>
-            <td>nelze</td>
-          </tr>
-          <tr>
-            <td>LVZ + ÚZO</td>
-            <td>2060 / <span class="client-price">827</span></td>
-            <td>6540 / <span class="client-price">1 937</span></td>
-          </tr>
-          <tr>
-            <td>LVZ + ÚZO + STORNO</td>
-            <td>2860 / <span class="client-price">1 627</span></td>
-            <td>7340 / <span class="client-price">3 137</span></td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>ÚZEMNÍ PLATNOST</th>
+          <th>EVROPA</th>
+          <th>SVĚT VČETNĚ USA</th>
+        </tr>
+        <tr>
+          <td>LVZ</td>
+          <td>1600 / <span class="red">585</span></td>
+          <td>nelze</td>
+        </tr>
+        <tr>
+          <td>LVZ + ÚZO</td>
+          <td>2060 / <span class="red">827</span></td>
+          <td>6540 / <span class="red">1937</span></td>
+        </tr>
+        <tr>
+          <td>LVZ + ÚZO + STORNO</td>
+          <td>2860 / <span class="red">1627</span></td>
+          <td>7340 / <span class="red">3137</span></td>
+        </tr>
       </table>
     </div>
 
-    <!-- Tabulka VYŠŠÍ LIMITY -->
-    <div class="flight-board">
-      <caption>VYŠŠÍ LIMITY – Aktivní sport</caption>
+    <div class="table-section">
+      <h3>VYŠŠÍ LIMITY – Aktivní sport</h3>
       <table>
-        <thead>
-          <tr>
-            <th>Územní platnost</th>
-            <th>Evropa</th>
-            <th>Svět včetně USA</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>LVZ</td>
-            <td>2400 / <span class="client-price">845</span></td>
-            <td>nelze</td>
-          </tr>
-          <tr>
-            <td>LVZ + ÚZO</td>
-            <td>3230 / <span class="client-price">1 197</span></td>
-            <td>9950 / <span class="client-price">2 677</span></td>
-          </tr>
-          <tr>
-            <td>LVZ + ÚZO + STORNO</td>
-            <td>4030 / <span class="client-price">1 997</span></td>
-            <td>10750 / <span class="client-price">3 877</span></td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>ÚZEMNÍ PLATNOST</th>
+          <th>EVROPA</th>
+          <th>SVĚT VČETNĚ USA</th>
+        </tr>
+        <tr>
+          <td>LVZ</td>
+          <td>2400 / <span class="red">845</span></td>
+          <td>nelze</td>
+        </tr>
+        <tr>
+          <td>LVZ + ÚZO</td>
+          <td>3230 / <span class="red">1197</span></td>
+          <td>9950 / <span class="red">2677</span></td>
+        </tr>
+        <tr>
+          <td>LVZ + ÚZO + STORNO</td>
+          <td>4030 / <span class="red">1997</span></td>
+          <td>10750 / <span class="red">3877</span></td>
+        </tr>
       </table>
+    </div>
+
+    <div class="sound-button">
+      <audio id="airportSound">
+        <source src="airport-gong.mp3" type="audio/mpeg" />
+      </audio>
+      <button onclick="document.getElementById('airportSound').play()">🔈</button>
     </div>
   </main>
-
-  <!-- Paticka -->
-  <footer>
-    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
-  </footer>
-
 </body>
 </html>
