@@ -10,7 +10,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-image: url('letiste.jpg'); /* ← Nahraď svou cestou */
+      background-image: url('letiste.jpg'); /* ← Vyměň za svou cestu */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -19,7 +19,7 @@
     }
 
     .overlay {
-      backdrop-filter: brightness(0.7);
+      backdrop-filter: brightness(0.4);
       min-height: 100vh;
       padding: 2rem;
     }
@@ -28,31 +28,22 @@
       color: #ffcc33;
     }
 
-    nav, footer {
-      background-color: rgba(0, 0, 0, 0.85);
-      border-radius: 0.5rem;
+    nav.container-fluid {
+      background: transparent !important;
+      box-shadow: none;
+      margin-bottom: 1rem;
     }
 
     nav a {
       color: #ffcc33 !important;
     }
 
-    nav a[role="button"],
-    nav a.button,
-    button,
-    .sound-button button {
+    nav a[role="button"] {
       background-color: #d5c26b !important;
       color: #000 !important;
       font-weight: bold;
       border-radius: 10px;
       padding: 0.6rem 1.2rem;
-      border: none;
-      box-shadow: none;
-    }
-
-    nav a[role="button"]:hover,
-    button:hover {
-      background-color: #e3d47c !important;
     }
 
     main.container {
@@ -112,6 +103,24 @@
       color: #ffcc33;
     }
 
+    .sound-icon {
+      text-align: right;
+      margin-top: -1.5rem;
+      margin-bottom: 2rem;
+      margin-right: 1rem;
+    }
+
+    .sound-icon img {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .sound-icon img:hover {
+      opacity: 1;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -119,24 +128,20 @@
       font-weight: bold;
     }
 
-    .sound-button {
-      text-align: center;
-      margin-top: 1rem;
-    }
+    /* RESPONSIVITA */
+    @media screen and (max-width: 600px) {
+      .overlay {
+        backdrop-filter: brightness(0.2);
+        padding: 1rem;
+      }
 
-    .sound-button button {
-      font-size: 0.7rem;
-      padding: 0.3rem 0.6rem;
-      margin-top: 1rem;
-      background-color: transparent;
-      color: #ffcc33 !important;
-      border: 1px solid #ffcc33;
-      border-radius: 5px;
-    }
+      .flight-board {
+        font-size: 1.2rem;
+      }
 
-    .sound-button button:hover {
-      background-color: #ffcc33;
-      color: #000 !important;
+      nav ul li {
+        padding: 0.2rem;
+      }
     }
   </style>
 </head>
@@ -161,12 +166,12 @@
       </hgroup>
       <p>
         Zobrazujeme ceny pro běžné klienty i výhodné ceny pro
-        <strong style="color:#ff5555;">MOJI KLIENTI</strong>.
+        <strong style="color:#ff5555;">MOJE KLIENTI</strong>.
       </p>
 
       <!-- Tabulka 1 -->
       <div class="flight-board">
-        <caption>ZÁKLADNÍ – Aktivní sport</caption>
+        <caption>ZÁKLADNÍ + Aktivní sport</caption>
         <table>
           <thead>
             <tr>
@@ -197,7 +202,7 @@
 
       <!-- Tabulka 2 -->
       <div class="flight-board">
-        <caption>VYŠŠÍ LIMITY – Aktivní sport</caption>
+        <caption>VYŠŠÍ LIMITY + Aktivní sport</caption>
         <table>
           <thead>
             <tr>
@@ -226,13 +231,12 @@
         </table>
       </div>
 
-      <!-- Sekce zvuku -->
-      <div class="sound-button">
+      <!-- Mini zvuková ikona -->
+      <div class="sound-icon">
         <audio id="airportSound">
           <source src="airport-gong.mp3" type="audio/mpeg" />
-          Váš prohlížeč nepodporuje přehrávání zvuku.
         </audio>
-        <button onclick="document.getElementById('airportSound').play()">🔈 zvuk</button>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" alt="Zvuk" onclick="document.getElementById('airportSound').play()" />
       </div>
     </main>
 
