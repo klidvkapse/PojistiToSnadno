@@ -2,6 +2,12 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="robots" content="index, follow"/>
+  <meta property="fb:app_id" content="your_app_id" />
+
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- SEO: Title + Description + Keywords -->
@@ -412,6 +418,12 @@
  }
   </style>
 </head>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll("img");
+    images.forEach(img => img.setAttribute("loading", "lazy"));
+  });
+</script>
 
 <body>
 
