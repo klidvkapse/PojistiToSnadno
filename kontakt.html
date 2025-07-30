@@ -2,190 +2,154 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Pojisti To Snadno – Daniel Verner</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pojisti To Snadno – Nezávazná nabídka</title>
   <style>
-  body {
-    background-color: #121212;
-    color: #f0f0e9;
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+    body {
+      background-color: #121212;
+      color: #f0f0e9;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-  .bg-img-desktop, .bg-img-mobile {
-    filter: brightness(0.4) blur(3px);
-    opacity: 0.95;
-  }
-
-  .main-nav {
+    .main-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.1rem 2rem;
-      z-index: 10;
-      position: relative;
+      background: #1e1e1e;
     }
-     .logo {
+
+    .logo {
       font-size: 1.5rem;
       font-weight: bold;
       color: #ffe87a;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 
-  .main-nav a {
-    background: #d1b85c;
-    color: #1e1e1e;
-    padding: 0.6rem 1.3rem;
-    border-radius: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.08rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s;
-  }
-
-  .main-nav a:hover, .main-nav a.active {
-    background: #f3e39a;
-    color: #000;
-  }
-
-  .nabidka-formular {
-    background: #1d1d1d;
-    color: #f0f0e9;
-    border-radius: 24px;
-    max-width: 900px;
-    margin: 32px auto 0 auto;
-    padding: 36px 32px;
-    box-shadow: 0 2px 18px rgba(0,0,0,0.6);
-  }
-
-  .nabidka-formular h2 {
-    color: #f3da80;
-    font-size: 1.4em;
-    font-weight: 700;
-    margin-bottom: 24px;
-  }
-
-  input, textarea {
-    background-color: #2a2a2a;
-    border: 1.5px solid #444;
-    border-radius: 12px;
-    color: #222;
-    padding: 13px 16px;
-    font-size: 1.07em;
-    width: 100%;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-  }
-
-  input:focus, textarea:focus {
-    border-color: #d1b85c;
-    outline: none;
-  }
-
-  .form-row, .form-row-bottom {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .form-row-single {
-    display: flex;
-    width: 100%;
-  }
-
-  .form-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 12px;
-  }
-
-  button[type="submit"] {
-    background-color: #d1b85c;
-    color: #000;
-    border: none;
-    padding: 12px 36px;
-    font-size: 1.1em;
-    font-weight: bold;
-    border-radius: 13px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  button[type="submit"]:hover {
-    background-color: #f3e39a;
-  }
-
-  footer {
-    background: #1e1e1e;
-    color: #ccc;
-    padding: 20px 0;
-    margin-top: 40px;
-    text-align: center;
-    font-size: 1.05em;
-    border-top: 1px solid #444;
-  }
-
-  footer a {
-    color: #f3da80;
-    text-decoration: underline;
-  }
-
-  footer small {
-    display: block;
-    color: #888;
-    margin-top: 6px;
-    font-size: 0.9em;
-  }
-
-  @media (max-width: 700px) {
-    .nabidka-formular {
-      padding: 20px 16px;
+    .main-nav a {
+      background: #d1b85c;
+      color: #1e1e1e;
+      padding: 0.6rem 1.3rem;
+      border-radius: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s;
     }
-    .form-row, .form-row-bottom {
+
+    .main-nav a:hover {
+      background: #f3e39a;
+      color: #000;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 2rem;
+      background: #1d1d1d;
+      border-radius: 24px;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.6);
+    }
+
+    h2 {
+      color: #f3da80;
+      font-size: 1.8em;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    form {
+      display: flex;
       flex-direction: column;
+      gap: 1.2rem;
     }
-    button[type="submit"] {
-      width: 100%;
-    }
-  }
-</style>
 
+    input, textarea {
+      background-color: #2a2a2a;
+      border: 1.5px solid #444;
+      border-radius: 12px;
+      color: #f0f0e9;
+      padding: 13px 16px;
+      font-size: 1.07em;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #d1b85c;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      background-color: #d1b85c;
+      color: #000;
+      border: none;
+      padding: 14px 36px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 13px;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-end;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #f3e39a;
+    }
+
+    footer {
+      background: #1e1e1e;
+      color: #ccc;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 1.05em;
+      border-top: 1px solid #444;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #f3da80;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+        align-self: stretch;
+      }
+    }
+  </style>
 </head>
 <body>
-  <img src="portret-bg-web.webp" alt="" class="bg-img-desktop">
-  <img src="portret.webp" alt="" class="bg-img-mobile">
 
-  <div class="main-content">
-    <nav class="main-nav">
-      <div class="logo">PojistiToSnadno.cz</div>
-      <a href="index.html">Domů</a>
-    </nav>
+  <nav class="main-nav">
+    <div class="logo">PojistiToSnadno.cz</div>
+    <a href="index.html">Zpět domů</a>
+  </nav>
 
-    <main>
-      <section class="nabidka-formular">
-        <h2>Napiš si o nezávaznou nabídku</h2>
-        <form>
-          <div class="form-row">
-            <input type="text" placeholder="Jméno a příjmení" required>
-            <input type="number" placeholder="Váš věk" required>
-          </div>
-          <div class="form-row-single">
-            <textarea placeholder="Co vás zajímá?" rows="3" required></textarea>
-          </div>
-          <div class="form-row-bottom">
-            <input type="email" placeholder="Váš email" required>
-            <input type="tel" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
-          </div>
-          <div class="form-actions">
-            <button type="submit">Odeslat poptávku</button>
-          </div>
-        </form>
-      </section>
-    </main>
-  </div><!-- konec main-content -->
+  <main class="container">
+    <h2>Napiš si o nezávaznou nabídku</h2>
+    <form action="https://formspree.io/f/mvgqqpev" method="POST">
+      <input type="hidden" name="_redirect" value="dekujeme.html">
+      
+      <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+      <input type="number" name="Věk" placeholder="Váš věk" required>
+      <textarea name="Zpráva" placeholder="Co vás zajímá?" rows="4" required></textarea>
+      <input type="email" name="Email" placeholder="Váš email" required>
+      <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
+
+      <button type="submit">Odeslat poptávku</button>
+    </form>
+  </main>
 
   <footer>
     <p>
@@ -196,5 +160,6 @@
     </p>
     <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
   </footer>
+
 </body>
 </html>
