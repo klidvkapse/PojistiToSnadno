@@ -119,6 +119,29 @@
       background-color: #f3e39a;
     }
 
+    .back-home-mobile {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-home-mobile a {
+      background: #d1b85c;
+      color: #1e1e1e;
+      padding: 0.6rem 1.3rem;
+      border-radius: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s;
+    }
+
+    .back-home-mobile a:hover {
+      background: #f3e39a;
+      color: #000;
+    }
+
     footer {
       background: rgba(0, 0, 0, 0.3);
       color: #e0e0e0;
@@ -149,6 +172,14 @@
       .form-actions button {
         width: 100%;
       }
+
+      .main-nav a[href="index.html"] {
+        display: none; /* skryje horní tlačítko zpět domů */
+      }
+
+      .back-home-mobile {
+        display: block; /* zobrazí nové tlačítko pod formulářem */
+      }
     }
   </style>
 </head>
@@ -175,6 +206,11 @@
         <button type="reset">Vymazat formulář</button>
       </div>
     </form>
+
+    <!-- Mobilní tlačítko Zpět domů -->
+    <div class="back-home-mobile">
+      <a href="index.html">Zpět domů</a>
+    </div>
   </main>
 
   <footer>
