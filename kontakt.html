@@ -143,33 +143,35 @@
 </head>
 <body>
 
-  <nav class="main-nav">
-    <div class="logo">PojistiToSnadno.cz</div>
-    <a href="index.html">Zpět domů</a>
-  </nav>
+   <div class="main-content">
+    <nav class="main-nav">
+      <div class="logo">PojistiToSnadno.cz</div>
+      <a href="index.html">Zpět domů</a>
+    </nav>
 
-   <main>
-    <section class="nabidka-formular">
-      <h2>Napiš si o nezávaznou nabídku</h2>
-      <form action="https://formspree.io/f/mvgqqpev" method="POST">
-        <div class="form-row">
-          <input type="text" name="jmeno" placeholder="Jméno a příjmení" required />
-          <input type="number" name="vek" placeholder="Váš věk" required />
-        </div>
-        <div class="form-row-single">
-          <textarea name="zajem" placeholder="Co vás zajímá?" rows="3" required></textarea>
-        </div>
-        <div class="form-row-bottom">
-          <input type="email" name="email" placeholder="Váš email" required />
-          <input type="tel" name="telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required />
-        </div>
-        <div class="form-actions">
-          <button type="submit">Odeslat poptávku</button>
-          <button type="reset" class="reset-btn">Vymazat formulář</button>
-        </div>
-      </form>
-    </section>
-  </main>
+    <main>
+      <section class="nabidka-formular">
+        <h2>Napiš si o nezávaznou nabídku</h2>
+        <form action="https://formspree.io/f/mvgqqpev" method="POST">
+          <div class="form-row">
+            <input type="text" name="jmeno" placeholder="Jméno a příjmení" required>
+            <input type="number" name="vek" placeholder="Váš věk" required>
+          </div>
+          <div class="form-row-single">
+            <textarea name="zajem" placeholder="Co vás zajímá?" rows="3" required></textarea>
+          </div>
+          <div class="form-row-bottom">
+            <input type="email" name="email" placeholder="Váš email" required>
+            <input type="tel" name="telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
+          </div>
+          <div class="form-actions">
+            <button type="submit">Odeslat poptávku</button>
+            <button type="reset">Vymazat formulář</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
 
   <footer>
     <p>
