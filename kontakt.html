@@ -84,20 +84,26 @@
       outline: none;
     }
 
-    button[type="submit"] {
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .form-actions button {
       background-color: #d1b85c;
       color: #000;
       border: none;
-      padding: 14px 36px;
+      padding: 12px 30px;
       font-size: 1.1em;
       font-weight: bold;
       border-radius: 13px;
       cursor: pointer;
       transition: background 0.2s;
-      align-self: flex-end;
     }
 
-    button[type="submit"]:hover {
+    .form-actions button:hover {
       background-color: #f3e39a;
     }
 
@@ -122,9 +128,13 @@
         align-items: flex-start;
       }
 
-      button[type="submit"] {
+      .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .form-actions button {
         width: 100%;
-        align-self: stretch;
       }
     }
   </style>
@@ -147,8 +157,10 @@
       <input type="email" name="Email" placeholder="Váš email" required>
       <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
 
-      <button type="submit">Odeslat poptávku</button>
-      <button type="reset">Vymazat formulář</button>
+      <div class="form-actions">
+        <button type="submit">Odeslat poptávku</button>
+        <button type="reset">Vymazat formulář</button>
+      </div>
     </form>
   </main>
 
