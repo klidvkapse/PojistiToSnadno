@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
@@ -12,19 +12,16 @@
     color: #333;
     background: #f5f5f5;
   }
-
   header {
     background: #c9b475;
     color: #262319;
     padding: 20px;
     text-align: center;
   }
-
   header h1 {
     margin: 0;
     font-size: 2em;
   }
-
   .intro {
     display: flex;
     flex-wrap: wrap;
@@ -34,12 +31,10 @@
     padding: 0 20px;
     gap: 20px;
   }
-
   .intro picture {
     flex: 1 1 300px;
     max-width: 400px;
   }
-
   .intro img {
     width: 100%;
     height: auto;
@@ -47,21 +42,15 @@
     display: block;
     object-fit: cover;
   }
-
   .intro .text {
     flex: 2 1 300px;
     padding: 20px;
+    background: #eee;
+    border-radius: 10px;
+    margin-left: 20px;
   }
-
-  .text h2 {
-    color: #b7a97c;
-    margin-top: 0;
-  }
-
-  .text p {
-    line-height: 1.6;
-  }
-
+  .text h2 { color: #b7a97c; margin-top: 0; }
+  .text p { line-height: 1.6; }
   .services {
     background: #fefcf8;
     max-width: 1200px;
@@ -70,44 +59,14 @@
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
-
-  .services ul {
-    columns: 2;
-    list-style: none;
-    padding: 0;
-  }
-
-  .services li {
-    margin: 10px 0;
-    padding-left: 1.5em;
-    position: relative;
-  }
-
-  .services li::before {
-    content: "✔";
-    position: absolute;
-    left: 0;
-    color: #b7a97c;
-  }
-
-  .quick-btn {
-    background: #c9b475;
-    padding: 12px 24px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    color: #000;
-  }
-
-  .quick-btn-pink {
-    background: #af4876;
-    color: #fff;
-  }
-
+  .services ul { columns: 2; list-style: none; padding: 0; }
+  .services li { margin: 10px 0; padding-left: 1.5em; position: relative; }
+  .services li::before { content: "✔"; position: absolute; left: 0; color: #b7a97c; }
+  .quick-btn { background: #c9b475; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: bold; color: #000; }
+  .quick-btn-pink { background: #af4876; color: #fff; }
   .card-box {
-    background: #fefcf8;
     border-radius: 10px;
-    padding: 20px;
+    padding: 0;
     width: 300px;
     text-decoration: none;
     color: #000;
@@ -116,109 +75,52 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
   }
-
-  .card-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  }
-
- .card-box.travel {
-  background-image: url('letiste.webp'); /* upravený obrázek */
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  position: relative;
-}
-.card-box.travel h3,
-.card-box.travel p {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-
-  .cta {
-    text-align: center;
-    margin: 40px;
-  }
-
-  .cta a {
-    background: #b7a97c;
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1.2em;
-  }
-
-  .testimonials {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-  }
-
-  .testimonials blockquote {
-    border-left: 4px solid #c9b475;
-    padding-left: 16px;
-    margin: 20px 0;
-    font-style: italic;
-    background: #fefcf8;
-    border-radius: 8px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
+  .card-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+  /* Textový rámeček */
+  .card-text {
     background: #eee;
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+    margin-top: auto;
   }
-
-  /* RESPONSIVITA */
+  .card-text h3, .card-text p { margin: 0; }
+  .card-text h3 { margin-bottom: 8px; font-size: 1.1em; }
+  /* Specifické pozadí pro karty */
+  .card-auto { background-image: url('GL3.webp'); }
+  .card-children { background-image: url('flexydeti.webp'); }
+  .card-property { background-image: url('RD1.webp'); }
+  .card-sick { background-image: url('PN.webp'); }
+  .cta { text-align: center; margin: 40px; }
+  .cta a { background: #b7a97c; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-size: 1.2em; }
+  .testimonials { max-width: 800px; margin: 40px auto; padding: 20px; }
+  .testimonials blockquote { border-left: 4px solid #c9b475; padding-left: 16px; margin: 20px 0; font-style: italic; background: #fefcf8; border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,0.1); }
+  footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; }
   @media (max-width: 768px) {
-    .intro {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .intro .text {
-      padding: 10px 0;
-    }
-
-    .services ul {
-      columns: 1;
-    }
-
-    .card-box {
-      width: 90%;
-    }
+    .intro { flex-direction: column; align-items: center; text-align: center; }
+    .intro .text { padding: 10px 0; }
+    .services ul { columns: 1; }
+    .card-box { width: 90%; }
   }
 </style>
-
-
 </head>
 <body>
-
 <header>
   <h1>PojistiToSnadno.cz</h1>
   <p>Férové pojištění online i osobně.</p>
 </header>
-
 <section class="intro">
   <picture>
     <source srcset="portret.webp" media="(max-width: 768px)">
     <img src="portret-bg-web.webp" alt="Daniel Verner">
-     
   </picture>
   <div class="text">
     <h2>Jmenuji se</h2><h1>Daniel Verner</h1>
-    <p>Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR.
-      Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.
-      Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
+    <p>Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
   </div>
 </section>
-
-
 <section class="services">
   <h2>Služby, které nabízím:</h2>
   <ul>
@@ -229,41 +131,52 @@
     <li>Úvěry na bydlení</li>
   </ul>
 </section>
-
 <section style="max-width:1100px; margin:40px auto; padding:0 20px;">
   <h2 style="text-align:center; color:#b7a97c;">💡 Vyberte si pojištění podle toho, co právě řešíte</h2>
   <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:30px;">
-    <a href="kalkulacka.html?typ=ridic" class="card-box" style="border-left-color:#af4876;">
-      <h3>🚗 Řídíš svou káru?</h3>
-      <p>Získej <strong>až 35 % cashback</strong> na pojištění auta povinné i havarijní.</p>
+    <a href="kalkulacka.html?typ=ridic" class="card-box card-auto" style="border-left-color:#af4876; display:flex; flex-direction:column;">
+      <div class="card-text">
+        <h3>🚗 Řídíš svou káru?</h3>
+        <p>Získej <strong>až 35 % cashback</strong> na pojištění auta povinné i havarijní.</p>
+      </div>
     </a>
-    <a href="zivotni.html?typ=deti" class="card-box" style="border-left-color:#c9b475;">
-      <h3>👨‍👩‍👧 Máte děti?</h3>
-      <p>Výhodné dětské pojištění <strong>až 30 % slevou</strong>. Kompletní ochrana úraz i nemoc.</p>
+    <a href="zivotni.html?typ=deti" class="card-box card-children" style="border-left-color:#c9b475; display:flex; flex-direction:column;">
+      <div class="card-text">
+        <h3>👨‍👩‍👧 Máte děti?</h3>
+        <p>Výhodné dětské pojištění <strong>až 30 % slevou</strong>. Kompletní ochrana úraz i nemoc.</p>
+      </div>
     </a>
-    <a href="nemovitost.html" class="card-box" style="border-left-color:#a78e63;">
-      <h3>🏡 Pojištění nemovitosti</h3>
-      <p>Získej <strong>až 45 % slevu</strong> na pojištění domu/bytu. Jednoduše online i s výhodnou asistencí.</p>
+    <a href="nemovitost.html" class="card-box card-property" style="border-left-color:#a78e63; display:flex; flex-direction:column;">
+      <div class="card-text">
+        <h3>🏡 Pojištění nemovitosti</h3>
+        <p>Získej <strong>až 45 % slevu</strong> na pojištění domu/bytu. Jednoduše online i s výhodnou asistencí.</p>
+      </div>
     </a>
-    <a href="urazovka-doprava.html" class="card-box" style="border-left-color:#de6d5e;">
-      <h3>🚑 Úrazovka pro řidiče</h3>
-      <p><strong>Řídíš, jezdíš, spoléháš se?</strong> Pojištění pouze pro úrazy při dopravní nehodě – levně a spolehlivě.</p>
+    <a href="pracovni-neschopnost.html" class="card-box card-sick" style="border-left-color:#68829e; display:flex; flex-direction:column;">
+      <div class="card-text">
+        <h3>🛌 Pracovní neschopnost</h3>
+        <p><strong>Nejsi stroj.</strong> Krytí jen pro pracovní neschopnost – bez zbytečných připojištění.</p>
+      </div>
     </a>
-    <a href="pracovni-neschopnost.html" class="card-box" style="border-left-color:#68829e;">
-      <h3>🛌 Pracovní neschopnost</h3>
-      <p><strong>Nejsi stroj.</strong> Krytí jen pro pracovní neschopnost – bez zbytečných připojištění.</p>
+    <a href="urazovka-doprava.html" class="card-box" style="border-left-color:#de6d5e; display:flex; flex-direction:column; background-image:url('letiste.webp');">
+      <div class="card-text">
+        <h3>🚑 Úrazovka pro řidiče</h3>
+        <p><strong>Řídíš, jezdíš, spoléháš se?</strong> Pojištění pouze pro úrazy při dopravní nehodě – levně a spolehlivě.</p>
+      </div>
     </a>
-    <a href="rocni-karta.html" class="card-box travel" style="border-left-color:#3f8f74;">
-      <h3>✈️ Roční cestovní karta</h3>
-      <p>Roční cesta s <strong>až 63 % slevou</strong>. Asistence a krytí pro děti zdarma – cestujte bezpečně.</p>
+    <a href="rocni-karta.html" class="card-box travel" style="border-left-color:#3f8f74; display:flex; flex-direction:column;">
+      <div class="card-text">
+        <h3>✈️ Roční cestovní karta</h3>
+        <p>Roční cesta s <strong>až 63 % slevou</strong>. Asistence a krytí pro děti zdarma – cestujte bezpečně.</p>
+      </div>
     </a>
   </div>
 </section>
-  <div style="text-align:center; margin-top:40px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+<div style="text-align:center; margin-top:40px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
   <a href="realne-skody.html" class="quick-btn">💥 Příklady reálných škod</a>
   <a href="slovnik.html" class="quick-btn">📘 Slovník pojmů</a>
   <a href="statistiky.html" class="quick-btn">📊 Statistiky pojištění</a>
-  </div>
+</div>
 <section id="kontakt" style="max-width:600px; margin:60px auto; padding:20px;">
   <h2 style="text-align:center;">Kontaktujte mě</h2>
   <form action="https://formspree.io/f/mvgqqpev" method="POST" style="display:flex; flex-direction:column; gap:12px;">
@@ -279,16 +192,18 @@
     </div>
   </form>
 </section>
-
 <section class="testimonials">
   <h2>Co říkají klienti</h2>
   <blockquote>"Velmi ochotný přístup a rychlé sjednání." – Jana K.</blockquote>
   <blockquote>"Profesionální kalkulačka bez zbytečných komplikací." – Petr M.</blockquote>
 </section>
-
 <footer>
   © 2025 Daniel Verner – PojistiToSnadno.cz
 </footer>
-
 </body>
 </html>
+   
+
+
+
+
