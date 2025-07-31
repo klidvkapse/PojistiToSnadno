@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PojistiToSnadno.cz – Daniel Verner</title>
+  <meta name="description" content="Online pojištění snadno a férově – Daniel Verner, osobní poradce v Šumperku.">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: #b7a97c;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    nav {
+      background: #c9b475;
+      padding: 10px 0;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    .intro img {
+      max-width: 320px;
+      border-radius: 10px;
+      margin-right: 30px;
+    }
+    .intro-text {
+      max-width: 600px;
+    }
+    h2 {
+      color: #b7a97c;
+    }
+    .services {
+      background: white;
+      padding: 20px;
+      margin: 40px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .services ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 10px;
+    }
+    .services li::before {
+      content: "✓ ";
+      color: #b7a97c;
+    }
+    .cta-buttons {
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin: 30px 0;
+    }
+    .cta-buttons a {
+      background: #c9b475;
+      color: #000;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .cta-buttons a:last-child {
+      background: #af4876;
+      color: white;
+    }
+    .testimonials {
+      text-align: center;
+      margin-top: 40px;
+    }
+    blockquote {
+      background: #fff;
+      margin: 20px auto;
+      padding: 15px 20px;
+      max-width: 600px;
+      font-style: italic;
+      border-left: 4px solid #c9b475;
+      border-radius: 8px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    form input, form textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .form-actions button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .form-actions button[type="submit"] {
+      background: #b7a97c;
+    }
+    .form-actions button[type="reset"] {
+      background: #eee;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #eee;
+      font-size: 0.9em;
+    }
+    @media (max-width: 700px) {
+      .intro {
+        flex-direction: column;
+      }
+      .intro img {
+        margin: 0 0 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>PojistiToSnadno.cz</h1>
+  <p>Férové pojištění online i osobně v Šumperku</p>
+</header>
+
+<nav>
+  <a href="#o-mne">O mně</a>
+  <a href="#sluzby">Služby</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<div class="container">
+
+  <section id="o-mne" class="intro">
+    <img src="portret-bg-web.webp" alt="Daniel Verner">
+    <div class="intro-text">
+      <h2>Daniel Verner – zkušený pojišťovací poradce</h2>
+      <p>Psalo se rádo, férový a osobní přístup je mým základem. Kvalitní pojištění je pro mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
+      <p>Online kalkulačka, srozumitelné informace, podpora při pojistných událostech i osobní schůzky v Šumperku.</p>
+    </div>
+  </section>
+
+  <section id="sluzby" class="services">
+    <h2>Služby, které nabízím:</h2>
+    <ul>
+      <li>Životní a úrazové pojištění</li>
+      <li>Pojištění pracovní neschopnosti</li>
+      <li>Pojištění majetku a dopravních prostředků</li>
+      <li>Podpora při řešení pojistných událostí</li>
+      <li>Úvěry na bydlení</li>
+    </ul>
+  </section>
+
+  <div class="cta-buttons">
+    <a href="kalkulacka.html">🧮 Spočítej si úrazovku</a>
+    <a href="realne-skody.html">💥 Reálné škody klientů</a>
+    <a href="rocni-karta.html">🧳 Roční cestovní karta</a>
+    <a href="slovnik.html">📘 Slovník pojmů</a>
+    <a href="statistiky.html">📊 Statistiky pojištění</a>
+    <a href="#kontakt">✉️ Kontaktujte mě</a>
+  </div>
+
+  <div class="testimonials">
+    <h2>Co říkají klienti</h2>
+    <blockquote>
+      "Velmi ochotný přístup a rychlé sjednání. Doporučuji Danielovi služby všem." – Jana K.
+    </blockquote>
+    <blockquote>
+      "Skvělá kalkulačka a profesionální vedení při výběru pojištění – bez zbytečných složitostí." – Petr M.
+    </blockquote>
+  </div>
+
+  <section id="kontakt">
+    <h2 style="text-align:center;">Kontaktujte mě</h2>
+    <form action="https://formspree.io/f/mvgqqpev" method="POST">
+      <input type="hidden" name="_redirect" value="dekujeme.html">
+      <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+      <input type="number" name="Věk" placeholder="Váš věk" required>
+      <textarea name="Zpráva" placeholder="Co vás zajímá?" rows="4" required></textarea>
+      <input type="email" name="Email" placeholder="Váš email" required>
+      <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
+      <div class="form-actions">
+        <button type="submit">Odeslat poptávku</button>
+        <button type="reset">Vymazat formulář</button>
+      </div>
+    </form>
+  </section>
+
+</div>
+
+<footer>
+  © 2025 PojistiToSnadno.cz – Daniel Verner. Všechna práva vyhrazena.
+</footer>
+
+</body>
+</html>
