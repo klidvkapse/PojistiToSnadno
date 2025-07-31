@@ -144,6 +144,53 @@
       font-size: 0.9em;
       background: #eee;
     }
+    @media (max-width: 768px) {
+  .intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro img {
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .services ul {
+    columns: 1;
+  }
+
+  .card-box {
+    width: 100%;
+    max-width: 95vw;
+  }
+
+  .card-box.travel {
+    background-size: cover;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 30px;
+  }
+
+  .card-box.travel h3,
+  .card-box.travel p {
+    background: rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .cta a {
+    width: 90%;
+    display: inline-block;
+  }
+
+  form input, form textarea {
+    width: 100%;
+  }
+}
+
   </style>
 </head>
 <body>
