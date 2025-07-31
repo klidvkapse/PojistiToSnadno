@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <title>PojistiToSnadno.cz – férové pojištění s Danielem Vernérem</title>
+  <title>PojistiToSnadno.cz – férové pojištění s Danielem Vernerem</title>
   <meta name="description" content="Daniel Verner nabízí online i osobní pojištění – úrazové, životní, majetkové. Rychlá kalkulace, reference a osobní přístup.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -47,7 +47,7 @@
     padding: 20px;
     background: #eee;
     border-radius: 10px;
-    margin-left: 20px;
+    /* Removed fixed margin to rely on flex gap */
   }
   .text h2 { color: #b7a97c; margin-top: 0; }
   .text p { line-height: 1.6; }
@@ -79,12 +79,14 @@
     background-position: center;
   }
   .card-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-  /* Textový rámeček */
+  /* Text overlay on image without background */
   .card-text {
-    background: #eee;
+    background: none;
     padding: 15px;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0;
     margin-top: auto;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
   }
   .card-text h3, .card-text p { margin: 0; }
   .card-text h3 { margin-bottom: 8px; font-size: 1.1em; }
@@ -100,6 +102,25 @@
   footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; }
   @media (max-width: 768px) {
     .intro { flex-direction: column; align-items: center; text-align: center; }
+    .intro .text { padding: 10px 0; }
+    .services ul { columns: 1; }
+    .card-box {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+    .card-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  }
     .intro .text { padding: 10px 0; }
     .services ul { columns: 1; }
     .card-box { width: 90%; }
@@ -202,8 +223,5 @@
 </footer>
 </body>
 </html>
-   
 
-
-
-
+ 
