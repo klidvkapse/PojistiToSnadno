@@ -67,6 +67,45 @@
       left: 0;
       color: #b7a97c;
     }
+    .quick-btn {
+      background:#c9b475;
+      padding:12px 24px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      color:#000;
+    }
+    .quick-btn-pink {
+      background:#af4876;
+      color:#fff;
+    }
+    .card-box {
+      background: #fefcf8;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      text-decoration: none;
+      color: #000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-left: 5px solid transparent;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .card-box.travel {
+      background-image: url(letiste.webp);
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .card-box.travel h3,
+    .card-box.travel p {
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
     .cta {
       text-align: center;
       margin: 40px;
@@ -89,7 +128,7 @@
       padding-left: 16px;
       margin: 20px 0;
       font-style: italic;
-      background: #fff;
+      background: #fefcf8;
       border-radius: 8px;
       box-shadow: 0 1px 6px rgba(0,0,0,0.1);
     }
@@ -99,38 +138,23 @@
       font-size: 0.9em;
       background: #eee;
     }
-
-    .card-box {
-      background: #fefcf8;
-      border-radius: 10px;
-      padding: 20px;
-      width: 300px;
-      text-decoration: none;
-      color: #000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      border-left: 5px solid transparent;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
   </style>
 </head>
 <body>
 
 <header>
   <h1>PojistiToSnadno.cz</h1>
-  <p>Férové pojištění online i osobně</p>
+  <p>Férové pojištění online i osobně.</p>
 </header>
 
 <section class="intro">
   <img src="portret-bg-web.webp" alt="Daniel Verner">
   <div class="text">
-    <h2>Jmenuji se Daniel Verner</h2>
-    <p>Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. 
-      Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. 
-      Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
+    <h2>Daniel Verner – zkušený pojišťovací poradce</h2>
+    <p>Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR.
+      Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.
+      Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete..</p>
+    <p>Online kalkulačka, srozumitelné informace, podpora při pojistných událostech i osobní schůzky. </p>
   </div>
 </section>
 
@@ -145,55 +169,47 @@
   </ul>
 </section>
 
-<!-- Rychlé odkazy -->
 <div style="text-align:center; margin-top:40px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
-  <a href="realne-skody.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">💥 Příklady reálných škod</a>
-  <a href="slovnik.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">📘 Slovník pojmů</a>
-  <a href="statistiky.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">📊 Statistiky pojištění</a>
+  <a href="realne-skody.html" class="quick-btn">💥 Příklady reálných škod</a>
+  <a href="slovnik.html" class="quick-btn">📘 Slovník pojmů</a>
+  <a href="statistiky.html" class="quick-btn">📊 Statistiky pojištění</a>
+  
 </div>
 
-<!-- Výběr pojištění -->
-<section style="max-width: 1100px; margin: 40px auto; padding: 0 20px;">
+<section style="max-width:1100px; margin:40px auto; padding:0 20px;">
   <h2 style="text-align:center; color:#b7a97c;">💡 Vyberte si pojištění podle toho, co právě řešíte</h2>
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:30px;">
     <a href="kalkulacka.html?typ=ridic" class="card-box" style="border-left-color:#af4876;">
       <h3>🚗 Řídíš svou káru?</h3>
       <p>Získej <strong>až 35 % cashback</strong> na pojištění auta a spočítej si úrazovku z dopravní nehody.</p>
     </a>
-    <a href="urazovka-doprava.html" class="card-box" style="border-left-color:#de6d5e;">
-  <h3>🚑 Úrazovka pro řidiče</h3>
-  <p><strong>Řídíš, jezdíš, spoléháš se?</strong> Pojištění výhradně pro případy úrazů při dopravní nehodě – bezpečně, chytře a za pár minut.</p>
-</a>
-<a href="pracovni-neschopnost.html" class="card-box" style="border-left-color:#68829e;">
-  <h3>🛌 Pracovní neschopnost</h3>
-  <p><strong>Nejsi stroj.</strong> Krytí jen pro případ pracovní neschopnosti. Bez zbytečných připojištění, bez zmatků. Prostě fér.</p>
-</a>
-
     <a href="zivotni.html?typ=deti" class="card-box" style="border-left-color:#c9b475;">
       <h3>👨‍👩‍👧 Máte děti?</h3>
-      <p>Výhodné dětské pojištění <strong>až se 30 % slevou</strong>. Kompletní ochrana bez papírování.</p>
+      <p>Výhodné dětské pojištění <strong>až 30 % slevou</strong>. Kompletní ochrana bez papírování.</p>
     </a>
     <a href="nemovitost.html" class="card-box" style="border-left-color:#a78e63;">
       <h3>🏡 Pojištění nemovitosti</h3>
-      <p>Získej <strong>až 45 % slevu</strong> na pojištění domu/bytu. Jednoduše online i s asistencí.</p>
+      <p>Získej <strong>až 45 % slevu</strong> na pojištění domu/bytu. Jednoduše online i s asistencí.</p>
     </a>
-    <a href="zivotni.html" class="card-box" style="border-left-color:#b76c5a;">
-      <h3>❤️ Životní pojištění</h3>
-      <p><strong>Až 30 % sleva</strong> pro nové klienty. Férové podmínky bez zbytečných háčků.</p>
+    <a href="urazovka-doprava.html" class="card-box" style="border-left-color:#de6d5e;">
+      <h3>🚑 Úrazovka pro řidiče</h3>
+      <p><strong>Řídíš, jezdíš, spoléháš se?</strong> Pojištění pouze pro úrazy při dopravní nehodě – rychle a spolehlivě.</p>
     </a>
-    <a href="rocni-karta.html" class="card-box" style="border-left-color:#3f8f74;">
-      <h3>✈️ Cestujete často?</h3>
-      <p>Roční cestovní karta s <strong>až 63 % slevou</strong>. Asistence i krytí pro děti zdarma.</p>
+    <a href="pracovni-neschopnost.html" class="card-box" style="border-left-color:#68829e;">
+      <h3>🛌 Pracovní neschopnost</h3>
+      <p><strong>Nejsi stroj.</strong> Krytí jen pro pracovní neschopnost – bez zbytečných doplňků.</p>
+    </a>
+    <a href="rocni-karta.html" class="card-box travel" style="border-left-color:#3f8f74;">
+      <h3>✈️ Roční cestovní karta</h3>
+      <p>Roční cesta s <strong>až 63 % slevou</strong>. Asistence a krytí i pro děti – cestujte bezpečně.</p>
     </a>
   </div>
 </section>
 
-<!-- CTA -->
 <div class="cta">
-  <a href="#calc">🧮 Spočítej si pojištění</a>
+  <a href="#kontakt">🧮 Spočítej si pojištění</a>
 </div>
 
-<!-- Kontakt -->
 <section id="kontakt" style="max-width:600px; margin:60px auto; padding:20px;">
   <h2 style="text-align:center;">Kontaktujte mě</h2>
   <form action="https://formspree.io/f/mvgqqpev" method="POST" style="display:flex; flex-direction:column; gap:12px;">
@@ -205,20 +221,15 @@
     <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required style="padding:10px; border-radius:6px; border:1px solid #ccc;">
     <div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
       <button type="submit" style="background:#b7a97c; color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:5px;">Odeslat poptávku</button>
-      <button type="reset" style="background:#eee; padding:10px 20px; border:none; border-radius:5px;">Vymazat formulář</button>
+      <button type="reset" style="background:#eee; padding:10px 20px; border:none; border-radius:5px;">Vymazat</button>
     </div>
   </form>
 </section>
 
-<!-- Reference -->
 <section class="testimonials">
   <h2>Co říkají klienti</h2>
-  <blockquote>
-    "Velmi ochotný přístup a rychlé sjednání. Doporučuji Danielovi služby všem." – Jana K.
-  </blockquote>
-  <blockquote>
-    "Skvělá kalkulačka a profesionální vedení při výběru pojištění – bez zbytečných složitostí." – Petr M.
-  </blockquote>
+  <blockquote>"Velmi ochotný přístup a rychlé sjednání." – Jana K.</blockquote>
+  <blockquote>"Profesionální kalkulačka bez zbytečných komplikací." – Petr M.</blockquote>
 </section>
 
 <footer>
