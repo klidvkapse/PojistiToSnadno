@@ -34,7 +34,7 @@
     flex-wrap: wrap;
     align-items: center;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 20px auto; /* reduced vertical spacing */
     padding: 0 20px;
     gap: 20px;
   }
@@ -51,17 +51,17 @@
   }
   .intro .text {
     flex: 2 1 300px;
-    padding: 20px;
+    padding: 20px 40px !important; /* vertical 20px, horizontal 40px */
     background: #eee;
     border-radius: 10px;
-    /* Removed fixed margin to rely on flex gap */
-  }
+    box-sizing: border-box;
+}
   .text h2 { color: #b7a97c; margin-top: 0; }
   .text p { line-height: 1.6; }
   .services {
     background: #fefcf8;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 20px auto; /* reduced spacing */
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -171,7 +171,7 @@
     <a href="kalkulacka.html?typ=ridic" class="card-box card-auto">
       <div class="card-text">
         <h3>🚗 Řídíš svou káru?</h3>
-        <p>Získej <strong>až 35 % cashback</strong> na pojištění auta povinné i havarijní.</p>
+        <p>Získej <strong>až 35 % z platby pojištění zpět na účet.</strong>Povinné i havarijní pojištění.</p>
       </div>
     </a>
     <!-- kartu pro děti -->
@@ -196,17 +196,17 @@
       </div>
     </a>
     <!-- kartu pro úrazovku -->
-    <a href="urazovka-doprava.html" class="card-box card-auto">
+    <a href="urazovka-doprava.html" class="card-box card-auto" style="background-image:url('letiste.webp'); border-left-color:#de6d5e;">
       <div class="card-text">
         <h3>🚑 Úrazovka pro řidiče</h3>
         <p><strong>Řídíš, jezdíš, spoléháš se?</strong> Pojištění pouze pro úrazy při dopravní nehodě – levně a spolehlivě.</p>
       </div>
     </a>
     <!-- kartu pro roční kartu -->
-    <a href="rocni-karta.html" class="card-box travel"style="background-image:url('letiste.webp'); border-left-color:#de6d5e;">
+    <a href="rocni-karta.html" class="card-box travel">
       <div class="card-text">
         <h3>✈️ Roční cestovní karta</h3>
-        <p>Roční cesta s <strong>až 63 % slevou</strong>. Asistence a krytí pro děti zdarma – cestujte bezpečně.</p>
+        <p>Roční cestovní karta <strong>až 63 % slevou</strong>. Asistence a krytí.Pojištění pro děti do 6 let zdarma – cestujte bezpečně.</p>
       </div>
     </a>
   </div>
@@ -242,4 +242,3 @@
 </body>
 </html>
 
- 
