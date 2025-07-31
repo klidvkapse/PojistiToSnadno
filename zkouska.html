@@ -8,132 +8,123 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      background: linear-gradient(to bottom, #1e1e1e, #2b2b2b);
+      background: linear-gradient(to bottom, #ff7e5f, #feb47b, #d85773);
+      color: #fff0e0;
+      overflow-x: hidden;
     }
+
     header {
-      background: #000;
-      padding: 40px 20px;
       text-align: center;
+      padding: 60px 20px 40px;
+      animation: fadeInDown 1s ease-out;
     }
+
     header h1 {
-      margin: 0;
-      font-size: 2.8em;
-      color: #ffe87a;
-      letter-spacing: 1px;
+      font-size: 3em;
+      color: #fff8c6;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
+
+    header p {
+      margin-top: 10px;
+      font-style: italic;
+      color: #ffe2b0;
+    }
+
     .hero {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       justify-content: center;
-      padding: 60px 20px;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+      animation: fadeIn 1.4s ease-out;
     }
+
     .hero img {
-      width: 320px;
+      max-width: 320px;
       border-radius: 12px;
-      filter: grayscale(100%) contrast(1.1);
-      box-shadow: 0 0 30px rgba(255, 232, 122, 0.2);
+      box-shadow: 0 0 30px rgba(255, 200, 150, 0.4);
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      transform: scale(1);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
+
+    .hero img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 60px rgba(255, 232, 180, 0.6);
+    }
+
     .hero-text {
       max-width: 600px;
-      padding: 30px;
+      text-align: left;
+      animation: slideIn 1.2s ease-out;
     }
+
     .hero-text h2 {
-      font-size: 1.8em;
-      color: #ffe87a;
+      color: #fffde8;
+      font-size: 2em;
       margin-top: 0;
     }
+
     .hero-text p {
+      color: #fff6e6;
       line-height: 1.6;
-      color: #ddd;
+      margin-bottom: 1em;
     }
-    .highlight-offers {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .offer-box {
-      background: #2f2f2f;
-      padding: 20px;
-      border-left: 4px solid #ffe87a;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(255, 232, 122, 0.1);
-    }
-    .offer-box h3 {
-      margin-top: 0;
-      color: #ffe87a;
-    }
-    .offer-box p {
-      color: #ccc;
-    }
-    .cta {
+
+    .tagline {
       text-align: center;
-      margin: 60px 0 40px;
+      font-size: 1.4em;
+      color: #fff6cc;
+      font-style: italic;
+      margin: 60px auto 40px;
+      animation: fadeIn 2s ease-in-out;
     }
-    .cta a {
-      background: #af4876;
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #1a1a1a;
-      color: #888;
-      font-size: 0.9em;
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text {
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>PojistiToSnadno.cz</h1>
-  <p style="color:#ccc;">Osobní pojišťovací poradce – Daniel Verner</p>
-</header>
+  <header>
+    <h1>PojistiToSnadno.cz</h1>
+    <p>Osobní pojišťovací poradce – Daniel Verner</p>
+  </header>
 
-<section class="hero">
-  <img src="portret-CB.webp" alt="Daniel Verner">
-  <div class="hero-text">
-    <h2>Férově. Osobně. Online.</h2>
-    <p>Pracuji jako pojišťovací poradce v jedné z největších pojišťoven v ČR. Věřím, že kvalitní pojištění je jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
-    <p>Nabízím osobní přístup, asistenci při řešení pojistných událostí, přehledné kalkulace i výhodné balíčky pro řidiče, rodiny nebo majitele nemovitostí.</p>
-  </div>
-</section>
+  <section class="hero">
+    <img src="portret-bw.webp" alt="Daniel Verner">
+    <div class="hero-text">
+      <h2>Férově. Osobně. Stylově.</h2>
+      <p>Pracuji jako pojišťovací poradce v jedné z největších pojišťoven v ČR. Věřím, že kvalitní pojištění je jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
+      <p>Nabízím osobní přístup, asistenci při řešení pojistných událostí, přehledné kalkulace i výhodné balíčky pro řidiče, rodiny nebo majitele nemovitostí.</p>
+    </div>
+  </section>
 
-<section class="highlight-offers">
-  <div class="offer-box">
-    <h3>🚗 Pojištění pro řidiče</h3>
-    <p>Cashback až 35 % na pojištění automobilů + úrazovka při nehodě. Spočítejte si svou pojistku teď.</p>
-  </div>
-  <div class="offer-box">
-    <h3>🧒 Pojištění pro děti</h3>
-    <p>Chraňte své děti výhodně – až 30 % sleva na dětské balíčky s krytím úrazu, hospitalizace i trvalých následků.</p>
-  </div>
-  <div class="offer-box">
-    <h3>🏡 Pojištění nemovitosti</h3>
-    <p>Získejte až 45 % slevu na dům nebo byt, včetně domácnosti. Krytí proti živlům, krádeži i haváriím.</p>
-  </div>
-  <div class="offer-box">
-    <h3>✈️ Roční cestovní karta</h3>
-    <p>Asistenční služby, lékařské krytí a tlumočník nonstop. Až 63 % sleva exkluzivně pro mé klienty.</p>
-  </div>
-</section>
-
-<div class="cta">
-  <a href="#kontakt">✉️ Kontaktujte mě</a>
-</div>
-
-<footer>
-  © 2025 PojistiToSnadno.cz – Daniel Verner
-</footer>
+  <div class="tagline">„Vaše jistota při západu i východu slunce.“</div>
 
 </body>
 </html>
