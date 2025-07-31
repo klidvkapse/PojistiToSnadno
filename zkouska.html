@@ -44,7 +44,7 @@
       line-height: 1.6;
     }
     .services {
-      background: white;
+      background: #fefcf8;
       max-width: 1200px;
       margin: 20px auto;
       padding: 20px;
@@ -99,6 +99,22 @@
       font-size: 0.9em;
       background: #eee;
     }
+
+    .card-box {
+      background: #fefcf8;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      text-decoration: none;
+      color: #000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-left: 5px solid transparent;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
   </style>
 </head>
 <body>
@@ -127,97 +143,67 @@
     <li>Úvěry na bydlení</li>
   </ul>
 </section>
-  <!-- 🔹 SEKCE S ODKAZY / CTA TLAČÍTKA – přidat pod služby -->
+
+<!-- Rychlé odkazy -->
 <div style="text-align:center; margin-top:40px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
-
-  <a href="kalkulacka.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">
-    🧮 Spočítej si úrazovku
-  </a>
-
-  <a href="realne-skody.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">
-    💥 Příklady reálných škod
-  </a>
-
-  <a href="rocni-karta.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">
-    🧳 Roční cestovní karta
-  </a>
-
-  <a href="slovnik.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">
-    📘 Slovník pojmů
-  </a>
-
-  <a href="statistiky.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">
-    📊 Statistiky pojištění
-  </a>
-
-  <a href="#kontakt" class="quick-btn" style="background:#af4876; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#fff;">
-    ✉️ Kontaktujte mě
-  </a>
-
+  <a href="kalkulacka.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">🧮 Spočítej si úrazovku</a>
+  <a href="realne-skody.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">💥 Příklady reálných škod</a>
+  <a href="rocni-karta.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">🧳 Roční cestovní karta</a>
+  <a href="slovnik.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">📘 Slovník pojmů</a>
+  <a href="statistiky.html" class="quick-btn" style="background:#c9b475; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#000;">📊 Statistiky pojištění</a>
+  <a href="#kontakt" class="quick-btn" style="background:#af4876; padding:12px 24px; border-radius:10px; text-decoration:none; font-weight:bold; color:#fff;">✉️ Kontaktujte mě</a>
 </div>
-  <!-- 🔹 INTERAKTIVNÍ NABÍDKY / AKCE PRO RŮZNÉ TYPY KLIENTŮ -->
+
+<!-- Výběr pojištění -->
 <section style="max-width: 1100px; margin: 40px auto; padding: 0 20px;">
   <h2 style="text-align:center; color:#b7a97c;">💡 Vyberte si pojištění podle toho, co právě řešíte</h2>
   <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
-
-    <!-- Řidiči -->
-    <a href="kalkulacka.html?typ=ridic" style="background:#f9f9f9; border-left:5px solid #af4876; border-radius:10px; padding:20px; width:300px; text-decoration:none; color:#000; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <a href="kalkulacka.html?typ=ridic" class="card-box" style="border-left-color:#af4876;">
       <h3>🚗 Řídíš svou káru?</h3>
       <p>Získej <strong>až 35 % cashback</strong> na pojištění auta a spočítej si úrazovku z dopravní nehody.</p>
     </a>
-
-    <!-- Rodiče -->
-    <a href="zivotni.html?typ=deti" style="background:#f9f9f9; border-left:5px solid #c9b475; border-radius:10px; padding:20px; width:300px; text-decoration:none; color:#000; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <a href="zivotni.html?typ=deti" class="card-box" style="border-left-color:#c9b475;">
       <h3>👨‍👩‍👧 Máte děti?</h3>
       <p>Výhodné dětské pojištění <strong>až se 30 % slevou</strong>. Kompletní ochrana bez papírování.</p>
     </a>
-
-    <!-- Majitelé domů/bytu -->
-    <a href="nemovitost.html" style="background:#f9f9f9; border-left:5px solid #a78e63; border-radius:10px; padding:20px; width:300px; text-decoration:none; color:#000; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <a href="nemovitost.html" class="card-box" style="border-left-color:#a78e63;">
       <h3>🏡 Pojištění nemovitosti</h3>
       <p>Získej <strong>až 45 % slevu</strong> na pojištění domu/bytu. Jednoduše online i s asistencí.</p>
     </a>
-
-    <!-- Životní pojištění -->
-    <a href="zivotni.html" style="background:#f9f9f9; border-left:5px solid #b76c5a; border-radius:10px; padding:20px; width:300px; text-decoration:none; color:#000; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <a href="zivotni.html" class="card-box" style="border-left-color:#b76c5a;">
       <h3>❤️ Životní pojištění</h3>
       <p><strong>Až 30 % sleva</strong> pro nové klienty. Férové podmínky bez zbytečných háčků.</p>
     </a>
-
-    <!-- Cestování -->
-    <a href="rocni-karta.html" style="background:#f9f9f9; border-left:5px solid #3f8f74; border-radius:10px; padding:20px; width:300px; text-decoration:none; color:#000; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <a href="rocni-karta.html" class="card-box" style="border-left-color:#3f8f74;">
       <h3>✈️ Cestujete často?</h3>
       <p>Roční cestovní karta s <strong>až 63 % slevou</strong>. Asistence i krytí pro děti zdarma.</p>
     </a>
-
   </div>
 </section>
 
-
-
+<!-- CTA -->
 <div class="cta">
   <a href="#calc">🧮 Spočítej si pojištění</a>
 </div>
-  <!-- 🔹 KONTAKTNÍ FORMULÁŘ – verze s tvými parametry -->
+
+<!-- Kontakt -->
 <section id="kontakt" style="max-width:600px; margin:60px auto; padding:20px;">
   <h2 style="text-align:center;">Kontaktujte mě</h2>
   <form action="https://formspree.io/f/mvgqqpev" method="POST" style="display:flex; flex-direction:column; gap:12px;">
     <input type="hidden" name="_redirect" value="dekujeme.html">
-    
     <input type="text" name="Jméno" placeholder="Jméno a příjmení" required style="padding:10px; border-radius:6px; border:1px solid #ccc;">
     <input type="number" name="Věk" placeholder="Váš věk" required style="padding:10px; border-radius:6px; border:1px solid #ccc;">
     <textarea name="Zpráva" placeholder="Co vás zajímá?" rows="4" required style="padding:10px; border-radius:6px; border:1px solid #ccc;"></textarea>
     <input type="email" name="Email" placeholder="Váš email" required style="padding:10px; border-radius:6px; border:1px solid #ccc;">
     <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required style="padding:10px; border-radius:6px; border:1px solid #ccc;">
-
-    <div class="form-actions" style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
+    <div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
       <button type="submit" style="background:#b7a97c; color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:5px;">Odeslat poptávku</button>
       <button type="reset" style="background:#eee; padding:10px 20px; border:none; border-radius:5px;">Vymazat formulář</button>
     </div>
   </form>
 </section>
 
-
+<!-- Reference -->
 <section class="testimonials">
   <h2>Co říkají klienti</h2>
   <blockquote>
