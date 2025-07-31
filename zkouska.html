@@ -5,7 +5,7 @@
   <title>PojistiToSnadno.cz – férové pojištění s Danielem Vernérem</title>
   <meta name="description" content="Daniel Verner nabízí online i osobní pojištění – úrazové, životní, majetkové. Rychlá kalkulace, reference a osobní přístup.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- <style>
+<style>
   body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -32,13 +32,20 @@
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
+    gap: 20px;
+  }
+
+  .intro picture {
+    flex: 1 1 300px;
+    max-width: 400px;
   }
 
   .intro img {
-    flex: 1 1 300px;
-    max-width: 100%;
-    height: auto; /* oprava deformace */
+    width: 100%;
+    height: auto;
     border-radius: 12px;
+    display: block;
+    object-fit: cover;
   }
 
   .intro .text {
@@ -118,19 +125,14 @@
 
   .card-box.travel {
     background-image: url('letiste.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
-    background-color: #000;
     color: #fff;
   }
 
   .card-box.travel h3,
   .card-box.travel p {
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-    background: rgba(0,0,0,0.4);
-    padding: 8px;
-    border-radius: 4px;
   }
 
   .cta {
@@ -170,21 +172,16 @@
     background: #eee;
   }
 
-  /* ✅ Responzivita pro mobily a tablety */
+  /* RESPONSIVITA */
   @media (max-width: 768px) {
     .intro {
       flex-direction: column;
+      align-items: center;
       text-align: center;
     }
 
-    .intro img {
-      max-width: 90%;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
     .intro .text {
-      padding: 0;
+      padding: 10px 0;
     }
 
     .services ul {
@@ -192,34 +189,11 @@
     }
 
     .card-box {
-      width: 100%;
-      max-width: 95vw;
-    }
-
-    .card-box.travel {
-      background-size: cover;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: 30px;
-    }
-
-    .cta a {
       width: 90%;
-      display: inline-block;
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-    }
-
-    .form-actions {
-      flex-direction: column;
     }
   }
 </style>
+
 
 </head>
 <body>
@@ -230,15 +204,17 @@
 </header>
 
 <section class="intro">
-  <img src="portret-bg-web.webp" alt="Daniel Verner">
+  <picture>
+    <source srcset="portret.webp" media="(max-width: 768px)">
+    <img src="portret-bg-web.webp" alt="Daniel Verner">
+  </picture>
   <div class="text">
     <h2>Daniel Verner – zkušený pojišťovací poradce</h2>
-    <p>Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR.
-      Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti.
-      Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete..</p>
-    <p>Online kalkulačka, srozumitelné informace, podpora při pojistných událostech i osobní schůzky. </p>
+    <p>Psalo se rádo, férový a osobní přístup je mým základem. Kvalitní pojištění je pro mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
+    <p>Online kalkulačka, srozumitelné informace, podpora při pojistných událostech i osobní schůzky v Šumperku.</p>
   </div>
 </section>
+
 
 <section class="services">
   <h2>Služby, které nabízím:</h2>
