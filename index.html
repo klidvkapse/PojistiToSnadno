@@ -73,13 +73,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'"/>
 <style>
-  .cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+ /* === ZÁKLADNÍ STYLY === */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -139,14 +133,29 @@ header h1 {
 .quick-btn { background: #c9b475; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: bold; color: #000; }
 .quick-btn-pink { background: #af4876; color: #fff; }
 
-/* ------------------ FLIP KARTY ------------------ */
+/* === CARDS GRID === */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* === FLIP KARTY === */
 .flip-card {
   background-color: transparent;
   width: 250px;
   height: 300px;
-  perspective: 1000px;
-  margin: 0 auto; /* pro zarovnání ve gridu */
+  perspective: 1200px;
+  margin: 0 auto;
   display: flex;
+  transition: z-index 0.5s;
+  z-index: 1;
+}
+.flip-card.flipped {
+  z-index: 10;
 }
 .flip-card-inner {
   position: relative;
@@ -156,7 +165,8 @@ header h1 {
   transform-style: preserve-3d;
 }
 .flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scale(1.3);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.15);
 }
 .flip-card-front, .flip-card-back {
   position: absolute;
@@ -169,7 +179,8 @@ header h1 {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0; /* padding je uvnitř .card-box */
+  padding: 0;
+  transition: background 0.3s;
 }
 .flip-card-front {
   z-index: 2;
@@ -179,14 +190,16 @@ header h1 {
   color: #222;
   transform: rotateY(180deg);
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 30px 20px;
   box-sizing: border-box;
-  text-align: center;
+  text-align: left;
   z-index: 3;
+  font-size: 1.08em;
+  overflow-y: auto;
 }
-.flip-card-back button {
-  margin-top: 30px;
+.flip-card-back button.flip-back-btn {
+  margin-top: 20px;
   background: #b7a97c;
   color: #fff;
   padding: 8px 24px;
@@ -195,8 +208,11 @@ header h1 {
   font-size: 1.1em;
   cursor: pointer;
 }
+.flip-card-back form button[type="submit"] {
+  margin-top: 10px;
+}
 
-/* ------------------ KARTY OBSAH (původní styly) ------------------ */
+/* === PŮVODNÍ KARTA OBSAH === */
 .card-box {
   border-radius: 10px;
   overflow: hidden;
@@ -235,23 +251,26 @@ header h1 {
 .card-sick { background-image: url('PN.webp'); }
 .card-life { background-image: url('flexy2.webp'); }
 
-/* Ostatní styly */
+/* Další styly */
 .cta { text-align: center; margin: 40px; }
 .cta a { background: #b7a97c; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-size: 1.2em; }
 .testimonials { max-width: 800px; margin: 40px auto; padding: 20px; }
 .testimonials blockquote { border-left: 4px solid #c9b475; padding-left: 16px; margin: 20px 0; font-style: italic; background: #fefcf8; border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,0.1); }
 footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; }
 
-/* Responsivita */
+/* === RESPONSIVITA === */
 @media (max-width: 768px) {
   .intro { flex-direction: column; align-items: center; text-align: center; }
   .intro .text { padding: 10px 0; }
   .services ul { columns: 1; }
   .card-box, .flip-card {
-    width: 90%;
-    min-width: 220px;
-    max-width: 350px;
-    height: 250px;
+    width: 97vw !important;
+    min-width: 0;
+    max-width: 100vw;
+    height: 300px;
+  }
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg) scale(1.05);
   }
   .card-text {
     position: absolute;
@@ -262,7 +281,12 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
     padding: 10px;
     box-sizing: border-box;
   }
+  .flip-card-back {
+    font-size: 1em;
+    padding: 15px 7px;
+  }
 }
+
 
 </style>
 </head>
