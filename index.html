@@ -265,57 +265,39 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
 /* Responsivita */
 /* --- Mobilní responzivita pro karty a grid --- */
 @media (max-width: 768px) {
-  .intro {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .intro .text {
-    padding: 10px 0;
-  }
-  .services ul {
-    columns: 1;
-  }
-
   .cards-container {
-    display: grid;
     grid-template-columns: 1fr !important;
     gap: 24px !important;
     margin: 0 auto !important;
     max-width: 100vw !important;
   }
-
-  .flip-card, .card-box {
+  .card-box {
+    aspect-ratio: 1/1;
     width: 96vw !important;
-    max-width: 480px !important;
+    max-width: 400px;
     min-width: 0;
-    height: auto !important;         /* Karta poroste dle obsahu */
-    min-height: 220px;
+    height: auto !important;
+    min-height: 0;
     margin: 0 auto;
-    border-radius: 18px;
-    overflow: hidden;
-    box-sizing: border-box;
+    background-size: cover !important;
+    background-position: center !important;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-size: cover !important;
-    background-position: center !important;
+    border-radius: 16px;
+    overflow: hidden;
   }
-
-  /* Pokud používáš <img> v kartě místo background-image */
   .card-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 1/1;
     display: block;
-    border-radius: 0;
   }
-
   .card-text {
     max-height: none !important;
     padding-bottom: 12px;
     background: linear-gradient(to top,rgba(0,0,0,0.45) 70%,rgba(0,0,0,0.12) 100%);
-    /* Gradient pro čitelnost textu */
   }
   .card-text h3 {
     margin: 0 0 6px 0;
@@ -324,7 +306,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
   .card-text p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;      /* Maximálně 6 řádků, uprav dle potřeby */
+    -webkit-line-clamp: 6;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1em;
