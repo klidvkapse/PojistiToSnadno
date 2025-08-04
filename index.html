@@ -263,7 +263,6 @@ header h1 {
 footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; }
 
 /* Responsivita */
-/* --- Responsivita pro mobilní zobrazení --- */
 @media (max-width: 768px) {
   .intro {
     flex-direction: column;
@@ -276,34 +275,31 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
   .services ul {
     columns: 1;
   }
-
   .flip-card, .card-box {
     width: 97vw !important;
     min-width: 0;
     max-width: 100vw;
-    height: auto;           /* Povolit růst dle obsahu */
-    min-height: 240px;      /* Nebo nastav rozumné minimum */
+    height: auto;           /* karta poroste podle obsahu */
+    min-height: 220px;      /* rozumné minimum, můžeš zvýšit */
   }
-
   .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg) scale(1.05);
   }
-
   .card-text {
-    max-height: none;       /* Zruší omezení výšky pro text */
-    padding-bottom: 12px;   /* Odděl text odspodu */
+    max-height: none;       /* povol textu růst */
+    padding-bottom: 12px;
   }
-
   .card-text p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;  /* Maximálně 6 řádků – změň podle potřeby */
+    -webkit-line-clamp: 6;  /* max 6 řádků (změň dle potřeby) */
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 1em;         /* Můžeš snížit na .95em, pokud chceš víc textu */
+    font-size: 1em;         /* můžeš dát i .95em */
     margin: 0;
   }
 }
+
 
 </style>
 </head>
