@@ -237,6 +237,15 @@ header h1 {
   color: #fff;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
+  .card-text p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;       /* maximálně 3 řádky */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;                   /* lepší odsazení */
+}
+
 .card-text h3, .card-text p { margin: 0; }
 .card-text h3 { margin-bottom: 8px; font-size: 1.1em; }
 /* Specifické pozadí pro karty */
