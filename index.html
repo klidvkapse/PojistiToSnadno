@@ -245,19 +245,7 @@ header h1 {
   text-overflow: ellipsis;
   margin: 0;                   /* lepší odsazení */
 }
-  @media (max-width: 600px) {
-  .card-text p {
-    -webkit-line-clamp: 5;     /* mobil: povol až 5 řádků */
-    font-size: 1em;            /* případně zmenši písmo */
-  }
-  .card-text {
-    max-height: none;          /* zruš pevné omezení výšky pro mobil */
-  }
-  .card-box {
-    height: auto;              /* povol, ať karta roste dle obsahu */
-    min-height: 240px;         /* nebo nastav rozumné minimum */
-  }
-
+ 
 .card-text h3, .card-text p { margin: 0; }
 .card-text h3 { margin-bottom: 8px; font-size: 1.1em; }
 /* Specifické pozadí pro karty */
