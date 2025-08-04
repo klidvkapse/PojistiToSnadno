@@ -208,10 +208,9 @@ header h1 {
 
 /* ------------------ KARTY OBSAH (původní styly) ------------------ */
 .card-box {
-  border-radius: 10px;
-  overflow: hidden;
-  width: 250px;
-  height: 300px;
+  position: relative;
+  overflow: hidden; /* zabrání přetékání textu */
+  height: 300px;    /* nebo libovolná pevná výška */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -228,10 +227,12 @@ header h1 {
 .card-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
 /* Text overlay on image without background */
 .card-text {
-  background: none;
-  padding: 0;
-  margin: 0;
-  width: auto;
+  /* Pokud máš pozadí a padding, nech! */
+  max-height: 35%;          /* nastav maximální výšku textového bloku */
+  overflow: hidden;         /* schová přetékající text */
+  text-overflow: ellipsis;  /* ukončí dlouhý text "..." */
+  padding-bottom: 14px;     /* prostor odspodu, aby text nebyl úplně na hraně */
+  box-sizing: border-box;
   box-shadow: none;
   color: #fff;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
@@ -266,6 +267,9 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
   .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg) scale(1.05);
   }
+   .card-text {
+    max-height: 45%;
+}
 }
 </style>
 </head>
