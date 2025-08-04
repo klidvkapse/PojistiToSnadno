@@ -279,6 +279,18 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
    .card-text {
     max-height: 45%;
 }
+  @media (max-width: 600px) {
+  .card-text p {
+    -webkit-line-clamp: 5;     /* mobil: povol až 5 řádků */
+    font-size: 1em;            /* případně zmenši písmo */
+  }
+  .card-text {
+    max-height: none;          /* zruš pevné omezení výšky pro mobil */
+  }
+  .card-box {
+    height: auto;              /* povol, ať karta roste dle obsahu */
+    min-height: 240px;         /* nebo nastav rozumné minimum */
+  }
 }
 </style>
 </head>
