@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Najděte význam pojistných pojmů jednoduše v našem slovníku."/>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
     html, body {
       height: 100%;
@@ -15,12 +14,11 @@
       min-height: 100vh;
       min-width: 100vw;
       font-family: 'Raleway', Arial, sans-serif;
-      color: #211d05;
+      color: #fffbe0;
       background: url('pozadislovnik.webp') no-repeat center center fixed;
       background-size: cover;
       overflow-x: hidden;
     }
-
     header {
       width: 100vw;
       display: flex;
@@ -85,13 +83,13 @@
       backdrop-filter: none;
     }
     .dict-box h1 {
-      color: #d3ba41;
+      color: #ffe580;
       font-size: 1.33em;
       text-align: center;
       font-weight: 700;
       margin-bottom: 20px;
       letter-spacing: 0.01em;
-      text-shadow: 0 1px 2px #fff7c4;
+      text-shadow: 0 1px 2px #604d0f;
       background: none;
       border-radius: 0;
       padding: 0;
@@ -99,11 +97,11 @@
     .dict-input {
       width: 100%;
       border-radius: 9px;
-      border: 1.5px solid #e8d684;
+      border: 1.5px solid #ffe580;
       padding: 12px 16px;
       font-size: 1.08em;
-      background: rgba(255,255,255,0.4);
-      color: #211d05;
+      background: rgba(0,0,0,0.12);
+      color: #fffbe0;
       margin-bottom: 14px;
       box-sizing: border-box;
       transition: border 0.18s, background 0.18s;
@@ -113,11 +111,11 @@
       backdrop-filter: blur(1px);
     }
     .dict-input:focus {
-      border: 1.5px solid #bca11a;
-      background: rgba(255,255,255,0.75);
+      border: 1.5px solid #ffef91;
+      background: rgba(0,0,0,0.25);
     }
     .dict-input::placeholder {
-      color: #44410d;
+      color: #ffef91;
       opacity: 1;
       font-weight: normal;
     }
@@ -136,28 +134,32 @@
       outline: none;
     }
     .dict-btn:hover, .dict-btn:focus {
-      background: #e3cd6e;
-      color: #856d0d;
+      background: #ffe580;
+      color: #4a4412;
     }
     .dict-tip {
-      font-size: 1em;
-      color: #837710;
+      font-size: 1.06em;
+      color: #fffbe0;
       margin-bottom: 8px;
       text-align: left;
       width: 100%;
+      font-weight: 600;
+      text-shadow: 0 2px 5px #000, 0 1px 5px #4d3b00;
     }
     .dict-tip b {
-      color: #bca11a;
+      color: #ffe580;
+      text-shadow: 0 2px 5px #4d3b00;
     }
     .dict-missing {
-      font-size: 1em;
-      color: #706f5c;
+      font-size: 1.05em;
+      color: #fffbe0;
       margin-bottom: 12px;
       width: 100%;
       text-align: left;
+      text-shadow: 0 2px 5px #4d3b00;
     }
     .dict-missing a {
-      color: #bca11a;
+      color: #ffe580;
       font-weight: bold;
       text-decoration: underline;
     }
@@ -166,55 +168,63 @@
       min-height: 38px;
       margin-top: 13px;
       border-radius: 9px;
-      background: rgba(255,255,255,0.7);
-      color: #1b1a0c;
+      background: rgba(0,0,0,0.23);
+      color: #fffbe0;
       padding: 13px 17px;
       font-size: 1.03em;
       box-sizing: border-box;
-      box-shadow: 0 1px 7px rgba(200,178,54,0.06);
+      box-shadow: 0 1px 7px rgba(60,40,0,0.13);
       word-break: break-word;
       font-weight: 500;
+      text-shadow: 0 2px 5px #4d3b00;
     }
-
     /* Formulář pro doplnění výrazů */
     .add-term-section {
-      background: rgba(255,255,255,0.95);
+      background: none;
       border-radius: 13px;
-      box-shadow: 0 2px 16px rgba(80,60,8,0.06);
+      box-shadow: none;
       max-width: 420px;
       width: 100%;
       margin: 0 auto 30px auto;
-      padding: 22px 24px 16px 24px;
+      padding: 22px 0 16px 0;
       text-align: center;
       margin-bottom: 90px;
     }
     .add-term-section h2 {
-      color: #bca11a;
+      color: #ffe580;
       margin: 0 0 10px 0;
       font-size: 1.14em;
       font-weight: 700;
+      text-shadow: 0 2px 5px #4d3b00;
     }
     .add-term-section p {
-      color: #4a4412;
+      color: #fffbe0;
       margin-bottom: 14px;
       font-size: 1em;
+      text-shadow: 0 2px 5px #4d3b00;
     }
     .add-term-section input,
     .add-term-section textarea {
       width: 100%;
       margin-bottom: 10px;
       border-radius: 7px;
-      border: 1.2px solid #e8d684;
+      border: 1.2px solid #ffe580;
       padding: 10px 12px;
       font-size: 1em;
-      background: #fff;
-      color: #1b1a0c;
+      background: rgba(0,0,0,0.13);
+      color: #fffbe0;
       box-sizing: border-box;
       resize: vertical;
+      font-weight: 500;
+    }
+    .add-term-section input::placeholder,
+    .add-term-section textarea::placeholder {
+      color: #ffef91;
+      opacity: 1;
     }
     .add-term-section button {
-      background: #bca11a;
-      color: #fff;
+      background: #ffe580;
+      color: #4a4412;
       border: none;
       border-radius: 8px;
       font-size: 1em;
@@ -223,21 +233,23 @@
       cursor: pointer;
       margin-top: 4px;
       transition: background 0.16s;
+      box-shadow: 0 2px 10px rgba(255,229,128,0.09);
     }
     .add-term-section button:hover {
-      background: #dbc456;
-      color: #4a4412;
+      background: #fff;
+      color: #bca11a;
     }
     .add-term-section .success {
-      color: #357d21;
+      color: #ffe580;
       margin: 9px 0 0 0;
       font-size: 1em;
+      text-shadow: 0 2px 5px #4d3b00;
     }
     /* Footer */
     footer {
       width: 100vw;
-      background: rgba(255,255,255,0.75);
-      color: #9a900a;
+      background: rgba(40, 30, 0, 0.5);
+      color: #ffe580;
       text-align: center;
       padding: 17px 6px 17px 6px;
       font-size: 1em;
@@ -249,13 +261,13 @@
       z-index: 10;
       box-shadow: 0 -1px 10px rgba(190,170,70,0.08);
       user-select: none;
+      text-shadow: 0 2px 5px #4d3b00;
     }
-
     @media (max-width: 600px) {
       .dict-box,
       .add-term-section {
         max-width: 97vw;
-        padding: 21px 6vw 22px 6vw;
+        padding: 21px 2vw 22px 2vw;
       }
       .main-container {
         padding: 23px 0 82px 0;
@@ -350,7 +362,7 @@
       if (!resultShown && terms[key]) {
         out.innerHTML = `<strong>${key}</strong><br>
           <div class="def">${terms[key].def}</div>
-          <div class="ex" style="color:#8e8410; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
+          <div class="ex" style="color:#ffe580; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
         out.scrollIntoView({ behavior: "smooth", block: "center" });
         resultShown = true;
       } else {
