@@ -237,14 +237,15 @@ header h1 {
   color: #fff;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
-  .card-text p {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;       /* maximálně 3 řádky */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;                   /* lepší odsazení */
+ .card-text p {
+  display: block !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  white-space: normal !important;
 }
+
  
 .card-text h3, .card-text p { margin: 0; }
 .card-text h3 { margin-bottom: 8px; font-size: 1.1em; }
@@ -475,7 +476,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
           <a href="zivotni.html" class="card-box card-life" onclick="event.preventDefault()">
             <div class="card-text">
               <h3>💓 Životní pojištění</h3>
-              <p>Komplexní ochrana rodiny i jednotlivců.Široké krytí nemocí a úrazů, 100 tisíc 
+              <p>Komplexní ochrana rodiny i jednotlivců.<br>Široké krytí nemocí a úrazů.<br> 100 tisíc 
                 na prevenci, možnost investic a až 30% sleva.</p>
             </div>
           </a>
@@ -497,7 +498,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
           <a href="pracovni-neschopnost.html" class="card-box card-sick" onclick="event.preventDefault()">
             <div class="card-text">
               <h3>🛌 Pracovní neschopnost</h3>
-              <p><strong>Nejsi stroj.</strong> Krytí jen pracovní neschopnosti.Bez zbytečných připojištění. Zaměstnanci i OSVČ.</p>
+              <p><strong>Nejsi stroj.</strong> Krytí jen pracovní neschopnosti.<br>Bez zbytečných připojištění. Zaměstnanci i OSVČ.</p>
             </div>
           </a>
         </div>
@@ -518,7 +519,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
           <a href="urazovka-doprava.html" class="card-box card-auto" style="background-image:url('traffic_300x300.webp'); border-left-color:#de6d5e;" onclick="event.preventDefault()">
             <div class="card-text">
               <h3>🚑 Úrazovka pro řidiče</h3>
-              <p><strong>Řídíš, jezdíš, cestuješ MHD?</strong> Pojištění pouze pro úrazy při dopravní nehodě – levně a spolehlivě.</p>
+              <p><strong>Řídíš, jezdíš, cestuješ MHD?</strong><br>Pojištění pouze pro<strong>úrazy při dopravní nehodě</strong><br>Levně a spolehlivě.</p>
             </div>
           </a>
         </div>
@@ -539,7 +540,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
           <a href="rocni-karta.html" class="card-box travel" style="background-image:url('letiste.webp'); border-left-color:#de6d5e;" onclick="event.preventDefault()">
             <div class="card-text">
               <h3>✈️ Roční cestovní karta</h3>
-              <p>Roční cestovní karta <strong>až 63 % slevou</strong>. Pojištění, asistence i tlumočník nonstop. Pro děti do 6 let zdarma – cestujte bezpečně.</p>
+              <p>Roční cestovní karta <strong>až 63 % slevou</strong>.<br> Pojištění, asistence i tlumočník nonstop. Pro děti do 6 let zdarma.<br>Cestujte bezpečně.</p>
             </div>
           </a>
         </div>
