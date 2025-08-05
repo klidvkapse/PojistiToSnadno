@@ -1,230 +1,245 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Laický slovník pojistných pojmů | PojistiToSnadno.cz</title>
-  <meta name="description" content="Zjednodušený slovník pojistných pojmů pro každého.">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Najděte význam pojistných pojmů jednoduše v našem slovníku."/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
-    }
-    body {
-      font-family: 'Raleway', Arial, sans-serif;
       min-height: 100vh;
-      background: url('pozadislovnik.webp') center center/cover no-repeat fixed;
-      color: #2c230a;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      min-width: 100vw;
+      font-family: 'Raleway', Arial, sans-serif;
+      color: #2d2a13;
+      background: url('pozadislovnik.webp') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
     }
+
+    /* Header */
     header {
-      width: 100%;
+      width: 100vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 28px 14px 22px;
-      background: none;
-      box-shadow: none;
+      padding: 18px 24px 10px 20px;
       position: relative;
+      background: none;
+      box-sizing: border-box;
       z-index: 10;
     }
     .logo {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: bold;
-      color: #c5ab48;
-      letter-spacing: 0.5px;
-      text-shadow: 0 1px 10px #fff7;
+      color: #f6e9aa;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.20);
+      user-select: none;
+      text-decoration: none;
     }
     .nav-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 12px;
     }
     .nav-buttons a {
-      background: #f5e6b9;
-      color: #564714;
-      text-decoration: none;
-      padding: 0.48rem 1.1rem;
-      border-radius: 14px;
+      background: #f5e2a7;
+      color: #5e5518;
+      padding: 8px 22px;
       font-weight: 600;
-      font-size: 1rem;
-      transition: background 0.15s, color 0.15s;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 1.07rem;
       border: none;
-      box-shadow: 0 2px 8px 0 #fff2;
+      box-shadow: 0 2px 12px rgba(80,60,8,0.08);
+      transition: background 0.2s, color 0.2s;
+      outline: none;
     }
-    .nav-buttons a:hover {
-      background: #fffbe4;
-      color: #b7a332;
+    .nav-buttons a:hover, .nav-buttons a:focus {
+      background: #fff6ce;
+      color: #c79f2c;
     }
 
-    main {
-      flex: 1 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 420px;
-    }
-    .slovnik-box {
-      width: 100%;
-      max-width: 430px;
-      padding: 32px 22px 30px 22px;
-      margin: 40px auto 0 auto;
+    /* Hlavní obsah */
+    .main-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: none;
-      border-radius: 0;
-      box-shadow: none;
+      min-height: 70vh;
+      justify-content: center;
+      padding: 60px 10px 40px 10px;
     }
-    .slovnik-title {
-      text-align: center;
-      color: #b7a332;
-      font-size: 1.55em;
-      font-weight: bold;
-      margin-bottom: 22px;
-      letter-spacing: 0.1px;
-      text-shadow: 0 1px 9px #fff7;
-    }
-    input[type="text"] {
+    .dict-box {
+      background: rgba(255,255,255,0.98);
+      border-radius: 17px;
+      padding: 36px 30px 30px 30px;
+      max-width: 420px;
       width: 100%;
-      padding: 0.72rem 1rem;
-      font-size: 1.07em;
-      border-radius: 12px;
-      border: 1.5px solid #ecd488;
-      background: #fffbe8;
-      color: #2c230a;
-      margin-bottom: 16px;
+      box-shadow: 0 2px 28px 0 rgba(60,42,8,0.13);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 38px;
+      margin-bottom: 30px;
+    }
+    .dict-box h1 {
+      color: #bca11a;
+      font-size: 1.35em;
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 2px #fff7c4;
+    }
+    .dict-input {
+      width: 100%;
+      border-radius: 9px;
+      border: 1.5px solid #e8d684;
+      padding: 12px 16px;
+      font-size: 1.08em;
+      background: #fdfbe9;
+      color: #383716;
+      margin-bottom: 14px;
       box-sizing: border-box;
+      transition: border 0.18s;
       outline: none;
-      transition: border 0.15s;
     }
-    input[type="text"]:focus {
-      border-color: #b7a332;
-      background: #fffbe1;
+    .dict-input:focus {
+      border: 1.5px solid #bca11a;
+      background: #fffde2;
     }
-    .slovnik-btn {
-      background-color: #b7a332;
+    .dict-btn {
+      background: #cbb04a;
       color: #fff;
       border: none;
-      padding: 0.60rem 1.8rem;
-      border-radius: 11px;
+      border-radius: 9px;
+      font-size: 1.06em;
+      padding: 10px 35px;
       font-weight: bold;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(188,161,26,0.11);
       cursor: pointer;
-      font-size: 1.07em;
-      margin-bottom: 16px;
-      transition: background 0.14s, color 0.14s;
-      box-shadow: 0 1px 6px #fff5;
+      transition: background 0.16s;
+      outline: none;
     }
-    .slovnik-btn:hover {
-      background-color: #dac97a;
-      color: #574c1d;
+    .dict-btn:hover, .dict-btn:focus {
+      background: #e3cd6e;
+      color: #856d0d;
     }
-    .slovnik-tip {
-      font-size: 0.98rem;
-      color: #998a4a;
-      margin-top: 8px;
-      margin-bottom: 2px;
+    .dict-tip {
+      font-size: 1em;
+      color: #837710;
+      margin-bottom: 8px;
+      text-align: left;
+      width: 100%;
+    }
+    .dict-tip b {
+      color: #bca11a;
+    }
+    .dict-missing {
+      font-size: 1em;
+      color: #706f5c;
+      margin-bottom: 12px;
       width: 100%;
       text-align: left;
     }
-    .slovnik-missing {
-      font-size: 0.97rem;
-      margin-top: 6px;
-      width: 100%;
-      text-align: left;
-    }
-    .slovnik-missing a {
-      color: #b7a332;
+    .dict-missing a {
+      color: #bca11a;
       font-weight: bold;
       text-decoration: underline;
     }
-    #suggestions {
-      background: #fffbe6;
-      border-radius: 10px;
-      box-shadow: 0 2px 9px 0 #fff5;
-      overflow: hidden;
-      margin-bottom: 7px;
+    #output {
       width: 100%;
-    }
-    #suggestions div {
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      color: #7c6d35;
-      transition: background 0.14s;
-      font-size: 1em;
-    }
-    #suggestions div:hover {
-      background: #fff3bb;
-      color: #b7a332;
-    }
-    .slovnik-output {
-      background: #fffbe9d0;
-      color: #3b2d0b;
-      padding: 1rem 0.8rem;
-      border-radius: 12px;
-      margin-top: 1.2rem;
-      min-height: 30px;
-      width: 100%;
-      border-left: 4px solid #b7a33244;
+      min-height: 38px;
+      margin-top: 13px;
+      border-radius: 9px;
+      background: #fffbe2;
+      color: #3d3a12;
+      padding: 13px 17px;
+      font-size: 1.03em;
       box-sizing: border-box;
-      font-size: 1.08em;
-      box-shadow: 0 2px 12px #fff4;
+      box-shadow: 0 1px 7px rgba(200,178,54,0.06);
+      word-break: break-word;
     }
-    .slovnik-output .def { margin-top: 0.3rem;}
-    .slovnik-output .ex {
-      margin-top: 0.4rem;
-      font-style: italic;
-      color: #726d52;
-      font-size: 0.97em;
-    }
+
+    /* Footer */
     footer {
-      flex-shrink: 0;
-      background: none;
-      color: #b2a87c;
+      width: 100vw;
+      background: rgba(255,255,255,0.75);
+      color: #9a900a;
       text-align: center;
-      padding: 2.1rem 1rem 1.1rem 1rem;
-      font-size: 0.97rem;
-      margin-top: auto;
-      text-shadow: 0 1px 8px #fff9;
+      padding: 17px 6px 17px 6px;
+      font-size: 1em;
+      letter-spacing: 0.01em;
+      font-weight: 500;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 10;
+      box-shadow: 0 -1px 10px rgba(190,170,70,0.08);
+      user-select: none;
     }
+
+    /* Responsivita */
     @media (max-width: 600px) {
-      .slovnik-box {
-        padding: 18px 3vw 18px 3vw;
-        margin-top: 18px;
+      .dict-box {
+        max-width: 97vw;
+        padding: 21px 6vw 22px 6vw;
+        margin-top: 26px;
       }
-      .slovnik-title { font-size: 1.13em; }
+      .main-container {
+        padding: 23px 0 82px 0;
+        min-height: 60vh;
+      }
+      .logo {
+        font-size: 1.1rem;
+      }
+      .nav-buttons a {
+        padding: 7px 14px;
+        font-size: 1em;
+      }
+      footer {
+        font-size: 0.96em;
+        padding: 13px 2px 12px 2px;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo">PojistiToSnadno.cz</div>
     <nav class="nav-buttons">
       <a href="index.html">Domů</a>
+      <a href="kontakt.html">Kontakt</a>
     </nav>
   </header>
-  <main>
-    <div class="slovnik-box">
-      <div class="slovnik-title">Laický slovník pojistných pojmů</div>
-      <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
-      <div id="suggestions"></div>
-      <button class="slovnik-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
-      <div class="slovnik-tip">
+
+  <main class="main-container">
+    <form class="dict-box" onsubmit="event.preventDefault(); showDefinition();">
+      <h1>Laický slovník pojistných pojmů</h1>
+      <input type="text" id="search" class="dict-input" placeholder="Napiš pojistovací pojem…" autocomplete="off" />
+      <button type="submit" class="dict-btn">Zobrazit / Zpět</button>
+      <div class="dict-tip">
         <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
       </div>
-      <div class="slovnik-missing">
-        ❔ Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+      <div class="dict-missing">
+        <span style="font-size:1.1em;">❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
       </div>
-      <div id="output" class="slovnik-output" data-current=""></div>
-    </div>
+      <div id="output"></div>
+    </form>
   </main>
+
   <footer>
     © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
   </footer>
+
   <script>
+    // Mini slovníček - rozšiř podle potřeby
     const terms = {
       "pojistná smlouva": {
         def: "Smlouva mezi pojišťovnou a klientem, která určuje podmínky pojištění.",
@@ -247,40 +262,28 @@
         ex: "Vyšší bonita může znamenat výhodnější podmínky pojištění."
       }
     };
-    function showSuggestions() {
-      const q = document.getElementById('search').value.toLowerCase();
-      const list = document.getElementById('suggestions');
-      list.innerHTML = '';
-      if (!q) return;
-      Object.keys(terms).filter(t => t.includes(q)).forEach(t => {
-        const d = document.createElement('div');
-        d.textContent = t;
-        d.onclick = () => {
-          document.getElementById('search').value = t;
-          list.innerHTML = '';
-        };
-        list.appendChild(d);
-      });
-    }
+
     let resultShown = false;
+
     function showDefinition() {
       const input = document.getElementById('search');
-      const key = input.value.toLowerCase();
+      const key = input.value.trim().toLowerCase();
       const out = document.getElementById('output');
-      const suggestions = document.getElementById('suggestions');
+
       if (!resultShown && terms[key]) {
-        suggestions.innerHTML = '';
-        out.innerHTML = `<strong>${key}</strong><br><div class="def">${terms[key].def}</div><div class="ex">${terms[key].ex}</div>`;
+        out.innerHTML = `<strong>${key}</strong><br>
+          <div class="def">${terms[key].def}</div>
+          <div class="ex" style="color:#8e8410; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
         out.scrollIntoView({ behavior: "smooth", block: "center" });
         resultShown = true;
       } else {
         input.value = '';
         out.innerHTML = '';
-        suggestions.innerHTML = '';
         resultShown = false;
       }
     }
   </script>
 </body>
 </html>
+
 
