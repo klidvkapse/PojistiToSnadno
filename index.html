@@ -264,7 +264,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
 
 /* Responsivita */
 /* --- Mobilní responzivita pro karty a grid --- */
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
   .cards-container {
     display: grid;
     grid-template-columns: 1fr !important;
@@ -274,13 +274,24 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
     margin: 0 !important;
     padding: 0 !important;
   }
+  .flip-card,
+  .flip-card-front,
+  .flip-card-back,
+  .flip-card-inner {
+    width: 90vw !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-width: 400px;
+    aspect-ratio: 1/1 !important;
+  }
   .card-box {
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1 !important;
     width: 90vw !important;
     max-width: 400px;
-    margin: 0 auto;
+    min-width: 0;
     height: auto !important;
-    min-height: 0;
+    min-height: 0 !important;
+    margin: 0 auto;
     background-size: cover !important;
     background-position: center !important;
     border-radius: 18px;
@@ -288,7 +299,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-
+    padding: 20px;
   }
   .card-box img {
     width: 100%;
@@ -301,6 +312,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
     max-height: none !important;
     padding-bottom: 12px;
     background: linear-gradient(to top,rgba(0,0,0,0.45) 70%,rgba(0,0,0,0.12) 100%);
+    box-sizing: border-box;
   }
   .card-text h3 {
     margin: 0 0 6px 0;
@@ -316,6 +328,7 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
     margin: 0;
   }
 }
+
 
 
 
