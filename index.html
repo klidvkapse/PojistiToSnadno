@@ -210,7 +210,8 @@ header h1 {
 .card-box {
   position: relative;
   overflow: hidden; /* zabrání přetékání textu */
-  height: 300px;    /* nebo libovolná pevná výška */
+ /* height: 300px;    /* nebo libovolná pevná výška */
+  aspect-ratio: 1/1;    /* Přidej tento řádek – udělá kartu vždy čtvercovou */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
