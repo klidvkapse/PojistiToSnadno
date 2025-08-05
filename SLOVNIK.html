@@ -59,7 +59,6 @@
       background: #fff6ce;
       color: #c79f2c;
     }
-
     .main-container {
       display: flex;
       flex-direction: column;
@@ -261,13 +260,13 @@
   </header>
 
   <main class="main-container">
-    <form class="dict-box" autocomplete="off" onsubmit="event.preventDefault(); showDefinition();">
+    <form class="dict-box" autocomplete="off" onsubmit="event.preventDefault(); showOrReset();">
       <h1>Laický slovník pojistných pojmů</h1>
       <div class="autocomplete-list" style="width:100%;">
         <input type="text" id="search" class="dict-input" placeholder="Napiš pojistovací pojem…" autocomplete="off" />
         <div id="autocomplete-results" class="autocomplete-items"></div>
       </div>
-      <button type="submit" class="dict-btn">Zobrazit / Zpět</button>
+      <button type="submit" class="dict-btn" id="dict-btn">Zobrazit / Zpět</button>
       <div class="dict-tip">
         <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
       </div>
@@ -296,7 +295,6 @@
   </footer>
 
   <script>
-    // Slovníček
     const terms = {
       "pojistná smlouva": {
         def: "Smlouva mezi pojišťovnou a klientem, která určuje podmínky pojištění.",
@@ -325,12 +323,14 @@
       return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
     }
 
-    // Autocomplete našeptávač
+    // Našeptávač
     const searchInput = document.getElementById('search');
     const resultsBox = document.getElementById('autocomplete-results');
     let currentFocus = -1;
+    let definitionShown = false;
 
     searchInput.addEventListener("input", function () {
+      if (definitionShown) return; // Disable autocomplete after result shown
       const val = this.value;
       resultsBox.innerHTML = "";
       if (!val) return false;
@@ -346,15 +346,14 @@
         );
         div.addEventListener("mousedown", function(e){
           searchInput.value = item;
-          showDefinition();
           resultsBox.innerHTML = "";
         });
         resultsBox.appendChild(div);
       });
     });
 
-    // Keyboard ovládání našeptávače
     searchInput.addEventListener("keydown", function(e) {
+      if (definitionShown) return; // Disable after result
       let items = resultsBox.querySelectorAll(".autocomplete-item");
       if (!items.length) return;
       if (e.key === "ArrowDown") {
@@ -389,21 +388,33 @@
       currentFocus = -1;
     });
 
-    // Výklad pojmu
-    function showDefinition() {
+    // Funkce pro zobrazení/vymazání výsledku
+    function showOrReset() {
       const input = document.getElementById('search');
-      const key = input.value.trim().toLowerCase();
       const out = document.getElementById('output');
-      resultsBox.innerHTML = "";
+      const btn = document.getElementById('dict-btn');
 
-      if (terms[key]) {
-        out.innerHTML = `<strong>${key}</strong><br>
-          <div class="def">${terms[key].def}</div>
-          <div class="ex" style="color:#ffe580; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
-        out.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (!definitionShown) {
+        const key = input.value.trim().toLowerCase();
+        resultsBox.innerHTML = "";
+        if (terms[key]) {
+          out.innerHTML = `<strong>${key}</strong><br>
+            <div class="def">${terms[key].def}</div>
+            <div class="ex" style="color:#ffe580; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
+        } else {
+          out.innerHTML = `<span style="color:#ffd;">Pojem nebyl nalezen. Doporučujeme jej zaslat do sekce níže.</span>`;
+        }
+        btn.textContent = "Zpět";
+        definitionShown = true;
         searchInput.blur();
       } else {
-        out.innerHTML = `<span style="color:#ffd;">Pojem nebyl nalezen. Doporučujeme jej zaslat do sekce níže.</span>`;
+        // Reset
+        input.value = "";
+        out.innerHTML = "";
+        btn.textContent = "Zobrazit / Zpět";
+        definitionShown = false;
+        resultsBox.innerHTML = "";
+        searchInput.focus();
       }
     }
 
@@ -411,8 +422,4 @@
     document.getElementById('addTermForm').addEventListener('submit', function(e){
       setTimeout(function(){
         document.getElementById('addTermSuccess').innerText = "Děkujeme za návrh! Výraz bude po schválení přidán do slovníku.";
-      }, 800);
-    });
-  </script>
-</body>
-</html>
+
