@@ -15,20 +15,18 @@
       min-height: 100vh;
       min-width: 100vw;
       font-family: 'Raleway', Arial, sans-serif;
-      color: #2d2a13;
+      color: #211d05;
       background: url('pozadislovnik.webp') no-repeat center center fixed;
       background-size: cover;
       overflow-x: hidden;
     }
 
-    /* Header */
     header {
       width: 100vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 18px 24px 10px 20px;
-      position: relative;
       background: none;
       box-sizing: border-box;
       z-index: 10;
@@ -64,7 +62,6 @@
       color: #c79f2c;
     }
 
-    /* Hlavní obsah */
     .main-container {
       display: flex;
       flex-direction: column;
@@ -74,26 +71,30 @@
       padding: 60px 10px 40px 10px;
     }
     .dict-box {
-      background: rgba(255,255,255,0.98);
+      background: none;
       border-radius: 17px;
-      padding: 36px 30px 30px 30px;
+      padding: 36px 30px 24px 30px;
       max-width: 420px;
       width: 100%;
-      box-shadow: 0 2px 28px 0 rgba(60,42,8,0.13);
+      box-shadow: none;
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-top: 38px;
       margin-bottom: 30px;
+      backdrop-filter: none;
     }
     .dict-box h1 {
-      color: #bca11a;
-      font-size: 1.35em;
+      color: #d3ba41;
+      font-size: 1.33em;
       text-align: center;
       font-weight: 700;
       margin-bottom: 20px;
       letter-spacing: 0.01em;
       text-shadow: 0 1px 2px #fff7c4;
+      background: none;
+      border-radius: 0;
+      padding: 0;
     }
     .dict-input {
       width: 100%;
@@ -101,16 +102,24 @@
       border: 1.5px solid #e8d684;
       padding: 12px 16px;
       font-size: 1.08em;
-      background: #fdfbe9;
-      color: #383716;
+      background: rgba(255,255,255,0.4);
+      color: #211d05;
       margin-bottom: 14px;
       box-sizing: border-box;
-      transition: border 0.18s;
+      transition: border 0.18s, background 0.18s;
       outline: none;
+      box-shadow: 0 2px 14px 0 rgba(80,60,8,0.10);
+      font-weight: bold;
+      backdrop-filter: blur(1px);
     }
     .dict-input:focus {
       border: 1.5px solid #bca11a;
-      background: #fffde2;
+      background: rgba(255,255,255,0.75);
+    }
+    .dict-input::placeholder {
+      color: #44410d;
+      opacity: 1;
+      font-weight: normal;
     }
     .dict-btn {
       background: #cbb04a;
@@ -157,15 +166,73 @@
       min-height: 38px;
       margin-top: 13px;
       border-radius: 9px;
-      background: #fffbe2;
-      color: #3d3a12;
+      background: rgba(255,255,255,0.7);
+      color: #1b1a0c;
       padding: 13px 17px;
       font-size: 1.03em;
       box-sizing: border-box;
       box-shadow: 0 1px 7px rgba(200,178,54,0.06);
       word-break: break-word;
+      font-weight: 500;
     }
 
+    /* Formulář pro doplnění výrazů */
+    .add-term-section {
+      background: rgba(255,255,255,0.95);
+      border-radius: 13px;
+      box-shadow: 0 2px 16px rgba(80,60,8,0.06);
+      max-width: 420px;
+      width: 100%;
+      margin: 0 auto 30px auto;
+      padding: 22px 24px 16px 24px;
+      text-align: center;
+      margin-bottom: 90px;
+    }
+    .add-term-section h2 {
+      color: #bca11a;
+      margin: 0 0 10px 0;
+      font-size: 1.14em;
+      font-weight: 700;
+    }
+    .add-term-section p {
+      color: #4a4412;
+      margin-bottom: 14px;
+      font-size: 1em;
+    }
+    .add-term-section input,
+    .add-term-section textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 7px;
+      border: 1.2px solid #e8d684;
+      padding: 10px 12px;
+      font-size: 1em;
+      background: #fff;
+      color: #1b1a0c;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    .add-term-section button {
+      background: #bca11a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 9px 26px;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.16s;
+    }
+    .add-term-section button:hover {
+      background: #dbc456;
+      color: #4a4412;
+    }
+    .add-term-section .success {
+      color: #357d21;
+      margin: 9px 0 0 0;
+      font-size: 1em;
+    }
     /* Footer */
     footer {
       width: 100vw;
@@ -184,12 +251,11 @@
       user-select: none;
     }
 
-    /* Responsivita */
     @media (max-width: 600px) {
-      .dict-box {
+      .dict-box,
+      .add-term-section {
         max-width: 97vw;
         padding: 21px 6vw 22px 6vw;
-        margin-top: 26px;
       }
       .main-container {
         padding: 23px 0 82px 0;
@@ -215,7 +281,6 @@
     <div class="logo">PojistiToSnadno.cz</div>
     <nav class="nav-buttons">
       <a href="index.html">Domů</a>
-      <a href="kontakt.html">Kontakt</a>
     </nav>
   </header>
 
@@ -228,10 +293,22 @@
         <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
       </div>
       <div class="dict-missing">
-        <span style="font-size:1.1em;">❔</span> Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
+        <span style="font-size:1.1em;">❔</span> Nenašli jste výraz? Navrhněte ho níže!
       </div>
       <div id="output"></div>
     </form>
+
+    <section class="add-term-section">
+      <h2>Chybí vám výraz ve slovníku?</h2>
+      <p>Zadejte neznámý pojem a svůj kontakt. Po schválení bude doplněn do slovníku.</p>
+      <form id="addTermForm" action="mailto:pojistitosnadno@gmail.com" method="POST" enctype="text/plain">
+        <input type="text" name="vyraz" placeholder="Chybějící výraz (pojem)" required>
+        <input type="email" name="email" placeholder="Váš email (pro potvrzení)" required>
+        <textarea name="vzkaz" rows="2" placeholder="Poznámka, komentář (nepovinné)"></textarea>
+        <button type="submit">Odeslat návrh</button>
+        <div class="success" id="addTermSuccess"></div>
+      </form>
+    </section>
   </main>
 
   <footer>
@@ -282,8 +359,13 @@
         resultShown = false;
       }
     }
+
+    // Formulář - úspěšná zpráva pro uživatele
+    document.getElementById('addTermForm').addEventListener('submit', function(e){
+      setTimeout(function(){
+        document.getElementById('addTermSuccess').innerText = "Děkujeme za návrh! Výraz bude po schválení přidán do slovníku.";
+      }, 800);
+    });
   </script>
 </body>
 </html>
-
-
