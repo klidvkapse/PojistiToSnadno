@@ -1,264 +1,237 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slovník pojistných pojmů | PojistiToSnadno.cz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Laický slovník pojistných pojmů | PojistiToSnadno.cz</title>
+  <meta name="description" content="Zjednodušený slovník pojistných pojmů pro každého.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background:url("pozadislovnik.webp")
+      font-family: 'Raleway', Arial, sans-serif;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.94) 0%, rgba(251,233,213,0.82) 100%),
+        url('pozadislovnik.webp') center center/cover no-repeat;
       min-height: 100vh;
-      color: #332e1a;
+      color: #2c230a;
+      background-attachment: fixed;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url('data:image/svg+xml;utf8,<svg width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" font-size="36">🔍</text><text x="28" y="55" font-size="32">❓</text><text x="5" y="52" font-size="22">🛡️</text></svg>') repeat;
-      opacity: 0.07;
-      z-index: 0;
-      pointer-events: none;
-    }
-
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 1.4rem 0.8rem 1.4rem;
-      flex-wrap: wrap;
+      padding: 1.1rem 1.5rem 1.1rem 1.5rem;
+      background: rgba(247,232,200,0.93);
+      box-shadow: 0 2px 24px 0 rgba(205,188,113,0.06);
       position: relative;
-      z-index: 2;
+      z-index: 10;
     }
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: #b7a97c;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      color: #c5ab48;
+      text-shadow: 0 2px 8px rgba(180,170,90,0.09);
+      letter-spacing: 0.5px;
     }
     .nav-buttons {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
     }
     .nav-buttons a {
-      background: #d1b85c;
-      color: #1e1e1e;
+      background: #e4d099;
+      color: #564714;
       text-decoration: none;
-      padding: 0.5rem 1.2rem;
+      padding: 0.5rem 1.1rem;
       border-radius: 14px;
       font-weight: 600;
       font-size: 1rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      transition: background 0.18s, color 0.18s;
+      box-shadow: 0 2px 10px rgba(200,183,101,0.08);
+      transition: background 0.15s;
     }
     .nav-buttons a:hover {
-      background: #af4876;
-      color: #fff;
+      background: #fff7d1;
+      color: #ad850f;
     }
 
     main {
-      max-width: 670px;
-      margin: 0 auto;
-      padding: 1rem;
-      text-align: center;
+      max-width: 720px;
+      margin: 36px auto 0 auto;
+      padding: 24px 12px 40px 12px;
+      background: rgba(255,255,255,0.82);
+      border-radius: 22px;
+      box-shadow: 0 2px 32px 0 rgba(180,170,90,0.08);
       position: relative;
-      z-index: 2;
     }
-    h2 {
-      color: #b7a97c;
-      margin-bottom: 1.1rem;
-      letter-spacing: 0.01em;
+
+    .slovnik-title {
+      text-align: center;
+      color: #b7a332;
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
+
     .slovnik-row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       align-items: flex-start;
-      gap: 2.3rem;
-      margin-bottom: 2.4rem;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .img-wrap {
+      flex: 0 0 170px;
+      text-align: center;
     }
     .img-wrap img {
-      max-width: 175px;
+      width: 150px;
+      max-width: 95vw;
       border-radius: 18px;
-      box-shadow: 0 4px 18px rgba(190, 170, 120, 0.09);
+      box-shadow: 0 2px 18px 0 rgba(205,188,113,0.08);
     }
+
     .dict-container {
-      flex: 1;
-      min-width: 260px;
+      flex: 1 1 260px;
+      min-width: 220px;
       text-align: left;
-      z-index: 2;
+      margin-top: 6px;
     }
-
-    /* --- Moderní search bar --- */
-    .search-bar {
-      display: flex;
-      align-items: center;
-      max-width: 430px;
-      margin: 25px auto 11px auto;
-      background: #fff;
-      border-radius: 24px;
-      box-shadow: 0 4px 18px rgba(210, 190, 100, 0.09);
-      padding: 8px 18px;
-      position: relative;
-      z-index: 2;
-    }
-    .search-bar .search-icon {
-      margin-right: 14px;
-      font-size: 1.4em;
-      color: #b7a97c;
-      opacity: 0.9;
-    }
-    .search-bar input[type="text"] {
-      flex: 1;
-      border: none;
-      background: transparent;
-      font-size: 1.17em;
-      padding: 12px 0;
+    input[type="text"] {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      font-size: 1.07em;
+      border-radius: 14px;
+      border: 1.5px solid #ecd488;
+      background: #fffbe8;
+      color: #2c230a;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
       outline: none;
-      color: #2a2817;
+      transition: border 0.15s;
     }
-    .search-bar input[type="text"]::placeholder {
-      color: #b5b09d;
-      opacity: 1;
+    input[type="text"]:focus {
+      border-color: #ceb759;
+      background: #fffbe1;
     }
 
-    /* Suggestions */
     #suggestions {
-      background: #fffbe5;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(183, 169, 124, 0.12);
+      background: #fffde8;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px 0 rgba(205,188,113,0.08);
       overflow: hidden;
-      margin: 0 auto 10px auto;
-      max-width: 440px;
-      position: relative;
-      z-index: 2;
+      margin-bottom: 8px;
     }
     #suggestions div {
-      padding: 0.75rem 1.1rem;
+      padding: 0.6rem 1.1rem;
       cursor: pointer;
-      color: #85682e;
-      border-bottom: 1px solid #f3e6c5;
-      transition: background 0.18s, color 0.18s;
-      font-size: 1.07em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      color: #7c6d35;
+      transition: background 0.14s;
     }
-    #suggestions div:last-child { border-bottom: none; }
     #suggestions div:hover {
-      background: #fbe9d5;
-      color: #af4876;
+      background: #ffefba;
+      color: #b7a332;
     }
 
-    /* Tlačítko */
-    .link-card-btn {
-      background-color: #af4876;
+    .slovnik-btn {
+      background-color: #ad850f;
       color: #fff;
       border: none;
-      padding: 0.7rem 1.4rem;
-      border-radius: 16px;
+      padding: 0.65rem 2.1rem;
+      border-radius: 12px;
       font-weight: bold;
-      font-size: 1.09em;
-      box-shadow: 0 2px 10px rgba(175,72,118,0.12);
-      margin: 12px 0 6px 0;
       cursor: pointer;
-      transition: background 0.18s;
+      font-size: 1.1em;
+      margin-bottom: 14px;
+      transition: background 0.15s;
+      box-shadow: 0 2px 16px rgba(175,133,15,0.11);
     }
-    .link-card-btn:hover {
-      background-color: #d1b85c;
-      color: #222;
+    .slovnik-btn:hover {
+      background-color: #c9b475;
+      color: #574c1d;
     }
 
-    /* Tip box + nápověda */
-    .slovnik-tip, .slovnik-missing {
-      background: #fff9db;
-      color: #a29249;
-      border-radius: 12px;
-      margin-top: 1.1rem;
-      padding: 10px 16px;
-      font-size: 0.99em;
-      box-shadow: 0 2px 6px rgba(180,160,70,0.08);
+    .slovnik-tip {
+      font-size: 0.99rem;
+      color: #998a4a;
+      margin-top: 6px;
+    }
+    .slovnik-missing {
+      font-size: 0.98rem;
+      margin-top: 0.3rem;
     }
     .slovnik-missing a {
-      color: #af4876;
+      color: #d4b221;
       font-weight: bold;
       text-decoration: underline;
     }
 
-    /* Výstup */
     .slovnik-output {
-      background: #fff;
-      color: #493f26;
-      padding: 1.1rem 1.1rem 0.6rem 1.1rem;
+      background: #fff8e0;
+      color: #3b2d0b;
+      padding: 1.12rem;
       border-radius: 15px;
       margin-top: 1.2rem;
-      border-left: 5px solid #d1b85c;
-      box-shadow: 0 1px 12px rgba(210,190,100,0.08);
-      font-size: 1.09em;
+      border-left: 5px solid #c5ab48;
+      box-shadow: 0 2px 12px rgba(205,188,113,0.09);
+      min-height: 36px;
     }
     .slovnik-output .def {
-      margin-top: 0.45rem;
+      margin-top: 0.5rem;
     }
     .slovnik-output .ex {
       margin-top: 0.5rem;
       font-style: italic;
-      color: #af4876;
+      color: #726d52;
     }
 
-    /* Responsivita */
+    footer {
+      background: transparent;
+      color: #b2a87c;
+      text-align: center;
+      padding: 2.1rem 1rem 1.2rem 1rem;
+      font-size: 0.97rem;
+    }
+    /* RESPONSIVITA */
     @media (max-width: 700px) {
-      header {
+      .slovnik-row {
         flex-direction: column;
         align-items: center;
-        gap: 6px;
-      }
-      .nav-buttons {
-        margin-top: 0.6rem;
-        flex-direction: row;
-        justify-content: center;
-      }
-      .img-wrap img {
-        max-width: 110px;
-      }
-      .dict-container {
-        text-align: center;
-      }
-      .slovnik-row {
-        gap: 1.2rem;
+        gap: 1.1rem;
       }
       main {
-        padding: 0.2rem 0.5rem 1.5rem 0.5rem;
+        padding: 12px 3vw 26px 3vw;
       }
-      .search-bar { max-width: 99vw; }
-      #suggestions { max-width: 99vw; }
+      .img-wrap img {
+        width: 90vw;
+        max-width: 170px;
+      }
+      .dict-container {
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="logo">PojistiToSnadno.cz</div>
-    <div class="nav-buttons">
+    <nav class="nav-buttons">
       <a href="index.html">Domů</a>
-    </div>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
   </header>
-
   <main>
-    <h2>Laický slovník pojistných pojmů</h2>
+    <div class="slovnik-title">Laický slovník pojistných pojmů</div>
     <div class="slovnik-row">
       <div class="img-wrap">
-        
-        
+        <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
       </div>
       <div class="dict-container">
-        <div class="search-bar">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
-        </div>
+        <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
         <div id="suggestions"></div>
-        <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
+        <button class="slovnik-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
         <div class="slovnik-tip">
           <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
         </div>
@@ -269,12 +242,11 @@
       </div>
     </div>
   </main>
-
-  <footer style="background:transparent; color:#999; text-align:center; padding:2rem 1rem 1rem 1rem; font-size:0.93em;">
+  <footer>
     © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
   </footer>
-
   <script>
+    // Slovník výrazů
     const terms = {
       "pojistná smlouva": {
         def: "Smlouva mezi pojišťovnou a klientem, která určuje podmínky pojištění.",
@@ -305,7 +277,7 @@
       if (!q) return;
       Object.keys(terms).filter(t => t.includes(q)).forEach(t => {
         const d = document.createElement('div');
-        d.innerHTML = "❓ " + t;
+        d.textContent = t;
         d.onclick = () => {
           document.getElementById('search').value = t;
           list.innerHTML = '';
