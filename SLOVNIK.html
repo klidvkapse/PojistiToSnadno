@@ -102,7 +102,7 @@
       font-size: 1.08em;
       background: rgba(0,0,0,0.12);
       color: #fffbe0;
-      margin-bottom: 14px;
+      margin-bottom: 0px;
       box-sizing: border-box;
       transition: border 0.18s, background 0.18s;
       outline: none;
@@ -119,6 +119,37 @@
       opacity: 1;
       font-weight: normal;
     }
+    .autocomplete-list {
+      position: relative;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    .autocomplete-items {
+      position: absolute;
+      left: 0; right: 0;
+      background: rgba(60,44,8,0.98);
+      border: 1.5px solid #ffe580;
+      border-top: none;
+      border-radius: 0 0 9px 9px;
+      z-index: 99;
+      max-height: 200px;
+      overflow-y: auto;
+      color: #ffe580;
+      font-size: 1.07em;
+      box-shadow: 0 7px 20px rgba(50,40,0,0.22);
+    }
+    .autocomplete-item {
+      padding: 11px 15px;
+      cursor: pointer;
+      border-bottom: 1px solid #e4cf99;
+      transition: background 0.17s;
+      font-weight: 500;
+    }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover, .autocomplete-active {
+      background: #ffe580;
+      color: #624d00;
+    }
     .dict-btn {
       background: #cbb04a;
       color: #fff;
@@ -127,7 +158,7 @@
       font-size: 1.06em;
       padding: 10px 35px;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin: 13px 0 20px 0;
       box-shadow: 0 2px 10px rgba(188,161,26,0.11);
       cursor: pointer;
       transition: background 0.16s;
@@ -176,73 +207,6 @@
       box-shadow: 0 1px 7px rgba(60,40,0,0.13);
       word-break: break-word;
       font-weight: 500;
-      text-shadow: 0 2px 5px #4d3b00;
-    }
-    /* Formulář pro doplnění výrazů */
-    .add-term-section {
-      background: none;
-      border-radius: 13px;
-      box-shadow: none;
-      max-width: 420px;
-      width: 100%;
-      margin: 0 auto 30px auto;
-      padding: 22px 0 16px 0;
-      text-align: center;
-      margin-bottom: 90px;
-    }
-    .add-term-section h2 {
-      color: #ffe580;
-      margin: 0 0 10px 0;
-      font-size: 1.14em;
-      font-weight: 700;
-      text-shadow: 0 2px 5px #4d3b00;
-    }
-    .add-term-section p {
-      color: #fffbe0;
-      margin-bottom: 14px;
-      font-size: 1em;
-      text-shadow: 0 2px 5px #4d3b00;
-    }
-    .add-term-section input,
-    .add-term-section textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      border-radius: 7px;
-      border: 1.2px solid #ffe580;
-      padding: 10px 12px;
-      font-size: 1em;
-      background: rgba(0,0,0,0.13);
-      color: #fffbe0;
-      box-sizing: border-box;
-      resize: vertical;
-      font-weight: 500;
-    }
-    .add-term-section input::placeholder,
-    .add-term-section textarea::placeholder {
-      color: #ffef91;
-      opacity: 1;
-    }
-    .add-term-section button {
-      background: #ffe580;
-      color: #4a4412;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      font-weight: bold;
-      padding: 9px 26px;
-      cursor: pointer;
-      margin-top: 4px;
-      transition: background 0.16s;
-      box-shadow: 0 2px 10px rgba(255,229,128,0.09);
-    }
-    .add-term-section button:hover {
-      background: #fff;
-      color: #bca11a;
-    }
-    .add-term-section .success {
-      color: #ffe580;
-      margin: 9px 0 0 0;
-      font-size: 1em;
       text-shadow: 0 2px 5px #4d3b00;
     }
     /* Footer */
@@ -297,9 +261,12 @@
   </header>
 
   <main class="main-container">
-    <form class="dict-box" onsubmit="event.preventDefault(); showDefinition();">
+    <form class="dict-box" autocomplete="off" onsubmit="event.preventDefault(); showDefinition();">
       <h1>Laický slovník pojistných pojmů</h1>
-      <input type="text" id="search" class="dict-input" placeholder="Napiš pojistovací pojem…" autocomplete="off" />
+      <div class="autocomplete-list" style="width:100%;">
+        <input type="text" id="search" class="dict-input" placeholder="Napiš pojistovací pojem…" autocomplete="off" />
+        <div id="autocomplete-results" class="autocomplete-items"></div>
+      </div>
       <button type="submit" class="dict-btn">Zobrazit / Zpět</button>
       <div class="dict-tip">
         <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
@@ -307,7 +274,20 @@
       <div class="dict-missing">
         <span style="font-size:1.1em;">❔</span> Nenašli jste výraz? Pošlete mi ho pomocí kontaktního formuláře na domovské stránce.
       </div>
-   
+      <div id="output"></div>
+    </form>
+
+    <!-- Sekce pro doplnění výrazů zůstává beze změny dle tvého zadání -->
+    <section class="add-term-section">
+      <h2>Chybí vám výraz ve slovníku?</h2>
+      <p>Zadejte neznámý pojem a svůj kontakt. Po schválení bude doplněn do slovníku.</p>
+      <form id="addTermForm" action="mailto:pojistitosnadno@gmail.com" method="POST" enctype="text/plain">
+        <input type="text" name="vyraz" placeholder="Chybějící výraz (pojem)" required>
+        <input type="email" name="email" placeholder="Váš email (pro potvrzení)" required>
+        <textarea name="vzkaz" rows="2" placeholder="Poznámka, komentář (nepovinné)"></textarea>
+        <button type="submit">Odeslat návrh</button>
+        <div class="success" id="addTermSuccess"></div>
+      </form>
     </section>
   </main>
 
@@ -316,7 +296,7 @@
   </footer>
 
   <script>
-    // Mini slovníček - rozšiř podle potřeby
+    // Slovníček
     const terms = {
       "pojistná smlouva": {
         def: "Smlouva mezi pojišťovnou a klientem, která určuje podmínky pojištění.",
@@ -340,27 +320,94 @@
       }
     };
 
-    let resultShown = false;
+    // Normalize (diacritics insensitive)
+    function normalize(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
 
+    // Autocomplete našeptávač
+    const searchInput = document.getElementById('search');
+    const resultsBox = document.getElementById('autocomplete-results');
+    let currentFocus = -1;
+
+    searchInput.addEventListener("input", function () {
+      const val = this.value;
+      resultsBox.innerHTML = "";
+      if (!val) return false;
+      let matches = Object.keys(terms).filter(
+        t => normalize(t).includes(normalize(val))
+      );
+      if (matches.length === 0) return false;
+      matches.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.classList.add("autocomplete-item");
+        div.innerHTML = item.replace(new RegExp(val, "gi"), match =>
+          `<strong>${match}</strong>`
+        );
+        div.addEventListener("mousedown", function(e){
+          searchInput.value = item;
+          showDefinition();
+          resultsBox.innerHTML = "";
+        });
+        resultsBox.appendChild(div);
+      });
+    });
+
+    // Keyboard ovládání našeptávače
+    searchInput.addEventListener("keydown", function(e) {
+      let items = resultsBox.querySelectorAll(".autocomplete-item");
+      if (!items.length) return;
+      if (e.key === "ArrowDown") {
+        currentFocus++;
+        if (currentFocus >= items.length) currentFocus = 0;
+        addActive(items);
+      } else if (e.key === "ArrowUp") {
+        currentFocus--;
+        if (currentFocus < 0) currentFocus = items.length - 1;
+        addActive(items);
+      } else if (e.key === "Enter") {
+        if (currentFocus > -1) {
+          e.preventDefault();
+          items[currentFocus].dispatchEvent(new Event("mousedown"));
+        }
+      }
+    });
+
+    function addActive(items) {
+      if (!items) return false;
+      removeActive(items);
+      if (currentFocus >= items.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = items.length - 1;
+      items[currentFocus].classList.add("autocomplete-active");
+      items[currentFocus].scrollIntoView({ block: "nearest" });
+    }
+    function removeActive(items) {
+      for (let item of items) item.classList.remove("autocomplete-active");
+    }
+    document.addEventListener("click", function (e) {
+      if (e.target !== searchInput) resultsBox.innerHTML = "";
+      currentFocus = -1;
+    });
+
+    // Výklad pojmu
     function showDefinition() {
       const input = document.getElementById('search');
       const key = input.value.trim().toLowerCase();
       const out = document.getElementById('output');
+      resultsBox.innerHTML = "";
 
-      if (!resultShown && terms[key]) {
+      if (terms[key]) {
         out.innerHTML = `<strong>${key}</strong><br>
           <div class="def">${terms[key].def}</div>
           <div class="ex" style="color:#ffe580; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
         out.scrollIntoView({ behavior: "smooth", block: "center" });
-        resultShown = true;
+        searchInput.blur();
       } else {
-        input.value = '';
-        out.innerHTML = '';
-        resultShown = false;
+        out.innerHTML = `<span style="color:#ffd;">Pojem nebyl nalezen. Doporučujeme jej zaslat do sekce níže.</span>`;
       }
     }
 
-    // Formulář - úspěšná zpráva pro uživatele
+    // Formulář - úspěšná zpráva pro uživatele (dle původního zadání)
     document.getElementById('addTermForm').addEventListener('submit', function(e){
       setTimeout(function(){
         document.getElementById('addTermSuccess').innerText = "Děkujeme za návrh! Výraz bude po schválení přidán do slovníku.";
