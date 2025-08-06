@@ -179,7 +179,6 @@ header h1 {
   justify-content: flex-end;
   padding: 0;
   transition: background 0.3s;
-  
 }
 .flip-card-back {
   background: #b09868;
@@ -195,7 +194,6 @@ header h1 {
   font-size: 1.08em;
   overflow-y: auto;
 }
-
 .flip-card-back button {
   margin-top: 30px;
   background: #b7a97c;
@@ -212,7 +210,6 @@ header h1 {
   position: relative;
   border-radius: 18px;
   overflow: hidden; /* zabrání přetékání textu */
- /* height: 300px;    /* nebo libovolná pevná výška */
   aspect-ratio: 1/1;    /* Přidej tento řádek – udělá kartu vždy čtvercovou */
   display: flex;
   flex-direction: column;
@@ -228,26 +225,24 @@ header h1 {
   cursor: pointer;
 }
 .card-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-/* Text overlay on image without background */
 .card-text {
-  /* Pokud máš pozadí a padding, nech! */
-  max-height: 50%;          /* nastav maximální výšku textového bloku */
-  overflow: hidden;         /* schová přetékající text */
-  text-overflow: ellipsis;  /* ukončí dlouhý text "..." */
-  padding-bottom: 14px;     /* prostor odspodu, aby text nebyl úplně na hraně */
+  max-height: 50%;        
+  overflow: hidden;        
+  text-overflow: ellipsis; 
+  padding-bottom: 14px;    
   box-sizing: border-box;
   box-shadow: none;
   color: #fff;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
-  .card-box img {
+.card-box img {
   border-radius: 18px;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
- .card-text p {
+.card-text p {
   display: block !important;
   overflow: visible !important;
   text-overflow: unset !important;
@@ -255,11 +250,8 @@ header h1 {
   -webkit-box-orient: unset !important;
   white-space: normal !important;
 }
-
- 
 .card-text h3, .card-text p { margin: 0; }
 .card-text h3 { margin-bottom: 8px; font-size: 1.1em; }
-/* Specifické pozadí pro karty */
 .card-auto { background-image: url('GL3.webp'); }
 .card-children { background-image: url('flexydeti.webp'); }
 .card-property { background-image: url('RD1.webp'); }
@@ -342,11 +334,38 @@ footer { text-align: center; padding: 20px; font-size: 0.9em; background: #eee; 
     white-space: normal !important;
   }
  .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg) scale(1) !important; /* žádné zvětšení */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.13); /* slabší stín volitelně */
+    transform: rotateY(180deg) scale(1) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.13);
   }
 }
 
+/* ---------- Pulzující efekt v barvě tlačítka ---------- */
+.pulse-fuchsia {
+  animation: pulse-fuchsia 1.6s infinite;
+}
+
+@keyframes pulse-fuchsia {
+  0% {
+    color: #af4876;
+    text-shadow: 0 0 0px #af4876;
+    opacity: 1;
+  }
+  45% {
+    color: #d06d98;
+    text-shadow: 0 0 12px #af4876, 0 0 18px #e5b8ce;
+    opacity: 0.95;
+  }
+  60% {
+    color: #af4876;
+    text-shadow: 0 0 0px #af4876;
+    opacity: 1;
+  }
+  100% {
+    color: #af4876;
+    text-shadow: 0 0 0px #af4876;
+    opacity: 1;
+  }
+}
 
 
 
