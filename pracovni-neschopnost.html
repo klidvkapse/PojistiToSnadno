@@ -141,6 +141,7 @@
           <div class="label">Úraz (celkem)</div>
           <div class="big">≈ 200 000 případů</div>
           <div class="note">delší průběh než u běžné nemoci</div>
+           <div class="note">Zdroj čísel: ČSSZ, roční statistika 2024</div>
         </div>
         <div class="card full">
           <div style="font-weight:800;font-size:18px;margin-bottom:6px">Jak to funguje</div>
@@ -149,7 +150,6 @@
             <li>U 29/57 můžeš zapnout <b>zpětné plnění od 1. dne</b>.</li>
             <li>PN trvá? Po 1. měsíci můžeš žádat o <b>měsíční zálohy</b>.</li>
           </ol>
-          <div class="note">Zdroj čísel: ČSSZ, roční statistika 2024</div>
         </div>
       </div>
 
@@ -181,6 +181,20 @@
       </div>
     </div>
   </section>
+   <form action="https://formspree.io/f/mvgqqpev" method="POST">
+      <input type="hidden" name="_redirect" value="dekujeme.html">
+
+      <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+      <input type="number" name="Věk" placeholder="Váš věk" required>
+      <textarea name="Zpráva" placeholder="Co vás zajímá?" rows="4" required></textarea>
+      <input type="email" name="Email" placeholder="Váš email" required>
+      <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
+
+      <div class="form-actions">
+        <button type="submit">Odeslat poptávku</button>
+        <button type="reset">Vymazat formulář</button>
+      </div>
+    </form>
 
   <!-- Časté dotazy -->
   <section class="container" style="margin-top:26px">
