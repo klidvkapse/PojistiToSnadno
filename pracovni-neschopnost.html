@@ -135,6 +135,7 @@
         <label for="netSalary">Čistá měsíční mzda (Kč):</label>
         <input type="number" id="netSalary" placeholder="Zadejte částku" min="0">
         <button onclick="calculateSimple()">Spočítat</button>
+         <button onclick="clearSimpleCalc()" style="background:#ccc;color:#000;margin-top:6px;">Vymazat</button>
         <div class="result" id="resultSimple" style="display:none;">
             <p>Při měsíční pracovní neschopnosti dostanete přibližně <b id="sickPay"></b>.</p>
             <p>Oproti plné mzdě vám bude chybět <b id="missingAmount"></b>.</p>
