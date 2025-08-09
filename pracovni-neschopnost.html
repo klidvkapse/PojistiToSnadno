@@ -223,23 +223,24 @@
     }
 
     // Minikalkulace pro dopravní nehodu (jednoduchý ceník)
-    (function(){
-      const input = document.getElementById('pnInput');
-      const price = document.getElementById('pnPrice');
-      const dec = document.getElementById('decrease');
-      const inc = document.getElementById('increase');
-      let amount = 100; // Kč / den
-      function render(){
-        input.value = amount + ' Kč';
-        const monthly = Math.round((amount/100)*9); // 100 Kč/den => 9 Kč/měs.
-        price.textContent = monthly + ' Kč';
-      }
-      if(dec&&inc){
-        dec.addEventListener('click',()=>{ amount = Math.max(50, amount-50); render(); });
-        inc.addEventListener('click',()=>{ amount = Math.min(1000, amount+50); render(); });
-      }
-        render();
-    })();
+   
+    const mapping = {100:9,200:18,300:28,400:37,500:45,600:55,700:65,800:74,900:83,1000:92};
+    let current = 100;
+    const pnInput = document.getElementById('pnInput');
+    const pnPrice = document.getElementById('pnPrice');
+    document.getElementById('increase').addEventListener('click', () => {
+      if (current < 1000) current += 100;
+      update();
+    });
+    document.getElementById('decrease').addEventListener('click', () => {
+      if (current > 100) current -= 100;
+      update();
+    });
+    function update() {
+      pnInput.value = current + ' Kč';
+      pnPrice.textContent = mapping[current] + ' Kč';
+    }
+ 
   </script>
 </body>
 </html>
