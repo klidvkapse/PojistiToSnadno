@@ -24,73 +24,54 @@
     }
     html,body{margin:0;padding:0;font-family:Raleway,system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg)}
     .container{max-width:1100px;margin:0 auto;padding:20px}
+
+    /* HERO */
     .hero{position:relative;overflow:hidden;border-radius:var(--radius);background:linear-gradient(120deg,#b49661 0%,#c7ad7e 100%);color:#fff;box-shadow:var(--shadow)}
     .hero-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;align-items:center;padding:34px 26px}
     .hero h1{margin:0 0 8px 0;font-size:clamp(28px,4vw,40px);line-height:1.15}
-    .hero p{margin:0 0 18px 0;opacity:.95}
-    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 12px}
     .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);padding:8px 12px;border-radius:999px;font-weight:600;backdrop-filter:blur(3px)}
     .btn{display:inline-block;background:var(--beige);color:#3b321d;font-weight:700;padding:12px 20px;border-radius:14px;text-decoration:none;box-shadow:0 6px 20px rgba(237,227,187,.25);transition:.2s}
     .btn:hover{background:var(--beige-hover);transform:translateY(-1px)}
     .hero-card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 4px 20px rgba(0,0,0,.12);color:#333}
     .hero-card h3{margin:0 0 8px 0}
+
+    /* CTA callout (čitelný) */
+    .cta-spot{display:inline-block;padding:10px 14px;border-radius:12px;color:#fff;font-weight:700;letter-spacing:.2px;background:rgba(0,0,0,.28);backdrop-filter:blur(2px);text-shadow:0 1px 2px rgba(0,0,0,.35)}
+    .hand{display:inline-block;transform-origin:50% 100%;animation:hand-bounce 1.6s ease-in-out infinite}
+    @keyframes hand-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+    .underline{position:relative}
+    .underline::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#ffd56a;border-radius:2px;transform:scaleX(0);transform-origin:left;animation:underline-sweep 2.2s ease-in-out infinite}
+    @keyframes underline-sweep{0%,100%{transform:scaleX(0);opacity:.8}40%,60%{transform:scaleX(1);opacity:1}}
+    .pulse-fuchsia{animation:none!important;text-shadow:none!important;color:inherit!important}
+
+    /* Panely a grid */
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .feature{background:#fff;border-radius:18px;padding:18px;box-shadow:0 2px 16px rgba(0,0,0,.08)}
-    .feature h4{margin:0 0 6px 0}
     .panel{background:#fff;border-radius:18px;padding:18px;box-shadow:0 2px 16px rgba(0,0,0,.08)}
     .panel h3{margin:0 0 10px}
     .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     .controls input[type="text"], .controls input[type="number"]{padding:10px 12px;border:1px solid #ddd;border-radius:10px;min-width:120px;font-weight:600}
-    .controls select{padding:10px 12px;border:1px solid #ddd;border-radius:10px}
     .controls button{background:#ddd;border:0;border-radius:10px;padding:8px 12px;font-weight:700;cursor:pointer}
     .price-label{margin-top:10px;font-weight:700}
-    .hint{font-size:.92em;opacity:.85}
-    .summary{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-    .summary .box{background:#fffdf5;border:1px dashed #e4d6a1;border-radius:12px;padding:12px}
-    .cta-bar{margin:24px 0;background:linear-gradient(90deg,#fff8dc, #fffdf3);border:1px solid #efe1a6;border-radius:16px;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+
+    /* Oddělovač sekcí */
+    .section-sep{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin:10px 0 6px}
+    .section-sep .tag{background:#fff;border:1px solid #eaeaea;border-radius:9999px;padding:6px 12px;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+    .section-sep .line{height:1px;background:linear-gradient(90deg,rgba(0,0,0,.06),rgba(0,0,0,.2),rgba(0,0,0,.06));flex:1}
+
+    /* Jednoduchá kalkulačka nemocenské */
+    .simple-calc input[type="number"]{width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;font-size:16px}
+    .simple-calc button{width:100%;background:var(--sand);color:#fff;border:none;padding:12px;margin-top:10px;font-size:16px;border-radius:6px;cursor:pointer}
+    .simple-calc button:hover{background:#a28252}
+    .simple-calc .result{margin-top:15px;background:#fffdf5;border:1px dashed #e4d6a1;border-radius:8px;padding:15px;font-size:16px}
+
+    /* FAQ */
     details{background:#fff;border-radius:14px;padding:12px 14px;margin:10px 0;box-shadow:0 2px 14px rgba(0,0,0,.06)}
     details>summary{cursor:pointer;font-weight:700}
-    .reveal{opacity:0;transform:translateY(12px);transition:.6s}
-    .reveal.on{opacity:1;transform:none}
-    .pulse-fuchsia{animation:pulse-fuchsia 3.2s infinite}
-    @keyframes pulse-fuchsia{
-      0%{color:var(--fuchsia);text-shadow:0 0 0 var(--fuchsia);opacity:1}
-      45%{color:#d06d98;text-shadow:0 0 12px var(--fuchsia),0 0 18px #e5b8ce;opacity:.95}
-      60%{color:var(--fuchsia);text-shadow:0 0 0 var(--fuchsia);opacity:1}
-      100%{color:var(--fuchsia);text-shadow:0 0 0 var(--fuchsia);opacity:1}
-    }
-    /* Styl pro jednoduchou kalkulačku nemocenské */
-    .simple-calc input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-    }
-    .simple-calc button {
-        width: 100%;
-        background: var(--sand);
-        color: white;
-        border: none;
-        padding: 12px;
-        margin-top: 10px;
-        font-size: 16px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .simple-calc button:hover { background: #a28252; }
-    .simple-calc .result {
-        margin-top: 15px;
-        background: #fffdf5;
-        border: 1px dashed #e4d6a1;
-        border-radius: 8px;
-        padding: 15px;
-        font-size: 16px;
-    }
+
     @media (max-width: 900px){
       .hero-inner{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
-      .summary{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -112,7 +93,8 @@
           <span class="badge">Zpětné plnění od 1. dne (29/57)</span>
           <span class="badge">Zálohy každý měsíc</span>
         </div>
-        <p class="pulse-fuchsia">Kolik by ti chybělo při výpadku příjmu? 👉 Spočítej si to níže.</p>
+        <p class="cta-spot">Kolik by ti chybělo při výpadku příjmu? <span class="hand">👉</span> <span class="underline">Spočítej si to níže.</span></p>
+        <br />
         <a href="#kalkulatory" class="btn">Přejít na kalkulace</a>
       </div>
       <div class="hero-card">
@@ -135,11 +117,18 @@
         <label for="netSalary">Čistá měsíční mzda (Kč):</label>
         <input type="number" id="netSalary" placeholder="Zadejte částku" min="0">
         <button onclick="calculateSimple()">Spočítat</button>
-         <button onclick="clearSimpleCalc()" style="background:#ccc;color:#000;margin-top:6px;">Vymazat</button>
+        <button onclick="clearSimpleCalc()" style="background:#ccc;color:#000;margin-top:6px;">Vymazat</button>
         <div class="result" id="resultSimple" style="display:none;">
             <p>Při měsíční pracovní neschopnosti dostanete přibližně <b id="sickPay"></b>.</p>
             <p>Oproti plné mzdě vám bude chybět <b id="missingAmount"></b>.</p>
         </div>
+      </div>
+
+      <!-- Oddělení sekcí -->
+      <div class="section-sep">
+        <div class="line"></div>
+        <div class="tag">Pojištění – vyber variantu</div>
+        <div class="line"></div>
       </div>
 
       <!-- Dopravní nehoda -->
@@ -164,6 +153,23 @@
     </div>
   </section>
 
+  <!-- Časté dotazy -->
+  <section class="container" style="margin-top:26px">
+    <h2>❓ Časté dotazy</h2>
+    <details>
+      <summary>Jak funguje zpětné plnění od 1. dne?</summary>
+      <p>Pokud si zvolíte čekací dobu 29 nebo 57 dní, můžete nastavit zpětné plnění od 1. dne. Jakmile neschopnost přesáhne čekací dobu, proplatíme dny zpětně od začátku.</p>
+    </details>
+    <details>
+      <summary>Co znamenají zálohy každý měsíc?</summary>
+      <p>Po prvním měsíci pracovní neschopnosti můžete žádat o měsíční zálohy – peníze tak chodí průběžně po celou dobu trvání neschopnosti.</p>
+    </details>
+    <details>
+      <summary>Můžu pojistit jen pracovní neschopnost při dopravní nehodě?</summary>
+      <p>Ano, je možné sjednat pouze krytí pracovní neschopnosti způsobené úrazem při dopravní nehodě – levný, cílený doplněk.</p>
+    </details>
+  </section>
+
   <footer class="container" style="padding-bottom:40px;text-align:center;color:#666">© 2025 PojistiToSnadno.cz</footer>
 
   <script>
@@ -175,19 +181,23 @@
 
     // Jednoduchá kalkulačka nemocenské
     function calculateSimple() {
-        let netSalary = parseFloat(document.getElementById('netSalary').value);
+        const netSalary = parseFloat(document.getElementById('netSalary').value);
         if (isNaN(netSalary) || netSalary <= 0) {
-            alert("Zadejte platnou částku čisté mzdy.");
+            alert('Zadejte platnou částku čisté mzdy.');
             return;
         }
-        let sickPay = netSalary * 0.6;
-        let missing = netSalary - sickPay;
-        document.getElementById('sickPay').innerText = sickPay.toLocaleString('cs-CZ') + " Kč";
-        document.getElementById('missingAmount').innerText = missing.toLocaleString('cs-CZ') + " Kč";
-        document.getElementById('resultSimple').style.display = "block";
+        const sickPay = netSalary * 0.6;
+        const missing = netSalary - sickPay;
+        document.getElementById('sickPay').innerText = sickPay.toLocaleString('cs-CZ') + ' Kč';
+        document.getElementById('missingAmount').innerText = missing.toLocaleString('cs-CZ') + ' Kč';
+        document.getElementById('resultSimple').style.display = 'block';
+    }
+    function clearSimpleCalc(){
+        document.getElementById('netSalary').value='';
+        document.getElementById('resultSimple').style.display='none';
     }
 
-    // Kalkulátor dopravní nehody
+    // Kalkulátor dopravní nehody (jednoduchý ceník)
     (function(){
       const input = document.getElementById('pnInput');
       const price = document.getElementById('pnPrice');
@@ -196,7 +206,7 @@
       let amount = 100;
       function render(){
         input.value = amount + ' Kč';
-        const monthly = Math.round((amount/100)*9);
+        const monthly = Math.round((amount/100)*9); // 100 Kč/den => 9 Kč/měs.
         price.textContent = monthly + ' Kč';
       }
       dec.addEventListener('click',()=>{ amount = Math.max(50, amount-50); render(); });
@@ -206,4 +216,3 @@
   </script>
 </body>
 </html>
-
