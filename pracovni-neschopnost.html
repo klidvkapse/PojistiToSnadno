@@ -62,16 +62,16 @@
     .simple-calc button:hover{background:#a28252}
     .simple-calc .result{margin-top:15px;background:#fffdf5;border:1px dashed #e4d6a1;border-radius:8px;padding:15px;font-size:16px}
 
-    /* INFOGRAFIKA 2024 (ČSSZ) */
-    .infograf{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
-    .infograf .ribbon{grid-column:1/-1;background:#fff;border-left:5px solid var(--olive);border-radius:14px;padding:14px 16px;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center}
-    .infograf .ribbon b{font-size:1.05em}
-    .infograf .card{background:#fff;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:6px}
-    .infograf .label{font-weight:700;opacity:.8}
-    .infograf .big{font-weight:800;font-size:clamp(22px,4vw,30px)}
-    .infograf .note{font-size:.92em;opacity:.8}
-    .infograf .card--nemoc{border-left:5px solid #d97777}
-    .infograf .card--uraz{border-left:5px solid #f0a85f}
+    /* INFOGRAFIKA 2024 (ČSSZ) – side layout */
+    .infograf--side{grid-column:2 / 4;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:stretch}
+    .infograf--side .ribbon{grid-column:1/-1;background:#fff;border-left:5px solid var(--olive);border-radius:14px;padding:14px 16px;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center}
+    .infograf--side .card{background:#fff;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:6px}
+    .infograf--side .label{font-weight:700;opacity:.8}
+    .infograf--side .big{font-weight:800;font-size:clamp(22px,4vw,30px)}
+    .infograf--side .note{font-size:.92em;opacity:.8}
+    .infograf--side .card--nemoc{border-left:5px solid #d97777}
+    .infograf--side .card--uraz{border-left:5px solid #f0a85f}
+    .infograf--side .full{grid-column:1/-1}
 
     /* FAQ */
     details{background:#fff;border-radius:14px;padding:12px 14px;margin:10px 0;box-shadow:0 2px 14px rgba(0,0,0,.06)}
@@ -80,7 +80,7 @@
     @media (max-width: 900px){
       .hero-inner{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
-      .infograf{grid-template-columns:1fr}
+      .infograf--side{grid-column:1/-1;grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -92,7 +92,7 @@
     <p>Pro zaměstnance i OSVČ</p>
   </header>
 
-  <!-- HERO (bez karty, jen jasný callout) -->
+  <!-- HERO -->
   <section class="container hero">
     <div class="hero-inner">
       <div>
@@ -110,10 +110,10 @@
     </div>
   </section>
 
-  <!-- Kalkulátory + INFOGRAFIKA -->
+  <!-- Kalkulátory + INFOGRAFIKA (statistika vpravo) -->
   <section id="kalkulatory" class="container" style="margin-top:26px">
     <div class="grid-3">
-      <!-- Jednoduchá kalkulačka nemocenské -->
+      <!-- Jednoduchá kalkulačka nemocenské (vlevo) -->
       <div class="panel simple-calc">
         <h3>💼 Kalkulačka nemocenské (1 měsíc PN)</h3>
         <label for="netSalary">Čistá měsíční mzda (Kč):</label>
@@ -126,8 +126,8 @@
         </div>
       </div>
 
-      <!-- INFOGRAFIKA (ČSSZ 2024) -->
-      <div class="infograf">
+      <!-- INFOGRAFIKA (ČSSZ 2024) – přesunuta vpravo vedle kalkulačky -->
+      <div class="infograf--side">
         <div class="ribbon" title="Zdroj: ČSSZ – roční statistika 2024">
           <b>📊 Pracovní neschopnost v ČR · 2024</b>
           <span>Průměrná délka jednoho případu: <b>31,7 dne</b></span>
@@ -141,16 +141,15 @@
           <div class="label">Úraz (celkem)</div>
           <div class="big">≈ 200 000 případů</div>
           <div class="note">delší průběh než u běžné nemoci</div>
-          <p>· Zdroj infografiky: ČSSZ (roční statistika 2024)</p>
         </div>
-        <!-- SEM PŘESUNUTO: JAK TO FUNGUJE (nahradilo původní "Otázka je jednoduchá") -->
-        <div class="card" style="display:flex;gap:8px">
+        <div class="card full">
           <div style="font-weight:800;font-size:18px;margin-bottom:6px">Jak to funguje</div>
           <ol style="margin:0 0 8px 18px;line-height:1.5">
             <li>Vybereš si <b>denní částku</b> a <b>od kterého dne chceš plnit (15,29,57)</b>.</li>
             <li>U 29/57 můžeš zapnout <b>zpětné plnění od 1. dne</b>.</li>
             <li>PN trvá? Po 1. měsíci můžeš žádat o <b>měsíční zálohy</b>.</li>
           </ol>
+          <div class="note">Zdroj čísel: ČSSZ, roční statistika 2024</div>
         </div>
       </div>
 
@@ -173,7 +172,7 @@
         <div class="price-label">Cena pojištění: <span id="pnPrice">9 Kč</span> měsíčně</div>
       </div>
 
-      <!-- Informace o všeobecné PN -->
+      <!-- Informace o obecné PN -->
       <div class="panel">
         <h3>🛌 Obecná pracovní neschopnost</h3>
         <p>Výše pojistného u obecné pracovní neschopnosti se liší dle věku, zvolené denní částky a čekací doby. 
@@ -197,7 +196,7 @@
     <details>
       <summary>Jak dlouho mi bude pojišťovna plnění za pracovní neschopnost vyplácet?</summary>
       <p>Zaměstnancům a OSVČ, které se účastní nemocenského pojištění – plní pracovní neschopnost bez omezení.</p>
-        <p>OSVČ, které se neúčastní nemocenského pojištění – plní max. 548 dnů pracovní neschopnosti.</p>
+      <p>OSVČ, které se neúčastní nemocenského pojištění – plní max. 548 dnů pracovní neschopnosti.</p>
     </details>
   </section>
 
@@ -223,7 +222,6 @@
     }
 
     // Minikalkulace pro dopravní nehodu (jednoduchý ceník)
-   
     const mapping = {100:9,200:18,300:28,400:37,500:45,600:55,700:65,800:74,900:83,1000:92};
     let current = 100;
     const pnInput = document.getElementById('pnInput');
@@ -240,7 +238,7 @@
       pnInput.value = current + ' Kč';
       pnPrice.textContent = mapping[current] + ' Kč';
     }
- 
+    update();
   </script>
 </body>
 </html>
