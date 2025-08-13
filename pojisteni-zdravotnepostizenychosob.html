@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pojištění domácnosti a nemovitosti pro zdravotně postižené | PojistiToSnadno.cz</title>
+  <meta name="description" content="Jednoduché a férové pojištění majetku pro zdravotně postižené osoby. Krytí pomůcek, dopravních mechanismů a vodicích/asistenčních psů. Zjisti cenu online." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f7f7;      /* pozadí stránky */
+      --text:#1a1a1a;    /* primární text */
+      --muted:#6b6b6b;   /* druhotný text */
+      --card:#ffffff;    /* panely */
+      --border:#eaeaea;  /* okraje */
+      --hero1:#c3a769;   /* hero gradient */
+      --hero2:#b7a06e;
+      --accent:#ffe87a;  /* zvýraznění */
+      --btn:#e2dbc9;     /* tlačítko */
+      --btnText:#1a1a1a; 
+      --btnHover:#b7a97c;/* hover */
+      --radius:18px;
+      --shadow:0 8px 26px rgba(0,0,0,.10);
+      --shadow-soft:0 4px 14px rgba(0,0,0,.08);
+      --max:1050px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    .page{max-width:var(--max);margin:0 auto;padding:20px}
+    a{color:inherit;text-decoration:none}
+
+    /* HERO */
+    .hero{background:linear-gradient(180deg,var(--hero1),var(--hero2));border-radius:28px;padding:28px;box-shadow:var(--shadow);display:grid;gap:12px}
+    .hero h1{margin:0;font-size:2.05rem;color:#fff}
+    .hero p{margin:0;color:#fffdf6;max-width:800px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .btn{background:var(--btn);color:var(--btnText);padding:12px 18px;border-radius:999px;font-weight:800;box-shadow:var(--shadow-soft)}
+    .btn:hover{background:var(--btnHover);color:#000}
+    .badge{display:inline-block;background:#fff4cc;border:1px solid #f0dd88;color:#2b2b2b;border-radius:999px;padding:6px 10px;font-weight:700}
+
+    /* SECTIONS */
+    .section{margin-top:18px}
+    .grid{display:grid;gap:16px}
+    @media(min-width:900px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+
+    /* CARDS */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:18px}
+    .card h3{margin:0 0 6px;font-size:1.1rem}
+    .muted{color:var(--muted)}
+
+    /* Card color variants (benefit trio) */
+    .grid.grid-3 > article.card:nth-child(1){background:#fff7e6;border-color:#f0e0bf}
+    .grid.grid-3 > article.card:nth-child(2){background:#f5efe3;border-color:#e7dcc5}
+    .grid.grid-3 > article.card:nth-child(3){background:#efe7d8;border-color:#e1d3b8}
+
+    /* ICON */
+    .icon{width:28px;height:28px;flex:0 0 28px}
+    .inline{display:flex;gap:10px;align-items:flex-start}
+
+    /* LISTS */
+    ul{padding-left:18px;margin:8px 0}
+
+    /* FAQ */
+    details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    details+details{margin-top:10px}
+    summary{font-weight:800;cursor:pointer}
+
+    /* CTA band */
+    .band{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow-soft);border-radius:16px;padding:14px}
+    .band .msg{font-weight:800}
+
+    /* FORM */
+    .form{background:#c3a769;border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow-soft)}
+    .form label{display:block;margin:8px 0 6px}
+    .form input,.form textarea,.form select{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;background:#fff;color:#000}
+    .row{display:grid;gap:12px}
+    @media(min-width:700px){.row{grid-template-columns:repeat(2,1fr)}}
+
+    footer{opacity:.85;text-align:center;color:var(--muted);margin:30px 0}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- HERO: krátký claim + CTA -->
+    <section class="hero">
+      <h1>Pojištění domácnosti a nemovitosti pro zdravotně postižené – férově a jednoduše</h1>
+      <p>Chráníme váš majetek i speciální pomůcky. Pokud se něco stane invalidnímu vozíku, rehabilitační pomůcce nebo vodicímu psovi, pomůžeme s náhradou. Zjistěte cenu online – bez složitostí.</p>
+      <div class="cta">
+        <a class="btn" href="#formular">Zjistit cenu a sjednat online</a>
+        <span class="badge">Limit pro vodicího/asistenčního psa až 200&nbsp;000&nbsp;Kč</span>
+      </div>
+    </section>
+
+    <!-- 3 HLAVNÍ BENEFITY -->
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card inline">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="3" stroke="#b7a97c" stroke-width="1.5"/><path d="M7 12h10" stroke="#b7a97c" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Pomůcky</h3>
+            <p class="muted">Invalidní vozíky a rehabilitační pomůcky – <b>doma i při přepravě</b>.</p>
+          </div>
+        </article>
+        <article class="card inline">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#b7a97c" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="#b7a97c" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Vodicí a asistenční psi</h3>
+            <p class="muted">Zvláštní limit plnění – uveďte požadavek do poptávky.</p>
+          </div>
+        </article>
+        <article class="card inline">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 16V8l8-4 8 4v8l-8 4-8-4z" stroke="#b7a97c" stroke-width="1.5"/><path d="M9 12h6" stroke="#b7a97c" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Dopravní mechanismy</h3>
+            <p class="muted">Schodišťové plošiny, domácí výtahy, zvedací zařízení – krytí vč. strojního nebezpečí.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CO JE POJIŠTĚNO -->
+    <section class="section card">
+      <h2 style="margin:0 0 8px;font-size:1.3rem">Co je pojištěno</h2>
+      <ul>
+        <li>Invalidní vozíky a další kompenzační/rehabilitační pomůcky – <b>i mimo místo pojištění.</b></li>
+        <li><b>Vodicí a asistenční psi</b> (se zvláštním limitem plnění).</li>
+        <li>Dopravní mechanismy ve stavbě i domácnosti (např. plošiny, výtahy, zvedáky).</li>
+      </ul>
+      <p class="muted" style="margin:.2rem 0 0">Podrobnosti určuje pojistná smlouva a produktové podmínky.</p>
+    </section>
+
+    <!-- DŮLEŽITÉ VĚDĚT -->
+    <section class="section card">
+      <h2 style="margin:0 0 8px;font-size:1.3rem">Důležité vědět</h2>
+      <ul>
+        <li>Krytí se vztahuje také na krádež a vandalismus.</li>
+        <li>U mechanismů se posuzuje stáří, údržba a dodržení provozních předpisů.</li>
+        <li>Platí pro domácnost i nemovitost– rozsah dle sjednané smlouvy.</li>
+      </ul>
+    </section>
+
+    <!-- CTA PÁSEK -->
+    <section class="section band">
+      <div class="msg">Chcete mít jistotu, že je váš domov i pomůcky správně chráněny?</div>
+      <a class="btn" href="#formular">Získat nezávaznou nabídku</a>
+    </section>
+
+    <!-- JEDNODUCHÝ FORMULÁŘ -->
+    <section id="formular" class="section form">
+      <h2 style="margin:0 0 8px;font-size:1.3rem">Nezávazná poptávka</h2>
+      <form action="https://formspree.io/f/mjkwnelz" method="POST">
+        <div class="row">
+          <div>
+            <label for="jmeno">Jméno a příjmení</label>
+            <input id="jmeno" name="Jméno" required>
+          </div>
+          <div>
+            <label for="email">E‑mail</label>
+            <input id="email" type="email" name="Email" required>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="telefon">Telefon</label>
+            <input id="telefon" name="Telefon">
+          </div>
+          <div>
+            <label for="typ">Co chcete pojistit?</label>
+            <select id="typ" name="Předmět pojištění">
+              <option>Domácnost</option>
+              <option>Nemovitost (stavba)</option>
+              <option>Obojí: nemovitost + domácnost</option>
+            </select>
+          </div>
+        </div>
+        <label for="pomucky">Pomůcky / mechanismy (stručně)</label>
+        <input id="pomucky" name="Pomůcky a mechanismy" placeholder="např. elektrický vozík, schodišťová plošina, vodicí pes…">
+        <label for="zprava">Poznámka</label>
+        <textarea id="zprava" name="Poznámka" rows="3" placeholder="Specifika, stáří zařízení, požadovaný limit pro psa…"></textarea>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <button class="btn" type="submit">Odeslat</button>
+          <button class="btn" type="reset" style="background:#fff;border:1px solid var(--border)">Vymazat</button>
+        </div>
+        <p class="muted" style="margin:.4rem 0 0">Odesláním souhlasíte se zpracováním údajů pro účely zpětného kontaktu.</p>
+      </form>
+    </section>
+
+    <!-- FAQ (3 otázky) -->
+    <section class="section">
+      <h2 style="margin:0 0 8px;font-size:1.3rem">Nejčastější otázky</h2>
+      <details>
+        <summary>Kdo si může pojištění sjednat?</summary>
+        <div class="muted">Kdokoli, kdo vlastní nebo užívá domácnost či nemovitost a potřebuje krýt speciální pomůcky, dopravní mechanismy nebo vodicího/asistenčního psa.</div>
+      </details>
+      <details>
+        <summary>Co potřebuji k uzavření smlouvy?</summary>
+        <div class="muted">Základní údaje o nemovitosti (adresa,m2...) a seznam pomůcek/mechanismů. S detaily vám pomůžeme po odeslání poptávky.</div>
+      </details>
+      <details>
+        <summary>Jak probíhá výplata pojistného plnění?</summary>
+        <div class="muted">Po nahlášení škody vás provedeme celým procesem. Plnění se vyplácí dle sjednaných limitů a podmínek ve smlouvě.</div>
+      </details>
+    </section>
+
+    <footer>
+      <p>© 2025 PojistiToSnadno.cz</p>
+    </footer>
+  </main>
+</body>
+</html>
