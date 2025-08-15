@@ -26,6 +26,12 @@ html,body{
   margin:0 auto;
   padding:20px;
 }
+  /* Kontrast na fotopozadí (jen prvky, co neleží v bílých kartách) */
+header.container h1,
+header.container p { color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.45); }
+header.container { color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.45); }
+header.container .btn { color:#3b321d; }         /* ponecháme tmavý text na tlačítku */
+.container > h2 { color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.45); }
 
 
 /* hero */
