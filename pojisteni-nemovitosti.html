@@ -42,12 +42,12 @@
     /* KARTY */
     .card{background:var(--paper); border:1px solid var(--border); border-radius:18px; padding:18px; box-shadow:var(--soft)}
     .card h3{margin:0 0 6px; font-size:1.1rem}
-    .muted{color:var(--muted)}
+    .muted{color:#3b321d}
 
     /* SECTIONS */
-    .section{padding:18px; border-radius:18px; border:1px solid var(--border); box-shadow:var(--soft); background:#fffdf7}
-    .section.sand{background:#f6f1e6}
-    .section.pearl{background:#f9f6ef}
+    .section{padding:18px; border-radius:18px; border:0; background:transparent; box-shadow:none}
+    .section.sand{background:transparent}
+    .section.pearl{background:transparent}
 
     /* TABULKA */
     .table{width:100%; border-collapse:separate; border-spacing:0}
@@ -59,7 +59,7 @@
     .form{background:#fff; border:1px solid var(--border); border-radius:18px; padding:18px; box-shadow:var(--soft)}
     .form input, .form textarea{width:100%; padding:12px; border:1px solid #ddd; border-radius:12px}
 
-    footer{opacity:.85; color:#5b5b5b; text-align:center; margin:30px 0}
+    footer{opacity:.9; color:#262319; text-align:center; margin:30px 0; text-shadow:0 1px 0 rgba(255,255,255,.6)}
   
     /* Rozklikávací karty s mini‑formuláři */
     details.card{background:var(--paper);border:1px solid var(--border);border-radius:18px;padding:14px 16px;box-shadow:var(--soft)}
@@ -103,6 +103,10 @@
     .faq .chev{margin-left:auto;transition:transform .25s}
     .faq details[open] .chev{transform:rotate(180deg)}
     .faq .a{margin-top:8px;color:var(--muted)}
+  
+    /* Zlepšená čitelnost nad fotopozadím */
+    .section h2{color:#262319; text-shadow:0 1px 0 rgba(255,255,255,.6)}
+    .section p, .section li{color:#262319}
   </style>
 </head>
 <body>
@@ -336,7 +340,7 @@
     </section>
 
     <footer>
-      <p>  © 2025 Daniel Verner – PojistiToSnadno.cz</p>
+      <p>Stránka je zjednodušené shrnutí. Finální podmínky a limity domluvíme při sjednání nabídky.</p>
     </footer>
       <script>
       // Accordion: otevřením jedné karty zavřít ostatní
