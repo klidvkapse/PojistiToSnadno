@@ -451,6 +451,15 @@
         recalc();
       }
       document.querySelectorAll('details.card').forEach(bindSum);
+      // FAQ – povolit otevření vždy jen jedné položky v rámci .faq-grid
+      document.querySelectorAll('.faq-grid').forEach(grid=>{
+        const items = grid.querySelectorAll('details');
+        items.forEach(it=>{
+          it.addEventListener('toggle', ()=>{
+            if(it.open){ items.forEach(o=>{ if(o!==it) o.removeAttribute('open'); }); }
+          });
+        });
+      });
     </script>
   </main>
 </body>
