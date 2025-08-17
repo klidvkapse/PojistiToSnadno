@@ -8,18 +8,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --ink:#1a1a1a; --muted:#6b6b6b; --paper:#ffffff; --border:#e9e2cf;
-      --brand1:#b49661; --brand2:#c7ad7e; --accent:#ffe87a;
-      --shadow:0 8px 26px rgba(0,0,0,.10); --soft:0 4px 14px rgba(0,0,0,.08);
-      --radius:22px; --max:1150px; --bg:#f7f4ec;
+      /* Brand paleta PojistiToSnadno.cz */
+      --ink:#262319;              /* tmavý text */
+      --muted:#5c5241;            /* sekundární text */
+      --paper:#ffffff;            /* karty */
+      --border:#e7dcc5;           /* linky/bordury v teplém tónu */
+      --brand1:#c9b475;           /* zlatá/"sand" */
+      --brand2:#b7a97c;           /* olivová/beige */
+      --accent:#ffe87a;           /* akcent (podtržení/badges) */
+      --bg:#f7f4ec;               /* pozadí stránky */
+      --shadow:0 8px 26px rgba(0,0,0,.10);
+      --soft:0 4px 14px rgba(0,0,0,.08);
+      --radius:22px; --max:1150px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background: url('img/nemovitosti_pozadi.webp') center/cover no-repeat fixed, var(--bg); color:var(--ink); font-family:Raleway,system-ui,Arial,sans-serif; line-height:1.6}
+    html,body{margin:0;background: url('img/rd1.webp') center / cover no-repeat fixed, var(--bg); color:var(--ink); font-family:Raleway,system-ui,Arial,sans-serif; line-height:1.6}
     .page{max-width:var(--max); margin:0 auto; padding:20px}
     a{color:inherit; text-decoration:none}
 
     /* HERO */
-    .hero{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}
+    .hero{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(120deg, var(--brand1) 0%, var(--brand2) 100%);}
     .hero::before{content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(0,0,0,.55), rgba(0,0,0,.35))}
     .hero-inner{position:relative; padding:34px 26px; color:#fff}
     .hero h1{margin:0 0 10px; font-size:clamp(26px,4vw,40px); line-height:1.15}
@@ -83,6 +91,18 @@
     .icon{font-size:1.3rem}
     .chips{display:flex;flex-wrap:wrap;gap:8px}
     .chip{background:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:999px;box-shadow:var(--soft);font-weight:700}
+  
+    /* FAQ – nový styl */
+    .faq .faq-grid{display:grid;gap:12px}
+    @media(min-width:900px){.faq .faq-grid{grid-template-columns:1fr 1fr}}
+    .faq details{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px 16px;box-shadow:var(--soft);transition:border-color .2s,box-shadow .2s,transform .2s}
+    .faq details[open]{border-color:#e2dbc9;box-shadow:0 10px 28px rgba(0,0,0,.08)}
+    .faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;font-weight:800}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq .q-ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#f5efe0;box-shadow:var(--soft)}
+    .faq .chev{margin-left:auto;transition:transform .25s}
+    .faq details[open] .chev{transform:rotate(180deg)}
+    .faq .a{margin-top:8px;color:var(--muted)}
   </style>
 </head>
 <body>
@@ -224,7 +244,7 @@
     <section class="section pearl" style="margin-top:14px">
       <h2 style="margin:0 0 8px">Co máte navíc</h2>
       <div class="icon-grid">
-        <div class="icon-tile"><div class="icon">🛠️</div><div><b>Zdarma 10% z hodnoty nemovitosti</b><br><small>na pojištění velejších objektů.</small></div></div>
+        <div class="icon-tile"><div class="icon">💰</div><div><b>Zdarma 10% z hodnoty nemovitosti</b><br><small>na pojištění vedlejších objektů.</small></div></div>
         <div class="icon-tile"><div class="icon">🛠️</div><div><b>Pozáruční servis</b><br><small>spotřebiče do 6 let</small></div></div>
         <div class="icon-tile"><div class="icon">🧰</div><div><b>Asistence domov</b><br>řemeslnické práce do limitu<small>limit 10&nbsp;000&nbsp;Kč zdarma.</small></div></div>
         <div class="icon-tile"><div class="icon">🚲</div><div><b>Cykloasistence</b><br> i cyklista potřebuje opravu při poruše na cestě nebo odvoz domů při nehodě</div></div>
@@ -289,20 +309,30 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section" style="margin-top:14px">
+    <section class="section faq" style="margin-top:14px">
       <h2 style="margin:0 0 8px">Nejčastější otázky</h2>
-      <details><summary>Co znamená „nová cena“?</summary>
-        <div class="muted">Plnění tak, aby šlo věc <em>znovu pořídit nebo opravit</em> v současných cenách – ne jen podle opotřebení.</div>
-      </details>
-      <details><summary>Proč stačí jen adresa a plocha v m²?</summary>
-        <div class="muted">Na výchozí kalkulaci to stačí. Ostatní (limity, zabezpečení, povodňová rizika) upřesníme při potvrzení nabídky.</div>
-      </details>
-      <details><summary>Jak zjistím podlahovou plochu?</summary>
-        <div class="muted">U domu sečtěte plochy obytných podlaží. U bytu vezměte výměru z prohlášení vlastníka či kupní smlouvy. Když si nejste jistí, napište přibližně – doladíme.</div>
-      </details>
-      <details><summary>Pojišťujete i vedlejší stavby a garáže?</summary>
-        <div class="muted">Ano, lze je připojistit. Stačí je dopsat do odpovědi na e‑mail s nabídkou.</div>
-      </details>
+      <div class="faq-grid">
+        <details>
+          <summary><span class="q-ico">💰</span> Co znamená „10 % zdarma na vedlejší objekty“? <span class="chev">⌄</span></summary>
+          <div class="a">Příklad: pokud má hlavní pojištěná nemovitost hodnotu <b>3&nbsp;000&nbsp;000&nbsp;Kč</b>, automaticky získáte <b>10&nbsp;% navíc</b> na vedlejší stavby na stejném pozemku – tedy <b>300&nbsp;000&nbsp;Kč</b>. Vedlejšími objekty jsou např. bazény, ploty, pergoly, přípojky, fotovoltaické elektrárny a další drobné stavby.</div>
+        </details>
+        <details>
+          <summary><span class="q-ico">❓</span> Co znamená „nová cena“? <span class="chev">⌄</span></summary>
+          <div class="a">Plnění tak, aby šlo věc znovu pořídit nebo opravit v dnešních cenách – ne podle opotřebení.</div>
+        </details>
+        <details>
+          <summary><span class="q-ico">📍</span> Proč stačí jen adresa a m²? <span class="chev">⌄</span></summary>
+          <div class="a">Na rychlou kalkulaci to stačí. Limity, zabezpečení a detaily doladíme po potvrzení nabídky.</div>
+        </details>
+        <details>
+          <summary><span class="q-ico">📏</span> Jak snadno zjistím plochu? <span class="chev">⌄</span></summary>
+          <div class="a">U domu sečtěte obytná podlaží. U bytu vezměte výměru z prohlášení vlastníka / smlouvy. Přibližný odhad nevadí – dopočítáme.</div>
+        </details>
+        <details>
+          <summary><span class="q-ico">🏘️</span> Pojistíte i vedlejší stavby a garáž mimo adresu pojištění? <span class="chev">⌄</span></summary>
+          <div class="a">Ano. Přidejte je do poznámky nebo napište v odpovědi na e‑mail s nabídkou.</div>
+        </details>
+      </div>
     </section>
 
     <footer>
