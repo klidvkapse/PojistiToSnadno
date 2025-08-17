@@ -119,7 +119,7 @@
   
     /* FAQ – nový styl */
     .faq .faq-grid{display:grid;gap:12px}
-    @media(min-width:900px){.faq .faq-grid{grid-template-columns:1fr 1fr}}
+    @media(min-width:900px){.faq .faq-grid{grid-template-columns:1fr}}
     .faq details{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px 16px;box-shadow:var(--soft);transition:border-color .2s,box-shadow .2s,transform .2s}
     .faq details[open]{border-color:#e2dbc9;box-shadow:0 10px 28px rgba(0,0,0,.08)}
     .faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;font-weight:800}
@@ -227,8 +227,8 @@
     /* aby i dlaždice působily jako tlačítka */
     .icon-tile{cursor:pointer; position:relative; transition:transform .18s, box-shadow .18s}
     .icon-tile:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.12)}
-    .icon-tile::after{content:"→"; position:absolute; right:12px; top:50%; transform:translateY(-50%) translateX(-6px); opacity:0; transition:.18s; font-weight:800}
-    .icon-tile:hover::after{opacity:1; transform:translateY(-50%) translateX(0)}
+    .icon-tile::after{content:none}
+    .icon-tile:hover::after{content:none}
 
     /* Mobil: ukaž nápovědu vždy */
     @media (hover:none){ details.card summary::after{opacity:1; content:"Klepněte";} }
@@ -416,7 +416,6 @@
         <div class="icon-tile"><div class="icon">🌩️</div><div>Přímý úder blesku</div></div>
         <div class="icon-tile"><div class="icon">🌊</div><div>Povodeň & záplava<br><small>bez limitu – z celé částky</small></div></div>
         <div class="icon-tile"><div class="icon">💨</div><div>Vichřice, krupobití, sníh</div></div>
-        <div class="icon-tile"><div class="icon">🚿</div><div>Voda z potrubí</div></div>
         <div class="icon-tile"><div class="icon">🧱</div><div>Krádež & vandalismus</div></div>
         <div class="icon-tile"><div class="icon">🪟</div><div>Skla ALL‑RISK</div></div>
         <div class="icon-tile"><div class="icon">⚡</div><div>Přepětí / podpětí / zkrat</div></div>
@@ -488,15 +487,7 @@
         recalc();
       }
       document.querySelectorAll('details.card').forEach(bindSum);
-      // FAQ – povolit otevření vždy jen jedné položky v rámci .faq-grid
-      document.querySelectorAll('.faq-grid').forEach(grid=>{
-        const items = grid.querySelectorAll('details');
-        items.forEach(it=>{
-          it.addEventListener('toggle', ()=>{
-            if(it.open){ items.forEach(o=>{ if(o!==it) o.removeAttribute('open'); }); }
-          });
-        });
-      });
+      
     </script>
       <script>
   // FAQ – otevřená vždy jen 1 položka napříč CELÝM FAQ (i ve 2 sloupcích)
