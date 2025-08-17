@@ -84,7 +84,7 @@
     .form{background:#fff; border:1px solid var(--border); border-radius:18px; padding:18px; box-shadow:var(--soft)}
     .form input, .form textarea{width:100%; padding:12px; border:1px solid #ddd; border-radius:12px}
 
-    footer{opacity:.9; color:#262319; text-align:center; margin:30px 0; text-shadow:0 1px 0 rgba(255,255,255,.6)}
+    footer{opacity:.95; color:#fff; text-align:center; margin:30px 0; text-shadow:0 2px 8px rgba(0,0,0,.55)}
   
     /* Rozklikávací karty s mini‑formuláři */
     details.card{background:var(--paper);border:1px solid var(--border);border-radius:18px;padding:14px 16px;box-shadow:var(--soft)}
@@ -135,6 +135,24 @@
   
     /* Výrazné poznámky (štítky) přes fotopozadí */
     .note{display:inline-block;margin-top:8px;color:#ffffff !important;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,.68)}
+
+    /* ===== Mobile/Tablet vylepšení HERO a pozadí ===== */
+    @media (max-width: 900px){
+      /* vypnout parallax/fixed kvůli výkonu a skrolování na mobilech */
+      html,body{background-attachment:scroll, scroll; background-position:center top, center}
+    }
+    @media (max-width: 680px){
+      .page{padding:14px}
+      .hero{border-radius:20px}
+      .hero-inner{padding:20px 16px}
+      .hero h1{font-size:clamp(22px,7.2vw,30px)}
+      .hero .home-btn{top:8px; right:8px; padding:8px 12px; font-size:.95rem}
+      .badges{gap:8px; margin:8px 0; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap; scroll-snap-type:x proximity}
+      .badge{display:inline-block; scroll-snap-align:start; padding:6px 10px}
+      .btn{padding:12px 16px}
+      /* mírně světlejší overlay pro lepší čitelnost */
+      .hero::before{background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.22))}
+    }
   </style>
   <!-- Strukturovaná data (Schema.org) -->
   <script type="application/ld+json">
@@ -193,17 +211,39 @@
     ]
   }
   </script>
+  <style>
+    /* Kliknutelné rychlé kartičky – jasná vizuální nápověda */
+    details.card{position:relative}
+    details.card summary{cursor:pointer; position:relative; display:flex; align-items:center; gap:12px; padding-right:92px; transition:transform .18s, box-shadow .18s}
+    details.card summary::-webkit-details-marker{display:none}
+    details.card:hover summary{transform:translateY(-2px)}
+    /* pravý štítek/šipka */
+    details.card summary::after{content:"Otevřít →"; position:absolute; right:12px; top:50%; transform:translateY(-50%) translateX(-6px); background:#ede3bb; color:#3b321d; font-weight:800; padding:8px 12px; border-radius:999px; box-shadow:0 6px 14px rgba(0,0,0,.10); opacity:0; transition:.18s}
+    details.card:not([open]):hover summary::after{opacity:1; transform:translateY(-50%) translateX(0)}
+    details.card[open] summary::after{content:"Skrýt ↑"; opacity:.9; transform:translateY(-50%)}
+    details.card summary:active{transform:translateY(-1px) scale(.995)}
+    details.card:focus-within{outline:2px solid #e2dbc9; border-radius:18px}
+
+    /* aby i dlaždice působily jako tlačítka */
+    .icon-tile{cursor:pointer; position:relative; transition:transform .18s, box-shadow .18s}
+    .icon-tile:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.12)}
+    .icon-tile::after{content:"→"; position:absolute; right:12px; top:50%; transform:translateY(-50%) translateX(-6px); opacity:0; transition:.18s; font-weight:800}
+    .icon-tile:hover::after{opacity:1; transform:translateY(-50%) translateX(0)}
+
+    /* Mobil: ukaž nápovědu vždy */
+    @media (hover:none){ details.card summary::after{opacity:1; content:"Klepněte";} }
+  </style>
 </head>
 <body>
   <main class="page">
     <!-- HERO -->
     <section class="hero" aria-label="Pojištění nemovitostí">
-      <a href="index.html" class="home-btn" aria-label="Domů">🏠 Domů</a>
+      <a href="index.html" class="home-btn" aria-label="Domů">Domů</a>
       <div class="hero-inner">
         <h1>Pojištění nemovitosti jednoduše</h1>
         <p>Pojišťujeme na <strong>novou cenu</strong> (ne časovou). Ke kalkulaci stačí jen <strong>adresa</strong> a <strong>podlahová plocha v m²</strong>.</p>
         <div class="badges">
-          <span>Dům</span>
+          <span class="badge">Dům</span>
           <span class="badge">Byt</span>
           <span class="badge">Chata / chalupa</span>
           <span class="badge">Garáž</span>
@@ -458,6 +498,22 @@
           it.addEventListener('toggle', ()=>{
             if(it.open){ items.forEach(o=>{ if(o!==it) o.removeAttribute('open'); }); }
           });
+        });
+      });
+    </script>
+      <script>
+      // FAQ – povolit otevření vždy jen jedné položky (robustní varianta)
+      document.addEventListener('click', (ev)=>{
+        const sum = ev.target.closest('.faq-grid summary');
+        if(!sum) return;
+        const cur = sum.parentElement; // <details>
+        document.querySelectorAll('.faq-grid details[open]').forEach(d=>{ if(d!==cur) d.removeAttribute('open'); });
+      });
+      document.querySelectorAll('.faq-grid details').forEach(d=>{
+        d.addEventListener('toggle', ()=>{
+          if(d.open){
+            document.querySelectorAll('.faq-grid details').forEach(o=>{ if(o!==d) o.removeAttribute('open'); });
+          }
         });
       });
     </script>
