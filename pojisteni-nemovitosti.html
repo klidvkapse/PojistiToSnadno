@@ -131,10 +131,10 @@
   
     /* Zlepšená čitelnost nad fotopozadím */
     .section h2{color:#ffffff; text-shadow:0 2px 8px rgba(0,0,0,.55); font-weight:800}
-    .section p, .section li{color:#262319}
+    .section p:not(.note), .section li{color:#262319}
   
     /* Výrazné poznámky (štítky) přes fotopozadí */
-    .note{display:inline-block;margin-top:8px;color:#ffffff;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+    .note{display:inline-block;margin-top:8px;color:#ffffff !important;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,.68)}
   </style>
   <!-- Strukturovaná data (Schema.org) -->
   <script type="application/ld+json">
@@ -247,7 +247,7 @@
 
         <!-- Byt -->
         <details class="card">
-          <summary><span class="thumb"><img src="img/nem_byt.webp" alt="Byt"></span>🏢 Byt / bytová jednotka</summary>
+          <summary>🏢 Byt / bytová jednotka</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Byt" />
             <input name="Adresa" placeholder="Adresa bytu" required />
@@ -275,7 +275,7 @@
 
         <!-- Rekreační objekt -->
         <details class="card">
-          <summary><span class="thumb"><img src="img/nem_chata.webp" alt="Rekreační objekt"></span>🏕️ Rekreační objekt</summary>
+          <summary>🏕️ Rekreační objekt</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Rekreační objekt" />
             <input name="Adresa" placeholder="Adresa objektu" required />
@@ -293,7 +293,7 @@
 
         <!-- Garáž -->
         <details class="card">
-          <summary><span class="thumb"><img src="img/nem_garaz.webp" alt="Garáž"></span>🚗 Garáž</summary>
+          <summary>🚗 Garáž</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Garáž" />
             <input name="Adresa" placeholder="Adresa garáže" required />
@@ -311,7 +311,7 @@
 
         <!-- Rozestavěný dům -->
         <details class="card">
-          <summary><span class="thumb"><img src="img/nem_rozestav.webp" alt="Rozestavěný dům"></span>🏗️ Rozestavěný dům</summary>
+          <summary>🏗️ Rozestavěný dům</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Rozestavěný dům" />
             <input name="Adresa" placeholder="Adresa stavby" required />
