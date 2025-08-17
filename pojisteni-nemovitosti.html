@@ -376,7 +376,7 @@
       <div class="icon-grid">
         <div class="icon-tile"><div class="icon">💰</div><div><b>Zdarma 10% z hodnoty nemovitosti</b><br><small>na pojištění vedlejších objektů.</small></div></div>
         <div class="icon-tile"><div class="icon">🛠️</div><div><b>Pozáruční servis</b><br><small>spotřebiče do 6 let</small></div></div>
-        <div class="icon-tile"><div class="icon">🧰</div><div><b>Asistence domov</b><br>řemeslnické práce do limitu<small> 10&nbsp;000&nbsp;Kč zdarma.</small></div></div>
+        <div class="icon-tile"><div class="icon">🧰</div><div><b>Asistence domov</b><br>řemeslnické práce do limitu<small>limit 10&nbsp;000&nbsp;Kč zdarma.</small></div></div>
         <div class="icon-tile"><div class="icon">🚲</div><div><b>Cykloasistence</b><br> i cyklista potřebuje opravu při poruše na cestě nebo odvoz domů při nehodě</div></div>
         <div class="icon-tile"><div class="icon">🪟</div><div><b>Skla ALL‑RISK</b><br> (již v základní verzy pojištění)</div></div>
         <div class="icon-tile"><div class="icon">⚡</div><div><b>Přepětí / podpětí / zkrat</b><br> (již v základní verzy pojištění)</div></div>
@@ -388,9 +388,9 @@
       <h2 style="margin:0 0 8px">Odpovědnost v běžném životě</h2>
       <div class="chips">
         <span class="chip">👨‍👩‍👧 Platí pro všechny členy domácnosti včetně zvířat</span>
+        <span class="chip">💧 Vytopení sousedů</span>
         <span class="chip">🏃‍♂️ Škody při běžné činnosti a sportu</span>
         <span class="chip">🌍 Platí po celém světě</span>
-         <span class="chip">Příklad: 💧 Vytopení sousedů</span>
       </div>
       <p class="note">Limity dohodneme podle vašich potřeb.</p>
     </section>
@@ -454,11 +454,7 @@
           <summary><span class="q-ico">📍</span> Proč stačí jen adresa a m²? <span class="chev">⌄</span></summary>
           <div class="a">Na rychlou kalkulaci to stačí. Limity, zabezpečení a detaily doladíme po potvrzení nabídky.</div>
         </details>
-        <details>
-          <summary><span class="q-ico">📏</span> Jak snadno zjistím plochu? <span class="chev">⌄</span></summary>
-          <div class="a">U domu sečtěte obytná podlaží. U bytu vezměte výměru z prohlášení vlastníka / smlouvy. Přibližný odhad nevadí – dopočítáme.</div>
-        </details>
-        <details>
+        
           <summary><span class="q-ico">🏘️</span> Pojistíte i vedlejší stavby a garáž mimo adresu pojištění? <span class="chev">⌄</span></summary>
           <div class="a">Ano. Přidejte je do poznámky nebo napište v odpovědi na e‑mail s nabídkou.</div>
         </details>
@@ -502,21 +498,25 @@
       });
     </script>
       <script>
-      // FAQ – povolit otevření vždy jen jedné položky (robustní varianta)
-      document.addEventListener('click', (ev)=>{
-        const sum = ev.target.closest('.faq-grid summary');
-        if(!sum) return;
-        const cur = sum.parentElement; // <details>
-        document.querySelectorAll('.faq-grid details[open]').forEach(d=>{ if(d!==cur) d.removeAttribute('open'); });
+  // FAQ – otevřená vždy jen 1 položka napříč CELÝM FAQ (i ve 2 sloupcích)
+  (function(){
+    const faq = document.querySelector('.faq');
+    if(!faq) return;
+    // Delegovaný klik – zavře všechny kromě aktuální
+    faq.addEventListener('click', (ev)=>{
+      const sum = ev.target.closest('summary');
+      if(!sum || !faq.contains(sum)) return;
+      const cur = sum.parentElement; // <details>
+      faq.querySelectorAll('details[open]').forEach(d=>{ if(d!==cur) d.open = false; });
+    });
+    // Záloha při změně stavu jinak než klikem
+    faq.querySelectorAll('details').forEach(d=>{
+      d.addEventListener('toggle', ()=>{
+        if(d.open){ faq.querySelectorAll('details').forEach(o=>{ if(o!==d) o.open = false; }); }
       });
-      document.querySelectorAll('.faq-grid details').forEach(d=>{
-        d.addEventListener('toggle', ()=>{
-          if(d.open){
-            document.querySelectorAll('.faq-grid details').forEach(o=>{ if(o!==d) o.removeAttribute('open'); });
-          }
-        });
-      });
-    </script>
+    });
+  })();
+</script>
   </main>
 </body>
 </html>
