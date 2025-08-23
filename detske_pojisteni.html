@@ -143,6 +143,15 @@
       #kontakt .panel{width:100%}
       #kontakt a{overflow-wrap:anywhere; word-break:break-word; hyphens:auto}
     }
+    /* === Mobilní úprava pozadí (menší, celé do šířky) === */
+    @media (max-width:720px){
+      body{
+        background-size: contain;       /* zobraz celé pozadí, žádné ořezy */
+        background-position: top center;/* zarovnání nahoru doprostřed */
+        background-attachment: scroll;  /* plynulé skrolování na mobilech */
+        background-repeat: no-repeat;
+      }
+    }
   </style>
 </head>
 <body>
