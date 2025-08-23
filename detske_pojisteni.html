@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dětské pojištění – Životní pojištění pro děti | PojistiToSnadno.cz</title>
+  <meta name="description" content="Životní pojištění pro děti: vážná onemocnění, invalidita, ošetřování dítěte, pobyt v nemocnici, denní odškodné a trvalé následky úrazu. Přehledně, srozumitelně a bez tlaku." />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#ffe87a;   /* pastel žlutá */
+      --accent:#c9b475;    /* teplejší písková */
+      --berry:#af4876;     /* malinová zvýraznění */
+      --ink:#1d1d1f;       /* tmavý text */
+      --muted:#6b7280;     /* sekundární text */
+      --bg:#f8fafc;        /* světlé pozadí */
+      --card:#ffffff;      /* karty */
+      --ok:#16a34a;
+      --warn:#b45309;
+      --shadow: 0 10px 25px rgba(0,0,0,.08), 0 4px 10px rgba(0,0,0,.06);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink); background:var(--bg);
+    }
+    a{color:inherit}
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+      background:linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.55));
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
+    .logo{
+      width:36px;height:36px;display:grid;place-items:center;border-radius:12px;
+      background:radial-gradient(60% 60% at 30% 30%, var(--primary), #fff 80%);
+      box-shadow:inset 0 0 0 2px rgba(0,0,0,.06), var(--shadow);
+    }
+    nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0;align-items:center}
+    nav a{font-weight:600;text-decoration:none;padding:10px 12px;border-radius:12px}
+    nav a:hover{background:rgba(0,0,0,.05)}
+    .cta-top{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:16px;padding:12px 18px;font-weight:700;cursor:pointer;text-decoration:none;box-shadow:var(--shadow)}
+    .btn-primary{background:linear-gradient(180deg, var(--primary), #ffd23a);}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-ghost{background:#fff}
+
+    /* Hero */
+    .hero{
+      background: radial-gradient(1200px 600px at 100% -20%, #fff 0, #fff6c9 30%, #fff 60%),
+                  linear-gradient(180deg, #fff, #fffef6 50%, #fff 100%);
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .hero .container{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;padding:56px 20px 36px}
+    .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#7c6a33;background:#fff3b0;border-radius:999px;padding:8px 12px;box-shadow:var(--shadow)}
+    h1{font-size:clamp(28px, 3.4vw, 44px);line-height:1.07;margin:18px 0 8px}
+    .lead{font-size:clamp(16px,1.35vw,19px);color:var(--muted);max-width:55ch}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+    .hero-art{position:relative;min-height:240px}
+    .blob{position:absolute;inset:auto -24px -24px auto;width:340px;height:340px;background:radial-gradient(circle at 30% 30%, #ffd23a, #ffc0cb 70%);filter:blur(30px);opacity:.35;border-radius:50%}
+    .card-sticker{position:absolute;right:10%;top:10%;background:var(--card);padding:16px 18px;border-radius:16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
+    .sticker-emoji{font-size:26px}
+    .checklist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
+    .chip{background:#fff;border:1px dashed rgba(0,0,0,.08);border-radius:14px;padding:10px 12px;font-weight:600;display:flex;gap:8px;align-items:center}
+
+    /* Cards */
+    .section{padding:48px 0}
+    .section h2{font-size:clamp(22px,2.4vw,32px);margin:0 0 8px}
+    .section p.section-lead{color:var(--muted);max-width:70ch;margin:6px 0 24px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .card h3{display:flex;align-items:center;gap:10px;font-size:18px;margin:0 0 8px}
+    .card p{color:var(--muted);margin:0 0 10px}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:#f6f7f9;border-radius:999px;padding:6px 10px;font-weight:700;font-size:12.5px}
+
+    /* Feature list */
+    .list{display:grid;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+    .list li{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start}
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);margin-top:6px}
+
+    /* Comparison/teaser */
+    .teaser{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}
+    .panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .panel h4{margin:0 0 12px}
+    .row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.08)}
+    .row:last-child{border-bottom:none}
+    .hint{font-size:12.5px;color:var(--muted)}
+
+    /* FAQ */
+    details{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+    details+details{margin-top:12px}
+    summary{cursor:pointer;font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:var(--muted)}
+    details[open] summary::after{content:"–"}
+
+    /* Footer */
+    footer{padding:32px 0 80px;color:var(--muted)}
+    .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+    /* Sticky mobile CTA */
+    .mobile-cta{
+      position:fixed; left:0; right:0; bottom:12px; z-index:60; display:none;
+      padding:0 14px;
+    }
+    .mobile-cta .bar{display:flex;gap:10px;background:var(--ink);color:#fff;border-radius:16px;padding:10px;box-shadow:var(--shadow);align-items:center;justify-content:space-between}
+    .mobile-cta .btn{box-shadow:none}
+
+    /* Icons */
+    .ico{width:22px;height:22px}
+    .ico32{width:32px;height:32px}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .container{grid-template-columns:1fr; gap:16px; padding-top:28px}
+      .checklist{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .teaser{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:720px){
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header aria-label="Hlavní navigace">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">👶</div>
+        <span>PojistiToSnadno.cz</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#kryti">Co kryje</a></li>
+          <li><a href="#jak">Jak to funguje</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt" class="btn btn-ghost" aria-label="Kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="cta-top">
+        <a class="btn btn-primary" href="#kontakt" aria-label="Získat nezávaznou nabídku">Získat nabídku</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="container">
+      <div>
+        <span class="kicker">Životní pojištění pro děti</span>
+        <h1>Chraňte dětské zdraví i rodinný rozpočet – férově a srozumitelně</h1>
+        <p class="lead">Krytí pro situace, které umí zamávat dnem i rozpočtem: vážná onemocnění, invalidita, dlouhodobé ošetřování, pobyt v nemocnici, denní odškodné i trvalé následky úrazu. Vyberete jen to, co dává smysl vaší rodině.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#kontakt">Nezávazně spočítat</a>
+          <a class="btn btn-ghost" href="#kryti">Zobrazit přehled krytí</a>
+        </div>
+        <div class="checklist" aria-label="Hlavní okruhy krytí">
+          <div class="chip">🎗 Vážná onemocnění</div>
+          <div class="chip">♿ Invalidita</div>
+          <div class="chip">👩‍👦 Ošetřování dítěte</div>
+          <div class="chip">🏥 Pobyt v&nbsp;nemocnici</div>
+          <div class="chip">📅 Denní odškodné</div>
+          <div class="chip">✋ Trvalé následky úrazu</div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="blob"></div>
+        <div class="card-sticker">
+          <span class="sticker-emoji">🧸</span>
+          <div>
+            <strong>Praktično pro rodiče</strong><br>
+            <span class="hint">Flexibilně nastavíte, co opravdu využijete.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kryti">
+    <div class="container">
+      <h2>Co všechno lze pro dítě pojistit</h2>
+      <p class="section-lead">Vyberte si kombinaci, která doplní veřejné zdravotní pojištění a pokryje reálné výdaje – spoluúčasti, pomůcky, výpadek příjmu pečujícího rodiče i náklady na rekonvalescenci.</p>
+
+      <div class="grid">
+        <!-- VO -->
+        <article class="card">
+          <h3>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4-6-10a6 6 0 1 1 12 0c0 6-6 10-6 10z"/></svg>
+            Vážná onemocnění (VO)
+          </h3>
+          <p>Jednorázové plnění při diagnóze závažné nemoci nebo při definovaném zákroku.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>Možnost základní/kompletní varianty.</span></li>
+            <li><span class="dot"></span><span>Součástí mohou být i vybrané <em>vrozené vady</em> u dětí.</span></li>
+            <li><span class="dot"></span><span>Plnění často v % z pojistné částky dle diagnózy.</span></li>
+          </ul>
+          <div class="pill" title="Informativní příklad">🎯 Doporučení: pojistná částka tak, aby pokryla 6–12 měsíců výdajů rodiny.</div>
+        </article>
+
+        <!-- Invalidita -->
+        <article class="card">
+          <h3>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c1.5-3 4.5-5 6.5-5s5 2 6.5 5"/></svg>
+            Invalidita / snížená soběstačnost
+          </h3>
+          <p>Vyplacení pojistné částky při uznání invalidity příslušného stupně.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>Varianty I., II. a III. stupeň (možno sjednat jednotlivě).</span></li>
+            <li><span class="dot"></span><span>U nejvyššího stupně lze krýt i sníženou soběstačnost.</span></li>
+            <li><span class="dot"></span><span>Vhodné pro pokrytí dlouhodobých nákladů na péči.</span></li>
+          </ul>
+          <div class="pill">♻️ Často bez čekací doby, rozhoduje posudek státní správy.</div>
+        </article>
+
+        <!-- Ošetřování -->
+        <article class="card">
+          <h3>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21H4a2 2 0 0 1-2-2V9l6-5h8l6 5v10a2 2 0 0 1-2 2z"/><path d="M12 13v8"/><path d="M8 17h8"/></svg>
+            Ošetřování dítěte
+          </h3>
+          <p>Denní dávka, když dítě potřebuje celodenní péči a rodič musí být doma.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>Počítají se i dny, kdy rodič musí s dítětem zůstat v nemocnici.</span></li>
+            <li><span class="dot"></span><span>Užitečné při delších diagnózách a rekonvalescenci.</span></li>
+            <li><span class="dot"></span><span>Kombinovatelné s pobytovým plněním.</span></li>
+          </ul>
+          <div class="pill">👩‍👦 Kryje výpadek příjmu pečující osoby.</div>
+        </article>
+
+        <!-- Pobyt v nemocnici -->
+        <article class="card">
+          <h3>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 9h10M7 13h6"/></svg>
+            Pobyt v nemocnici
+          </h3>
+          <p>Plnění za každý den hospitalizace následkem nemoci či úrazu.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>Vhodné na spoluúčasti, dopravu, ubytování rodiče aj.</span></li>
+            <li><span class="dot"></span><span>Často nastaven limit počtu dní na jednu událost.</span></li>
+            <li><span class="dot"></span><span>Možné i speciální plnění (např. dárcovské zákroky).</span></li>
+          </ul>
+          <div class="pill">🏥 Praktické při delších hospitalizacích.</div>
+        </article>
+
+        <!-- Denní odškodné -->
+        <article class="card">
+          <h3>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+            Denní odškodné za úraz
+          </h3>
+          <p>Částka za dny, kdy je dítě omezeno následkem úrazu (např. sádra, domácí režim).</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>Vhodné pro sportující děti a školní úrazy.</span></li>
+            <li><span class="dot"></span><span>Plnění obvykle po stanovené karenční době.</span></li>
+            <li><span class="dot"></span><span>Lze kombinovat s trvalými následky.</span></li>
+          </ul>
+          <div class="pill">⚽ Tip: sjednat s ohledem na kroužky a sport.</div>
+        </article>
+
+        <!-- Trvalé následky -->
+        <article class="card">
+          <h3>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.24 12.24a8.5 8.5 0 1 1-16.48 0 8.5 8.5 0 0 1 16.48 0z"/><path d="M12 8v4l3 3"/></svg>
+            Trvalé následky úrazu
+          </h3>
+          <p>Jednorázové plnění dle procentní tabulky i u méně závažných následků.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>Škála plnění podle závažnosti následku.</span></li>
+            <li><span class="dot"></span><span>Možná vyšší varianta krytí pro vážnější úrazy.</span></li>
+            <li><span class="dot"></span><span>Klíčové pro dlouhodobé následky a léčbu.</span></li>
+          </ul>
+          <div class="pill">🛡️ Základní stavební kámen úrazového krytí.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="jak">
+    <div class="container teaser">
+      <div class="panel">
+        <h2>Jak to funguje v praxi</h2>
+        <p class="section-lead">Jednoduše: sjednáte jen ta rizika, která dávají smysl. Výše plnění a limity nastavíme tak, aby pokryly reálné náklady vaší rodiny.</p>
+        <div class="row"><strong>1) Vybereme rizika</strong><span class="hint">VO, invalidita, ošetřování, pobyt, denní odškodné, TN úrazu</span></div>
+        <div class="row"><strong>2) Nastavíme částky</strong><span class="hint">Jednorázové i denní plnění</span></div>
+        <div class="row"><strong>3) Zkontrolujeme výluky</strong><span class="hint">Sporty, čekací doby, limity</span></div>
+        <div class="row"><strong>4) Nezávazná nabídka</strong><span class="hint">Srozumitelná rekapitulace</span></div>
+        <div class="row"><strong>5) Online vyřízení</strong><span class="hint">Bez tlaku – v klidu domova</span></div>
+        <p class="hint" style="margin-top:12px">Pozn.: Tato stránka je informativní a neobsahuje nabídku konkrétní pojišťovny. Parametry produktů se u poskytovatelů liší.</p>
+      </div>
+      <div class="panel">
+        <h4>Rychlé orientační nastavení</h4>
+        <label>
+          <small>Denní dávka při ošetřování (Kč/den)</small>
+          <input id="inp-oset" type="range" min="200" max="1000" value="400" step="50" style="width:100%">
+        </label>
+        <label>
+          <small>Hospitalizace (Kč/den)</small>
+          <input id="inp-hosp" type="range" min="200" max="1000" value="300" step="50" style="width:100%">
+        </label>
+        <label>
+          <small>Trvalé následky úrazu (pojistná částka v Kč)</small>
+          <input id="inp-tn" type="range" min="200000" max="2000000" value="800000" step="50000" style="width:100%">
+        </label>
+        <div id="sum" class="panel" style="margin-top:10px;background:#f9fafb">
+          <strong>Souhrn</strong>
+          <div class="row"><span>Ošetřování:</span><span id="v-oset">400 Kč/den</span></div>
+          <div class="row"><span>Hospitalizace:</span><span id="v-hosp">300 Kč/den</span></div>
+          <div class="row"><span>Trvalé následky:</span><span id="v-tn">800 000 Kč</span></div>
+          <p class="hint">Výsledky jsou orientační. Finální limity a sazby se liší dle poskytovatele, věku a zvolených připojištění.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <h2>Časté dotazy (FAQ)</h2>
+      <details>
+        <summary>Proč pojišťovat děti, když mají veřejné zdravotní pojištění?</summary>
+        <p>Veřejné pojištění hradí zdravotní výkony, ale nepokryje ztrátu příjmu pečujícího rodiče, dopravu, pobyt u dítěte v nemocnici, speciální pomůcky nebo dlouhodobou rehabilitaci. Přesně na tyto výdaje cílí soukromé pojištění.</p>
+      </details>
+      <details>
+        <summary>Co je „čekací doba“ a týká se i dětí?</summary>
+        <p>Čekací doba je období od počátku pojištění, během kterého u vybraných připojištění (typicky nemoci) pojišťovna neplní. U úrazů se obvykle neuplatňuje. Konkrétní délky a výjimky závisí na pojistiteli a zvolených rizicích.</p>
+      </details>
+      <details>
+        <summary>Lze měnit nastavení v průběhu trvání?</summary>
+        <p>U většiny produktů lze částky i rozsah měnit (navyšovat/snižovat) a přidávat další připojištění podle aktuální potřeby rodiny.</p>
+      </details>
+      <details>
+        <summary>Je součástí i krytí vrozených vad?</summary>
+        <p>Záleží na konkrétní variantě pojištění vážných onemocnění. Některé produkty kryjí vybrané vrozené diagnózy, jiné ne. Proto vždy zkontrolujeme detailní výčet diagnóz.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="kontakt">
+    <div class="container" style="display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center">
+      <div class="panel">
+        <h2>Chcete nezávaznou nabídku?</h2>
+        <p class="section-lead">Rychlá konzultace (online/telefon) a přehledné srovnání bez tlaku. Společně vybereme, co dává smysl právě vám.</p>
+        <p><strong>Kontakt:</strong></p>
+        <p>
+          📞 <a href="tel:+420733782290" aria-label="Zavolat">733&nbsp;782&nbsp;290</a><br/>
+          ✉️ <a href="mailto:pojistenivkapse@gmail.com" aria-label="E-mail">pojistenivkapse@gmail.com</a>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="kontakt.html">Otevřít kontaktní formulář</a>
+          <a class="btn btn-ghost" href="#top">Zpět nahoru</a>
+        </div>
+        <p class="hint" style="margin-top:10px">Preferujete WhatsApp/Signal? Napište a domluvíme termín.</p>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <h4>Ještě pár důležitých poznámek</h4>
+        <ul class="list">
+          <li><span class="dot"></span><span>Tato stránka je obecná – konkrétní podmínky (čekací doby, limity, výluky) se liší dle pojišťovny.</span></li>
+          <li><span class="dot"></span><span>Plnění z pojištění nenahrazuje veřejné zdravotní pojištění – doplňuje rodinný rozpočet.</span></li>
+          <li><span class="dot"></span><span>Finální nabídku vždy obdržíte písemně před uzavřením smlouvy.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot-grid">
+      <div>
+        <strong>PojistiToSnadno.cz</strong><br>
+        <span class="hint">Informace mají pouze obecný charakter a nepředstavují individuální doporučení či nabídku konkrétního produktu.</span>
+      </div>
+      <div style="text-align:right">
+        <a href="#top" class="btn btn-ghost">Nahoru ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <div class="mobile-cta" aria-hidden="false">
+    <div class="bar container">
+      <span><strong>Nezávazná nabídka</strong><br><span class="hint">Rychlá konzultace</span></span>
+      <div>
+        <a class="btn btn-primary" href="kontakt.html">Formulář</a>
+        <a class="btn btn-ghost" href="tel:+420733782290">Zavolat</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Malý interaktivní souhrn
+    const fmtCZK = v => v.toLocaleString('cs-CZ')+" Kč";
+    const oset = document.getElementById('inp-oset');
+    const hosp = document.getElementById('inp-hosp');
+    const tn   = document.getElementById('inp-tn');
+    const vo = document.getElementById('v-oset');
+    const vh = document.getElementById('v-hosp');
+    const vtn = document.getElementById('v-tn');
+    function upd(){
+      vo.textContent = oset.value+" Kč/den";
+      vh.textContent = hosp.value+" Kč/den";
+      vtn.textContent = parseInt(tn.value,10).toLocaleString('cs-CZ')+" Kč";
+    }
+    ;['input','change'].forEach(ev=>{oset.addEventListener(ev,upd);hosp.addEventListener(ev,upd);tn.addEventListener(ev,upd)});
+    upd();
+  </script>
+</body>
+</html>
