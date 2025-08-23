@@ -146,9 +146,9 @@
     /* === Mobilní úprava pozadí (menší, celé do šířky) === */
     @media (max-width:720px){
       body{
-        background-size: contain;       /* zobraz celé pozadí, žádné ořezy */
-        background-position: top center;/* zarovnání nahoru doprostřed */
-        background-attachment: scroll;  /* plynulé skrolování na mobilech */
+        background-size: cover;        /* přes celou šířku i výšku viewportu */
+        background-position: top center;
+        background-attachment: fixed;  /* drží pozadí přes celou stránku při scrollu */
         background-repeat: no-repeat;
       }
     }
@@ -179,7 +179,7 @@
     <div class="container">
       <div>
         <span class="kicker">Životní pojištění pro děti</span>
-        <h1>Chraňte dětské zdraví i rodinný rozpočet – férově a srozumitelně</h1>
+        <h1>Chraňte dětské zdraví i rodinný rozpočet</h1>
         <p class="lead">Krytí pro situace, které umí zamávat dnem i rozpočtem: vážná onemocnění, invalidita, dlouhodobé ošetřování, pobyt v nemocnici, denní odškodné i trvalé následky úrazu. Vyberete jen to, co dává smysl vaší rodině.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#kontakt">Nezávazně spočítat</a>
