@@ -12,7 +12,7 @@
       --accent:#c9b475;    /* teplejší písková */
       --berry:#af4876;     /* malinová zvýraznění */
       --ink:#1d1d1f;       /* tmavý text */
-      --muted:#6b7280;     /* sekundární text */
+      --muted:#1d1d1f;     /* sekundární text */
       --bg:#f8fafc;        /* světlé pozadí */
       --card:#ffffff;      /* karty */
       --ok:#16a34a;
@@ -114,7 +114,7 @@
     details[open] summary::after{content:"–"}
 
     /* Footer */
-    footer{padding:32px 0 80px;color:var(--muted)}
+    footer{padding:32px 0 80px;color:#1d1d1f}
     .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
     /* Sticky mobile CTA */
@@ -168,6 +168,30 @@
     /* Ztmavení textu na bílých chip kartách v hero */
     .contentbox .chip{color:#1d1d1f !important}
     .contentbox .chip em, .contentbox .chip span{color:#1d1d1f !important}
+    /* === Brand background (bez externího obrázku) === */
+    body{
+      background:
+        radial-gradient(1100px 600px at 65% 35%, rgba(255,232,122,.45), rgba(255,232,122,0) 55%),
+        radial-gradient(900px 500px at 8% 85%, rgba(175,72,118,.10), rgba(175,72,118,0) 50%),
+        linear-gradient(180deg, #fffef8 0%, #ffffff 100%);
+    }
+    /* ikony po okrajích jako vodoznak (SVG v data URI) */
+    body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.45;
+      background: center 52% / 85vw auto no-repeat url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'><style>.a{fill:none;stroke:%23c9b475;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.26}.b{fill:none;stroke:%23af4876;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.20}  /* Ztmavení textů v sekci KRYTÍ pro lepší čitelnost */
+    #kryti h2{color:#111827; font-weight:800}
+    #kryti .section-lead{color:#334155}
+    /* Ztmavení textu ve FAQ a footeru */
+    #faq h2{color:#111827}
+    #faq details, #faq details p{color:#1f2937}
+    #faq summary{color:#0f172a;font-weight:800}
+    #faq summary::after{color:#0f172a}
+    #faq .hint{color:#334155}
+
+    footer, footer strong, footer .hint{color:#0f172a}
+  </style><!-- paper airplane --><path class='a' d='M140 140 L540 40 L320 280 L420 260 L460 360 Z'/><!-- shield + cross --><path class='a' d='M1200 120 q80 40 160 0 v120 q-80 80-160 120 q-80-40-160-120 V120 q80 40 160 0 Z'/><path class='a' d='M1200 220 h160 M1280 160 v120'/><!-- heart --><path class='b' d='M950 180 c0-60 80-80 110-30 c30-50 110-30 110 30 c0 80-110 120-110 120 S950 260 950 180 Z'/><!-- stroller --><circle class='a' cx='320' cy='720' r='28'/><circle class='a' cx='420' cy='720' r='28'/><path class='a' d='M260 700 h220 v-70 q-40-80-120-80 h-70 Z'/><path class='a' d='M260 700 l-40 0'/><!-- calendar --><rect class='a' x='1260' y='640' rx='18' ry='18' width='200' height='150'/><path class='a' d='M1260 690 h200'/><circle class='a' cx='1300' cy='730' r='6'/><circle class='a' cx='1340' cy='730' r='6'/><circle class='a' cx='1380' cy='730' r='6'/><circle class='a' cx='1420' cy='730' r='6'/><!-- bandage --><rect class='b' x='700' y='720' rx='26' ry='26' width='200' height='70' transform='rotate(-15 800 755)'/><circle class='b' cx='770' cy='755' r='6'/><circle class='b' cx='800' cy='755' r='6'/><circle class='b' cx='830' cy='755' r='6'/></svg>");
+    }
+    body::before{z-index:1 !important}
+    @media (max-width: 720px){ body::after{opacity:.35; background-size: 120vw auto; background-position:center 48%} }
   </style>
 </head>
 <body>
@@ -175,12 +199,11 @@
     <div class="container nav">
       <div class="brand">
         <div class="logo" aria-hidden="true">👶</div>
-        <span>PojistiToSnadno.cz</span>
+        <span><a href="#Domů" class="btn btn-ghost" aria-label="Domů">PojistiToSnadno.cz</a></span>
       </div>
       <nav>
         <ul>
           <li><a href="#kryti">Co kryje</a></li>
-          <li><a href="#jak">Jak to funguje</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#kontakt" class="btn btn-ghost" aria-label="Kontakt">Kontakt</a></li>
         </ul>
@@ -397,14 +420,7 @@
         </div>
         <p class="hint" style="margin-top:10px">Preferujete WhatsApp/Signal? Napište a domluvíme termín.</p>
       </div>
-      <div class="panel" aria-hidden="true">
-        <h4>Ještě pár důležitých poznámek</h4>
-        <ul class="list">
-          <li><span class="dot"></span><span>Tato stránka je obecná – konkrétní podmínky (čekací doby, limity, výluky) se liší dle pojišťovny.</span></li>
-          <li><span class="dot"></span><span>Plnění z pojištění nenahrazuje veřejné zdravotní pojištění – doplňuje rodinný rozpočet.</span></li>
-          <li><span class="dot"></span><span>Finální nabídku vždy obdržíte písemně před uzavřením smlouvy.</span></li>
-        </ul>
-      </div>
+     )
     </div>
   </section>
 
