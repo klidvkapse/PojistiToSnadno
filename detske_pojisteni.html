@@ -137,6 +137,12 @@
       .checklist{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
     }
+    /* === Mobilní fix pro KONTAKT === */
+    @media (max-width:720px){
+      #kontakt .container{display:block !important; max-width:100% !important; width:100%; padding-left:12px; padding-right:12px}
+      #kontakt .panel{width:100%}
+      #kontakt a{overflow-wrap:anywhere; word-break:break-word; hyphens:auto}
+    }
   </style>
 </head>
 <body>
