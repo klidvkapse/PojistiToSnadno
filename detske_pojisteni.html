@@ -147,6 +147,27 @@
       body{background-position:center top; background-attachment:scroll}
       .contentbox{background:rgba(201,180,117,.9)}
     }
+    /* === Kontrastní úpravy (přizpůsobení k pozadí) === */
+    .contentbox{background:rgba(201,180,117,.95);color:#fff}
+    .contentbox h1, .contentbox h2, .contentbox h3, .contentbox p, .contentbox li{color:#fff}
+    .contentbox .lead, .contentbox .hint{color:rgba(255,255,255,.9)}
+    .contentbox a{color:#fff}
+    /* Žluté CTA musí mít tmavý text kvůli kontrastu */
+    .btn-primary{color:#1d1d1f}
+    /* Panely a karty na světlém podkladu necháváme tmavé pro čitelnost */
+    .panel, .card{color:var(--ink)}
+
+    /* === Oprava kontrastu textů na kartách === */
+    .card{color:#1d1d1f}
+    .card h3{color:#111827}
+    .card p{color:#374151}
+    .card .list span{color:#374151}
+    .card a{color:#af4876;text-decoration:none}
+    .card a:hover{text-decoration:underline}
+    .card .pill{background:#f3f4f6;color:#111827}
+    /* Ztmavení textu na bílých chip kartách v hero */
+    .contentbox .chip{color:#1d1d1f !important}
+    .contentbox .chip em, .contentbox .chip span{color:#1d1d1f !important}
   </style>
 </head>
 <body>
