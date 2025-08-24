@@ -25,6 +25,8 @@
     body{
       margin:0; font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink);
       background: var(--bg) url('img/detipozadi.webp') center / cover no-repeat;
+      background-attachment: fixed;
+      background-position: top center;
     }
     a{color:inherit}
     .container{max-width:1180px;margin:0 auto;padding:0 20px}
@@ -85,6 +87,20 @@
     .card h3{display:flex;align-items:center;gap:10px;font-size:18px;margin:0 0 8px}
     .card p{color:var(--muted);margin:0 0 10px}
     .pill{display:inline-flex;gap:8px;align-items:center;background:#f6f7f9;border-radius:999px;padding:6px 10px;font-weight:700;font-size:12.5px}
+
+    /* Interaktivní formulář – stylování */
+    .controls{display:grid;gap:14px}
+    .control{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+    .control small{grid-column:1/-1;color:var(--muted)}
+    .control input[type=range]{grid-column:1/-1;width:100%}
+    .control .value{font-weight:700;font-variant-numeric:tabular-nums}
+    .risk-line{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+    .risk-line label{display:flex;align-items:center;gap:8px;font-weight:700}
+    .control.disabled{opacity:.5}
+    input[disabled]{opacity:.6}
+    .form-field{display:grid;gap:6px}
+    .form-field input, .form-field textarea{padding:10px 12px;border:1px solid rgba(0,0,0,.12);border-radius:12px;font:inherit}
+    .form-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 
     /* Feature list */
     .list{display:grid;gap:8px;margin:10px 0 0;padding:0;list-style:none}
@@ -317,26 +333,84 @@
         <div class="row"><strong>5) Online vyřízení</strong><span class="hint">Bez tlaku – v klidu domova</span></div>
       </div>
       <div class="panel">
-        <h4>Rychlé orientační nastavení</h4>
-        <label>
-          <small>Denní dávka při ošetřování (Kč/den)</small>
-          <input id="inp-oset" type="range" min="200" max="1000" value="400" step="50" style="width:100%">
-        </label>
-        <label>
-          <small>Hospitalizace (Kč/den)</small>
-          <input id="inp-hosp" type="range" min="200" max="1000" value="300" step="50" style="width:100%">
-        </label>
-        <label>
-          <small>Trvalé následky úrazu (pojistná částka v Kč)</small>
-          <input id="inp-tn" type="range" min="200000" max="2000000" value="800000" step="50000" style="width:100%">
-        </label>
-        <div id="sum" class="panel" style="margin-top:10px;background:#f9fafb">
-          <strong>Souhrn</strong>
-          <div class="row"><span>Ošetřování:</span><span id="v-oset">400 Kč/den</span></div>
-          <div class="row"><span>Hospitalizace:</span><span id="v-hosp">300 Kč/den</span></div>
-          <div class="row"><span>Trvalé následky:</span><span id="v-tn">800 000 Kč</span></div>
-          <p class="hint">Výsledky jsou orientační. Finální limity a sazby se liší dle poskytovatele, věku a zvolených připojištění.</p>
-        </div>
+        <h4>Interaktivní nastavení rizik</h4>
+        <form id="nabidkaForm" action="https://formspree.io/f/mvgqqpev" method="POST" class="controls">
+          <input type="hidden" name="_subject" value="Dětské pojištění – nezávazná poptávka">
+          <input type="hidden" name="page" value="deti-pojisteni">
+
+          <div class="form-field">
+            <label for="name">Jméno a příjmení</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+          <div class="form-field">
+            <label for="email">E‑mail</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">Telefon <small>(nepovinné)</small></label>
+            <input id="phone" name="phone" type="tel" placeholder="733 782 290">
+          </div>
+          <div class="form-field">
+            <label for="vek">Věk dítěte</label>
+            <input id="vek" name="vek_ditete" type="number" min="0" max="18" required>
+          </div>
+
+          <div class="control risk-line" id="line-vo">
+            <label><input type="checkbox" id="chk-vo" name="zahrnout_vo" checked> Vážná onemocnění</label>
+            <span class="value" id="out-vo">500 000 Kč</span>
+            <input id="inp-vo" name="vo_castka" type="range" min="100000" max="2000000" value="500000" step="50000">
+          </div>
+          <div class="control risk-line" id="line-invalid">
+            <label><input type="checkbox" id="chk-invalid" name="zahrnout_invaliditu" checked> Invalidita</label>
+            <span class="value" id="out-invalid">1 500 000 Kč</span>
+            <input id="inp-invalid" name="invalidita_castka" type="range" min="500000" max="3000000" value="1500000" step="50000">
+          </div>
+          <div class="control risk-line" id="line-oset">
+            <label><input type="checkbox" id="chk-oset" name="zahrnout_osetrovani" checked> Ošetřování (denní dávka)</label>
+            <span class="value" id="out-oset">400 Kč/den</span>
+            <input id="inp-oset" name="oset_davka" type="range" min="200" max="1000" value="400" step="50">
+          </div>
+          <div class="control risk-line" id="line-hosp">
+            <label><input type="checkbox" id="chk-hosp" name="zahrnout_hospitalizaci" checked> Hospitalizace (denní dávka)</label>
+            <span class="value" id="out-hosp">300 Kč/den</span>
+            <input id="inp-hosp" name="hospitalizace_davka" type="range" min="200" max="1000" value="300" step="50">
+          </div>
+          <div class="control risk-line" id="line-odsk">
+            <label><input type="checkbox" id="chk-odsk" name="zahrnout_denne_odskodne" checked> Denní odškodné (úraz)</label>
+            <span class="value" id="out-odsk">300 Kč/den</span>
+            <input id="inp-odsk" name="odskodne_davka" type="range" min="100" max="1000" value="300" step="50">
+          </div>
+          <div class="control risk-line" id="line-tn">
+            <label><input type="checkbox" id="chk-tn" name="zahrnout_trvale_nasledky" checked> Trvalé následky úrazu</label>
+            <span class="value" id="out-tn">800 000 Kč</span>
+            <input id="inp-tn" name="tn_castka" type="range" min="200000" max="2000000" value="800000" step="50000">
+          </div>
+
+          <div class="form-field">
+            <label for="msg">Poznámka <small>(nepovinné)</small></label>
+            <textarea id="msg" name="zprava" rows="3" placeholder="Např. sportovní aktivity, zdravotní specifika, preference krytí…"></textarea>
+          </div>
+
+          <div class="form-field" style="align-items:center;">
+            <label style="display:flex;gap:8px;align-items:center;"><input type="checkbox" required> Souhlasím se zpracováním údajů pro účely nezávazné nabídky.</label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Odeslat nezávaznou poptávku</button>
+            <button type="reset" class="btn btn-ghost">Vymazat</button>
+          </div>
+
+          <div id="sum" class="panel" style="margin-top:10px;background:#f9fafb">
+            <strong>Souhrn</strong>
+            <div class="row"><span>Vážná onemocnění:</span><span id="v-vo">500 000 Kč</span></div>
+            <div class="row"><span>Invalidita:</span><span id="v-invalid">1 500 000 Kč</span></div>
+            <div class="row"><span>Ošetřování:</span><span id="v-oset">400 Kč/den</span></div>
+            <div class="row"><span>Hospitalizace:</span><span id="v-hosp">300 Kč/den</span></div>
+            <div class="row"><span>Denní odškodné:</span><span id="v-odsk">300 Kč/den</span></div>
+            <div class="row"><span>Trvalé následky:</span><span id="v-tn">800 000 Kč</span></div>
+            <p class="hint">Výsledky jsou orientační. Finální limity a sazby se liší dle poskytovatele, věku a zvolených připojištění.</p>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -406,20 +480,50 @@
   </div>
 
   <script>
-    // Malý interaktivní souhrn
-    const fmtCZK = v => v.toLocaleString('cs-CZ')+" Kč";
-    const oset = document.getElementById('inp-oset');
-    const hosp = document.getElementById('inp-hosp');
-    const tn   = document.getElementById('inp-tn');
-    const vo = document.getElementById('v-oset');
-    const vh = document.getElementById('v-hosp');
-    const vtn = document.getElementById('v-tn');
+    const cur = v => v.toLocaleString('cs-CZ') + ' Kč';
+    const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+    const linkToggle = (chkId, inpId, lineId) => {
+      const chk = document.getElementById(chkId);
+      const inp = document.getElementById(inpId);
+      const line = document.getElementById(lineId);
+      if(!chk || !inp || !line) return;
+      const apply = () => { inp.disabled = !chk.checked; line.classList.toggle('disabled', inp.disabled); };
+      chk.addEventListener('change', apply); apply();
+    };
     function upd(){
-      vo.textContent = oset.value+" Kč/den";
-      vh.textContent = hosp.value+" Kč/den";
-      vtn.textContent = parseInt(tn.value,10).toLocaleString('cs-CZ')+" Kč";
+      const vo = document.getElementById('inp-vo')?.valueAsNumber ?? 500000;
+      const inv = document.getElementById('inp-invalid')?.valueAsNumber ?? 1500000;
+      const oset = document.getElementById('inp-oset')?.valueAsNumber ?? 400;
+      const hosp = document.getElementById('inp-hosp')?.valueAsNumber ?? 300;
+      const odsk = document.getElementById('inp-odsk')?.valueAsNumber ?? 300;
+      const tn = document.getElementById('inp-tn')?.valueAsNumber ?? 800000;
+
+      set('out-vo', cur(vo));
+      set('out-invalid', cur(inv));
+      set('out-oset', cur(oset) + '/den');
+      set('out-hosp', cur(hosp) + '/den');
+      set('out-odsk', cur(odsk) + '/den');
+      set('out-tn', cur(tn));
+
+      set('v-vo', cur(vo));
+      set('v-invalid', cur(inv));
+      set('v-oset', cur(oset) + ' / den');
+      set('v-hosp', cur(hosp) + ' / den');
+      set('v-odsk', cur(odsk) + ' / den');
+      set('v-tn', cur(tn));
     }
-    ;['input','change'].forEach(ev=>{oset.addEventListener(ev,upd);hosp.addEventListener(ev,upd);tn.addEventListener(ev,upd)});
+    ['inp-vo','inp-invalid','inp-oset','inp-hosp','inp-odsk','inp-tn'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(el){ el.addEventListener('input', upd); el.addEventListener('change', upd); }
+    });
+    // Toggle enabling/disabling by checkboxes
+    linkToggle('chk-vo','inp-vo','line-vo');
+    linkToggle('chk-invalid','inp-invalid','line-invalid');
+    linkToggle('chk-oset','inp-oset','line-oset');
+    linkToggle('chk-hosp','inp-hosp','line-hosp');
+    linkToggle('chk-odsk','inp-odsk','line-odsk');
+    linkToggle('chk-tn','inp-tn','line-tn');
+
     upd();
   </script>
 </body>
