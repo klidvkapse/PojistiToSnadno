@@ -30,9 +30,6 @@
     }
     a{color:inherit}
     .container{max-width:1180px;margin:0 auto;padding:0 20px}
-    }
-    a{color:inherit}
-    .container{max-width:1180px;margin:0 auto;padding:0 20px}
 
     /* Header */
     header{
@@ -60,7 +57,7 @@
 
     /* Hero */
     .hero{
-      background: none
+      background: none;
       position:relative;
       overflow:hidden;
       border-bottom:1px solid rgba(0,0,0,.06);
@@ -180,6 +177,36 @@
     footer, footer strong, footer .hint, footer a{color:rgba(255,255,255,.94) !important;text-shadow:0 1px 2px rgba(0,0,0,.25)}
     /* Ztmavení textu v nálepce „Praktično pro rodiče“ */
     .card-sticker .hint{color:#1f2937 !important; text-shadow:none}
+    /* === Mobilní hlavička: aby se vše vešlo === */
+    header .nav{min-width:0}
+    .brand{min-width:0}
+    @media (max-width:720px){
+      header .nav{padding:10px 0;gap:8px}
+      .logo{width:32px;height:32px;border-radius:10px}
+      .brand span{font-size:16px;max-width:48vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .cta-top{flex:0 0 auto}
+      .cta-top .btn{padding:10px 12px;border-radius:12px;font-size:14px;white-space:nowrap}
+    }
+    @media (max-width:420px){
+      .brand span{max-width:42vw;font-size:15px}
+      .cta-top .btn{padding:8px 10px;font-size:13px}
+    }
+    /* === Mobilní hlavička: aby se vše vešlo === */
+    header .nav{min-width:0}
+    .brand{min-width:0}
+    @media (max-width:720px){
+      header .nav{padding:10px 0;gap:8px}
+      .logo{width:32px;height:32px;border-radius:10px}
+      .brand span{font-size:16px;max-width:48vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .brand .home-button{padding:8px 10px;border-radius:12px;font-size:13px;white-space:nowrap}
+      .cta-top .btn{padding:8px 10px;border-radius:12px;font-size:13px;white-space:nowrap}
+    }
+    @media (max-width:420px){
+      .brand span{max-width:40vw}
+    }
+    /* Footer actions + tmavý text na tlačítku Nahoru/Domů */
+    .foot-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+    footer .btn-ghost{color:#1d1d1f !important;background:#fff !important;text-shadow:none}
   </style>
 </head>
 <body>
@@ -188,7 +215,6 @@
       <div class="brand">
         <div class="logo" aria-hidden="true">👶</div>
         <span>PojistiToSnadno.cz</span>
-         <a class="btn btn-primary" href="index.html" class="home-button">Domů</a>
       </div>
       <nav>
         <ul>
@@ -199,7 +225,6 @@
         </ul>
       </nav>
       <div class="cta-top">
-        
         <a class="btn btn-primary" href="#kontakt" aria-label="Získat nezávaznou nabídku">Získat nabídku</a>
       </div>
     </div>
@@ -444,6 +469,10 @@
         <summary>Lze měnit nastavení v průběhu trvání?</summary>
         <p>U většiny produktů lze částky i rozsah měnit (navyšovat/snižovat) a přidávat další připojištění podle aktuální potřeby rodiny.</p>
       </details>
+      <details>
+        <summary>Je součástí i krytí vrozených vad?</summary>
+        <p>Záleží na konkrétní variantě pojištění vážných onemocnění. Některé produkty kryjí vybrané vrozené diagnózy, jiné ne. Proto vždy zkontrolujeme detailní výčet diagnóz.</p>
+      </details>
     </div>
   </section>
 
@@ -461,7 +490,7 @@
           <a class="btn btn-primary" href="kontakt.html">Otevřít kontaktní formulář</a>
           <a class="btn btn-ghost" href="#top">Zpět nahoru</a>
         </div>
-        <p class="hint" style="margin-top:10px">Preferujete WhatsApp/Teams? Napište a domluvíme termín.</p>
+        <p class="hint" style="margin-top:10px">Preferujete WhatsApp/Signal? Napište a domluvíme termín.</p>
       </div>
     </div>
   </section>
@@ -472,59 +501,82 @@
         <strong>PojistiToSnadno.cz</strong><br>
         <span class="hint">Informace mají pouze obecný charakter a nepředstavují individuální doporučení či nabídku konkrétního produktu.</span>
       </div>
-      <div style="text-align:right">
+      <div class="foot-actions">
+        <a href="index.html" class="btn btn-ghost">Domů</a>
         <a href="#top" class="btn btn-ghost">Nahoru ↑</a>
       </div>
     </div>
-    <div>© 2025 PojistiToSnadno.cz</div>
   </footer>
 
+  <!-- Mobile sticky CTA -->
+  <div class="mobile-cta" aria-hidden="false">
+    <div class="bar container">
+      <span><strong>Nezávazná nabídka</strong><br><span class="hint">Rychlá konzultace</span></span>
+      <div>
+        <a class="btn btn-primary" href="kontakt.html">Formulář</a>
+        <a class="btn btn-ghost" href="tel:+420733782290">Zavolat</a>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const cur = v => v.toLocaleString('cs-CZ') + ' Kč';
-    const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
-    const linkToggle = (chkId, inpId, lineId) => {
-      const chk = document.getElementById(chkId);
-      const inp = document.getElementById(inpId);
-      const line = document.getElementById(lineId);
-      if(!chk || !inp || !line) return;
-      const apply = () => { inp.disabled = !chk.checked; line.classList.toggle('disabled', inp.disabled); };
-      chk.addEventListener('change', apply); apply();
-    };
-    function upd(){
-      const vo = document.getElementById('inp-vo')?.valueAsNumber ?? 500000;
-      const inv = document.getElementById('inp-invalid')?.valueAsNumber ?? 1500000;
-      const oset = document.getElementById('inp-oset')?.valueAsNumber ?? 400;
-      const hosp = document.getElementById('inp-hosp')?.valueAsNumber ?? 300;
-      const odsk = document.getElementById('inp-odsk')?.valueAsNumber ?? 300;
-      const tn = document.getElementById('inp-tn')?.valueAsNumber ?? 800000;
+(function(){
+  function cur(v){ return (Number(v)||0).toLocaleString('cs-CZ') + ' Kč'; }
+  function setText(id, text){ var el=document.getElementById(id); if(el) el.textContent=text; }
+  function getNum(id, fallback){
+    var el=document.getElementById(id);
+    if(!el) return fallback;
+    var n = (typeof el.valueAsNumber==='number' && !isNaN(el.valueAsNumber)) ? el.valueAsNumber : Number(el.value);
+    return isFinite(n) ? n : fallback;
+  }
+  function upd(){
+    var vo   = getNum('inp-vo', 500000);
+    var inv  = getNum('inp-invalid', 1500000);
+    var oset = getNum('inp-oset', 400);
+    var hosp = getNum('inp-hosp', 300);
+    var odsk = getNum('inp-odsk', 300);
+    var tn   = getNum('inp-tn', 800000);
 
-      set('out-vo', cur(vo));
-      set('out-invalid', cur(inv));
-      set('out-oset', cur(oset) + '/den');
-      set('out-hosp', cur(hosp) + '/den');
-      set('out-odsk', cur(odsk) + '/den');
-      set('out-tn', cur(tn));
+    setText('out-vo', cur(vo));
+    setText('out-invalid', cur(inv));
+    setText('out-oset', cur(oset) + '/den');
+    setText('out-hosp', cur(hosp) + '/den');
+    setText('out-odsk', cur(odsk) + '/den');
+    setText('out-tn', cur(tn));
 
-      set('v-vo', cur(vo));
-      set('v-invalid', cur(inv));
-      set('v-oset', cur(oset) + ' / den');
-      set('v-hosp', cur(hosp) + ' / den');
-      set('v-odsk', cur(odsk) + ' / den');
-      set('v-tn', cur(tn));
+    setText('v-vo', cur(vo));
+    setText('v-invalid', cur(inv));
+    setText('v-oset', cur(oset) + ' / den');
+    setText('v-hosp', cur(hosp) + ' / den');
+    setText('v-odsk', cur(odsk) + ' / den');
+    setText('v-tn', cur(tn));
+  }
+  ['inp-vo','inp-invalid','inp-oset','inp-hosp','inp-odsk','inp-tn'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el){ el.addEventListener('input', upd); el.addEventListener('change', upd); }
+  });
+  function linkToggle(chkId, inpId, lineId){
+    var chk=document.getElementById(chkId);
+    var inp=document.getElementById(inpId);
+    var line=document.getElementById(lineId);
+    if(!chk || !inp || !line) return;
+    function apply(){
+      var disabled = !chk.checked;
+      inp.disabled = disabled;
+      if(disabled){ line.classList.add('disabled'); } else { line.classList.remove('disabled'); }
     }
-    ['inp-vo','inp-invalid','inp-oset','inp-hosp','inp-odsk','inp-tn'].forEach(id=>{
-      const el = document.getElementById(id);
-      if(el){ el.addEventListener('input', upd); el.addEventListener('change', upd); }
-    });
-    // Toggle enabling/disabling by checkboxes
-    linkToggle('chk-vo','inp-vo','line-vo');
-    linkToggle('chk-invalid','inp-invalid','line-invalid');
-    linkToggle('chk-oset','inp-oset','line-oset');
-    linkToggle('chk-hosp','inp-hosp','line-hosp');
-    linkToggle('chk-odsk','inp-odsk','line-odsk');
-    linkToggle('chk-tn','inp-tn','line-tn');
+    chk.addEventListener('change', apply);
+    apply();
+  }
+  linkToggle('chk-vo','inp-vo','line-vo');
+  linkToggle('chk-invalid','inp-invalid','line-invalid');
+  linkToggle('chk-oset','inp-oset','line-oset');
+  linkToggle('chk-hosp','inp-hosp','line-hosp');
+  linkToggle('chk-odsk','inp-odsk','line-odsk');
+  linkToggle('chk-tn','inp-tn','line-tn');
 
-    upd();
-  </script>
+  upd();
+})();
+</script>
 </body>
 </html>
