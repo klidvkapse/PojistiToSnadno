@@ -170,6 +170,16 @@
     }
     /* Zlepšení čitelnosti: lead text v hero */
     .hero .lead{color:rgba(255,255,255,.96);text-shadow:0 1px 2px rgba(0,0,0,.28)}
+    /* Čitelnost – stejná úprava jako u lead: všechen sekundární text v hero zesvětlit */
+    .hero .lead, .hero .hint, .hero p, .hero small, .hero li{
+      color: rgba(255,255,255,.96);
+      text-shadow:0 1px 2px rgba(0,0,0,.28);
+    }
+    /* Zesvětlení textů dle požadavku (kryti lead + footer) */
+    #kryti .section-lead{color:rgba(255,255,255,.96) !important;text-shadow:0 1px 2px rgba(0,0,0,.28)}
+    footer, footer strong, footer .hint, footer a{color:rgba(255,255,255,.94) !important;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+    /* Ztmavení textu v nálepce „Praktično pro rodiče“ */
+    .card-sticker .hint{color:#1f2937 !important; text-shadow:none}
   </style>
 </head>
 <body>
@@ -453,7 +463,7 @@
           <a class="btn btn-primary" href="kontakt.html">Otevřít kontaktní formulář</a>
           <a class="btn btn-ghost" href="#top">Zpět nahoru</a>
         </div>
-        <p class="hint" style="margin-top:10px">Preferujete WhatsApp/Signal? Napište a domluvíme termín.</p>
+        <p class="hint" style="margin-top:10px">Preferujete WhatsApp/Teams? Napište a domluvíme termín.</p>
       </div>
     </div>
   </section>
