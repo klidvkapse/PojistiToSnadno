@@ -123,13 +123,6 @@
     /* Footer */
     footer{padding:32px 0 80px;color:var(--muted)}
     .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    /* Center copyright */
-   footer .copyright{
-  display:block;
-  text-align:center;
-  margin:14px auto 0;
-}
-
 
     /* Sticky mobile CTA */
     .mobile-cta{
@@ -142,6 +135,12 @@
     /* Icons */
     .ico{width:22px;height:22px}
     .ico32{width:32px;height:32px}
+
+    /* New badge-style icons for card headings */
+    .badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:999px;margin-right:10px;background:radial-gradient(60% 60% at 30% 30%, var(--primary), #fff 90%);box-shadow:var(--shadow)}
+    .badge-emoji{font-size:22px;line-height:1;transform:translateY(1px)}
+    .card h3{display:flex;align-items:center;gap:10px;font-size:18px;margin:0 0 8px}
+    
 
     /* Responsive */
     @media (max-width: 980px){
@@ -221,7 +220,7 @@
     <div class="container nav">
       <div class="brand">
         <div class="logo" aria-hidden="true">👶</div>
-          <span><a href="index.html" class="btn btn-ghost">PojistiToSnadno.cz</a></span>
+         <span><a href="index.html" class="btn btn-ghost">PojistiToSnadno.cz</a></span>
       </div>
       <nav>
         <ul>
@@ -232,7 +231,7 @@
         </ul>
       </nav>
       <div class="cta-top">
-        <a class="btn btn-primary" href="#nabidka"aria-label="Získat nezávaznou nabídku">Získat nabídku</a>
+        <a class="btn btn-primary" href="#kontakt" aria-label="Získat nezávaznou nabídku">Získat nabídku</a>
       </div>
     </div>
   </header>
@@ -278,7 +277,7 @@
         <!-- VO -->
         <article class="card">
           <h3>
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4-6-10a6 6 0 1 1 12 0c0 6-6 10-6 10z"/></svg>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">🩺</span></span>
             Vážná onemocnění (VO)
           </h3>
           <p>Jednorázové plnění při diagnóze závažné nemoci nebo při definovaném zákroku.</p>
@@ -293,7 +292,7 @@
         <!-- Invalidita -->
         <article class="card">
           <h3>
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c1.5-3 4.5-5 6.5-5s5 2 6.5 5"/></svg>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">♿</span></span>
             Invalidita / snížená soběstačnost
           </h3>
           <p>Vyplacení pojistné částky při uznání invalidity.</p>
@@ -309,7 +308,7 @@
         <!-- Ošetřování -->
         <article class="card">
           <h3>
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21H4a2 2 0 0 1-2-2V9l6-5h8l6 5v10a2 2 0 0 1-2 2z"/><path d="M12 13v8"/><path d="M8 17h8"/></svg>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">🤝</span></span>
             Ošetřování dítěte
           </h3>
           <p>Denní dávka, když dítě potřebuje celodenní péči a rodič musí být doma.</p>
@@ -324,7 +323,7 @@
         <!-- Pobyt v nemocnici -->
         <article class="card">
           <h3>
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 9h10M7 13h6"/></svg>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">🏥</span></span>
             Pobyt v nemocnici
           </h3>
           <p>Plnění za každý den hospitalizace následkem nemoci či úrazu.</p>
@@ -339,7 +338,7 @@
         <!-- Denní odškodné -->
         <article class="card">
           <h3>
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">📅</span></span>
             Denní odškodné za úraz
           </h3>
           <p>Částka za dny, kdy je dítě omezeno následkem úrazu (např. sádra, domácí režim).</p>
@@ -353,7 +352,7 @@
         <!-- Trvalé následky -->
         <article class="card">
           <h3>
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.24 12.24a8.5 8.5 0 1 1-16.48 0 8.5 8.5 0 0 1 16.48 0z"/><path d="M12 8v4l3 3"/></svg>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">🩹</span></span>
             Trvalé následky úrazu
           </h3>
           <p>Jednorázové plnění dle procentní tabulky i u méně závažných následků.</p>
@@ -378,7 +377,6 @@
         <div class="row"><strong>4) Nezávazná nabídka</strong><span class="hint">Srozumitelná rekapitulace</span></div>
         <div class="row"><strong>5) Online vyřízení</strong><span class="hint">Bez tlaku – v klidu domova</span></div>
       </div>
-      <section class="section" id="nabidka">
       <div class="panel">
         <h4>Interaktivní nastavení rizik</h4>
         <form id="nabidkaForm" action="https://formspree.io/f/mvgqqpev" method="POST" class="controls">
@@ -398,7 +396,7 @@
             <input id="phone" name="phone" type="tel" placeholder="733 782 290">
           </div>
           <div class="form-field">
-            <label for="vek">Věk dítěte</label>
+            <label for="vek">Rok narození dítěte</label>
             <input id="vek" name="vek_ditete" type="number" min="0" max="18" required>
           </div>
 
@@ -437,7 +435,6 @@
             <label for="msg">Poznámka <small>(nepovinné)</small></label>
             <textarea id="msg" name="zprava" rows="3" placeholder="Např. sportovní aktivity, zdravotní specifika, preference krytí…"></textarea>
           </div>
-        
 
           <div class="form-field" style="align-items:center;">
             <label style="display:flex;gap:8px;align-items:center;"><input type="checkbox" required> Souhlasím se zpracováním údajů pro účely nezávazné nabídky.</label>
@@ -478,6 +475,10 @@
         <summary>Lze měnit nastavení v průběhu trvání?</summary>
         <p>U většiny produktů lze částky i rozsah měnit (navyšovat/snižovat) a přidávat další připojištění podle aktuální potřeby rodiny.</p>
       </details>
+      <details>
+        <summary>Je součástí i krytí vrozených vad?</summary>
+        <p>Záleží na konkrétní variantě pojištění vážných onemocnění. Některé produkty kryjí vybrané vrozené diagnózy, jiné ne. Proto vždy zkontrolujeme detailní výčet diagnóz.</p>
+      </details>
     </div>
   </section>
 
@@ -511,10 +512,18 @@
         <a href="#top" class="btn btn-ghost">Nahoru ↑</a>
       </div>
     </div>
-   <div class="copyright">© 2025 PojistiToSnadno.cz</div>
   </footer>
 
-  
+  <!-- Mobile sticky CTA -->
+  <div class="mobile-cta" aria-hidden="false">
+    <div class="bar container">
+      <span><strong>Nezávazná nabídka</strong><br><span class="hint">Rychlá konzultace</span></span>
+      <div>
+        <a class="btn btn-primary" href="kontakt.html">Formulář</a>
+        <a class="btn btn-ghost" href="tel:+420733782290">Zavolat</a>
+      </div>
+    </div>
+  </div>
 
   <script>
 (function(){
