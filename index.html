@@ -72,6 +72,16 @@
   .btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000;box-shadow:var(--shadow-md)}
   .btn--ghost{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.6)}
 
+    .hero__bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('img/fotouvod.webp') right center / cover no-repeat;
+  filter:blur(8px) saturate(110%);
+  opacity:.85;
+}
+
+
   /* ===== Sections ===== */
   .section{max-width:1140px;margin:0 auto;padding:40px 20px}
   .section h2{margin:0 0 16px}
