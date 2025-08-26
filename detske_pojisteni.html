@@ -55,6 +55,17 @@
     .btn-primary:hover{transform:translateY(-1px)}
     .btn-ghost{background:#fff}
 
+    /* Interactive states (hover / focus) */
+    .btn, nav a, footer .btn-ghost{transition:transform .18s ease, box-shadow .18s ease, filter .18s ease, background-color .18s ease, color .18s ease}
+    .btn:hover{transform:translateY(-1.5px);box-shadow:var(--shadow),0 12px 20px rgba(0,0,0,.06)}
+    .btn:active{transform:translateY(0)}
+    .btn:focus-visible, nav a:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,210,58,.75)}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-ghost:hover{background:#fff;box-shadow:var(--shadow),0 8px 18px rgba(0,0,0,.07)}
+    nav a:hover{background:rgba(0,0,0,.05);transform:translateY(-1px)}
+    footer .btn-ghost:hover{color:#111}
+    .mobile-cta .btn:hover{transform:translateY(-1px)}
+
     /* Hero */
     .hero{
       background: none;
@@ -244,16 +255,8 @@
         <p class="lead">Krytí pro situace, které umí zamávat dnem i rozpočtem: vážná onemocnění, invalidita, dlouhodobé ošetřování, pobyt v nemocnici, denní odškodné i trvalé následky úrazu. Vyberete jen to, co dává smysl vaší rodině.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#kontakt">Nezávazně spočítat</a>
-          <a class="btn btn-ghost" href="#kryti">Zobrazit přehled krytí</a>
-        </div>
-        <div class="checklist" aria-label="Hlavní okruhy krytí">
-          <div class="chip">🎗 Vážná onemocnění</div>
-          <div class="chip">♿ Invalidita</div>
-          <div class="chip">👩‍👦 Ošetřování dítěte</div>
-          <div class="chip">🏥 Pobyt v&nbsp;nemocnici</div>
-          <div class="chip">📅 Denní odškodné</div>
-          <div class="chip">✋ Trvalé následky úrazu</div>
-        </div>
+       </div>
+       
       </div>
       <div class="hero-art" aria-hidden="true">
         <div class="blob"></div>
@@ -270,7 +273,7 @@
 
   <section class="section" id="kryti">
     <div class="container">
-      <h2>Co všechno lze pro dítě pojistit</h2>
+      <h2>Co všechno lze pro dítě pojisti</h2>
       <p class="section-lead">Vyberte si kombinaci, která doplní veřejné zdravotní pojištění a pokryje reálné výdaje – spoluúčasti, pomůcky, výpadek příjmu pečujícího rodiče i náklady na rekonvalescenci.</p>
 
       <div class="grid">
@@ -586,3 +589,5 @@
 </script>
 </body>
 </html>
+
+
