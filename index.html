@@ -346,14 +346,16 @@
 <!-- Rating: Firebase (sdílené) + fallback localStorage -->
 <script type="module">
   // 1) Doplň své Firebase údaje (pokud chceš sdílené hodnocení)
-  const firebaseConfig = {
-     apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",
-  authDomain: "pojistitosnadno-2025.firebaseapp.com",
-  projectId: "pojistitosnadno-2025",
-  storageBucket: "pojistitosnadno-2025.firebasestorage.app",
+ const firebaseConfig = {
+  apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_1x2nQKdoUao",
+  authDomain: "pojistitostnadno-2025.firebaseapp.com",
+  projectId: "pojistitostnadno-2025",
+  storageBucket: "pojistitostnadno-2025.appspot.com", // ← má být .appspot.com (ne .firebasestorage.app)
   messagingSenderId: "548654292116",
-  appId: "1:548654292116:web:b400df7542446172c2e881",
+  appId: "1:548654292116:web:b400d7f542446172c2e881",
   measurementId: "G-4CRV15HQDX"
+};
+
 };
   const USE_FIREBASE = Boolean(firebaseConfig?.projectId);
 
