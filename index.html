@@ -510,6 +510,29 @@
 
   // počáteční vzhled
   paintStars(0);
+  (async () => {
+  const BASE='https://firestore.googleapis.com/v1';
+  const projectId='pojistitostnadno-2025';
+  const key='AIzaSyAQ1K5Bb2qv10-EWLvs2S6_1x2nQKdoUao';
+  const docName=`projects/${projectId}/databases/(default)/documents/ratings/global`;
+
+  // 1) zajisti, že dokument existuje (ignoruje 409=exists)
+  await fetch(`${BASE}/projects/${projectId}/databases/(default)/documents/ratings?documentId=global&key=${key}`,{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({fields:{sum:{integerValue:0},count:{integerValue:0}}})
+  });
+
+  // 2) atomicky navýšij sum o 5 a count o 1
+  const r = await fetch(`${BASE}/projects/${projectId}/databases/(default)/documents:commit?key=${key}`,{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({writes:[{transform:{document:docName,fieldTransforms:[
+      {fieldPath:'sum',increment:{integerValue:5}},
+      {fieldPath:'count',increment:{integerValue:1}}
+    ]}}]})
+  });
+  console.log('commit status', r.status, await r.text());
+})();
+
 </script>
 
 
