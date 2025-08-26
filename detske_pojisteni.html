@@ -85,6 +85,8 @@
     .sticker-emoji{font-size:26px}
     .checklist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
     .chip{background:#fff;border:1px dashed rgba(0,0,0,.08);border-radius:14px;padding:10px 12px;font-weight:600;display:flex;gap:8px;align-items:center}
+    
+    .chip{background:#fff;border:1px dashed rgba(0,0,0,.08);border-radius:14px;padding:10px 12px;font-weight:600;display:flex;gap:8px;align-items:center}
 
     /* Cards */
     .section{padding:48px 0}
@@ -223,8 +225,7 @@
     }
     /* Footer actions + tmavý text na tlačítku Nahoru/Domů */
     .foot-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
-    footer .btn-ghost{color:#1d1d1f !important;background:#fff !important;text-shadow:none}
-  </style>
+    footer .btn-ghost{color:#1d1d1f !important;background:#fff !important;text-shadow:none}</style>
 </head>
 <body>
   <header aria-label="Hlavní navigace">
@@ -264,10 +265,7 @@
           <span class="sticker-emoji">🧸</span>
           <div>
             <strong>Praktično pro rodiče</strong><br>
-            <span class="hint">Flexibilně nastavíte, co opravdu využijete.</span>
-          </div>
-        </div>
-      </div>
+            <span class="hint">Flexibilně nastavíte, co opravdu využijete.</span>      </div>
     </div>
   </section>
 
@@ -370,6 +368,41 @@
     </div>
   </section>
 
+  <!-- Bonus: prevence a zotavení pro každé dítě -->
+  <section class="section" id="bonus">
+    <div class="container">
+      <div class="panel" style="display:grid; gap:10px; align-items:start">
+        <h2 style="display:flex;align-items:center;gap:10px;margin:0 0 6px">
+          <span class="badge" aria-hidden="true"><span class="badge-emoji">🧪</span></span>
+          Bonus: 100 tisíc na prevenci a zotavení pro každé dítě
+        </h2>
+        <p class="section-lead" style="margin:0"><strong> 100&nbsp;000&nbsp;Kč</strong> na dítě (v součtu prevence + zotavení) na výdaje, které <em>nehradí veřejné zdravotní pojištění.</em></p>
+
+        <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px">
+          <div class="card">
+            <h3 style="margin:0 0 6px;display:flex;align-items:center;gap:10px"><span class="badge" aria-hidden="true"><span class="badge-emoji">🩺</span></span> Prevence – co lze proplatit</h3>
+            <ul class="list">
+              <li><span class="dot"></span><span>Onkologická a další preventivní vyšetření provedená lékařem.</span></li>
+              <li><span class="dot"></span><span>Mamograf / sono prsou, vyšetření stolice na okultní krvácení, kolonoskopie.</span></li>
+              <li><span class="dot"></span><span>Vyšetření vnitřních orgánů (např. srdce, plíce, ledviny, játra, prostata).</span></li>
+              <li><span class="dot"></span><span>Oční prevence (např. glaukom) a neurologická prevence.</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px;display:flex;align-items:center;gap:10px"><span class="badge" aria-hidden="true"><span class="badge-emoji">❤️‍🩹</span></span> Zotavení – na co lze čerpat</h3>
+            <ul class="list">
+              <li><span class="dot"></span><span>Nadstandardní zdravotní/kompenzační pomůcky (např. vozík, speciální obuv, naslouchátka) mimo rámec úhrad.</span></li>
+              <li><span class="dot"></span><span>Rehabilitace, fyzioterapie, léčebné masáže, psychoterapie; lázeňská péče, pokud není hrazena.</span></li>
+              <li><span class="dot"></span><span>Úpravy bytu/domu kvůli zdravotnímu stavu; příspěvek na úpravu řízení auta.</span></li>
+              <li><span class="dot"></span><span>Krátkodobá domácí/sociální péče nad rámec úhrad; pomoc s péčí o děti či domácí mazlíčky.</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="hint" style="margin-top:6px">Limit je <strong>max. 100&nbsp;000&nbsp;Kč</strong> na každého pojištěného napříč jeho smlouvami (v součtu prevence i nákladů na zotavení). </p>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="jak">
     <div class="container teaser">
       <div class="panel">
@@ -378,8 +411,7 @@
         <div class="row"><strong>1) Vybereme rizika</strong><span class="hint">VO, invalidita, ošetřování, pobyt, denní odškodné, TN úrazu</span></div>
         <div class="row"><strong>2) Nastavíme částky</strong><span class="hint">Jednorázové i denní plnění</span></div>
         <div class="row"><strong>4) Nezávazná nabídka</strong><span class="hint">Srozumitelná rekapitulace</span></div>
-        <div class="row"><strong>5) Online vyřízení</strong><span class="hint">Bez tlaku – v klidu domova</span></div>
-      </div>
+        <div class="row"><strong>5) Online vyřízení</strong><span class="hint">Bez tlaku – v klidu domova</span>$1</div>
       <div class="panel">
         <h4>Interaktivní nastavení rizik</h4>
         <form id="nabidkaForm" action="https://formspree.io/f/mvgqqpev" method="POST" class="controls">
@@ -589,5 +621,3 @@
 </script>
 </body>
 </html>
-
-
