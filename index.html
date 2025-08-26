@@ -328,37 +328,36 @@
 
 <!-- ===== Skripty ===== -->
 <script>
-  // Mobile menu toggle
-  const burger=document.getElementById('burger');
-  const nav=document.getElementById('nav');
-  burger.addEventListener('click',()=>{
-    const open=burger.getAttribute('aria-expanded')==='true';
-    burger.setAttribute('aria-expanded',String(!open));
+  // Mobile menu toggle (bezpečněji uzavírá po kliknutí na libovolný obsah odkazu)
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
     nav.classList.toggle('nav--open');
   });
-  nav.addEventListener('click',e=>{
-    if(e.target.tagName==='A'){
-      burger.setAttribute('aria-expanded','false');
+
+  nav.addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if (a) {
+      burger.setAttribute('aria-expanded', 'false');
       nav.classList.remove('nav--open');
     }
   });
 </script>
 
-<!-- Rating: Firestore přes REST + lokální fallback -->
+<!-- Rating: Firestore (REST) + lokální fallback -->
 <script>
-  // ===== Nastavení (tvůj projekt) =====
+  // ===== Nastavení projektu (POUŽIJ JEDEN FUNKČNÍ KLÍČ) =====
   const FIREBASE = {
     apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",
     projectId: "pojistitostnadno-2025"
   };
 
-  // ===== UI prvky =====
+  // ===== UI =====
   const $ = s => document.querySelector(s);
-  const starsRoot =
-    document.getElementById('stars') ||
-    document.getElementById('star-rating') ||
-    document.querySelector('#hodnoceni .stars');
-
+  const starsRoot = document.getElementById('stars') || document.querySelector('#hodnoceni .stars');
   const avgEl    = $('#rating-avg');
   const countEl  = $('#rating-count');
   const statusEl = $('#rating-status');
@@ -402,12 +401,11 @@
     statusEl.textContent = 'Děkujeme za hodnocení!';
   }
 
-  // ===== Firestore REST helpery =====
+  // ===== Firestore REST =====
   const BASE = `https://firestore.googleapis.com/v1`;
   const DOC_NAME = `projects/${FIREBASE.projectId}/databases/(default)/documents/ratings/global`;
 
   async function restGet(){
-    // Načti dokument; při 404 vrátíme nuly
     const r = await fetch(`${BASE}/${DOC_NAME}?key=${encodeURIComponent(FIREBASE.apiKey)}`);
     if (r.status === 404) return { sum:0, count:0 };
     if (!r.ok) throw new Error(`GET ${r.status}`);
@@ -419,21 +417,13 @@
   }
 
   async function restEnsureDoc(){
-    // Vytvoří prázdný dokument, pokud neexistuje (id=global)
     const url = `${BASE}/projects/${FIREBASE.projectId}/databases/(default)/documents/ratings?documentId=global&key=${encodeURIComponent(FIREBASE.apiKey)}`;
-    const body = {
-      fields: {
-        sum:   { integerValue: 0 },
-        count: { integerValue: 0 }
-      }
-    };
+    const body = { fields: { sum:{integerValue:0}, count:{integerValue:0} } };
     const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
-    // 409 = už existuje → nevadí
     if (!r.ok && r.status !== 409) throw new Error(`CREATE ${r.status}`);
   }
 
   async function restIncrement(value){
-    // Bezpečné navýšení přes fieldTransforms (atomické na serveru)
     const url = `${BASE}/projects/${FIREBASE.projectId}/databases/(default)/documents:commit?key=${encodeURIComponent(FIREBASE.apiKey)}`;
     const body = {
       writes: [{
@@ -450,30 +440,30 @@
     if (!r.ok) throw new Error(`COMMIT ${r.status}`);
   }
 
-  // ===== Iniciace + obsluha kliků =====
+  // ===== Init =====
   (async ()=>{
     try{
       statusEl.textContent = 'Načítám hodnocení…';
-      // zajisti, že dokument existuje (poprvé)
       try { await restEnsureDoc(); } catch(_) {}
       const { sum, count } = await restGet();
       setStats(sum, count);
       statusEl.textContent = '';
     }catch(e){
-      console.warn('REST Firestore se nepovedl, přepínám na lokální režim.', e);
+      console.warn('REST Firestore selhal, přepínám na lokální režim.', e);
       localGet();
-      // dál běží jen lokální režim
     }
   })();
 
-  // jeden handler pro klik + klávesnici
+  // ===== Hlasování =====
   function handleRate(val){
     paintStars(val);
-    // Pokud REST selhal a běžíme lokálně:
-    if (!statusEl || statusEl.textContent.includes('Lokální režim')) {
+
+    // lokální režim
+    if (statusEl.textContent.includes('Lokální režim')) {
       return localVote(val);
     }
-    // REST varianta (sdílené hlasování)
+
+    // REST režim (sdílené)
     if (localStorage.getItem(LS_VOTED)) {
       statusEl.textContent = 'Už jste hodnotili na tomto zařízení.';
       return;
@@ -482,7 +472,7 @@
     restIncrement(val).then(async ()=>{
       const { sum, count } = await restGet();
       setStats(sum, count);
-      localStorage.setItem(LS_VOTED,'1');  // zámek až po úspěchu
+      localStorage.setItem(LS_VOTED,'1');
       statusEl.textContent = 'Děkujeme za hodnocení!';
     }).catch(err=>{
       console.error(err);
@@ -504,31 +494,7 @@
     }
   });
 
-  // počáteční vzhled
   paintStars(0);
-  (async () => {
-  const BASE='https://firestore.googleapis.com/v1';
-  const projectId='pojistitostnadno-2025';
-  const key='AIzaSyAQ1K5Bb2qv10-EWLvs2S6_1x2nQKdoUao';
-  const docName=`projects/${projectId}/databases/(default)/documents/ratings/global`;
-
-  // 1) zajisti, že dokument existuje (ignoruje 409=exists)
-  await fetch(`${BASE}/projects/${projectId}/databases/(default)/documents/ratings?documentId=global&key=${key}`,{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({fields:{sum:{integerValue:0},count:{integerValue:0}}})
-  });
-
-  // 2) atomicky navýšij sum o 5 a count o 1
-  const r = await fetch(`${BASE}/projects/${projectId}/databases/(default)/documents:commit?key=${key}`,{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({writes:[{transform:{document:docName,fieldTransforms:[
-      {fieldPath:'sum',increment:{integerValue:5}},
-      {fieldPath:'count',increment:{integerValue:1}}
-    ]}}]})
-  });
-  console.log('commit status', r.status, await r.text());
-})();
-
 </script>
 
 
