@@ -345,25 +345,30 @@
 
 <!-- Rating: Firebase (sdílené) + fallback localStorage -->
 <script type="module">
-  // 1) Doplň své Firebase údaje (pokud chceš sdílené hodnocení)
- const firebaseConfig = {
-  apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_1x2nQKdoUao",
-  authDomain: "pojistitostnadno-2025.firebaseapp.com",
-  projectId: "pojistitostnadno-2025",
-  storageBucket: "pojistitostnadno-2025.appspot.com", // ← má být .appspot.com (ne .firebasestorage.app)
-  messagingSenderId: "548654292116",
-  appId: "1:548654292116:web:b400d7f542446172c2e881",
-  measurementId: "G-4CRV15HQDX"
-};
+  /* --- STATICKÉ IMPORTY Z CDN (bez NPM) --- */
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+  import { getFirestore, doc, getDoc, runTransaction, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
-};
+  /* --- TVŮJ PROJEKT (správný config) --- */
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_1x2nQKdoUao",
+    authDomain: "pojistitostnadno-2025.firebaseapp.com",
+    projectId: "pojistitostnadno-2025",
+    storageBucket: "pojistitostnadno-2025.appspot.com", /* důležité: .appspot.com */
+    messagingSenderId: "548654292116",
+    appId: "1:548654292116:web:b400d7f542446172c2e881",
+    measurementId: "G-4CRV15HQDX"
+  };
+
   const USE_FIREBASE = Boolean(firebaseConfig?.projectId);
 
+  /* --- UI prvky --- */
   const $ = (s)=>document.querySelector(s);
   const stars = document.querySelectorAll('#stars .star');
   const avgEl = $('#rating-avg');
   const countEl = $('#rating-count');
   const statusEl = $('#rating-status');
+  if (statusEl) statusEl.textContent = 'Načítám hodnocení…';
 
   const LS_KEY_VOTED = 'pts_rating_v1_voted';
   const LS_KEY_SUM   = 'pts_rating_v1_sum';
@@ -382,6 +387,8 @@
     countEl.textContent = `(${count} ${decl(count,'hodnocení','hodnocení','hodnocení')})`;
   }
   function decl(n, one, few, many){ return (n===1)?one:((n>=2&&n<=4)?few:many); }
+
+  /* --- Lokální fallback (když Firebase nejede) --- */
   function localGet(){
     const sum = Number(localStorage.getItem(LS_KEY_SUM)||0);
     const count = Number(localStorage.getItem(LS_KEY_COUNT)||0);
@@ -400,21 +407,30 @@
     setStats(sum, count);
     statusEl.textContent = 'Děkujeme za hodnocení!';
   }
+  function localInit(){
+    localGet();
+    stars.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const value = Number(btn.dataset.value);
+        paintStars(value);
+        localVote(value);
+      }, { passive:true });
+    });
+    statusEl.textContent = 'Lokální režim (data se nesdílí).';
+  }
 
+  /* --- Firebase varianta (sdílené hodnocení) --- */
   async function firebaseInitAndLoad(){
     try{
-      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
-      const { getFirestore, doc, getDoc, runTransaction, setDoc } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
-
       const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
+      const db  = getFirestore(app);
       const ref = doc(db, 'ratings', 'global');
 
       const snap = await getDoc(ref);
       if(!snap.exists()){
         await setDoc(ref, { sum:0, count:0 });
         setStats(0,0);
-      } else {
+      }else{
         const { sum=0, count=0 } = snap.data();
         setStats(sum, count);
       }
@@ -431,7 +447,7 @@
           statusEl.textContent = 'Ukládám…';
           try{
             await runTransaction(db, async (tx)=>{
-              const cur = await tx.get(ref);
+              const cur  = await tx.get(ref);
               const data = cur.exists()? cur.data() : { sum:0, count:0 };
               tx.set(ref, { sum: Number(data.sum||0)+value, count: Number(data.count||0)+1 });
             });
@@ -446,22 +462,11 @@
           }
         }, { passive:true });
       });
+
     }catch(e){
-      console.warn('Firebase není nakonfigurován / nelze načíst. Použiji lokální fallback.', e);
+      console.warn('Firebase nelze načíst – používám lokální režim.', e);
       localInit();
     }
-  }
-
-  function localInit(){
-    localGet();
-    stars.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const value = Number(btn.dataset.value);
-        paintStars(value);
-        localVote(value);
-      }, { passive:true });
-    });
-    statusEl.textContent = 'Lokální režim (data se nesdílí).';
   }
 
   // Init
@@ -469,6 +474,7 @@
   if(USE_FIREBASE){ firebaseInitAndLoad(); }
   else { localInit(); }
 </script>
+
 
 </body>
 </html>
