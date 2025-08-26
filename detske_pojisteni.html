@@ -169,20 +169,30 @@
       .checklist{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
     }
+    
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
     /* === Mobilní fix pro KONTAKT === */
     @media (max-width:720px){
-      #kontakt .container{display:block !important; max-width:100% !important; width:100%; padding-left:12px; padding-right:12px}
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    
       #kontakt .panel{width:100%}
       #kontakt a{overflow-wrap:anywhere; word-break:break-word; hyphens:auto}
     }
     /* === Mobilní úprava pozadí (menší, celé do šířky) === */
     @media (max-width:720px){
-      body{
-        background-size: cover;        /* přes celou šířku i výšku viewportu */
-        background-position: top center;
-        background-attachment: fixed;  /* drží pozadí přes celou stránku při scrollu */
-        background-repeat: no-repeat;
-      }
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    
     }
     /* Zlepšení čitelnosti: lead text v hero */
     .hero .lead{color:rgba(255,255,255,.96);text-shadow:0 1px 2px rgba(0,0,0,.28)}
@@ -200,7 +210,12 @@
     header .nav{min-width:0}
     .brand{min-width:0}
     @media (max-width:720px){
-      header .nav{padding:10px 0;gap:8px}
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    
       .logo{width:32px;height:32px;border-radius:10px}
       .brand span{font-size:16px;max-width:48vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
       .cta-top{flex:0 0 auto}
@@ -214,7 +229,12 @@
     header .nav{min-width:0}
     .brand{min-width:0}
     @media (max-width:720px){
-      header .nav{padding:10px 0;gap:8px}
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    
       .logo{width:32px;height:32px;border-radius:10px}
       .brand span{font-size:16px;max-width:48vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
       .brand .home-button{padding:8px 10px;border-radius:12px;font-size:13px;white-space:nowrap}
@@ -225,7 +245,21 @@
     }
     /* Footer actions + tmavý text na tlačítku Nahoru/Domů */
     .foot-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
-    footer .btn-ghost{color:#1d1d1f !important;background:#fff !important;text-shadow:none}</style>
+    footer .btn-ghost{color:#1d1d1f !important;background:#fff !important;text-shadow:none}  /* Mobile fixes: header + bonus grid */
+    @media (max-width:720px){
+      /* Header compaction */
+      header .cta-top{display:none} /* nahoře necháme jen logo a menu; dole je mobilní CTA */
+      .nav{padding:10px 0}
+      .brand span{font-size:16px; max-width:52vw; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+      /* Bonus sekce – na jeden sloupec */
+      #bonus .grid{grid-template-columns:1fr !important; gap:12px}
+      #bonus .card{padding:14px}
+      #bonus .card h3{font-size:16px}
+      .badge{width:32px;height:32px}
+      .badge-emoji{font-size:18px}
+    }
+  </style>
 </head>
 <body>
   <header aria-label="Hlavní navigace">
@@ -374,7 +408,7 @@
       <div class="panel" style="display:grid; gap:10px; align-items:start">
         <h2 style="display:flex;align-items:center;gap:10px;margin:0 0 6px">
           <span class="badge" aria-hidden="true"><span class="badge-emoji">🧪</span></span>
-          Bonus: 100 tisíc na prevenci a zotavení pro každé dítě
+         Zdarma BONUS: 100 tisíc na prevenci a zotavení pro každé dítě
         </h2>
         <p class="section-lead" style="margin:0"><strong> 100&nbsp;000&nbsp;Kč</strong> na dítě (v součtu prevence + zotavení) na výdaje, které <em>nehradí veřejné zdravotní pojištění.</em></p>
 
@@ -531,7 +565,7 @@
           <a class="btn btn-primary" href="kontakt.html">Otevřít kontaktní formulář</a>
           <a class="btn btn-ghost" href="#top">Zpět nahoru</a>
         </div>
-        <p class="hint" style="margin-top:10px">Preferujete WhatsApp/Signal? Napište a domluvíme termín.</p>
+        <p class="hint" style="margin-top:10px">Preferujete WhatsApp/Teams? Napište a domluvíme termín.</p>
       </div>
     </div>
   </section>
@@ -549,16 +583,6 @@
     </div>
   </footer>
 
-  <!-- Mobile sticky CTA -->
-  <div class="mobile-cta" aria-hidden="false">
-    <div class="bar container">
-      <span><strong>Nezávazná nabídka</strong><br><span class="hint">Rychlá konzultace</span></span>
-      <div>
-        <a class="btn btn-primary" href="kontakt.html">Formulář</a>
-        <a class="btn btn-ghost" href="tel:+420733782290">Zavolat</a>
-      </div>
-    </div>
-  </div>
 
   <script>
 (function(){
