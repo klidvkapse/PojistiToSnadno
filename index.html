@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -72,15 +71,15 @@
   .btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000;box-shadow:var(--shadow-md)}
   .btn--ghost{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.6)}
 
-    .hero__bg::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url('img/fotouvod.webp') right center / cover no-repeat;
-  filter:blur(8px) saturate(110%);
-  opacity:.85;
-}
-
+  /* Override na finální pozadí */
+  .hero__bg::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url('img/fotouvod.webp') right center / cover no-repeat;
+    filter:blur(8px) saturate(110%);
+    opacity:.85;
+  }
 
   /* ===== Sections ===== */
   .section{max-width:1140px;margin:0 auto;padding:40px 20px}
@@ -144,80 +143,77 @@
 
     .contact-quick{grid-template-columns:repeat(2,1fr)}
   }
+
+  /* omezení animací */
   @media (prefers-reduced-motion:reduce){
     .nav,.burger span,.burger span::before,.burger span::after,.card__img{transition:none}
- /* ===== Mobilní finetuning header/hero ===== */
-@media (max-width: 640px){
-
-  /* levý horní bar — kompaktnější */
-  .header{
-    height: 56px;
-    padding: 0 12px;
-    padding-left: max(12px, env(safe-area-inset-left));
-    padding-right: max(12px, env(safe-area-inset-right));
-  }
-  .brand__name{ font-size: 18px; font-weight: 800; }
-
-  /* nav otevřený jako plný panel pod lištou + scroll lock */
-  .nav{
-    top: 56px;
-    max-height: calc(100dvh - 56px);
-    overflow: auto;
-    background: rgba(255,255,255,.98);
-    border-bottom: 1px solid rgba(0,0,0,.08);
-    box-shadow: 0 10px 30px rgba(0,0,0,.12);
-  }
-  body.no-scroll{ overflow: hidden; }
-
-  /* hero */
-  .hero{ padding-top: 56px; }
-  .hero__overlay{
-    /* víc kontrastu na text na mobilech */
-    background: linear-gradient(
-      to bottom,
-      rgba(0,0,0,.65) 0%,
-      rgba(0,0,0,.45) 35%,
-      rgba(0,0,0,.20) 100%
-    );
-  }
-  .hero__wrap{ padding: 22px 16px 28px; }
-  .hero__grid{
-    grid-template-columns: 1fr;   /* portrét nad textem */
-    gap: 14px;
-    align-items: start;
-  }
-  .hero__portrait{
-    order: -1;                    /* portrét úplně nahoru */
-    display: flex; justify-content: center;
-  }
-  .hero__portrait img{
-    width: 132px; height: 132px;
-    border-radius: 16px;
-    border: 1.5px solid rgba(255,255,255,.65);
   }
 
-  .hero h1{
-    font-size: 32px;
-    line-height: 1.12;
-    margin: 6px 0 6px;
-    letter-spacing: .2px;
-  }
-  .hero .lead{
-    font-size: 1rem;
-    line-height: 1.45;
-    max-width: 36ch;  /* kratší řádky = lepší čitelnost */
-    margin: 4px 0 10px;
-  }
+  /* ===== Mobilní finetuning header/hero ===== */
+  @media (max-width: 640px){
+    .header{
+      height: 56px;
+      padding: 0 12px;
+      padding-left: max(12px, env(safe-area-inset-left));
+      padding-right: max(12px, env(safe-area-inset-right));
+    }
+    .brand__name{ font-size: 18px; font-weight: 800; }
 
-  /* CTA = přes celou šířku, hezky nad sebe */
-  .hero .btn{
-    width: 100%;
-    text-align: center;
-    padding: 12px 16px;
-  }
-  .hero .btn--primary{ box-shadow: 0 8px 20px rgba(0,0,0,.18); }
-}
+    .nav{
+      top: 56px;
+      max-height: calc(100dvh - 56px);
+      overflow: auto;
+      background: rgba(255,255,255,.98);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+    body.no-scroll{ overflow: hidden; }
 
+    .hero{ padding-top: 56px; }
+    .hero__overlay{
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.65) 0%,
+        rgba(0,0,0,.45) 35%,
+        rgba(0,0,0,.20) 100%
+      );
+    }
+    .hero__wrap{ padding: 22px 16px 28px; }
+    .hero__grid{
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .hero__portrait{
+      order: -1;
+      display: flex; justify-content: center;
+    }
+    .hero__portrait img{
+      width: 132px; height: 132px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(255,255,255,.65);
+    }
+
+    .hero h1{
+      font-size: 32px;
+      line-height: 1.12;
+      margin: 6px 0 6px;
+      letter-spacing: .2px;
+    }
+    .hero .lead{
+      font-size: 1rem;
+      line-height: 1.45;
+      max-width: 36ch;
+      margin: 4px 0 10px;
+    }
+
+    .hero .btn{
+      width: 100%;
+      text-align: center;
+      padding: 12px 16px;
+    }
+    .hero .btn--primary{ box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+  }
   </style>
 </head>
 <body>
@@ -313,17 +309,16 @@
       <span class="card__img" style="background-image:url('img/RD.webp')"></span>
       <div class="card__text"><h3>Nemovitost</h3><p>Dům/byt + odpovědnost. Asistence v ceně.</p></div>
     </a>
-    <!-- Pojištění pro zdravotně postižené osoby -->
-<a class="card" href="pojisteni-zdravotnepostizenychosob.html"
-   aria-label="Pojištění pro zdravotně postižené osoby">
-  <span class="card__img" style="background-image:url('img/ozppozadi.webp')"></span>
-  <div class="card__text">
-    <h3>Pojištění pro zdravotně postižené</h3>
-    <p>Krytí asistenčního/vodícího psa i zdravotních pomůcek (invalidní vozík apod.).</p>
-  </div>
-</a>
 
-    
+    <!-- Pojištění pro zdravotně postižené osoby -->
+    <a class="card" href="pojisteni-zdravotnepostizenychosob.html" aria-label="Pojištění pro zdravotně postižené osoby">
+      <span class="card__img" style="background-image:url('img/ozppozadi.webp')"></span>
+      <div class="card__text">
+        <h3>Pojištění pro zdravotně postižené</h3>
+        <p>Krytí asistenčního/vodícího psa i zdravotních pomůcek (invalidní vozík apod.).</p>
+      </div>
+    </a>
+
     <a class="card" href="detske_pojisteni.html" aria-label="Dětské pojištění">
       <span class="card__img" style="background-image:url('flexydeti.webp')"></span>
       <div class="card__text"><h3>Děti</h3><p>Úraz i nemoc. Výhodné sazby.</p></div>
@@ -406,7 +401,7 @@
       <a href="podminky.html">Podmínky</a>
     </div>
     <div class="social">
-      <a aria-label="Facebook" href="https://www.facebook.com/PojistiToSnadno.cz" target="_blank">
+      <a aria-label="Facebook" href="https://www.facebook.com/pojistitosnadno.cz" target="_blank">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v3H8v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z" fill="#1c1c1c"/></svg>
       </a>
       <a aria-label="Instagram" href="#" target="_blank">
@@ -426,7 +421,7 @@
     const open = burger.getAttribute('aria-expanded') === 'true';
     burger.setAttribute('aria-expanded', String(!open));
     nav.classList.toggle('nav--open');
-    document.body.classList.toggle('no-scroll', !open);   // <— zamkni/odemkni scroll
+    document.body.classList.toggle('no-scroll', !open);
   });
 
   nav.addEventListener('click', e => {
@@ -434,20 +429,18 @@
     if (a) {
       burger.setAttribute('aria-expanded', 'false');
       nav.classList.remove('nav--open');
-      document.body.classList.remove('no-scroll');        // <— odemkni scroll
+      document.body.classList.remove('no-scroll');
     }
   });
 </script>
 
 <!-- Rating: Firestore (REST) + lokální fallback -->
 <script>
-  // ===== Nastavení projektu (POUŽIJ JEDEN FUNKČNÍ KLÍČ) =====
   const FIREBASE = {
     apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",
     projectId: "pojistitostnadno-2025"
   };
 
-  // ===== UI =====
   const $ = s => document.querySelector(s);
   const starsRoot = document.getElementById('stars') || document.querySelector('#hodnoceni .stars');
   const avgEl    = $('#rating-avg');
@@ -468,7 +461,6 @@
     countEl.textContent = `(${count} ${decl(count,'hodnocení','hodnocení','hodnocení')})`;
   }
 
-  // ===== Lokální fallback =====
   const LS_VOTED = 'pts_rating_v1_voted';
   const LS_SUM   = 'pts_rating_v1_sum';
   const LS_COUNT = 'pts_rating_v1_count';
@@ -493,7 +485,6 @@
     statusEl.textContent = 'Děkujeme za hodnocení!';
   }
 
-  // ===== Firestore REST =====
   const BASE = `https://firestore.googleapis.com/v1`;
   const DOC_NAME = `projects/${FIREBASE.projectId}/databases/(default)/documents/ratings/global`;
 
@@ -532,7 +523,6 @@
     if (!r.ok) throw new Error(`COMMIT ${r.status}`);
   }
 
-  // ===== Init =====
   (async ()=>{
     try{
       statusEl.textContent = 'Načítám hodnocení…';
@@ -546,16 +536,13 @@
     }
   })();
 
-  // ===== Hlasování =====
   function handleRate(val){
     paintStars(val);
 
-    // lokální režim
     if (statusEl.textContent.includes('Lokální režim')) {
       return localVote(val);
     }
 
-    // REST režim (sdílené)
     if (localStorage.getItem(LS_VOTED)) {
       statusEl.textContent = 'Už jste hodnotili na tomto zařízení.';
       return;
@@ -589,7 +576,10 @@
   paintStars(0);
 </script>
 
-
-
 </body>
 </html>
+
+
+
+
+
