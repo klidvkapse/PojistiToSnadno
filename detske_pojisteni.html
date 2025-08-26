@@ -258,7 +258,29 @@
       #bonus .card h3{font-size:16px}
       .badge{width:32px;height:32px}
       .badge-emoji{font-size:18px}
-    }
+      /* Kontakt – kontejner přes celou šířku na mobilech/užších šířkách */
+@media (max-width: 820px){
+  #kontakt .container{
+    display:block !important;
+    grid-template-columns:1fr !important;
+    max-width:100% !important;
+    width:100% !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+  #kontakt .panel{
+    width:100% !important;
+  }
+}
+
+/* Volitelné: na velkých displejích kontejner trochu širší */
+@media (min-width: 1280px){
+  .container{ max-width:1280px; }
+}
+@media (min-width: 1440px){
+  .container{ max-width:1360px; } /* klidně uprav podle chuti */
+}
+
   </style>
 </head>
 <body>
@@ -543,10 +565,6 @@
       <details>
         <summary>Lze měnit nastavení v průběhu trvání?</summary>
         <p>U většiny produktů lze částky i rozsah měnit (navyšovat/snižovat) a přidávat další připojištění podle aktuální potřeby rodiny.</p>
-      </details>
-      <details>
-        <summary>Je součástí i krytí vrozených vad?</summary>
-        <p>Záleží na konkrétní variantě pojištění vážných onemocnění. Některé produkty kryjí vybrané vrozené diagnózy, jiné ne. Proto vždy zkontrolujeme detailní výčet diagnóz.</p>
       </details>
     </div>
   </section>
