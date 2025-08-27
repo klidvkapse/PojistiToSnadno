@@ -273,7 +273,62 @@ footer{background:#efefec;padding:22px 16px;margin-top:28px}
   .hero .hero__text-on-photo{
     display: none !important;
   }
+/* ===== DESKTOP FIX (≥ 960px) – portrét vlevo, text vpravo, viditelná navigace ===== */
+@media (min-width: 960px){
+
+  /* Navigace – žádný hamburger, klasické menu */
+  .burger{ display:none !important; }
+  .nav{
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  .nav ul{
+    display: flex !important;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+  body.no-scroll{ overflow:auto; } /* kdyby zůstal lock z mobilu */
+
+  /* Hero – dvousloupcový layout; 1) portrét 2) text */
+  .hero{ padding-top: 64px; }
+  .hero__wrap{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  .hero__grid{
+    display: grid !important;
+    grid-template-columns: 360px 1fr;  /* portrét | text */
+    gap: 22px;
+    align-items: end;
+  }
+
+  /* DŮLEŽITÉ: vrať pořadí – portrét 1., text 2. */
+  .hero__portrait{ order: 1 !important; }
+  /* druhé dítě (blok s nadpisem/textem) vpravo */
+  .hero__grid > :nth-child(2){ order: 2 !important; }
+
+  /* typografie a tlačítka */
+  .hero h1{ font-size: 46px; line-height: 1.1; margin: 0 0 8px; }
+  .hero .lead{ font-size: 18px; line-height: 1.55; max-width: 52ch; }
+  .hero .btn{ width: auto; text-align: left; }
+  .hero .btn + .btn{ margin-left: 10px; }
+
+  /* kdyby někde zůstal mobilní překryv na fotce, skryj ho na desktopu */
+  .hero .hero-text-card,
+  .hero .mobile-hero-card,
+  .hero .hero__text-on-photo{
+    display: none !important;
+  }
 }
+
 /* ===================================================================== */
 
 
