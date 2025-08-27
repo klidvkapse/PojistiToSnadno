@@ -246,7 +246,76 @@
     text-align: center;
     margin-top: 8px;
   }
+/* ===== Text uvnitř portrétu – mobil ===== */
+@media (max-width: 640px){
+  /* Grid hlavičky zůstane jedno-sloupcový */
+  .hero__grid{
+    grid-template-columns: 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  /* Portrét je ořezová maska pro overlay */
+  .hero__portrait{
+    position: relative;
+    overflow: hidden;              /* <<< důležité: ořízne overlay na fotku */
+    border-radius: 18px;           /* stejné zaoblení jako obrázek */
+    box-shadow: 0 12px 28px rgba(0,0,0,.22);
+  }
+  .hero__portrait img{
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Text přesunutý dovnitř portrétu */
+  .hero__content.in-portrait{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;                  /* přilepeno ke spodní hraně fotky */
+    padding: 12px 14px;
+    border-radius: 14px;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(0,0,0,.38), rgba(0,0,0,.66));
+    backdrop-filter: blur(2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.22);
+
+    /* Zaručí, že vše zůstane uvnitř fotky */
+    max-height: 46%;
+    overflow: auto;                /* pokud je text delší, posune se uvnitř fotky */
+  }
+
+  .hero__content.in-portrait h1{
+    font-size: 24px;
+    line-height: 1.18;
+    margin: 0 0 6px;
+    letter-spacing: .2px;
+  }
+  .hero__content.in-portrait .lead{
+    font-size: .94rem;
+    line-height: 1.38;
+    margin: 0 0 10px;
+  }
+  .hero__content.in-portrait .cta{
+    display: grid;
+    gap: 8px;
+  }
+  .hero__content.in-portrait .btn{
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Karty zůstávají až POD fotkou – nedotýkáme se jejich stylu */
 }
+
+/* TIP: Pokud nechceš v overlayi scroll, můžeš místo overflow:auto použít zkrácení:
+.hero__content.in-portrait .lead{
+  display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;
+}
+*/
+
 
 /* Desktop/tablet zůstává beze změny (text vpravo od portrétu) */
 
