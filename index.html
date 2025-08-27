@@ -27,8 +27,8 @@
     --ink:#1c1c1c;
     --muted:#6d6d6d;
     --bg:#f6f6f4;
-    --gold:#c9b475;      /* zlatavá */
-    --gold-dark:#b39f60; /* tmavší odstín */
+    --gold:#c9b475;
+    --gold-dark:#b39f60;
     --shadow-sm:0 2px 6px rgba(0,0,0,.08);
     --shadow-md:0 10px 24px rgba(0,0,0,.14);
     --radius:16px;
@@ -60,49 +60,57 @@
   .burger[aria-expanded="true"] span::before{transform:rotate(45deg)}
   .burger[aria-expanded="true"] span::after{transform:rotate(-45deg)}
 
-  /* ===== Hero ===== */
-  .hero{padding-top:56px;position:relative;background:#000;color:#fff}
-  .hero__bg::before{content:"";position:absolute;inset:0;background:url('img/fotouvod.webp') right center / cover no-repeat;filter:blur(8px) saturate(110%);opacity:.85}
+  /* ===== Hero + sidebar layout ===== */
+  .hero{padding-top:56px;position:relative;color:#fff}
+  .hero__bg::before{content:"";position:absolute;inset:0;background:url('img/fotouvod.webp') right center/cover no-repeat;filter:blur(8px) saturate(110%);opacity:.85}
   .hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),rgba(0,0,0,.08))}
-  .hero__wrap{position:relative;z-index:2;display:grid;gap:20px;align-items:center;padding:40px 20px}
+  .hero__wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:32px 20px}
+
+  /* two-column intro grid (sidebar + hero main) */
+  .intro-grid{display:grid;gap:22px}
+  @media (min-width: 1100px){
+    .intro-grid{grid-template-columns:320px 1fr;align-items:start}
+  }
+
+  /* hero main content (portrait + copy) */
   .hero__grid{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center}
   .hero__portrait img{width:120px;height:120px;border-radius:16px;object-fit:cover;border:2px solid rgba(255,255,255,.7)}
   .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:800;text-decoration:none}
   .btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000;box-shadow:var(--shadow-md)}
   .btn--ghost{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.6)}
 
-  /* ===== Sections ===== */
+  /* ===== Services sidebar (vertical) ===== */
+  .services-aside{position:relative}
+  @media (min-width:1100px){
+    .services-aside{position:sticky;top:84px}
+  }
+  .services--vertical{display:grid;grid-template-columns:1fr;gap:12px}
+  .svc-card{background:#fff;border-radius:14px;padding:14px;display:grid;gap:6px;box-shadow:var(--shadow-sm)}
+  .svc-card:hover{box-shadow:var(--shadow-md)}
+  .svc-icon{width:24px;height:24px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffe87a);display:grid;place-items:center}
+  .svc-icon svg{width:16px;height:16px}
+  .svc-title{font-weight:800;color:#1c1c1c}
+  .svc-text{color:#6d6d6d;font-size:.95rem}
+
+  /* ===== Sections (below hero) ===== */
   .section{max-width:1140px;margin:0 auto;padding:40px 20px}
   .section h2{margin:0 0 16px}
 
-  /* ===== Služby (ikonové karty) ===== */
-  .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  .svc-card{background:#fff;border-radius:14px;padding:16px;display:grid;gap:8px;box-shadow:var(--shadow-sm);transition:transform .2s, box-shadow .2s}
-  .svc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
-  .svc-icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffe87a);display:grid;place-items:center}
-  .svc-icon svg{width:18px;height:18px}
-  .svc-title{font-weight:800}
-  .svc-text{color:var(--muted);font-size:.95rem}
-
-  .section-cta{text-align:center;margin-top:18px}
-
-  /* ===== Výběr podle situace (grid karet) ===== */
+  /* Cards grid used in "Podle situace" */
   .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .card{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;box-shadow:var(--shadow-sm);transition:transform .25s, box-shadow .25s}
   .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
   .card__img{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.82);transition:transform .35s ease,filter .35s ease}
   .card:hover .card__img{transform:scale(1.04);filter:brightness(.95)}
   .card__text{position:absolute;inset:auto 0 0 0;color:#fff;padding:18px;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0))}
-  .card__text h3{margin:0 0 6px}
-  .card__text p{margin:0;opacity:.95}
 
-  /* ===== Hodnocení (hvězdičky) ===== */
+  /* Rating */
   #rating-widget{display:grid;gap:10px;align-items:center;max-width:520px}
   #rating-widget .stars{display:flex;gap:8px;font-size:2rem;cursor:pointer;user-select:none}
   #rating-stats{display:flex;gap:10px;align-items:baseline}
   #rating-status{margin-left:auto;color:#6d6d6d}
 
-  /* ===== Kontakt ===== */
+  /* Kontakt */
   .contact-quick{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:8px}
   .qi{display:flex;align-items:center;gap:10px;background:#fff;padding:12px 14px;border-radius:12px;box-shadow:var(--shadow-sm)}
   .qi svg{width:18px;height:18px}
@@ -110,99 +118,44 @@
   .form input,.form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff}
   .form .actions{display:flex;gap:10px;justify-content:center}
 
-  /* ===== Footer ===== */
   footer{background:#efefec;padding:22px 16px;margin-top:28px}
   .footer-wrap{max-width:1140px;margin:0 auto;display:grid;gap:12px}
   .footer-links,.social{display:flex;gap:14px;flex-wrap:wrap}
-  .footer-links a,.social a{color:var(--ink);text-decoration:none}
-  .footer-links a:hover{text-decoration:underline}
 
-  /* ===== Desktop ===== */
+  /* Desktop hero adjustments */
   @media(min-width:960px){
     .header{height:64px;padding:0 22px}
     .burger{display:none}
     .nav{position:static;transform:none;opacity:1;pointer-events:auto;background:transparent;border:0}
     .nav ul{display:flex;gap:8px;padding:0}
     .nav a{padding:10px 12px;border-radius:10px}
-    .nav a:hover{background:rgba(0,0,0,.06)}
 
-    .hero__wrap{max-width:1140px;margin:0 auto;padding:64px 24px 96px}
     .hero__grid{grid-template-columns:360px 1fr;gap:22px;align-items:end}
     .hero__portrait img{width:360px;height:460px;border-radius:24px}
-    .hero h1{font-size:46px}
-
-    .contact-quick{grid-template-columns:repeat(2,1fr)}
+    .hero__wrap{padding:64px 24px 96px}
   }
 
-  /* omezení animací */
   @media (prefers-reduced-motion:reduce){
     .nav,.burger span,.burger span::before,.burger span::after,.card__img{transition:none}
   }
 
-  /* ===== Mobilní finetuning header/hero ===== */
+  /* Mobile finetuning */
   @media (max-width: 640px){
-    .header{
-      height: 56px;
-      padding: 0 12px;
-      padding-left: max(12px, env(safe-area-inset-left));
-      padding-right: max(12px, env(safe-area-inset-right));
-    }
-    .brand__name{ font-size: 18px; font-weight: 800; }
+    .header{height:56px;padding:0 12px;padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+    .brand__name{font-size:18px;font-weight:800}
+    .nav{top:56px;max-height:calc(100dvh - 56px);overflow:auto;background:rgba(255,255,255,.98);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+    body.no-scroll{overflow:hidden}
 
-    .nav{
-      top: 56px;
-      max-height: calc(100dvh - 56px);
-      overflow: auto;
-      background: rgba(255,255,255,.98);
-      border-bottom: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 10px 30px rgba(0,0,0,.12);
-    }
-    body.no-scroll{ overflow: hidden; }
-
-    .hero{ padding-top: 56px; }
-    .hero__overlay{
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,.65) 0%,
-        rgba(0,0,0,.45) 35%,
-        rgba(0,0,0,.20) 100%
-      );
-    }
-    .hero__wrap{ padding: 22px 16px 28px; }
-    .hero__grid{
-      grid-template-columns: 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-    .hero__portrait{
-      order: -1;
-      display: flex; justify-content: center;
-    }
-    .hero__portrait img{
-      width: 132px; height: 132px;
-      border-radius: 16px;
-      border: 1.5px solid rgba(255,255,255,.65);
-    }
-
-    .hero h1{
-      font-size: 32px;
-      line-height: 1.12;
-      margin: 6px 0 6px;
-      letter-spacing: .2px;
-    }
-    .hero .lead{
-      font-size: 1rem;
-      line-height: 1.45;
-      max-width: 36ch;
-      margin: 4px 0 10px;
-    }
-
-    .hero .btn{
-      width: 100%;
-      text-align: center;
-      padding: 12px 16px;
-    }
-    .hero .btn--primary{ box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+    .hero{padding-top:56px}
+    .hero__overlay{background:linear-gradient(to bottom,rgba(0,0,0,.65) 0%,rgba(0,0,0,.45) 35%,rgba(0,0,0,.2) 100%)}
+    .hero__wrap{padding:22px 16px 28px}
+    .hero__grid{grid-template-columns:1fr;gap:14px;align-items:start}
+    .hero__portrait{order:-1;display:flex;justify-content:center}
+    .hero__portrait img{width:132px;height:132px;border-radius:16px;border:1.5px solid rgba(255,255,255,.65)}
+    .hero h1{font-size:32px;line-height:1.12;margin:6px 0 6px;letter-spacing:.2px}
+    .hero .lead{font-size:1rem;line-height:1.45;max-width:36ch;margin:4px 0 10px}
+    .hero .btn{width:100%;text-align:center;padding:12px 16px}
+    .hero .btn--primary{box-shadow:0 8px 20px rgba(0,0,0,.18)}
   }
   </style>
 </head>
@@ -226,71 +179,74 @@
   <button class="burger" id="burger" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span></button>
 </header>
 
-<!-- ===== Služby (přesunuto NAD O mně) ===== -->
-<section class="section" id="sluzby">
-  <h2>Služby, které nabízím</h2>
-  <p>Možnost jednání osobně i on‑line.</p>
-  <div class="services">
-    <article class="svc-card">
-      <div class="svc-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5.25-3.5 8.69-7 10-3.5-1.31-7-4.75-7-10V6l7-3z" stroke="#3a3320" stroke-width="1.5"/></svg>
-      </div>
-      <div class="svc-title">Úrazové a životní pojištění</div>
-      <div class="svc-text">Praktická ochrana pro jednotlivce i rodiny.</div>
-    </article>
-    <article class="svc-card">
-      <div class="svc-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="#3a3320" stroke-width="1.5"/><path d="M5 10v10h14V10" stroke="#3a3320" stroke-width="1.5"/></svg>
-      </div>
-      <div class="svc-title">Pojištění majetku</div>
-      <div class="svc-text">Byt, dům i odpovědnost. Rozsáhlé asistence zdarma.</div>
-    </article>
-    <article class="svc-card">
-      <div class="svc-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5h14l2 5" stroke="#3a3320" stroke-width="1.5"/><circle cx="7" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/><circle cx="17" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/></svg>
-      </div>
-      <div class="svc-title">Pojištění vozidel i drobných elektrovozítek</div>
-      <div class="svc-text">Povinné, havarijní, připojištění a asistence.</div>
-    </article>
-    <article class="svc-card">
-      <div class="svc-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9" stroke="#3a3320" stroke-width="1.5"/><path d="M7 21v-4a3 3 0 013-3h4a3 3 0 013 3v4" stroke="#3a3320" stroke-width="1.5"/></svg>
-      </div>
-      <div class="svc-title">Hypotéky, úvěry na bydlení</div>
-      <div class="svc-text">Sjednání hypotéky, refinancování, úvěry na bydlení.</div>
-    </article>
-  </div>
-  <div class="section-cta">
-    <a href="#kontakt" class="btn btn--primary">Nezávazně poptat pojištění</a>
-  </div>
-</section>
-
-<!-- ===== O mně (hero) ===== -->
-<section class="hero" id="o-mne" aria-label="Úvod">
+<!-- ===== Intro (Hero + Services sidebar) ===== -->
+<section class="hero" aria-label="Úvod">
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="hero__overlay" aria-hidden="true"></div>
   <div class="hero__wrap">
-    <div class="hero__grid">
-      <div class="hero__portrait"><img src="portret.webp" alt="Daniel Verner – pojišťovací poradce"></div>
-      <div>
-        <h1>Jmenuji se Daniel Verner</h1>
-        <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
-        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-          <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
-          <a href="#sluzby" class="btn btn--ghost">Zobrazit služby</a>
+    <div class="intro-grid">
+
+      <!-- Sidebar Služby -->
+      <aside class="services-aside" id="sluzby" aria-label="Služby">
+        <div class="services services--vertical">
+          <article class="svc-card">
+            <div class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5.25-3.5 8.69-7 10-3.5-1.31-7-4.75-7-10V6l7-3z" stroke="#3a3320" stroke-width="1.5"/></svg>
+            </div>
+            <div class="svc-title">Úrazové a životní pojištění</div>
+            <div class="svc-text">Praktická ochrana pro jednotlivce i rodiny.</div>
+          </article>
+
+          <article class="svc-card">
+            <div class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="#3a3320" stroke-width="1.5"/><path d="M5 10v10h14V10" stroke="#3a3320" stroke-width="1.5"/></svg>
+            </div>
+            <div class="svc-title">Pojištění majetku</div>
+            <div class="svc-text">Byt, dům i odpovědnost. Rozsáhlé asistence zdarma.</div>
+          </article>
+
+          <article class="svc-card">
+            <div class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5h14l2 5" stroke="#3a3320" stroke-width="1.5"/><circle cx="7" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/><circle cx="17" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/></svg>
+            </div>
+            <div class="svc-title">Vozidla a drobná elektrovozítka</div>
+            <div class="svc-text">Povinné, havarijní, připojištění a asistence.</div>
+          </article>
+
+          <article class="svc-card">
+            <div class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9" stroke="#3a3320" stroke-width="1.5"/><path d="M7 21v-4a3 3 0 013-3h4a3 3 0 013 3v4" stroke="#3a3320" stroke-width="1.5"/></svg>
+            </div>
+            <div class="svc-title">Hypotéky, úvěry na bydlení</div>
+            <div class="svc-text">Sjednání, refinancování, poradenství.</div>
+          </article>
+        </div>
+      </aside>
+
+      <!-- Hero main -->
+      <div class="hero__grid" id="o-mne">
+        <div class="hero__portrait"><img src="portret.webp" alt="Daniel Verner – pojišťovací poradce"></div>
+        <div>
+          <h1>Jmenuji se Daniel Verner</h1>
+          <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
+            <a href="#situace" class="btn btn--ghost">Zobrazit nabídky podle situace</a>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ===== Výběr podle situace (grid) ===== -->
+<!-- ===== Podle situace ===== -->
 <section class="section" id="situace">
   <h2>Vyberte si pojištění podle situace</h2>
   <div class="grid">
     <a class="card" href="pracovni-neschopnost.html" aria-label="Pracovní neschopnost">
       <span class="card__img" style="background-image:url('PN.webp')"></span>
-      <div class="card__text"><h3>Pracovní neschopnost</h3><p>Možnost pojištění pouze pracovní neschopnosti – pro zaměstnance i OSVČ.</p></div>
+      <div class="card__text"><h3>Pracovní neschopnost</h3><p>Možnost pojištění pouze pracovní neschopnosti bez dalších připojištění – pro zaměstnance i OSVČ.</p></div>
     </a>
     <a class="card" href="urazovka-doprava.html" aria-label="Úraz v dopravě">
       <span class="card__img" style="background-image:url('traffic_300x300.webp')"></span>
@@ -329,9 +285,6 @@
       <span class="card__img" style="background-image:url('slovnik.webp')"></span>
       <div class="card__text"><h3>Slovník pojmů</h3><p>Rychlé vysvětlení, když smlouva mluví „cizí řečí“.</p></div>
     </a>
-  </div>
-  <div class="section-cta">
-    <a href="#kontakt" class="btn btn--primary">Nezávazně poptat pojištění</a>
   </div>
 </section>
 
