@@ -209,6 +209,47 @@
 @media (max-width: 960px){
   .burger{ display:grid; }         /* zobrazit až pod 960px */
 }
+    /* ===== Text v portrétu – jen na mobilu ===== */
+@media (max-width: 640px){
+  .hero__grid{ grid-template-columns: 1fr; gap: 0; }
+
+  .hero__portrait{ position: relative; }
+
+  /* když je text přesunut do portrétu, dostane třídu .in-portrait */
+  .hero__content.in-portrait{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(0,0,0,.58);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    backdrop-filter: blur(2px);
+  }
+
+  .hero__content.in-portrait h1{
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 0 0 6px;
+  }
+
+  .hero__content.in-portrait .lead{
+    font-size: 0.98rem;
+    line-height: 1.45;
+    margin: 0 0 10px;
+  }
+
+  .hero__content.in-portrait .btn{
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+  }
+}
+
+/* Desktop/tablet zůstává beze změny (text vpravo od portrétu) */
+
 
   </style>
 </head>
@@ -280,12 +321,13 @@
       </aside>
 
       <!-- Střed – Portrét -->
+      <div class="hero__grid">
       <div class="hero__portrait">
         <img src="portret.webp" alt="Daniel Verner – pojišťovací poradce">
       </div>
 
       <!-- Pravý sloupec – Text + CTA -->
-      <div class="intro-content">
+     <div class="hero__content">
         <h1>Jmenuji se Daniel Verner</h1>
         <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
         <p>
@@ -566,6 +608,42 @@
   });
 
   paintStars(0);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.querySelector('.hero__grid');
+  const portrait = grid?.querySelector('.hero__portrait');
+  // najdi textový blok (preferuj .hero__content, jinak druhý div)
+  let content = grid?.querySelector('.hero__content') || grid?.children[1];
+  if (!grid || !portrait || !content) return;
+
+  // zajisti, že má třídu hero__content
+  content.classList.add('hero__content');
+
+  // vytvoř "záložku", kam ho vrátíme na desktopu
+  const placeholder = document.createElement('div');
+  placeholder.style.display = 'contents';
+  grid.insertBefore(placeholder, content.nextSibling);
+
+  const mq = window.matchMedia('(max-width: 640px)');
+
+  function relocate(e){
+    if (e.matches) {
+      // mobil: přesuň do portrétu
+      portrait.appendChild(content);
+      content.classList.add('in-portrait');
+    } else {
+      // větší šířky: vrať zpět vedle portrétu (na původní pozici)
+      grid.insertBefore(content, placeholder);
+      content.classList.remove('in-portrait');
+      content.style.position = ''; // jistota
+    }
+  }
+
+  relocate(mq);
+  (mq.addEventListener ? mq.addEventListener('change', relocate)
+                       : mq.addListener(relocate));
+});
 </script>
 
 </body>
