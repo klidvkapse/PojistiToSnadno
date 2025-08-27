@@ -149,6 +149,67 @@
   @media (prefers-reduced-motion:reduce){
     .nav,.burger span,.burger span::before,.burger span::after,.card__img{transition:none}
   }
+    /* === Mobil: text uvnitř portrétu, karty zůstávají pod ním === */
+@media (max-width: 640px){
+  /* Grid pro hlavičku: jedna oblast "portrait" */
+  .hero__grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'portrait';
+    gap: 0;
+    position: relative;
+  }
+
+  /* Portrét je cílová oblast a referenční vrstva */
+  .hero__portrait{
+    grid-area: portrait;
+    position: relative;
+    z-index: 0;
+  }
+  .hero__portrait img{
+    width: 100%;
+    height: auto;
+    border-radius: 18px; /* pokud už máš jiné rohy, můžeš zrušit */
+  }
+
+  /* Pokud máš textový blok označený třídou .hero__text, použij tohle: */
+  .hero__grid > .hero__text{
+    grid-area: portrait;
+    align-self: end;           /* přilepí ke spodku portrétu */
+    justify-self: stretch;
+    margin: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(0,0,0,.58);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    z-index: 1;
+  }
+
+  /* Fallback, když nemáš .hero__text (druhý <div> v .hero__grid) */
+  .hero__grid > div:nth-of-type(2){
+    grid-area: portrait;
+    align-self: end;
+    justify-self: stretch;
+    margin: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(0,0,0,.58);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    z-index: 1;
+  }
+
+  /* Karty služeb – jen malý odskok, zůstávají pod portrétem */
+  .services-stack{ margin-top: 12px; }
+}
+
+/* === Navigace: desktop bez hamburgeru, tablet/mobil s hamburgerem === */
+.burger{ display:none; }           /* výchozí – skrýt */
+@media (max-width: 960px){
+  .burger{ display:grid; }         /* zobrazit až pod 960px */
+}
+
   </style>
 </head>
 <body>
