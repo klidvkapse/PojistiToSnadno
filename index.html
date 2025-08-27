@@ -25,305 +25,193 @@
  /* ===============================
    ZÁKLAD / PROMĚNNÉ
 =================================*/
+/* ========================
+   ZÁKLAD / PROMĚNNÉ
+======================== */
 :root{
   --paper:#ffffff;
   --ink:#1c1c1c;
   --muted:#6d6d6d;
   --bg:#f6f6f4;
-
   --gold:#c9b475;
   --gold-dark:#b39f60;
-
   --shadow-sm:0 2px 6px rgba(0,0,0,.08);
   --shadow-md:0 10px 24px rgba(0,0,0,.14);
-
   --radius:16px;
-
-  /* hero layout (desktop) */
-  --aside-w:360px;      /* šířka levého sloupku služeb */
-  --portrait-w:420px;   /* šířka portrétu */
-  --hero-gap:24px;
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:'Raleway',Arial,sans-serif;
-  color:var(--ink);
-  background:var(--bg);
-}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit}
+body{margin:0;font-family:'Raleway',Arial,sans-serif;color:var(--ink);background:var(--bg)}
 
-/* ===============================
+/* ========================
    HLAVIČKA
-=================================*/
+======================== */
 .header{
-  position:fixed; top:0; left:0; right:0; z-index:1000;
-  height:64px;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 22px;
-  background:rgba(255,255,255,.9);
+  position:fixed;top:0;left:0;right:0;height:56px;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 14px;background:rgba(255,255,255,.92);
   border-bottom:1px solid rgba(0,0,0,.06);
   backdrop-filter:blur(8px) saturate(140%);
 }
-.brand{display:flex; align-items:center; gap:10px; font-weight:800}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
 .brand__logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffe87a)}
 .brand__name{white-space:nowrap}
 
-.nav{display:flex}
-.nav ul{margin:0;padding:0;list-style:none;display:flex;gap:8px}
-.nav a{
-  display:block; padding:10px 12px; border-radius:10px;
-  text-decoration:none; color:var(--ink); font-weight:700;
+.nav{
+  position:fixed;top:56px;left:0;right:0;
+  transform:translateY(-8px);opacity:0;pointer-events:none;
+  background:#fff;transition:.25s;border-bottom:1px solid rgba(0,0,0,.06)
 }
-.nav a:hover{background:rgba(0,0,0,.06)}
+.nav ul{margin:0;padding:10px;list-style:none}
+.nav a{display:block;padding:10px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:700}
+.nav a:hover{background:rgba(0,0,0,.05)}
+.nav--open{transform:translateY(0);opacity:1;pointer-events:auto}
 
-.burger{
-  width:40px;height:40px;border:0;background:transparent;cursor:pointer;
-  border-radius:10px; display:none; place-items:center;
-}
+.burger{width:40px;height:40px;border:0;background:transparent;cursor:pointer;border-radius:10px;display:grid;place-items:center}
 .burger span,.burger span::before,.burger span::after{
-  content:""; display:block; width:22px;height:2px;background:#000;
-  position:relative; transition:.25s; border-radius:2px
+  content:"";display:block;width:22px;height:2px;background:#000;position:relative;transition:.25s;border-radius:2px
 }
-.burger span::before{position:absolute; transform:translateY(-6px)}
-.burger span::after{position:absolute; transform:translateY(6px)}
+.burger span::before{position:absolute;transform:translateY(-6px)}
+.burger span::after{position:absolute;transform:translateY(6px)}
 .burger[aria-expanded="true"] span{background:transparent}
 .burger[aria-expanded="true"] span::before{transform:rotate(45deg)}
 .burger[aria-expanded="true"] span::after{transform:rotate(-45deg)}
 
-/* ===============================
-   HERO
-=================================*/
-.hero{
-  position:relative; color:#fff; background:#000;
-  padding-top:64px; /* kvůli fixed headeru */
-}
-.hero__bg::before{
-  content:"";
-  position:absolute; inset:0;
-  background:url('img/fotouvod.webp') right center/cover no-repeat;
-  filter:blur(8px) saturate(110%);
-  opacity:.85;
-}
-.hero__overlay{
-  position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,.15));
-}
-.hero__wrap{
-  position:relative; z-index:2;
-  max-width:1200px; margin:0 auto;
-  padding:48px 24px 48px;
-}
-.hero__grid{
-  display:grid;
-  grid-template-columns: var(--aside-w) var(--portrait-w) 1fr;
-  align-items:start;
-  gap:var(--hero-gap);
+/* Desktop – plná navigace, žádný hamburger */
+@media(min-width:960px){
+  .header{height:64px;padding:0 22px}
+  .burger{display:none}
+  .nav{
+    position:static;transform:none;opacity:1;pointer-events:auto;
+    background:transparent;border:0
+  }
+  .nav ul{display:flex;gap:8px;padding:0}
+  .nav a{padding:10px 12px;border-radius:10px}
+  .nav a:hover{background:rgba(0,0,0,.06)}
 }
 
-/* levý „postranní“ sloupek služeb v rámci hero */
-.hero .services{
-  display:grid; gap:12px;
+/* ========================
+   HERO
+======================== */
+.hero{padding-top:56px;position:relative;background:#000;color:#fff}
+.hero__bg::before{
+  content:"";position:absolute;inset:0;
+  background:url('img/fotouvod.webp') right center/cover no-repeat;
+  filter:blur(8px) saturate(110%);opacity:.85
 }
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),rgba(0,0,0,.08))}
+.hero__wrap{position:relative;z-index:2;padding:40px 20px}
+
+/* --- karty služeb (globální) --- */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
 .svc-card{
-  background:#fff; color:#000;
-  border-radius:14px; padding:14px; display:grid; gap:6px;
-  box-shadow:var(--shadow-sm);
-  transition:transform .2s, box-shadow .2s;
+  background:#fff;border-radius:14px;padding:16px;display:grid;gap:8px;
+  box-shadow:var(--shadow-sm);transition:transform .2s, box-shadow .2s
 }
-.svc-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-md)}
+.svc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
 .svc-icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffe87a);display:grid;place-items:center}
-.svc-icon svg{width:18px;height:18px}
 .svc-title{font-weight:800}
 .svc-text{color:var(--muted);font-size:.95rem}
 
-/* portrét */
-.hero__portrait{
-  position:relative;
-  border-radius:18px; overflow:hidden;
-  box-shadow:0 30px 60px rgba(0,0,0,.35);
-}
-.hero__portrait img{
-  width:100%; height:auto; display:block;
-  border-radius:inherit;
+/* --- hero grid – DESKTOP rozvržení (sloupce: služby – portrét – text) --- */
+.hero__grid{
+  display:grid;gap:22px;align-items:end;
+  grid-template-columns: 420px 360px 1fr; /* sidebar, portrait, text */
+  max-width:1140px;margin:0 auto;
 }
 
-/* text vpravo (jen desktop/tablet) */
-.hero__content{align-self:end}
-.hero__content h1{font-size:42px; margin:0 0 14px}
-.hero__content p{margin:0 0 16px; line-height:1.5; max-width:56ch}
+/* volitelný obal pro svislé karty v heru */
+.services--sidebar{display:grid;gap:14px}
+.services--sidebar .svc-card{box-shadow:var(--shadow-sm)}
+
+/* portrét */
+.hero__portrait{position:relative}
+.hero__portrait img{
+  width:360px;height:460px;border-radius:24px;object-fit:cover;border:2px solid rgba(255,255,255,.7)
+}
+
+/* text vpravo (desktop) */
+.hero__text{align-self:end;max-width:560px}
+.hero__text h1{font-size:46px;margin:0 0 10px}
+.hero__text .lead{font-size:1.05rem;line-height:1.55;margin:0}
 
 /* tlačítka */
-.btn{
-  display:inline-block; padding:12px 20px; border-radius:12px;
-  font-weight:800; text-decoration:none;
-}
-.btn--primary{
-  background:linear-gradient(180deg,var(--gold),var(--gold-dark));
-  color:#000; box-shadow:var(--shadow-md)
-}
-.btn--ghost{
-  background:rgba(255,255,255,.2); color:#fff;
-  border:1px solid rgba(255,255,255,.6)
-}
+.btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:800;text-decoration:none}
+.btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000;box-shadow:var(--shadow-md)}
+.btn--ghost{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.6)}
 
-/* CTA stack pod portrétem – default schované (použije se na mobilu) */
-.hero__ctaStack{display:none}
-
-/* ===============================
-   DALŠÍ SEKCE
-=================================*/
-.section{max-width:1140px; margin:0 auto; padding:40px 20px; color:var(--ink)}
-.section h2{margin:0 0 16px}
-
-/* grid „podle situace“ */
-.grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.card{position:relative; border-radius:16px; overflow:hidden; background:#000; aspect-ratio:4/3; box-shadow:var(--shadow-sm); transition:transform .25s, box-shadow .25s}
-.card:hover{transform:translateY(-4px); box-shadow:var(--shadow-md)}
-.card__img{position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.82); transition:transform .35s ease, filter .35s ease}
-.card:hover .card__img{transform:scale(1.04); filter:brightness(.95)}
-.card__text{position:absolute; inset:auto 0 0 0; color:#fff; padding:18px; background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0))}
-.card__text h3{margin:0 0 6px}
-.card__text p{margin:0; opacity:.95}
-
-/* Rating widget */
-#rating-widget{display:grid; gap:10px; align-items:center; max-width:520px}
-#rating-widget .stars{display:flex; gap:8px; font-size:2rem; cursor:pointer; user-select:none}
-#rating-stats{display:flex; gap:10px; align-items:baseline}
-#rating-status{margin-left:auto; color:#6d6d6d}
-
-/* Kontakt */
-.contact-quick{display:grid; grid-template-columns:1fr; gap:10px; margin-bottom:8px}
-.qi{display:flex; align-items:center; gap:10px; background:#fff; padding:12px 14px; border-radius:12px; box-shadow:var(--shadow-sm)}
-.qi svg{width:18px;height:18px}
-.form{display:grid; gap:10px}
-.form input,.form textarea{width:100%; padding:12px; border-radius:10px; border:1px solid #ccc; font:inherit; background:#fff}
-.form .actions{display:flex; gap:10px; justify-content:center}
-
-/* Patička */
-footer{background:#efefec; padding:22px 16px; margin-top:28px}
-.footer-wrap{max-width:1140px; margin:0 auto; display:grid; gap:12px}
-.footer-links,.social{display:flex; gap:14px; flex-wrap:wrap}
-.footer-links a,.social a{text-decoration:none}
-.footer-links a:hover{text-decoration:underline}
-
-/* ===============================
-   PREFERENCE – méně animací
-=================================*/
-@media (prefers-reduced-motion:reduce){
-  .nav a,.burger span,.burger span::before,.burger span::after,.card__img{transition:none}
-}
-
-/* ===============================
-   BREAKPOINT ≤ 960px (tablet)
-=================================*/
-@media (max-width: 960px){
-  .header{height:56px; padding:0 16px}
-  .hero{padding-top:56px}
-  :root{
-    --aside-w:300px;
-    --portrait-w:360px;
-    --hero-gap:18px;
-  }
-  .hero__content h1{font-size:36px}
-}
-
-/* ===============================
-   MOBIL ≤ 640px
-   – text jde do portrétu jako overlay
-   – karty „Služby“ pod portrét
-   – hamburger menu
-=================================*/
+/* ========================
+   MOBIL – text dovnitř portrétu
+======================== */
 @media (max-width: 640px){
 
-  /* navigace – hamburger */
-  .burger{display:grid}
-  .nav{
-    position:fixed; top:56px; left:0; right:0;
-    transform:translateY(-8px); opacity:0; pointer-events:none;
-    background:rgba(255,255,255,.98);
-    border-bottom:1px solid rgba(0,0,0,.08);
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
-    transition:.25s;
-  }
-  .nav ul{display:block; padding:10px}
-  .nav a{display:block; padding:12px 14px; border-radius:10px}
-  .nav a:hover{background:rgba(0,0,0,.06)}
-  .nav--open{transform:translateY(0); opacity:1; pointer-events:auto}
-  body.no-scroll{overflow:hidden}
+  /* layout */
+  .hero{padding-top:56px}
+  .hero__wrap{padding:18px 14px 26px}
+  .hero__grid{grid-template-columns:1fr;gap:12px}
 
-  /* hero layout – sloupce nad sebe */
-  .hero__wrap{padding:24px 16px 28px}
-  .hero__grid{
-    grid-template-columns:1fr; gap:14px; align-items:start;
+  /* portrét nad vším */
+  .hero__portrait{order:1;position:relative}
+  .hero__portrait img{
+    width:100%;height:auto;max-height:62vh;object-fit:cover;border-radius:20px
   }
 
-  /* pořadí: portrét první, pak služby, desktopová textová část se skryje */
-  .hero .services{order:2}
-  .hero__content{display:none}
-
-  /* overlay uvnitř fotky – jen titulek + 3 řádky textu, bez scrollu */
-  .hero__portrait{order:1}
-  .hero__portrait .hero__overlay-card{
-    position:absolute;
-    left:50%; transform:translateX(-50%);
-    bottom:8px;
-
-    width:66%;
-    max-width:230px;
-    padding:8px 10px;
-    border-radius:12px;
-
-    background:rgba(0,0,0,.55);
-    backdrop-filter:blur(4px);
-    box-shadow:0 8px 24px rgba(0,0,0,.25);
-    color:#fff;
-
-    overflow:hidden; /* bez scrollu */
+  /* text přesunutý do portrétu jako overlay
+     (bere se stávající .hero__text – žádné HTML navíc) */
+  .hero__text{
+    position:absolute;left:12px;right:12px;bottom:12px;
+    background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.72));
+    color:#fff;border-radius:12px;padding:10px 12px;
+    max-height:40%;overflow:auto; /* žádný overflow stránky */
+    /* absolutně pozicovaný element neovlivní výšku gridu → žádné díry */
   }
-  .hero__portrait .hero__overlay-card h1{
-    font-size:20px; line-height:1.15; margin:0 0 4px;
-  }
-  .hero__portrait .hero__overlay-card p{
-    font-size:13px; line-height:1.35; margin:0;
+  .hero__text h1{font-size:22px;line-height:1.2;margin:0 0 6px}
+  .hero__text .lead{font-size:.95rem;line-height:1.35;margin:0}
 
-    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical;
-    overflow:hidden;
-  }
-  .hero__portrait .hero__overlay-card .btn{display:none !important}
+  /* CTA v overlayi nechceme – skryj jen uvnitř .hero__text */
+  .hero__text .btn{display:none}
 
-  /* CTA blok pod fotkou – viditelný jen na mobilu */
-  .hero__ctaStack{
-    display:grid; gap:10px;
-    width:min(92%, 420px);
-    margin:10px auto 0;
-  }
-  .hero__ctaStack .btn{
-    width:100%; text-align:center; padding:12px 14px; font-size:14px;
-  }
-  .hero__ctaStack .btn--ghost{
-    background:rgba(0,0,0,.06); border:1px solid rgba(0,0,0,.15); color:#000;
-  }
+  /* Karty služeb pod portrét – jako sloupec */
+  .services--sidebar{order:2}
+  .services--sidebar .svc-card{margin:6px 0}
 
-  /* službové karty pod portrétem – přes celou šířku */
-  .hero .services .svc-card{padding:14px}
+  /* Pokud máš CTA pod portrétem v samostatném kontejneru (např. .hero__ctas) */
+  .hero__ctas{display:flex;gap:10px;margin-top:12px}
+  .hero__ctas .btn{width:100%;text-align:center}
 }
 
-/* ===============================
-   DESKTOP ≥ 960px
-   – vypnout hamburger, ukázat vodorovnou navigaci
-=================================*/
-@media (min-width: 961px){
-  .burger{display:none}
-  .nav{position:static; transform:none; opacity:1; pointer-events:auto; background:transparent; box-shadow:none; border:0}
-  .nav ul{display:flex; gap:8px; padding:0}
+/* ========================
+   SEKCÍ „Služby“ / „Podle situace“ / Ostatní
+======================== */
+.section{max-width:1140px;margin:0 auto;padding:40px 20px}
+.section h2{margin:0 0 16px}
+
+/* karty grid v sekci „podle situace“ */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;box-shadow:var(--shadow-sm);transition:transform .25s, box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.card__img{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.82);transition:transform .35s ease,filter .35s ease}
+.card:hover .card__img{transform:scale(1.04);filter:brightness(.95)}
+.card__text{position:absolute;inset:auto 0 0 0;color:#fff;padding:18px;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0))}
+.card__text h3{margin:0 0 6px}
+.card__text p{margin:0;opacity:.95}
+
+/* formulář / patička */
+.qi{display:flex;align-items:center;gap:10px;background:#fff;padding:12px 14px;border-radius:12px;box-shadow:var(--shadow-sm)}
+.form{display:grid;gap:10px}
+.form input,.form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff}
+.form .actions{display:flex;gap:10px;justify-content:center}
+footer{background:#efefec;padding:22px 16px;margin-top:28px}
+.footer-wrap{max-width:1140px;margin:0 auto;display:grid;gap:12px}
+.footer-links,.social{display:flex;gap:14px;flex-wrap:wrap}
+.footer-links a,.social a{color:var(--ink);text-decoration:none}
+.footer-links a:hover{text-decoration:underline}
+
+/* přístupnost / preferované snížení pohybu */
+@media (prefers-reduced-motion:reduce){
+  .nav,.burger span,.burger span::before,.burger span::after,.card__img{transition:none}
 }
 
-/* Volitelně: malé doladění tlačítek v hero vpravo (desktop) */
-.hero__actions{display:flex; gap:10px; flex-wrap:wrap}
 </style>
 </head>
 <body>
