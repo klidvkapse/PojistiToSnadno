@@ -468,19 +468,25 @@
   }
 
   // REST: načtení dokumentu ratings/global
-  async function restGet() {
-    const idToken = await getIdToken();
-    const r = await fetch(`${BASE}/${DOC_NAME}`, {
+ // REST: načtení dokumentu ratings/global
+async function restGet() {
+  const idToken = await getIdToken();
+  const r = await fetch(
+    `${BASE}/${DOC_NAME}?key=${encodeURIComponent(API_KEY)}`, // ⬅️ přidaný ?key=...
+    {
       headers: { Authorization: `Bearer ${idToken}` }
-    });
-    if (r.status === 404) return { sum:0, count:0 };
-    if (!r.ok) throw new Error(`GET ${r.status}`);
-    const j = await r.json();
-    const f = j.fields || {};
-    const sum   = Number((f.sum?.integerValue ?? f.sum?.doubleValue ?? 0));
-    const count = Number((f.count?.integerValue ?? f.count?.doubleValue ?? 0));
-    return { sum, count };
-  }
+    }
+  );
+  if (r.status === 404) return { sum:0, count:0 };
+  if (!r.ok) throw new Error(`GET ${r.status}`);
+  const j = await r.json();
+  const f = j.fields || {};
+  const sum   = Number((f.sum?.integerValue ?? f.sum?.doubleValue ?? 0));
+  const count = Number((f.count?.integerValue ?? f.count?.doubleValue ?? 0));
+  return { sum, count };
+}
+
+ 
 
   // REST: atomické zvýšení sum a count (server-side transform)
   async function restIncrement(value) {
