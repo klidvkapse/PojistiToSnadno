@@ -377,20 +377,38 @@
   });
 </script>
 
-<!-- Rating: Firestore (REST) + lokální fallback -->
-<script>
-  const FIREBASE = {
-    apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",
+<!-- Rating: Firestore Web SDK + lokální fallback -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+  import { getFirestore, doc, getDoc, runTransaction } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",  // tvůj Web API Key
+    authDomain: "pojistitostnadno-2025.firebaseapp.com",
     projectId: "pojistitostnadno-2025"
   };
 
-  const $ = s => document.querySelector(s);
-  const starsRoot = document.getElementById('stars') || document.querySelector('#hodnoceni .stars');
-  const avgEl    = $('#rating-avg');
-  const countEl  = $('#rating-count');
-  const statusEl = $('#rating-status');
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
 
-  function decl(n, one, few, many){ return (n===1)?one:((n>=2&&n<=4)?few:many); }
+  // ----- DOM helpery
+  const $ = s => document.querySelector(s);
+  const starsRoot = $('#stars');
+  const avgEl = $('#rating-avg');
+  const countEl = $('#rating-count');
+  const statusEl = $('#rating-status');
+  const LS_VOTED = 'pts_rating_v1_voted';
+
+  const ref = doc(db, 'ratings', 'global');
+
+  function decl(n){ return 'hodnocení'; }
+  function setStats(sum, count){
+    const avg = count > 0 ? (sum / count) : 0;
+    avgEl.textContent   = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno';
+    countEl.textContent = `(${count} ${decl(count)})`;
+  }
   function paintStars(val){
     starsRoot?.querySelectorAll('[data-value]')?.forEach(el=>{
       const v = Number(el.getAttribute('data-value'));
@@ -398,108 +416,42 @@
       el.setAttribute('aria-checked', String(v === val));
     });
   }
-  function setStats(sum,count){
-    const avg = count>0 ? sum/count : 0;
-    avgEl.textContent   = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno';
-    countEl.textContent = `(${count} ${decl(count,'hodnocení','hodnocení','hodnocení')})`;
+
+  // ----- Načtení + anonymní přihlášení
+  async function initRating(){
+    statusEl.textContent = 'Načítám hodnocení…';
+    await signInAnonymously(auth);       // splní Rules (request.auth != null)
+    const snap = await getDoc(ref);
+    const data = snap.exists() ? snap.data() : { sum: 0, count: 0 };
+    setStats(Number(data.sum||0), Number(data.count||0));
+    statusEl.textContent = '';
   }
 
-  const LS_VOTED = 'pts_rating_v1_voted';
-  const LS_SUM   = 'pts_rating_v1_sum';
-  const LS_COUNT = 'pts_rating_v1_count';
-
-  function localGet(){
-    const sum = Number(localStorage.getItem(LS_SUM)||0);
-    const count = Number(localStorage.getItem(LS_COUNT)||0);
-    setStats(sum, count);
-    statusEl.textContent = 'Lokální režim (data se nesdílí).';
-  }
-  function localVote(value){
-    if(localStorage.getItem(LS_VOTED)){
-      statusEl.textContent = 'Už jste hodnotili na tomto zařízení.';
-      return;
-    }
-    const sum = Number(localStorage.getItem(LS_SUM)||0) + value;
-    const count = Number(localStorage.getItem(LS_COUNT)||0) + 1;
-    localStorage.setItem(LS_SUM, String(sum));
-    localStorage.setItem(LS_COUNT, String(count));
-    localStorage.setItem(LS_VOTED,'1');
-    setStats(sum, count);
-    statusEl.textContent = 'Děkujeme za hodnocení!';
-  }
-
-  const BASE = `https://firestore.googleapis.com/v1`;
-  const DOC_NAME = `projects/${FIREBASE.projectId}/databases/(default)/documents/ratings/global`;
-
-  async function restGet(){
-    const r = await fetch(`${BASE}/${DOC_NAME}?key=${encodeURIComponent(FIREBASE.apiKey)}`);
-    if (r.status === 404) return { sum:0, count:0 };
-    if (!r.ok) throw new Error(`GET ${r.status}`);
-    const j = await r.json();
-    const f = j.fields || {};
-    const sum   = Number((f.sum?.integerValue ?? f.sum?.doubleValue ?? 0));
-    const count = Number((f.count?.integerValue ?? f.count?.doubleValue ?? 0));
-    return { sum, count };
-  }
-
-  async function restEnsureDoc(){
-    const url = `${BASE}/projects/${FIREBASE.projectId}/databases/(default)/documents/ratings?documentId=global&key=${encodeURIComponent(FIREBASE.apiKey)}`;
-    const body = { fields: { sum:{integerValue:0}, count:{integerValue:0} } };
-    const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
-    if (!r.ok && r.status !== 409) throw new Error(`CREATE ${r.status}`);
-  }
-
-  async function restIncrement(value){
-    const url = `${BASE}/projects/${FIREBASE.projectId}/databases/(default)/documents:commit?key=${encodeURIComponent(FIREBASE.apiKey)}`;
-    const body = {
-      writes: [{
-        transform: {
-          document: DOC_NAME,
-          fieldTransforms: [
-            { fieldPath: "sum",   increment: { integerValue: value } },
-            { fieldPath: "count", increment: { integerValue: 1 } }
-          ]
-        }
-      }]
-    };
-    const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
-    if (!r.ok) throw new Error(`COMMIT ${r.status}`);
-  }
-
-  (async ()=>{
-    try{
-      statusEl.textContent = 'Načítám hodnocení…';
-      try { await restEnsureDoc(); } catch(_) {}
-      const { sum, count } = await restGet();
-      setStats(sum, count);
-      statusEl.textContent = '';
-    }catch(e){
-      console.warn('REST Firestore selhal, přepínám na lokální režim.', e);
-      localGet();
-    }
-  })();
-
-  function handleRate(val){
+  async function handleRate(val){
     paintStars(val);
-
-    if (statusEl.textContent.includes('Lokální režim')) {
-      return localVote(val);
-    }
-
     if (localStorage.getItem(LS_VOTED)) {
       statusEl.textContent = 'Už jste hodnotili na tomto zařízení.';
       return;
     }
     statusEl.textContent = 'Ukládám…';
-    restIncrement(val).then(async ()=>{
-      const { sum, count } = await restGet();
-      setStats(sum, count);
-      localStorage.setItem(LS_VOTED,'1');
+
+    try{
+      await runTransaction(db, async (tx) => {
+        const docSnap = await tx.get(ref);
+        const d = docSnap.exists() ? docSnap.data() : { sum: 0, count: 0 };
+        const sum = Number(d.sum || 0) + val;
+        const count = Number(d.count || 0) + 1;
+        tx.set(ref, { sum, count }, { merge: true });
+      });
+      const snap2 = await getDoc(ref);
+      const d2 = snap2.data() || { sum: 0, count: 0 };
+      setStats(Number(d2.sum||0), Number(d2.count||0));
+      localStorage.setItem(LS_VOTED, '1');
       statusEl.textContent = 'Děkujeme za hodnocení!';
-    }).catch(err=>{
+    }catch(err){
       console.error(err);
       statusEl.textContent = 'Nepodařilo se uložit. Zkuste to prosím znovu.';
-    });
+    }
   }
 
   starsRoot?.addEventListener('click', e=>{
@@ -517,7 +469,16 @@
   });
 
   paintStars(0);
+  initRating().catch(err=>{
+    console.warn('SDK selhalo, jedu lokální režim.', err);
+    // lokální fallback
+    const sum = Number(localStorage.getItem('pts_rating_v1_sum')||0);
+    const count = Number(localStorage.getItem('pts_rating_v1_count')||0);
+    setStats(sum, count);
+    statusEl.textContent = 'Lokální režim (data se nesdílí).';
+  });
 </script>
+
 
 </body>
 </html>
