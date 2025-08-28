@@ -430,14 +430,15 @@
 </script>
 
 <!-- Rating: Firestore Web SDK + lokální fallback -->
-<!-- Rating: Firestore Web SDK + lokální fallback -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
   import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
   import {
-    initializeFirestore, doc, getDoc, runTransaction
+    initializeFirestore,        // robustní FS (řeší blokovaný WebChannel)
+    doc, getDoc, runTransaction
   } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
+  // --- Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",
     authDomain: "pojistitostnadno-2025.firebaseapp.com",
@@ -448,6 +449,7 @@
   const app  = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db   = initializeFirestore(app, {
+    // pokud by síť stále dělala problémy, přepni níže na experimentalForceLongPolling:true
     experimentalAutoDetectLongPolling: true,
     useFetchStreams: false
   });
@@ -459,6 +461,8 @@
   const countEl  = $('#rating-count');
   const statusEl = $('#rating-status');
   const LS_VOTED = 'pts_rating_v1_voted';
+  const LS_SUM   = 'pts_rating_v1_sum';
+  const LS_COUNT = 'pts_rating_v1_count';
 
   const ref = doc(db, 'ratings', 'global');
 
@@ -469,16 +473,16 @@
       el.setAttribute('aria-checked', String(v === val));
     });
   }
-  function setStats(sum,count){
-    const avg = count>0 ? sum/count : 0;
+  function setStats(sum, count){
+    const avg = count > 0 ? sum / count : 0;
     avgEl.textContent   = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno';
     countEl.textContent = `(${count} hodnocení)`;
   }
 
-  // --- Načtení dat + anonymní přihlášení (kvůli Rules)
+  // --- Načtení + anonymní přihlášení (kvůli Rules)
   async function initRating(){
     statusEl.textContent = 'Načítám hodnocení…';
-    await signInAnonymously(auth);          // přihlášení jen tady
+    await signInAnonymously(auth);
     const snap = await getDoc(ref);
     const data = snap.exists() ? snap.data() : { sum:0, count:0 };
     setStats(Number(data.sum||0), Number(data.count||0));
@@ -499,8 +503,12 @@
       await runTransaction(db, async (tx) => {
         const snap = await tx.get(ref);
         const d = snap.exists() ? snap.data() : { sum:0, count:0 };
-        tx.set(ref, { sum: Number(d.sum||0)+val, count: Number(d.count||0)+1 }, { merge:true });
+        tx.set(ref, {
+          sum:   Number(d.sum||0)   + val,
+          count: Number(d.count||0) + 1
+        }, { merge:true });
       });
+
       const snap2 = await getDoc(ref);
       const d2 = snap2.data() || { sum:0, count:0 };
       setStats(Number(d2.sum||0), Number(d2.count||0));
@@ -512,6 +520,7 @@
     }
   }
 
+  // --- Ovládání hvězdiček
   starsRoot?.addEventListener('click', e=>{
     const el = e.target.closest('[data-value]');
     if (!el) return;
@@ -526,16 +535,36 @@
     }
   });
 
+  // --- Start
   paintStars(0);
   initRating().catch(err=>{
     console.warn('Firestore SDK selhalo, přepínám na lokální režim.', err);
-    // Lokální fallback
-    const sum = Number(localStorage.getItem('pts_rating_v1_sum')||0);
-    const count = Number(localStorage.getItem('pts_rating_v1_count')||0);
+    // Lokální fallback (nesdílené mezi uživateli)
+    const sum = Number(localStorage.getItem(LS_SUM)||0);
+    const count = Number(localStorage.getItem(LS_COUNT)||0);
     setStats(sum, count);
     statusEl.textContent = 'Lokální režim (data se nesdílí).';
+
+    // Lokální uložení při kliknutí (jen pro tento prohlížeč)
+    starsRoot?.addEventListener('click', e=>{
+      const el = e.target.closest('[data-value]');
+      if (!el) return;
+      if (localStorage.getItem(LS_VOTED)) {
+        statusEl.textContent = 'Už jste hodnotili na tomto zařízení.';
+        return;
+      }
+      const v = Number(el.getAttribute('data-value'));
+      const s = Number(localStorage.getItem(LS_SUM)||0) + v;
+      const c = Number(localStorage.getItem(LS_COUNT)||0) + 1;
+      localStorage.setItem(LS_SUM,   String(s));
+      localStorage.setItem(LS_COUNT, String(c));
+      localStorage.setItem(LS_VOTED,'1');
+      setStats(s, c);
+      statusEl.textContent = 'Děkujeme za hodnocení! (lokálně)';
+    }, { once:true });
   });
 </script>
+
 
 
 
