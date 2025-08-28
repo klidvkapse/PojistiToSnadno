@@ -53,17 +53,64 @@
     .form{background:#fff;border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:var(--soft)}
     .form input,.form textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px}
     footer{opacity:.95;color:#fff;text-align:center;margin:30px 0;text-shadow:0 2px 8px rgba(0,0,0,.55)}
-    details.card summary{cursor:pointer;font-weight:800;display:flex;align-items:center;gap:12px;list-style:none;position:relative;padding-right:92px;transition:transform .18s,box-shadow .18s}
+
+    /* ----- Accordion summary (cards) ----- */
+    details.card summary{
+      cursor:pointer;font-weight:800;display:flex;align-items:center;gap:12px;list-style:none;
+      position:relative;padding-right:120px; /* více místa pro prvek vpravo */
+      transition:transform .18s,box-shadow .18s
+    }
     details.card summary::-webkit-details-marker{display:none}
     details.card[open]{outline:2px solid #e2dbc9}
-    .mini-form{display:grid;gap:10px;margin-top:10px}
-    .mini-form input,.mini-form textarea,.mini-form select{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:12px}
-    .row.mini{display:grid;gap:10px}
-    @media(min-width:760px){.row.mini{grid-template-columns:repeat(2,1fr)}}
-    .mini-total{font-weight:800;margin-top:4px}
-    details.card summary::after{content:"Otevřít →";position:absolute;right:12px;top:50%;transform:translateY(-50%) translateX(-6px);background:#ede3bb;color:#3b321d;font-weight:800;padding:8px 12px;border-radius:999px;box-shadow:0 6px 14px rgba(0,0,0,.10);opacity:0;transition:.18s}
-    details.card:not([open]):hover summary::after{opacity:1;transform:translateY(-50%) translateX(0)}
-    details.card[open] summary::after{content:"Skrýt ↑";opacity:.9;transform:translateY(-50%)}
+
+    /* Pilulka napravo */
+    details.card summary::after{
+      content:"Otevřít →";position:absolute;right:12px;top:50%;
+      transform:translateY(-50%);
+      background:#ede3bb;color:#3b321d;font-weight:800;padding:8px 12px;border-radius:999px;
+      box-shadow:0 6px 14px rgba(0,0,0,.10);opacity:1;transition:.18s
+    }
+    details.card[open] summary::after{content:"Skrýt ↑";opacity:.9}
+
+    /* ----- Ručička 👉 na konci + ťukací animace ----- */
+    details.card summary::before{
+      content:"👉";position:absolute;right:46px;top:50%;transform:translateY(-50%);
+      font-size:22px;line-height:1;pointer-events:none;
+      filter:drop-shadow(0 2px 6px rgba(0,0,0,.35));
+      animation:fingerTap 1.4s ease-in-out infinite;
+    }
+    details.card[open] summary::before{display:none}
+
+    /* Pulse efekt pilulky, když je zavřeno */
+    details.card:not([open]) summary::after{animation:pulse 1.8s ease-out infinite}
+
+    /* Klíčové snímky */
+    @keyframes fingerTap{
+      0%   { transform:translateY(-50%) translateX(0)   rotate(0deg);   opacity:.9; }
+      18%  { transform:translateY(calc(-50% + 1px)) translateX(-4px) rotate(-12deg); opacity:1; }
+      28%  { transform:translateY(-50%) translateX(0)   rotate(0deg);   opacity:.9; }
+      55%  { transform:translateY(calc(-50% + 1px)) translateX(-4px) rotate(-12deg); opacity:1; }
+      65%  { transform:translateY(-50%) translateX(0)   rotate(0deg);   opacity:.9; }
+      100% { transform:translateY(-50%) translateX(0)   rotate(0deg);   opacity:.9; }
+    }
+    @keyframes pulse{
+      0%   { box-shadow:0 6px 14px rgba(0,0,0,.10), 0 0 0 0 rgba(237,227,187,0.45); }
+      60%  { box-shadow:0 6px 14px rgba(0,0,0,.10), 0 0 0 12px rgba(237,227,187,0); }
+      100% { box-shadow:0 6px 14px rgba(0,0,0,.10), 0 0 0 0 rgba(237,227,187,0); }
+    }
+
+    /* Mobile tweak – více místa vpravo */
+    @media (max-width:560px){
+      details.card summary{padding-right:110px}
+      details.card summary::before{right:40px}
+    }
+
+    /* Respektování reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      details.card summary::before,
+      details.card:not([open]) summary::after{animation:none}
+    }
+
     .icon-grid{display:grid;gap:12px}
     @media(min-width:780px){.icon-grid{grid-template-columns:repeat(3,1fr)}}
     .icon-tile{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px;display:flex;align-items:center;gap:10px;box-shadow:var(--soft)}
@@ -86,24 +133,9 @@
     .note{display:inline-block;margin-top:8px;color:#ffffff !important;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,.68)}
     @media(max-width:900px){html,body{background-attachment:scroll,scroll;background-position:center top,center}}
     @media(max-width:680px){.page{padding:14px}.hero{border-radius:20px}.hero-inner{padding:20px 16px}.hero h1{font-size:clamp(22px,7.2vw,30px)}.badges{gap:8px;margin:8px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;scroll-snap-type:x proximity}.badge{display:inline-block;scroll-snap-align:start;padding:6px 10px}.btn{padding:12px 16px}.hero::before{background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.22))}}
- /* Ručička na konci řádku */
-details.card summary::before{
-  content:"👉";
-  position:absolute;
-  right:46px; /* vzdálenost od pravého okraje */
-  top:50%;
-  transform:translateY(-50%);
-  font-size:22px;
-  line-height:1;
-  pointer-events:none;
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.35));
-  animation:fingerBlink 1.25s ease-in-out infinite;
-}
-details.card[open] summary::before{display:none}
-
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://pojistitostnadno.cz/#website","url":"https://pojistitostnadno.cz/","name":"PojistiToSnadno.cz","inLanguage":"cs","potentialAction":{"@type":"SearchAction","target":"https://pojistitostnadno.cz/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://pojistitostnadno.cz/pojisteni-nemovitosti#webpage","url":"https://pojistitostnadno.cz/pojisteni-nemovitosti","name":"Pojištění nemovitostí – dům, byt, chata, garáž","description":"Jednoduché pojištění nemovitostí na novou cenu. Ke kalkulaci stačí adresa a podlahová plocha v m².","inLanguage":"cs","isPartOf":{"@id":"https://pojistitostnadno.cz/#website"}},{"@type":"Organization","name":"PojistiToSnadno.cz","url":"https://pojistitostnadno.cz/","logo":"https://pojistitostnadno.cz/img/logo.png","contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"pojistitosnadno@gmail.com"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Domů","item":"https://pojistitostnadno.cz/"},{"@type":"ListItem","position":2,"name":"Pojištění nemovitostí","item":"https://pojistitostnadno.cz/pojisteni-nemovitosti"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Co znamená 10 % zdarma na vedlejší objekty?","acceptedAnswer":{"@type":"Answer","text":"Pokud má hlavní pojištěná nemovitost hodnotu 3 000 000 Kč, automaticky získáte 10 % navíc na vedlejší stavby na stejném pozemku – tedy 300 000 Kč. Vedlejšími objekty jsou například bazény, ploty, pergoly, přípojky, fotovoltaické elektrárny a další drobné stavby."}},{"@type":"Question","name":"Co znamená \"nová cena\"?","acceptedAnswer":{"@type":"Answer","text":"Plnění tak, aby šlo věc znovu pořídit nebo opravit v dnešních cenách – ne podle opotřebení."}},{"@type":"Question","name":"Proč stačí jen adresa a m²?","acceptedAnswer":{"@type":"Answer","text":"Na rychlou kalkulaci to stačí. Limity, zabezpečení a detaily doladíme po potvrzení nabídky."}},{"@type":"Question","name":"Jak snadno zjistím plochu?","acceptedAnswer":{"@type":"Answer","text":"U domu sečtěte obytná podlaží. U bytu vezměte výměru z prohlášení vlastníka nebo ze smlouvy. Přibližný odhad nevadí – dopočítáme."}},{"@type":"Question","name":"Pojistíte i vedlejší stavby a garáž mimo adresu pojištění?","acceptedAnswer":{"@type":"Answer","text":"Ano. Přidejte je do poznámky ve formuláři nebo napište v odpovědi na e‑mail s nabídkou."}}]}]}
+  {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://pojistitostnadno.cz/#website","url":"https://pojistitostnadno.cz/","name":"PojistiToSnadno.cz","inLanguage":"cs","potentialAction":{"@type":"SearchAction","target":"https://pojistitostnadno.cz/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://pojistitostnadno.cz/pojisteni-nemovitosti#webpage","url":"https://pojistitostnadno.cz/pojisteni-nemovitosti","name":"Pojištění nemovitostí – dům, byt, chata, garáž","description":"Jednoduché pojištění nemovitostí na novou cenu. Ke kalkulaci stačí adresa a podlahová plocha v m².","inLanguage":"cs","isPartOf":{"@id":"https://pojistitostnadno.cz/#website"}},{"@type":"Organization","name":"PojistiToSnadno.cz","url":"https://pojistitostnadno.cz/","logo":"https://pojistitostnadno.cz/img/logo.png","contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"pojistitosnadno@gmail.com"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Domů","item":"https://pojistitostnadno.cz/"},{"@type":"ListItem","position":2,"name":"Pojištění nemovitostí","item":"https://pojistitostnadno.cz/pojisteni-nemovitosti"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Co znamená 10 % zdarma na vedlejší objekty?","acceptedAnswer":{"@type":"Answer","text":"Pokud má hlavní pojištěná nemovitost hodnotu 3 000 000 Kč, automaticky získáte 10 % navíc na vedlejší stavby na stejném pozemku – tedy 300 000 Kč. Vedlejšími objekty jsou například bazény, ploty, pergoly, přípojky, fotovoltaické elektrárny a další drobné stavby."}},{"@type":"Question","name":"Co znamená \"nová cena\"?","acceptedAnswer":{"@type":"Answer","text":"Plnění tak, aby šlo věc znovu pořídit nebo opravit v dnešních cenách – ne podle opotřebení."}},{"@type":"Question","name":"Proč stačí jen adresa a m²?","acceptedAnswer":{"@type":"Answer","text":"Na rychlou kalkulaci to stačí. Limity, zabezpečení a detaily doladíme po potvrzení nabídky."}},{"@type":"Question","name":"Pojistíte i vedlejší stavby a garáž mimo adresu pojištění?","acceptedAnswer":{"@type":"Answer","text":"Ano. Přidejte je do poznámky ve formuláři nebo napište v odpovědi na e‑mail s nabídkou."}}]}]}
   </script>
 </head>
 <body>
@@ -124,9 +156,9 @@ details.card[open] summary::before{display:none}
     </section>
 
     <section class="section" style="margin-top:14px">
-  <h2 style="margin:0 0 8px">Co pojistíme</h2>
-  <div id="co-pojistime" class="grid">
-        <details class="card" name="coPojistime">
+      <h2 style="margin:0 0 8px">Co pojistíme</h2>
+      <div id="co-pojistime" class="grid">
+        <details class="card">
           <summary>🏡 Rodinný dům</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Rodinný dům" />
@@ -154,7 +186,7 @@ details.card[open] summary::before{display:none}
           </form>
         </details>
 
-        <details class="card" name="coPojistime">
+        <details class="card">
           <summary>🏢 Byt / bytová jednotka</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Byt" />
@@ -181,7 +213,7 @@ details.card[open] summary::before{display:none}
           </form>
         </details>
 
-        <details class="card" name="coPojistime">
+        <details class="card">
           <summary>🏕️ Rekreační objekt</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Rekreační objekt" />
@@ -198,7 +230,7 @@ details.card[open] summary::before{display:none}
           </form>
         </details>
 
-        <details class="card" name="coPojistime">
+        <details class="card">
           <summary>🚗 Garáž</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Garáž" />
@@ -215,7 +247,7 @@ details.card[open] summary::before{display:none}
           </form>
         </details>
 
-        <details class="card" name="coPojistime">
+        <details class="card">
           <summary>🏗️ Rozestavěný dům</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Rozestavěný dům" />
@@ -254,7 +286,10 @@ details.card[open] summary::before{display:none}
         <span class="chip">👨‍👩‍👧 Platí pro všechny členy domácnosti včetně zvířat</span>
         <span class="chip">🏃‍♂️ Škody při běžné činnosti a sportu</span>
         <span class="chip">🌍 Celosvětová platnost</span><br>
-      <h2 style="margin:0 0 8px">Příklady:</h2>  <span class="chip">💧 Vytopení sousedů</span>  <span class="chip">🚲 Zranění chodce při jízdě na kole</span>   <span class="chip">🐔 zakousnutí sousedovic slepice vašim psem</span>
+        <h2 style="margin:0 0 8px">Příklady:</h2>
+        <span class="chip">💧 Vytopení sousedů</span>
+        <span class="chip">🚲 Zranění chodce při jízdě na kole</span>
+        <span class="chip">🐔 zakousnutí sousedovic slepice vašim psem</span>
       </div>
       <p class="note">Limity nastavíme podle vašich potřeb.</p>
     </section>
@@ -384,25 +419,6 @@ details.card[open] summary::before{display:none}
     </footer>
 
     <script>
-  
-(function(){
-  const grp=document.getElementById('co-pojistime');
-  if(grp){
-    grp.addEventListener('toggle',function(e){
-      if(e.target.nodeName!=='DETAILS'||!e.target.open)return;
-      grp.querySelectorAll('details[open]').forEach(d=>{if(d!==e.target)d.open=false;});
-    },true);
-  }
-  const faq=document.querySelector('.faq-grid');
-  if(faq){
-    faq.addEventListener('toggle',function(e){
-      if(e.target.nodeName!=='DETAILS'||!e.target.open)return;
-      faq.querySelectorAll('details[open]').forEach(d=>{if(d!==e.target)d.open=false;});
-    },true);
-  }
-})();
-</script>
-     <script>
       (function(){
         const grp=document.getElementById('co-pojistime');
         if(grp){
@@ -411,8 +427,16 @@ details.card[open] summary::before{display:none}
             grp.querySelectorAll('details[open]').forEach(d=>{if(d!==e.target)d.open=false;});
           },true);
         }
+        const faq=document.querySelector('.faq-grid');
+        if(faq){
+          faq.addEventListener('toggle',function(e){
+            if(e.target.nodeName!=='DETAILS'||!e.target.open)return;
+            faq.querySelectorAll('details[open]').forEach(d=>{if(d!==e.target)d.open=false;});
+          },true);
+        }
       })();
     </script>
   </main>
 </body>
 </html>
+
