@@ -338,6 +338,67 @@
   .hero .lead{ display: none !important; }
   .hero .btn{ display: none !important; }
 }
+    /* === MOBILE (≤640px) – portrét na plnou šířku + menší bublina s názvem === */
+@media (max-width: 640px){
+
+  /* natáhnout portrét od okraje k okraji */
+  .hero { overflow: hidden; }
+  .hero__wrap{ padding: 18px 0 26px; }               /* menší postranní padding kontejneru */
+  .hero__grid{ grid-template-columns: 1fr; gap: 14px; }
+  .hero__portrait{ order: -1; margin-inline: calc(50% - 50vw); width: 100vw; }
+  .hero__portrait img{
+    width: 100%;
+    height: 320px;                 /* výška na mobilu */
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1.5px solid rgba(255,255,255,.65);
+  }
+
+  /* skrýt velký desktopový nadpis (ten je vedle portrétu) */
+  .hero__grid > div:nth-child(2) h1{ display:none; }
+
+  /* malá bublina s názvem přes fotku (bez potřeby měnit HTML) */
+  .hero__portrait{
+    position: relative;
+  }
+  .hero__portrait::after{
+    content: "Jmenuji se Daniel Verner";
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    padding: 10px 14px;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.05;
+    color: #fff;
+    background: rgba(0,0,0,.68);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    backdrop-filter: blur(4px);
+  }
+
+  /* drobný tuning textu pod fotkou a tlačítek */
+  .hero .lead{ font-size: .98rem; line-height: 1.45; max-width: 36ch; margin: 4px 16px 8px; }
+  .hero .btn{ width: 100%; text-align: center; padding: 12px 16px; }
+  .hero .btn--primary{ box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+}
+
+/* === DESKTOP (≥960px) – tvrdé resetování, aby zůstal původní vzhled === */
+@media (min-width: 960px){
+  .intro-grid{ grid-template-columns: 320px 1fr !important; }
+  .hero__grid{ grid-template-columns: 360px 1fr !important; gap: 22px !important; align-items: end !important; }
+  .hero__portrait{ margin: 0 !important; width: auto !important; }
+  .hero__portrait img{
+    width: 360px !important;
+    height: 460px !important;
+    border-radius: 24px !important;
+    object-fit: cover !important;
+    border: 2px solid rgba(255,255,255,.7);
+  }
+  .hero__wrap{ padding: 64px 24px 96px !important; }
+  .services-aside{ position: sticky; top: 84px; }
+}
+
 
 
   </style>
