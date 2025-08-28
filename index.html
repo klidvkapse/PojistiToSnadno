@@ -289,6 +289,56 @@
 .hero__grid > div:not(.hero__portrait){
   display: none;
 }
+    /* ---- MOBILE ONLY: full-width portrét + menší title bubble ---- */
+@media (max-width: 640px){
+
+  /* pořadí: nejdřív portrét, pak karty služeb */
+  .intro-grid{
+    display: flex;
+    flex-direction: column;
+  }
+  .hero__grid{ order: 1; position: relative; }
+  .services-aside{ order: 2; margin-top: 12px; }
+
+  /* portrét přes celou šířku (vytažení z vnitřního paddingu) */
+  .hero__portrait{
+    position: relative;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-bottom: 10px;
+  }
+  .hero__portrait img{
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 56vh;          /* drží rozumnou výšku na malých displejích */
+    object-fit: cover;
+    border: none;
+    border-radius: 24px;       /* hezké zaoblení jako na screenu */
+  }
+
+  /* menší „bubble“ s H1 přes fotku */
+  .hero__grid h1{
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 22px;
+    line-height: 1.15;
+    border-radius: 14px;
+    color: #fff;
+    background: rgba(0,0,0,.78);
+    box-shadow: 0 10px 24px rgba(0,0,0,.28);
+    max-width: 75%;
+    z-index: 3;
+  }
+
+  /* na mobilu neschovávej portrét textem/CTA */
+  .hero .lead{ display: none !important; }
+  .hero .btn{ display: none !important; }
+}
+
 
   </style>
 </head>
