@@ -86,6 +86,21 @@
     .note{display:inline-block;margin-top:8px;color:#ffffff !important;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,.68)}
     @media(max-width:900px){html,body{background-attachment:scroll,scroll;background-position:center top,center}}
     @media(max-width:680px){.page{padding:14px}.hero{border-radius:20px}.hero-inner{padding:20px 16px}.hero h1{font-size:clamp(22px,7.2vw,30px)}.badges{gap:8px;margin:8px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;scroll-snap-type:x proximity}.badge{display:inline-block;scroll-snap-align:start;padding:6px 10px}.btn{padding:12px 16px}.hero::before{background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.22))}}
+ /* Ručička na konci řádku */
+details.card summary::before{
+  content:"👉";
+  position:absolute;
+  right:46px; /* vzdálenost od pravého okraje */
+  top:50%;
+  transform:translateY(-50%);
+  font-size:22px;
+  line-height:1;
+  pointer-events:none;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.35));
+  animation:fingerBlink 1.25s ease-in-out infinite;
+}
+details.card[open] summary::before{display:none}
+
   </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://pojistitostnadno.cz/#website","url":"https://pojistitostnadno.cz/","name":"PojistiToSnadno.cz","inLanguage":"cs","potentialAction":{"@type":"SearchAction","target":"https://pojistitostnadno.cz/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://pojistitostnadno.cz/pojisteni-nemovitosti#webpage","url":"https://pojistitostnadno.cz/pojisteni-nemovitosti","name":"Pojištění nemovitostí – dům, byt, chata, garáž","description":"Jednoduché pojištění nemovitostí na novou cenu. Ke kalkulaci stačí adresa a podlahová plocha v m².","inLanguage":"cs","isPartOf":{"@id":"https://pojistitostnadno.cz/#website"}},{"@type":"Organization","name":"PojistiToSnadno.cz","url":"https://pojistitostnadno.cz/","logo":"https://pojistitostnadno.cz/img/logo.png","contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"pojistitosnadno@gmail.com"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Domů","item":"https://pojistitostnadno.cz/"},{"@type":"ListItem","position":2,"name":"Pojištění nemovitostí","item":"https://pojistitostnadno.cz/pojisteni-nemovitosti"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Co znamená 10 % zdarma na vedlejší objekty?","acceptedAnswer":{"@type":"Answer","text":"Pokud má hlavní pojištěná nemovitost hodnotu 3 000 000 Kč, automaticky získáte 10 % navíc na vedlejší stavby na stejném pozemku – tedy 300 000 Kč. Vedlejšími objekty jsou například bazény, ploty, pergoly, přípojky, fotovoltaické elektrárny a další drobné stavby."}},{"@type":"Question","name":"Co znamená \"nová cena\"?","acceptedAnswer":{"@type":"Answer","text":"Plnění tak, aby šlo věc znovu pořídit nebo opravit v dnešních cenách – ne podle opotřebení."}},{"@type":"Question","name":"Proč stačí jen adresa a m²?","acceptedAnswer":{"@type":"Answer","text":"Na rychlou kalkulaci to stačí. Limity, zabezpečení a detaily doladíme po potvrzení nabídky."}},{"@type":"Question","name":"Jak snadno zjistím plochu?","acceptedAnswer":{"@type":"Answer","text":"U domu sečtěte obytná podlaží. U bytu vezměte výměru z prohlášení vlastníka nebo ze smlouvy. Přibližný odhad nevadí – dopočítáme."}},{"@type":"Question","name":"Pojistíte i vedlejší stavby a garáž mimo adresu pojištění?","acceptedAnswer":{"@type":"Answer","text":"Ano. Přidejte je do poznámky ve formuláři nebo napište v odpovědi na e‑mail s nabídkou."}}]}]}
@@ -112,7 +127,7 @@
   <h2 style="margin:0 0 8px">Co pojistíme</h2>
   <div id="co-pojistime" class="grid">
         <details class="card" name="coPojistime">
-          <summary>🏡 Rodinný dům<span class="finger" aria-hidden="true">👉</span></summary>
+          <summary>🏡 Rodinný dům</summary>
           <form class="mini-form" action="https://formspree.io/f/mvgqqpev" method="POST">
             <input type="hidden" name="Typ" value="Rodinný dům" />
             <input name="Adresa" placeholder="Adresa domu" required />
