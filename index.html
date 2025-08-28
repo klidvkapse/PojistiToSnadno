@@ -140,322 +140,24 @@
     .nav,.burger span,.burger span::before,.burger span::after,.card__img{transition:none}
   }
 
- /* ===== Mobile finetuning (ONLY mobile) ===== */
-@media (max-width: 640px){
+  /* Mobile finetuning */
+  @media (max-width: 640px){
+    .header{height:56px;padding:0 12px;padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+    .brand__name{font-size:18px;font-weight:800}
+    .nav{top:56px;max-height:calc(100dvh - 56px);overflow:auto;background:rgba(255,255,255,.98);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+    body.no-scroll{overflow:hidden}
 
-  /* horní lišta */
-  .header{
-    height:56px;
-    padding:0 12px;
-    padding-left:max(12px, env(safe-area-inset-left));
-    padding-right:max(12px, env(safe-area-inset-right));
+    .hero{padding-top:56px}
+    .hero__overlay{background:linear-gradient(to bottom,rgba(0,0,0,.65) 0%,rgba(0,0,0,.45) 35%,rgba(0,0,0,.2) 100%)}
+    .hero__wrap{padding:22px 16px 28px}
+    .hero__grid{grid-template-columns:1fr;gap:14px;align-items:start}
+    .hero__portrait{order:-1;display:flex;justify-content:center}
+    .hero__portrait img{width:132px;height:132px;border-radius:16px;border:1.5px solid rgba(255,255,255,.65)}
+    .hero h1{font-size:32px;line-height:1.12;margin:6px 0 6px;letter-spacing:.2px}
+    .hero .lead{font-size:1rem;line-height:1.45;max-width:36ch;margin:4px 0 10px}
+    .hero .btn{width:100%;text-align:center;padding:12px 16px}
+    .hero .btn--primary{box-shadow:0 8px 20px rgba(0,0,0,.18)}
   }
-  .brand__name{ font-size:18px; font-weight:800; }
-  .nav{
-    top:56px;
-    max-height:calc(100dvh - 56px);
-    overflow:auto;
-    background:rgba(255,255,255,.98);
-    border-bottom:1px solid rgba(0,0,0,.08);
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
-  }
-  body.no-scroll{ overflow:hidden; }
-
-  /* hero pozadí */
-  .hero{ padding-top:56px; }
-  .hero__overlay{
-    background:linear-gradient(
-      to bottom,
-      rgba(0,0,0,.65) 0%,
-      rgba(0,0,0,.45) 35%,
-      rgba(0,0,0,.20) 100%
-    );
-  }
-  .hero__wrap{ padding:22px 16px 28px; }
-
-  /* — rozložení úvodní mřížky: PORTRÉT NAHOŘE, SLUŽBY POD NÍM — */
-  .intro-grid{ display:grid; gap:14px; }
-  .hero__grid{ order:1; }
-  .services-aside{ order:2; }
-
-  /* portrét */
-  .hero__grid{
-    grid-template-columns: 1fr;   /* jeden sloupec */
-    align-items: start;
-    gap: 14px;
-    position: relative;
-  }
-  .hero__portrait{
-    order:-1;
-    display:flex;
-    justify-content:center;
-    position:relative;            /* kotevní prvek pro overlay */
-  }
-  .hero__portrait img{
-    width:132px; height:132px;
-    border-radius:16px;
-    border:1.5px solid rgba(255,255,255,.65);
-  }
-
-  /* — MALÝ TEXTOVÝ BOX UVNITŘ PORTRÉTU — */
-  /* cílíme na ten druhý <div> v .hero__grid (s H1 + textem + CTA) */
-  .hero__grid > div:last-child{
-    position:absolute;
-    left:12px; right:12px; bottom:12px;
-    padding:10px 12px;
-    border-radius:12px;
-    background:rgba(0,0,0,.58);
-    backdrop-filter:blur(6px) saturate(120%);
-    box-shadow:0 10px 22px rgba(0,0,0,.28);
-    max-width:calc(100% - 24px);
-    max-height:42%;              /* menší, aby nezakrýval portrét */
-    overflow:hidden;             /* žádný scrollbar */
-  }
-
-  /* velikosti textu v overlayi – kratší a bez zalamování do dlouha */
-  .hero__grid > div:last-child h1{
-    font-size:22px;              /* menší nadpis v overlayi */
-    line-height:1.15;
-    margin:0 0 4px;
-  }
-  .hero__grid > div:last-child .lead{
-    font-size:14.5px;
-    line-height:1.35;
-    margin:0;
-    display:-webkit-box;         /* 3 řádky a dost */
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
-  }
-
-  /* v overlayi nechceme tlačítka */
-  .hero__grid > div:last-child .btn{ display:none !important; }
-
-  /* volitelně: CTA si můžeš dát níž (např. do jiné sekce), tady je neschovávám jinak */
-
-  /* karty služeb – pořád hezky na šířku */
-  .services--vertical{ gap:12px; }
-
-  /* nadpisy mimo overlay (např. další sekce) */
-  .hero h1{ letter-spacing:.2px; }
-}
-/* ===== MOBILE: pořadí, celoplošný portrét a menší badge ===== */
-
-/* pořadí v intru: nejdřív portrét, pak karty služeb */
-.intro-grid{ display:flex; flex-direction:column; }
-.hero__grid{ order:1; }
-.services-aside{ order:2; }
-
-.hero__grid{
-  grid-template-columns: 1fr;   /* jeden sloupec */
-  gap: 14px;
-  align-items: start;
-}
-
-/* portrét přes celou šířku sloupce */
-.hero__portrait{
-  order:-1;
-  position: relative;
-}
-.hero__portrait img{
-  width: 100%;
-  height: auto;
-  display: block;
-  border: 0;
-  border-radius: 18px;
-}
-
-/* malý badge s titulkem – ať nepřekrývá fotku */
-.hero__title-floating{
-  position: absolute;
-  left: 14px;
-  top: 14px;
-  padding: 10px 14px;
-  max-width: 75%;
-  border-radius: 14px;
-
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 1.1;
-  color: #fff;
-
-  background: rgba(0,0,0,.75);
-  box-shadow: 0 6px 18px rgba(0,0,0,.28);
-  backdrop-filter: blur(4px) saturate(140%);
-}
-
-/* původní dlouhý text + tlačítka u portrétu na mobilu skryjeme,
-   ať nepřekrývají fotku ani neshazují layout */
-.hero__grid > div:not(.hero__portrait){
-  display: none;
-}
-    /* ---- MOBILE ONLY: full-width portrét + menší title bubble ---- */
-@media (max-width: 640px){
-
-  /* pořadí: nejdřív portrét, pak karty služeb */
-  .intro-grid{
-    display: flex;
-    flex-direction: column;
-  }
-  .hero__grid{ order: 1; position: relative; }
-  .services-aside{ order: 2; margin-top: 12px; }
-
-  /* portrét přes celou šířku (vytažení z vnitřního paddingu) */
-  .hero__portrait{
-    position: relative;
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-bottom: 10px;
-  }
-  .hero__portrait img{
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 56vh;          /* drží rozumnou výšku na malých displejích */
-    object-fit: cover;
-    border: none;
-    border-radius: 24px;       /* hezké zaoblení jako na screenu */
-  }
-
-  /* menší „bubble“ s H1 přes fotku */
-  .hero__grid h1{
-    position: absolute;
-    left: 20px;
-    top: 14px;
-    margin: 0;
-    padding: 10px 14px;
-    font-size: 22px;
-    line-height: 1.15;
-    border-radius: 14px;
-    color: #fff;
-    background: rgba(0,0,0,.78);
-    box-shadow: 0 10px 24px rgba(0,0,0,.28);
-    max-width: 75%;
-    z-index: 3;
-  }
-
-  /* na mobilu neschovávej portrét textem/CTA */
-  .hero .lead{ display: none !important; }
-  .hero .btn{ display: none !important; }
-}
-    /* === MOBILE (≤640px) – portrét na plnou šířku + menší bublina s názvem === */
-@media (max-width: 640px){
-
-  /* natáhnout portrét od okraje k okraji */
-  .hero { overflow: hidden; }
-  .hero__wrap{ padding: 18px 0 26px; }               /* menší postranní padding kontejneru */
-  .hero__grid{ grid-template-columns: 1fr; gap: 14px; }
-  .hero__portrait{ order: -1; margin-inline: calc(50% - 50vw); width: 100vw; }
-  .hero__portrait img{
-    width: 100%;
-    height: 320px;                 /* výška na mobilu */
-    object-fit: cover;
-    border-radius: 16px;
-    border: 1.5px solid rgba(255,255,255,.65);
-  }
-
-  /* skrýt velký desktopový nadpis (ten je vedle portrétu) */
-  .hero__grid > div:nth-child(2) h1{ display:none; }
-
-  /* malá bublina s názvem přes fotku (bez potřeby měnit HTML) */
-  .hero__portrait{
-    position: relative;
-  }
-  .hero__portrait::after{
-    content: "Jmenuji se Daniel Verner";
-    position: absolute;
-    left: 16px;
-    top: 12px;
-    padding: 10px 14px;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 1.05;
-    color: #fff;
-    background: rgba(0,0,0,.68);
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    backdrop-filter: blur(4px);
-  }
-
-  /* drobný tuning textu pod fotkou a tlačítek */
-  .hero .lead{ font-size: .98rem; line-height: 1.45; max-width: 36ch; margin: 4px 16px 8px; }
-  .hero .btn{ width: 100%; text-align: center; padding: 12px 16px; }
-  .hero .btn--primary{ box-shadow: 0 8px 20px rgba(0,0,0,.18); }
-}
-
-/* === DESKTOP (≥960px) – tvrdé resetování, aby zůstal původní vzhled === */
-@media (min-width: 960px){
-  .intro-grid{ grid-template-columns: 320px 1fr !important; }
-  .hero__grid{ grid-template-columns: 360px 1fr !important; gap: 22px !important; align-items: end !important; }
-  .hero__portrait{ margin: 0 !important; width: auto !important; }
-  .hero__portrait img{
-    width: 360px !important;
-    height: 460px !important;
-    border-radius: 24px !important;
-    object-fit: cover !important;
-    border: 2px solid rgba(255,255,255,.7);
-  }
-  .hero__wrap{ padding: 64px 24px 96px !important; }
-  .services-aside{ position: sticky; top: 84px; }
-}
-    /* ===== DESKTOP RESET (≥1100px) – zpátky: služby | portrét | text ===== */
-@media (min-width: 1100px){
-
-  /* šířka a odsazení celé úvodní sekce */
-  .hero__wrap{
-    max-width: 1200px;
-    padding: 64px 24px 96px;
-    margin: 0 auto;
-  }
-
-  /* 2 sloupce: 320px postranní panel + zbytek pro hlavní část */
-  .intro-grid{
-    display: grid;
-    grid-template-columns: 320px 1fr !important;
-    align-items: start;
-    gap: 24px;
-  }
-
-  /* postranní panel služeb vlevo, sticky */
-  .services-aside{
-    position: sticky;
-    top: 96px;
-  }
-  .services--vertical{ gap: 14px; }
-
-  /* hlavní část: portrét vlevo (360px) + text vpravo */
-  .hero__grid{
-    display: grid;
-    grid-template-columns: 360px 1fr !important;
-    gap: 24px;
-    align-items: end;
-  }
-
-  .hero__portrait{ order: initial; }
-  .hero__portrait img{
-    width: 360px !important;
-    height: 460px !important;
-    object-fit: cover;
-    border-radius: 24px;
-    border: 2px solid rgba(255,255,255,.65);
-  }
-
-  /* velký nadpis na desktopu zapnout, „bublinu“ skrýt jen pro mobil */
-  .hero__grid h1{
-    display: block !important;
-    font-size: 46px;
-    line-height: 1.1;
-    margin: 0 0 10px;
-  }
-  .hero__chip{ display: none !important; }
-
-  /* čitelnost odstavce vpravo */
-  .hero .lead{ max-width: 56ch; }
-}
-
-
-
-
   </style>
 </head>
 <body>
@@ -524,11 +226,7 @@
 
       <!-- Hero main -->
       <div class="hero__grid" id="o-mne">
-        <div class="hero__portrait">
-  <img src="portret.webp" alt="Daniel Verner – pojišťovací poradce">
-  <div class="hero__title-floating">Jmenuji se Daniel Verner</div>
-</div>
-
+        <div class="hero__portrait"><img src="portret.webp" alt="Daniel Verner – pojišťovací poradce"></div>
         <div>
           <h1>Jmenuji se Daniel Verner</h1>
           <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
@@ -787,8 +485,4 @@
 
 </body>
 </html>
-
-
-
-
 
