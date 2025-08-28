@@ -430,11 +430,12 @@
 </script>
 
 <!-- Rating: Firestore Web SDK + lokální fallback -->
+<!-- Rating: Firestore Web SDK + lokální fallback -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
   import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
   import {
-    initializeFirestore,       // ⬅️ použijeme místo getFirestore
+    initializeFirestore,   // robustní FS (long-polling fallback)
     doc, getDoc, runTransaction
   } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
@@ -444,25 +445,13 @@
     projectId: "pojistitostnadno-2025"
   };
 
+  // --- Inicializace (jen jednou)
   const app  = initializeApp(firebaseConfig);
-
-  // ⬇️ Robustní inicializace Firestore (řeší 400 na Listen / „client is offline“)
-  const db = initializeFirestore(app, {
+  const auth = getAuth(app);
+  const db   = initializeFirestore(app, {
     experimentalAutoDetectLongPolling: true,
     useFetchStreams: false
   });
-
-  const auth = getAuth(app);
-  await signInAnonymously(auth);
-
-  // … zbytek tvého kódu (doc/getDoc/runTransaction) zůstává stejný
-
-  };
-
-  // --- Inicializace
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db   = getFirestore(app);
 
   // --- DOM helpers
   const $ = s => document.querySelector(s);
@@ -490,7 +479,7 @@
   // --- Načtení dat + anonymní přihlášení (kvůli Rules)
   async function initRating(){
     statusEl.textContent = 'Načítám hodnocení…';
-    await signInAnonymously(auth);
+    await signInAnonymously(auth);          // přihlášení jen tady
     const snap = await getDoc(ref);
     const data = snap.exists() ? snap.data() : { sum:0, count:0 };
     setStats(Number(data.sum||0), Number(data.count||0));
@@ -548,6 +537,7 @@
     statusEl.textContent = 'Lokální režim (data se nesdílí).';
   });
 </script>
+
 
 
 
