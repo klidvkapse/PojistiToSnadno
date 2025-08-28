@@ -433,13 +433,30 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
   import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-  import { getFirestore, doc, getDoc, runTransaction } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+  import {
+    initializeFirestore,       // ⬅️ použijeme místo getFirestore
+    doc, getDoc, runTransaction
+  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-  // --- Firebase config pro tvůj projekt
   const firebaseConfig = {
     apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",
     authDomain: "pojistitostnadno-2025.firebaseapp.com",
     projectId: "pojistitostnadno-2025"
+  };
+
+  const app  = initializeApp(firebaseConfig);
+
+  // ⬇️ Robustní inicializace Firestore (řeší 400 na Listen / „client is offline“)
+  const db = initializeFirestore(app, {
+    experimentalAutoDetectLongPolling: true,
+    useFetchStreams: false
+  });
+
+  const auth = getAuth(app);
+  await signInAnonymously(auth);
+
+  // … zbytek tvého kódu (doc/getDoc/runTransaction) zůstává stejný
+
   };
 
   // --- Inicializace
