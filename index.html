@@ -450,8 +450,8 @@
   const auth = getAuth(app);
   const db   = initializeFirestore(app, {
     // pokud by síť stále dělala problémy, přepni níže na experimentalForceLongPolling:true
-    experimentalAutoDetectLongPolling: true,
-    useFetchStreams: false
+    experimentalForceLongPolling: true, // ⬅️ natvrdo vynutíme long-polling
+  useFetchStreams: false
   });
 
   // --- DOM helpers
