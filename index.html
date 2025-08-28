@@ -183,36 +183,37 @@
   }
 
   /* druhý div v .hero__grid (text) -> jako malá kartička v obraze */
+/* === MOBILE TUNING: menší overlay kartička v portrétu === */
+@media (max-width:640px){
+  /* samotná kartička */
   .hero__grid > div:nth-child(2){
-    grid-area: portrait;
-    align-self: start;
-    justify-self: start;
-    /* vzhled kartičky */
-    background: rgba(0,0,0,.78);
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 14px;
-    box-shadow: 0 8px 22px rgba(0,0,0,.25);
-    backdrop-filter: blur(4px);
-    /* umístění a velikost */
-    margin: 10px;                      /* odsazení od okraje fotky */
-    max-width: calc(100% - 20px - 20px); /* aby vždy zůstaly okraje */
-    z-index: 2;
+    padding: 8px 12px;
+    margin: 8px 10px;
+    border-radius: 12px;
+    background: rgba(0,0,0,.72);
+    box-shadow: 0 8px 18px rgba(0,0,0,.22);
+    /* menší šířka než dřív */
+    max-width: clamp(190px, 66%, 340px);
   }
 
-  /* menší typografie uvnitř kartičky */
+  /* titulek menší */
   .hero__grid > div:nth-child(2) h1{
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.15;
-    margin: 0 0 4px;
+    margin: 0 0 2px;
   }
+
+  /* odstavec – bez scrollu, oříznutí na 2 řádky */
   .hero__grid > div:nth-child(2) .lead{
-    font-size: .95rem;
-    line-height: 1.4;
-    margin: 4px 0 0;
-    max-height: 4.4em;                 /* ~3 řádky, bez scrollu */
-    overflow: hidden;                   /* skryje přetékání */
+    font-size: .88rem;
+    line-height: 1.35;
+    margin: 2px 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;          /* kolik řádků textu zobrazit */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
+
 
   /* tlačítka v kartičce na mobilu neukazovat */
   .hero__grid > div:nth-child(2) .btn{
