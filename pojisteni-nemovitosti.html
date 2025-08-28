@@ -387,6 +387,17 @@
   }
 })();
 </script>
+     <script>
+      (function(){
+        const grp=document.getElementById('co-pojistime');
+        if(grp){
+          grp.addEventListener('toggle',function(e){
+            if(e.target.nodeName!=='DETAILS'||!e.target.open)return;
+            grp.querySelectorAll('details[open]').forEach(d=>{if(d!==e.target)d.open=false;});
+          },true);
+        }
+      })();
+    </script>
   </main>
 </body>
 </html>
