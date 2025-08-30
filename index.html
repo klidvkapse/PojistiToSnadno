@@ -257,6 +257,19 @@
 
 
  }
+    /* === Sekce Hodnocení – dvousloupcový layout === */
+.rating-wrap{
+  display:grid;
+  gap:24px;
+  align-items:start;
+}
+@media (min-width: 980px){
+  .rating-wrap{
+    grid-template-columns: minmax(0,560px) 1fr; /* vlevo hvězdy+form, vpravo poslední hodnocení */
+  }
+}
+.rating-side{ position: sticky; top: 90px; } /* ať drží při scrollu */
+
 
 
   </style>
@@ -394,11 +407,13 @@
 <!-- ===== Hodnocení ===== -->
 
   <!-- ===== Hodnocení ===== -->
+<!-- ===== Hodnocení ===== -->
 <section class="section" id="hodnoceni">
   <h2>Ohodnoťte web</h2>
 
-  <div class="rating-layout">
-    <!-- Levý sloupek: hvězdy, statistiky, formulář -->
+  <!-- NOVÝ DVOU-SLOUPCOVÝ OBAL -->
+  <div class="rating-wrap">
+    <!-- Levý sloupek: hvězdy + statistiky + formulář -->
     <div class="rating-card">
       <div id="rating-widget">
         <div class="rating-row" aria-label="Hvězdičkové hodnocení" role="radiogroup" id="stars">
@@ -429,17 +444,18 @@
       </div>
     </div>
 
-    <!-- Pravý sloupek: posledních 5 hodnocení -->
-    <div>
+    <!-- Pravý sloupek: Poslední hodnocení (přesunuto na vyznačené místo) -->
+    <aside class="rating-side">
       <div class="rating-card">
         <h3 style="margin:0 0 10px;">Poslední hodnocení</h3>
         <div class="reviews" id="reviews-list">
           <div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>
         </div>
       </div>
-    </div>
+    </aside>
   </div>
 </section>
+
 
 
 <!-- ===== Kontakt ===== -->
