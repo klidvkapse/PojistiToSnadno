@@ -221,7 +221,29 @@
     width: 100%;
     margin-top: 10px;
   }
+  /* === Rating layout + pěknější textové pole === */
+.rating-layout{display:grid;gap:24px}
+@media(min-width:960px){.rating-layout{grid-template-columns:1fr 1fr}}
 
+.rating-card{background:#fff;padding:16px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
+#review-form{display:grid;gap:10px}
+#review-text{
+  width:100%;min-height:120px;padding:14px 16px;border-radius:12px;
+  border:1px solid #d8d8d2;background:#fff;font:inherit;line-height:1.45;resize:vertical
+}
+#review-text:focus{outline:2px solid var(--gold);border-color:var(--gold-dark)}
+#review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
+
+/* Pravý sloupek – poslední recenze */
+.reviews{display:grid;gap:12px}
+.review-item{background:#fff;padding:14px;border-radius:12px;border:1px solid rgba(0,0,0,.06);box-shadow:var(--shadow-sm)}
+.review-head{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:6px}
+.review-stars{font-size:1.1rem;letter-spacing:2px;white-space:nowrap}
+.review-date{color:#7a7a73;font-size:.9rem}
+.review-text{color:#333}
+.empty-reviews{color:#7a7a73}
+
+ }
 
 
   </style>
@@ -357,40 +379,52 @@
 </section>
 
 <!-- ===== Hodnocení ===== -->
-<!-- ===== Hodnocení ===== -->
+
+  <!-- ===== Hodnocení ===== -->
 <section class="section" id="hodnoceni">
   <h2>Ohodnoťte web</h2>
 
-  <div id="rating-widget">
-    <div class="rating-row" aria-label="Hvězdičkové hodnocení" role="radiogroup" id="stars">
-      <button type="button" class="star" data-value="1" aria-label="1 z 5" role="radio" aria-checked="false">☆</button>
-      <button type="button" class="star" data-value="2" aria-label="2 z 5" role="radio" aria-checked="false">☆</button>
-      <button type="button" class="star" data-value="3" aria-label="3 z 5" role="radio" aria-checked="false">☆</button>
-      <button type="button" class="star" data-value="4" aria-label="4 z 5" role="radio" aria-checked="false">☆</button>
-      <button type="button" class="star" data-value="5" aria-label="5 z 5" role="radio" aria-checked="false">☆</button>
+  <div class="rating-layout">
+    <!-- Levý sloupek: hvězdy, statistiky, formulář -->
+    <div class="rating-card">
+      <div id="rating-widget">
+        <div class="rating-row" aria-label="Hvězdičkové hodnocení" role="radiogroup" id="stars">
+          <button type="button" class="star" data-value="1" aria-label="1 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="2" aria-label="2 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="3" aria-label="3 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="4" aria-label="4 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="5" aria-label="5 z 5" role="radio" aria-checked="false">☆</button>
+          <span class="rating-badge" id="rating-percent" aria-live="polite">— %</span>
+        </div>
 
-      <!-- Procenta vedle hvězd -->
-      <span class="rating-badge" id="rating-percent" aria-live="polite">— %</span>
+        <div id="rating-stats">
+          <strong id="rating-avg">Zatím nehodnoceno</strong>
+          <span id="rating-count" style="color:#6d6d6d">(0 hodnocení)</span>
+          <span id="rating-status"></span>
+        </div>
+
+        <form id="review-form">
+          <textarea id="review-text" maxlength="600" placeholder="Chcete přidat krátké slovní hodnocení? (nepovinné)"></textarea>
+          <div id="review-meta">
+            <span id="char-left">Zbývá 600 znaků</span>
+          </div>
+          <div class="actions">
+            <button class="btn btn--primary" type="submit">Odeslat hodnocení</button>
+            <button class="btn" type="button" id="clear-rating" style="background:#e9e9e4">Vymazat výběr</button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <div id="rating-stats">
-      <strong id="rating-avg">Zatím nehodnoceno</strong>
-      <span id="rating-count" style="color:#6d6d6d">(0 hodnocení)</span>
-      <span id="rating-status"></span>
+    <!-- Pravý sloupek: posledních 5 hodnocení -->
+    <div>
+      <div class="rating-card">
+        <h3 style="margin:0 0 10px;">Poslední hodnocení</h3>
+        <div class="reviews" id="reviews-list">
+          <div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>
+        </div>
+      </div>
     </div>
-
-    <!-- Textová recenze (nepovinná) + odeslání -->
-    <form id="review-form">
-      <label for="review-text" class="visually-hidden">Textová recenze (nepovinné)</label>
-      <textarea id="review-text" maxlength="600" placeholder="Chcete přidat krátké slovní hodnocení? (nepovinné)"></textarea>
-      <div id="review-meta">
-        <span id="char-left">Zbývá 600 znaků</span>
-      </div>
-      <div class="actions">
-        <button class="btn btn--primary" type="submit">Odeslat hodnocení</button>
-        <button class="btn" type="button" id="clear-rating" style="background:#e9e9e4">Vymazat výběr</button>
-      </div>
-    </form>
   </div>
 </section>
 
@@ -471,7 +505,8 @@
   import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
   import {
     getFirestore, doc, getDoc, runTransaction,
-    addDoc, collection, serverTimestamp
+    addDoc, collection, serverTimestamp,
+    getDocs, query, orderBy, limit
   } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
   // --- Konfigurace
@@ -484,8 +519,6 @@
   const app  = initializeApp(firebaseConfig);
   const db   = getFirestore(app);
   const auth = getAuth(app);
-
-  // Přihlášení anonymně
   await signInAnonymously(auth);
 
   // --- DOM prvky
@@ -498,6 +531,7 @@
   const textEl      = document.getElementById('review-text');
   const charLeftEl  = document.getElementById('char-left');
   const clearBtn    = document.getElementById('clear-rating');
+  const reviewsList = document.getElementById('reviews-list');
 
   const LS_VOTED  = 'pts_rating_v1_voted';
   const ref       = doc(db, 'ratings', 'global');
@@ -512,16 +546,19 @@
       el.setAttribute('aria-checked', String(v === val));
     });
   }
-
+  function tinyStars(n){
+    const on = '★'.repeat(n), off = '☆'.repeat(5-n);
+    return on+off;
+  }
   function setStats(sum,count){
     const avg = count>0 ? sum/count : 0;
     const pct = Math.round((avg/5)*100);
-    avgEl.textContent   = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno';
+    avgEl.textContent     = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno';
     percentEl.textContent = count ? `${pct} %` : '— %';
-    countEl.textContent = `(${count} hodnocení)`;
+    countEl.textContent   = `(${count} hodnocení)`;
   }
 
-  // --- Načtení dat
+  // --- Načtení agregovaných dat
   async function initRating(){
     statusEl.textContent = 'Načítám hodnocení…';
     try{
@@ -535,7 +572,55 @@
     }
   }
 
-  // --- Odeslání hodnocení + (nepovinného) textu
+  // --- Načtení posledních 5 recenzí
+  async function loadLastReviews(){
+    try{
+      const q = query(
+        collection(db, 'ratings', 'global', 'reviews'),
+        orderBy('ts','desc'),
+        limit(5)
+      );
+      const snap = await getDocs(q);
+      const items = [];
+      snap.forEach(d=>{
+        const r = d.data() || {};
+        const stars = Number(r.rating||0);
+        const text  = (r.text||'').trim();
+        const dt    = r.ts?.toDate ? r.ts.toDate() : null;
+        const date  = dt ? dt.toLocaleDateString('cs-CZ') : '';
+        items.push({stars,text,date});
+      });
+
+      reviewsList.innerHTML = '';
+      if(!items.length){
+        reviewsList.innerHTML = `<div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>`;
+        return;
+      }
+
+      items.forEach(({stars,text,date})=>{
+        const el = document.createElement('div');
+        el.className = 'review-item';
+        el.innerHTML = `
+          <div class="review-head">
+            <div class="review-stars" aria-label="${stars} z 5 hvězdiček">${tinyStars(stars)}</div>
+            <div class="review-date">${date}</div>
+          </div>
+          <div class="review-text">${text ? escapeHtml(text) : '<span class="empty-reviews">bez slovního hodnocení</span>'}</div>
+        `;
+        reviewsList.appendChild(el);
+      });
+    }catch(err){
+      console.warn('Nepodařilo se načíst poslední recenze:', err);
+      reviewsList.innerHTML = `<div class="empty-reviews">Nepodařilo se načíst recenze.</div>`;
+    }
+  }
+
+  // --- Escape pro vložený text
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  // --- Odeslání hodnocení + textu
   async function submitRating(e){
     e.preventDefault();
 
@@ -562,7 +647,7 @@
         }, { merge:true });
       });
 
-      // 2) Uložení textové recenze do podkolekce (pokud je nějaký text)
+      // 2) Uložení slovní recenze (pokud je)
       if (reviewText.length){
         await addDoc(collection(db, 'ratings', 'global', 'reviews'), {
           rating: selectedVal,
@@ -572,10 +657,11 @@
         });
       }
 
-      // 3) Re-read pro aktualizaci statistik
+      // 3) Aktualizace statistik + pravého sloupce
       const snap2 = await getDoc(ref);
       const d2 = snap2.data() || { sum:0, count:0 };
       setStats(Number(d2.sum||0), Number(d2.count||0));
+      await loadLastReviews();
 
       // 4) UI finální stav
       localStorage.setItem(LS_VOTED,'1');
@@ -608,7 +694,6 @@
   });
 
   formEl?.addEventListener('submit', submitRating);
-
   clearBtn?.addEventListener('click', ()=>{
     selectedVal = 0;
     paintStars(0);
@@ -616,7 +701,6 @@
     charLeftEl.textContent = `Zbývá ${600} znaků`;
     statusEl.textContent = '';
   });
-
   textEl?.addEventListener('input', ()=>{
     const left = 600 - (textEl.value?.length || 0);
     charLeftEl.textContent = `Zbývá ${left} znaků`;
@@ -625,7 +709,9 @@
   // --- Start
   paintStars(0);
   initRating();
+  loadLastReviews();
 </script>
+
 
 
 
