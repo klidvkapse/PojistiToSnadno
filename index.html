@@ -234,14 +234,27 @@
 #review-text:focus{outline:2px solid var(--gold);border-color:var(--gold-dark)}
 #review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
 
-/* Pravý sloupek – poslední recenze */
-.reviews{display:grid;gap:12px}
-.review-item{background:#fff;padding:14px;border-radius:12px;border:1px solid rgba(0,0,0,.06);box-shadow:var(--shadow-sm)}
-.review-head{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:6px}
-.review-stars{font-size:1.1rem;letter-spacing:2px;white-space:nowrap}
-.review-date{color:#7a7a73;font-size:.9rem}
-.review-text{color:#333}
-.empty-reviews{color:#7a7a73}
+/* === Layout pro sekci Hodnocení (2 sloupce na desktopu) === */
+.rating-wrap{
+  display:grid;
+  gap:24px;
+  align-items:start;
+}
+@media (min-width: 820px){ /* můžeš upravit breakpoint podle potřeby */
+  .rating-wrap{
+    grid-template-columns: minmax(0,560px) 1fr; /* vlevo obsah, vpravo recenze */
+  }
+}
+
+/* Pravý sloupek – ať se drží při scrollu pod headerem */
+.rating-side{
+  position:sticky;
+  top:90px;            /* když máš header 64px, ať je trochu odsazení */
+}
+
+/* (volitelně) titulek vpravo trochu zmenšit odsazení */
+.rating-side .rating-card h3{ margin:0 0 10px; }
+
 
  }
 
