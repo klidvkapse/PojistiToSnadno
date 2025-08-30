@@ -548,7 +548,15 @@
   const app  = initializeApp(firebaseConfig);
   const db   = getFirestore(app);
   const auth = getAuth(app);
-  await signInAnonymously(auth);
+
+  // 1) Přihlášení (anonymní) – ať se jistíme, že máme request.auth != null
+  try {
+    const cred = await signInAnonymously(auth);
+    console.debug('[rating] signed in as', cred.user?.uid || '(anon)');
+  } catch (err) {
+    console.error('[rating] signInAnonymously failed:', err);
+    // i kdyby se nepovedlo, nepokračuj v zápisech
+  }
 
   // --- DOM prvky
   const starsRoot   = document.getElementById('stars');
@@ -564,6 +572,8 @@
 
   const LS_VOTED  = 'pts_rating_v1_voted';
   const ref       = doc(db, 'ratings', 'global');
+  const reviewsCol = collection(db, 'ratings', 'global', 'reviews');
+  const SEND_UA = true; // pokud nemáš 'ua' povolené v rules, dej false
 
   let selectedVal = 0;
 
@@ -575,10 +585,7 @@
       el.setAttribute('aria-checked', String(v === val));
     });
   }
-  function tinyStars(n){
-    const on = '★'.repeat(n), off = '☆'.repeat(5-n);
-    return on+off;
-  }
+  function tinyStars(n){ return '★'.repeat(n) + '☆'.repeat(5-n); }
   function setStats(sum,count){
     const avg = count>0 ? sum/count : 0;
     const pct = Math.round((avg/5)*100);
@@ -596,20 +603,16 @@
       setStats(Number(data.sum||0), Number(data.count||0));
       statusEl.textContent = '';
     }catch(err){
-      console.warn(err);
-      statusEl.textContent = 'Chyba při načítání hodnocení.';
+      console.warn('[rating] getDoc failed:', err);
+      statusEl.textContent = `Chyba při načítání hodnocení (${err.code||'unknown'}).`;
     }
   }
 
   // --- Načtení posledních 5 recenzí
   async function loadLastReviews(){
     try{
-      const q = query(
-        collection(db, 'ratings', 'global', 'reviews'),
-        orderBy('ts','desc'),
-        limit(5)
-      );
-      const snap = await getDocs(q);
+      const qy = query(reviewsCol, orderBy('ts','desc'), limit(5));
+      const snap = await getDocs(qy);
       const items = [];
       snap.forEach(d=>{
         const r = d.data() || {};
@@ -625,7 +628,6 @@
         reviewsList.innerHTML = `<div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>`;
         return;
       }
-
       items.forEach(({stars,text,date})=>{
         const el = document.createElement('div');
         el.className = 'review-item';
@@ -639,20 +641,21 @@
         reviewsList.appendChild(el);
       });
     }catch(err){
-      console.warn('Nepodařilo se načíst poslední recenze:', err);
-      reviewsList.innerHTML = `<div class="empty-reviews">Nepodařilo se načíst recenze.</div>`;
+      console.warn('[rating] loadLastReviews failed:', err);
+      reviewsList.innerHTML = `<div class="empty-reviews">Nepodařilo se načíst recenze (${err.code||'unknown'}).</div>`;
     }
   }
 
   // --- Escape pro vložený text
   function escapeHtml(s){
-    return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    return (s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   }
 
   // --- Odeslání hodnocení + textu
+  let submitting = false;
   async function submitRating(e){
     e.preventDefault();
-
+    if (submitting) return;
     if (!selectedVal){
       statusEl.textContent = 'Vyberte prosím počet hvězdiček.';
       return;
@@ -663,27 +666,29 @@
     }
 
     statusEl.textContent = 'Ukládám…';
+    submitting = true;
     const reviewText = (textEl.value || '').trim();
 
     try{
-      // 1) Agregace sum/count
+      // 1) Agregace sum/count (bez UA, jen čísla – sedí s rules)
       await runTransaction(db, async (tx) => {
         const snap = await tx.get(ref);
         const d = snap.exists() ? snap.data() : { sum:0, count:0 };
         tx.set(ref, {
-          sum: Number(d.sum||0)+selectedVal,
-          count: Number(d.count||0)+1
+          sum: Number(d.sum||0) + selectedVal,
+          count: Number(d.count||0) + 1
         }, { merge:true });
       });
 
       // 2) Uložení slovní recenze (pokud je)
       if (reviewText.length){
-        await addDoc(collection(db, 'ratings', 'global', 'reviews'), {
+        const payload = {
           rating: selectedVal,
           text: reviewText,
-          ts: serverTimestamp(),
-          ua: navigator.userAgent?.slice(0,120) || ''
-        });
+          ts: serverTimestamp()
+        };
+        if (SEND_UA) payload.ua = navigator.userAgent?.slice(0,120) || '';
+        await addDoc(reviewsCol, payload);
       }
 
       // 3) Aktualizace statistik + pravého sloupce
@@ -698,10 +703,11 @@
       formEl.querySelector('button[type="submit"]').disabled = true;
       textEl.disabled = true;
       starsRoot.querySelectorAll('.star').forEach(b=>b.disabled = true);
-
     }catch(err){
-      console.error(err);
-      statusEl.textContent = 'Nepodařilo se uložit. Zkuste to prosím znovu.';
+      console.error('[rating] submit failed:', err);
+      statusEl.textContent = `Nepodařilo se uložit (${err.code||'unknown'}).`;
+    }finally{
+      submitting = false;
     }
   }
 
@@ -740,6 +746,7 @@
   initRating();
   loadLastReviews();
 </script>
+
 
 
 
