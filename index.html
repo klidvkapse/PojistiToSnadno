@@ -170,6 +170,22 @@
     border: 0;
     display: block;
   }
+  /* Rating – vylepšení */
+#rating-widget{display:grid;gap:12px;align-items:start;max-width:620px}
+.rating-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#rating-widget .stars{display:flex;gap:8px;font-size:2rem;cursor:pointer;user-select:none}
+#rating-widget .star{background:none;border:0;padding:0;line-height:1}
+#rating-widget .star:focus{outline:2px solid #c9b475;outline-offset:3px;border-radius:6px}
+.rating-badge{font-weight:800;background:#fff;padding:4px 10px;border-radius:999px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
+#rating-stats{display:flex;gap:10px;align-items:baseline;color:#1c1c1c}
+#rating-status{margin-left:auto;color:#6d6d6d}
+
+/* Textová recenze */
+#review-form{display:grid;gap:10px}
+#review-text{width:100%;min-height:84px;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff;resize:vertical}
+#review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
+#review-form .actions{display:flex;gap:10px;justify-content:flex-start}
+
 
   /* textová „kartička“ přes část portrétu */
   .hero__grid > div:nth-child(2){
@@ -205,7 +221,7 @@
     width: 100%;
     margin-top: 10px;
   }
-}
+
 
 
   </style>
@@ -341,23 +357,43 @@
 </section>
 
 <!-- ===== Hodnocení ===== -->
+<!-- ===== Hodnocení ===== -->
 <section class="section" id="hodnoceni">
   <h2>Ohodnoťte web</h2>
+
   <div id="rating-widget">
-    <div aria-label="Hvězdičkové hodnocení" role="radiogroup" class="stars" id="stars">
+    <div class="rating-row" aria-label="Hvězdičkové hodnocení" role="radiogroup" id="stars">
       <button type="button" class="star" data-value="1" aria-label="1 z 5" role="radio" aria-checked="false">☆</button>
       <button type="button" class="star" data-value="2" aria-label="2 z 5" role="radio" aria-checked="false">☆</button>
       <button type="button" class="star" data-value="3" aria-label="3 z 5" role="radio" aria-checked="false">☆</button>
       <button type="button" class="star" data-value="4" aria-label="4 z 5" role="radio" aria-checked="false">☆</button>
       <button type="button" class="star" data-value="5" aria-label="5 z 5" role="radio" aria-checked="false">☆</button>
+
+      <!-- Procenta vedle hvězd -->
+      <span class="rating-badge" id="rating-percent" aria-live="polite">— %</span>
     </div>
+
     <div id="rating-stats">
       <strong id="rating-avg">Zatím nehodnoceno</strong>
       <span id="rating-count" style="color:#6d6d6d">(0 hodnocení)</span>
       <span id="rating-status"></span>
     </div>
+
+    <!-- Textová recenze (nepovinná) + odeslání -->
+    <form id="review-form">
+      <label for="review-text" class="visually-hidden">Textová recenze (nepovinné)</label>
+      <textarea id="review-text" maxlength="600" placeholder="Chcete přidat krátké slovní hodnocení? (nepovinné)"></textarea>
+      <div id="review-meta">
+        <span id="char-left">Zbývá 600 znaků</span>
+      </div>
+      <div class="actions">
+        <button class="btn btn--primary" type="submit">Odeslat hodnocení</button>
+        <button class="btn" type="button" id="clear-rating" style="background:#e9e9e4">Vymazat výběr</button>
+      </div>
+    </form>
   </div>
 </section>
+
 
 <!-- ===== Kontakt ===== -->
 <section class="section" id="kontakt">
@@ -433,7 +469,10 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
   import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-  import { getFirestore, doc, getDoc, runTransaction } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+  import {
+    getFirestore, doc, getDoc, runTransaction,
+    addDoc, collection, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
   // --- Konfigurace
   const firebaseConfig = {
@@ -450,14 +489,22 @@
   await signInAnonymously(auth);
 
   // --- DOM prvky
-  const starsRoot = document.getElementById('stars');
-  const avgEl     = document.getElementById('rating-avg');
-  const countEl   = document.getElementById('rating-count');
-  const statusEl  = document.getElementById('rating-status');
+  const starsRoot   = document.getElementById('stars');
+  const avgEl       = document.getElementById('rating-avg');
+  const countEl     = document.getElementById('rating-count');
+  const statusEl    = document.getElementById('rating-status');
+  const percentEl   = document.getElementById('rating-percent');
+  const formEl      = document.getElementById('review-form');
+  const textEl      = document.getElementById('review-text');
+  const charLeftEl  = document.getElementById('char-left');
+  const clearBtn    = document.getElementById('clear-rating');
+
   const LS_VOTED  = 'pts_rating_v1_voted';
+  const ref       = doc(db, 'ratings', 'global');
 
-  const ref = doc(db, 'ratings', 'global');
+  let selectedVal = 0;
 
+  // --- UI helpery
   function paintStars(val){
     starsRoot?.querySelectorAll('[data-value]')?.forEach(el=>{
       const v = Number(el.getAttribute('data-value'));
@@ -468,70 +515,116 @@
 
   function setStats(sum,count){
     const avg = count>0 ? sum/count : 0;
+    const pct = Math.round((avg/5)*100);
     avgEl.textContent   = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno';
+    percentEl.textContent = count ? `${pct} %` : '— %';
     countEl.textContent = `(${count} hodnocení)`;
   }
 
   // --- Načtení dat
   async function initRating(){
     statusEl.textContent = 'Načítám hodnocení…';
-    const snap = await getDoc(ref);
-    const data = snap.exists() ? snap.data() : { sum:0, count:0 };
-    setStats(Number(data.sum||0), Number(data.count||0));
-    statusEl.textContent = '';
+    try{
+      const snap = await getDoc(ref);
+      const data = snap.exists() ? snap.data() : { sum:0, count:0 };
+      setStats(Number(data.sum||0), Number(data.count||0));
+      statusEl.textContent = '';
+    }catch(err){
+      console.warn(err);
+      statusEl.textContent = 'Chyba při načítání hodnocení.';
+    }
   }
 
-  // --- Zápis hodnocení
-  async function handleRate(val){
-    paintStars(val);
+  // --- Odeslání hodnocení + (nepovinného) textu
+  async function submitRating(e){
+    e.preventDefault();
 
+    if (!selectedVal){
+      statusEl.textContent = 'Vyberte prosím počet hvězdiček.';
+      return;
+    }
     if (localStorage.getItem(LS_VOTED)) {
       statusEl.textContent = 'Už jste hodnotili na tomto zařízení.';
       return;
     }
 
     statusEl.textContent = 'Ukládám…';
+    const reviewText = (textEl.value || '').trim();
+
     try{
+      // 1) Agregace sum/count
       await runTransaction(db, async (tx) => {
         const snap = await tx.get(ref);
         const d = snap.exists() ? snap.data() : { sum:0, count:0 };
         tx.set(ref, {
-          sum: Number(d.sum||0)+val,
+          sum: Number(d.sum||0)+selectedVal,
           count: Number(d.count||0)+1
         }, { merge:true });
       });
+
+      // 2) Uložení textové recenze do podkolekce (pokud je nějaký text)
+      if (reviewText.length){
+        await addDoc(collection(db, 'ratings', 'global', 'reviews'), {
+          rating: selectedVal,
+          text: reviewText,
+          ts: serverTimestamp(),
+          ua: navigator.userAgent?.slice(0,120) || ''
+        });
+      }
+
+      // 3) Re-read pro aktualizaci statistik
       const snap2 = await getDoc(ref);
       const d2 = snap2.data() || { sum:0, count:0 };
       setStats(Number(d2.sum||0), Number(d2.count||0));
+
+      // 4) UI finální stav
       localStorage.setItem(LS_VOTED,'1');
       statusEl.textContent = 'Děkujeme za hodnocení!';
+      formEl.querySelector('button[type="submit"]').disabled = true;
+      textEl.disabled = true;
+      starsRoot.querySelectorAll('.star').forEach(b=>b.disabled = true);
+
     }catch(err){
       console.error(err);
       statusEl.textContent = 'Nepodařilo se uložit. Zkuste to prosím znovu.';
     }
   }
 
-  // --- Event listenery
+  // --- Listenery
   starsRoot?.addEventListener('click', e=>{
     const el = e.target.closest('[data-value]');
     if (!el) return;
-    handleRate(Number(el.getAttribute('data-value')));
+    selectedVal = Number(el.getAttribute('data-value'));
+    paintStars(selectedVal);
   });
   starsRoot?.addEventListener('keydown', e=>{
     const el = e.target.closest('[data-value]');
     if (!el) return;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      handleRate(Number(el.getAttribute('data-value')));
+      selectedVal = Number(el.getAttribute('data-value'));
+      paintStars(selectedVal);
     }
+  });
+
+  formEl?.addEventListener('submit', submitRating);
+
+  clearBtn?.addEventListener('click', ()=>{
+    selectedVal = 0;
+    paintStars(0);
+    textEl.value = '';
+    charLeftEl.textContent = `Zbývá ${600} znaků`;
+    statusEl.textContent = '';
+  });
+
+  textEl?.addEventListener('input', ()=>{
+    const left = 600 - (textEl.value?.length || 0);
+    charLeftEl.textContent = `Zbývá ${left} znaků`;
   });
 
   // --- Start
   paintStars(0);
-  initRating().catch(err=>{
-    console.warn('Nepodařilo se načíst hodnocení:', err);
-    statusEl.textContent = 'Chyba při načítání hodnocení.';
-  });
+  initRating();
 </script>
 
 
