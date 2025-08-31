@@ -4,83 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Životní pojištění | PojistiToSnadno.cz</title>
-  <meta name="description" content="Životní pojištění chrání vás i vaši rodinu – vážná onemocnění, pracovní neschopnost, invalidita a trvalé následky úrazu. Celosvětová platnost, příklady plnění, bonusy a nezávazná poptávka online." />
+  <meta name="description" content="Životní pojištění chrání vás i vaši rodinu – vážná onemocnění, pracovní neschopnost, invalidita či trvalé následky úrazu. Přehled výhod, praktické příklady a nezávazná poptávka online." />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --primary:#e9dec8;   /* slonová kost */
-      --accent:#bba67f;    /* kávově-zlatá */
-      --highlight:#8b7a58; /* tmavší káva */
-      --ink:#2e2a24;       /* tmavě hnědá */
-      --paper:#f5efe3;     /* béžové pozadí */
-      --ring:#e3d6bd;      /* jemný obrys */
+      --primary:#e9dec8;
+      --accent:#bba67f;
+      --highlight:#8b7a58;
+      --ink:#2e2a24;
+      --paper:#f5efe3;
+      --ring:#e3d6bd;
     }
     *{box-sizing:border-box}
     body{font-family:'Raleway',sans-serif;margin:0;background:var(--paper);color:var(--ink);}
 
-    /* HERO */
     header.hero{position:relative;min-height:55vh;display:grid;place-items:center;text-align:center;overflow:hidden;background:#000}
-    /* POZOR: nahraj obrázek do stejné složky jako HTML soubor */
-    header.hero::before{
-      content:"";position:absolute;inset:0;
-      background:url('A_photograph_with_warm,_sepia-toned_colors_feature.png') center/cover no-repeat;
-      filter:contrast(1.05) brightness(0.55)
-    }
+    header.hero::before{content:"";position:absolute;inset:0;background:url('img/zppozadi.webp') center/cover no-repeat;filter:contrast(1.05) brightness(0.55)}
     header .hero-inner{position:relative;z-index:1;max-width:1100px;margin:auto;padding:48px 16px}
-    header .hero-panel{
-      background:rgba(46,42,36,.68);border:1px solid rgba(255,255,255,.08);
-      border-radius:28px;padding:30px 24px;box-shadow:0 18px 36px rgba(0,0,0,.35);color:#fff
-    }
+    header .hero-inner::after{content:"";position:absolute;inset:0;border-radius:28px;}
+    header .hero-panel{background:rgba(46,42,36,.68);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:30px 24px;box-shadow:0 18px 36px rgba(0,0,0,.35);color:#fff}
     header h1{font-size:clamp(2rem,3.6vw,3rem);margin:.25rem 0 .35rem;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.45)}
     header p.lead{font-size:clamp(1rem,1.9vw,1.2rem);margin:0;color:#fff;opacity:.95;text-shadow:0 1px 4px rgba(0,0,0,.4)}
-
-    /* Chips pod hero */
     .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      background:rgba(46,42,36,.85);color:#fff;border:1px solid rgba(255,255,255,.18);
-      border-radius:999px;padding:10px 14px;box-shadow:0 6px 14px rgba(0,0,0,.18);font-weight:700
-    }
+    .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(46,42,36,.85);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:10px 14px;box-shadow:0 6px 14px rgba(0,0,0,.18);font-weight:700}
     .chip .icon{font-size:18px}
 
-    /* LAYOUT */
     .container{max-width:1100px;margin:0 auto;padding:36px 16px}
     h2{font-size:clamp(1.3rem,2.2vw,1.7rem);margin:0 0 8px}
     section + section{margin-top:36px}
     .divider{height:1px;background:var(--ring);margin:28px 0}
 
-    /* KARTY rizik */
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:18px}
-    .card{
-      background:#fff;border:1px solid #eee;border-radius:22px;padding:22px 22px;
-      box-shadow:0 10px 20px rgba(0,0,0,.08);transition:.2s
-    }
+    .card{background:#fff;border:1px solid #eee;border-radius:22px;padding:22px;box-shadow:0 10px 20px rgba(0,0,0,.08);transition:.2s}
     .card:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(0,0,0,.12)}
     .card .emoji{font-size:32px}
     .card h3{margin:10px 0;color:var(--highlight)}
 
-    /* BENEFITY */
     .benefits{background:#fff;border:1px solid #eee;border-radius:24px;padding:28px;box-shadow:0 12px 26px rgba(0,0,0,.08)}
     .benefits h2{text-align:center;color:var(--accent)}
     .benefit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 22px;margin-top:14px}
     .benefit-grid li{list-style:none;padding:10px 0;border-bottom:1px dashed #ddd}
 
-    /* Bonusy – dvě karty */
     .bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:12px}
     .bonus-card{background:#fff;border:1px solid var(--ring);border-radius:18px;padding:18px 20px;box-shadow:0 8px 20px rgba(0,0,0,.06)}
     .bonus-card h3{margin:0 0 8px;color:var(--highlight)}
     .bonus-card ul{margin:0;padding-left:18px}
 
-    /* PŘÍKLADY */
     .example{margin-top:40px;background:#f2e8d7;border-left:6px solid var(--highlight);padding:24px;border-radius:12px}
     .example h3{margin:0 0 12px;color:var(--highlight)}
     .example strong{background:linear-gradient(transparent 65%, #e8dcc6 65%);padding:0 .15em;border-radius:4px}
 
-    /* FAQ */
     details{background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 6px 14px rgba(0,0,0,.08);margin-top:12px;border:1px solid var(--ring)}
     summary{cursor:pointer;font-weight:700}
 
-    /* FORMULÁŘ */
     form.cta{margin-top:44px;background:#fff;padding:32px;border-radius:24px;box-shadow:0 12px 24px rgba(0,0,0,.12);border:1px solid var(--ring)}
     form.cta h2{text-align:center;color:var(--accent);margin:0 0 16px}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -95,19 +71,40 @@
     .btn-secondary{background:#fff;color:var(--highlight);border:2px solid var(--highlight)}
 
     footer{text-align:center;padding:20px;background:var(--highlight);color:#fff;margin-top:50px}
+  
+    /* 📱 Mobilní ladění */
+    @media (max-width: 820px){
+      header.hero{min-height:58vh}
+      header .hero-inner{padding:28px 14px}
+      header .hero-panel{padding:22px 16px;border-radius:22px}
+      .chips{gap:8px}
+      .chip{padding:8px 12px;font-size:14px}
+      .container{padding:26px 14px}
+      .cards{grid-template-columns:1fr;gap:16px}
+      .card{padding:18px;border-radius:18px}
+      .benefits{padding:22px;border-radius:20px}
+      .bonus-grid{grid-template-columns:1fr}
+      form.cta{padding:22px;border-radius:20px}
+      button{width:100%}
+    }
+
+    @media (max-width: 420px){
+      header h1{font-size:1.6rem}
+      header p.lead{font-size:0.98rem}
+      .chip{font-size:13px}
+      input,textarea,select{font-size:16px} /* iOS zoom fix */
+    }
   </style>
 </head>
 <body>
-  <header class="hero" role="img" aria-label="Rodinné zázemí, teplé kávové tóny – ilustrační pozadí životního pojištění">
+  <header class="hero">
     <div class="hero-inner">
       <div class="hero-panel">
         <h1>Vaše jistota, když se stane neočekávané</h1>
         <p class="lead">Životní pojištění chrání příjem, zdraví i rodinu – platí po celém světě a přizpůsobí se vašemu životu.</p>
       </div>
-
-      <!-- zvýrazněné výhody pod hero -->
       <div class="chips" aria-label="klíčové výhody">
-        <span class="chip"><span class="icon">💰</span>Až 30&nbsp;% sleva</span>
+        <span class="chip"><span class="icon">💰</span>Až 30 % sleva</span>
         <span class="chip"><span class="icon">👨‍👩‍👧‍👦</span>Až 8 osob na 1 smlouvě</span>
         <span class="chip"><span class="icon">🎂</span>Sjednání až do 90 let</span>
         <span class="chip"><span class="icon">🌍</span>Platnost po celém světě</span>
@@ -116,34 +113,32 @@
   </header>
 
   <main class="container">
-    <!-- Rizika -->
     <section>
       <h2>4 klíčová rizika, která kryjeme</h2>
       <div class="cards">
         <article class="card">
-          <div class="emoji" aria-hidden="true">🧬</div>
+          <div class="emoji">🧬</div>
           <h3>Vážná onemocnění (VO)</h3>
           <p>Jednorázová částka při stanovení diagnózy – finance na léčbu i pokrytí výpadku příjmu.</p>
         </article>
         <article class="card">
-          <div class="emoji" aria-hidden="true">🤒</div>
+          <div class="emoji">🤒</div>
           <h3>Pracovní neschopnost (PN)</h3>
           <p>Denní dávka při nemoci či úrazu. Vyplácí se i při práci v zahraničí – s platností po celém světě.</p>
         </article>
         <article class="card">
-          <div class="emoji" aria-hidden="true">♿</div>
+          <div class="emoji">♿</div>
           <h3>Invalidita</h3>
           <p>Jednorázové plnění při přiznání invalidity I.–III. stupně. Stabilita, když se zásadně změní životní situace.</p>
         </article>
         <article class="card">
-          <div class="emoji" aria-hidden="true">🩹</div>
+          <div class="emoji">🩹</div>
           <h3>Trvalé následky úrazu (TNÚ)</h3>
           <p>Plnění podle rozsahu následků. Vždy s progresí ×10 – vyšší odškodné při vážných úrazech.</p>
         </article>
       </div>
     </section>
 
-    <!-- Výhody -->
     <section class="benefits">
       <h2>Proč si sjednat životní pojištění?</h2>
       <ul class="benefit-grid">
@@ -151,19 +146,18 @@
         <li>✅ Celosvětová platnost – platí i při cestách nebo práci v zahraničí</li>
         <li>✅ Daňové zvýhodnění – možnost odpočtu zaplaceného pojistného</li>
         <li>✅ Oddělené investování od rizik – flexibilita a kontrola</li>
+        <li>✅ Možnost zálohové výplaty při pracovní neschopnosti</li>
         <li>✅ Až 8 osob na jedné smlouvě – pohodlně pro celou rodinu</li>
         <li>✅ Možnost sjednání až do 90 let věku pojištěného</li>
       </ul>
     </section>
 
-    <!-- Bonusy a slevy -->
     <section class="benefits">
       <h2>Bonusy a slevy</h2>
       <ul class="benefit-grid">
         <li>💰 Možnost dosáhnout až na <strong>30 % slevy</strong> z pojistného při splnění podmínek.</li>
         <li>🧪 <strong>Zdarma BONUS pro každého pojištěného:</strong> 100&nbsp;000 Kč na prevenci a zotavení (výdaje, které nehradí veřejné zdravotní pojištění).</li>
       </ul>
-
       <div class="bonus-grid">
         <div class="bonus-card">
           <h3>🩺 Prevence – co lze proplatit</h3>
@@ -184,38 +178,31 @@
           </ul>
         </div>
       </div>
-
       <div class="divider"></div>
       <p><em>Limit: max. 100&nbsp;000 Kč na každého pojištěného napříč jeho smlouvami (součet prevence a zotavení).</em></p>
     </section>
 
-    <!-- Příklady plnění -->
-    <section class="example" aria-label="Praktické příklady">
+    <section class="example">
       <h3>Praktické příklady výplat</h3>
+      <p><strong>1) Denní odškodné při úrazu – vymknutí hlezenního kloubu</strong><br>
+      Sjednáno : 500 Kč/den. Hodnoceno dle oceňovacích tabulek: 70 dní. Plnění: <strong>35 000 Kč</strong>.</p>
 
-      <p><strong>1) DO – vymknutí hlezenního kloubu</strong><br>
-        Sjednáno: 500 Kč/den. Tabulka: 70 dní. Plnění: <strong>35&nbsp;000 Kč</strong>.
-      </p>
-
-      <p><strong>2) TNÚ – těžká zlomenina stehenní kosti (progrese ×10)</strong><br>
-        PS: 500&nbsp;000 Kč. Hodnocení: 45&nbsp;%. Pásmo TN10 = ×5. Výplata: <strong>1&nbsp;125&nbsp;000 Kč</strong>.
-      </p>
+      <p><strong>2) Trvalé následky úrazu s 10 násobnou progresí – těžká zlomenina stehenní kosti</strong><br>
+      PS: 500 000 Kč. Hodnocení: 45 %.Výplata: <strong>1 125 000 Kč</strong>.</p>
 
       <p><strong>3) Dopravní nehoda – smrt</strong><br>
-        PS smrt: 600&nbsp;000 Kč. Navýšení při dopravní nehodě: +600&nbsp;000 Kč (souhrnný limit dle PP). Celkem: <strong>1&nbsp;200&nbsp;000 Kč</strong>.
-      </p>
+      PS smrt: 600 000 Kč. Automatický dvojnásobek při dopravní nehodě Celkem: <strong>1 200 000 Kč</strong>.</p>
     </section>
 
-    <!-- FAQ -->
     <section aria-label="faq" style="margin-top:40px">
       <h2>Časté dotazy</h2>
       <details>
         <summary>Platí pojištění i v zahraničí?</summary>
-        <p>Ano. Pojištění má celosvětovou platnost a kryje i pracovní neschopnost při práci v cizině (na základě lékařské zprávy).</p>
+        <p>Ano. Pojištění má celosvětovou platnost a kryje i pracovní neschopnost při práci v cizině.</p>
       </details>
       <details>
         <summary>Jak rychle se sjednává?</summary>
-        <p>Předsjednání online během několika minut, podpis na dálku. Aktivace po první platbě a splnění vstupních podmínek.</p>
+        <p>Předsjednání online během 5 minut, podpis na dálku. Aktivace po první platbě a schválení zdravotního dotazníku.</p>
       </details>
       <details>
         <summary>Co když už mám starší smlouvu?</summary>
@@ -223,7 +210,6 @@
       </details>
     </section>
 
-    <!-- FORMULÁŘ -->
     <form class="cta" action="https://formspree.io/f/mjkwnelz" method="POST">
       <h2>Nezávazná poptávka</h2>
       <div class="grid">
@@ -241,40 +227,10 @@
         </div>
         <div>
           <label for="vek">Věk pojištěného</label>
-          <input id="vek" name="vek" type="number" min="0" max="100" placeholder="50">
-        </div>
-        <div>
-          <label for="castka">Požadovaná pojistná částka</label>
-          <select id="castka" name="castka">
-            <option value="">Vyberte…</option>
-            <option>500 000 Kč</option>
-            <option>1 000 000 Kč</option>
-            <option>2 000 000 Kč</option>
-            <option>Jiná (upřesním ve zprávě)</option>
-          </select>
-        </div>
-        <div>
-          <label for="rizika">Hlavní rizika</label>
-          <select id="rizika" name="rizika">
-            <option>Komplexní (VO, PN, Invalidita, TNÚ)</option>
-            <option>Pouze smrt</option>
-            <option>Smrt + invalidita</option>
-            <option>Vážná onemocnění</option>
-            <option>Jiné (upřesním ve zprávě)</option>
-          </select>
+          <input id="vek" name="vek" type="number" min="0" max="100" placeholder="50" />
         </div>
       </div>
       <label for="zprava" style="display:block;margin-top:10px">Zpráva</label>
       <textarea id="zprava" name="zprava" placeholder="Napište, co potřebujete pojistit a pro koho…"></textarea>
       <div class="actions">
         <button type="submit">Odeslat poptávku</button>
-        <button type="reset" class="btn-secondary">Vymazat formulář</button>
-      </div>
-    </form>
-  </main>
-
-  <footer>
-    © 2025 PojistiToSnadno.cz – Váš partner v pojištění
-  </footer>
-</body>
-</html>
