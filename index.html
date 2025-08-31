@@ -1,236 +1,776 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Životní pojištění | PojistiToSnadno.cz</title>
-  <meta name="description" content="Životní pojištění chrání vás i vaši rodinu – vážná onemocnění, pracovní neschopnost, invalidita či trvalé následky úrazu. Přehled výhod, praktické příklady a nezávazná poptávka online." />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>PojistiToSnadno.cz – Online pojištění snadno a férově</title>
+  <meta name="description" content="Sjednejte si úrazové, životní nebo majetkové pojištění jednoduše online s osobním poradcem. Férový přístup a reálné zkušenosti."/>
+  <meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, majetkové pojištění, kalkulačka pojištění, Šumperk, Jeseníky"/>
+
+  <meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online"/>
+  <meta property="og:description" content="Online pojištění úrazové, majetkové i životní. Rychlá kalkulace a osobní přístup."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://pojistitosnadno.cz/"/>
+  <meta property="og:image" content="https://pojistitosnadno.cz/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <link rel="canonical" href="https://pojistitosnadno.cz/"/>
+ <link rel="icon" href="/favicon.ico">
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --primary:#e9dec8;
-      --accent:#bba67f;
-      --highlight:#8b7a58;
-      --ink:#2e2a24;
-      --paper:#f5efe3;
-      --ring:#e3d6bd;
-    }
-    *{box-sizing:border-box}
-    body{font-family:'Raleway',sans-serif;margin:0;background:url('img/zppozadi.webp') center/cover fixed no-repeat;color:var(--ink);}
+  :root{
+    --paper:#ffffff;
+    --ink:#1c1c1c;
+    --muted:#6d6d6d;
+    --bg:#f6f6f4;
+    --gold:#c9b475;
+    --gold-dark:#b39f60;
+    --shadow-sm:0 2px 6px rgba(0,0,0,.08);
+    --shadow-md:0 10px 24px rgba(0,0,0,.14);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Raleway',Arial,sans-serif;color:var(--ink);background:var(--bg)}
 
-    header.hero{position:relative;min-height:55vh;display:grid;place-items:center;text-align:center;overflow:hidden;background:#000}
-    header.hero::before{content:"";position:absolute;inset:0;background:url('img/zppozadi.webp') center/cover no-repeat;filter:contrast(1.05) brightness(0.55)}
-    header .hero-inner{position:relative;z-index:1;max-width:1100px;margin:auto;padding:48px 16px}
-    header .hero-inner::after{content:"";position:absolute;inset:0;border-radius:28px;}
-    header .hero-panel{background:rgba(46,42,36,.68);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:30px 24px;box-shadow:0 18px 36px rgba(0,0,0,.35);color:#fff}
-    header h1{font-size:clamp(2rem,3.6vw,3rem);margin:.25rem 0 .35rem;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.45)}
-    header p.lead{font-size:clamp(1rem,1.9vw,1.2rem);margin:0;color:#fff;opacity:.95;text-shadow:0 1px 4px rgba(0,0,0,.4)}
-    .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
-    .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(46,42,36,.85);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:10px 14px;box-shadow:0 6px 14px rgba(0,0,0,.18);font-weight:700}
-    .chip .icon{font-size:18px}
+  /* ===== Header ===== */
+  .header{
+    position:fixed;top:0;left:0;right:0;height:56px;z-index:1000;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 14px;background:rgba(255,255,255,.9);
+    border-bottom:1px solid rgba(0,0,0,.06);
+    backdrop-filter:blur(8px) saturate(140%);
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+  .brand__logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffe87a)}
+  .brand__name{white-space:nowrap}
+  .nav{position:fixed;top:56px;left:0;right:0;transform:translateY(-8px);opacity:0;pointer-events:none;background:#fff;transition:.25s;border-bottom:1px solid rgba(0,0,0,.06)}
+  .nav--open{transform:translateY(0);opacity:1;pointer-events:auto}
+  .nav ul{margin:0;padding:10px;list-style:none}
+  .nav a{display:block;padding:10px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:700}
+  .nav a:hover{background:rgba(0,0,0,.05)}
+  .burger{width:40px;height:40px;border:0;background:transparent;cursor:pointer;border-radius:10px;display:grid;place-items:center}
+  .burger span,.burger span::before,.burger span::after{content:"";display:block;width:22px;height:2px;background:#000;position:relative;transition:.25s;border-radius:2px}
+  .burger span::before{position:absolute;transform:translateY(-6px)}
+  .burger span::after{position:absolute;transform:translateY(6px)}
+  .burger[aria-expanded="true"] span{background:transparent}
+  .burger[aria-expanded="true"] span::before{transform:rotate(45deg)}
+  .burger[aria-expanded="true"] span::after{transform:rotate(-45deg)}
 
-    .container{max-width:1100px;margin:0 auto;padding:36px 16px}
-    h2{font-size:clamp(1.3rem,2.2vw,1.7rem);margin:0 0 8px}
-    section + section{margin-top:36px}
-    .divider{height:1px;background:var(--ring);margin:28px 0}
+  /* ===== Hero + sidebar layout ===== */
+  .hero{padding-top:56px;position:relative;color:#fff}
+  .hero__bg::before{content:"";position:absolute;inset:0;background:url('img/fotouvod.webp') right center/cover no-repeat;filter:blur(8px) saturate(110%);opacity:.85}
+  .hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),rgba(0,0,0,.08))}
+  .hero__wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:32px 20px}
 
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:18px}
-    .card{background:#fff;border:1px solid #eee;border-radius:22px;padding:22px;box-shadow:0 10px 20px rgba(0,0,0,.08);transition:.2s}
-    .card:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(0,0,0,.12)}
-    .card .emoji{font-size:32px}
-    .card h3{margin:10px 0;color:var(--highlight)}
+  /* two-column intro grid (sidebar + hero main) */
+  .intro-grid{display:grid;gap:22px}
+  @media (min-width: 1100px){
+    .intro-grid{grid-template-columns:320px 1fr;align-items:start}
+  }
 
-    .benefits{background:#fff;border:1px solid #eee;border-radius:24px;padding:28px;box-shadow:0 12px 26px rgba(0,0,0,.08)}
-    .benefits h2{text-align:center;color:var(--accent)}
-    .benefit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 22px;margin-top:14px}
-    .benefit-grid li{list-style:none;padding:10px 0;border-bottom:1px dashed #ddd}
+  /* hero main content (portrait + copy) */
+  .hero__grid{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center}
+  .hero__portrait img{width:120px;height:120px;border-radius:16px;object-fit:cover;border:2px solid rgba(255,255,255,.7)}
+  .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:800;text-decoration:none}
+  .btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000;box-shadow:var(--shadow-md)}
+  .btn--ghost{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.6)}
 
-    .bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:12px}
-    .bonus-card{background:#fff;border:1px solid var(--ring);border-radius:18px;padding:18px 20px;box-shadow:0 8px 20px rgba(0,0,0,.06)}
-    .bonus-card h3{margin:0 0 8px;color:var(--highlight)}
-    .bonus-card ul{margin:0;padding-left:18px}
+  /* ===== Services sidebar (vertical) ===== */
+  .services-aside{position:relative}
+  @media (min-width:1100px){
+    .services-aside{position:sticky;top:84px}
+  }
+  .services--vertical{display:grid;grid-template-columns:1fr;gap:12px}
+  .svc-card{background:#fff;border-radius:14px;padding:14px;display:grid;gap:6px;box-shadow:var(--shadow-sm)}
+  .svc-card:hover{box-shadow:var(--shadow-md)}
+  .svc-icon{width:24px;height:24px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffe87a);display:grid;place-items:center}
+  .svc-icon svg{width:16px;height:16px}
+  .svc-title{font-weight:800;color:#1c1c1c}
+  .svc-text{color:#6d6d6d;font-size:.95rem}
 
-    .example{margin-top:40px;background:#f2e8d7;border-left:6px solid var(--highlight);padding:24px;border-radius:12px}
-    .example h3{margin:0 0 12px;color:var(--highlight)}
-    .example strong{background:linear-gradient(transparent 65%, #e8dcc6 65%);padding:0 .15em;border-radius:4px}
+  /* ===== Sections (below hero) ===== */
+  .section{max-width:1140px;margin:0 auto;padding:40px 20px}
+  .section h2{margin:0 0 16px}
 
-    details{background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 6px 14px rgba(0,0,0,.08);margin-top:12px;border:1px solid var(--ring)}
-    summary{cursor:pointer;font-weight:700}
+  /* Cards grid used in "Podle situace" */
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;box-shadow:var(--shadow-sm);transition:transform .25s, box-shadow .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .card__img{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.82);transition:transform .35s ease,filter .35s ease}
+  .card:hover .card__img{transform:scale(1.04);filter:brightness(.95)}
+  .card__text{position:absolute;inset:auto 0 0 0;color:#fff;padding:18px;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0))}
 
-    form.cta{margin-top:44px;background:#fff;padding:32px;border-radius:24px;box-shadow:0 12px 24px rgba(0,0,0,.12);border:1px solid var(--ring)}
-    form.cta h2{text-align:center;color:var(--accent);margin:0 0 16px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media(max-width:820px){.grid{grid-template-columns:1fr}}
-    label{display:block;margin:2px 0 6px;font-weight:700}
-    input,textarea,select{width:100%;padding:12px;border:1px solid #ccc;border-radius:12px;font-family:'Raleway',sans-serif;font-size:15px}
-    input:focus,textarea:focus,select:focus{outline:none;box-shadow:0 0 0 4px #e9dec866;border-color:var(--accent)}
-    textarea{min-height:120px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
-    button{background:var(--accent);color:#fff;border:0;padding:14px 22px;border-radius:12px;font-weight:700;cursor:pointer;transition:.15s}
-    button:hover{background:var(--highlight)}
-    .btn-secondary{background:#fff;color:var(--highlight);border:2px solid var(--highlight)}
+  /* Rating */
+  #rating-widget{display:grid;gap:10px;align-items:center;max-width:520px}
+  #rating-widget .stars{display:flex;gap:8px;font-size:2rem;cursor:pointer;user-select:none}
+  #rating-stats{display:flex;gap:10px;align-items:baseline}
+  #rating-status{margin-left:auto;color:#6d6d6d}
 
-    footer{text-align:center;padding:20px;background:var(--highlight);color:#fff;margin-top:50px}
-  
-    /* 📱 Mobilní ladění */
-    @media (max-width: 820px){
-      header.hero{min-height:58vh}
-      header .hero-inner{padding:28px 14px}
-      header .hero-panel{padding:22px 16px;border-radius:22px}
-      .chips{gap:8px}
-      .chip{padding:8px 12px;font-size:14px}
-      .container{padding:26px 14px}
-      .cards{grid-template-columns:1fr;gap:16px}
-      .card{padding:18px;border-radius:18px}
-      .benefits{padding:22px;border-radius:20px}
-      .bonus-grid{grid-template-columns:1fr}
-      form.cta{padding:22px;border-radius:20px}
-      button{width:100%}
-    }
+  /* Kontakt */
+  .contact-quick{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:8px}
+  .qi{display:flex;align-items:center;gap:10px;background:#fff;padding:12px 14px;border-radius:12px;box-shadow:var(--shadow-sm)}
+  .qi svg{width:18px;height:18px}
+  .form{display:grid;gap:10px}
+  .form input,.form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff}
+  .form .actions{display:flex;gap:10px;justify-content:center}
 
-    @media (max-width: 420px){
-      header h1{font-size:1.6rem}
-      header p.lead{font-size:0.98rem}
-      .chip{font-size:13px}
-      input,textarea,select{font-size:16px} /* iOS zoom fix */
-    }
+  footer{background:#efefec;padding:22px 16px;margin-top:28px}
+  .footer-wrap{max-width:1140px;margin:0 auto;display:grid;gap:12px}
+  .footer-links,.social{display:flex;gap:14px;flex-wrap:wrap}
+
+  /* Desktop hero adjustments */
+  @media(min-width:960px){
+    .header{height:64px;padding:0 22px}
+    .burger{display:none}
+    .nav{position:static;transform:none;opacity:1;pointer-events:auto;background:transparent;border:0}
+    .nav ul{display:flex;gap:8px;padding:0}
+    .nav a{padding:10px 12px;border-radius:10px}
+
+    .hero__grid{grid-template-columns:360px 1fr;gap:22px;align-items:end}
+    .hero__portrait img{width:360px;height:460px;border-radius:24px}
+    .hero__wrap{padding:64px 24px 96px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .nav,.burger span,.burger span::before,.burger span::after,.card__img{transition:none}
+  }
+
+  /* Mobile finetuning */
+  @media (max-width: 640px){
+    .header{height:56px;padding:0 12px;padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+    .brand__name{font-size:18px;font-weight:800}
+    .nav{top:56px;max-height:calc(100dvh - 56px);overflow:auto;background:rgba(255,255,255,.98);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+    body.no-scroll{overflow:hidden}
+
+    .hero{padding-top:56px}
+    .hero__overlay{background:linear-gradient(to bottom,rgba(0,0,0,.65) 0%,rgba(0,0,0,.45) 35%,rgba(0,0,0,.2) 100%)}
+    .hero__wrap{padding:22px 16px 28px}
+    .hero__grid{grid-template-columns:1fr;gap:14px;align-items:start}
+    .hero__portrait{order:-1;display:flex;justify-content:center}
+    .hero__portrait img{width:132px;height:132px;border-radius:16px;border:1.5px solid rgba(255,255,255,.65)}
+    .hero h1{font-size:32px;line-height:1.12;margin:6px 0 6px;letter-spacing:.2px}
+    .hero .lead{font-size:1rem;line-height:1.45;max-width:36ch;margin:4px 0 10px}
+    .hero .btn{width:100%;text-align:center;padding:12px 16px}
+    .hero .btn--primary{box-shadow:0 8px 20px rgba(0,0,0,.18)}
+  }
+/* === MOBILE: full-width portrét + překryvná kartička s menším textem === */
+@media (max-width:640px){
+  /* portrét přes celou šířku */
+  .hero__grid{ grid-template-columns: 1fr; gap: 0; }
+  .hero__portrait{ order:-1; position: relative; z-index: 1; }
+  .hero__portrait img{
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    border: 0;
+    display: block;
+  }
+  /* Rating – vylepšení */
+#rating-widget{display:grid;gap:12px;align-items:start;max-width:620px}
+.rating-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#rating-widget .stars{display:flex;gap:8px;font-size:2rem;cursor:pointer;user-select:none}
+#rating-widget .star{background:none;border:0;padding:0;line-height:1}
+#rating-widget .star:focus{outline:2px solid #c9b475;outline-offset:3px;border-radius:6px}
+.rating-badge{font-weight:800;background:#fff;padding:4px 10px;border-radius:999px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
+#rating-stats{display:flex;gap:10px;align-items:baseline;color:#1c1c1c}
+#rating-status{margin-left:auto;color:#6d6d6d}
+
+/* Textová recenze */
+#review-form{display:grid;gap:10px}
+#review-text{width:100%;min-height:84px;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff;resize:vertical}
+#review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
+#review-form .actions{display:flex;gap:10px;justify-content:flex-start}
+
+
+  /* textová „kartička“ přes část portrétu */
+  .hero__grid > div:nth-child(2){
+    position: relative;
+    z-index: 2;
+    width: 92%;
+    margin: -64px auto 12px;            /* vytáhne přes spodní část portrétu */
+    padding: 12px 14px;
+    background: rgba(0,0,0,.75);
+    border-radius: 14px;
+    box-shadow: 0 12px 26px rgba(0,0,0,.25);
+    color: #fff;
+  }
+
+  /* menší nadpis i odstavec – bez ořezávání */
+  .hero__grid > div:nth-child(2) h1{
+    font-size: 21px;
+    line-height: 1.15;
+    margin: 0 0 6px;
+  }
+  .hero__grid > div:nth-child(2) .lead{
+    font-size: 13.5px;
+    line-height: 1.4;
+    margin: 0;
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;                   /* celý text bez scrollu */
+  }
+
+  /* tlačítka pod sebou a na šířku */
+  .hero__grid > div:nth-child(2) .btn{
+    width: 100%;
+    margin-top: 10px;
+  }
+  /* === Rating layout + pěknější textové pole === */
+.rating-layout{display:grid;gap:24px}
+@media(min-width:960px){.rating-layout{grid-template-columns:1fr 1fr}}
+
+.rating-card{background:#fff;padding:16px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
+#review-form{display:grid;gap:10px}
+#review-text{
+  width:100%;min-height:120px;padding:14px 16px;border-radius:12px;
+  border:1px solid #d8d8d2;background:#fff;font:inherit;line-height:1.45;resize:vertical
+}
+#review-text:focus{outline:2px solid var(--gold);border-color:var(--gold-dark)}
+#review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
+
+/* === Layout pro sekci Hodnocení (2 sloupce na desktopu) === */
+.rating-wrap{
+  display:grid;
+  gap:24px;
+  align-items:start;
+}
+@media (min-width: 820px){ /* můžeš upravit breakpoint podle potřeby */
+  .rating-wrap{
+    grid-template-columns: minmax(0,560px) 1fr; /* vlevo obsah, vpravo recenze */
+  }
+}
+
+/* Pravý sloupek – ať se drží při scrollu pod headerem */
+.rating-side{
+  position:sticky;
+  top:90px;            /* když máš header 64px, ať je trochu odsazení */
+}
+
+/* (volitelně) titulek vpravo trochu zmenšit odsazení */
+.rating-side .rating-card h3{ margin:0 0 10px; }
+
+
+ }
+    /* === Sekce Hodnocení – dvousloupcový layout === */
+.rating-wrap{
+  display:grid;
+  gap:24px;
+  align-items:start;
+}
+@media (min-width: 980px){
+  .rating-wrap{
+    grid-template-columns: minmax(0,560px) 1fr; /* vlevo hvězdy+form, vpravo poslední hodnocení */
+  }
+}
+.rating-side{ position: sticky; top: 90px; } /* ať drží při scrollu */
+
+
+
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="hero-panel">
-        <h1>Vaše jistota, když se stane neočekávané</h1>
-        <p class="lead">Životní pojištění chrání příjem, zdraví i rodinu – platí po celém světě a přizpůsobí se vašemu životu.</p>
+
+<!-- ===== Header ===== -->
+<header class="header">
+  <div class="brand">
+    <!-- logo vlevo -->
+    <img src="favicon.ico" alt="Logo" class="brand__logo">
+    <div class="brand__name">PojistiToSnadno.cz</div>
+  </div>
+  <nav class="nav" id="nav" aria-label="Hlavní navigace">
+    <ul>
+      <li><a href="#o-mne">O mně</a></li>
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#situace">Vyberte si pojištění</a></li>
+      <li><a href="#hodnoceni">Hodnocení</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+  <button class="burger" id="burger" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span></button>
+</header>
+
+<!-- ===== Intro (Hero + Services sidebar) ===== -->
+<section class="hero" aria-label="Úvod">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
+  <div class="hero__wrap">
+    <div class="intro-grid">
+
+      <!-- Sidebar Služby -->
+      <aside class="services-aside" id="sluzby" aria-label="Služby">
+        <div class="services services--vertical">
+          <article class="svc-card">
+            <div class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5.25-3.5 8.69-7 10-3.5-1.31-7-4.75-7-10V6l7-3z" stroke="#3a3320" stroke-width="1.5"/></svg>
+            </div>
+            <div class="svc-title">Úrazové a životní pojištění</div>
+            <div class="svc-text">Praktická ochrana pro jednotlivce i rodiny.</div>
+          </article>
+
+          <article class="svc-card">
+            <div class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="#3a3320" stroke-width="1.5"/><path d="M5 10v10h14V10" stroke="#3a3320" stroke-width="1.5"/></svg>
+            </div>
+            <div class="svc-title">Pojištění majetku</div>
+            <div class="svc-text">Byt, dům i odpovědnost. Rozsáhlé asistence zdarma.</div>
+          </article>
+
+          <article class="svc-card">
+            <div class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5h14l2 5" stroke="#3a3320" stroke-width="1.5"/><circle cx="7" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/><circle cx="17" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/></svg>
+            </div>
+            <div class="svc-title">Vozidla a drobná elektrovozítka</div>
+            <div class="svc-text">Povinné, havarijní, připojištění a asistence.</div>
+          </article>
+
+          <article class="svc-card">
+            <div class="svc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9" stroke="#3a3320" stroke-width="1.5"/><path d="M7 21v-4a3 3 0 013-3h4a3 3 0 013 3v4" stroke="#3a3320" stroke-width="1.5"/></svg>
+            </div>
+            <div class="svc-title">Hypotéky, úvěry na bydlení</div>
+            <div class="svc-text">Sjednání, refinancování, poradenství.</div>
+          </article>
+        </div>
+      </aside>
+
+      <!-- Hero main -->
+      <div class="hero__grid" id="o-mne">
+        <div class="hero__portrait"><img src="portret.webp" alt="Daniel Verner – pojišťovací poradce"></div>
+        <div>
+          <h1>Jmenuji se Daniel Verner</h1>
+          <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
+           
+          </div>
+        </div>
       </div>
-      <div class="chips" aria-label="klíčové výhody">
-        <span class="chip"><span class="icon">💰</span>Až 30 % sleva</span>
-        <span class="chip"><span class="icon">👨‍👩‍👧‍👦</span>Až 8 osob na 1 smlouvě</span>
-        <span class="chip"><span class="icon">🎂</span>Sjednání až do 90 let</span>
-        <span class="chip"><span class="icon">🌍</span>Platnost po celém světě</span>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Podle situace ===== -->
+<section class="section" id="situace">
+  <h2>Vyberte si pojištění podle situace</h2>
+  <div class="grid">
+    <a class="card" href="pracovni-neschopnost.html" aria-label="Pracovní neschopnost">
+      <span class="card__img" style="background-image:url('PN.webp')"></span>
+      <div class="card__text"><h3>Pracovní neschopnost</h3><p>Možnost pojištění pouze pracovní neschopnosti bez dalších připojištění – pro zaměstnance i OSVČ.</p></div>
+    </a>
+    <a class="card" href="urazovka-doprava.html" aria-label="Úraz v dopravě">
+      <span class="card__img" style="background-image:url('traffic_300x300.webp')"></span>
+      <div class="card__text"><h3>Úraz v dopravě</h3><p>Úrazovka pouze pro nehody v dopravě – levně a účelně.</p></div>
+    </a>
+    <a class="card" href="pojisteni-nemovitosti.html" aria-label="Pojištění nemovitosti">
+      <span class="card__img" style="background-image:url('img/RD.webp')"></span>
+      <div class="card__text"><h3>Nemovitost</h3><p>Dům/byt + odpovědnost. Asistence v ceně.</p></div>
+    </a>
+
+    <a class="card" href="pojisteni-zdravotnepostizenychosob.html" aria-label="Pojištění pro zdravotně postižené osoby">
+      <span class="card__img" style="background-image:url('img/ozppozadi.webp')"></span>
+      <div class="card__text">
+        <h3>Pojištění pro zdravotně postižené</h3>
+        <p>Pojištění asistenčního/vodícího psa a zdravotních pomůcek doma i mimo domov.</p>
+      </div>
+    </a>
+
+    <a class="card" href="detske_pojisteni.html" aria-label="Dětské pojištění">
+      <span class="card__img" style="background-image:url('flexydeti.webp')"></span>
+      <div class="card__text"><h3>Děti</h3><p>Úraz i nemoc. Výhodné sazby.</p></div>
+    </a>
+    <a class="card" href="zivotni.html" aria-label="Životní pojištění">
+      <span class="card__img" style="background-image:url('flexy2.webp')"></span>
+      <div class="card__text"><h3>Životní pojištění</h3><p>Komplexní ochrana rodiny i jednotlivců.</p></div>
+    </a>
+    <a class="card" href="povinneruceni.html?typ=ridic" aria-label="Pojištění vozidel">
+      <span class="card__img" style="background-image:url('GL3.webp')"></span>
+      <div class="card__text"><h3>Vozidla</h3><p>Povinné i havarijní. Bonusy a asistence.</p></div>
+    </a>
+    <a class="card" href="rocni-karta.html" aria-label="Roční cestovní karta">
+      <span class="card__img" style="background-image:url('letiste.webp')"></span>
+      <div class="card__text"><h3>Cestování</h3><p>Roční karta se silnou asistencí.</p></div>
+    </a>
+    <a class="card" href="SLOVNIK.html" aria-label="Slovník pojmů">
+      <span class="card__img" style="background-image:url('slovnik.webp')"></span>
+      <div class="card__text"><h3>Slovník pojmů</h3><p>Rychlé vysvětlení, když smlouva mluví „cizí řečí“.</p></div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== Hodnocení ===== -->
+
+  <!-- ===== Hodnocení ===== -->
+<!-- ===== Hodnocení ===== -->
+<section class="section" id="hodnoceni">
+  <h2>Ohodnoťte web</h2>
+
+  <!-- NOVÝ DVOU-SLOUPCOVÝ OBAL -->
+  <div class="rating-wrap">
+    <!-- Levý sloupek: hvězdy + statistiky + formulář -->
+    <div class="rating-card">
+      <div id="rating-widget">
+        <div class="rating-row" aria-label="Hvězdičkové hodnocení" role="radiogroup" id="stars">
+          <button type="button" class="star" data-value="1" aria-label="1 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="2" aria-label="2 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="3" aria-label="3 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="4" aria-label="4 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="5" aria-label="5 z 5" role="radio" aria-checked="false">☆</button>
+          <span class="rating-badge" id="rating-percent" aria-live="polite">— %</span>
+        </div>
+
+        <div id="rating-stats">
+          <strong id="rating-avg">Zatím nehodnoceno</strong>
+          <span id="rating-count" style="color:#6d6d6d">(0 hodnocení)</span>
+          <span id="rating-status"></span>
+        </div>
+
+        <form id="review-form">
+          <textarea id="review-text" maxlength="600" placeholder="Chcete přidat krátké slovní hodnocení? (nepovinné)"></textarea>
+          <div id="review-meta">
+            <span id="char-left">Zbývá 600 znaků</span>
+          </div>
+          <div class="actions">
+            <button class="btn btn--primary" type="submit">Odeslat hodnocení</button>
+            <button class="btn" type="button" id="clear-rating" style="background:#e9e9e4">Vymazat výběr</button>
+          </div>
+        </form>
       </div>
     </div>
-  </header>
 
-  <main class="container">
-    <section>
-      <h2>4 klíčová rizika, která kryjeme</h2>
-      <div class="cards">
-        <article class="card">
-          <div class="emoji">🧬</div>
-          <h3>Vážná onemocnění (VO)</h3>
-          <p>Jednorázová částka při stanovení diagnózy – finance na léčbu i pokrytí výpadku příjmu.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🤒</div>
-          <h3>Pracovní neschopnost (PN)</h3>
-          <p>Denní dávka při nemoci či úrazu. Vyplácí se i při práci v zahraničí – s platností po celém světě.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">♿</div>
-          <h3>Invalidita</h3>
-          <p>Jednorázové plnění při přiznání invalidity I.–III. stupně. Stabilita, když se zásadně změní životní situace.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🩹</div>
-          <h3>Trvalé následky úrazu (TNÚ)</h3>
-          <p>Plnění podle rozsahu následků. Vždy s progresí ×10 – vyšší odškodné při vážných úrazech.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="benefits">
-      <h2>Proč si sjednat životní pojištění?</h2>
-      <ul class="benefit-grid">
-        <li>✅ Ochrana rodiny před výpadkem příjmu</li>
-        <li>✅ Celosvětová platnost – platí i při cestách nebo práci v zahraničí</li>
-        <li>✅ Daňové zvýhodnění – možnost odpočtu zaplaceného pojistného</li>
-        <li>✅ Oddělené investování od rizik – flexibilita a kontrola</li>
-        <li>✅ Možnost zálohové výplaty při pracovní neschopnosti</li>
-        <li>✅ Až 8 osob na jedné smlouvě – pohodlně pro celou rodinu</li>
-        <li>✅ Možnost sjednání až do 90 let věku pojištěného</li>
-      </ul>
-    </section>
-
-    <section class="benefits">
-      <h2>Bonusy a slevy</h2>
-      <ul class="benefit-grid">
-        <li>💰 Možnost dosáhnout až na <strong>30 % slevy</strong> z pojistného při splnění podmínek.</li>
-        <li>🧪 <strong>Zdarma BONUS pro každého pojištěného:</strong> 100&nbsp;000 Kč na prevenci a zotavení (výdaje, které nehradí veřejné zdravotní pojištění).</li>
-      </ul>
-      <div class="bonus-grid">
-        <div class="bonus-card">
-          <h3>🩺 Prevence – co lze proplatit</h3>
-          <ul>
-            <li>Onkologická a další preventivní vyšetření provedená lékařem.</li>
-            <li>Mamograf / sono prsou, vyšetření stolice na okultní krvácení, kolonoskopie.</li>
-            <li>Vyšetření vnitřních orgánů (srdce, plíce, ledviny, játra, prostata).</li>
-            <li>Oční prevence (glaukom) a neurologická prevence.</li>
-          </ul>
-        </div>
-        <div class="bonus-card">
-          <h3>❤️‍🩹 Zotavení – na co lze čerpat</h3>
-          <ul>
-            <li>Nadstandardní zdravotní a kompenzační pomůcky (vozík, speciální obuv, naslouchátka).</li>
-            <li>Rehabilitace, fyzioterapie, léčebné masáže, psychoterapie; lázeňská péče, pokud není hrazena.</li>
-            <li>Úpravy bytu/domu kvůli zdravotnímu stavu; příspěvek na úpravu řízení auta.</li>
-            <li>Krátkodobá domácí/sociální péče nad rámec úhrad; pomoc s péčí o děti či domácí mazlíčky.</li>
-          </ul>
+    <!-- Pravý sloupek: Poslední hodnocení (přesunuto na vyznačené místo) -->
+    <aside class="rating-side">
+      <div class="rating-card">
+        <h3 style="margin:0 0 10px;">Poslední hodnocení</h3>
+        <div class="reviews" id="reviews-list">
+          <div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>
         </div>
       </div>
-      <div class="divider"></div>
-      <p><em>Limit: max. 100&nbsp;000 Kč na každého pojištěného napříč jeho smlouvami (součet prevence a zotavení).</em></p>
-    </section>
+    </aside>
+  </div>
+</section>
 
-    <section class="example">
-      <h3>Praktické příklady výplat</h3>
-      <p><strong>1) Denní odškodné při úrazu – vymknutí hlezenního kloubu</strong><br>
-      Sjednáno : 500 Kč/den. Hodnoceno dle oceňovacích tabulek: 70 dní. Plnění: <strong>35 000 Kč</strong>.</p>
 
-      <p><strong>2) Trvalé následky úrazu s 10 násobnou progresí – těžká zlomenina stehenní kosti</strong><br>
-      PS: 500 000 Kč. Hodnocení: 45 %.Výplata: <strong>1 125 000 Kč</strong>.</p>
 
-      <p><strong>3) Dopravní nehoda – smrt</strong><br>
-      PS smrt: 600 000 Kč. Automatický dvojnásobek při dopravní nehodě Celkem: <strong>1 200 000 Kč</strong>.</p>
-    </section>
+<!-- ===== Kontakt ===== -->
+<section class="section" id="kontakt">
+  <h2>Kontakt</h2>
+  <div class="contact-quick" aria-label="Rychlé kontakty">
+    <a class="qi" href="tel:+420733782290">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h4l2 5-3 2a16 16 0 007 7l2-3 5 2v4c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1z" stroke="#333" stroke-width="1.5"/></svg>
+      <span>+420 733 782 290</span>
+    </a>
+    <a class="qi" href="mailto:pojistitosnadno@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z" stroke="#333" stroke-width="1.5"/><path d="M22 8l-10 7L2 8" stroke="#333" stroke-width="1.5"/></svg>
+      <span>pojistitosnadno@gmail.com</span>
+    </a>
+  </div>
 
-    <section aria-label="faq" style="margin-top:40px">
-      <h2>Časté dotazy</h2>
-      <details>
-        <summary>Platí pojištění i v zahraničí?</summary>
-        <p>Ano. Pojištění má celosvětovou platnost a kryje i pracovní neschopnost při práci v cizině.</p>
-      </details>
-      <details>
-        <summary>Jak rychle se sjednává?</summary>
-        <p>Předsjednání online během 5 minut, podpis na dálku. Aktivace po první platbě a schválení zdravotního dotazníku.</p>
-      </details>
-      <details>
-        <summary>Co když už mám starší smlouvu?</summary>
-        <p>Bezplatně ji zkontrolujeme a navrhneme úpravy, aby kryla aktuální rizika a byla efektivní.</p>
-      </details>
-    </section>
+  <form class="form" action="https://formspree.io/f/mvgqqpev" method="POST">
+    <input type="hidden" name="_redirect" value="dekujeme.html">
+    <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+    <input type="number" name="Věk" placeholder="Váš věk">
+    <textarea name="Zpráva" rows="4" placeholder="Co vás zajímá?"></textarea>
+    <input type="email" name="Email" placeholder="Váš e‑mail" required>
+    <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}">
+    <div class="actions">
+      <button class="btn btn--primary" type="submit">Odeslat poptávku</button>
+      <button class="btn" type="reset" style="background:#e9e9e4">Vymazat</button>
+    </div>
+  </form>
+</section>
 
-    <form class="cta" action="https://formspree.io/f/mjkwnelz" method="POST">
-      <h2>Nezávazná poptávka</h2>
-      <div class="grid">
-        <div>
-          <label for="jmeno">Jméno a příjmení</label>
-          <input id="jmeno" name="jmeno" type="text" placeholder="Vaše jméno" required>
-        </div>
-        <div>
-          <label for="telefon">Telefon</label>
-          <input id="telefon" name="telefon" type="tel" placeholder="733 000 000" required>
-        </div>
-        <div>
-          <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" placeholder="vase@email.cz" required>
-        </div>
-        <div>
-          <label for="vek">Věk pojištěného</label>
-          <input id="vek" name="vek" type="number" min="0" max="100" placeholder="50" />
-        </div>
-      </div>
-      <label for="zprava" style="display:block;margin-top:10px">Zpráva</label>
-      <textarea id="zprava" name="zprava" placeholder="Napište, co potřebujete pojistit a pro koho…"></textarea>
-      <div class="actions">
-        <button type="submit">Odeslat poptávku</button>
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-links">
+      <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="podminky.html">Podmínky</a>
+    </div>
+    <div class="social">
+      <a aria-label="Facebook" href="https://www.facebook.com/share/1CFVmWB93J/" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v3H8v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z" fill="#1c1c1c"/></svg>
+      </a>
+      <a aria-label="Instagram" href="#" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#1c1c1c" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="#1c1c1c" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#1c1c1c"/></svg>
+      </a>
+    </div>
+    <div style="color:#666;font-size:.92rem">© 2025 Daniel Verner – PojistiToSnadno.cz</div>
+  </div>
+</footer>
+
+<!-- ===== Skripty ===== -->
+<script>
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    nav.classList.toggle('nav--open');
+    document.body.classList.toggle('no-scroll', !open);
+  });
+
+  nav.addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if (a) {
+      burger.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('nav--open');
+      document.body.classList.remove('no-scroll');
+    }
+  });
+</script>
+
+<!-- Rating: Firestore Web SDK -->
+<!-- Rating: Firestore Web SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+  import {
+    getFirestore, doc, getDoc, runTransaction,
+    addDoc, collection, serverTimestamp,
+    getDocs, query, orderBy, limit
+  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+  // === Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",
+    authDomain: "pojistitosnadno-2025.firebaseapp.com",
+    projectId: "pojistitosnadno-2025"
+  };
+
+  const app  = initializeApp(firebaseConfig);
+  const db   = getFirestore(app);
+  const auth = getAuth(app);
+
+  // UA posílat / neposílat (musí být povolené v rules, jinak nastav false)
+  const SEND_UA = true;
+
+  // === Přihlášení (anon) – ať máme request.auth != null
+  let signedIn = false;
+  try {
+    const cred = await signInAnonymously(auth);
+    signedIn = !!cred?.user;
+    console.debug('[rating] signed in as', cred?.user?.uid || '(anon)');
+  } catch (err) {
+    console.error('[rating] signInAnonymously failed:', err);
+  }
+
+  // === DOM refs
+  const starsRoot   = document.getElementById('stars');
+  const avgEl       = document.getElementById('rating-avg');
+  const countEl     = document.getElementById('rating-count');
+  const statusEl    = document.getElementById('rating-status');
+  const percentEl   = document.getElementById('rating-percent');
+  const formEl      = document.getElementById('review-form');
+  const textEl      = document.getElementById('review-text');
+  const charLeftEl  = document.getElementById('char-left');
+  const clearBtn    = document.getElementById('clear-rating');
+  const reviewsList = document.getElementById('reviews-list');
+
+  const LS_VOTED  = 'pts_rating_v1_voted';
+  const ratingDoc = doc(db, 'ratings', 'global');
+  const reviewsCol = collection(db, 'ratings', 'global', 'reviews');
+
+  let selectedVal = 0;
+  let submitting  = false;
+
+  // === Helpers
+  function paintStars(val){
+    starsRoot?.querySelectorAll('[data-value]')?.forEach(el=>{
+      const v = Number(el.getAttribute('data-value'));
+      el.textContent = v <= val ? '★' : '☆';
+      el.setAttribute('aria-checked', String(v === val));
+    });
+  }
+  function tinyStars(n){ return '★'.repeat(n) + '☆'.repeat(5-n); }
+  function escapeHtml(s){
+    return (s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+  function setStats(sum,count){
+    const avg = count>0 ? sum/count : 0;
+    const pct = Math.round((avg/5)*100);
+    avgEl.textContent     = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno';
+    percentEl.textContent = count ? `${pct} %` : '— %';
+    countEl.textContent   = `(${count} hodnocení)`;
+  }
+
+  // === Načtení agregace
+  async function initRating(){
+    statusEl.textContent = 'Načítám hodnocení…';
+    try{
+      const snap = await getDoc(ratingDoc);
+      const data = snap.exists() ? snap.data() : { sum:0, count:0 };
+      setStats(Number(data.sum||0), Number(data.count||0));
+      statusEl.textContent = '';
+    }catch(err){
+      console.warn('[rating] load aggregate failed:', err);
+      statusEl.textContent = `Chyba při načítání hodnocení (${err.code||'unknown'}).`;
+    }
+  }
+
+  // === Načtení posledních 5 recenzí
+  async function loadLastReviews(){
+    try{
+      const qy = query(reviewsCol, orderBy('ts','desc'), limit(5));
+      const snap = await getDocs(qy);
+      const items = [];
+      snap.forEach(d=>{
+        const r = d.data() || {};
+        const stars = Number(r.rating||0);
+        const text  = (r.text||'').trim();
+        const dt    = r.ts?.toDate ? r.ts.toDate() : null;
+        const date  = dt ? dt.toLocaleDateString('cs-CZ') : '';
+        items.push({stars,text,date});
+      });
+
+      reviewsList.innerHTML = '';
+      if(!items.length){
+        reviewsList.innerHTML = `<div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>`;
+        return;
+      }
+      items.forEach(({stars,text,date})=>{
+        const el = document.createElement('div');
+        el.className = 'review-item';
+        el.innerHTML = `
+          <div class="review-head">
+            <div class="review-stars" aria-label="${stars} z 5 hvězdiček">${tinyStars(stars)}</div>
+            <div class="review-date">${date}</div>
+          </div>
+          <div class="review-text">${text ? escapeHtml(text) : '<span class="empty-reviews">bez slovního hodnocení</span>'}</div>
+        `;
+        reviewsList.appendChild(el);
+      });
+    }catch(err){
+      console.warn('[rating] loadLastReviews failed:', err);
+      reviewsList.innerHTML = `<div class="empty-reviews">Nepodařilo se načíst recenze (${err.code||'unknown'}).</div>`;
+    }
+  }
+
+  // === Odeslání hodnocení
+  async function submitRating(e){
+    e.preventDefault();
+    if (submitting) return;
+
+    if (!selectedVal){
+      statusEl.textContent = 'Vyberte prosím počet hvězdiček.';
+      return;
+    }
+    if (localStorage.getItem(LS_VOTED)) {
+      statusEl.textContent = 'Už jste hodnotili na tomto zařízení.';
+      return;
+    }
+    if (!signedIn){
+      statusEl.textContent = 'Nepodařilo se ověřit uživatele. Obnovte stránku a zkuste to znovu.';
+      return;
+    }
+
+    submitting = true;
+    statusEl.textContent = 'Ukládám…';
+    const reviewText = (textEl.value || '').trim();
+
+    try{
+      // 1) Přičtení sum/count – pokud spadne, ukončíme hned (permission-denied apod.)
+      try{
+        await runTransaction(db, async (tx) => {
+          const snap = await tx.get(ratingDoc);
+          const d = snap.exists() ? snap.data() : { sum:0, count:0 };
+          tx.set(ratingDoc, {
+            sum: Number(d.sum||0) + selectedVal,
+            count: Number(d.count||0) + 1
+          }, { merge:true });
+        });
+      } catch (err) {
+        console.error('[rating] aggregate write failed:', err);
+        statusEl.textContent = `Nepodařilo se uložit skóre (${err.code||'unknown'}).`;
+        return;
+      }
+
+      // 2) Volitelně ulož text recenze (když je vyplněn)
+      try{
+        if (reviewText.length){
+          const payload = {
+            rating: selectedVal,
+            text: reviewText,
+            ts: serverTimestamp()
+          };
+          if (SEND_UA) payload.ua = navigator.userAgent?.slice(0,120) || '';
+          await addDoc(reviewsCol, payload);
+        }
+      } catch (err) {
+        console.error('[rating] review write failed:', err);
+        // agregace proběhla – jen informativní hláška
+        statusEl.textContent = `Hodnocení uloženo, text recenze se nepodařilo uložit (${err.code||'unknown'}).`;
+      }
+
+      // 3) Refresh UI
+      const snap2 = await getDoc(ratingDoc);
+      const d2 = snap2.data() || { sum:0, count:0 };
+      setStats(Number(d2.sum||0), Number(d2.count||0));
+      await loadLastReviews();
+
+      localStorage.setItem(LS_VOTED,'1');
+      statusEl.textContent = 'Děkujeme za hodnocení!';
+      formEl.querySelector('button[type="submit"]').disabled = true;
+      textEl.disabled = true;
+      starsRoot.querySelectorAll('.star').forEach(b=>b.disabled = true);
+
+    } finally {
+      submitting = false;
+    }
+  }
+
+  // === Listenery
+  starsRoot?.addEventListener('click', e=>{
+    const el = e.target.closest('[data-value]');
+    if (!el) return;
+    selectedVal = Number(el.getAttribute('data-value'));
+    paintStars(selectedVal);
+  });
+  starsRoot?.addEventListener('keydown', e=>{
+    const el = e.target.closest('[data-value]');
+    if (!el) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      selectedVal = Number(el.getAttribute('data-value'));
+      paintStars(selectedVal);
+    }
+  });
+
+  formEl?.addEventListener('submit', submitRating);
+
+  clearBtn?.addEventListener('click', ()=>{
+    selectedVal = 0;
+    paintStars(0);
+    textEl.value = '';
+    charLeftEl.textContent = `Zbývá ${600} znaků`;
+    statusEl.textContent = '';
+  });
+
+  textEl?.addEventListener('input', ()=>{
+    const left = 600 - (textEl.value?.length || 0);
+    charLeftEl.textContent = `Zbývá ${left} znaků`;
+  });
+
+  // === Start
+  paintStars(0);
+  initRating();
+  loadLastReviews();
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
