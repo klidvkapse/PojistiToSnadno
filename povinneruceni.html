@@ -10,124 +10,169 @@
 
   <style>
     :root{
-      --ink:#ffffff; --muted:#e2e2e2;
-      --gold:#c9b475; --gold-dark:#b39f60; --accent:#ffcc66;
-      --ok:#2aa66a; --err:#c2353a;
+      /* barevnost převzatá z celého webu */
+      --paper:#f3ead6;           /* světlé béžové karty */
+      --paper-strong:#e9dec8;    /* výraznější varianta */
+      --ink:#2a2a2a;             /* tmavý text */
+      --muted:#5f5f5f;           /* sekundární text */
+      --gold:#c9b475;            /* CTA pozadí */
+      --gold-dark:#b39f60;       /* CTA hover */
+      --ring:#d7c8a2;            /* focus ring */
+      --chip:#efe4cd;            /* badge/chipy */
+      --shadow: 0 18px 36px rgba(0,0,0,.28);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--ink);
+      margin:0; font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink);
       background:url('img/GL31.webp') center/cover fixed no-repeat;
     }
-    body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:-1}
+    /* jemný stmavovací overlay pro čitelnost nad tmavým pozadím */
+    body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.45));z-index:-1}
 
-    .topbar{position:fixed;inset:12px 12px auto; display:flex; gap:8px; align-items:center; z-index:30}
-    .home{margin-left:auto}
-    .chip{background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.25);padding:8px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;font-weight:700}
+    /* horní lišta */
+    .topbar{position:fixed;inset:14px 14px auto; display:flex; gap:10px; align-items:center; z-index:30}
+    .chip{user-select:none; cursor:default; background:rgba(255,255,255,.82); backdrop-filter:saturate(1.05) blur(2px); color:#111; border:1px solid rgba(0,0,0,.06); padding:8px 12px; border-radius:999px; display:inline-flex; align-items:center; gap:8px; font-weight:800; box-shadow:0 6px 14px rgba(0,0,0,.12)}
     .chip svg{width:18px;height:18px}
-    .btn-home{background:linear-gradient(180deg,var(--gold),var(--gold-dark));border:none;border-radius:999px;padding:10px 14px;font-weight:800;color:#111;text-decoration:none;box-shadow:0 10px 22px rgba(0,0,0,.22)}
+    .btn-home{margin-left:auto; background:linear-gradient(180deg,var(--gold),var(--gold-dark)); border:none; border-radius:999px; padding:10px 14px; font-weight:800; color:#111; text-decoration:none; box-shadow:0 10px 22px rgba(0,0,0,.22)}
 
-    .wrap{min-height:100%;display:grid;place-items:center;padding:18px}
-    .card{width:min(1080px,94vw); display:grid; grid-template-columns: 1.05fr .95fr; gap:32px; background:transparent;}
-    @media(max-width:940px){.card{grid-template-columns:1fr}}
+    /* rozvržení */
+    .wrap{min-height:100%;display:grid;place-items:center;padding:24px}
+    .card{width:min(1140px,96vw); display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
+    @media(max-width:980px){.card{grid-template-columns:1fr}}
 
-    .hero h1{margin:2px 0 8px; font-size:clamp(1.6rem,3.4vw,2.4rem); color:#fff}
-    .subtitle{color:var(--muted); margin:0 0 12px; font-weight:600}
+    /* levý sloupec */
+    .hero{background:rgba(243,234,214,.92); border:1px solid rgba(0,0,0,.06); border-radius:20px; padding:22px; box-shadow:var(--shadow)}
+    .hero h1{margin:2px 0 8px; font-size:clamp(1.6rem,3.4vw,2.4rem)}
+    .subtitle{color:#3a3a3a; margin:0 0 12px; font-weight:600}
 
+    /* badge řádek ve stylu webu */
     .badges{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
-    .badge{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.25)}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;background:var(--chip);border:1px solid rgba(0,0,0,.06);box-shadow:0 8px 14px rgba(0,0,0,.08);font-weight:700}
     .badge svg{width:18px;height:18px}
 
-    .features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+    /* výhody jako karty (ne "rozklikávací") */
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
     @media(max-width:760px){.features{grid-template-columns:1fr}}
-    .f{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:12px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15);color:#fff}
+    .f{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:var(--paper);border:1px solid rgba(0,0,0,.06);box-shadow:0 10px 22px rgba(0,0,0,.12)}
     .f svg{flex:0 0 22px;margin-top:2px}
-    .f strong{display:block;color:#ffe87a}
+    .f strong{display:block}
 
+    /* CTA */
     .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;text-decoration:none}
-    .btn.primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; box-shadow:0 10px 24px rgba(0,0,0,.38)}
-    .btn.ghost{background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.25)}
+    .btn.primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; box-shadow:0 10px 24px rgba(0,0,0,.25)}
+    .btn.ghost{background:#fff;color:#222;border:1px solid rgba(0,0,0,.12)}
+    .btn:focus{outline:none;box-shadow:0 0 0 4px var(--ring)}
 
-    .form{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.25); border-radius:18px;padding:16px;color:#fff}
-    .form h2{margin:0 0 8px;font-size:1.2rem;color:#ffe87a}
-    label{display:block;font-weight:700;margin:10px 0 6px}
-    input, textarea, select{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.35);color:#fff;font-family:inherit;font-size:1rem}
-    input:focus, textarea:focus, select:focus{outline:none;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
+    /* pravý sloupec (formulář) – stejné karty jako na PN stránce */
+    .form{background:rgba(243,234,214,.94); border:1px solid rgba(0,0,0,.06); border-radius:20px; padding:18px; box-shadow:var(--shadow); position:sticky; top:18px}
+    .form h2{margin:0 0 8px;font-size:1.25rem}
+    label{display:block;font-weight:800;margin:10px 0 6px}
+    input, textarea, select{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(0,0,0,.12);background:#fff;color:#111;font-family:inherit;font-size:1rem}
+    input:focus, textarea:focus, select:focus{outline:none;box-shadow:0 0 0 4px var(--ring)}
     textarea{min-height:110px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr; gap:8px}
+    @media(max-width:560px){.row{grid-template-columns:1fr}}
     .submit{display:flex;gap:8px;align-items:center;margin-top:10px}
     .submit button{cursor:pointer}
     .small{color:var(--muted);font-size:.92rem}
 
-    .trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;color:var(--muted);align-items:center}
-    .trust svg{width:20px;height:20px;stroke:#ffe87a}
-
     footer{margin:18px 0 8px;text-align:center;color:#fff;font-weight:700}
-
-    .avatar{ position:fixed; right:14px; bottom:14px; z-index:20; opacity:.96 }
-    .avatar .bubble{background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.25);padding:10px 12px;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.35);font-weight:800;color:#fff}
   </style>
 </head>
 <body>
 
+  <!-- horní lišta; chip je záměrně neklikací, aby nepůsobil jako vadné tlačítko -->
   <div class="topbar">
-    <div class="chip" title="Nezávazně a bez poplatku">
+    <div class="chip" title="Informace pro návštěvníka">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
       Garance férového vyřízení
     </div>
-    <a class="btn-home home" href="/">Domů</a>
+    <a class="btn-home" href="/">Domů</a>
   </div>
 
   <main class="wrap">
     <section class="card">
 
+      <!-- LEVÝ SLOUPEC -->
       <div class="hero">
         <h1>Povinné ručení & havarijní pojištění</h1>
         <p class="subtitle">Rychlá kalkulace, převod bonusů a asistence v ČR/EU. Vše vyřídíme online nebo po telefonu – bez běhání po pobočkách.</p>
 
-        <div class="badges">
+        <!-- Badges -->
+        <div class="badges" aria-label="Hlavní výhody">
           <div class="badge" title="Až 40 % z platby zpět">Až 40 % zpět</div>
           <div class="badge" title="Asistence v ČR & EU">Asistence ČR/EU</div>
           <div class="badge" title="Online sjednání bez papírování">Online sjednání</div>
         </div>
 
+        <!-- Výhody -->
         <div class="features">
-          <div class="f"><div><strong>Okamžitá kalkulace pojištění</strong> – nejlepší nabídky od více pojišťoven.</div></div>
-          <div class="f"><div><strong>Převod bonusů</strong> – navážeme na vaše stávající slevy.</div></div>
-          <div class="f"><div><strong>Více vozidel v jedné smlouvě</strong> – výhodné pro rodiny i firmy.</div></div>
-          <div class="f"><div><strong>Asistenční služby</strong> – odtah, náhradní vozidlo, pomoc na cestě.</div></div>
-          <div class="f"><div><strong>Havarijní pojištění na míru</strong> – krádež, živel, střet se zvěří, skla a GAP.</div></div>
-          <div class="f"><div><strong>Rychlé vyřízení škod</strong> – pomohu s hlášením a komunikací s pojišťovnou.</div></div>
+          <div class="f">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l4-4 4 4 4-4 6 6"/></svg>
+            <div><strong>Okamžitá kalkulace pojištění</strong> – nejlepší nabídky od více pojišťoven.</div>
+          </div>
+          <div class="f">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8 10-5-5"/></svg>
+            <div><strong>Převod bonusů</strong> – navážeme na vaše stávající slevy.</div>
+          </div>
+          <div class="f">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="22" height="13" rx="2"/><path d="M3 16l2 4h14l2-4"/></svg>
+            <div><strong>Více vozidel v jedné smlouvě</strong> – výhodné pro rodiny i firmy.</div>
+          </div>
+          <div class="f">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h10M7 14h7"/><path d="M5 3h14a2 2 0 012 2v14l-4-3H5a2 2 0 01-2-2V5a2 2 0 012-2z"/></svg>
+            <div><strong>Asistenční služby</strong> – odtah, náhradní vozidlo, pomoc na cestě.</div>
+          </div>
+          <div class="f">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M20 12H4"/></svg>
+            <div><strong>Havarijní pojištění na míru</strong> – živel, střet se zvěří, skla a GAP.</div>
+          </div>
+          <div class="f">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div><strong>Rychlé vyřízení škod</strong> – pomohu s hlášením a komunikací s pojišťovnou.</div>
+          </div>
         </div>
 
         <div class="cta">
           <a class="btn primary" href="#formular">Nezávazná poptávka</a>
           <a class="btn ghost" href="/#hodnoceni">Ověřit hodnocení klientů</a>
         </div>
-
-        <div class="trust">Bezpečně zpracujeme jen údaje potřebné k nabídce. Žádné spamování.</div>
       </div>
 
-      <div class="form" id="formular">
-        <h2>Kontaktujte mě</h2>
+      <!-- PRAVÝ SLOUPEC: formulář (sticky) -->
+      <div class="form" id="formular" role="form" aria-labelledby="f-title">
+        <h2 id="f-title">Kontaktujte mě</h2>
         <form action="https://formspree.io/f/mjkwnelz" method="POST">
           <input type="hidden" name="tema" value="Povinné ručení / Havarijní – poptávka" />
-          <label for="jmeno">Jméno a příjmení</label>
-          <input id="jmeno" name="jmeno" required />
-          <label for="email">Váš e‑mail</label>
-          <input id="email" type="email" name="email" required />
-          <label for="telefon">Telefon (9 číslic)</label>
-          <input id="telefon" name="telefon" pattern="^\d{9}$" inputmode="numeric" required />
-          <label for="druh">Druh pojištění</label>
-          <select id="druh" name="druh">
-            <option>Povinné ručení</option>
-            <option>Havarijní pojištění</option>
-            <option>Obojí (doporučit variantu)</option>
-          </select>
-          <label for="zprava">Zpráva (uveďte SPZ a rok výroby)</label>
-          <textarea id="zprava" name="zprava"></textarea>
+          <div class="row">
+            <div>
+              <label for="jmeno">Jméno a příjmení</label>
+              <input id="jmeno" name="jmeno" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="email">Váš e‑mail</label>
+              <input id="email" type="email" name="email" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="telefon">Telefon (9 číslic)</label>
+              <input id="telefon" name="telefon" pattern="^\d{9}$" inputmode="numeric" autocomplete="tel" required />
+            </div>
+            <div>
+              <label for="druh">Druh pojištění</label>
+              <select id="druh" name="druh">
+                <option>Povinné ručení</option>
+                <option>Havarijní pojištění</option>
+                <option>Obojí (doporučit variantu)</option>
+              </select>
+            </div>
+          </div>
+          <label for="zprava">Zpráva (pro přesnou nabídku uveďte SPZ a rok výroby)</label>
+          <textarea id="zprava" name="zprava" placeholder="Např.: Octavia 1.6 TDI, r.v. 2018, SPZ ABC1234, aktuální pojišťovna, bonusy pokud víte…"></textarea>
 
           <div class="submit">
             <button class="btn primary" type="submit">Odeslat poptávku</button>
@@ -140,9 +185,6 @@
     </section>
   </main>
 
-  <div class="avatar"><div class="bubble">Potřebujete i havarijko? Rád poradím 👋</div></div>
-
   <footer>© 2025 PojistiToSnadno.cz</footer>
-
 </body>
 </html>
