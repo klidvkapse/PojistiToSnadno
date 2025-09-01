@@ -773,42 +773,39 @@
   initRating();
   loadLastReviews();
 </script>
-  <script>
-(() => {
+ <script>
+function handleFormSubmit(e){
+  e.preventDefault(); // stopne klasické odeslání (jinak Formspree "Díky!")
   const form = document.getElementById('contact-form');
-  if (!form) return;
+  if (!form) return false;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault(); // zastaví klasické odeslání na Formspree stránku
+  const data = new FormData(form);
 
-    const data = new FormData(form);
-
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data
+  fetch(form.action, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('Submit failed');
+    // po úspěchu pošli GA4 event (pokud je gtag k dispozici)…
+    if (typeof gtag === 'function') {
+      gtag('event', 'form_submit', {
+        form_id: 'contact-form',
+        page_path: location.pathname
       });
-
-      if (res.ok) {
-        // volitelně odešleme událost do GA4 hned teď
-        if (typeof gtag === 'function') {
-          gtag('event', 'form_submit', {
-            form_id: 'contact-form',
-            page_path: location.pathname
-          });
-        }
-        // a přesměrujeme na vlastní děkovací stránku
-        window.location.href = '/dekujeme.html';
-      } else {
-        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
-      }
-    } catch (err) {
-      alert('Chyba připojení. Zkuste to prosím znovu.');
     }
+    // …a přesměruj na vlastní děkovací stránku
+    window.location.href = '/dekujeme.html';
+  })
+  .catch(() => {
+    alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
   });
-})();
+
+  return false; // extra pojistka proti default submitu
+}
 </script>
+
 
 </body>
   
