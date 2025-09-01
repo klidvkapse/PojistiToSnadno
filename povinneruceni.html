@@ -13,26 +13,30 @@
 
   <style>
     :root{
-      --ink:#262319;            /* tmavý text na světlých prvcích */
+      --ink:#0f0f0f;            /* velmi tmavý text pro silný kontrast */
       --gold:#c9b475;           /* CTA pozadí */
       --gold-dark:#b39f60;      /* CTA hover */
       --paper:#efe4cd;          /* malé karty */
-      --muted:#666;             /* sekundární text */
-      --icon:#7a6a45;           /* tah ikon */
+      --muted:#2f2f2f;          /* sekundární text (tmavší kvůli čitelnosti) */
+      --icon:#6b5b36;           /* tah ikon */
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
+    html{scroll-behavior:smooth}
     body {
       margin: 0;
       font-family: 'Raleway', Arial, sans-serif;
-      color: #333;
-      background: url('img/GL31.webp') no-repeat center center fixed;
-      background-size: cover;
+      color: var(--ink);
+      background: none; /* pozadí řeší .bg kvůli mobilům */
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+
+    /* Fixní vrstva s pozadím – funguje i na iOS, nehne se při scrollu */
+    .bg{ position:fixed; inset:0; z-index:-2; background: url('img/GL31.webp') center/cover no-repeat; transform: translateZ(0); }
+    .bg::after{ content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.28)); z-index:-1; }
 
     header {
       position: sticky; top: 0; z-index: 20;
@@ -44,11 +48,9 @@
       align-items: center;
       backdrop-filter: saturate(1.05);
     }
-    header h1 { margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.8rem); }
+    header h1 { margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.8rem); color:#111; text-shadow:0 1px 0 rgba(255,255,255,.35) }
     .home-btn{ position: relative }
-    .home-btn a {
-      background: #fff; color: #262319; padding: 10px 16px; text-decoration: none; border-radius: 999px; font-weight: 800; box-shadow: 0 8px 18px rgba(0,0,0,.18);
-    }
+    .home-btn a { background:#fff; color:#262319; padding:10px 16px; text-decoration:none; border-radius:999px; font-weight:800; box-shadow:0 8px 18px rgba(0,0,0,.18) }
 
     /* mobilní plovoucí poloha tlačítka Domů */
     @media (max-width: 640px){
@@ -59,35 +61,35 @@
 
     main {
       flex: 1;
-      background: rgba(255,255,255,0.42);
-      backdrop-filter: blur(1.5px) saturate(1.02);
+      background: rgba(255,255,255,0.38); /* více transparentní */
+      backdrop-filter: blur(1.2px) saturate(1.02);
       margin: 40px auto;
       max-width: 920px;
       border-radius: 14px;
       padding: clamp(20px, 3.2vw, 30px);
-      box-shadow: 0 18px 36px rgba(0,0,0,.22);
+      box-shadow: 0 18px 36px rgba(0,0,0,.20);
+      color:#151515; /* text uvnitř karty výrazně tmavý */
     }
-    main h2 { color: #1f1f1f; margin-top: 0; font-weight: 800; text-shadow: 0 1px 1px rgba(0,0,0,.18); }
-    main p { line-height: 1.6; }
+    main h2 { color: #101010; margin-top: 0; font-weight: 800; text-shadow: 0 1px 1px rgba(255,255,255,.6); }
+    main p { line-height: 1.6; color:#1a1a1a }
 
     /* 🟫 MALÉ KARTY místo pilulek */
-    .feature-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin:16px 0 8px; }
-    .feature-card{$1background:rgba(239,228,205,.64); color:var(--ink); border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:14px 14px 14px 46px; box-shadow:0 8px 16px rgba(0,0,0,.08); min-height:58px; display:flex; align-items:center; backdrop-filter: blur(1px) saturate(1.02) }
+    .feature-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin:16px 0 8px; }
+    .feature-card{ position:relative; background:rgba(239,228,205,.58); color:#121212; border:1px solid rgba(0,0,0,.12); border-radius:16px; padding:14px 14px 14px 46px; box-shadow:0 8px 16px rgba(0,0,0,.08); min-height:58px; display:flex; align-items:center; backdrop-filter: blur(1px) saturate(1.02) }
     .feature-card .icon{ position:absolute; left:12px; top:50%; transform:translateY(-50%); width:20px; height:20px; stroke:var(--icon); fill:none; stroke-width:2 }
-    .fc-txt{ margin:0; line-height:1.35 }
+    .fc-txt{ margin:0; line-height:1.35; color:#141414 }
 
     /* Formulář */
-    #kontakt h2{ text-align:center; color:#1f1f1f; text-shadow: 0 1px 1px rgba(0,0,0,.18); }
+    #kontakt h2{ text-align:center; color:#101010; text-shadow: 0 1px 1px rgba(255,255,255,.6); }
     form { display:flex; flex-direction:column; gap:12px; max-width:600px; margin:0 auto; }
-    input, textarea, select { padding:12px; border-radius:10px; border:1px solid #ccc; font-size:1em; font-family: inherit; }
-    button[type="submit"]{
-      background: var(--gold); color:#111; font-weight:800; padding:12px 20px; border:none; border-radius:10px; font-size:1em; cursor:pointer; box-shadow: 0 10px 22px rgba(0,0,0,.18);
-    }
+    input, textarea, select { padding:12px; border-radius:10px; border:1px solid rgba(0,0,0,.2); font-size:1em; font-family: inherit; background: rgba(255,255,255,.86); color:#101010 }
+    input:focus, textarea:focus, select:focus{ outline:none; box-shadow:0 0 0 3px rgba(201,180,117,.45) }
+    button[type="submit"]{ background: var(--gold); color:#0b0b0b; font-weight:800; padding:12px 20px; border:none; border-radius:10px; font-size:1em; cursor:pointer; box-shadow: 0 10px 22px rgba(0,0,0,.18) }
     button[type="submit"]:hover{ background: var(--gold-dark); }
-    button[type="reset"]{ background:#eee; padding:10px 20px; border:none; border-radius:10px }
+    button[type="reset"]{ background:#eee; padding:10px 20px; border:none; border-radius:10px; color:#111 }
 
     /* souhlas – checkbox */
-    .consent{ display:flex; align-items:flex-start; gap:10px; color:var(--muted); font-size:.9em; line-height:1.35; }
+    .consent{ display:flex; align-items:flex-start; gap:10px; color:#1d1d1d; font-size:.92em; line-height:1.35; }
     .consent input[type="checkbox"]{ width:18px; height:18px; margin-top:2px; accent-color: var(--gold); }
 
     footer { background: rgba(238,238,238,0.9); text-align:center; padding: 15px; font-size:.9em }
@@ -95,13 +97,15 @@
     /* Responzivita – kompaktnější karty na mobilu */
     @media (max-width: 640px){
       main{ margin: 18px 12px; }
-      .feature-grid{ gap:10px }
+      .feature-grid{ gap:10px; grid-template-columns:1fr }
       .feature-card{ padding:12px 12px 12px 42px }
-      .fc-txt{ font-size:.98rem }
+      .fc-txt{ font-size:1rem }
     }
   </style>
 </head>
 <body>
+  <div class="bg" aria-hidden="true"></div>
+
   <header>
     <h1>Pojištění dopravních prostředků a drobných elektrovozidel</h1>
     <div class="home-btn"><a href="index.html">Domů</a></div>
@@ -154,7 +158,6 @@
       data-action="https://formspree.io/f/mvgqqpev"
       data-thanks="/dekujeme.html"
       data-event="contact_submit">
-
         <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
         <input type="email" name="Email" placeholder="Váš email" required>
         <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
@@ -250,7 +253,5 @@
   });
 })();
 </script>
-
 </body>
-  
 </html>
