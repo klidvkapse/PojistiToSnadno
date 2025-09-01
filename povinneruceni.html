@@ -1,190 +1,178 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Povinné ručení & havarijní pojištění | PojistiToSnadno.cz</title>
-  <meta name="description" content="Povinné ručení i havarijní pojištění sjednáte jednoduše online. Rychlá kalkulace, asistence v ČR/EU, převod bonusů a možnost více aut na jedné smlouvě. Nezávazná poptávka během 1 minuty." />
-  <link rel="icon" href="/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="robots" content="index, follow"/>
+  <meta property="fb:app_id" content="your_app_id" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO: Title + Description + Keywords -->
+  <title>PojistiToSnadno.cz – Online pojištění úrazové, životní i majetkové snadno a férově</title>
+  <meta name="description" content="Sjednejte si úrazové, životní nebo majetkové pojištění jednoduše online s osobním poradcem. Okamžitá kalkulace, zkušenosti klientů, férový přístup – vše online i v Šumperku a okolí."/>
+  <meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, majetkové pojištění, kalkulačka pojištění, pojišťovací poradce Šumperk a okolí, sjednání pojištění online, reálné škody klientů"/>
+  
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online"/>
+  <meta property="og:description" content="Online pojištění úrazové, majetkové i životní. Rychlá kalkulace a osobní přístup."/>
+  <meta property="og:image" content="https://pojistitostnadno.cz/og-image.jpg"/>
+  <meta property="og:url" content="https://pojistitostnadno.cz/"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://pojistitostnadno.cz/"/>
+  <!-- Strukturovaná data: WebSite + WebPage (bez personalizace) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PojistiToSnadno.cz",
+  "url": "https://pojistitostnadno.cz/"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "PojistiToSnadno.cz – Online pojištění snadno a férově",
+  "url": "https://pojistitostnadno.cz/",
+  "description": "Sjednejte si úrazové, životní nebo majetkové pojištění jednoduše online. Rychlá kalkulace, zkušenosti klientů, férový přístup – vše online i v Šumperku a okolí."
+}
+</script>
+
+
+  <!-- Strukturovaná data - Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daniel Verner",
+    "jobTitle": "Pojišťovací poradce",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "PojistiToSnadno.cz"
+    },
+    "url": "https://pojistitostnadno.cz/",
+    "email": "pojistenivkapse@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Šumperk",
+      "addressCountry": "CZ"
+    }
+  }
+  </script>
+
+  <!-- Preconnect & Preload fontů -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all
+
+
+
+<title>Pojištění povinného ručení – PojistiToSnadno.cz</title>
+  <meta name="description" content="Srovnejte a sjednejte povinné ručení pro vaše vozidlo. Rychle, online a s osobním přístupem Daniela Vernera."/>
 
   <style>
-    :root{
-      /* barevnost převzatá z celého webu */
-      --paper:#f3ead6;           /* světlé béžové karty */
-      --paper-strong:#e9dec8;    /* výraznější varianta */
-      --ink:#2a2a2a;             /* tmavý text */
-      --muted:#5f5f5f;           /* sekundární text */
-      --gold:#c9b475;            /* CTA pozadí */
-      --gold-dark:#b39f60;       /* CTA hover */
-      --ring:#d7c8a2;            /* focus ring */
-      --chip:#efe4cd;            /* badge/chipy */
-      --shadow: 0 18px 36px rgba(0,0,0,.28);
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      background: url('img/GL31.webp') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink);
-      background:url('img/GL31.webp') center/cover fixed no-repeat;
+    header {
+      background: rgba(201, 180, 117, 0.9);
+      color: #262319;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    /* jemný stmavovací overlay pro čitelnost nad tmavým pozadím */
-    body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.45));z-index:-1}
-
-    /* horní lišta */
-    .topbar{position:fixed;inset:14px 14px auto; display:flex; gap:10px; align-items:center; z-index:30}
-    .chip{user-select:none; cursor:default; background:rgba(255,255,255,.82); backdrop-filter:saturate(1.05) blur(2px); color:#111; border:1px solid rgba(0,0,0,.06); padding:8px 12px; border-radius:999px; display:inline-flex; align-items:center; gap:8px; font-weight:800; box-shadow:0 6px 14px rgba(0,0,0,.12)}
-    .chip svg{width:18px;height:18px}
-    .btn-home{margin-left:auto; background:linear-gradient(180deg,var(--gold),var(--gold-dark)); border:none; border-radius:999px; padding:10px 14px; font-weight:800; color:#111; text-decoration:none; box-shadow:0 10px 22px rgba(0,0,0,.22)}
-
-    /* rozvržení */
-    .wrap{min-height:100%;display:grid;place-items:center;padding:24px}
-    .card{width:min(1140px,96vw); display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
-    @media(max-width:980px){.card{grid-template-columns:1fr}}
-
-    /* levý sloupec */
-    .hero{background:rgba(243,234,214,.92); border:1px solid rgba(0,0,0,.06); border-radius:20px; padding:22px; box-shadow:var(--shadow)}
-    .hero h1{margin:2px 0 8px; font-size:clamp(1.6rem,3.4vw,2.4rem)}
-    .subtitle{color:#3a3a3a; margin:0 0 12px; font-weight:600}
-
-    /* badge řádek ve stylu webu */
-    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
-    .badge{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;background:var(--chip);border:1px solid rgba(0,0,0,.06);box-shadow:0 8px 14px rgba(0,0,0,.08);font-weight:700}
-    .badge svg{width:18px;height:18px}
-
-    /* výhody jako karty (ne "rozklikávací") */
-    .features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
-    @media(max-width:760px){.features{grid-template-columns:1fr}}
-    .f{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:var(--paper);border:1px solid rgba(0,0,0,.06);box-shadow:0 10px 22px rgba(0,0,0,.12)}
-    .f svg{flex:0 0 22px;margin-top:2px}
-    .f strong{display:block}
-
-    /* CTA */
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;text-decoration:none}
-    .btn.primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; box-shadow:0 10px 24px rgba(0,0,0,.25)}
-    .btn.ghost{background:#fff;color:#222;border:1px solid rgba(0,0,0,.12)}
-    .btn:focus{outline:none;box-shadow:0 0 0 4px var(--ring)}
-
-    /* pravý sloupec (formulář) – stejné karty jako na PN stránce */
-    .form{background:rgba(243,234,214,.94); border:1px solid rgba(0,0,0,.06); border-radius:20px; padding:18px; box-shadow:var(--shadow); position:sticky; top:18px}
-    .form h2{margin:0 0 8px;font-size:1.25rem}
-    label{display:block;font-weight:800;margin:10px 0 6px}
-    input, textarea, select{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(0,0,0,.12);background:#fff;color:#111;font-family:inherit;font-size:1rem}
-    input:focus, textarea:focus, select:focus{outline:none;box-shadow:0 0 0 4px var(--ring)}
-    textarea{min-height:110px;resize:vertical}
-    .row{display:grid;grid-template-columns:1fr 1fr; gap:8px}
-    @media(max-width:560px){.row{grid-template-columns:1fr}}
-    .submit{display:flex;gap:8px;align-items:center;margin-top:10px}
-    .submit button{cursor:pointer}
-    .small{color:var(--muted);font-size:.92rem}
-
-    footer{margin:18px 0 8px;text-align:center;color:#fff;font-weight:700}
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+    header .home-btn a {
+      background: #fff;
+      color: #262319;
+      padding: 10px 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    main {
+      flex: 1;
+      background: rgba(255,255,255,0.8);
+      margin: 40px auto;
+      max-width: 800px;
+      border-radius: 10px;
+      padding: 30px;
+    }
+    main h2 {
+      color: #b7a97c;
+      margin-top: 0;
+    }
+    main p {
+      line-height: 1.6;
+    }
+    footer {
+      background: rgba(238,238,238,0.9);
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
-
-  <!-- horní lišta; chip je záměrně neklikací, aby nepůsobil jako vadné tlačítko -->
-  <div class="topbar">
-    <div class="chip" title="Informace pro návštěvníka">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
-      Garance férového vyřízení
-    </div>
-    <a class="btn-home" href="/">Domů</a>
-  </div>
-
-  <main class="wrap">
-    <section class="card">
-
-      <!-- LEVÝ SLOUPEC -->
-      <div class="hero">
-        <h1>Povinné ručení & havarijní pojištění</h1>
-        <p class="subtitle">Rychlá kalkulace, převod bonusů a asistence v ČR/EU. Vše vyřídíme online nebo po telefonu – bez běhání po pobočkách.</p>
-
-        <!-- Badges -->
-        <div class="badges" aria-label="Hlavní výhody">
-          <div class="badge" title="Až 40 % z platby zpět">Až 40 % zpět</div>
-          <div class="badge" title="Asistence v ČR & EU">Asistence ČR/EU</div>
-          <div class="badge" title="Online sjednání bez papírování">Online sjednání</div>
-        </div>
-
-        <!-- Výhody -->
-        <div class="features">
-          <div class="f">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l4-4 4 4 4-4 6 6"/></svg>
-            <div><strong>Okamžitá kalkulace pojištění</strong> – nejlepší nabídky od více pojišťoven.</div>
-          </div>
-          <div class="f">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8 10-5-5"/></svg>
-            <div><strong>Převod bonusů</strong> – navážeme na vaše stávající slevy.</div>
-          </div>
-          <div class="f">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="22" height="13" rx="2"/><path d="M3 16l2 4h14l2-4"/></svg>
-            <div><strong>Více vozidel v jedné smlouvě</strong> – výhodné pro rodiny i firmy.</div>
-          </div>
-          <div class="f">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h10M7 14h7"/><path d="M5 3h14a2 2 0 012 2v14l-4-3H5a2 2 0 01-2-2V5a2 2 0 012-2z"/></svg>
-            <div><strong>Asistenční služby</strong> – odtah, náhradní vozidlo, pomoc na cestě.</div>
-          </div>
-          <div class="f">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M20 12H4"/></svg>
-            <div><strong>Havarijní pojištění na míru</strong> – živel, střet se zvěří, skla a GAP.</div>
-          </div>
-          <div class="f">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <div><strong>Rychlé vyřízení škod</strong> – pomohu s hlášením a komunikací s pojišťovnou.</div>
-          </div>
-        </div>
-
-        <div class="cta">
-          <a class="btn primary" href="#formular">Nezávazná poptávka</a>
-          <a class="btn ghost" href="/#hodnoceni">Ověřit hodnocení klientů</a>
-        </div>
-      </div>
-
-      <!-- PRAVÝ SLOUPEC: formulář (sticky) -->
-      <div class="form" id="formular" role="form" aria-labelledby="f-title">
-        <h2 id="f-title">Kontaktujte mě</h2>
-        <form action="https://formspree.io/f/mjkwnelz" method="POST">
-          <input type="hidden" name="tema" value="Povinné ručení / Havarijní – poptávka" />
-          <div class="row">
-            <div>
-              <label for="jmeno">Jméno a příjmení</label>
-              <input id="jmeno" name="jmeno" autocomplete="name" required />
-            </div>
-            <div>
-              <label for="email">Váš e‑mail</label>
-              <input id="email" type="email" name="email" autocomplete="email" required />
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <label for="telefon">Telefon (9 číslic)</label>
-              <input id="telefon" name="telefon" pattern="^\d{9}$" inputmode="numeric" autocomplete="tel" required />
-            </div>
-            <div>
-              <label for="druh">Druh pojištění</label>
-              <select id="druh" name="druh">
-                <option>Povinné ručení</option>
-                <option>Havarijní pojištění</option>
-                <option>Obojí (doporučit variantu)</option>
-              </select>
-            </div>
-          </div>
-          <label for="zprava">Zpráva (pro přesnou nabídku uveďte SPZ a rok výroby)</label>
-          <textarea id="zprava" name="zprava" placeholder="Např.: Octavia 1.6 TDI, r.v. 2018, SPZ ABC1234, aktuální pojišťovna, bonusy pokud víte…"></textarea>
-
-          <div class="submit">
-            <button class="btn primary" type="submit">Odeslat poptávku</button>
-            <a class="btn ghost" href="tel:+420733782290">Zavolat: 733 782 290</a>
-          </div>
-          <p class="small">Odesláním souhlasíte se zpracováním údajů pro účely nabídky a zpětného kontaktu.</p>
-        </form>
-      </div>
-
+  <header>
+    <h1>Pojištění dopravních prostředků a drobných elektrovozidel</h1>
+    <div class="home-btn"><a href="index.html">Domů</a></div>
+  </header>
+  <main>
+   
+    <!-- Informace o povinném ručení níže -->
+    <section>
+      <h2>Nabídka povinného ručení i havarijního pojištění.</h2>
+      <p>Sjednejte si povinné ručení pro vaše vozidlo online z pohodlí domova.
+        Možnost získat až <strong>40 % z platby pojistného zpět</strong> na váš účet.
+        Spolehlivé asistenční služby v rámci ČR i zahraničí.</p>
+      <ul>
+        <li>Okamžitá kalkulace pojistného</li>
+        <li>Online sjednání bez papírování</li>
+        <li>Asistence</li>
+        <li>Cenově výhodné pojištění více aut do jedné smlouvy (nejméně 4 vozidla)</li>
+        <li>Možnost připojištění skel, střetu se zvěří a dalších rizik</li>
+        <li>Možnost <strong>nulové spoluúčasti v havarijním pojištění</strong> při splnění podmínek</li>
+        <li>Pojištění všech vyhledových skel bez limitu</li>
+        
+      </ul>
+    </section>
+     <!-- Kontaktní formulář jako hlavní obsah -->
+    <section id="kontakt" style="margin-bottom: 30px;">
+      <h2 style="text-align:center; color:#b7a97c;">Kontaktujte mě</h2>
+      <form action="https://formspree.io/f/mvgqqpev" method="POST" style="display:flex; flex-direction:column; gap:12px; max-width:600px; margin:0 auto;">
+        <input type="hidden" name="_redirect" value="dekujeme.html">
+        <input type="text" name="Jméno" placeholder="Jméno a příjmení" required style="padding:12px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+        <input type="email" name="Email" placeholder="Váš email" required style="padding:12px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+        <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required style="padding:12px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+        <textarea name="Zpráva" placeholder="Vaše zpráva (pro výpočet pojištění je potřeba zadat SPZ a RČ pro zjištění bonusů)" rows="4" required style="padding:12px; border-radius:6px; border:1px solid #ccc; font-size:1em;"></textarea>
+        <button type="submit" style="background:#c9b475; color:#fff; font-weight:bold; padding:12px 20px; border:none; border-radius:5px; font-size:1em; cursor:pointer;">Odeslat zprávu</button>
+         <button type="reset" style="background:#eee; padding:10px 20px; border:none; border-radius:5px;">Vymazat</button>
+        <span>Odesláním souhlasíte se zpracováním údajů pro účely zpětného kontaktu.</span>
+      </form>
     </section>
   </main>
-
-  <footer>© 2025 PojistiToSnadno.cz</footer>
+  <footer>
+    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
+  </footer>
 </body>
 </html>
