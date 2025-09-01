@@ -146,7 +146,13 @@ náklady na jeho pořízení a výcvik.</p>
     <!-- JEDNODUCHÝ FORMULÁŘ -->
     <section id="formular" class="section form">
       <h2 style="margin:0 0 8px;font-size:1.3rem">Nezávazná poptávka</h2>
-      <form action="https://formspree.io/f/mjkwnelz" method="POST">
+      <form id="contact-form"
+      class="form js-formspree"
+      method="POST"
+      data-action="https://formspree.io/f/mvgqqpev"
+      data-thanks="/dekujeme.html"
+      data-event="contact_submit">
+
         <div class="row">
           <div>
             <label for="jmeno">Jméno a příjmení</label>
@@ -202,5 +208,82 @@ náklady na jeho pořízení a výcvik.</p>
       <p>© 2025 PojistiToSnadno.cz</p>
     </footer>
   </main>
+  <script>
+(function(){
+  var DEFAULT_THANKS = '/dekujeme.html';
+
+  function paramsObj(search){
+    var p = new URLSearchParams(search), o = {};
+    p.forEach(function(v,k){ o[k]=v; }); return o;
+  }
+  function sendGA(name, params){
+    if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
+  }
+
+  function bindForm(form){
+    var endpoint = form.getAttribute('data-action');
+    if(!endpoint) return;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      var submitBtn = form.querySelector('[type="submit"]');
+      if (submitBtn){
+        submitBtn.disabled = true;
+        submitBtn.dataset.origText = submitBtn.textContent;
+        submitBtn.textContent = 'Odesílám…';
+      }
+
+      var fd = new FormData(form);
+
+      // přidáme UTM parametry a info o stránce
+      var q = paramsObj(location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
+        .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
+      fd.append('_page', location.pathname);
+      fd.append('_ts', new Date().toISOString());
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      })
+      .then(function(res){
+        if(!res.ok) throw new Error('submit-failed');
+        // GA event (název vezmeme z data-event, fallback 'form_submit')
+        sendGA(form.getAttribute('data-event') || 'form_submit', {
+          form_id: form.id || '',
+          form_name: form.getAttribute('name') || '',
+          page_path: location.pathname
+        });
+        // přesměrování na děkovací stránku
+        var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
+        location.href = thanks;
+      })
+      .catch(function(){
+        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
+      })
+      .finally(function(){
+        if (submitBtn){
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
+        }
+      });
+    }, {passive:false});
+  }
+
+  // navážeme na všechny formuláře s .js-formspree
+  function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+
+  // bonus: měření kliků na tel/mail
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
+    if(!a) return;
+    sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
+  });
+})();
+</script>
+
 </body>
 </html>
