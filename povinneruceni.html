@@ -27,7 +27,7 @@
       margin: 0;
       font-family: 'Raleway', Arial, sans-serif;
       color: #333;
-      background: url('img/GL31.webp') no-repeat center center fixed;
+      background: url('GL3.webp') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       flex-direction: column;
@@ -59,25 +59,25 @@
 
     main {
       flex: 1;
-      background: rgba(255,255,255,0.56);
-      backdrop-filter: blur(2px) saturate(1.03);
+      background: rgba(255,255,255,0.42);
+      backdrop-filter: blur(1.5px) saturate(1.02);
       margin: 40px auto;
       max-width: 920px;
       border-radius: 14px;
       padding: clamp(20px, 3.2vw, 30px);
       box-shadow: 0 18px 36px rgba(0,0,0,.22);
     }
-    main h2 { color: #b7a97c; margin-top: 0; font-weight: 800 }
+    main h2 { color: #1f1f1f; margin-top: 0; font-weight: 800; text-shadow: 0 1px 1px rgba(0,0,0,.18); }
     main p { line-height: 1.6; }
 
     /* 🟫 MALÉ KARTY místo pilulek */
     .feature-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin:16px 0 8px; }
-    .feature-card{ position:relative; background:rgba(239,228,205,.78); color:var(--ink); border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:14px 14px 14px 46px; box-shadow:0 8px 16px rgba(0,0,0,.08); min-height:58px; display:flex; align-items:center; backdrop-filter: blur(1px) saturate(1.02) }
+    .feature-card{$1background:rgba(239,228,205,.64); color:var(--ink); border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:14px 14px 14px 46px; box-shadow:0 8px 16px rgba(0,0,0,.08); min-height:58px; display:flex; align-items:center; backdrop-filter: blur(1px) saturate(1.02) }
     .feature-card .icon{ position:absolute; left:12px; top:50%; transform:translateY(-50%); width:20px; height:20px; stroke:var(--icon); fill:none; stroke-width:2 }
     .fc-txt{ margin:0; line-height:1.35 }
 
     /* Formulář */
-    #kontakt h2{ text-align:center; color:#b7a97c; }
+    #kontakt h2{ text-align:center; color:#1f1f1f; text-shadow: 0 1px 1px rgba(0,0,0,.18); }
     form { display:flex; flex-direction:column; gap:12px; max-width:600px; margin:0 auto; }
     input, textarea, select { padding:12px; border-radius:10px; border:1px solid #ccc; font-size:1em; font-family: inherit; }
     button[type="submit"]{
