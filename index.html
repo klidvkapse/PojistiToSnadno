@@ -481,18 +481,23 @@
     </a>
   </div>
 
-  <form class="form" action="https://formspree.io/f/mvgqqpev" method="POST">
-    <!--<input type="hidden" name="_redirect" value="dekujeme.html">-->
-    <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
-    <input type="number" name="Věk" placeholder="Váš věk">
-    <textarea name="Zpráva" rows="4" placeholder="Co vás zajímá?"></textarea>
-    <input type="email" name="Email" placeholder="Váš e‑mail" required>
-    <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}">
-    <div class="actions">
-      <button class="btn btn--primary" type="submit">Odeslat poptávku</button>
-      <button class="btn" type="reset" style="background:#e9e9e4">Vymazat</button>
-    </div>
-  </form>
+ 
+  <form id="contact-form"
+      class="form"
+      method="POST"
+      data-action="https://formspree.io/f/mvgqqpev">
+  <!-- žádný _redirect, žádný action -->
+  <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+  <input type="number" name="Věk" placeholder="Váš věk">
+  <textarea name="Zpráva" rows="4" placeholder="Co vás zajímá?"></textarea>
+  <input type="email" name="Email" placeholder="Váš e-mail" required>
+  <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}">
+  <div class="actions">
+    <button class="btn btn--primary" type="submit">Odeslat poptávku</button>
+    <button class="btn" type="reset" style="background:#e9e9e4">Vymazat</button>
+  </div>
+</form>
+
 </section>
 
 <!-- ===== Footer ===== -->
@@ -773,37 +778,51 @@
   initRating();
   loadLastReviews();
 </script>
- <script>
-function handleFormSubmit(e){
-  e.preventDefault(); // stopne klasické odeslání (jinak Formspree "Díky!")
-  const form = document.getElementById('contact-form');
-  if (!form) return false;
+  <!--folrmulář-->
+<script>
+(function(){
+  function bind(){
+    var form = document.getElementById('contact-form');
+    if(!form) return;
+    // pro jistotu zakaž klasický submit
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
 
-  const data = new FormData(form);
+      var endpoint = form.getAttribute('data-action');
+      var data = new FormData(form);
 
-  fetch(form.action, {
-    method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: data
-  })
-  .then(res => {
-    if (!res.ok) throw new Error('Submit failed');
-    // po úspěchu pošli GA4 event (pokud je gtag k dispozici)…
-    if (typeof gtag === 'function') {
-      gtag('event', 'form_submit', {
-        form_id: 'contact-form',
-        page_path: location.pathname
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      })
+      .then(function(res){
+        if(!res.ok) throw new Error('Submit failed');
+        // GA4 event (pokud je gtag dostupný)
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', {
+            form_id: 'contact-form',
+            page_path: location.pathname
+          });
+        }
+        // přesměrování na tvou děkovací stránku
+        window.location.href = '/dekujeme.html';
+      })
+      .catch(function(){
+        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
       });
-    }
-    // …a přesměruj na vlastní děkovací stránku
-    window.location.href = '/dekujeme.html';
-  })
-  .catch(() => {
-    alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
-  });
 
-  return false; // extra pojistka proti default submitu
-}
+      return false; // další pojistka
+    }, {passive:false});
+  }
+
+  // jistota, že se binder spustí
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bind);
+  } else {
+    bind();
+  }
+})();
 </script>
 
 
