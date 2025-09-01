@@ -193,8 +193,12 @@
 
   <main class="container">
     <h2>Napiš si o nezávaznou nabídku</h2>
-    <form action="https://formspree.io/f/mvgqqpev" method="POST">
-      <!--<input type="hidden" name="_redirect" value="dekujeme.html">-->
+   <form class="form js-formspree"
+      id="contact-form"              
+      method="POST"
+      data-action="https://formspree.io/f/mvgqqpev"   <!-- svůj endpoint -->
+      data-thanks="/dekujeme.html"                    <!-- kam po úspěchu -->
+      data-event="contact_submit">                    <!-- název GA události -->
 
       <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
       <input type="number" name="Věk" placeholder="Váš věk" required>
