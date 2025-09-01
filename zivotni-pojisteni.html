@@ -7,14 +7,7 @@
   <meta name="description" content="Životní pojištění chrání vás i vaši rodinu – vážná onemocnění, pracovní neschopnost, invalidita či trvalé následky úrazu. Přehled výhod, praktické příklady a nezávazná poptávka online." />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --primary:#e9dec8;
-      --accent:#bba67f;
-      --highlight:#8b7a58;
-      --ink:#2e2a24;
-      --paper:#f5efe3;
-      --ring:#e3d6bd;
-    }
+    :root{ --primary:#e9dec8; --accent:#bba67f; --highlight:#8b7a58; --ink:#2e2a24; --paper:#f5efe3; --ring:#e3d6bd; }
     *{box-sizing:border-box}
     body{font-family:'Raleway',sans-serif;margin:0;color:var(--ink);background:url('img/zppozadi.webp') center/cover fixed no-repeat;}
 
@@ -57,6 +50,7 @@
     details{background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 6px 14px rgba(0,0,0,.08);margin-top:12px;border:1px solid var(--ring)}
     summary{cursor:pointer;font-weight:700}
 
+    /* CTA FORM */
     form.cta{margin-top:44px;background:#fff;padding:32px;border-radius:24px;box-shadow:0 12px 24px rgba(0,0,0,.12);border:1px solid var(--ring)}
     form.cta h2{text-align:center;color:var(--accent);margin:0 0 16px}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -96,25 +90,17 @@
     }
   
     /* Globální tmavý overlay pro čitelnost textu na fotce */
-    body::before{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
-      background:linear-gradient(to bottom, rgba(0,0,0,.35) 0%, rgba(0,0,0,.18) 28%, rgba(0,0,0,.12) 50%, rgba(0,0,0,.18) 72%, rgba(0,0,0,.3) 100%);
-    }
+    body::before{ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1; background:linear-gradient(to bottom, rgba(0,0,0,.35) 0%, rgba(0,0,0,.18) 28%, rgba(0,0,0,.12) 50%, rgba(0,0,0,.18) 72%, rgba(0,0,0,.3) 100%); }
 
     /* Zajištění čitelnosti nad proměnlivým pozadím */
     h2{display:inline-block;background:rgba(255,255,255,.92);padding:6px 12px;border-radius:12px;box-shadow:0 6px 14px rgba(0,0,0,.08)}
     .cards, .benefits, .example, details, form.cta{backdrop-filter:saturate(1.05)}
 
     /* Hero panel – o něco kontrastnější */
-    header .hero-panel{background:rgba(36,32,28,.72);}
-
-    /* Chip badge – zlepšit kontrast rámečku a textu */
+    header .hero-panel{background:rgba(36,32,28,.72);}  
     .chip{background:rgba(36,32,28,.9);border-color:rgba(255,255,255,.25)}
 
-    /* Extra pro nejmenší zařízení – větší řádkování pro lepší čtení */
-    @media (max-width:420px){
-      body{line-height:1.55}
-    }
+    @media (max-width:420px){ body{line-height:1.55} }
   </style>
 </head>
 <body>
@@ -124,7 +110,7 @@
         <h1>Vaše jistota, když se stane neočekávané</h1>
         <p class="lead">Životní pojištění chrání příjem, zdraví i rodinu – platí po celém světě a přizpůsobí se vašemu životu.</p>
       </div>
-       <!--<section class="benefits">--> <div class="chips" aria-label="klíčové výhody">
+      <div class="chips" aria-label="klíčové výhody">
         <span class="chip"><span class="icon">💰</span>Až 30 % sleva</span>
         <span class="chip"><span class="icon">👨‍👩‍👧‍👦</span>Až 8 osob na 1 smlouvě</span>
         <span class="chip"><span class="icon">🎂</span>Sjednání až do 90 let</span>
@@ -135,32 +121,16 @@
 
   <main class="container">
     <section>
-      <h2>4 klíčová rizika, která kryjeme + dalších 20 </h2>
+      <h2>4 klíčová rizika, která kryjeme + dalších 20</h2>
       <div class="cards">
-        <article class="card">
-          <div class="emoji">🧬</div>
-          <h3>Vážná onemocnění (VO)</h3>
-          <p>Jednorázová částka při stanovení diagnózy – finance na léčbu i pokrytí výpadku příjmu.Až <b>65 diagnóz</b></p>
-        </article>
-        <article class="card">
-          <div class="emoji">🤒</div>
-          <h3>Pracovní neschopnost (PN)</h3>
-          <p>Denní dávka při nemoci či úrazu. Vyplácí se i při práci v zahraničí – s platností po celém světě. <b>Možnost zálohového plnění a výplaty od 1.dne</b></p>
-        </article>
-        <article class="card">
-          <div class="emoji">♿</div>
-          <h3>Invalidita</h3>
-          <p>Jednorázové plnění při přiznání invalidity I.–III. stupně. Stabilita, když se zásadně změní životní situace.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🩹</div>
-          <h3>Trvalé následky úrazu (TNÚ)</h3>
-          <p>Plnění podle rozsahu následků.S 10 násobnou progresí – vyšší odškodné při vážných úrazech.</p>
-        </article>
+        <article class="card"><div class="emoji">🧬</div><h3>Vážná onemocnění (VO)</h3><p>Jednorázová částka při stanovení diagnózy – finance na léčbu i pokrytí výpadku příjmu. Až <b>65 diagnóz</b></p></article>
+        <article class="card"><div class="emoji">🤒</div><h3>Pracovní neschopnost (PN)</h3><p>Denní dávka při nemoci či úrazu. Vyplácí se i při práci v zahraničí – s platností po celém světě. <b>Možnost zálohového plnění a výplaty od 1. dne</b></p></article>
+        <article class="card"><div class="emoji">♿</div><h3>Invalidita</h3><p>Jednorázové plnění při přiznání invalidity I.–III. stupně. Stabilita, když se zásadně změní životní situace.</p></article>
+        <article class="card"><div class="emoji">🩹</div><h3>Trvalé následky úrazu (TNÚ)</h3><p>Plnění podle rozsahu následků. S 10násobnou progresí – vyšší odškodné při vážných úrazech.</p></article>
       </div>
     </section>
 
-   <section class="benefits">
+    <section class="benefits">
       <h2>Proč si sjednat životní pojištění?</h2>
       <ul class="benefit-grid">
         <li>✅ Ochrana rodiny před výpadkem příjmu</li>
@@ -202,18 +172,6 @@
       <p><em>Limit: max. 100&nbsp;000 Kč na každého pojištěného napříč jeho smlouvami (součet prevence a zotavení).</em></p>
     </section>
 
-    <section class="example">
-      <h3>Praktické příklady výplat</h3>
-      <p><strong>1) Denní odškodné při úrazu – vymknutí hlezenního kloubu</strong><br>
-      Sjednáno : 500 Kč/den. Hodnoceno dle oceňovacích tabulek: 70 dní. Plnění: <strong>35 000 Kč</strong>.</p>
-
-      <p><strong>2) Trvalé následky úrazu s 10 násobnou progresí – těžká zlomenina stehenní kosti</strong><br>
-      PS: 500 000 Kč. Hodnocení: 45 %.Výplata: <strong>1 125 000 Kč</strong>.</p>
-
-      <p><strong>3) Dopravní nehoda – smrt</strong><br>
-      PS smrt: 600 000 Kč. Automatický dvojnásobek při dopravní nehodě Celkem: <strong>1 200 000 Kč</strong>.</p>
-    </section>
-
     <section aria-label="faq" style="margin-top:40px">
       <h2>Časté dotazy</h2>
       <details>
@@ -222,20 +180,90 @@
       </details>
       <details>
         <summary>Jaké jsou možnosti sjednání?</summary>
-        <p> Možnost sjednání osobně i on-line</p>
+        <p>Možnost sjednání osobně i on‑line.</p>
       </details>
       <details>
         <summary>Co když už mám starší smlouvu?</summary>
         <p>Bezplatně ji zkontrolujeme a navrhneme úpravy, aby kryla aktuální rizika a byla efektivní.</p>
       </details>
     </section>
-<section>
-<div><a href="kontakt.html" class="btn pulse"><h2>Chci nezávaznou poptávku</h2></a></div>
- </section>     
-    
+
+    <!-- ✅ OPRAVENÝ FORMULÁŘ -->
+    <form
+      id="contact-form"
+      class="cta form js-formspree"
+      method="POST"
+      data-action="https://formspree.io/f/mvgqqpev"
+      data-thanks="/dekujeme.html"
+      data-event="contact_submit">
+
+      <h2>Nezávazná poptávka</h2>
+      <div class="grid">
+        <div>
+          <label for="jmeno">Jméno a příjmení</label>
+          <input id="jmeno" name="jmeno" type="text" placeholder="Vaše jméno" required>
+        </div>
+        <div>
+          <label for="telefon">Telefon</label>
+          <input id="telefon" name="telefon" type="tel" placeholder="733 000 000" pattern="[0-9]{9}" required>
+        </div>
+        <div>
+          <label for="email">E‑mail</label>
+          <input id="email" name="email" type="email" placeholder="vase@email.cz" required>
+        </div>
+        <div>
+          <label for="vek">Věk pojištěného</label>
+          <input id="vek" name="vek" type="number" min="0" max="100" placeholder="50" />
+        </div>
+      </div>
+      <label for="zprava" style="display:block;margin-top:10px">Zpráva</label>
+      <textarea id="zprava" name="zprava" placeholder="Napište, co potřebujete pojistit a pro koho…"></textarea>
+      <div class="actions">
+        <button type="submit">Odeslat poptávku</button>
+        <button type="reset" class="btn-secondary">Vymazat</button>
+      </div>
+    </form>
   </main>
+
+  <!-- ✅ UNIVERZÁLNÍ SKRIPT (musí být ZA formulářem, ne type=module) -->
+  <script>
+  (function(){
+    var DEFAULT_THANKS = '/dekujeme.html';
+
+    function paramsObj(search){ var p=new URLSearchParams(search),o={}; p.forEach(function(v,k){o[k]=v}); return o; }
+    function sendGA(name, params){ if (typeof gtag === 'function'){ gtag('event', name, params || {}); } }
+
+    function bindForm(form){
+      var endpoint = form.getAttribute('data-action');
+      if(!endpoint) return;
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        var submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn){ submitBtn.disabled = true; submitBtn.dataset.origText = submitBtn.textContent; submitBtn.textContent = 'Odesílám…'; }
+
+        var fd = new FormData(form);
+        var q = paramsObj(location.search);
+        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
+        fd.append('_page', location.pathname);
+        fd.append('_ts', new Date().toISOString());
+
+        fetch(endpoint, { method:'POST', headers:{ 'Accept':'application/json' }, body:fd })
+        .then(function(res){ if(!res.ok) throw new Error('submit-failed');
+          sendGA(form.getAttribute('data-event') || 'form_submit', { form_id: form.id || '', form_name: form.getAttribute('name') || '', page_path: location.pathname });
+          var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS; location.href = thanks; })
+        .catch(function(){ alert('Odeslání se nepodařilo. Zkuste to prosím znovu.'); })
+        .finally(function(){ if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat'; } });
+      }, {passive:false});
+    }
+
+    function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  })();
+  </script>
 </body>
 </html>
-    
+
 
 
