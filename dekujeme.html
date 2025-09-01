@@ -1,7 +1,122 @@
-<!doctype html><html lang="cs"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Děkujeme – PojistiToSnadno.cz</title>
-</head><body>
-<h1>Děkujeme za zprávu!</h1>
-<p>Ozvu se co nejdřív. <a href="/">Zpět na úvod</a></p>
-</body></html>
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Děkujeme – PojistiToSnadno.cz</title>
+  <meta name="description" content="Děkujeme za vaši zprávu. Ozvu se co nejdřív – většinou během pár hodin. Mezitím se můžete vrátit na úvod nebo prozkoumat nabídku pojištění." />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet" />
+
+  <!-- GA4 (měření page_view pro konverzi) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CRV15HQDX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config', 'G-4CRV15HQDX');
+  </script>
+
+  <style>
+    :root{
+      --paper:#ffffff; --ink:#1c1c1c; --muted:#6d6d6d;
+      --bg:#f6f6f4; --gold:#c9b475; --gold-dark:#b39f60;
+      --ring:#e3d6bd;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:url('/img/zppozadi.webp') center/cover fixed no-repeat;
+    }
+    /* tmavý overlay kvůli čitelnosti */
+    body::before{content:"";position:fixed;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.45));z-index:-1}
+
+    .wrap{min-height:100%;display:grid;place-items:center;padding:24px}
+    .card{
+      width:min(720px,92vw);
+      background:rgba(255,255,255,.94);
+      backdrop-filter:saturate(1.05);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:24px; padding:26px 24px;
+      box-shadow:0 22px 44px rgba(0,0,0,.22);
+      text-align:center
+    }
+    h1{margin:0 0 .25rem; font-size:clamp(1.6rem,3.2vw,2.2rem)}
+    p.lead{margin:.25rem 0 1rem; color:#2d2d2d}
+    .summary{display:grid;gap:8px;justify-items:center; margin:10px 0 12px; color:var(--muted)}
+
+    .actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;text-decoration:none}
+    .btn.primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; box-shadow:0 10px 24px rgba(0,0,0,.18)}
+    .btn.ghost{background:#fff;color:#222;border:1px solid rgba(0,0,0,.12)}
+
+    .meta{margin-top:14px; color:var(--muted); font-size:.95rem}
+
+    .contact{display:grid;grid-template-columns:1fr 1fr; gap:8px; max-width:520px; margin:14px auto 0}
+    .contact a{display:block;padding:10px 12px;border:1px solid rgba(0,0,0,.1);background:#fff;border-radius:12px;text-decoration:none;color:#222}
+    @media(max-width:560px){.contact{grid-template-columns:1fr}}
+
+    footer{margin-top:18px; text-align:center; color:#fff; font-weight:700}
+
+    /* drobný countdown */
+    #count{font-variant-numeric:tabular-nums; font-weight:800}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" role="status" aria-live="polite">
+      <h1>Děkujeme za zprávu!</h1>
+      <p class="lead">Vaši poptávku mám a co nejdřív se ozvu zpět.</p>
+
+      <div class="summary">
+        <div>Mezitím můžete pokračovat na úvod nebo projít další služby.</div>
+        <div class="meta">Automaticky vás přesměruji na úvod za <span id="count">8</span> s.</div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" id="back-link" href="/">Zpět na původní stránku</a>
+        <a class="btn ghost" href="/#sluzby">Prohlédnout služby</a>
+        <a class="btn ghost" href="/#hodnoceni">Zanechat hodnocení</a>
+      </div>
+
+      <div class="contact">
+        <a href="tel:+420733782290">📞 +420 733 782 290</a>
+        <a href="mailto:pojistitosnadno@gmail.com">✉️ pojistitosnadno@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 PojistiToSnadno.cz
+  </footer>
+
+  <script>
+  (function(){
+    var n = 8, el = document.getElementById('count');
+
+    // Zjisti cílovou stránku: preferuj stejný původ jako referrer, jinak domovská
+    var target = '/';
+    try {
+      var ref = document.referrer || '';
+      if (ref) {
+        var u = new URL(ref);
+        if (u.origin === location.origin && !/dekujeme\.html$/i.test(u.pathname)) {
+          target = u.pathname + u.search + u.hash;
+        }
+      }
+    } catch (e) {}
+
+    // Nastav odkaz na tlačítku
+    var back = document.getElementById('back-link');
+    if (back) back.setAttribute('href', target);
+
+    // Odpočet a přesměrování
+    var t = setInterval(function(){
+      n--; if (el) el.textContent = n;
+      if (n <= 0) { clearInterval(t); location.href = target; }
+    }, 1000);
+  })();
+</script>
+</body>
+</html>
