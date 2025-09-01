@@ -773,13 +773,43 @@
   initRating();
   loadLastReviews();
 </script>
+  <script>
+(() => {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
 
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // zastaví klasické odeslání na Formspree stránku
 
+    const data = new FormData(form);
 
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
 
-
-
-
+      if (res.ok) {
+        // volitelně odešleme událost do GA4 hned teď
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', {
+            form_id: 'contact-form',
+            page_path: location.pathname
+          });
+        }
+        // a přesměrujeme na vlastní děkovací stránku
+        window.location.href = '/dekujeme.html';
+      } else {
+        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
+      }
+    } catch (err) {
+      alert('Chyba připojení. Zkuste to prosím znovu.');
+    }
+  });
+})();
+</script>
 
 </body>
+  
 </html>
