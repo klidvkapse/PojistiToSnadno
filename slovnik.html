@@ -4,226 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slovník pojistných pojmů | PojistiToSnadno</title>
-    <link rel="stylesheet" href="/site.css?v=2">
+  <link rel="stylesheet" href="/site.css?v=2">
   <style>
-    :root {
-      --primary: #b7a97c;
-      --button-bg: #c9b475;
-      --button-hover: #e2dbc9;
-      --text: #fff;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      color: var(--text);
-      background: #181818 url('portret-bg-web.webp') no-repeat center center;
-      background-size: cover;
-      height: 100%;
-      min-height: 100vh;
-      width: 100vw;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-
-    @media (max-width: 800px) {
-      body {
-        background: #181818 url('portret.webp') no-repeat center top;
-        background-size: cover;
-      }
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.28);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.1rem 1.4rem;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ffe87a;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .nav-buttons a {
-      background: #d1b85c;
-      color: #1e1e1e;
-      text-decoration: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 14px;
-      font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    h2 {
-      color: #f3da80;
-      margin-bottom: 1rem;
-    }
-
-    .slovnik-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .img-wrap img {
-      max-width: 200px;
-      border-radius: 16px;
-    }
-
-    .dict-container {
-      flex: 1;
-      min-width: 280px;
-      text-align: left;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 0.7rem;
-      font-size: 1rem;
-      border-radius: 12px;
-      border: 1px solid #444;
-      background: #fff;
-      color: #000;
-      margin-bottom: 1rem;
-    }
-
-    #suggestions {
-      background: #eee;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    #suggestions div {
-      padding: 0.6rem 1rem;
-      cursor: pointer;
-      color: #000;
-    }
-
-    #suggestions div:hover {
-      background-color: #ddd;
-    }
-
-    .link-card-btn {
-      background-color: #d1b85c;
-      color: #000;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .link-card-btn:hover {
-      background-color: #f3e39a;
-    }
-
-    .slovnik-tip {
-      font-size: 0.92rem;
-      color: #ddd;
-      margin-top: 1rem;
-    }
-
-    .slovnik-missing {
-      font-size: 0.92rem;
-      margin-top: 0.6rem;
-    }
-
-    .slovnik-missing a {
-      color: #f3da80;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    .slovnik-output {
-      background: #2e2e2e;
-      color: #fff;
-      padding: 1rem;
-      border-radius: 12px;
-      margin-top: 1.2rem;
-      border-left: 5px solid #d1b85c;
-    }
-
-    .slovnik-output .def {
-      margin-top: 0.5rem;
-    }
-
-    .slovnik-output .ex {
-      margin-top: 0.5rem;
-      font-style: italic;
-      color: #ccc;
-    }
-
-    footer {
-      background: transparent;
-      color: #999;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 2;
-      margin-top: 3rem;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .nav-buttons {
-        margin-top: 1rem;
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .img-wrap img {
-        max-width: 140px;
-      }
-
-      .dict-container {
-        text-align: center;
-      }
-    }
+    :root { --primary:#b7a97c; --button-bg:#c9b475; --button-hover:#e2dbc9; --text:#fff; }
+    html, body{ margin:0; padding:0; font-family:'Segoe UI', sans-serif; color:var(--text); background:#181818 url('portret-bg-web.webp') no-repeat center center; background-size:cover; height:100%; min-height:100vh; width:100vw; box-sizing:border-box; overflow-x:hidden; }
+    @media (max-width:800px){ body{ background:#181818 url('portret.webp') no-repeat center top; background-size:cover; } }
+    body::before{ content:""; position:fixed; inset:0; background:rgba(0,0,0,.28); z-index:1; pointer-events:none; }
+    header{ display:flex; justify-content:space-between; align-items:center; padding:1.1rem 1.4rem; flex-wrap:wrap; position:relative; z-index:10; }
+    .logo{ font-size:1.5rem; font-weight:bold; color:#ffe87a; text-shadow:0 2px 10px rgba(0,0,0,.5); }
+    .nav-buttons{ display:flex; gap:1rem; flex-wrap:wrap; }
+    .nav-buttons a{ background:#d1b85c; color:#1e1e1e; text-decoration:none; padding:.5rem 1.2rem; border-radius:14px; font-weight:600; font-size:1rem; box-shadow:0 2px 10px rgba(0,0,0,.3); }
+    main{ max-width:960px; margin:0 auto; padding:1rem; text-align:center; position:relative; z-index:2; }
+    h2{ color:#f3da80; margin-bottom:1rem; }
+    .slovnik-row{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:2rem; margin-bottom:2rem; }
+    .img-wrap img{ max-width:200px; border-radius:16px; }
+    .dict-container{ flex:1; min-width:280px; text-align:left; }
+    input[type="text"]{ width:100%; padding:.7rem; font-size:1rem; border-radius:12px; border:1px solid #444; background:#fff; color:#000; margin-bottom:1rem; }
+    #suggestions{ background:#eee; border-radius:12px; overflow:hidden; }
+    #suggestions div{ padding:.6rem 1rem; cursor:pointer; color:#000; }
+    #suggestions div:hover{ background-color:#ddd; }
+    .link-card-btn{ background-color:#d1b85c; color:#000; border:none; padding:.6rem 1.2rem; border-radius:10px; font-weight:bold; cursor:pointer; transition:background .2s; }
+    .link-card-btn:hover{ background-color:#f3e39a; }
+    .slovnik-tip{ font-size:.92rem; color:#ddd; margin-top:1rem; }
+    .slovnik-missing{ font-size:.92rem; margin-top:.6rem; }
+    .slovnik-missing a{ color:#f3da80; font-weight:bold; text-decoration:underline; }
+    .slovnik-output{ background:#2e2e2e; color:#fff; padding:1rem; border-radius:12px; margin-top:1.2rem; border-left:5px solid #d1b85c; }
+    .slovnik-output .def{ margin-top:.5rem; }
+    .slovnik-output .ex{ margin-top:.5rem; font-style:italic; color:#ccc; }
+    /* POZOR: nenecháme tento soubor přebarvit zlatou patičku ze site.css → žádné obecné "footer{...}" selektory zde */
+    @media (max-width:700px){ header{ flex-direction:column; align-items:center; } .nav-buttons{ margin-top:1rem; flex-direction:row; justify-content:center; } .img-wrap img{ max-width:140px; } .dict-container{ text-align:center; } }
   </style>
 </head>
 <body>
-
   <header>
     <div class="logo">PojistiToSnadno.cz</div>
     <div class="nav-buttons">
@@ -239,87 +51,69 @@
         <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
       </div>
       <div class="dict-container">
-        <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()">
-        <div id="suggestions"></div>
-        <button class="link-card-btn" onclick="showDefinition()">Zobrazit / Zpět</button>
-        <div class="slovnik-tip">
-          <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
-        </div>
-        <div class="slovnik-missing">
-          ❔ Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a>
-        </div>
-        <div id="output" class="slovnik-output" data-current=""></div>
+        <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()" aria-label="Hledat pojem">
+        <div id="suggestions" role="listbox" aria-label="Návrhy pojmů"></div>
+        <button class="link-card-btn" id="toggleDef">Zobrazit / Zpět</button>
+        <div class="slovnik-tip"><b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!</div>
+        <div class="slovnik-missing">❔ Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a></div>
+        <div id="output" class="slovnik-output" data-current="" aria-live="polite"></div>
       </div>
     </div>
   </main>
 
-  <footer>
-    © 2025 PojistiToSnadno.cz – Všechna práva vyhrazena
-  </footer>
-
   <script>
+    // === Data
     const terms = {
-      "pojistná smlouva": {
-        def: "Smlouva mezi pojišťovnou a klientem, která určuje podmínky pojištění.",
-        ex: "Např. smlouva na životní pojištění uzavřená na 10 let."
-      },
-      "pojistná událost": {
-        def: "Událost, kterou pojištění kryje a zakládá nárok na plnění.",
-        ex: "Např. dopravní nehoda krytá havarijním pojištěním."
-      },
-      "spoluúčast": {
-        def: "Částka, kterou si klient při škodě hradí sám.",
-        ex: "Při škodě 10 000 Kč a spoluúčasti 1 000 Kč pojišťovna vyplatí 9 000 Kč."
-      },
-      "asistenční služba": {
-        def: "Pomoc, kterou poskytuje pojišťovna v nouzových situacích.",
-        ex: "Např. odtah vozidla, technická pomoc nebo tlumočení v zahraničí."
-      },
-      "bonita": {
-        def: "Schopnost klienta plnit své závazky vůči pojišťovně.",
-        ex: "Vyšší bonita může znamenat výhodnější podmínky pojištění."
-      }
+      "pojistná smlouva": { def: "Smlouva mezi pojišťovnou a klientem, která určuje podmínky pojištění.", ex: "Např. smlouva na životní pojištění uzavřená na 10 let." },
+      "pojistná událost": { def: "Událost, kterou pojištění kryje a zakládá nárok na plnění.", ex: "Např. dopravní nehoda krytá havarijním pojištěním." },
+      "spoluúčast": { def: "Částka, kterou si klient při škodě hradí sám.", ex: "Při škodě 10 000 Kč a spoluúčasti 1 000 Kč pojišťovna vyplatí 9 000 Kč." },
+      "asistenční služba": { def: "Pomoc, kterou poskytuje pojišťovna v nouzových situacích.", ex: "Např. odtah vozidla, technická pomoc nebo tlumočení v zahraničí." },
+      "bonita": { def: "Schopnost klienta plnit své závazky vůči pojišťovně.", ex: "Vyšší bonita může znamenat výhodnější podmínky pojištění." }
     };
 
-    function showSuggestions() {
-      const q = document.getElementById('search').value.toLowerCase();
-      const list = document.getElementById('suggestions');
-      list.innerHTML = '';
-      if (!q) return;
-      Object.keys(terms).filter(t => t.includes(q)).forEach(t => {
-        const d = document.createElement('div');
-        d.textContent = t;
-        d.onclick = () => {
-          document.getElementById('search').value = t;
-          list.innerHTML = '';
-        };
+    // === Normalizace (bez diakritiky) pro vyhledávání
+    const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const index = {}; Object.keys(terms).forEach(k => { index[norm(k)] = k; });
+
+    // === UI helpers
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    function showSuggestions(){
+      const q = $('#search').value; const qn = norm(q);
+      const list = $('#suggestions'); list.innerHTML = '';
+      if(!qn) return;
+      Object.keys(terms).filter(t => norm(t).includes(qn)).forEach(t => {
+        const d = document.createElement('div'); d.textContent = t; d.setAttribute('role','option');
+        d.onclick = () => { $('#search').value = t; list.innerHTML = ''; showDefinition(true); };
         list.appendChild(d);
       });
     }
 
     let resultShown = false;
-
-    function showDefinition() {
-      const input = document.getElementById('search');
-      const key = input.value.toLowerCase();
-      const out = document.getElementById('output');
-      const suggestions = document.getElementById('suggestions');
-
-      if (!resultShown && terms[key]) {
+    function showDefinition(force){
+      const input = $('#search'); const keyNorm = norm(input.value);
+      const realKey = index[keyNorm]; const out = $('#output'); const suggestions = $('#suggestions');
+      if(!resultShown && realKey){
         suggestions.innerHTML = '';
-        out.innerHTML = `<strong>${key}</strong><br><div class="def">${terms[key].def}</div><div class="ex">${terms[key].ex}</div>`;
-        out.scrollIntoView({ behavior: "smooth", block: "center" });
+        out.innerHTML = `<strong>${realKey}</strong><br><div class="def">${terms[realKey].def}</div><div class="ex">${terms[realKey].ex}</div>`;
+        out.scrollIntoView({ behavior:'smooth', block:'center' });
         resultShown = true;
+      } else if(resultShown || force){
+        input.value = ''; out.innerHTML = ''; suggestions.innerHTML = ''; resultShown = false;
       } else {
-        input.value = '';
-        out.innerHTML = '';
-        suggestions.innerHTML = '';
-        resultShown = false;
+        // Nic nenalezeno
+        out.innerHTML = '<em>Pojem nebyl nalezen. Zkuste prosím jiný výraz nebo klikněte na některý z návrhů.</em>';
+        out.scrollIntoView({ behavior:'smooth', block:'center' });
       }
-        }
-    
+    }
+
+    // Enter v inputu spustí hledání
+    $('#search').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); showDefinition(); } });
+    $('#toggleDef').addEventListener('click', ()=> showDefinition());
   </script>
-   <!-- bezpečný helper pro tlačítko Nastavení cookies (když není načten banner) -->
+
+  <!-- bezpečný helper pro tlačítko Nastavení cookies (když není načten banner) -->
   <script>
     window.resetCookieConsent = window.resetCookieConsent || function(){
       try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
@@ -345,3 +139,5 @@
   </footer>
 </body>
 </html>
+
+     
