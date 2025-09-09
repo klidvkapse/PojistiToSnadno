@@ -2,74 +2,372 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slovník pojistných pojmů | PojistiToSnadno</title>
-  <link rel="stylesheet" href="/site.css?v=2">
+  <title>Laický slovník pojistných pojmů | PojistiToSnadno.cz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Najděte význam pojistných pojmů jednoduše v našem slovníku."/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="robots" content="index, follow"/>
+  <meta property="fb:app_id" content="your_app_id" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO: Title + Description + Keywords -->
+  <title>PojistiToSnadno.cz – Online pojištění úrazové, životní i majetkové snadno a férově</title>
+  <meta name="description" content="Sjednejte si úrazové, životní nebo majetkové pojištění jednoduše online s osobním poradcem. Okamžitá kalkulace, zkušenosti klientů, férový přístup – vše online i v Šumperku a okolí."/>
+  <meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, majetkové pojištění, kalkulačka pojištění, pojišťovací poradce Šumperk a okolí, sjednání pojištění online, reálné škody klientů"/>
   
-  <!-- ✅ Footer rescue styles (centrování a vzhled kdyby /site.css nebyl načten nebo byl přebit) -->
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online"/>
+  <meta property="og:description" content="Online pojištění úrazové, majetkové i životní. Rychlá kalkulace a osobní přístup."/>
+  <meta property="og:image" content="https://pojistitostnadno.cz/og-image.jpg"/>
+  <meta property="og:url" content="https://pojistitostnadno.cz/"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://pojistitostnadno.cz/"/>
+  <!-- Strukturovaná data: WebSite + WebPage (bez personalizace) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PojistiToSnadno.cz",
+  "url": "https://pojistitostnadno.cz/"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "PojistiToSnadno.cz – Online pojištění snadno a férově",
+  "url": "https://pojistitostnadno.cz/",
+  "description": "Sjednejte si úrazové, životní nebo majetkové pojištění jednoduše online. Rychlá kalkulace, zkušenosti klientů, férový přístup – vše online i v Šumperku a okolí."
+}
+</script>
+
+
+  <!-- Strukturovaná data - Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daniel Verner",
+    "jobTitle": "Pojišťovací poradce",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "PojistiToSnadno.cz"
+    },
+    "url": "https://pojistitostnadno.cz/",
+    "email": "pojistitosnadno@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Šumperk",
+      "addressCountry": "CZ"
+    }
+  }
+  </script>
+
+  <!-- Preconnect & Preload fontů -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'"/>
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      min-width: 100vw;
+      font-family: 'Raleway', Arial, sans-serif;
+      color: #fffbe0;
+      background: url('pozadislovnik.webp') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+    header {
+      width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px 10px 20px;
+      background: none;
+      box-sizing: border-box;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: #f6e9aa;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.20);
+      user-select: none;
+      text-decoration: none;
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .nav-buttons a {
+      background: #f5e2a7;
+      color: #5e5518;
+      padding: 8px 22px;
+      font-weight: 600;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 1.07rem;
+      border: none;
+      box-shadow: 0 2px 12px rgba(80,60,8,0.08);
+      transition: background 0.2s, color 0.2s;
+      outline: none;
+    }
+    .nav-buttons a:hover, .nav-buttons a:focus {
+      background: #fff6ce;
+      color: #c79f2c;
+    }
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 70vh;
+      justify-content: center;
+      padding: 60px 10px 40px 10px;
+    }
+    .dict-box {
+      background: none;
+      border-radius: 17px;
+      padding: 36px 30px 24px 30px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 38px;
+      margin-bottom: 30px;
+      backdrop-filter: none;
+    }
+    .dict-box h1 {
+      color: #ffe580;
+      font-size: 1.33em;
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 2px #604d0f;
+      background: none;
+      border-radius: 0;
+      padding: 0;
+    }
+    .dict-input {
+      width: 100%;
+      border-radius: 9px;
+      border: 1.5px solid #ffe580;
+      padding: 12px 16px;
+      font-size: 1.08em;
+      background: rgba(0,0,0,0.12);
+      color: #fffbe0;
+      margin-bottom: 0px;
+      box-sizing: border-box;
+      transition: border 0.18s, background 0.18s;
+      outline: none;
+      box-shadow: 0 2px 14px 0 rgba(80,60,8,0.10);
+      font-weight: bold;
+      backdrop-filter: blur(1px);
+    }
+    .dict-input:focus {
+      border: 1.5px solid #ffef91;
+      background: rgba(0,0,0,0.25);
+    }
+    .dict-input::placeholder {
+      color: #ffef91;
+      opacity: 1;
+      font-weight: normal;
+    }
+    .autocomplete-list {
+      position: relative;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    .autocomplete-items {
+      position: absolute;
+      left: 0; right: 0;
+      background: rgba(60,44,8,0.98);
+      border: 1.5px solid #ffe580;
+      border-top: none;
+      border-radius: 0 0 9px 9px;
+      z-index: 99;
+      max-height: 200px;
+      overflow-y: auto;
+      color: #ffe580;
+      font-size: 1.07em;
+      box-shadow: 0 7px 20px rgba(50,40,0,0.22);
+    }
+    .autocomplete-item {
+      padding: 11px 15px;
+      cursor: pointer;
+      border-bottom: 1px solid #e4cf99;
+      transition: background 0.17s;
+      font-weight: 500;
+    }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover, .autocomplete-active {
+      background: #ffe580;
+      color: #624d00;
+    }
+    .dict-btn {
+      background: #cbb04a;
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      font-size: 1.06em;
+      padding: 10px 35px;
+      font-weight: bold;
+      margin: 13px 0 20px 0;
+      box-shadow: 0 2px 10px rgba(188,161,26,0.11);
+      cursor: pointer;
+      transition: background 0.16s;
+      outline: none;
+    }
+    .dict-btn:hover, .dict-btn:focus {
+      background: #ffe580;
+      color: #4a4412;
+    }
+    .dict-tip {
+      font-size: 1.06em;
+      color: #fffbe0;
+      margin-bottom: 8px;
+      text-align: left;
+      width: 100%;
+      font-weight: 600;
+      text-shadow: 0 2px 5px #000, 0 1px 5px #4d3b00;
+    }
+    .dict-tip b {
+      color: #ffe580;
+      text-shadow: 0 2px 5px #4d3b00;
+    }
+    .dict-missing {
+      font-size: 1.05em;
+      color: #fffbe0;
+      margin-bottom: 12px;
+      width: 100%;
+      text-align: left;
+      text-shadow: 0 2px 5px #4d3b00;
+    }
+    .dict-missing a {
+      color: #ffe580;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    #output {
+      width: 100%;
+      min-height: 38px;
+      margin-top: 13px;
+      border-radius: 9px;
+      background: rgba(0,0,0,0.23);
+      color: #fffbe0;
+      padding: 13px 17px;
+      font-size: 1.03em;
+      box-sizing: border-box;
+      box-shadow: 0 1px 7px rgba(60,40,0,0.13);
+      word-break: break-word;
+      font-weight: 500;
+      text-shadow: 0 2px 5px #4d3b00;
+    }
+    /* Footer */
+    footer {
+      width: 100vw;
+      background: rgba(40, 30, 0, 0.5);
+      color: #ffe580;
+      text-align: center;
+      padding: 17px 6px 17px 6px;
+      font-size: 1em;
+      letter-spacing: 0.01em;
+      font-weight: 500;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 10;
+      box-shadow: 0 -1px 10px rgba(190,170,70,0.08);
+      user-select: none;
+      text-shadow: 0 2px 5px #4d3b00;
+    }
+    @media (max-width: 600px) {
+      .dict-box,
+      .add-term-section {
+        max-width: 97vw;
+        padding: 21px 2vw 22px 2vw;
+      }
+      .main-container {
+        padding: 23px 0 82px 0;
+        min-height: 60vh;
+      }
+      .logo {
+        font-size: 1.1rem;
+      }
+      .nav-buttons a {
+        padding: 7px 14px;
+        font-size: 1em;
+      }
+      footer {
+        font-size: 0.96em;
+        padding: 13px 2px 12px 2px;
+      }
+    }
+     <!-- ✅ Footer rescue styles: vynutí centrování a vzhled i když se /site.css nenačte nebo je přebit -->
+ 
     .footer{background:#8b7a58;color:#fff;padding:24px 16px;margin-top:28px}
     .footer__wrap{max-width:1140px;margin:0 auto;display:grid;gap:12px;justify-items:center;text-align:center}
     .footer__links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
     .footer__chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-weight:700}
     .footer__chip:hover{background:rgba(255,255,255,.2)}
-  </style>
-
-  <style>
-    :root { --primary:#b7a97c; --button-bg:#c9b475; --button-hover:#e2dbc9; --text:#fff; }
-    html, body{ margin:0; padding:0; font-family:'Segoe UI', sans-serif; color:var(--text); background:#181818 url('portret-bg-web.webp') no-repeat center center; background-size:cover; height:100%; min-height:100vh; width:100vw; box-sizing:border-box; overflow-x:hidden; }
-    @media (max-width:800px){ body{ background:#181818 url('portret.webp') no-repeat center top; background-size:cover; } }
-    body::before{ content:""; position:fixed; inset:0; background:rgba(0,0,0,.28); z-index:1; pointer-events:none; }
-    header{ display:flex; justify-content:space-between; align-items:center; padding:1.1rem 1.4rem; flex-wrap:wrap; position:relative; z-index:10; }
-    .logo{ font-size:1.5rem; font-weight:bold; color:#ffe87a; text-shadow:0 2px 10px rgba(0,0,0,.5); }
-    .nav-buttons{ display:flex; gap:1rem; flex-wrap:wrap; }
-    .nav-buttons a{ background:#d1b85c; color:#1e1e1e; text-decoration:none; padding:.5rem 1.2rem; border-radius:14px; font-weight:600; font-size:1rem; box-shadow:0 2px 10px rgba(0,0,0,.3); }
-    main{ max-width:960px; margin:0 auto; padding:1rem; text-align:center; position:relative; z-index:2; }
-    h2{ color:#f3da80; margin-bottom:1rem; }
-    .slovnik-row{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:2rem; margin-bottom:2rem; }
-    .img-wrap img{ max-width:200px; border-radius:16px; }
-    .dict-container{ flex:1; min-width:280px; text-align:left; }
-    input[type="text"]{ width:100%; padding:.7rem; font-size:1rem; border-radius:12px; border:1px solid #444; background:#fff; color:#000; margin-bottom:1rem; }
-    #suggestions{ background:#eee; border-radius:12px; overflow:hidden; }
-    #suggestions div{ padding:.6rem 1rem; cursor:pointer; color:#000; }
-    #suggestions div:hover{ background-color:#ddd; }
-    .link-card-btn{ background-color:#d1b85c; color:#000; border:none; padding:.6rem 1.2rem; border-radius:10px; font-weight:bold; cursor:pointer; transition:background .2s; }
-    .link-card-btn:hover{ background-color:#f3e39a; }
-    .slovnik-tip{ font-size:.92rem; color:#ddd; margin-top:1rem; }
-    .slovnik-missing{ font-size:.92rem; margin-top:.6rem; }
-    .slovnik-missing a{ color:#f3da80; font-weight:bold; text-decoration:underline; }
-    .slovnik-output{ background:#2e2e2e; color:#fff; padding:1rem; border-radius:12px; margin-top:1.2rem; border-left:5px solid #d1b85c; }
-    .slovnik-output .def{ margin-top:.5rem; }
-    .slovnik-output .ex{ margin-top:.5rem; font-style:italic; color:#ccc; }
-    /* Bez obecných selektorů typu footer{...} aby neovlivnily zlatou patičku */
-    @media (max-width:700px){ header{ flex-direction:column; align-items:center; } .nav-buttons{ margin-top:1rem; flex-direction:row; justify-content:center; } .img-wrap img{ max-width:140px; } .dict-container{ text-align:center; } }
+ 
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo">PojistiToSnadno.cz</div>
-    <div class="nav-buttons">
+    <nav class="nav-buttons">
       <a href="index.html">Domů</a>
-      <a href="kontakt.html">Kontakt</a>
-    </div>
+    </nav>
   </header>
 
-  <main>
-    <h2>Laický slovník pojistných pojmů</h2>
-    <div class="slovnik-row">
-      <div class="img-wrap">
-        <img src="SLOVNIK.png" alt="Slovník pojistných pojmů" />
+  <main class="main-container">
+    <form class="dict-box" autocomplete="off" onsubmit="event.preventDefault(); showOrReset();">
+      <h1>Laický slovník pojistných pojmů</h1>
+      <div class="autocomplete-list" style="width:100%;">
+        <input type="text" id="search" class="dict-input" placeholder="Napiš pojistovací pojem…" autocomplete="off" />
+        <div id="autocomplete-results" class="autocomplete-items"></div>
       </div>
-      <div class="dict-container">
-        <input type="text" id="search" placeholder="Napiš pojišťovací pojem…" oninput="showSuggestions()" aria-label="Hledat pojem">
-        <div id="suggestions" role="listbox" aria-label="Návrhy pojmů"></div>
-        <button class="link-card-btn" id="toggleDef">Zobrazit / Zpět</button>
-        <div class="slovnik-tip"><b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!</div>
-        <div class="slovnik-missing">❔ Nenašli jste výraz? <a href="mailto:pojistitosnadno@gmail.com">Navrhněte ho zde</a></div>
-        <div id="output" class="slovnik-output" data-current="" aria-live="polite"></div>
+      <button type="submit" class="dict-btn" id="dict-btn">Zobrazit / Zpět</button>
+      <div class="dict-tip">
+        <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
       </div>
-    </div>
+      <div class="dict-missing">
+        <span style="font-size:1.1em;">❔</span> Nenašli jste výraz? Pošlete mi ho pomocí kontaktního formuláře na domovské stránce.
+      </div>
+      <div id="output"></div>
+    </form>
   </main>
+
+   <footer class="footer" role="contentinfo">
+    <div class="footer__wrap">
+      <div class="footer__links">
+        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+        <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
+      </div>
+      <div style="opacity:.9">© 2025 PojistiToSnadno.cz — Daniel Verner</div>
+    </div>
+  </footer>
 
   <script>
     const terms = {
@@ -139,102 +437,115 @@
       }
     };
 
-  
-      // === Normalizace (bez diakritiky) pro vyhledávání
-    const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-    const index = {}; Object.keys(terms).forEach(k => { index[norm(k)] = k; });
-
-    // === UI helpers
-    const $ = sel => document.querySelector(sel);
-    const $$ = sel => Array.from(document.querySelectorAll(sel));
-
-    function showSuggestions(){
-      const q = $('#search').value; const qn = norm(q);
-      const list = $('#suggestions'); list.innerHTML = '';
-      if(!qn) return;
-      Object.keys(terms).filter(t => norm(t).includes(qn)).forEach(t => {
-        const d = document.createElement('div'); d.textContent = t; d.setAttribute('role','option');
-        d.onclick = () => { $('#search').value = t; list.innerHTML = ''; showDefinition(true); };
-        list.appendChild(d);
-      });
+    // Normalize (diacritics insensitive)
+    function normalize(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
     }
 
-    let resultShown = false;
-    function showDefinition(force){
-      const input = $('#search'); const keyNorm = norm(input.value);
-      const realKey = index[keyNorm]; const out = $('#output'); const suggestions = $('#suggestions');
-      if(!resultShown && realKey){
-        suggestions.innerHTML = '';
-        out.innerHTML = `<strong>${realKey}</strong><br><div class="def">${terms[realKey].def}</div><div class="ex">${terms[realKey].ex}</div>`;
-        out.scrollIntoView({ behavior:'smooth', block:'center' });
-        resultShown = true;
-      } else if(resultShown || force){
-        input.value = ''; out.innerHTML = ''; suggestions.innerHTML = ''; resultShown = false;
+    // Našeptávač
+    const searchInput = document.getElementById('search');
+    const resultsBox = document.getElementById('autocomplete-results');
+    let currentFocus = -1;
+    let definitionShown = false;
+
+    searchInput.addEventListener("input", function () {
+      if (definitionShown) return; // Disable autocomplete after result shown
+      const val = this.value;
+      resultsBox.innerHTML = "";
+      if (!val) return false;
+      let matches = Object.keys(terms).filter(
+        t => normalize(t).includes(normalize(val))
+      );
+      if (matches.length === 0) return false;
+      matches.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.classList.add("autocomplete-item");
+        div.innerHTML = item.replace(new RegExp(val, "gi"), match =>
+          `<strong>${match}</strong>`
+        );
+        div.addEventListener("mousedown", function(e){
+          searchInput.value = item;
+          resultsBox.innerHTML = "";
+        });
+        resultsBox.appendChild(div);
+      });
+    });
+
+    searchInput.addEventListener("keydown", function(e) {
+      if (definitionShown) return; // Disable after result
+      let items = resultsBox.querySelectorAll(".autocomplete-item");
+      if (!items.length) return;
+      if (e.key === "ArrowDown") {
+        currentFocus++;
+        if (currentFocus >= items.length) currentFocus = 0;
+        addActive(items);
+      } else if (e.key === "ArrowUp") {
+        currentFocus--;
+        if (currentFocus < 0) currentFocus = items.length - 1;
+        addActive(items);
+      } else if (e.key === "Enter") {
+        if (currentFocus > -1) {
+          e.preventDefault();
+          items[currentFocus].dispatchEvent(new Event("mousedown"));
+        }
+      }
+    });
+
+    function addActive(items) {
+      if (!items) return false;
+      removeActive(items);
+      if (currentFocus >= items.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = items.length - 1;
+      items[currentFocus].classList.add("autocomplete-active");
+      items[currentFocus].scrollIntoView({ block: "nearest" });
+    }
+    function removeActive(items) {
+      for (let item of items) item.classList.remove("autocomplete-active");
+    }
+    document.addEventListener("click", function (e) {
+      if (e.target !== searchInput) resultsBox.innerHTML = "";
+      currentFocus = -1;
+    });
+
+    // Funkce pro zobrazení/vymazání výsledku
+    function showOrReset() {
+      const input = document.getElementById('search');
+      const out = document.getElementById('output');
+      const btn = document.getElementById('dict-btn');
+
+      if (!definitionShown) {
+        const key = input.value.trim().toLowerCase();
+        resultsBox.innerHTML = "";
+        if (terms[key]) {
+          out.innerHTML = `<strong>${key}</strong><br>
+            <div class="def">${terms[key].def}</div>
+            <div class="ex" style="color:#ffe580; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
+        } else {
+          out.innerHTML = `<span style="color:#ffd;">Pojem nebyl nalezen. Doporučujeme jej zaslat do sekce níže.</span>`;
+        }
+        btn.textContent = "Zpět";
+        definitionShown = true;
+        searchInput.blur();
+        setTimeout(() => {
+          out.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
       } else {
-        // Nic nenalezeno
-        out.innerHTML = '<em>Pojem nebyl nalezen. Zkuste prosím jiný výraz nebo klikněte na některý z návrhů.</em>';
-        out.scrollIntoView({ behavior:'smooth', block:'center' });
+        // Reset
+        input.value = "";
+        out.innerHTML = "";
+        btn.textContent = "Zobrazit / Zpět";
+        definitionShown = false;
+        resultsBox.innerHTML = "";
+        searchInput.focus();
       }
     }
 
-    // Enter v inputu spustí hledání
-    $('#search').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); showDefinition(); } });
-    $('#toggleDef').addEventListener('click', ()=> showDefinition());
+    // Potvrzovací hláška pro sekci návrhu pojmů (ponechána beze změny dle zadání)
+    document.getElementById('addTermForm').addEventListener('submit', function(e){
+      setTimeout(function(){
+        document.getElementById('addTermSuccess').innerText = "Děkujeme za návrh! Výraz bude po schválení přidán do slovníku.";
+      }, 800);
+    });
   </script>
-
-  <!-- bezpečný helper pro tlačítko Nastavení cookies (když není načten banner) -->
-  <script>
-    window.resetCookieConsent = window.resetCookieConsent || function(){
-      try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
-      try{ localStorage.removeItem('cookie_consent_choice'); }catch(e){}
-      try{ document.cookie='cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax'; }catch(e){}
-      alert('Nastavení cookies bylo resetováno. Po obnovení stránky se znovu zobrazí lišta (pokud je nasazen cookie banner).');
-      try{ location.reload(); }catch(e){}
-    };
-  </script>
-
-  <!-- jednotná zlatá patička -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer__wrap">
-      <div class="footer__links">
-        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
-        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
-        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
-        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
-        <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
-      </div>
-      <div style="opacity:.9">© 2025 PojistiToSnadno.cz — Daniel Verner</div>
-    </div>
-  </footer>
-  <!-- 🔧 FOOTER INLINE FIX (vložit těsně před </body>) -->
-<style>
-  :root{ --footer-bg:#8b7a58; --footer-fg:#fff; }
-  body footer.footer{
-    background:var(--footer-bg) !important;
-    color:var(--footer-fg) !important;
-    padding:24px 16px !important;
-    margin-top:28px !important;
-  }
-  body footer.footer .footer__wrap{
-    max-width:1140px; margin:0 auto;
-    display:grid; gap:12px; justify-items:center; text-align:center;
-  }
-  body footer.footer .footer__links{
-    display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
-  }
-  body footer.footer .footer__chip,
-  body footer.footer .footer__chip:link,
-  body footer.footer .footer__chip:visited{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:8px 12px; border-radius:999px;
-    border:1px solid rgba(255,255,255,.35) !important;
-    background:rgba(255,255,255,.12) !important;
-    color:#fff !important; text-decoration:none !important; font-weight:700;
-  }
-  body footer.footer .footer__chip:hover{
-    background:rgba(255,255,255,.2) !important;
-  }
-</style>
-
 </body>
 </html>
