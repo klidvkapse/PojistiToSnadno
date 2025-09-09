@@ -5,32 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pojištění domácnosti a nemovitosti pro zdravotně postižené | PojistiToSnadno.cz</title>
   <meta name="description" content="Jednoduché a férové pojištění majetku pro zdravotně postižené osoby. Krytí pomůcek, dopravních mechanismů a vodicích/asistenčních psů. Zjisti cenu online." />
+
+  <!-- jednotné styly -->
+  <link rel="stylesheet" href="/site.css?v=2">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg: #f7f7f7;      /* pozadí stránky */
-      --text:#1a1a1a;    /* primární text */
-      --h3:#fffcfa;
-      --muted:#6b6b6b;/* druhotný text */
-      --card:#ffffff;    /* panely */
-      --border:#eaeaea;  /* okraje */
-      --hero1:#c3a769;   /* hero gradient */
-      --hero2:#b7a06e;
-      --accent:#ffe87a;  /* zvýraznění */
-      --btn:#e2dbc9;     /* tlačítko */
-      --btnText:#1a1a1a; 
-      --btnHover:#b7a97c;/* hover */
-      --radius:18px;
-      --shadow:0 8px 26px rgba(0,0,0,.10);
-      --shadow-soft:0 4px 14px rgba(0,0,0,.08);
+      --bg:#f7f7f7; --text:#1a1a1a; --h3:#fffcfa; --muted:#6b6b6b;
+      --card:#ffffff; --border:#eaeaea;
+      --hero1:#c3a769; --hero2:#b7a06e;
+      --accent:#ffe87a; --btn:#e2dbc9; --btnText:#1a1a1a; --btnHover:#b7a97c;
+      --radius:18px; --shadow:0 8px 26px rgba(0,0,0,.10); --shadow-soft:0 4px 14px rgba(0,0,0,.08);
       --max:1050px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background: url('img/ozppozadi.webp') center / cover no-repeat fixed, var(--bg);color: var(--text);font-family:'Raleway',system-ui,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    html,body{
+      margin:0;
+      background:url('img/ozppozadi.webp') center/cover no-repeat fixed, var(--bg);
+      color:var(--text);
+      font-family:'Raleway',system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6
+    }
     a{color:inherit;text-decoration:none}
     .page{max-width:var(--max);margin:0 auto;padding:20px}
-
 
     /* HERO */
     .hero{background:linear-gradient(180deg,var(--hero1),var(--hero2));border-radius:28px;padding:28px;box-shadow:var(--shadow);display:grid;gap:12px}
@@ -51,7 +51,7 @@
     .card h3{margin:0 0 6px;font-size:1.1rem}
     .muted{color:var(--muted)}
 
-    /* Card color variants (benefit trio) */
+    /* Card color variants */
     .grid.grid-3 > article.card:nth-child(1){background:#fff7e6;border-color:#f0e0bf}
     .grid.grid-3 > article.card:nth-child(2){background:#f5efe3;border-color:#e7dcc5}
     .grid.grid-3 > article.card:nth-child(3){background:#efe7d8;border-color:#e1d3b8}
@@ -79,22 +79,39 @@
     .row{display:grid;gap:12px}
     @media(min-width:700px){.row{grid-template-columns:repeat(2,1fr)}}
 
-    footer{opacity:.85;text-align:center;color:var(--muted);margin:30px 0}
+    /* jemná patička (ultra-soft) */
+    body footer.footer{background:transparent!important;padding:10px 8px!important;text-align:center}
+    body footer.footer .footer__wrap{max-width:var(--max);margin:0 auto;display:grid;gap:8px;justify-items:center}
+    body footer.footer .footer__links{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+    body footer.footer .footer__chip,
+    body footer.footer .footer__chip:link,
+    body footer.footer .footer__chip:visited{
+      background:transparent!important;border:0!important;padding:4px 6px!important;
+      color:rgba(255,255,255,.85)!important;font-weight:700!important;font-size:13.5px!important;
+      border-radius:8px!important;text-decoration:none!important
+    }
+    body footer.footer .footer__chip:hover{ text-decoration:underline!important }
+    body footer.footer .footer__wrap > div:last-child{ opacity:.75!important; font-size:.9rem!important }
+
+    @media (max-width:640px){
+      body footer.footer{ padding:8px 8px!important }
+      body footer.footer .footer__chip{ font-size:12.5px!important; color:rgba(255,255,255,.75)!important }
+      body footer.footer .footer__wrap > div:last-child{ opacity:.65!important; font-size:.85rem!important }
+    }
   </style>
 </head>
 <body>
   <main class="page">
     <div class="cta">
-     <a class="btn" href="index.html">Domů</a>
+      <a class="btn" href="index.html">Domů</a>
     </div>
-   
+
     <!-- HERO -->
     <section class="hero">
       <h1>Pojištění domácnosti a nemovitosti pro zdravotně postižené – férově a jednoduše</h1>
       <p>Chráníme váš majetek i speciální pomůcky. Pokud se něco stane invalidnímu vozíku, rehabilitační pomůcce nebo vodicímu psovi, pomůžeme s náhradou. Zjistěte cenu online – bez složitostí.</p>
       <div class="cta">
         <a class="btn" href="#formular">Nezávazná poptávka</a>
-       
       </div>
     </section>
 
@@ -106,16 +123,16 @@
           <p>Invalidní vozíky a zdravotní/rehabilitační pomůcky jsou kryty i <strong>jinde než v místě pojištění</strong> – při <strong>prosté krádeži</strong> nebo <strong>vandalismu</strong>.</p>
         </article>
         <article class="card">
-          <h3>🐕‍🦺 Vodící / asistenční pes</h3>
-          <p>Plnění za škodu na psovi do <strong>200&nbsp;000&nbsp;Kč</strong>. Pojistnou hodnotu vodícího nebo asistenčního psa představují
-náklady na jeho pořízení a výcvik.</p>
+          <h3>🐕‍🦺 Vodicí / asistenční pes</h3>
+          <p>Plnění za škodu na psovi do <strong>200&nbsp;000&nbsp;Kč</strong>. Pojistnou hodnotu vodicího nebo asistenčního psa představují náklady na jeho pořízení a výcvik.</p>
         </article>
-         <article class="card">
+        <article class="card">
           <h3>🛗 Dopravní mechanismy v domácnosti</h3>
-          <p>Schodišťové plošiny, domácí výtahy a zvedací zařízení. Krytí na <strong>vandalismus</strong> a <strong>strojní nebezpečí</strong>. Stáří do 20 let</p>
+          <p>Schodišťové plošiny, domácí výtahy a zvedací zařízení. Krytí na <strong>vandalismus</strong> a <strong>strojní nebezpečí</strong>. Stáří do 20 let.</p>
         </article>
       </div>
     </section>
+
     <!-- CTA PÁSEK -->
     <section class="section band">
       <div class="msg">Chcete mít jistotu, že jsou váš domov i pomůcky správně chráněny?</div>
@@ -127,7 +144,7 @@ náklady na jeho pořízení a výcvik.</p>
       <h2 style="margin:0 0 8px;font-size:1.3rem">Co je pojištěno</h2>
       <ul>
         <li>Invalidní vozíky a další kompenzační/rehabilitační pomůcky – <b>i mimo místo pojištění.</b></li>
-        <li><b>Vodící a asistenční psi</b> (se zvláštním limitem plnění).</li>
+        <li><b>Vodicí a asistenční psi</b> (se zvláštním limitem plnění).</li>
         <li>Dopravní mechanismy ve stavbě i domácnosti (např. plošiny, výtahy, zvedáky).</li>
       </ul>
       <p class="muted" style="margin:.2rem 0 0">Podrobnosti určuje pojistná smlouva a produktové podmínky.</p>
@@ -139,19 +156,20 @@ náklady na jeho pořízení a výcvik.</p>
       <ul>
         <li>Krytí se vztahuje také na krádež a vandalismus.</li>
         <li>U mechanismů se posuzuje stáří, údržba a dodržení provozních předpisů.</li>
-        <li>Platí pro domácnost i nemovitost– rozsah dle sjednané smlouvy.</li>
+        <li>Platí pro domácnost i nemovitost – rozsah dle sjednané smlouvy.</li>
       </ul>
     </section>
 
     <!-- JEDNODUCHÝ FORMULÁŘ -->
     <section id="formular" class="section form">
       <h2 style="margin:0 0 8px;font-size:1.3rem">Nezávazná poptávka</h2>
-      <form id="contact-form"
-      class="form js-formspree"
-      method="POST"
-      data-action="https://formspree.io/f/mvgqqpev"
-      data-thanks="/dekujeme.html"
-      data-event="contact_submit">
+      <form
+        id="contact-form"
+        class="form js-formspree"
+        method="POST"
+        data-action="https://formspree.io/f/mvgqqpev"
+        data-thanks="/dekujeme.html"
+        data-event="contact_submit">
 
         <div class="row">
           <div>
@@ -159,7 +177,7 @@ náklady na jeho pořízení a výcvik.</p>
             <input id="jmeno" name="Jméno" required>
           </div>
           <div>
-            <label for="email">E‑mail</label>
+            <label for="email">E-mail</label>
             <input id="email" type="email" name="Email" required>
           </div>
         </div>
@@ -178,7 +196,7 @@ náklady na jeho pořízení a výcvik.</p>
           </div>
         </div>
         <label for="zprava">Poznámka</label>
-        <textarea id="zprava" name="Poznámka" rows="3" placeholder="adresa,počet podlaží a jejich rozloha v m2 pro dům, m2 pro byt…"></textarea>
+        <textarea id="zprava" name="Poznámka" rows="3" placeholder="adresa, počet podlaží a jejich rozloha v m² pro dům; m² pro byt…"></textarea>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
           <button class="btn" type="submit">Odeslat</button>
           <button class="btn" type="reset" style="background:#fff;border:1px solid var(--border)">Vymazat</button>
@@ -187,103 +205,113 @@ náklady na jeho pořízení a výcvik.</p>
       </form>
     </section>
 
-    <!-- FAQ (3 otázky) -->
+    <!-- FAQ -->
     <section class="section">
       <h3 style="margin:0 0 8px;font-size:1.3rem;color:#fffcfa">Nejčastější otázky</h3>
       <details>
         <summary>Kdo si může pojištění sjednat?</summary>
-        <div class="muted">Kdokoliv, kdo vlastní nebo užívá domácnost či nemovitost, je nebo se stará o osobu zdravotně postiženou a potřebuje krýt speciální pomůcky, dopravní mechanismy nebo vodícího/asistenčního psa.</div>
+        <div class="muted">Kdokoliv, kdo vlastní nebo užívá domácnost či nemovitost, je nebo se stará o osobu zdravotně postiženou a potřebuje krýt speciální pomůcky, dopravní mechanismy nebo vodicího/asistenčního psa.</div>
       </details>
       <details>
         <summary>Co potřebuji k uzavření smlouvy?</summary>
-        <div class="muted">Základní údaje o nemovitosti (adresa,m2, počet pater..). S detaily vám pomůžeme po odeslání poptávky.</div>
+        <div class="muted">Základní údaje o nemovitosti (adresa, m², počet pater…). S detaily vám pomůžeme po odeslání poptávky.</div>
       </details>
       <details>
         <summary>Jak probíhá výplata pojistného plnění?</summary>
         <div class="muted">Po nahlášení škody vás provedeme celým procesem. Plnění se vyplácí dle sjednaných limitů a podmínek ve smlouvě.</div>
       </details>
     </section>
-
-    <footer>
-      <p>© 2025 PojistiToSnadno.cz</p>
-    </footer>
   </main>
+
+  <!-- helper pro „Nastavení cookies“ -->
   <script>
-(function(){
-  var DEFAULT_THANKS = '/dekujeme.html';
+    window.resetCookieConsent = window.resetCookieConsent || function(){
+      try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
+      try{ localStorage.removeItem('cookie_consent_choice'); }catch(e){}
+      try{ document.cookie='cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax'; }catch(e){}
+      alert('Nastavení cookies bylo resetováno. Po obnovení stránky se znovu zobrazí lišta (pokud je nasazen cookie banner).');
+      try{ location.reload(); }catch(e){}
+    };
+  </script>
 
-  function paramsObj(search){
-    var p = new URLSearchParams(search), o = {};
-    p.forEach(function(v,k){ o[k]=v; }); return o;
-  }
-  function sendGA(name, params){
-    if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
-  }
+  <!-- jednotná jemná patička s podmínkami -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__wrap">
+      <div class="footer__links">
+        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+        <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
+      </div>
+      <div>© 2025 PojistiToSnadno.cz — Daniel Verner</div>
+    </div>
+  </footer>
 
-  function bindForm(form){
-    var endpoint = form.getAttribute('data-action');
-    if(!endpoint) return;
+  <script>
+  (function(){
+    var DEFAULT_THANKS = '/dekujeme.html';
 
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
+    function paramsObj(search){
+      var p = new URLSearchParams(search), o = {};
+      p.forEach(function(v,k){ o[k]=v; }); return o;
+    }
+    function sendGA(name, params){
+      if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
+    }
 
-      var submitBtn = form.querySelector('[type="submit"]');
-      if (submitBtn){
-        submitBtn.disabled = true;
-        submitBtn.dataset.origText = submitBtn.textContent;
-        submitBtn.textContent = 'Odesílám…';
-      }
+    function bindForm(form){
+      var endpoint = form.getAttribute('data-action');
+      if(!endpoint) return;
 
-      var fd = new FormData(form);
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
 
-      // přidáme UTM parametry a info o stránce
-      var q = paramsObj(location.search);
-      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
-        .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
-      fd.append('_page', location.pathname);
-      fd.append('_ts', new Date().toISOString());
-
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: fd
-      })
-      .then(function(res){
-        if(!res.ok) throw new Error('submit-failed');
-        // GA event (název vezmeme z data-event, fallback 'form_submit')
-        sendGA(form.getAttribute('data-event') || 'form_submit', {
-          form_id: form.id || '',
-          form_name: form.getAttribute('name') || '',
-          page_path: location.pathname
-        });
-        // přesměrování na děkovací stránku
-        var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
-        location.href = thanks;
-      })
-      .catch(function(){
-        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
-      })
-      .finally(function(){
+        var submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn){
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
+          submitBtn.disabled = true;
+          submitBtn.dataset.origText = submitBtn.textContent;
+          submitBtn.textContent = 'Odesílám…';
         }
-      });
-    }, {passive:false});
-  }
 
-  // navážeme na všechny formuláře s .js-formspree
-  function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+        var fd = new FormData(form);
 
-  // bonus: měření kliků na tel/mail
-  document.addEventListener('click', function(e){
-    var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
-    if(!a) return;
-    sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
-  });
-})();
-</script>
+        var q = paramsObj(location.search);
+        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
+          .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
+        fd.append('_page', location.pathname);
+        fd.append('_ts', new Date().toISOString());
 
+        fetch(endpoint, { method:'POST', headers:{ 'Accept':'application/json' }, body:fd })
+        .then(function(res){
+          if(!res.ok) throw new Error('submit-failed');
+          sendGA(form.getAttribute('data-event') || 'form_submit', {
+            form_id: form.id || '',
+            form_name: form.getAttribute('name') || '',
+            page_path: location.pathname
+          });
+          var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
+          location.href = thanks;
+        })
+        .catch(function(){ alert('Odeslání se nepodařilo. Zkuste to prosím znovu.'); })
+        .finally(function(){
+          if (submitBtn){
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
+          }
+        });
+      }, {passive:false});
+    }
+
+    function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
+      if(!a) return;
+      sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
+    });
+  })();
+  </script>
 </body>
 </html>
