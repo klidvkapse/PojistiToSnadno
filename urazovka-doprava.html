@@ -4,70 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Pojištění úrazu při dopravní nehodě | PojistiToSnadno.cz</title>
-
   <!-- jednotný stylesheet se zlatou patičkou -->
   <link rel="stylesheet" href="/site.css?v=2">
+  
+  <!-- ✅ Footer rescue styles: vynutí centrování a vzhled i když se /site.css nenačte nebo je přebit -->
+  <style>
+    .footer{background:#8b7a58;color:#fff;padding:24px 16px;margin-top:28px}
+    .footer__wrap{max-width:1140px;margin:0 auto;display:grid;gap:12px;justify-items:center;text-align:center}
+    .footer__links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .footer__chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-weight:700}
+    .footer__chip:hover{background:rgba(255,255,255,.2)}
+  </style>
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Raleway', Arial, sans-serif;
-      color: #ffffff;
-      background: url('povinneruceni.webp') no-repeat center center fixed, #181818;
-      background-size: cover;
-      min-height: 100vh;
-    }
-    .top-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 0.7em 1.5em;
-    }
-    .site-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ffe87a;
-    }
-    .home-button {
-      background: #e2dbc9;
-      color: #1a1a1a;
-      padding: 0.5em 1.2em;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 4rem 1rem 2rem;
-    }
-    .side-by-side { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; }
-    section, .examples, .calculator-pn { background: rgba(0, 0, 0, 0.72); border-radius: 16px; padding: 1.8rem; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); }
-    section { flex: 1 1 60%; }
-    .examples { flex: 1 1 35%; }
-    .calculator-pn { max-width: 400px; margin: 0 auto; text-align: center; }
-    h2 { margin-top: 0; font-size: 1.6rem; color: #ffe87a; margin-bottom: 1rem; text-align: center; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
-    thead th { background: #3b3722; color: #ffe87a; padding: 0.8rem 1rem; text-align: left; font-weight: 700; font-size: 0.95rem; }
-    tbody td { background: rgba(255, 255, 255, 0.03); padding: 0.75rem 1rem; border-top: 1px solid #4d4d4d; font-size: 0.9rem; }
-    tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.05); }
-    tbody td strong { color: #f6d772; }
-    .highlight td { background: #b7a97c; color: #000; font-weight: 700; font-size: 1.1rem; padding: 1rem; }
-    .base-price { text-align: center; font-size: 1.5rem; font-weight: 600; margin-top: 2rem; color: #fff; }
-    .base-price strong { color: #ffe87a; font-size: 1.8rem; }
-    .calculator-pn .controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem; }
-    .calculator-pn button { background: #e2dbc9; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; }
-    .calculator-pn button:hover { background: #b7a97c; color: #fff; }
-    .calculator-pn input[type="text"] { width: 80px; text-align: center; font-size: 1.2rem; border: 1px solid #b7a97c; border-radius: 4px; padding: 0.3rem; background: #fff; color: #000; }
-    .calculator-pn .price-label { margin-top: 1rem; font-size: 1.25rem; font-weight: bold; color: #ffe87a; }
-    .pojistit-link { display: inline-block; margin: 1rem auto; background: #b7a97c; color: #000; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; text-align: center; }
-    .pojistit-link:hover { background: #fff; color: #000; }
-    @media (max-width: 600px) {
-      h2 { font-size: 1.3rem; }
-      .side-by-side { flex-direction: column; }
-      .top-nav { flex-direction: column; align-items: flex-start; gap: 0.3em; }
-    }
+    body { margin:0; font-family:'Raleway', Arial, sans-serif; color:#ffffff;
+      background:url('povinneruceni.webp') no-repeat center center fixed, #181818; background-size:cover; min-height:100vh; }
+    .top-nav { display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,.3); padding:.7em 1.5em; }
+    .site-title { font-size:1.5rem; font-weight:bold; color:#ffe87a; }
+    .home-button { background:#e2dbc9; color:#1a1a1a; padding:.5em 1.2em; border-radius:20px; text-decoration:none; font-weight:bold; }
+    .container { max-width:960px; margin:0 auto; padding:4rem 1rem 2rem; }
+    .side-by-side { display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; }
+    section, .examples, .calculator-pn { background:rgba(0,0,0,.72); border-radius:16px; padding:1.8rem; margin-bottom:2rem; box-shadow:0 4px 12px rgba(0,0,0,.5); }
+    section { flex:1 1 60%; }
+    .examples { flex:1 1 35%; }
+    .calculator-pn { max-width:400px; margin:0 auto; text-align:center; }
+    h2 { margin-top:0; font-size:1.6rem; color:#ffe87a; margin-bottom:1rem; text-align:center; }
+    table { width:100%; border-collapse:collapse; margin-bottom:1rem; }
+    thead th { background:#3b3722; color:#ffe87a; padding:.8rem 1rem; text-align:left; font-weight:700; font-size:.95rem; }
+    tbody td { background:rgba(255,255,255,.03); padding:.75rem 1rem; border-top:1px solid #4d4d4d; font-size:.9rem; }
+    tbody tr:nth-child(even) td { background:rgba(255,255,255,.05); }
+    tbody td strong { color:#f6d772; }
+    .highlight td { background:#b7a97c; color:#000; font-weight:700; font-size:1.1rem; padding:1rem; }
+    .base-price { text-align:center; font-size:1.5rem; font-weight:600; margin-top:2rem; color:#fff; }
+    .base-price strong { color:#ffe87a; font-size:1.8rem; }
+    .calculator-pn .controls { display:flex; justify-content:center; align-items:center; gap:1rem; margin-top:1rem; }
+    .calculator-pn button { background:#e2dbc9; border:none; border-radius:50%; width:40px; height:40px; font-size:1.2rem; cursor:pointer; }
+    .calculator-pn button:hover { background:#b7a97c; color:#fff; }
+    .calculator-pn input[type="text"] { width:80px; text-align:center; font-size:1.2rem; border:1px solid #b7a97c; border-radius:4px; padding:.3rem; background:#fff; color:#000; }
+    .calculator-pn .price-label { margin-top:1rem; font-size:1.25rem; font-weight:bold; color:#ffe87a; }
+    .pojistit-link { display:inline-block; margin:1rem auto; background:#b7a97c; color:#000; padding:.75rem 1.5rem; border-radius:8px; text-decoration:none; font-weight:600; text-align:center; }
+    .pojistit-link:hover { background:#fff; color:#000; }
+    @media (max-width:600px){ h2{ font-size:1.3rem; } .side-by-side{ flex-direction:column; } .top-nav{ flex-direction:column; align-items:flex-start; gap:.3em; } }
   </style>
 </head>
 <body>
@@ -139,18 +116,9 @@
     let current = 100;
     const pnInput = document.getElementById('pnInput');
     const pnPrice = document.getElementById('pnPrice');
-    document.getElementById('increase').addEventListener('click', () => {
-      if (current < 1000) current += 100;
-      update();
-    });
-    document.getElementById('decrease').addEventListener('click', () => {
-      if (current > 100) current -= 100;
-      update();
-    });
-    function update() {
-      pnInput.value = current + ' Kč';
-      pnPrice.textContent = mapping[current] + ' Kč';
-    }
+    document.getElementById('increase').addEventListener('click', () => { if (current < 1000) current += 100; update(); });
+    document.getElementById('decrease').addEventListener('click', () => { if (current > 100) current -= 100; update(); });
+    function update(){ pnInput.value = current + ' Kč'; pnPrice.textContent = mapping[current] + ' Kč'; }
   </script>
 
   <!-- bezpečný helper pro tlačítko Nastavení cookies (když není načten banner) -->
@@ -164,7 +132,7 @@
     };
   </script>
 
-  <!-- jednotná zlatá patička -->
+  <!-- jednotná zlatá patička s odkazy na podmínky -->
   <footer class="footer" role="contentinfo">
     <div class="footer__wrap">
       <div class="footer__links">
