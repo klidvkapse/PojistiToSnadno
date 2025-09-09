@@ -206,5 +206,35 @@
       <div style="opacity:.9">© 2025 PojistiToSnadno.cz — Daniel Verner</div>
     </div>
   </footer>
+  <!-- 🔧 FOOTER INLINE FIX (vložit těsně před </body>) -->
+<style>
+  :root{ --footer-bg:#8b7a58; --footer-fg:#fff; }
+  body footer.footer{
+    background:var(--footer-bg) !important;
+    color:var(--footer-fg) !important;
+    padding:24px 16px !important;
+    margin-top:28px !important;
+  }
+  body footer.footer .footer__wrap{
+    max-width:1140px; margin:0 auto;
+    display:grid; gap:12px; justify-items:center; text-align:center;
+  }
+  body footer.footer .footer__links{
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+  }
+  body footer.footer .footer__chip,
+  body footer.footer .footer__chip:link,
+  body footer.footer .footer__chip:visited{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 12px; border-radius:999px;
+    border:1px solid rgba(255,255,255,.35) !important;
+    background:rgba(255,255,255,.12) !important;
+    color:#fff !important; text-decoration:none !important; font-weight:700;
+  }
+  body footer.footer .footer__chip:hover{
+    background:rgba(255,255,255,.2) !important;
+  }
+</style>
+
 </body>
 </html>
