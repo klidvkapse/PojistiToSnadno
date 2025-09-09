@@ -309,6 +309,46 @@ footer .legal-contact{
 }
 footer .legal-contact a{ text-decoration:underline; color:#111 }
 footer small.copy{ display:block; margin-top:8px; opacity:.8; text-align:center }
+      /* === Footer layout fix: centrovat a slít odkazy + tlačítka do jedné skupiny === */
+
+/* celá patička na 1 sloupec, vycentrovaná */
+footer .foot-grid{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  text-align: center !important;
+  gap: 8px !important;
+}
+
+/* tlačítka Domů / Nahoru doprostřed */
+footer .foot-actions{
+  justify-content: center !important;
+  flex-wrap: wrap;
+  gap: 8px !important;
+  margin-top: 6px;
+}
+
+/* právní odkazy doprostřed, hezké zalamování */
+footer .legal-links{
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  gap: 14px 18px !important;
+  margin-top: 10px;
+}
+
+/* copyright doprostřed */
+footer small.copy{
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* na širších displejích lehce kompaktnější řádkování */
+@media (min-width: 960px){
+  footer .legal-links{ gap: 12px 20px; }
+}
+
 
   </style>
 </head>
