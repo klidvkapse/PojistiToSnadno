@@ -19,6 +19,9 @@
   <meta property="og:image" content="https://pojistitosnadno.cz/img/GL31.webp" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Jednotné styly (obsahují i základ patičky) -->
+  <link rel="stylesheet" href="/site.css?v=2">
+
   <!-- Fonts & perf -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet" />
@@ -26,20 +29,16 @@
 
   <style>
     :root{
-      --ink:#0f0f0f;      /* velmi tmavý text */
-      --muted:#1f1f1f;    /* sekundární text */
-      --gold:#c9b475;     /* CTA */
-      --gold-dark:#b39f60;
-      --paper:#efe4cd;    /* karty */
-      --icon:#6b5b36;     /* tah ikon */
+      --ink:#0f0f0f; --muted:#1f1f1f;
+      --gold:#c9b475; --gold-dark:#b39f60;
+      --paper:#efe4cd; --icon:#6b5b36;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     html{scroll-behavior:smooth}
     body{
       margin:0; font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink);
-      background:none; /* řeší .bg kvůli iOS */
-      min-height:100vh; display:flex; flex-direction:column;
+      background:none; min-height:100vh; display:flex; flex-direction:column;
     }
     /* Fixní vrstva s pozadím – stabilní i v mobilu */
     .bg{ position:fixed; inset:0; z-index:-2; background:url('img/GL31.webp') center/cover no-repeat; transform:translateZ(0); }
@@ -49,7 +48,11 @@
     header{ position:sticky; top:0; z-index:20; background:rgba(201,180,117,.92); color:#262319; padding:18px 20px; display:flex; align-items:center; justify-content:space-between; backdrop-filter:saturate(1.05) }
     .brand{ font-size:clamp(1.2rem,2.4vw,1.8rem); font-weight:800; line-height:1.15 }
     .home-btn a{ background:#fff; color:#262319; padding:10px 16px; border-radius:999px; font-weight:800; text-decoration:none; box-shadow:0 8px 18px rgba(0,0,0,.18) }
-    @media(max-width:640px){ header{ padding-right:72px } .home-btn{ position:fixed; right:max(10px,env(safe-area-inset-right)); top:max(10px,env(safe-area-inset-top)); z-index:50 } .home-btn a{ padding:9px 12px; font-size:.95rem } }
+    @media(max-width:640px){
+      header{ padding-right:72px }
+      .home-btn{ position:fixed; right:max(10px,env(safe-area-inset-right)); top:max(10px,env(safe-area-inset-top)); z-index:50 }
+      .home-btn a{ padding:9px 12px; font-size:.95rem }
+    }
 
     /* Main card */
     main{ flex:1; background:rgba(255,255,255,.34); backdrop-filter:blur(1px) saturate(1.02); margin:40px auto; max-width:980px; border-radius:14px; padding:clamp(20px,3.2vw,30px); box-shadow:0 18px 36px rgba(0,0,0,.2) }
@@ -77,12 +80,25 @@
     .consent{ display:flex; align-items:flex-start; gap:10px; color:#1d1d1d; font-size:.92em; line-height:1.35 }
     .consent input[type="checkbox"]{ width:18px; height:18px; margin-top:2px; accent-color:var(--gold) }
 
-    footer{ background:rgba(238,238,238,.9); text-align:center; padding:15px; font-size:.9em }
+    /* Jemná (ultra-soft) patička – přebití vzhledu, aby byla nenápadná */
+    body footer.footer{ background:transparent !important; padding:10px 8px !important; text-align:center }
+    body footer.footer .footer__wrap{ max-width:1140px; margin:0 auto; display:grid; gap:8px; justify-items:center }
+    body footer.footer .footer__links{ display:flex; gap:6px; flex-wrap:wrap; justify-content:center }
+    body footer.footer .footer__chip{ background:transparent !important; border:0 !important; padding:4px 6px !important; color:rgba(255,255,255,.85) !important; font-weight:700 !important; font-size:13.5px !important; border-radius:8px !important; text-decoration:none !important }
+    body footer.footer .footer__chip:hover{ text-decoration:underline !important }
+    body footer.footer .footer__wrap > div:last-child{ opacity:.75 !important; font-size:.9rem !important }
 
-    @media(max-width:640px){ main{ margin:18px 12px } .feature-grid{ gap:10px; grid-template-columns:1fr } .feature-card{ padding:12px 12px 12px 42px } }
+    @media(max-width:640px){
+      main{ margin:18px 12px }
+      .feature-grid{ gap:10px; grid-template-columns:1fr }
+      .feature-card{ padding:12px 12px 12px 42px }
+      body footer.footer{ padding:8px 8px !important }
+      body footer.footer .footer__chip{ font-size:12.5px !important; color:rgba(255,255,255,.75) !important }
+      body footer.footer .footer__wrap > div:last-child{ opacity:.65 !important; font-size:.85rem !important }
+    }
   </style>
 
-  <!-- Structured data: WebSite + WebPage -->
+  <!-- Structured data (json-ld) … beze změn -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -106,7 +122,6 @@
     "inLanguage": "cs-CZ"
   }
   </script>
-  <!-- Person + Service -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -129,7 +144,6 @@
     "availableChannel": {"@type":"ServiceChannel","serviceUrl":"https://pojistitosnadno.cz/povinneruceni.html"}
   }
   </script>
-  <!-- FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -163,7 +177,7 @@
         <article class="feature-card"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16h18M5 16l1-4h12l1 4M7 16v2m10-2v2"/></svg><p class="fc-txt">Cenově výhodné pojištění více aut do jedné smlouvy (nejméně 4 vozidla)</p></article>
         <article class="feature-card"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg><p class="fc-txt">Možnost připojištění skel, střetu se zvěří a dalších rizik</p></article>
         <article class="feature-card"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg><p class="fc-txt">Možnost <strong>nulové spoluúčasti v havarijním pojištění</strong> při splnění podmínek</p></article>
-        <article class="feature-card"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M12 6v12"/></svg><p class="fc-txt">Pojištění všech vyhledových skel bez limitu</p></article>
+        <article class="feature-card"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M12 6v12"/></svg><p class="fc-txt">Pojištění všech výhledových skel bez limitu</p></article>
       </div>
     </section>
 
@@ -174,12 +188,13 @@
 
     <section id="kontakt" aria-label="Kontaktní formulář" style="margin-top:22px">
       <h2>Kontaktujte mě</h2>
-     <form id="contact-form"
-      class="form js-formspree"
-      method="POST"
-      data-action="https://formspree.io/f/mvgqqpev"
-      data-thanks="/dekujeme.html"
-      data-event="contact_submi
+      <form
+        id="contact-form"
+        class="form js-formspree"
+        method="POST"
+        data-action="https://formspree.io/f/mvgqqpev"
+        data-thanks="/dekujeme.html"
+        data-event="contact_submit">
         <input type="text" name="Jméno" placeholder="Jméno a příjmení" required aria-label="Jméno a příjmení" />
         <input type="email" name="Email" placeholder="Váš email" required aria-label="E-mail" />
         <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required aria-label="Telefon" />
@@ -196,82 +211,105 @@
     </nav>
   </main>
 
-  <footer>© 2025 PojistiToSnadno.cz – Daniel Verner</footer>
-   <script>
-(function(){
-  var DEFAULT_THANKS = '/dekujeme.html';
+  <!-- bezpečný helper pro tlačítko „Nastavení cookies“ -->
+  <script>
+    window.resetCookieConsent = window.resetCookieConsent || function(){
+      try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
+      try{ localStorage.removeItem('cookie_consent_choice'); }catch(e){}
+      try{ document.cookie='cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax'; }catch(e){}
+      alert('Nastavení cookies bylo resetováno. Po obnovení stránky se znovu zobrazí lišta (pokud je nasazen cookie banner).');
+      try{ location.reload(); }catch(e){}
+    };
+  </script>
 
-  function paramsObj(search){
-    var p = new URLSearchParams(search), o = {};
-    p.forEach(function(v,k){ o[k]=v; }); return o;
-  }
-  function sendGA(name, params){
-    if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
-  }
+  <!-- jednotná jemná patička s odkazy na podmínky -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__wrap">
+      <div class="footer__links">
+        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+        <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
+      </div>
+      <div>© 2025 PojistiToSnadno.cz — Daniel Verner</div>
+    </div>
+  </footer>
 
-  function bindForm(form){
-    var endpoint = form.getAttribute('data-action');
-    if(!endpoint) return;
+  <script>
+  (function(){
+    var DEFAULT_THANKS = '/dekujeme.html';
 
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
+    function paramsObj(search){
+      var p = new URLSearchParams(search), o = {};
+      p.forEach(function(v,k){ o[k]=v; }); return o;
+    }
+    function sendGA(name, params){
+      if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
+    }
 
-      var submitBtn = form.querySelector('[type="submit"]');
-      if (submitBtn){
-        submitBtn.disabled = true;
-        submitBtn.dataset.origText = submitBtn.textContent;
-        submitBtn.textContent = 'Odesílám…';
-      }
+    function bindForm(form){
+      var endpoint = form.getAttribute('data-action');
+      if(!endpoint) return;
 
-      var fd = new FormData(form);
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
 
-      // přidáme UTM parametry a info o stránce
-      var q = paramsObj(location.search);
-      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
-        .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
-      fd.append('_page', location.pathname);
-      fd.append('_ts', new Date().toISOString());
-
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: fd
-      })
-      .then(function(res){
-        if(!res.ok) throw new Error('submit-failed');
-        // GA event (název vezmeme z data-event, fallback 'form_submit')
-        sendGA(form.getAttribute('data-event') || 'form_submit', {
-          form_id: form.id || '',
-          form_name: form.getAttribute('name') || '',
-          page_path: location.pathname
-        });
-        // přesměrování na děkovací stránku
-        var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
-        location.href = thanks;
-      })
-      .catch(function(){
-        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
-      })
-      .finally(function(){
+        var submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn){
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
+          submitBtn.disabled = true;
+          submitBtn.dataset.origText = submitBtn.textContent;
+          submitBtn.textContent = 'Odesílám…';
         }
-      });
-    }, {passive:false});
-  }
 
-  // navážeme na všechny formuláře s .js-formspree
-  function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+        var fd = new FormData(form);
 
-  // bonus: měření kliků na tel/mail
-  document.addEventListener('click', function(e){
-    var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
-    if(!a) return;
-    sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
-  });
-})();
-</script>
+        // přidáme UTM parametry a info o stránce
+        var q = paramsObj(location.search);
+        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
+          .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
+        fd.append('_page', location.pathname);
+        fd.append('_ts', new Date().toISOString());
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: fd
+        })
+        .then(function(res){
+          if(!res.ok) throw new Error('submit-failed');
+          // GA event (název vezmeme z data-event, fallback 'form_submit')
+          sendGA(form.getAttribute('data-event') || 'form_submit', {
+            form_id: form.id || '',
+            form_name: form.getAttribute('name') || '',
+            page_path: location.pathname
+          });
+          // přesměrování na děkovací stránku
+          var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
+          location.href = thanks;
+        })
+        .catch(function(){
+          alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
+        })
+        .finally(function(){
+          if (submitBtn){
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
+          }
+        });
+      }, {passive:false});
+    }
+
+    function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+
+    // bonus: měření kliků na tel/mail
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
+      if(!a) return;
+      sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
+    });
+  })();
+  </script>
 </body>
 </html>
