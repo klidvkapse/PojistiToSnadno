@@ -139,115 +139,47 @@
       }
     };
 
-   // Normalize (diacritics insensitive)
-    function normalize(str) {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    }
+  
+      // === Normalizace (bez diakritiky) pro vyhledávání
+    const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const index = {}; Object.keys(terms).forEach(k => { index[norm(k)] = k; });
 
-    // Našeptávač
-    const searchInput = document.getElementById('search');
-    const resultsBox = document.getElementById('autocomplete-results');
-    let currentFocus = -1;
-    let definitionShown = false;
+    // === UI helpers
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-    searchInput.addEventListener("input", function () {
-      if (definitionShown) return; // Disable autocomplete after result shown
-      const val = this.value;
-      resultsBox.innerHTML = "";
-      if (!val) return false;
-      let matches = Object.keys(terms).filter(
-        t => normalize(t).includes(normalize(val))
-      );
-      if (matches.length === 0) return false;
-      matches.forEach((item, idx) => {
-        const div = document.createElement("div");
-        div.classList.add("autocomplete-item");
-        div.innerHTML = item.replace(new RegExp(val, "gi"), match =>
-          `<strong>${match}</strong>`
-        );
-        div.addEventListener("mousedown", function(e){
-          searchInput.value = item;
-          resultsBox.innerHTML = "";
-        });
-        resultsBox.appendChild(div);
+    function showSuggestions(){
+      const q = $('#search').value; const qn = norm(q);
+      const list = $('#suggestions'); list.innerHTML = '';
+      if(!qn) return;
+      Object.keys(terms).filter(t => norm(t).includes(qn)).forEach(t => {
+        const d = document.createElement('div'); d.textContent = t; d.setAttribute('role','option');
+        d.onclick = () => { $('#search').value = t; list.innerHTML = ''; showDefinition(true); };
+        list.appendChild(d);
       });
-    });
-
-    searchInput.addEventListener("keydown", function(e) {
-      if (definitionShown) return; // Disable after result
-      let items = resultsBox.querySelectorAll(".autocomplete-item");
-      if (!items.length) return;
-      if (e.key === "ArrowDown") {
-        currentFocus++;
-        if (currentFocus >= items.length) currentFocus = 0;
-        addActive(items);
-      } else if (e.key === "ArrowUp") {
-        currentFocus--;
-        if (currentFocus < 0) currentFocus = items.length - 1;
-        addActive(items);
-      } else if (e.key === "Enter") {
-        if (currentFocus > -1) {
-          e.preventDefault();
-          items[currentFocus].dispatchEvent(new Event("mousedown"));
-        }
-      }
-    });
-
-    function addActive(items) {
-      if (!items) return false;
-      removeActive(items);
-      if (currentFocus >= items.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = items.length - 1;
-      items[currentFocus].classList.add("autocomplete-active");
-      items[currentFocus].scrollIntoView({ block: "nearest" });
     }
-    function removeActive(items) {
-      for (let item of items) item.classList.remove("autocomplete-active");
-    }
-    document.addEventListener("click", function (e) {
-      if (e.target !== searchInput) resultsBox.innerHTML = "";
-      currentFocus = -1;
-    });
 
-    // Funkce pro zobrazení/vymazání výsledku
-    function showOrReset() {
-      const input = document.getElementById('search');
-      const out = document.getElementById('output');
-      const btn = document.getElementById('dict-btn');
-
-      if (!definitionShown) {
-        const key = input.value.trim().toLowerCase();
-        resultsBox.innerHTML = "";
-        if (terms[key]) {
-          out.innerHTML = `<strong>${key}</strong><br>
-            <div class="def">${terms[key].def}</div>
-            <div class="ex" style="color:#ffe580; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
-        } else {
-          out.innerHTML = `<span style="color:#ffd;">Pojem nebyl nalezen. Doporučujeme jej zaslat do sekce níže.</span>`;
-        }
-        btn.textContent = "Zpět";
-        definitionShown = true;
-        searchInput.blur();
-        setTimeout(() => {
-          out.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 100);
+    let resultShown = false;
+    function showDefinition(force){
+      const input = $('#search'); const keyNorm = norm(input.value);
+      const realKey = index[keyNorm]; const out = $('#output'); const suggestions = $('#suggestions');
+      if(!resultShown && realKey){
+        suggestions.innerHTML = '';
+        out.innerHTML = `<strong>${realKey}</strong><br><div class="def">${terms[realKey].def}</div><div class="ex">${terms[realKey].ex}</div>`;
+        out.scrollIntoView({ behavior:'smooth', block:'center' });
+        resultShown = true;
+      } else if(resultShown || force){
+        input.value = ''; out.innerHTML = ''; suggestions.innerHTML = ''; resultShown = false;
       } else {
-        // Reset
-        input.value = "";
-        out.innerHTML = "";
-        btn.textContent = "Zobrazit / Zpět";
-        definitionShown = false;
-        resultsBox.innerHTML = "";
-        searchInput.focus();
+        // Nic nenalezeno
+        out.innerHTML = '<em>Pojem nebyl nalezen. Zkuste prosím jiný výraz nebo klikněte na některý z návrhů.</em>';
+        out.scrollIntoView({ behavior:'smooth', block:'center' });
       }
     }
 
-    // Potvrzovací hláška pro sekci návrhu pojmů (ponechána beze změny dle zadání)
-    document.getElementById('addTermForm').addEventListener('submit', function(e){
-      setTimeout(function(){
-        document.getElementById('addTermSuccess').innerText = "Děkujeme za návrh! Výraz bude po schválení přidán do slovníku.";
-      }, 800);
-    });
+    // Enter v inputu spustí hledání
+    $('#search').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); showDefinition(); } });
+    $('#toggleDef').addEventListener('click', ()=> showDefinition());
   </script>
 
   <!-- bezpečný helper pro tlačítko Nastavení cookies (když není načten banner) -->
