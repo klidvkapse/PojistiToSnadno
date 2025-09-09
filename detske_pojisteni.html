@@ -10,22 +10,26 @@
     :root{
       --primary:#ffe87a;   /* pastel žlutá */
       --accent:#c9b475;    /* teplejší písková */
+      --berry:#af4876;     /* malinová zvýraznění */
       --ink:#1d1d1f;       /* tmavý text */
       --muted:#6b7280;     /* sekundární text */
       --bg:#f8fafc;        /* světlé pozadí */
       --card:#ffffff;      /* karty */
+      --ok:#16a34a;
+      --warn:#b45309;
       --shadow: 0 10px 25px rgba(0,0,0,.08), 0 4px 10px rgba(0,0,0,.06);
       --radius: 18px;
-      --max:1180px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0; font-family:'Raleway',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink);
-      background: var(--bg) url('img/detipozadi.webp') center / cover no-repeat fixed;
+      background: var(--bg) url('img/detipozadi.webp') center / cover no-repeat;
+      background-attachment: fixed;
+      background-position: top center;
     }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    a{color:inherit}
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
 
     /* Header */
     header{
@@ -34,40 +38,57 @@
       border-bottom:1px solid rgba(0,0,0,.06);
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;min-width:0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
     .logo{
       width:36px;height:36px;display:grid;place-items:center;border-radius:12px;
       background:radial-gradient(60% 60% at 30% 30%, var(--primary), #fff 80%);
       box-shadow:inset 0 0 0 2px rgba(0,0,0,.06), var(--shadow);
     }
     nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0;align-items:center}
-    nav a{font-weight:600;padding:10px 12px;border-radius:12px}
-    nav a:hover{background:rgba(0,0,0,.05);transform:translateY(-1px)}
-    .cta-top{display:flex;gap:10px;align-items:center}
-
-    .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:16px;padding:12px 18px;font-weight:700;cursor:pointer;text-decoration:none;box-shadow:var(--shadow);transition:.18s}
-    .btn-primary{background:linear-gradient(180deg, var(--primary), #ffd23a); color:#111}
+    nav a{font-weight:600;text-decoration:none;padding:10px 12px;border-radius:12px}
+    nav a:hover{background:rgba(0,0,0,.05)}
+    .cta-top{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:16px;padding:12px 18px;font-weight:700;cursor:pointer;text-decoration:none;box-shadow:var(--shadow)}
+    .btn-primary{background:linear-gradient(180deg, var(--primary), #ffd23a);}
+    .btn-primary:hover{transform:translateY(-1px)}
     .btn-ghost{background:#fff}
-    .btn:hover{transform:translateY(-1px)}
-    .btn:focus-visible, nav a:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,210,58,.7)}
+
+    /* Interactive states (hover / focus) */
+    .btn, nav a, footer .btn-ghost{transition:transform .18s ease, box-shadow .18s ease, filter .18s ease, background-color .18s ease, color .18s ease}
+    .btn:hover{transform:translateY(-1.5px);box-shadow:var(--shadow),0 12px 20px rgba(0,0,0,.06)}
+    .btn:active{transform:translateY(0)}
+    .btn:focus-visible, nav a:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,210,58,.75)}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-ghost:hover{background:#fff;box-shadow:var(--shadow),0 8px 18px rgba(0,0,0,.07)}
+    nav a:hover{background:rgba(0,0,0,.05);transform:translateY(-1px)}
+    footer .btn-ghost:hover{color:#111}
+    .mobile-cta .btn:hover{transform:translateY(-1px)}
 
     /* Hero */
-    .hero{position:relative;border-bottom:1px solid rgba(0,0,0,.06)}
-    .hero .container{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;padding:56px 20px 36px;position:relative}
+    .hero{
+      background: none;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .hero .container{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;padding:56px 20px 36px}
     .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#7c6a33;background:#fff3b0;border-radius:999px;padding:8px 12px;box-shadow:var(--shadow)}
     h1{font-size:clamp(28px, 3.4vw, 44px);line-height:1.07;margin:18px 0 8px}
-    .lead{font-size:clamp(16px,1.35vw,19px);color:rgba(255,255,255,.96);text-shadow:0 1px 2px rgba(0,0,0,.28);max-width:55ch}
-    .hero p, .hero small, .hero li{color:rgba(255,255,255,.96);text-shadow:0 1px 2px rgba(0,0,0,.28)}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:5}
+    .lead{font-size:clamp(16px,1.35vw,19px);color:var(--muted);max-width:55ch}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
 
-    .hero-art{position:relative;min-height:240px;z-index:0}
-    .blob{position:absolute;inset:auto -24px -24px auto;width:340px;height:340px;background:radial-gradient(circle at 30% 30%, #ffd23a, #ffc0cb 70%);filter:blur(30px);opacity:.35;border-radius:50%;pointer-events:none}
+    .hero-art{position:relative;min-height:240px}
+    .blob{position:absolute;inset:auto -24px -24px auto;width:340px;height:340px;background:radial-gradient(circle at 30% 30%, #ffd23a, #ffc0cb 70%);filter:blur(30px);opacity:.35;border-radius:50%}
     .card-sticker{position:absolute;right:10%;top:10%;background:var(--card);padding:16px 18px;border-radius:16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
     .sticker-emoji{font-size:26px}
     .checklist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
     .chip{background:#fff;border:1px dashed rgba(0,0,0,.08);border-radius:14px;padding:10px 12px;font-weight:600;display:flex;gap:8px;align-items:center}
+    
+    .chip{background:#fff;border:1px dashed rgba(0,0,0,.08);border-radius:14px;padding:10px 12px;font-weight:600;display:flex;gap:8px;align-items:center}
 
-    /* Cards / layout */
+    /* Cards */
     .section{padding:48px 0}
     .section h2{font-size:clamp(22px,2.4vw,32px);margin:0 0 8px}
     .section p.section-lead{color:var(--muted);max-width:70ch;margin:6px 0 24px}
@@ -77,10 +98,26 @@
     .card p{color:var(--muted);margin:0 0 10px}
     .pill{display:inline-flex;gap:8px;align-items:center;background:#f6f7f9;border-radius:999px;padding:6px 10px;font-weight:700;font-size:12.5px}
 
+    /* Interaktivní formulář – stylování */
+    .controls{display:grid;gap:14px}
+    .control{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+    .control small{grid-column:1/-1;color:var(--muted)}
+    .control input[type=range]{grid-column:1/-1;width:100%}
+    .control .value{font-weight:700;font-variant-numeric:tabular-nums}
+    .risk-line{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+    .risk-line label{display:flex;align-items:center;gap:8px;font-weight:700}
+    .control.disabled{opacity:.5}
+    input[disabled]{opacity:.6}
+    .form-field{display:grid;gap:6px}
+    .form-field input, .form-field textarea{padding:10px 12px;border:1px solid rgba(0,0,0,.12);border-radius:12px;font:inherit}
+    .form-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+    /* Feature list */
     .list{display:grid;gap:8px;margin:10px 0 0;padding:0;list-style:none}
     .list li{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start}
     .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);margin-top:6px}
 
+    /* Comparison/teaser */
     .teaser{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}
     .panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
     .panel h4{margin:0 0 12px}
@@ -96,15 +133,31 @@
     summary::after{content:"+";float:right;color:var(--muted)}
     details[open] summary::after{content:"–"}
 
-    /* Kontakt / footer */
-    footer{padding:32px 0 80px;color:rgba(0,0,0,.7)}
+    /* Footer */
+    footer{padding:32px 0 80px;color:var(--muted)}
     .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .foot-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
-    footer .btn-ghost{background:#fff;color:#1d1d1f}
 
-    /* ---------- Responsive ---------- */
+    /* Sticky mobile CTA */
+    .mobile-cta{
+      position:fixed; left:0; right:0; bottom:12px; z-index:60; display:none;
+      padding:0 14px;
+    }
+    .mobile-cta .bar{display:flex;gap:10px;background:var(--ink);color:#fff;border-radius:16px;padding:10px;box-shadow:var(--shadow);align-items:center;justify-content:space-between}
+    .mobile-cta .btn{box-shadow:none}
+
+    /* Icons */
+    .ico{width:22px;height:22px}
+    .ico32{width:32px;height:32px}
+
+    /* New badge-style icons for card headings */
+    .badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:999px;margin-right:10px;background:radial-gradient(60% 60% at 30% 30%, var(--primary), #fff 90%);box-shadow:var(--shadow)}
+    .badge-emoji{font-size:22px;line-height:1;transform:translateY(1px)}
+    .card h3{display:flex;align-items:center;gap:10px;font-size:18px;margin:0 0 8px}
+    
+
+    /* Responsive */
     @media (max-width: 980px){
-      .hero .container{grid-template-columns:1fr;gap:16px;padding-top:28px}
+      .hero .container{grid-template-columns:1fr; gap:16px; padding-top:28px}
       .checklist{grid-template-columns:repeat(2,minmax(0,1fr))}
       .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .teaser{grid-template-columns:1fr}
@@ -112,20 +165,138 @@
     }
     @media (max-width:720px){
       nav ul{display:none}
+      .mobile-cta{display:block}
       .checklist{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
-      .nav{padding:10px 0}
+    }
+    
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    /* === Mobilní fix pro KONTAKT === */
+    @media (max-width:720px){
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    
+      #kontakt .panel{width:100%}
+      #kontakt a{overflow-wrap:anywhere; word-break:break-word; hyphens:auto}
+    }
+    /* === Mobilní úprava pozadí (menší, celé do šířky) === */
+    @media (max-width:720px){
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    
+    }
+    /* Zlepšení čitelnosti: lead text v hero */
+    .hero .lead{color:rgba(255,255,255,.96);text-shadow:0 1px 2px rgba(0,0,0,.28)}
+    /* Čitelnost – stejná úprava jako u lead: všechen sekundární text v hero zesvětlit */
+    .hero .lead, .hero .hint, .hero p, .hero small, .hero li{
+      color: rgba(255,255,255,.96);
+      text-shadow:0 1px 2px rgba(0,0,0,.28);
+    }
+    /* Zesvětlení textů dle požadavku (kryti lead + footer) */
+    #kryti .section-lead{color:rgba(255,255,255,.96) !important;text-shadow:0 1px 2px rgba(0,0,0,.28)}
+    footer, footer strong, footer .hint, footer a{color:rgba(255,255,255,.94) !important;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+    /* Ztmavení textu v nálepce „Praktično pro rodiče“ */
+    .card-sticker .hint{color:#1f2937 !important; text-shadow:none}
+    /* === Mobilní hlavička: aby se vše vešlo === */
+    header .nav{min-width:0}
+    .brand{min-width:0}
+    @media (max-width:720px){
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    
       .logo{width:32px;height:32px;border-radius:10px}
-      .brand span{font-size:16px;max-width:52vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-      .cta-top{display:none} /* nahoře necháme jen logo; CTA je v obsahu */
-      /* Kontakt blok – 1 sloupec a safe zalamování odkazů */
-      #kontakt .container{display:block}
-      #kontakt a{overflow-wrap:anywhere;word-break:break-word;hyphens:auto}
+      .brand span{font-size:16px;max-width:48vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .cta-top{flex:0 0 auto}
+      .cta-top .btn{padding:10px 12px;border-radius:12px;font-size:14px;white-space:nowrap}
+    }
+    @media (max-width:420px){
+      .brand span{max-width:42vw;font-size:15px}
+      .cta-top .btn{padding:8px 10px;font-size:13px}
+    }
+    /* === Mobilní hlavička: aby se vše vešlo === */
+    header .nav{min-width:0}
+    .brand{min-width:0}
+    @media (max-width:720px){
+      nav ul{display:none}
+      .mobile-cta{display:block}
+      .checklist{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    
+      .logo{width:32px;height:32px;border-radius:10px}
+      .brand span{font-size:16px;max-width:48vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .brand .home-button{padding:8px 10px;border-radius:12px;font-size:13px;white-space:nowrap}
+      .cta-top .btn{padding:8px 10px;border-radius:12px;font-size:13px;white-space:nowrap}
     }
     @media (max-width:420px){
       .brand span{max-width:40vw}
-      .btn{padding:10px 14px}
     }
+    /* Footer actions + tmavý text na tlačítku Nahoru/Domů */
+    .foot-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+    footer .btn-ghost{color:#1d1d1f !important;background:#fff !important;text-shadow:none}  /* Mobile fixes: header + bonus grid */
+    @media (max-width:720px){
+      /* Header compaction */
+      header .cta-top{display:none} /* nahoře necháme jen logo a menu; dole je mobilní CTA */
+      .nav{padding:10px 0}
+      .brand span{font-size:16px; max-width:52vw; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+      /* Bonus sekce – na jeden sloupec */
+      #bonus .grid{grid-template-columns:1fr !important; gap:12px}
+      #bonus .card{padding:14px}
+      #bonus .card h3{font-size:16px}
+      .badge{width:32px;height:32px}
+      .badge-emoji{font-size:18px}
+      /* Kontakt – kontejner přes celou šířku na mobilech/užších šířkách */
+@media (max-width: 820px){
+  #kontakt .container{
+    display:block !important;
+    grid-template-columns:1fr !important;
+    max-width:100% !important;
+    width:100% !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+  #kontakt .panel{
+    width:100% !important;
+  }
+}
+
+/* Volitelné: na velkých displejích kontejner trochu širší */
+@media (min-width: 1280px){
+  .container{ max-width:1280px; }
+}
+@media (min-width: 1440px){
+  .container{ max-width:1360px; } /* klidně uprav podle chuti */
+}
+      /* --- FIX: tlačítko v hero není klikatelné --- */
+.hero{ position: relative; }                 /* jistota vrstvení */
+.hero .container{ position: relative; }
+
+.hero-actions{
+  position: relative;
+  z-index: 5;                                /* tlačítka nad vším */
+}
+
+/* Dekorace vpravo (nebudou chytat kliky) */
+.hero-art{ position: relative; z-index: 0; }
+.hero-art, .hero-art *{ pointer-events: none; }
+
+/* pokud chceš, aby se na nálepku dalo klikat, zruš řádek výše
+   a nech jen:  .blob{ pointer-events:none; }  */
+
+
   </style>
 </head>
 <body>
@@ -133,7 +304,7 @@
     <div class="container nav">
       <div class="brand">
         <div class="logo" aria-hidden="true">👶</div>
-        <span><a href="index.html" class="btn btn-ghost" aria-label="Domů">PojistiToSnadno.cz</a></span>
+         <span><a href="index.html" class="btn btn-ghost">PojistiToSnadno.cz</a></span>
       </div>
       <nav>
         <ul>
@@ -157,91 +328,106 @@
         <p class="lead">Krytí pro situace, které umí zamávat dnem i rozpočtem: vážná onemocnění, invalidita, dlouhodobé ošetřování, pobyt v nemocnici, denní odškodné i trvalé následky úrazu. Vyberete jen to, co dává smysl vaší rodině.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#kontakt">Nezávazně spočítat</a>
-        </div>
+       </div>
+       
       </div>
-
       <div class="hero-art" aria-hidden="true">
         <div class="blob"></div>
         <div class="card-sticker">
           <span class="sticker-emoji">🧸</span>
           <div>
             <strong>Praktično pro rodiče</strong><br>
-            <span class="hint" style="color:#1f2937">Flexibilně nastavíte, co opravdu využijete.</span>
-          </div>
-        </div>
-      </div>
+            <span class="hint">Flexibilně nastavíte, co opravdu využijete.</span>      </div>
     </div>
   </section>
 
   <section class="section" id="kryti">
     <div class="container">
-      <h2>Co všechno lze pro dítě pojistit</h2>
+      <h2>Co všechno lze pro dítě pojisti</h2>
       <p class="section-lead">Vyberte si kombinaci, která doplní veřejné zdravotní pojištění a pokryje reálné výdaje – spoluúčasti, pomůcky, výpadek příjmu pečujícího rodiče i náklady na rekonvalescenci.</p>
 
       <div class="grid">
         <!-- VO -->
         <article class="card">
-          <h3><span class="badge" aria-hidden="true">🩺</span> Vážná onemocnění (VO)</h3>
+          <h3>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">🩺</span></span>
+            Vážná onemocnění (VO)
+          </h3>
           <p>Jednorázové plnění při diagnóze závažné nemoci nebo při definovaném zákroku.</p>
           <ul class="list">
             <li><span class="dot"></span><span>Možnost základní/kompletní varianty.</span></li>
-            <li><span class="dot"></span><span>Ve většině případů plnění 100 % pojistné částky dle diagnózy.</span></li>
-            <li><span class="dot"></span><span>Vhodné pro pokrytí nákladů na léčbu hrazenou mimo veřejné pojištění.</span></li>
+            <li><span class="dot"></span><span>Plnění ve většině případech 100 % pojistné částky dle diagnózy.</span></li>
+             <li><span class="dot"></span><span>Vhodné pro pokrytí nákladů na léčbu, nehrazenou veřejným zdravotním pojištěním.</span></li>
           </ul>
-          <div class="pill" title="Informativní příklad">🎯 Doporučení: pojistná částka na 6–12 měsíců výdajů rodiny.</div>
+          <div class="pill" title="Informativní příklad">🎯 Doporučení: pojistná částka tak, aby pokryla 6–12 měsíců výdajů rodiny.</div>
         </article>
 
         <!-- Invalidita -->
         <article class="card">
-          <h3><span class="badge" aria-hidden="true">♿</span> Invalidita / snížená soběstačnost</h3>
+          <h3>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">♿</span></span>
+            Invalidita / snížená soběstačnost
+          </h3>
           <p>Vyplacení pojistné částky při uznání invalidity.</p>
           <ul class="list">
-            <li><span class="dot"></span><span>I., II. a III. stupeň.</span></li>
-            <li><span class="dot"></span><span>Kryje i sníženou soběstačnost od II. stupně.</span></li>
-            <li><span class="dot"></span><span>Při dopravní nehodě dvojnásobné plnění.</span></li>
-            <li><span class="dot"></span><span>Pro dlouhodobé či doživotní náklady na péči.</span></li>
+            <li><span class="dot"></span><span> I.,II.a III.stupeň.</span></li>
+            <li><span class="dot"></span><span>Kryje i sníženou soběstačnost od II.stupně</span></li>
+            <li><span class="dot"></span><span>Je-li způsobena dopravní nehodou je vyplacen dvojnásobek.</span></li>
+            <li><span class="dot"></span><span>Vhodné pro pokrytí dlouhodobých či doživotních nákladů na péči.</span></li>
           </ul>
-          <div class="pill">♻️ Bez čekací doby – rozhoduje posudek státní správy.</div>
+          <div class="pill">♻️ Bez čekací doby, rozhoduje posudek státní správy.</div>
         </article>
 
         <!-- Ošetřování -->
         <article class="card">
-          <h3><span class="badge" aria-hidden="true">🤝</span> Ošetřování dítěte</h3>
+          <h3>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">🤝</span></span>
+            Ošetřování dítěte
+          </h3>
           <p>Denní dávka, když dítě potřebuje celodenní péči a rodič musí být doma.</p>
           <ul class="list">
-            <li><span class="dot"></span><span>Počítají se i dny pobytu rodiče s dítětem v nemocnici.</span></li>
+            <li><span class="dot"></span><span>Počítají se i dny, kdy rodič musí s dítětem zůstat v nemocnici.</span></li>
             <li><span class="dot"></span><span>Užitečné při delších diagnózách a rekonvalescenci.</span></li>
             <li><span class="dot"></span><span>Kombinovatelné s pobytovým plněním.</span></li>
           </ul>
-          <div class="pill">👩‍👦 Pomáhá krýt výpadek příjmu pečující osoby.</div>
+          <div class="pill">👩‍👦 Kryje výpadek příjmu pečující osoby.</div>
         </article>
 
         <!-- Pobyt v nemocnici -->
         <article class="card">
-          <h3><span class="badge" aria-hidden="true">🏥</span> Pobyt v nemocnici</h3>
+          <h3>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">🏥</span></span>
+            Pobyt v nemocnici
+          </h3>
           <p>Plnění za každý den hospitalizace následkem nemoci či úrazu.</p>
           <ul class="list">
             <li><span class="dot"></span><span>Vhodné na spoluúčasti, dopravu, ubytování rodiče aj.</span></li>
-            <li><span class="dot"></span><span>Často je nastaven limit počtu dní na jednu událost.</span></li>
-            <li><span class="dot"></span><span>Možná i speciální plnění (např. dárcovské zákroky).</span></li>
+            <li><span class="dot"></span><span>Často nastaven limit počtu dní na jednu událost.</span></li>
+            <li><span class="dot"></span><span>Možné i speciální plnění (např. dárcovské zákroky).</span></li>
           </ul>
           <div class="pill">🏥 Praktické při delších hospitalizacích.</div>
         </article>
 
         <!-- Denní odškodné -->
         <article class="card">
-          <h3><span class="badge" aria-hidden="true">📅</span> Denní odškodné za úraz</h3>
-          <p>Částka za dny omezení následkem úrazu (např. sádra, domácí režim).</p>
+          <h3>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">📅</span></span>
+            Denní odškodné za úraz
+          </h3>
+          <p>Částka za dny, kdy je dítě omezeno následkem úrazu (např. sádra, domácí režim).</p>
           <ul class="list">
             <li><span class="dot"></span><span>Vhodné pro sportující děti a školní úrazy.</span></li>
             <li><span class="dot"></span><span>Lze kombinovat s trvalými následky.</span></li>
           </ul>
-          <div class="pill">⚽ Nastavte s ohledem na kroužky a sport.</div>
+          <div class="pill">⚽ Tip: sjednat s ohledem na kroužky a sport.</div>
         </article>
 
         <!-- Trvalé následky -->
         <article class="card">
-          <h3><span class="badge" aria-hidden="true">🩹</span> Trvalé následky úrazu</h3>
+          <h3>
+            <span class="badge" aria-hidden="true"><span class="badge-emoji">🩹</span></span>
+            Trvalé následky úrazu
+          </h3>
           <p>Jednorázové plnění dle procentní tabulky i u méně závažných následků.</p>
           <ul class="list">
             <li><span class="dot"></span><span>Škála plnění podle závažnosti následku.</span></li>
@@ -254,36 +440,36 @@
     </div>
   </section>
 
-  <!-- Bonus -->
+  <!-- Bonus: prevence a zotavení pro každé dítě -->
   <section class="section" id="bonus">
     <div class="container">
       <div class="panel" style="display:grid; gap:10px; align-items:start">
         <h2 style="display:flex;align-items:center;gap:10px;margin:0 0 6px">
-          <span class="badge" aria-hidden="true">🧪</span>
-          Zdarma BONUS: 100 tisíc na prevenci a zotavení pro každé dítě
+          <span class="badge" aria-hidden="true"><span class="badge-emoji">🧪</span></span>
+         Zdarma BONUS: 100 tisíc na prevenci a zotavení pro každé dítě
         </h2>
-        <p class="section-lead" style="margin:0"><strong>100&nbsp;000&nbsp;Kč</strong> na dítě (v součtu prevence + zotavení) na výdaje, které <em>nehradí veřejné zdravotní pojištění.</em></p>
+        <p class="section-lead" style="margin:0"><strong> 100&nbsp;000&nbsp;Kč</strong> na dítě (v součtu prevence + zotavení) na výdaje, které <em>nehradí veřejné zdravotní pojištění.</em></p>
 
         <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px">
           <div class="card">
-            <h3 style="margin:0 0 6px;display:flex;align-items:center;gap:10px"><span class="badge" aria-hidden="true">🩺</span> Prevence – co lze proplatit</h3>
+            <h3 style="margin:0 0 6px;display:flex;align-items:center;gap:10px"><span class="badge" aria-hidden="true"><span class="badge-emoji">🩺</span></span> Prevence – co lze proplatit</h3>
             <ul class="list">
               <li><span class="dot"></span><span>Onkologická a další preventivní vyšetření provedená lékařem.</span></li>
-              <li><span class="dot"></span><span>Mamograf/sono prsou, vyšetření stolice, kolonoskopie.</span></li>
-              <li><span class="dot"></span><span>Vyšetření vnitřních orgánů (srdce, plíce, ledviny, játra, prostata).</span></li>
-              <li><span class="dot"></span><span>Oční a neurologická prevence.</span></li>
+              <li><span class="dot"></span><span>Mamograf / sono prsou, vyšetření stolice na okultní krvácení, kolonoskopie.</span></li>
+              <li><span class="dot"></span><span>Vyšetření vnitřních orgánů (např. srdce, plíce, ledviny, játra, prostata).</span></li>
+              <li><span class="dot"></span><span>Oční prevence (např. glaukom) a neurologická prevence.</span></li>
             </ul>
           </div>
           <div class="card">
-            <h3 style="margin:0 0 6px;display:flex;align-items:center;gap:10px"><span class="badge" aria-hidden="true">❤️‍🩹</span> Zotavení – na co lze čerpat</h3>
+            <h3 style="margin:0 0 6px;display:flex;align-items:center;gap:10px"><span class="badge" aria-hidden="true"><span class="badge-emoji">❤️‍🩹</span></span> Zotavení – na co lze čerpat</h3>
             <ul class="list">
-              <li><span class="dot"></span><span>Nadstandardní kompenzační pomůcky (vozík, speciální obuv, naslouchátka) mimo úhrady.</span></li>
-              <li><span class="dot"></span><span>Úpravy bytu/domu; příspěvek na úpravu řízení auta.</span></li>
-              <li><span class="dot"></span><span>Krátkodobá domácí/sociální péče nad rámec úhrad; pomoc s péčí o děti či mazlíčky.</span></li>
+              <li><span class="dot"></span><span>Nadstandardní zdravotní/kompenzační pomůcky (např. vozík, speciální obuv, naslouchátka) mimo rámec úhrad.</span></li>
+              <li><span class="dot"></span><span>Úpravy bytu/domu kvůli zdravotnímu stavu; příspěvek na úpravu řízení auta.</span></li>
+              <li><span class="dot"></span><span>Krátkodobá domácí/sociální péče nad rámec úhrad; pomoc s péčí o děti či domácí mazlíčky.</span></li>
             </ul>
           </div>
         </div>
-        <p class="hint" style="margin-top:6px">Limit je <strong>max. 100&nbsp;000&nbsp;Kč</strong> na každého pojištěného napříč jeho smlouvami (v součtu prevence i nákladů na zotavení).</p>
+        <p class="hint" style="margin-top:6px">Limit je <strong>max. 100&nbsp;000&nbsp;Kč</strong> na každého pojištěného napříč jeho smlouvami (v součtu prevence i nákladů na zotavení). </p>
       </div>
     </div>
   </section>
@@ -297,89 +483,88 @@
         <div class="row"><strong>2) Nastavíme částky</strong><span class="hint">Jednorázové i denní plnění</span></div>
         <div class="row"><strong>4) Nezávazná nabídka</strong><span class="hint">Srozumitelná rekapitulace</span></div>
         <div class="row"><strong>5) Online vyřízení</strong><span class="hint">Bez tlaku – v klidu domova</span></div>
-      </div>
-
       <div class="panel">
         <h4>Interaktivní nastavení rizik</h4>
-
-        <form id="contact-form"
-              class="form js-formspree"
-              method="POST"
-              data-action="https://formspree.io/f/mvgqqpev"
-              data-thanks="/dekujeme.html"
-              data-event="contact_submit">
+       <form id="contact-form"
+      class="form js-formspree"
+      method="POST"
+      data-action="https://formspree.io/f/mvgqqpev"
+      data-thanks="/dekujeme.html"
+      data-event="contact_submit">
 
           <input type="hidden" name="_subject" value="Dětské pojištění – nezávazná poptávka">
           <input type="hidden" name="page" value="deti-pojisteni">
 
           <div class="form-field">
             <label for="name">Jméno a příjmení</label>
-            <input id="name" name="Jméno" type="text" required>
+            <input id="name" name="name" type="text" required>
           </div>
           <div class="form-field">
-            <label for="email">E-mail</label>
-            <input id="email" name="Email" type="email" required>
+            <label for="email">E‑mail</label>
+            <input id="email" name="email" type="email" required>
           </div>
           <div class="form-field">
             <label for="phone">Telefon <small>(nepovinné)</small></label>
-            <input id="phone" name="Telefon" type="tel" placeholder="733 782 290">
+            <input id="phone" name="phone" type="tel" placeholder="733 782 290">
           </div>
           <div class="form-field">
-            <label for="vek">Věk dítěte (roky)</label>
-            <input id="vek" name="Věk dítěte" type="number" min="0" max="18" required>
+            <label for="vek">Rok narození dítěte</label>
+            <input id="vek" name="vek_ditete" type="number" min="0" max="18" required>
           </div>
 
           <div class="control risk-line" id="line-vo">
-            <label><input type="checkbox" id="chk-vo" name="Vážná onemocnění – zahrnout" checked> Vážná onemocnění</label>
-            <span class="value" id="out-vo">500&nbsp;000 Kč</span>
-            <input id="inp-vo" name="Vážná onemocnění – částka" type="range" min="100000" max="2000000" value="500000" step="50000">
+            <label><input type="checkbox" id="chk-vo" name="zahrnout_vo" checked> Vážná onemocnění</label>
+            <span class="value" id="out-vo">500 000 Kč</span>
+            <input id="inp-vo" name="vo_castka" type="range" min="100000" max="2000000" value="500000" step="50000">
           </div>
           <div class="control risk-line" id="line-invalid">
-            <label><input type="checkbox" id="chk-invalid" name="Invalidita – zahrnout" checked> Invalidita</label>
-            <span class="value" id="out-invalid">1&nbsp;500&nbsp;000 Kč</span>
-            <input id="inp-invalid" name="Invalidita – částka" type="range" min="500000" max="3000000" value="1500000" step="50000">
+            <label><input type="checkbox" id="chk-invalid" name="zahrnout_invaliditu" checked> Invalidita</label>
+            <span class="value" id="out-invalid">1 500 000 Kč</span>
+            <input id="inp-invalid" name="invalidita_castka" type="range" min="500000" max="3000000" value="1500000" step="50000">
           </div>
           <div class="control risk-line" id="line-oset">
-            <label><input type="checkbox" id="chk-oset" name="Ošetřování – zahrnout" checked> Ošetřování (denní dávka)</label>
+            <label><input type="checkbox" id="chk-oset" name="zahrnout_osetrovani" checked> Ošetřování (denní dávka)</label>
             <span class="value" id="out-oset">400 Kč/den</span>
-            <input id="inp-oset" name="Ošetřování – denní dávka" type="range" min="200" max="1000" value="400" step="50">
+            <input id="inp-oset" name="oset_davka" type="range" min="200" max="1000" value="400" step="50">
           </div>
           <div class="control risk-line" id="line-hosp">
-            <label><input type="checkbox" id="chk-hosp" name="Hospitalizace – zahrnout" checked> Hospitalizace (denní dávka)</label>
+            <label><input type="checkbox" id="chk-hosp" name="zahrnout_hospitalizaci" checked> Hospitalizace (denní dávka)</label>
             <span class="value" id="out-hosp">300 Kč/den</span>
-            <input id="inp-hosp" name="Hospitalizace – denní dávka" type="range" min="200" max="1000" value="300" step="50">
+            <input id="inp-hosp" name="hospitalizace_davka" type="range" min="200" max="1000" value="300" step="50">
           </div>
           <div class="control risk-line" id="line-odsk">
-            <label><input type="checkbox" id="chk-odsk" name="Denní odškodné – zahrnout" checked> Denní odškodné (úraz)</label>
+            <label><input type="checkbox" id="chk-odsk" name="zahrnout_denne_odskodne" checked> Denní odškodné (úraz)</label>
             <span class="value" id="out-odsk">300 Kč/den</span>
-            <input id="inp-odsk" name="Denní odškodné – denní dávka" type="range" min="100" max="1000" value="300" step="50">
+            <input id="inp-odsk" name="odskodne_davka" type="range" min="100" max="1000" value="300" step="50">
           </div>
           <div class="control risk-line" id="line-tn">
-            <label><input type="checkbox" id="chk-tn" name="Trvalé následky – zahrnout" checked> Trvalé následky úrazu</label>
-            <span class="value" id="out-tn">800&nbsp;000 Kč</span>
-            <input id="inp-tn" name="Trvalé následky – částka" type="range" min="200000" max="2000000" value="800000" step="50000">
+            <label><input type="checkbox" id="chk-tn" name="zahrnout_trvale_nasledky" checked> Trvalé následky úrazu</label>
+            <span class="value" id="out-tn">800 000 Kč</span>
+            <input id="inp-tn" name="tn_castka" type="range" min="200000" max="2000000" value="800000" step="50000">
           </div>
 
           <div class="form-field">
             <label for="msg">Poznámka <small>(nepovinné)</small></label>
-            <textarea id="msg" name="Poznámka" rows="3" placeholder="Např. sportovní aktivity, zdravotní specifika, preference krytí…"></textarea>
+            <textarea id="msg" name="zprava" rows="3" placeholder="Např. sportovní aktivity, zdravotní specifika, preference krytí…"></textarea>
           </div>
 
-          <label style="display:flex;gap:8px;align-items:center;"><input type="checkbox" required> Souhlasím se zpracováním údajů pro účely nezávazné nabídky.</label>
+          <div class="form-field" style="align-items:center;">
+            <label style="display:flex;gap:8px;align-items:center;"><input type="checkbox" required> Souhlasím se zpracováním údajů pro účely nezávazné nabídky.</label>
+          </div>
 
-          <div class="form-actions" style="margin-top:8px">
+          <div class="form-actions">
             <button type="submit" class="btn btn-primary">Odeslat nezávaznou poptávku</button>
             <button type="reset" class="btn btn-ghost">Vymazat</button>
           </div>
 
           <div id="sum" class="panel" style="margin-top:10px;background:#f9fafb">
             <strong>Souhrn</strong>
-            <div class="row"><span>Vážná onemocnění:</span><span id="v-vo">500&nbsp;000 Kč</span></div>
-            <div class="row"><span>Invalidita:</span><span id="v-invalid">1&nbsp;500&nbsp;000 Kč</span></div>
+            <div class="row"><span>Vážná onemocnění:</span><span id="v-vo">500 000 Kč</span></div>
+            <div class="row"><span>Invalidita:</span><span id="v-invalid">1 500 000 Kč</span></div>
             <div class="row"><span>Ošetřování:</span><span id="v-oset">400 Kč/den</span></div>
             <div class="row"><span>Hospitalizace:</span><span id="v-hosp">300 Kč/den</span></div>
             <div class="row"><span>Denní odškodné:</span><span id="v-odsk">300 Kč/den</span></div>
-            <div class="row"><span>Trvalé následky:</span><span id="v-tn">800&nbsp;000 Kč</span></div>
+            <div class="row"><span>Trvalé následky:</span><span id="v-tn">800 000 Kč</span></div>
             <p class="hint">Výsledky jsou orientační. Finální limity a sazby se liší dle poskytovatele, věku a zvolených připojištění.</p>
           </div>
         </form>
@@ -428,104 +613,152 @@
     <div class="container foot-grid">
       <div>
         <strong>PojistiToSnadno.cz</strong><br>
-        <span class="hint">Informace mají obecný charakter a nepředstavují individuální doporučení či nabídku konkrétního produktu.</span>
+        <span class="hint">Informace mají pouze obecný charakter a nepředstavují individuální doporučení či nabídku konkrétního produktu.</span>
       </div>
       <div class="foot-actions">
         <a href="index.html" class="btn btn-ghost">Domů</a>
         <a href="#top" class="btn btn-ghost">Nahoru ↑</a>
       </div>
     </div>
-    <span class="container" style="display:block;margin-top:10px">© 2025 Daniel Verner – PojistiToSnadno.cz</span>
+    <spn>© 2025 Daniel Verner – PojistiToSnadno.cz</spn>
   </footer>
 
-  <script>
-  (function(){
-    function cur(v){ return (Number(v)||0).toLocaleString('cs-CZ') + ' Kč'; }
-    function setText(id, text){ var el=document.getElementById(id); if(el) el.innerHTML=text; }
-    function getNum(id, fb){
-      var el=document.getElementById(id); if(!el) return fb;
-      var n=(typeof el.valueAsNumber==='number' && !isNaN(el.valueAsNumber))?el.valueAsNumber:Number(el.value);
-      return isFinite(n)?n:fb;
-    }
-    function upd(){
-      var vo   = getNum('inp-vo', 500000);
-      var inv  = getNum('inp-invalid', 1500000);
-      var oset = getNum('inp-oset', 400);
-      var hosp = getNum('inp-hosp', 300);
-      var odsk = getNum('inp-odsk', 300);
-      var tn   = getNum('inp-tn', 800000);
-
-      setText('out-vo', cur(vo));
-      setText('out-invalid', cur(inv));
-      setText('out-oset', cur(oset) + '/den');
-      setText('out-hosp', cur(hosp) + '/den');
-      setText('out-odsk', cur(odsk) + '/den');
-      setText('out-tn', cur(tn));
-
-      setText('v-vo', cur(vo).replace(' Kč','&nbsp;Kč'));
-      setText('v-invalid', cur(inv).replace(' Kč','&nbsp;Kč'));
-      setText('v-oset', cur(oset) + ' / den');
-      setText('v-hosp', cur(hosp) + ' / den');
-      setText('v-odsk', cur(odsk) + ' / den');
-      setText('v-tn', cur(tn).replace(' Kč','&nbsp;Kč'));
-    }
-    ['inp-vo','inp-invalid','inp-oset','inp-hosp','inp-odsk','inp-tn'].forEach(function(id){
-      var el=document.getElementById(id);
-      if(el){ el.addEventListener('input', upd); el.addEventListener('change', upd); }
-    });
-    function linkToggle(chkId, inpId, lineId){
-      var chk=document.getElementById(chkId);
-      var inp=document.getElementById(inpId);
-      var line=document.getElementById(lineId);
-      if(!chk || !inp || !line) return;
-      function apply(){ var dis=!chk.checked; inp.disabled=dis; line.classList.toggle('disabled', dis); }
-      chk.addEventListener('change', apply); apply();
-    }
-    linkToggle('chk-vo','inp-vo','line-vo');
-    linkToggle('chk-invalid','inp-invalid','line-invalid');
-    linkToggle('chk-oset','inp-oset','line-oset');
-    linkToggle('chk-hosp','inp-hosp','line-hosp');
-    linkToggle('chk-odsk','inp-odsk','line-odsk');
-    linkToggle('chk-tn','inp-tn','line-tn');
-    upd();
-  })();
-  </script>
 
   <script>
-  (function(){
-    var DEFAULT_THANKS = '/dekujeme.html';
-    function paramsObj(search){ var p=new URLSearchParams(search),o={}; p.forEach(function(v,k){o[k]=v}); return o; }
-    function sendGA(name, params){ if(typeof gtag==='function'){ gtag('event', name, params||{}); } }
-    function bindForm(form){
-      var endpoint=form.getAttribute('data-action'); if(!endpoint) return;
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        var submitBtn=form.querySelector('[type="submit"]');
-        if(submitBtn){ submitBtn.disabled=true; submitBtn.dataset.origText=submitBtn.textContent; submitBtn.textContent='Odesílám…'; }
-        var fd=new FormData(form);
-        var q=paramsObj(location.search);
-        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){ if(q[k]) fd.append(k,q[k]); });
-        fd.append('_page', location.pathname); fd.append('_ts', new Date().toISOString());
-        fetch(endpoint,{method:'POST',headers:{'Accept':'application/json'},body:fd})
-        .then(function(res){ if(!res.ok) throw new Error('submit-failed');
-          sendGA(form.getAttribute('data-event')||'form_submit',{form_id:form.id||'',form_name:form.getAttribute('name')||'',page_path:location.pathname});
-          location.href=form.getAttribute('data-thanks')||DEFAULT_THANKS;
-        })
-        .catch(function(){ alert('Odeslání se nepodařilo. Zkuste to prosím znovu.'); })
-        .finally(function(){ if(submitBtn){ submitBtn.disabled=false; submitBtn.textContent=submitBtn.dataset.origText||'Odeslat'; }});
-      }, {passive:false});
-    }
-    function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
-    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
+(function(){
+  function cur(v){ return (Number(v)||0).toLocaleString('cs-CZ') + ' Kč'; }
+  function setText(id, text){ var el=document.getElementById(id); if(el) el.textContent=text; }
+  function getNum(id, fallback){
+    var el=document.getElementById(id);
+    if(!el) return fallback;
+    var n = (typeof el.valueAsNumber==='number' && !isNaN(el.valueAsNumber)) ? el.valueAsNumber : Number(el.value);
+    return isFinite(n) ? n : fallback;
+  }
+  function upd(){
+    var vo   = getNum('inp-vo', 500000);
+    var inv  = getNum('inp-invalid', 1500000);
+    var oset = getNum('inp-oset', 400);
+    var hosp = getNum('inp-hosp', 300);
+    var odsk = getNum('inp-odsk', 300);
+    var tn   = getNum('inp-tn', 800000);
 
-    document.addEventListener('click', function(e){
-      var a=e.target.closest('a[href^="tel:"],a[href^="mailto:"]'); if(!a) return;
-      sendGA('contact_click',{ type: a.href.startsWith('tel:') ? 'tel' : 'email' });
-    });
-  })();
-  </script>
+    setText('out-vo', cur(vo));
+    setText('out-invalid', cur(inv));
+    setText('out-oset', cur(oset) + '/den');
+    setText('out-hosp', cur(hosp) + '/den');
+    setText('out-odsk', cur(odsk) + '/den');
+    setText('out-tn', cur(tn));
+
+    setText('v-vo', cur(vo));
+    setText('v-invalid', cur(inv));
+    setText('v-oset', cur(oset) + ' / den');
+    setText('v-hosp', cur(hosp) + ' / den');
+    setText('v-odsk', cur(odsk) + ' / den');
+    setText('v-tn', cur(tn));
+  }
+  ['inp-vo','inp-invalid','inp-oset','inp-hosp','inp-odsk','inp-tn'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el){ el.addEventListener('input', upd); el.addEventListener('change', upd); }
+  });
+  function linkToggle(chkId, inpId, lineId){
+    var chk=document.getElementById(chkId);
+    var inp=document.getElementById(inpId);
+    var line=document.getElementById(lineId);
+    if(!chk || !inp || !line) return;
+    function apply(){
+      var disabled = !chk.checked;
+      inp.disabled = disabled;
+      if(disabled){ line.classList.add('disabled'); } else { line.classList.remove('disabled'); }
+    }
+    chk.addEventListener('change', apply);
+    apply();
+  }
+  linkToggle('chk-vo','inp-vo','line-vo');
+  linkToggle('chk-invalid','inp-invalid','line-invalid');
+  linkToggle('chk-oset','inp-oset','line-oset');
+  linkToggle('chk-hosp','inp-hosp','line-hosp');
+  linkToggle('chk-odsk','inp-odsk','line-odsk');
+  linkToggle('chk-tn','inp-tn','line-tn');
+
+  upd();
+})();
+</script>
+        <script>
+(function(){
+  var DEFAULT_THANKS = '/dekujeme.html';
+
+  function paramsObj(search){
+    var p = new URLSearchParams(search), o = {};
+    p.forEach(function(v,k){ o[k]=v; }); return o;
+  }
+  function sendGA(name, params){
+    if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
+  }
+
+  function bindForm(form){
+    var endpoint = form.getAttribute('data-action');
+    if(!endpoint) return;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      var submitBtn = form.querySelector('[type="submit"]');
+      if (submitBtn){
+        submitBtn.disabled = true;
+        submitBtn.dataset.origText = submitBtn.textContent;
+        submitBtn.textContent = 'Odesílám…';
+      }
+
+      var fd = new FormData(form);
+
+      // přidáme UTM parametry a info o stránce
+      var q = paramsObj(location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
+        .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
+      fd.append('_page', location.pathname);
+      fd.append('_ts', new Date().toISOString());
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      })
+      .then(function(res){
+        if(!res.ok) throw new Error('submit-failed');
+        // GA event (název vezmeme z data-event, fallback 'form_submit')
+        sendGA(form.getAttribute('data-event') || 'form_submit', {
+          form_id: form.id || '',
+          form_name: form.getAttribute('name') || '',
+          page_path: location.pathname
+        });
+        // přesměrování na děkovací stránku
+        var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
+        location.href = thanks;
+      })
+      .catch(function(){
+        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
+      })
+      .finally(function(){
+        if (submitBtn){
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
+        }
+      });
+    }, {passive:false});
+  }
+
+  // navážeme na všechny formuláře s .js-formspree
+  function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+
+  // bonus: měření kliků na tel/mail
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
+    if(!a) return;
+    sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
+  });
+})();
+</script>
+
 </body>
 </html>
-
-
-  
