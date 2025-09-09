@@ -497,7 +497,8 @@
     <a href="gdpr.html">Ochrana osobních údajů</a>
     <a href="cookies.html">Používání cookies</a>
     <a href="podminky.html">Podmínky užívání</a>
-    <a href="nastaveni-cookies.html">Nastavení cookies</a>
+    <a href="#!" class="js-open-cookie-settings">Nastavení cookies</a>
+
   </nav>
 
   <small class="copy">© 2025 Daniel Verner – PojistiToSnadno.cz</small>
@@ -642,7 +643,9 @@
   <div class="cookie-inner">
     <div class="cookie-text">
       Používáme soubory cookies k zajištění chodu webu a měření návštěvnosti.
-      Podrobnosti najdete v <a href="cookies.html">zásadách cookies</a> a v <a href="nastaveni-cookies.html">nastavení</a>.
+      Podrobnosti najdete v <a href="cookies.html">zásadách cookies</a> a v
+<a href="#!" class="js-open-cookie-settings">nastavení</a>.
+
     </div>
     <div class="cookie-actions">
       <button type="button" class="btn-cookie secondary" id="cookie-decline">Pouze nezbytné</button>
@@ -695,6 +698,25 @@
     bar.classList.remove('show');
   });
 })();
+</script>
+<script>
+  // Otevření cookie lišty z odkazů „Nastavení cookies“
+  (function(){
+    function bindOpeners(){
+      document.querySelectorAll('.js-open-cookie-settings').forEach(function(a){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          var bar = document.getElementById('cookie-bar');
+          if (bar) bar.classList.add('show');
+        }, { passive:false });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindOpeners);
+    } else {
+      bindOpeners();
+    }
+  })();
 </script>
 
 </body>
