@@ -133,6 +133,31 @@
       thead th{background:#fafafa; color:#000}
       .price--client{color:#b30000}
     }
+    /* --- Společný footer napříč webem --- */
+footer .foot-actions{
+  display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+  margin:0 0 8px;
+}
+footer .legal-links{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:12px 18px; margin:10px 0 6px; font-size:.95rem;
+}
+footer .legal-links a{
+  text-decoration:underline; text-underline-offset:2px;
+}
+footer small.copy{
+  display:block; text-align:center; opacity:.8; margin-top:6px;
+}
+
+/* (volitelné – jen pokud chceš lehce „karetní“ pozadí jako jinde)
+footer{
+  background:rgba(238,238,238,.9);
+  text-align:center;
+  padding:16px;
+  font-size:.95rem;
+}
+*/
+
   </style>
 </head>
 <body>
@@ -251,6 +276,23 @@
       </div>
     </section>
   </main>
+  <footer>
+  <div class="foot-actions">
+    <a href="index.html" class="btn btn-ghost">Domů</a>
+    <a href="#top" class="btn btn-ghost">Nahoru ↑</a>
+  </div>
+
+  <nav class="container legal-links" aria-label="Právní odkazy">
+    <a href="pravni.html">Právní informace &amp; ČNB</a>
+    <a href="gdpr.html">Ochrana osobních údajů</a>
+    <a href="cookies.html">Používání cookies</a>
+    <a href="podminky.html">Podmínky užívání</a>
+    <a href="nastaveni-cookies.html">Nastavení cookies</a>
+  </nav>
+
+  <small class="copy">© 2025 Daniel Verner – PojistiToSnadno.cz</small>
+</footer>
+
 </body>
 </html>
 
