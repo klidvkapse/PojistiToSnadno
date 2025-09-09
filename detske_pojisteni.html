@@ -296,6 +296,19 @@
 /* pokud chceš, aby se na nálepku dalo klikat, zruš řádek výše
    a nech jen:  .blob{ pointer-events:none; }  */
 
+/* --- Právní footer --- */
+footer .legal-links{
+  display:flex; gap:16px; flex-wrap:wrap; justify-content:center;
+  margin-top:14px; font-size:.95rem
+}
+footer .legal-links a{
+  text-decoration:underline; color:#1f2937
+}
+footer .legal-contact{
+  text-align:center; margin-top:10px; color:#374151
+}
+footer .legal-contact a{ text-decoration:underline; color:#111 }
+footer small.copy{ display:block; margin-top:8px; opacity:.8; text-align:center }
 
   </style>
 </head>
@@ -609,19 +622,35 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container foot-grid">
-      <div>
-        <strong>PojistiToSnadno.cz</strong><br>
-        <span class="hint">Informace mají pouze obecný charakter a nepředstavují individuální doporučení či nabídku konkrétního produktu.</span>
-      </div>
-      <div class="foot-actions">
-        <a href="index.html" class="btn btn-ghost">Domů</a>
-        <a href="#top" class="btn btn-ghost">Nahoru ↑</a>
-      </div>
+ <footer>
+  <div class="container foot-grid">
+    <div>
+      <strong>PojistiToSnadno.cz</strong><br>
+      <span class="hint">Informace mají obecný charakter a nepředstavují individuální doporučení či nabídku konkrétního produktu.</span>
     </div>
-    <spn>© 2025 Daniel Verner – PojistiToSnadno.cz</spn>
-  </footer>
+    <div class="foot-actions">
+      <a href="index.html" class="btn btn-ghost">Domů</a>
+      <a href="#top" class="btn btn-ghost">Nahoru ↑</a>
+    </div>
+  </div>
+
+  <nav class="container legal-links" aria-label="Právní odkazy">
+    <a href="pravni.html">Právní informace &amp; ČNB</a>
+    <a href="gdpr.html">Ochrana osobních údajů</a>
+    <a href="cookies.html">Používání cookies</a>
+    <a href="podminky.html">Podmínky užívání</a>
+    <a href="nastaveni-cookies.html">Nastavení cookies</a>
+  </nav>
+
+  <div class="container legal-contact">
+    Daniel Verner · 📞 <a href="tel:+420733782290">733&nbsp;782&nbsp;290</a> · 📩
+    <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
+    📍 Olomoucký kraj – schůzky domlouvám individuálně
+  </div>
+
+  <small class="copy">© 2025 Daniel Verner – PojistiToSnadno.cz</small>
+</footer>
+
 
 
   <script>
