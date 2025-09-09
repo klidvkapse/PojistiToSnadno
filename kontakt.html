@@ -73,6 +73,22 @@
     input:focus, textarea:focus { border-color:#d1b85c; outline:none; }
     input:hover, textarea:hover { background-color: rgba(60, 60, 60, 0.95); }
 
+    /* Souhlas (GDPR) */
+    .consent {
+      display:flex;
+      align-items:flex-start;
+      gap:.65rem;
+      line-height:1.45;
+      font-size:.98rem;
+      color:#e9e9e2;
+    }
+    .consent input[type="checkbox"]{
+      width:18px; height:18px; margin-top:.15rem;
+      accent-color:#d1b85c;
+      flex:0 0 auto;
+    }
+    .consent a{ color:#f3da80; text-decoration:underline; }
+
     .form-actions { display:flex; justify-content:flex-end; gap:1rem; flex-wrap:wrap; }
     .form-actions button {
       background-color:#d1b85c; color:#000; border:none; padding:12px 30px;
@@ -144,11 +160,22 @@
       <input type="email" name="Email" placeholder="Váš email" required>
       <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}" required>
 
+      <!-- ✅ Souhlas se zpracováním osobních údajů -->
+      <div class="consent">
+        <input type="checkbox" id="consent" name="Souhlas GDPR" value="ano" required aria-required="true">
+        <label for="consent">
+          Souhlasím se zpracováním osobních údajů pro účely zpětného kontaktu.
+          Seznámil(a) jsem se se
+          <a href="/gdpr.html" target="_blank" rel="noopener">Zásadami ochrany osobních údajů</a>
+          a
+          <a href="/podminky.html" target="_blank" rel="noopener">Podmínkami užívání</a>.
+        </label>
+      </div>
+
       <div class="form-actions">
         <button type="submit">Odeslat poptávku</button>
         <button type="reset">Vymazat formulář</button>
       </div>
-      <span>Odesláním souhlasíte se zpracováním údajů pro účely zpětného kontaktu.</span>
     </form>
 
     <div class="back-home-mobile">
@@ -178,8 +205,8 @@
       <button type="button" class="footer__chip" onclick="resetCookieConsent()">Nastavení cookies</button>
     </div>
 
-   
-
     <div class="footer__copy">© 2025 Daniel Verner — PojistiToSnadno.cz</div>
   </div>
 </footer>
+</body>
+</html>
