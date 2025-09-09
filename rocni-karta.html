@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Roční cestovní karta – cestujte celý rok s výhodným pojištěním. Sleva až 63 % pro klienty. Krytí po celé Evropě i světě.">
   <title>Roční Cestovní Karta</title>
+
+  <!-- volitelně načti i globální styly (když existují) -->
+  <link rel="stylesheet" href="/site.css?v=2">
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
@@ -19,350 +23,111 @@
   --shadow: 0 4px 18px rgba(0,0,0,0.2);
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; margin: 0; padding: 0; }
 
 body {
   font-family: 'Raleway', Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
   background: url('pozcest.webp') center/cover fixed;
   color: var(--text-light);
 }
 
-main {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-  height: 100%;
-}
+main { flex: 1; display: flex; overflow: hidden; height: 100%; }
 
 .content {
   width: 45%;
   background: var(--overlay);
   padding: 1.5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: flex; flex-direction: column; justify-content: space-between;
   height: 100%;
 }
+.content h1 { font-size: 1.7rem; color: var(--primary); }
+.content h2 { font-size: 1.2rem; color: var(--primary); margin-bottom: .5em; }
+.content h3 { font-size: 1rem; color: var(--primary); margin-bottom: .5em; }
+.content ul { margin-left: 1.2em; font-size: .95rem; }
+.content li { margin-bottom: .4em; }
 
-.content h1 {
-  font-size: 1.7rem;
-  color: var(--primary);
-}
+.features { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; }
+.feature-item { display: flex; align-items: flex-start; gap: .6em; }
+.feature-item svg { width: 24px; height: 24px; stroke: var(--primary); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 4px; }
+.feature-item p { margin: 0; font-size: .9rem; }
 
-.content h2 {
-  font-size: 1.2rem;
-  color: var(--primary);
-  margin-bottom: 0.5em;
-}
+.state-search { margin-top: 1.2em; }
+.state-search label { display: block; margin-bottom: .4em; color: var(--primary); font-weight: 700; }
+.state-search input { width: 100%; padding: .6em; border-radius: 4px; border: none; font-size: 1rem; }
+.state-search .hint { margin-top: .3em; color: var(--primary); font-size: .85rem; }
 
-.content h3 {
-  font-size: 1rem;
-  color: var(--primary);
-  margin-bottom: 0.5em;
-}
-
-.content ul {
-  margin-left: 1.2em;
-  font-size: 0.95rem;
-}
-
-.content li {
-  margin-bottom: 0.4em;
-}
-
-.features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
-}
-
-.feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6em;
-}
-
-.feature-item svg {
-  width: 24px;
-  height: 24px;
-  stroke: var(--primary);
-  fill: none;
-  stroke-width: 2;
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-.feature-item p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.state-search {
-  margin-top: 1.2em;
-}
-
-.state-search label {
-  display: block;
-  margin-bottom: 0.4em;
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.state-search input {
-  width: 100%;
-  padding: 0.6em;
-  border-radius: 4px;
-  border: none;
-  font-size: 1rem;
-}
-
-.state-search .hint {
-  margin-top: 0.3em;
-  color: var(--primary);
-  font-size: 0.85rem;
-}
-
-/* Pravá část s obrázkem */
 .hero-image-container {
-  width: 55%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  height: 100%;
+  width: 55%; position: relative; display: flex; justify-content: center; align-items: center;
+  overflow: hidden; height: 100%;
 }
+.hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center -50px; }
 
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center -50px;
+.hero-image-container .cta { position: absolute; bottom: 20px; left: 20px; margin: 0; z-index: 10; }
+.hero-image-container .cta a{
+  display:inline-flex; align-items:center; gap:.6em;
+  background:var(--button-bg); color:var(--text-dark);
+  padding:.8em 1.6em; font-size:1rem; font-weight:700; text-decoration:none;
+  border-radius:var(--radius); box-shadow:var(--shadow); transition:background .2s;
 }
+.hero-image-container .cta a:hover{ background:var(--button-hover); }
+.hero-image-container .cta svg{ width:22px; height:22px; stroke:var(--text-dark); fill:none; stroke-width:2; }
 
-/* Tlačítko v obrázku */
-.hero-image-container .cta {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  margin: 0;
-  z-index: 10;
+.top-buttons { position: fixed; top: 20px; right: 20px; z-index: 999; display: flex; gap: 1em; }
+.top-buttons a { background:var(--button-bg); color:var(--text-dark); padding:.5em 1em; border-radius:var(--radius); text-decoration:none; font-weight:600; box-shadow:var(--shadow); transition:background .3s; }
+.top-buttons a:hover { background:var(--button-hover); }
+
+/* PŮVODNÍ jednoduchý footer necháme, ale přepíšeme specifickou patičkou níže */
+footer { text-align:center; font-size:.85rem; color:var(--primary); padding:.4em 0; background:transparent; }
+
+/* animace tlačítek */
+.pulse{ animation:pulse 2s infinite; }
+@keyframes pulse{
+  0%{ transform:scale(1); box-shadow:0 0 0 rgba(0,0,0,.2);}
+  50%{ transform:scale(1.05); box-shadow:0 0 20px rgba(0,0,0,.3);}
+  100%{ transform:scale(1); box-shadow:0 0 0 rgba(0,0,0,.2);}
 }
+.cta a{ animation:pulse 2s infinite; }
 
-.hero-image-container .cta a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  background: var(--button-bg);
-  color: var(--text-dark);
-  padding: 0.8em 1.6em;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: background 0.2s;
+/* Desktop-only / Mobile-only */
+@media (min-width: 767px){ .mobile-only{ display:none !important; } }
+
+/* ======= Responsive pro mobil ======= */
+@media (max-width: 767px){
+  body, html { margin:0; padding:0; height:auto; }
+  main { display:flex; flex-direction:column-reverse; }
+  .hero-image-container{ width:100%; height:100vh; position:relative; overflow:hidden; z-index:1; }
+  .hero-img{ width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+  .content{
+    width:100%; background:var(--overlay); padding:1.2em 1.5em;
+    margin-top:-30vh; z-index:2; position:relative;
+    border-top-left-radius:var(--radius); border-top-right-radius:var(--radius);
+  }
+  .state-search{ padding:1em 1.5em 0; }
+  .cta.mobile-only{ text-align:center; margin:1.5em auto; width:85%; }
+  .cta.mobile-only a{
+    display:inline-flex; justify-content:center; align-items:center;
+    padding:1em 1.4em; font-size:1.05rem; border-radius:18px;
+    background:var(--button-bg); color:var(--text-dark); font-weight:bold;
+    box-shadow:var(--shadow); text-decoration:none; width:100%; max-width:400px; transition:background .2s ease;
+  }
+  .cta.mobile-only a:hover{ background:var(--button-hover); }
+  .cta.mobile-only svg{ width:20px; height:20px; stroke:var(--text-dark); margin-right:.6em; }
+  .top-buttons{ position:absolute; top:12px; right:12px; gap:.5em; }
+  .top-buttons a{ font-size:.85rem; padding:.4em .8em; }
+  footer{ text-align:center; padding:.7em 0; font-size:.85rem; color:var(--primary); background:transparent; }
+  .desktop-only{ display:none !important; }
 }
-
-.hero-image-container .cta a:hover {
-  background: var(--button-hover);
-}
-
-.hero-image-container .cta svg {
-  width: 22px;
-  height: 22px;
-  stroke: var(--text-dark);
-  fill: none;
-  stroke-width: 2;
-}
-
-/* Navigační odkazy nahoře */
-.top-buttons {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 999;
-  display: flex;
-  gap: 1em;
-}
-
-.top-buttons a {
-  background-color: var(--button-bg);
-  color: var(--text-dark);
-  padding: 0.5em 1em;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: var(--shadow);
-  transition: background 0.3s;
-}
-
-.top-buttons a:hover {
-  background-color: var(--button-hover);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--primary);
-  padding: 0.4em 0;
-  background: transparent;
-}
-  .pulse {
-  animation: pulse 2s infinite;
-}
-  @keyframes pulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 0, 0, 0.2); }
-  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
-  100% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 0, 0, 0.2); }
-}
-
-.cta a {
-  animation: pulse 2s infinite;
-}
-  @media (min-width: 767px) {
-  .mobile-only {
-    display: none !important;
-  }
-}
-
-
-
-/* ---------------------------------
-   RESPONSIVE STYLY PRO MOBIL
------------------------------------ */
-@media (max-width: 767px) {
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: auto;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column-reverse; /* ⬅️ Obrátíme pořadí – img bude nahoře */
-  }
-
-  .hero-image-container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  .content {
-    width: 100%;
-    background: var(--overlay);
-    padding: 1.2em 1.5em;
-    margin-top: -30vh; /* ⬅️ překryje 30 % obrázku */
-    z-index: 2;
-    position: relative;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
-  }
-
-  .state-search {
-    padding: 1em 1.5em 0;
-  }
-
-  .cta.mobile-only {
-    text-align: center;
-    margin: 1.5em auto;
-    width: 85%;
-  }
-
-  .cta.mobile-only a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1em 1.4em;
-    font-size: 1.05rem;
-    border-radius: 18px;
-    background: var(--button-bg);
-    color: var(--text-dark);
-    font-weight: bold;
-    box-shadow: var(--shadow);
-    text-decoration: none;
-    width: 100%;
-    max-width: 400px;
-    transition: background 0.2s ease;
-  }
-
-  .cta.mobile-only a:hover {
-    background: var(--button-hover);
-  }
-
-  .cta.mobile-only svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--text-dark);
-    margin-right: 0.6em;
-  }
-
-  .top-buttons {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 999;
-    display: flex;
-    gap: 0.5em;
-  }
-
-  .top-buttons a {
-    font-size: 0.85rem;
-    padding: 0.4em 0.8em;
-    border-radius: var(--radius);
-    background-color: var(--button-bg);
-    color: var(--text-dark);
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: var(--shadow);
-  }
-
-  footer {
-    text-align: center;
-    padding: 0.7em 0;
-    font-size: 0.85rem;
-    color: var(--primary);
-    background: transparent;
-  }
-
-  .desktop-only {
-    display: none !important;
-  }
-}
-
-
 </style>
 </head>
 <body>
   <div class="top-buttons">
-  <a href="index.html">Domů</a>
-</div>
-    <main>
-      <div class="content">
+    <a href="index.html">Domů</a>
+  </div>
+
+  <main>
+    <div class="content">
       <h1>Roční Cestovní Karta</h1>
 
       <div>
@@ -374,10 +139,12 @@ footer {
           <li><h3>Až 63 % sleva pro mé klienty.</h3></li>
         </ul>
       </div>
-        <div class="cta mobile-only">
-  <a href="cestovkocena.html">Podívejte se na ceník</a>
-       </div>
-      <hr style="border-color: var(--primary); opacity: 0.3;" />
+
+      <div class="cta mobile-only">
+        <a href="cestovkocena.html">Podívejte se na ceník</a>
+      </div>
+
+      <hr style="border-color: var(--primary); opacity: .3;" />
 
       <div>
         <h2>Hlavní výhody</h2>
@@ -405,6 +172,7 @@ footer {
         <label for="state-search-input">Vyhledat stát - Evropa + přidané státy</label>
         <input list="states" id="state-search-input" placeholder="Zadejte stát, kde chcete cestovat..." />
         <datalist id="states">
+          <!-- (seznam států beze změny) -->
           <option value="Albánie"></option>
           <option value="Andorra"></option>
           <option value="Belgie"></option>
@@ -460,108 +228,109 @@ footer {
         </datalist>
         <div id="state-hint" class="hint"></div>
       </div>
-      <!-- Pouze pro mobil -->
-<div class="cta mobile-only">
-  <a href="kontakt.html" class="pulse">
-  Chci Roční Kartu
-  </a>
- 
 
-</div>
+      <div class="cta mobile-only">
+        <a href="kontakt.html" class="pulse">Chci Roční Kartu</a>
+      </div>
 
-        <script>
-  const normalize = (str) =>
-    str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      <script>
+        const normalize = (str) =>
+          str.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase();
 
-  const coverage = {
-    'albánie': true,
-    'andorra': true,
-    'belgie': true,
-    'bělorusko': true,
-    'bosna a hercegovina': true,
-    'bulharsko': true,
-    'černá hora': true,
-    'dánsko (+ faerské ostrovy)': true,
-    'estonsko': true,
-    'finsko (+ alandy)': true,
-    'francie': true,
-    'chorvatsko': true,
-    'irsko': true,
-    'island': true,
-    'itálie': true,
-    'kosovo': true,
-    'lichtenštejnsko': true,
-    'litva': true,
-    'lotyšsko': true,
-    'lucembursko': true,
-    'maďarsko': true,
-    'malta': true,
-    'moldavsko': true,
-    'monako': true,
-    'německo': true,
-    'nizozemsko': true,
-    'norsko (+ špicberky)': true,
-    'polsko': true,
-    'portugalsko (+ azorské ostrovy, madeira)': true,
-    'rakousko': true,
-    'rumunsko': true,
-    'rusko – evropská část (pohoří ural a řeka ural)': true,
-    'řecko': true,
-    'san marino': true,
-    'severní makedonie': true,
-    'slovensko': true,
-    'slovinsko': true,
-    'srbsko': true,
-    'španělsko (+ baleárské ostrovy, kanárské ostrovy)': true,
-    'švédsko': true,
-    'švýcarsko': true,
-    'ukrajina': true,
-    'vatikán': true,
-    'velká británie (anglie, wales, severní irsko, skotsko + ostrov man, gibraltar a normanské ostrovy)': true,
-    'egypt': true,
-    'izrael': true,
-    'jordánsko': true,
-    'kapverdy': true,
-    'kypr': true,
-    'maroko': true,
-    'tunisko': true,
-    'turecko': true
-  };
+        const coverage = { /* (mapa států beze změny) */
+          'albánie': true, 'andorra': true, 'belgie': true, 'bělorusko': true, 'bosna a hercegovina': true,
+          'bulharsko': true, 'černá hora': true, 'dánsko (+ faerské ostrovy)': true, 'estonsko': true,
+          'finsko (+ alandy)': true, 'francie': true, 'chorvatsko': true, 'irsko': true, 'island': true,
+          'itálie': true, 'kosovo': true, 'lichtenštejnsko': true, 'litva': true, 'lotyšsko': true,
+          'lucembursko': true, 'maďarsko': true, 'malta': true, 'moldavsko': true, 'monako': true,
+          'německo': true, 'nizozemsko': true, 'norsko (+ špicberky)': true, 'polsko': true,
+          'portugalsko (+ azorské ostrovy, madeira)': true, 'rakousko': true, 'rumunsko': true,
+          'rusko – evropská část (pohoří ural a řeka ural)': true, 'řecko': true, 'san marino': true,
+          'severní makedonie': true, 'slovensko': true, 'slovinsko': true, 'srbsko': true,
+          'španělsko (+ baleárské ostrovy, kanárské ostrovy)': true, 'švédsko': true, 'švýcarsko': true,
+          'ukrajina': true, 'vatikán': true,
+          'velká británie (anglie, wales, severní irsko, skotsko + ostrov man, gibraltar a normanské ostrovy)': true,
+          'egypt': true, 'izrael': true, 'jordánsko': true, 'kapverdy': true, 'kypr': true,
+          'maroko': true, 'tunisko': true, 'turecko': true
+        };
 
-  const input = document.getElementById('state-search-input');
-  const hint = document.getElementById('state-hint');
+        const input = document.getElementById('state-search-input');
+        const hint = document.getElementById('state-hint');
 
-  input.addEventListener('input', () => {
-    const userInput = normalize(input.value.trim());
-    const keys = Object.keys(coverage);
-    const match = keys.find(k => normalize(k) === userInput);
+        input.addEventListener('input', () => {
+          const userInput = normalize(input.value.trim());
+          const keys = Object.keys(coverage);
+          const match = keys.find(k => normalize(k) === userInput);
 
-    if (match && coverage[match]) {
-      hint.textContent = 'Vaše karta na tento stát platí. ✅';
-    } else if (match && coverage[match] === false) {
-      hint.textContent = 'Bohužel, na tento stát pojištění neplatí. ❌';
-    } else {
-      hint.textContent = '';
-    }
-  });
-</script>
-         
+          if (match && coverage[match]) hint.textContent = 'Vaše karta na tento stát platí. ✅';
+          else if (match && coverage[match] === false) hint.textContent = 'Bohužel, na tento stát pojištění neplatí. ❌';
+          else hint.textContent = '';
+        });
+      </script>
     </div>
-</div>
-      <div class="hero-image-container">
+  </div>
+
+  <div class="hero-image-container">
     <img src="cestovko.webp" alt="Ilustrační foto muže" class="hero-img" />
-
-    <!-- Pouze pro desktop -->
     <div class="cta desktop-only">
-      <a href="kontakt.html" class="pulse">
-  Chci Roční Kartu
-  </a>
+      <a href="kontakt.html" class="pulse">Chci Roční Kartu</a>
       <a href="cestovkocena.html">Podívejte se na ceník</a>
-
     </div>
   </div>
   </main>
 
-  <footer>© 2025 PojistiToSnadno.cz – Všechna práva vyhrazena</footer>
+  <!-- helper pro tlačítko Nastavení cookies -->
+  <script>
+    window.resetCookieConsent = window.resetCookieConsent || function(){
+      try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
+      try{ localStorage.removeItem('cookie_consent_choice'); }catch(e){}
+      try{ document.cookie='cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax'; }catch(e){}
+      alert('Nastavení cookies bylo resetováno. Po obnovení se znovu zobrazí lišta (pokud je nasazena).');
+      try{ location.reload(); }catch(e){}
+    };
+  </script>
+
+  <!-- 🔧 FOOTER INLINE FIX – přepíše generické `footer{}` nahoře -->
+  <style>
+    :root{ --footer-bg:#8b7a58; --footer-fg:#fff; }
+    body footer.footer{
+      background:var(--footer-bg) !important;
+      color:var(--footer-fg) !important;
+      padding:24px 16px !important; margin-top:28px !important;
+    }
+    body footer.footer .footer__wrap{
+      max-width:1140px; margin:0 auto;
+      display:grid; gap:12px; justify-items:center; text-align:center;
+    }
+    body footer.footer .footer__links{
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+    }
+    body footer.footer .footer__chip,
+    body footer.footer .footer__chip:link,
+    body footer.footer .footer__chip:visited{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.35) !important;
+      background:rgba(255,255,255,.12) !important;
+      color:#fff !important; text-decoration:none !important; font-weight:700;
+    }
+    body footer.footer .footer__chip:hover{ background:rgba(255,255,255,.2) !important; }
+  </style>
+
+  <!-- jednotná zlatá patička -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__wrap">
+      <div class="footer__links">
+        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+        <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
+      </div>
+      <div style="opacity:.9">© 2025 PojistiToSnadno.cz — Daniel Verner</div>
+    </div>
+  </footer>
 </body>
 </html>
+
+
