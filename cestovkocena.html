@@ -3,201 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ceník Roční Cestovní Karty</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <title>Ceník Roční cestovní karty</title>
+  <meta name="description" content="Ceník roční cestovní karty (Základní i Vyšší limity). Přehledně oddělené běžné ceny a výhodné ceny pro mé klienty – Evropa i svět včetně USA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
+    :root{
+      --ink:#f6f5ee;
+      --muted:#e9e4cf;
+      --gold:#f3d14c;
+      --gold-strong:#ffd42a;
+      --paper:rgba(20,20,20,.86);
+      --glass:rgba(0,0,0,.25);
+      --red:#ff6f6f;
+      --border:rgba(255,255,255,.12);
+      --radius:18px;
+      --shadow:0 18px 36px rgba(0,0,0,.35);
+      --mono:'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Raleway,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:url('letiste.webp') center top / cover no-repeat fixed #000;
     }
 
-    body {
-      margin: 0;
-      font-family:Raleway,system-ui,Arial,sans-serif;
-      color: #f3d14c;
-      background: url('letiste.webp') no-repeat center top;
-      background-size: cover;
+    /* jemný překryv pro čitelnost */
+    .bg::before{
+      content:"";
+      position:fixed; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.65) 40%, rgba(0,0,0,.65));
+      z-index:-1;
     }
 
-    .mobile-only {
-      display: none;
+    header{
+      position:sticky; top:0; z-index:50;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      padding:10px 16px;
+      background:var(--glass);
+      backdrop-filter:saturate(1.1) blur(6px);
+      border-bottom:1px solid var(--border);
+    }
+    header h1{margin:0; font-size:1.1rem; font-weight:800; letter-spacing:.2px}
+    header h1 a{color:#fff; text-decoration:none}
+    nav{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    nav a{color:var(--gold); text-decoration:none; font-weight:800}
+    .btn{
+      display:inline-block; background:linear-gradient(180deg,#e8d37a,var(--gold-strong));
+      color:#1a1a1a; font-weight:800; padding:10px 14px; border-radius:12px; text-decoration:none;
+      box-shadow:0 8px 20px rgba(0,0,0,.28); border:1px solid rgba(0,0,0,.25)
+    }
+    .pulse{animation:pulse 1.6s ease-in-out infinite}
+    @keyframes pulse{
+      0%{transform:translateY(0); filter:brightness(1)}
+      50%{transform:translateY(-1px); filter:brightness(1.08)}
+      100%{transform:translateY(0); filter:brightness(1)}
     }
 
-    header {
-      position: absolute;
-      top: 0.5rem;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 0.5rem 1.5rem;
-      background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
+    main{
+      max-width:1100px; margin:28px auto 30px; padding:20px;
+    }
+    .panel{
+      background:var(--paper);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
+    h2{margin:0 0 4px; font-size:clamp(24px,3.2vw,34px); color:var(--gold-strong)}
+    h3{margin:16px 0 8px; font-size:clamp(18px,2vw,22px); color:#f1c93a}
+    p.subtext{color:var(--muted); margin:6px 0 0}
+
+    .legend{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:8px
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px;
+      background:rgba(0,0,0,.5); border:1px solid var(--border); font-weight:700; color:#ffeaa0
+    }
+    .pill .swatch{display:inline-block; width:12px; height:12px; border-radius:3px}
+
+    /* tabulky */
+    .table-wrap{overflow:auto; border-radius:12px; border:1px solid var(--border)}
+    table{width:100%; border-collapse:separate; border-spacing:0; min-width:750px}
+    caption{caption-side:top; text-align:left; padding:10px 12px; font-weight:800; color:#fff}
+    thead th{
+      position:sticky; top:0;
+      background:rgba(0,0,0,.55);
+      color:var(--gold-strong);
+      text-align:center; padding:.9rem .8rem; font-weight:800
+    }
+    th, td{border-top:1px solid var(--border)}
+    tbody td{
+      text-align:center; padding:.9rem .8rem; color:#f7f3d0
+    }
+    tbody tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+    td:first-child, th:first-child{text-align:left}
+    .mono{font-family:var(--mono)}
+    .price{display:block; font-weight:800}
+    .price--client{color:var(--red)}
+    .muted{opacity:.86; font-size:.92em}
+
+    .note{margin-top:12px; color:#e8e2c8}
+    .sound-button{display:flex; justify-content:center; margin-top:12px}
+    .sound-button button{
+      background:none; border:1px solid var(--border); padding:10px 14px; border-radius:12px; color:var(--gold); cursor:pointer
+    }
+    .sound-button button:hover{background:rgba(255,255,255,.06)}
+
+    /* mobil */
+    @media (max-width: 760px){
+      nav a:first-child{display:none} /* schovat "Domů", aby bylo víc místa */
+      header h1{font-size:1rem}
+      main{padding:12px}
+      .panel{padding:14px}
+      caption{padding:10px}
     }
 
-    header h1 a {
-      text-decoration: none;
-      color: white;
-    }
-
-    nav {
-      display: flex;
-      gap: 0.6rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: #f3d14c;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .btn {
-      background: #d5c26b;
-      color: black;
-      padding: 0.5rem 1.1rem;
-      border: none;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .pulse {
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.08);
-        opacity: 0.7;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    main {
-      margin: 9rem auto 2rem auto;
-      max-width: 1100px;
-      background: rgba(30, 30, 30, 0.8);
-      border-radius: 20px;
-      padding: 2rem;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      color: #ffd42a;
-    }
-
-    h3 {
-      font-size: 1.3rem;
-      color: #f1c93a;
-    }
-
-    .subtext {
-      font-size: 1rem;
-      color: #ddd;
-    }
-
-    .highlight {
-      color: #ff6f6f;
-      font-weight: bold;
-    }
-
-    table {
-      width: 100%;
-      margin-top: 2rem;
-      border-collapse: collapse;
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    th, td {
-      padding: 1rem;
-      text-align: center;
-      color: #ffd42a;
-      border-bottom: 1px solid #444;
-    }
-
-    th {
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    td span.red {
-      color: #f85a5a;
-      font-weight: bold;
-    }
-
-    td span.red.pulse {
-      display: inline-block;
-    }
-
-    .sound-button {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .sound-button button {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #ffd42a;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        background: #000;
-      }
-
-      .mobile-only {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-
-      header {
-        position: absolute;
-        top: 1rem;
-        flex-direction: column;
-        align-items: center;
-        background: none;
-        backdrop-filter: none;
-        z-index: 1001;
-      }
-
-      nav {
-        flex-direction: row;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-      }
-
-      main {
-        margin-top: -40%;
-        padding: 1rem;
-        background: rgba(0, 0, 0, 0.8);
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-      }
+    /* print */
+    @media print{
+      header, .sound-button{display:none}
+      body{background:none; color:#000}
+      .panel{background:#fff; box-shadow:none; border-color:#ddd}
+      thead th{background:#fafafa; color:#000}
+      .price--client{color:#b30000}
     }
   </style>
 </head>
 <body>
-
-  <img src="letiste.webp" alt="Letiště" class="mobile-only" />
+  <div class="bg"></div>
 
   <header>
-    <h1><a href="rocni-karta.html">zpět na Roční Cestovní Karta</a></h1>
+    <h1><a href="rocni-karta.html">← Zpět na Roční cestovní kartu</a></h1>
     <nav>
       <a href="index.html">Domů</a>
       <a href="kontakt.html" class="btn pulse">Chci roční cestovní kartu</a>
@@ -205,40 +147,110 @@
   </header>
 
   <main>
-    <h2>Ceník roční cestovní karty</h2>
-    <h3>Varianta ZÁKLADNÍ a VYŠŠÍ LIMITY</h3>
-    <p class="subtext">
-      Zobrazujeme ceny pro běžné klienty i výhodné ceny pro <span class="highlight pulse">MÉ KLIENTY</span>.
-    </p>
+    <section class="panel" aria-labelledby="cenik">
+      <h2 id="cenik">Ceník roční cestovní karty</h2>
+      <p class="subtext">Zobrazujeme <strong>běžné ceny</strong> i zvýhodněné ceny <strong class="pulse">pro mé klienty</strong>.</p>
 
-    <h3>ZÁKLADNÍ + Aktivní sport</h3>
-    <table>
-      <tr><th>ÚZEMNÍ PLATNOST</th><th>EVROPA</th><th>SVĚT VČETNĚ USA</th></tr>
-      <tr><td>LVZ</td><td>1600 / <span class="red pulse">585</span></td><td>nelze</td></tr>
-      <tr><td>LVZ + ÚZO</td><td>2060 / <span class="red pulse">827</span></td><td>6540 / <span class="red pulse">1937</span></td></tr>
-      <tr><td>LVZ + ÚZO + STORNO</td><td>2860 / <span class="red pulse">1627</span></td><td>7340 / <span class="red pulse">3137</span></td></tr>
-    </table>
+      <div class="legend" aria-label="Legenda">
+        <span class="pill"><span class="swatch" style="background:#f7f3d0"></span> běžná cena</span>
+        <span class="pill"><span class="swatch" style="background:#ff6f6f"></span> cena pro mé klienty</span>
+      </div>
 
-    <h3>VYŠŠÍ LIMITY + Aktivní sport</h3>
-    <table>
-      <tr><th>ÚZEMNÍ PLATNOST</th><th>EVROPA</th><th>SVĚT VČETNĚ USA</th></tr>
-      <tr><td>LVZ</td><td>2400 / <span class="red pulse">845</span></td><td>nelze</td></tr>
-      <tr><td>LVZ + ÚZO</td><td>3230 / <span class="red pulse">1197</span></td><td>9950 / <span class="red pulse">2677</span></td></tr>
-      <tr><td>LVZ + ÚZO + STORNO</td><td>4030 / <span class="red pulse">1997</span></td><td>10750 / <span class="red pulse">3877</span></td></tr>
-    </table>
-    <!-- Vysvětlení zkratek -->
-  <p class="subtext" style="margin-top: 1.5rem;"><em>
-    LVZ – pojištění léčebných výloh v zahraničí včetně asistenčních služeb,<br>
-    ÚZO – pojištění úrazu, pojištění zavazadel,zpoždení letu a zavazadel,právní pomoci,přerušení cesty,nevyužití cestovní služby a odpovědnosti za újmu
-  </em></p>
+      <!-- ZÁKLADNÍ + Aktivní sport -->
+      <h3>ZÁKLADNÍ + Aktivní sport</h3>
+      <div class="table-wrap" role="region" aria-label="Ceník – Základní">
+        <table>
+          <caption>Oddělené ceny: <span class="muted">Evropa | Svět vč. USA</span></caption>
+          <thead>
+            <tr>
+              <th>Územní platnost / balíček</th>
+              <th>Evropa – běžná</th>
+              <th>Evropa – klient</th>
+              <th>Svět vč. USA – běžná</th>
+              <th>Svět vč. USA – klient</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><abbr title="Léčebné výlohy v zahraničí vč. asistence">LVZ</abbr></td>
+              <td><span class="price mono">1600</span></td>
+              <td><span class="price mono price--client">585</span></td>
+              <td><span class="price mono">nelze</span></td>
+              <td><span class="price mono">nelze</span></td>
+            </tr>
+            <tr>
+              <td>LVZ + <abbr title="Úraz, zavazadla, zpoždění letu a zavazadel, právní pomoc, přerušení cesty, nevyužití služby, odpovědnost">ÚZO</abbr></td>
+              <td><span class="price mono">2060</span></td>
+              <td><span class="price mono price--client">827</span></td>
+              <td><span class="price mono">6540</span></td>
+              <td><span class="price mono price--client">1937</span></td>
+            </tr>
+            <tr>
+              <td>LVZ + ÚZO + <abbr title="Pojištění storna">STORNO</abbr></td>
+              <td><span class="price mono">2860</span></td>
+              <td><span class="price mono price--client">1627</span></td>
+              <td><span class="price mono">7340</span></td>
+              <td><span class="price mono price--client">3137</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <div class="sound-button">
-      <audio id="airportSound">
-        <source src="airport-gong.mp3" type="audio/mpeg" />
-      </audio>
-      <button onclick="document.getElementById('airportSound').play()">🔈</button>
-    </div>
+      <!-- VYŠŠÍ LIMITY + Aktivní sport -->
+      <h3>VYŠŠÍ LIMITY + Aktivní sport</h3>
+      <div class="table-wrap" role="region" aria-label="Ceník – Vyšší limity">
+        <table>
+          <caption>Oddělené ceny: <span class="muted">Evropa | Svět vč. USA</span></caption>
+          <thead>
+            <tr>
+              <th>Územní platnost / balíček</th>
+              <th>Evropa – běžná</th>
+              <th>Evropa – klient</th>
+              <th>Svět vč. USA – běžná</th>
+              <th>Svět vč. USA – klient</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LVZ</td>
+              <td><span class="price mono">2400</span></td>
+              <td><span class="price mono price--client">845</span></td>
+              <td><span class="price mono">nelze</span></td>
+              <td><span class="price mono">nelze</span></td>
+            </tr>
+            <tr>
+              <td>LVZ + ÚZO</td>
+              <td><span class="price mono">3230</span></td>
+              <td><span class="price mono price--client">1197</span></td>
+              <td><span class="price mono">9950</span></td>
+              <td><span class="price mono price--client">2677</span></td>
+            </tr>
+            <tr>
+              <td>LVZ + ÚZO + STORNO</td>
+              <td><span class="price mono">4030</span></td>
+              <td><span class="price mono price--client">1997</span></td>
+              <td><span class="price mono">10750</span></td>
+              <td><span class="price mono price--client">3877</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- zkratky -->
+      <p class="note"><em>
+        <strong>LVZ</strong> – léčebné výlohy v zahraničí vč. asistenčních služeb &nbsp;•&nbsp;
+        <strong>ÚZO</strong> – úraz, zavazadla, zpoždění letu/zavazadel, právní pomoc, přerušení cesty, nevyužití služby, odpovědnost &nbsp;•&nbsp;
+        <strong>STORNO</strong> – pojištění storna
+      </em></p>
+
+      <div class="sound-button">
+        <audio id="airportSound" preload="none">
+          <source src="airport-gong.mp3" type="audio/mpeg" />
+        </audio>
+        <button type="button" aria-label="Přehrát zvuk letiště" title="Přehrát zvuk letiště" onclick="document.getElementById('airportSound').play()">🔈 Přehrát gong</button>
+      </div>
+    </section>
   </main>
-
 </body>
 </html>
+
