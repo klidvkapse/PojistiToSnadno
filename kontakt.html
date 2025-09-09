@@ -43,11 +43,7 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       transition: all 0.2s;
     }
-
-    .main-nav .home-link:hover {
-      background: #f3e39a;
-      color: #000;
-    }
+    .main-nav .home-link:hover { background:#f3e39a; color:#000; }
 
     .container {
       max-width: 900px;
@@ -58,18 +54,9 @@
       box-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
     }
 
-    h2 {
-      color: #f3da80;
-      font-size: 1.8em;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
+    h2 { color:#f3da80; font-size:1.8em; text-align:center; margin-bottom:1.5rem; }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
+    form { display:flex; flex-direction:column; gap:1.2rem; }
 
     input, textarea {
       background-color: rgba(42, 42, 42, 0.85);
@@ -80,107 +67,58 @@
       font-size: 1.07em;
       width: 100%;
       box-sizing: border-box;
-      transition: border-color 0.2s, background-color 0.3s;
+      transition: border-color .2s, background-color .3s;
     }
+    input::placeholder, textarea::placeholder { color:#aaa; }
+    input:focus, textarea:focus { border-color:#d1b85c; outline:none; }
+    input:hover, textarea:hover { background-color: rgba(60, 60, 60, 0.95); }
 
-    input::placeholder, textarea::placeholder {
-      color: #aaa;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #d1b85c;
-      outline: none;
-    }
-
-    input:hover, textarea:hover {
-      background-color: rgba(60, 60, 60, 0.95);
-    }
-
-    .form-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
+    .form-actions { display:flex; justify-content:flex-end; gap:1rem; flex-wrap:wrap; }
     .form-actions button {
-      background-color: #d1b85c;
-      color: #000;
-      border: none;
-      padding: 12px 30px;
-      font-size: 1.1em;
-      font-weight: bold;
-      border-radius: 13px;
-      cursor: pointer;
-      transition: background 0.2s;
+      background-color:#d1b85c; color:#000; border:none; padding:12px 30px;
+      font-size:1.1em; font-weight:bold; border-radius:13px; cursor:pointer; transition:background .2s;
     }
+    .form-actions button:hover { background-color:#f3e39a; }
 
-    .form-actions button:hover {
-      background-color: #f3e39a;
+    .back-home-mobile { display:none; text-align:center; margin-top:20px; }
+    .back-home-mobile a{
+      background:#d1b85c; color:#1e1e1e; padding:.6rem 1.3rem; border-radius:16px; font-weight:bold;
+      text-decoration:none; font-size:1.08rem; box-shadow:0 2px 10px rgba(0,0,0,.3); transition:.2s; display:inline-block;
     }
+    .back-home-mobile a:hover{ background:#f3e39a; color:#000; }
 
-    .back-home-mobile {
-      display: none;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .back-home-mobile a {
-      background: #d1b85c;
-      color: #1e1e1e;
-      padding: 0.6rem 1.3rem;
-      border-radius: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.08rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      transition: all 0.2s;
-      display: inline-block;
-    }
-
-    .back-home-mobile a:hover {
-      background: #f3e39a;
-      color: #000;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.3);
-      color: #e0e0e0;
-      padding: 20px 0;
-      text-align: center;
-      font-size: 1.05em;
-      border-top: 1px solid #444;
-      margin-top: 40px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-    }
-
-    footer a {
-      color: #f3da80;
-      text-decoration: underline;
-    }
+    /* původní footer schovám a nahradím ultra-soft variantou níže */
+    footer{ background:transparent; border:0; margin-top:40px; }
 
     @media (max-width: 700px) {
-      .main-nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .main-nav { flex-direction:column; align-items:flex-start; }
+      .form-actions { flex-direction:column; align-items:stretch; }
+      .form-actions button { width:100%; }
+      .main-nav .home-link { display:none; }
+      .back-home-mobile { display:block; }
+    }
 
-      .form-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .form-actions button {
-        width: 100%;
-      }
-
-      .main-nav .home-link {
-        display: none; /* Skryje horní "Zpět domů" */
-      }
-
-      .back-home-mobile {
-        display: block; /* Zobrazí mobilní zpět */
-      }
+    /* === Ultra-soft footer (zachovává tvůj text) === */
+    .footer{
+      background:transparent !important; color:#eee; padding:10px 8px !important; text-align:center;
+      text-shadow:0 1px 2px rgba(0,0,0,.6);
+    }
+    .footer__wrap{ max-width:980px; margin:0 auto; display:grid; gap:8px; justify-items:center }
+    .footer__links{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center }
+    .footer__chip,
+    .footer__chip:link,
+    .footer__chip:visited{
+      display:inline-flex; align-items:center; gap:6px; padding:4px 6px;
+      background:transparent !important; border:0 !important; border-radius:8px;
+      color:rgba(255,255,255,.85) !important; font-weight:700; font-size:13.5px; text-decoration:none !important;
+    }
+    .footer__chip:hover{ text-decoration:underline !important; }
+    .footer__contact{ margin:6px 0 2px; line-height:1.5; }
+    .footer__contact a{ color:#f3da80; text-decoration:underline; }
+    .footer__copy{ opacity:.75; font-size:.9rem }
+    @media (max-width:640px){
+      .footer__chip{ font-size:12.5px; color:rgba(255,255,255,.75) !important }
+      .footer__copy{ font-size:.85rem; opacity:.65 }
     }
   </style>
 </head>
@@ -193,7 +131,8 @@
 
   <main class="container">
     <h2>Napiš si o nezávaznou nabídku</h2>
-  <form id="contact-form"
+
+    <form id="contact-form"
       class="form js-formspree"
       method="POST"
       data-action="https://formspree.io/f/mvgqqpev"
@@ -209,100 +148,36 @@
         <button type="submit">Odeslat poptávku</button>
         <button type="reset">Vymazat formulář</button>
       </div>
-       <span>Odesláním souhlasíte se zpracováním údajů pro účely zpětného kontaktu.</span>
+      <span>Odesláním souhlasíte se zpracováním údajů pro účely zpětného kontaktu.</span>
     </form>
 
-    <!-- Zpět dolů pro mobil -->
     <div class="back-home-mobile">
       <a href="index.html">🔙 Zpět domů</a>
     </div>
   </main>
 
-  <footer>
-    <p>
-      Daniel Verner<br>
-      📞 <a href="tel:733782290">733 782 290</a><br>
-      📩 <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a><br>
-      📍 Olomoucký kraj – schůzky domlouvám individuálně
-    </p>
-    <small>&copy; 2025 Daniel Verner – PojistiToSnadno.cz</small>
-  </footer>
-<script>
-(function(){
-  var DEFAULT_THANKS = '/dekujeme.html';
+  <!-- helper pro „Nastavení cookies“ (když není načten banner) -->
+  <script>
+    window.resetCookieConsent = window.resetCookieConsent || function(){
+      try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
+      try{ localStorage.removeItem('cookie_consent_choice'); }catch(e){}
+      try{ document.cookie='cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax'; }catch(e){}
+      alert('Nastavení cookies bylo resetováno. Po obnovení stránky se znovu zobrazí lišta (pokud je nasazen cookie banner).');
+      try{ location.reload(); }catch(e){}
+    };
+  </script>
 
-  function paramsObj(search){
-    var p = new URLSearchParams(search), o = {};
-    p.forEach(function(v,k){ o[k]=v; }); return o;
-  }
-  function sendGA(name, params){
-    if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
-  }
+  <!-- 🔻 Footer: původní text zachován + jemné odkazy -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__wrap">
+      <div class="footer__links">
+        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+        <button type="button" class="footer__chip" onclick="resetCookieConsent()">Nastavení cookies</button>
+      </div>
 
-  function bindForm(form){
-    var endpoint = form.getAttribute('data-action');
-    if(!endpoint) return;
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-
-      var submitBtn = form.querySelector('[type="submit"]');
-      if (submitBtn){
-        submitBtn.disabled = true;
-        submitBtn.dataset.origText = submitBtn.textContent;
-        submitBtn.textContent = 'Odesílám…';
-      }
-
-      var fd = new FormData(form);
-
-      // přidáme UTM parametry a info o stránce
-      var q = paramsObj(location.search);
-      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
-        .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
-      fd.append('_page', location.pathname);
-      fd.append('_ts', new Date().toISOString());
-
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: fd
-      })
-      .then(function(res){
-        if(!res.ok) throw new Error('submit-failed');
-        // GA event (název vezmeme z data-event, fallback 'form_submit')
-        sendGA(form.getAttribute('data-event') || 'form_submit', {
-          form_id: form.id || '',
-          form_name: form.getAttribute('name') || '',
-          page_path: location.pathname
-        });
-        // přesměrování na děkovací stránku
-        var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
-        location.href = thanks;
-      })
-      .catch(function(){
-        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
-      })
-      .finally(function(){
-        if (submitBtn){
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
-        }
-      });
-    }, {passive:false});
-  }
-
-  // navážeme na všechny formuláře s .js-formspree
-  function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-
-  // bonus: měření kliků na tel/mail
-  document.addEventListener('click', function(e){
-    var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
-    if(!a) return;
-    sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
-  });
-})();
-</script>
-
-</body>
-</html>
+      <!-- ⬇️ původní označený text – beze změny obsahu -->
+      <p class="footer__contact">
+        Daniel
