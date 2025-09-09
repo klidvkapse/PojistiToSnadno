@@ -123,6 +123,7 @@
         <label for="state-search-input">Vyhledat stát - Evropa + přidané státy</label>
         <input list="states" id="state-search-input" placeholder="Zadejte stát, kde chcete cestovat..." />
         <datalist id="states">
+          <!-- (seznam států zůstal beze změny) -->
           <option value="Albánie"></option>
           <option value="Andorra"></option>
           <option value="Belgie"></option>
@@ -176,7 +177,7 @@
           <option value="Tunisko"></option>
           <option value="Turecko"></option>
         </datalist>
-        <div id="state-hint" class="hint"></div>
+        <div id="state-hint" class="hint" aria-live="polite"></div>
       </div>
 
       <div class="cta mobile-only">
@@ -198,7 +199,6 @@
         });
       </script>
     </div>
-    <!-- ⚠️ PŮVODNÍ CHYBA: zde byl navíc jeden </div>, ten jsem odstranil -->
 
     <div class="hero-image-container">
       <img src="cestovko.webp" alt="Ilustrační foto muže" class="hero-img" />
@@ -220,7 +220,7 @@
     };
   </script>
 
-  <!-- jemná/ultra-soft patička -->
+  <!-- ultra-soft footer (průhledný, nízký) -->
   <style>
     @media (min-width:0){
       body footer.footer{ background:transparent !important; padding:10px 8px !important; backdrop-filter:none !important; text-align:center }
