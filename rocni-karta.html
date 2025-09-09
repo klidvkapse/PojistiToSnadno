@@ -366,6 +366,26 @@ footer { text-align: center; font-size: 0.85rem; color: var(--primary); padding:
     }
   </style>
 
+  <!-- Ultra‑soft footer overrides (ještě jemnější) -->
+  <style>
+    @media (min-width:0){
+      body footer.footer{ background:transparent !important; padding:10px 8px !important; backdrop-filter:none !important; }
+      body footer.footer .footer__links{ gap:6px !important; }
+      body footer.footer .footer__chip{
+        background:transparent !important; border:0 !important; padding:4px 6px !important;
+        color:rgba(255,255,255,.82) !important; font-weight:600 !important; font-size:13.5px !important;
+        border-radius:8px !important; text-decoration:none !important;
+      }
+      body footer.footer .footer__chip:hover{ background:transparent !important; text-decoration:underline !important; }
+      body footer.footer .footer__wrap > div:last-child{ opacity:.7 !important; font-size:.9rem !important; }
+    }
+    @media (max-width:640px){
+      body footer.footer{ padding:8px 8px !important; }
+      body footer.footer .footer__chip{ font-size:12.5px !important; color:rgba(255,255,255,.75) !important; }
+      body footer.footer .footer__wrap > div:last-child{ opacity:.6 !important; font-size:.85rem !important; }
+    }
+  </style>
+
   <!-- jednotná zlatá patička (jemná varianta) -->
   <footer class="footer" role="contentinfo">
     <div class="footer__wrap">
