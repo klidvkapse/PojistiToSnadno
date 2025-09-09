@@ -265,12 +265,16 @@
       data-action="https://formspree.io/f/mvgqqpev"
       data-thanks="/dekujeme.html"
       data-event="contact_submit">
-      <!-- …pole… -->
-      <div class="actions">
-        <button type="submit">Odeslat poptávku</button>
-        <button type="reset" class="btn-secondary">Vymazat</button>
-      </div>
-    </form>
+      h2>Nezávazná poptávka</h2>
+      <div class="grid">
+        <div> <label for="jmeno">Jméno a příjmení</label> <input id="jmeno" name="jmeno" type="text" placeholder="Vaše jméno" required> </div> 
+        <div> <label for="telefon">Telefon</label> <input id="telefon" name="telefon" type="tel" placeholder="733 000 000" pattern="[0-9]{9}" required> </div> 
+        <div> <label for="email">E‑mail</label> <input id="email" name="email" type="email" placeholder="vase@email.cz" required> </div>
+        <div> <label for="vek">Věk pojištěného</label> <input id="vek" name="vek" type="number" min="0" max="100" placeholder="50" /> </div> 
+      </div> <label for="zprava" style="display:block;margin-top:10px">Zpráva</label> <textarea id="zprava" name="zprava" placeholder="Napište, co potřebujete pojistit a pro koho…"></textarea>
+      <div class="actions"> <button type="submit">Odeslat poptávku</button> <button type="reset" class="btn-secondary">Vymazat</button> 
+      </div> 
+    </form> 
   </main>
 
   <!-- univerzální submit skript -->
