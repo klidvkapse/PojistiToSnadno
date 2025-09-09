@@ -108,7 +108,15 @@
 
 /* ===== Services sidebar (minimal list with icon bullets) ===== */
 .services-aside{position:relative}
-@media (min-width:1100px){ .services-aside{position:sticky;top:84px} }
+.svc-heading{
+  margin:0 0 10px;
+  color:#f6f2e7;
+  font-weight:800;
+  font-size:1.05rem;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,.55);
+}
 
 .svc-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
 .svc-item{display:flex;align-items:center;gap:12px}
@@ -122,7 +130,7 @@
 .svc-bullet svg{width:16px;height:16px;opacity:.9}
 
 .svc-label{
-  color:#f6f2e7;          /* čitelná světlá na tmavém pozadí */
+  color:#f6f2e7;
   font-weight:800;
   letter-spacing:.1px;
   text-shadow:0 2px 8px rgba(0,0,0,.55);
@@ -130,6 +138,15 @@
 
 @media (hover:hover){
   .svc-item:hover .svc-label{ text-decoration:underline }
+}
+
+/* Desktop: ať je seznam „přilepený“ a o kousek níž */
+@media (min-width:1100px){
+  .services-aside{
+    position: sticky;   /* drží se při scrollu */
+    top: 120px;         /* o něco níž než header */
+    align-self: start;
+  }
 }
 
   /* ===== Sections (below hero) ===== */
@@ -280,7 +297,8 @@
   <div class="hero__wrap">
     <div class="intro-grid">
 
-     <aside class="services-aside" id="sluzby" aria-label="Služby">
+    <aside class="services-aside" id="sluzby" aria-label="Služby">
+  <h3 class="svc-heading">Služby, které nabízím</h3>
   <ul class="svc-list">
     <li class="svc-item">
       <span class="svc-bullet" aria-hidden="true">
