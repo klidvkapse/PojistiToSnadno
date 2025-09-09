@@ -2,161 +2,324 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Pojištění úrazu při dopravní nehodě | PojistiToSnadno.cz</title>
-  <!-- jednotný stylesheet se zlatou patičkou -->
-  <link rel="stylesheet" href="/site.css?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Životní pojištění | PojistiToSnadno.cz</title>
+  <meta name="description" content="Životní pojištění chrání vás i vaši rodinu – vážná onemocnění, pracovní neschopnost, invalidita či trvalé následky úrazu. Přehled výhod, praktické příklady a nezávazná poptávka online." />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{ --primary:#e9dec8; --accent:#bba67f; --highlight:#8b7a58; --ink:#2e2a24; --paper:#f5efe3; --ring:#e3d6bd; }
+    *{box-sizing:border-box}
+    body{font-family:'Raleway',sans-serif;margin:0;color:var(--ink);background:url('img/zppozadi.webp') center/cover fixed no-repeat;}
+
+    header.hero{position:relative;min-height:55vh;display:grid;place-items:center;text-align:center;overflow:hidden;background:transparent}
+    header.hero::before{content:none;}
+    header .hero-inner{position:relative;z-index:1;max-width:1100px;margin:auto;padding:48px 16px}
+    header .hero-inner::after{content:"";position:absolute;inset:0;border-radius:28px;}
+    header .hero-panel{background:rgba(46,42,36,.68);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:30px 24px;box-shadow:0 18px 36px rgba(0,0,0,.35);color:#fff}
+    header h1{font-size:clamp(2rem,3.6vw,3rem);margin:.25rem 0 .35rem;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.45)}
+    header p.lead{font-size:clamp(1rem,1.9vw,1.2rem);margin:0;color:#fff;opacity:.95;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(46,42,36,.85);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:10px 14px;box-shadow:0 6px 14px rgba(0,0,0,.18);font-weight:700}
+    .chip .icon{font-size:18px}
+
+    .container{max-width:1100px;margin:0 auto;padding:36px 16px}
+    h2{font-size:clamp(1.3rem,2.2vw,1.7rem);margin:0 0 8px}
+    section + section{margin-top:36px}
+    .divider{height:1px;background:var(--ring);margin:28px 0}
+
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:18px}
+    .card{background:#fff;border:1px solid #eee;border-radius:22px;padding:22px;box-shadow:0 10px 20px rgba(0,0,0,.08);transition:.2s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(0,0,0,.12)}
+    .card .emoji{font-size:32px}
+    .card h3{margin:10px 0;color:var(--highlight)}
+
+    .benefits{background:#fff;border:1px solid #eee;border-radius:24px;padding:28px;box-shadow:0 12px 26px rgba(0,0,0,.08)}
+    .benefits h2{text-align:center;color:var(--accent)}
+    .benefit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 22px;margin-top:14px}
+    .benefit-grid li{list-style:none;padding:10px 0;border-bottom:1px dashed #ddd}
+
+    .bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:12px}
+    .bonus-card{background:#fff;border:1px solid var(--ring);border-radius:18px;padding:18px 20px;box-shadow:0 8px 20px rgba(0,0,0,.06)}
+    .bonus-card h3{margin:0 0 8px;color:var(--highlight)}
+    .bonus-card ul{margin:0;padding-left:18px}
+
+    .example{margin-top:40px;background:#f2e8d7;border-left:6px solid var(--highlight);padding:24px;border-radius:12px}
+    .example h3{margin:0 0 12px;color:var(--highlight)}
+    .example strong{background:linear-gradient(transparent 65%, #e8dcc6 65%);padding:0 .15em;border-radius:4px}
+
+    details{background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 6px 14px rgba(0,0,0,.08);margin-top:12px;border:1px solid var(--ring)}
+    summary{cursor:pointer;font-weight:700}
+
+    /* CTA FORM */
+    form.cta{margin-top:44px;background:#fff;padding:32px;border-radius:24px;box-shadow:0 12px 24px rgba(0,0,0,.12);border:1px solid var(--ring)}
+    form.cta h2{text-align:center;color:var(--accent);margin:0 0 16px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:820px){.grid{grid-template-columns:1fr}}
+    label{display:block;margin:2px 0 6px;font-weight:700}
+    input,textarea,select{width:100%;padding:12px;border:1px solid #ccc;border-radius:12px;font-family:'Raleway',sans-serif;font-size:15px}
+    input:focus,textarea:focus,select:focus{outline:none;box-shadow:0 0 0 4px #e9dec866;border-color:var(--accent)}
+    textarea{min-height:120px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+    button{background:var(--accent);color:#fff;border:0;padding:14px 22px;border-radius:12px;font-weight:700;cursor:pointer;transition:.15s}
+    button:hover{background:var(--highlight)}
+    .btn-secondary{background:#fff;color:var(--highlight);border:2px solid var(--highlight)}
+
+    /* Nenecháváme přebarvit zlatou patičku – jen centrování */
+    footer{ text-align:center; margin-top:50px }
   
-  <!-- ✅ Footer rescue styles: jemná, nenápadná varianta -->
+    /* 📱 Mobilní ladění */
+    @media (max-width: 820px){
+      header.hero{min-height:58vh}
+      header .hero-inner{padding:28px 14px}
+      header .hero-panel{padding:22px 16px;border-radius:22px}
+      .chips{gap:8px}
+      .chip{padding:8px 12px;font-size:14px}
+      .container{padding:26px 14px}
+      .cards{grid-template-columns:1fr;gap:16px}
+      .card{padding:18px;border-radius:18px}
+      .benefits{padding:22px;border-radius:20px}
+      .bonus-grid{grid-template-columns:1fr}
+      form.cta{padding:22px;border-radius:20px}
+      button{width:100%}
+    }
+
+    @media (max-width: 420px){
+      header h1{font-size:1.6rem}
+      header p.lead{font-size:0.98rem}
+      .chip{font-size:13px}
+      input,textarea,select{font-size:16px}
+    }
+  
+    /* Globální tmavý overlay pro čitelnost textu na fotce */
+    body::before{ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1; background:linear-gradient(to bottom, rgba(0,0,0,.35) 0%, rgba(0,0,0,.18) 28%, rgba(0,0,0,.12) 50%, rgba(0,0,0,.18) 72%, rgba(0,0,0,.3) 100%); }
+
+    /* Čitelnost nad proměnlivým pozadím */
+    h2{display:inline-block;background:rgba(255,255,255,.92);padding:6px 12px;border-radius:12px;box-shadow:0 6px 14px rgba(0,0,0,.08)}
+    .cards, .benefits, .example, details, form.cta{backdrop-filter:saturate(1.05)}
+
+    /* Hero panel – kontrast */
+    header .hero-panel{background:rgba(36,32,28,.72);}  
+    .chip{background:rgba(36,32,28,.9);border-color:rgba(255,255,255,.25)}
+
+    @media (max-width:420px){ body{line-height:1.55} }
+  </style>
+
+  <!-- externí CSS pro jednotnou patičku -->
+  <link rel="stylesheet" href="/site.css?v=2">
+  <link rel="stylesheet" href="site.css?v=2" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="site.css?v=2"></noscript>
+
+  <!-- ✨ Ultra-soft footer overrides (ještě jemnější vzhled) -->
   <style>
-    .footer{
-      background:transparent;
-      color:rgba(255,255,255,.82);
-      padding:12px 10px;
-      margin-top:28px;
-      box-shadow:none;
-      border:0;
+    @media (min-width:0){
+      body footer.footer{
+        background:transparent !important;
+        box-shadow:none !important;
+        border:0 !important;
+        padding:10px 8px !important;
+        backdrop-filter:none !important;
+      }
+      body footer.footer .footer__links{ gap:6px !important; flex-wrap:wrap }
+      body footer.footer .footer__chip{
+        background:transparent !important; border:0 !important; padding:4px 6px !important;
+        color:rgba(255,255,255,.82) !important; font-weight:600 !important; font-size:13.5px !important;
+        border-radius:8px !important; text-decoration:none !important;
+      }
+      body footer.footer .footer__chip:hover{ background:transparent !important; text-decoration:underline !important; }
+      body footer.footer .footer__wrap > div:last-child{
+        color:rgba(255,255,255,.65) !important; font-size:.9rem !important;
+      }
     }
-    .footer__wrap{
-      max-width:1140px; margin:0 auto;
-      display:grid; gap:8px; justify-items:center; text-align:center;
-    }
-    .footer__links{
-      display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
-    }
-    .footer__chip{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:4px 6px;
-      border:0; border-radius:8px;
-      background:transparent;
-      color:inherit; text-decoration:none; font-weight:600; font-size:13.5px;
-    }
-    .footer__chip:hover{ text-decoration:underline; background:transparent; }
-    .footer__utils{ border:1px dashed rgba(255,255,255,.25); padding:4px 8px; border-radius:8px; }
     @media (max-width:640px){
-      .footer{ padding:8px 8px; }
-      .footer__chip{ font-size:12.5px; color:rgba(255,255,255,.75); }
-      .footer__utils{ border-color:rgba(255,255,255,.2); }
+      body footer.footer{ padding:8px 8px !important; }
+      body footer.footer .footer__chip{ font-size:12.5px !important; color:rgba(255,255,255,.75) !important; }
+      body footer.footer .footer__wrap > div:last-child{ font-size:.85rem !important; opacity:.6 !important; }
     }
   </style>
 
-  <style>
-    body { margin:0; font-family:'Raleway', Arial, sans-serif; color:#ffffff;
-      background:url('povinneruceni.webp') no-repeat center center fixed, #181818; background-size:cover; min-height:100vh; }
-    .top-nav { display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,.3); padding:.7em 1.5em; }
-    .site-title { font-size:1.5rem; font-weight:bold; color:#ffe87a; }
-    .home-button { background:#e2dbc9; color:#1a1a1a; padding:.5em 1.2em; border-radius:20px; text-decoration:none; font-weight:bold; }
-    .container { max-width:960px; margin:0 auto; padding:4rem 1rem 2rem; }
-    .side-by-side { display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; }
-    section, .examples, .calculator-pn { background:rgba(0,0,0,.72); border-radius:16px; padding:1.8rem; margin-bottom:2rem; box-shadow:0 4px 12px rgba(0,0,0,.5); }
-    section { flex:1 1 60%; }
-    .examples { flex:1 1 35%; }
-    .calculator-pn { max-width:400px; margin:0 auto; text-align:center; }
-    h2 { margin-top:0; font-size:1.6rem; color:#ffe87a; margin-bottom:1rem; text-align:center; }
-    table { width:100%; border-collapse:collapse; margin-bottom:1rem; }
-    thead th { background:#3b3722; color:#ffe87a; padding:.8rem 1rem; text-align:left; font-weight:700; font-size:.95rem; }
-    tbody td { background:rgba(255,255,255,.03); padding:.75rem 1rem; border-top:1px solid #4d4d4d; font-size:.9rem; }
-    tbody tr:nth-child(even) td { background:rgba(255,255,255,.05); }
-    tbody td strong { color:#f6d772; }
-    .highlight td { background:#b7a97c; color:#000; font-weight:700; font-size:1.1rem; padding:1rem; }
-    .base-price { text-align:center; font-size:1.5rem; font-weight:600; margin-top:2rem; color:#fff; }
-    .base-price strong { color:#ffe87a; font-size:1.8rem; }
-    .calculator-pn .controls { display:flex; justify-content:center; align-items:center; gap:1rem; margin-top:1rem; }
-    .calculator-pn button { background:#e2dbc9; border:none; border-radius:50%; width:40px; height:40px; font-size:1.2rem; cursor:pointer; }
-    .calculator-pn button:hover { background:#b7a97c; color:#fff; }
-    .calculator-pn input[type="text"] { width:80px; text-align:center; font-size:1.2rem; border:1px solid #b7a97c; border-radius:4px; padding:.3rem; background:#fff; color:#000; }
-    .calculator-pn .price-label { margin-top:1rem; font-size:1.25rem; font-weight:bold; color:#ffe87a; }
-    .pojistit-link { display:inline-block; margin:1rem auto; background:#b7a97c; color:#000; padding:.75rem 1.5rem; border-radius:8px; text-decoration:none; font-weight:600; text-align:center; }
-    .pojistit-link:hover { background:#fff; color:#000; }
-    @media (max-width:600px){ h2{ font-size:1.3rem; } .side-by-side{ flex-direction:column; } .top-nav{ flex-direction:column; align-items:flex-start; gap:.3em; } }
-  </style>
-</head>
-<body>
-  <nav class="top-nav">
-    <div class="site-title">PojistiToSnadno.cz</div>
-    <a href="index.html" class="home-button">Domů</a>
-  </nav>
-
-  <div class="container">
-    <div class="side-by-side">
-      <section>
-        <h2>Příklad základních pojistných rizik <br>při dopravní nehodě</h2>
-        <table>
-          <thead><tr><th>Riziko</th><th>Pojistná částka</th></tr></thead>
-          <tbody>
-            <tr><td>Pobyt v nemocnici</td><td><strong>3 000 Kč/den</strong></td></tr>
-            <tr><td>Smrt následkem úrazu</td><td><strong>5 000 000 Kč</strong></td></tr>
-            <tr><td>Trvalé následky úrazu</td><td><strong>až 40 000 000 Kč</strong></td></tr>
-          </tbody>
-        </table>
-        <div class="base-price">Cena za základ: <strong>354 Kč/měs.</strong></div>
-      </section>
-
-      <div class="examples">
-        <h2>Příklady plnění trvalých následků ze základních pojistných rizik</h2>
-        <table>
-          <thead><tr><th>Úraz</th><th>Bude vyplaceno</th></tr></thead>
-          <tbody>
-            <tr><td>Podvrtnutí páteře – 3 % TN</td><td><strong>1 200 000 Kč</strong></td></tr>
-            <tr><td>Meniskus – 6 % TN</td><td><strong>2 400 000 Kč</strong></td></tr>
-            <tr><td>Střední mozkové poškození – 41 % TN</td><td><strong>16 400 000 Kč</strong></td></tr>
-            <tr><td>Ztráta horní končetiny – 70 % TN</td><td><strong>28 000 000 Kč</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <section>
-      <h2>Přidejte si denní odškodné za méně závažné úrazy</h2>
-      <table>
-        <thead><tr><th>Úraz</th><th>A</th><th>B</th><th>C</th></tr></thead>
-        <tbody>
-          <tr><td>Zlomenina žeber</td><td>11 200 Kč</td><td>28 000 Kč</td><td>56 000 Kč</td></tr>
-          <tr><td>Zlomenina prstu</td><td>4 200 Kč</td><td>10 500 Kč</td><td>21 000 Kč</td></tr>
-          <tr><td>Zlomenina krčku stehenní</td><td>22 400 Kč</td><td>56 000 Kč</td><td>112 000 Kč</td></tr>
-          <tr><td>Otřes mozku</td><td>4 200 Kč</td><td>10 500 Kč</td><td>21 000 Kč</td></tr>
-          <tr><td>Přetržení menisku</td><td>14 000 Kč</td><td>35 000 Kč</td><td>70 000 Kč</td></tr>
-          <tr><td>Zlomenina nártu palce</td><td>8 400 Kč</td><td>21 000 Kč</td><td>42 000 Kč</td></tr>
-          <tr class="highlight"><td>Základní rizika + zvolená varianta (A,B,C) = Cena:</td><td>395 Kč</td><td>456 Kč</td><td>558 Kč</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="calculator-pn">
-      <h2>Přidejte si pracovní neschopnost</h2>
-      <div class="controls">
-        vyber si částku na den <button id="decrease">−</button>
-        <input type="text" id="pnInput" value="100 Kč" readonly>
-        <button id="increase">+</button>
-      </div>
-      <div class="price-label">Cena pojištění: <span id="pnPrice">9 Kč</span> měsíčně</div>
-    </section>
-
-    <a href="kontakt.html" class="pojistit-link">Chci pojistit</a>
-  </div>
-
+  <!-- Consent Mode default (odmítnuto) -->
   <script>
-    const mapping = {100:9,200:18,300:28,400:37,500:45,600:55,700:65,800:74,900:83,1000:92};
-    let current = 100;
-    const pnInput = document.getElementById('pnInput');
-    const pnPrice = document.getElementById('pnPrice');
-    document.getElementById('increase').addEventListener('click', () => { if (current < 1000) current += 100; update(); });
-    document.getElementById('decrease').addEventListener('click', () => { if (current > 100) current -= 100; update(); });
-    function update(){ pnInput.value = current + ' Kč'; pnPrice.textContent = mapping[current] + ' Kč'; }
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}    
+    gtag('consent', 'default', {
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied'
+    });
   </script>
 
-  <!-- bezpečný helper pro tlačítko Nastavení cookies (když není načten banner) -->
+  <!-- GA4 – loader až po souhlasu -->
+  <script id="ga4-loader" type="text/plain" data-cookieconsent="analytics">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.googletagmanager.com/gtag/js?id=G-WRQJWP171Z','gtag');
+    gtag('js', new Date());
+    gtag('config', 'G-WRQJWP171Z');
+  </script>
+
+  <!-- Cookie banner (v2) + fallback -->
+  <script src="/cookie-banner-v2.js" defer></script>
   <script>
-    window.resetCookieConsent = window.resetCookieConsent || function(){
+    if(!window.CookieBannerV2){
+      var s=document.createElement('script');
+      s.src='cookie-banner-v2.js';
+      s.defer=true; document.head.appendChild(s);
+    }
+  </script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-panel">
+        <h1>Vaše jistota, když se stane neočekávané</h1>
+        <p class="lead">Životní pojištění chrání příjem, zdraví i rodinu – platí po celém světě a přizpůsobí se vašemu životu.</p>
+      </div>
+      <div class="chips" aria-label="klíčové výhody">
+        <span class="chip"><span class="icon">💰</span>Až 30 % sleva</span>
+        <span class="chip"><span class="icon">👨‍👩‍👧‍👦</span>Až 8 osob na 1 smlouvě</span>
+        <span class="chip"><span class="icon">🎂</span>Sjednání až do 90 let</span>
+        <span class="chip"><span class="icon">🌍</span>Platnost po celém světě</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>4 klíčová rizika, která kryjeme + dalších 20</h2>
+      <div class="cards">
+        <article class="card"><div class="emoji">🧬</div><h3>Vážná onemocnění (VO)</h3><p>Jednorázová částka při stanovení diagnózy – finance na léčbu i pokrytí výpadku příjmu. Až <b>65 diagnóz</b></p></article>
+        <article class="card"><div class="emoji">🤒</div><h3>Pracovní neschopnost (PN)</h3><p>Denní dávka při nemoci či úrazu. Vyplácí se i při práci v zahraničí – s platností po celém světě. <b>Možnost zálohového plnění a výplaty od 1. dne</b></p></article>
+        <article class="card"><div class="emoji">♿</div><h3>Invalidita</h3><p>Jednorázové plnění při přiznání invalidity I.–III. stupně. Stabilita, když se zásadně změní životní situace.</p></article>
+        <article class="card"><div class="emoji">🩹</div><h3>Trvalé následky úrazu (TNÚ)</h3><p>Plnění podle rozsahu následků. S 10násobnou progresí – vyšší odškodné při vážných úrazech.</p></article>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <h2>Proč si sjednat životní pojištění?</h2>
+      <ul class="benefit-grid">
+        <li>✅ Ochrana rodiny před výpadkem příjmu</li>
+        <li>✅ Celosvětová platnost – platí i při cestách nebo práci v zahraničí</li>
+        <li>✅ Daňové zvýhodnění – možnost odpočtu zaplaceného pojistného</li>
+        <li>✅ Oddělené investování od rizik – flexibilita a kontrola</li>
+        <li>✅ Možnost zálohové výplaty při pracovní neschopnosti</li>
+        <li>✅ Až 8 osob na jedné smlouvě – pohodlně pro celou rodinu</li>
+        <li>✅ Možnost sjednání až do 90 let věku pojištěného</li>
+      </ul>
+    </section>
+
+    <section class="benefits">
+      <h2>Bonusy a slevy</h2>
+      <ul class="benefit-grid">
+        <li>💰 Možnost dosáhnout až na <strong>30 % slevy</strong> z pojistného při splnění podmínek.</li>
+        <li>🧪 <strong>Zdarma BONUS pro každého pojištěného: 100&nbsp;000 Kč </strong>na prevenci a zotavení (výdaje, které nehradí veřejné zdravotní pojištění).</li>
+      </ul>
+      <div class="bonus-grid">
+        <div class="bonus-card">
+          <h3>🩺 Prevence – co lze proplatit</h3>
+          <ul>
+            <li>Onkologická a další preventivní vyšetření provedená lékařem.</li>
+            <li>Mamograf / sono prsou, vyšetření stolice na okultní krvácení, kolonoskopie.</li>
+            <li>Vyšetření vnitřních orgánů (srdce, plíce, ledviny, játra, prostata).</li>
+            <li>Oční prevence (glaukom) a neurologická prevence.</li>
+          </ul>
+        </div>
+        <div class="bonus-card">
+          <h3>❤️‍🩹 Zotavení – na co lze čerpat</h3>
+          <ul>
+            <li>Nadstandardní zdravotní a kompenzační pomůcky (vozík, speciální obuv, naslouchátka).</li>
+            <li>Úpravy bytu/domu kvůli zdravotnímu stavu; příspěvek na úpravu řízení auta.</li>
+            <li>Krátkodobá domácí/sociální péče nad rámec úhrad; pomoc s péčí o děti či domácí mazlíčky.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p><em>Limit: max. 100&nbsp;000 Kč na každého pojištěného napříč jeho smlouvami (součet prevence a zotavení).</em></p>
+    </section>
+
+    <!-- … obsah stránky beze změn … -->
+
+    <section aria-label="faq" style="margin-top:40px">
+      <h2>Časté dotazy</h2>
+      <details>
+        <summary>Platí pojištění i v zahraničí?</summary>
+        <p>Ano. Pojištění má celosvětovou platnost a kryje i pracovní neschopnost při práci v cizině.</p>
+      </details>
+      <details>
+        <summary>Jaké jsou možnosti sjednání?</summary>
+        <p>Možnost sjednání osobně i on-line.</p>
+      </details>
+      <details>
+        <summary>Co když už mám starší smlouvu?</summary>
+        <p>Bezplatně ji zkontrolujeme a navrhneme úpravy, aby kryla aktuální rizika a byla efektivní.</p>
+      </details>
+    </section>
+
+    <!-- Formulář … (beze změn) -->
+    <form
+      id="contact-form"
+      class="cta form js-formspree"
+      method="POST"
+      data-action="https://formspree.io/f/mvgqqpev"
+      data-thanks="/dekujeme.html"
+      data-event="contact_submit">
+      <!-- …pole… -->
+      <div class="actions">
+        <button type="submit">Odeslat poptávku</button>
+        <button type="reset" class="btn-secondary">Vymazat</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- univerzální submit skript -->
+  <script>
+  (function(){
+    var DEFAULT_THANKS = '/dekujeme.html';
+    function paramsObj(search){ var p=new URLSearchParams(search),o={}; p.forEach(function(v,k){o[k]=v}); return o; }
+    function sendGA(name, params){ if (typeof gtag === 'function'){ gtag('event', name, params || {}); } }
+    function bindForm(form){
+      var endpoint = form.getAttribute('data-action'); if(!endpoint) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn){ submitBtn.disabled = true; submitBtn.dataset.origText = submitBtn.textContent; submitBtn.textContent = 'Odesílám…'; }
+        var fd = new FormData(form);
+        var q = paramsObj(location.search);
+        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
+        fd.append('_page', location.pathname);
+        fd.append('_ts', new Date().toISOString());
+        fetch(endpoint, { method:'POST', headers:{ 'Accept':'application/json' }, body:fd })
+        .then(function(res){ if(!res.ok) throw new Error('submit-failed');
+          sendGA(form.getAttribute('data-event') || 'form_submit', { form_id: form.id || '', form_name: form.getAttribute('name') || '', page_path: location.pathname });
+          var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS; location.href = thanks; })
+        .catch(function(){ alert('Odeslání se nepodařilo. Zkuste to prosím znovu.'); })
+        .finally(function(){ if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat'; } });
+      }, {passive:false});
+    }
+    function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  })();
+  </script>
+
+  <!-- helper pro "Nastavení cookies" -->
+  <script>
+  (function(){
+    function resetCookieConsent(options){
+      options = options || {};
+      try{ if (window.CookieBannerV2 && typeof window.CookieBannerV2.open==='function'){ window.CookieBannerV2.open(); return true; } }catch(e){}
       try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
       try{ localStorage.removeItem('cookie_consent_choice'); }catch(e){}
       try{ document.cookie='cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax'; }catch(e){}
-      alert('Nastavení cookies bylo resetováno. Po obnovení stránky se znovu zobrazí lišta (pokud je nasazen cookie banner).');
-      try{ location.reload(); }catch(e){}
-    };
+      if(!options.noReload){ alert('Nastavení cookies bylo resetováno. Po obnovení stránky se znovu zobrazí lišta.'); location.reload(); }
+      return true;
+    }
+    window.resetCookieConsent = resetCookieConsent;
+  })();
   </script>
 
-  <!-- jednotná zlatá patička s odkazy na podmínky (jemná varianta) -->
+  <!-- Jemná zlatá patička -->
   <footer class="footer" role="contentinfo">
     <div class="footer__wrap">
       <div class="footer__links">
@@ -169,5 +332,6 @@
       <div style="opacity:.9">© 2025 PojistiToSnadno.cz — Daniel Verner</div>
     </div>
   </footer>
+
 </body>
 </html>
