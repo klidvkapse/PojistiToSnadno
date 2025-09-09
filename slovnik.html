@@ -72,55 +72,182 @@
   </main>
 
   <script>
-    // === Data
     const terms = {
-      "pojistná smlouva": { def: "Smlouva mezi pojišťovnou a klientem, která určuje podmínky pojištění.", ex: "Např. smlouva na životní pojištění uzavřená na 10 let." },
-      "pojistná událost": { def: "Událost, kterou pojištění kryje a zakládá nárok na plnění.", ex: "Např. dopravní nehoda krytá havarijním pojištěním." },
-      "spoluúčast": { def: "Částka, kterou si klient při škodě hradí sám.", ex: "Při škodě 10 000 Kč a spoluúčasti 1 000 Kč pojišťovna vyplatí 9 000 Kč." },
-      "asistenční služba": { def: "Pomoc, kterou poskytuje pojišťovna v nouzových situacích.", ex: "Např. odtah vozidla, technická pomoc nebo tlumočení v zahraničí." },
-      "bonita": { def: "Schopnost klienta plnit své závazky vůči pojišťovně.", ex: "Vyšší bonita může znamenat výhodnější podmínky pojištění." }
+      "pojistná smlouva": {
+        def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.",
+        ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."
+      },
+      "pojistná událost": {
+        def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
+        ex: "Například škoda způsobená krupobitím na pergole je pojistnou událostí."
+      },
+      "pojistné plnění": {
+        def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",
+        ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."
+      },
+      "výluka z pojištění": {
+        def: "Situace, kdy pojištění nepokrývá určité události nebo škody.",
+        ex: "Například škody způsobené úmyslným jednáním bývají výlukou."
+      },
+      "spoluúčast": {
+        def: "Část škody, kterou si klient hradí sám.",
+        ex: "Při havárii se spoluúčastí 1000 Kč klient tuto částku zaplatí sám a zbytek pokryje pojišťovna."
+      },
+      "pojistné": {
+        def: "Částka, kterou platí pojistník pojišťovně za poskytování pojistné ochrany.",
+        ex: "Roční pojistné na pojištění domácnosti činí 2800 Kč."
+      },
+      "pojistník": {
+        def: "Osoba, která uzavřela pojistnou smlouvu a je povinna platit pojistné.",
+        ex: "Manžel uzavřel pojistnou smlouvu – je tedy pojistník, přestože pojištěna je manželka."
+      },
+      "pojištěný": {
+        def: "Osoba, na jejíž život, zdraví, majetek nebo odpovědnost se vztahuje pojištění.",
+        ex: "Dítě je pojištěné v rámci úrazového pojištění sjednaného rodičem."
+      },
+      "obmyšlená osoba": {
+        def: "Osoba, které je v případě smrti pojištěného vyplaceno pojistné plnění.",
+        ex: "Obmyšlenou osobou bývá nejčastěji manžel(ka) nebo děti."
+      },
+      "likvidace pojistné události": {
+        def: "Proces posouzení a vyřízení pojistné události pojišťovnou.",
+        ex: "Po nahlášení škody probíhá likvidace pojistné události do několika dnů."
+      },
+      "indexace": {
+        def: "Automatické navyšování pojistné částky a pojistného, často kvůli inflaci.",
+        ex: "Indexace zajistí, že hodnota pojištění odpovídá cenám v budoucnosti."
+      },
+      "pojistná částka": {
+        def: "Maximální částka, kterou pojišťovna vyplatí při pojistné události.",
+        ex: "Pojistná částka na dům byla stanovena na 2,5 milionu Kč."
+      },
+      "pojistná doba": {
+        def: "Období, na které je pojištění sjednáno.",
+        ex: "Pojistná doba trvá 5 let – po tuto dobu je pojištění aktivní."
+      },
+      "pojistné období": {
+        def: "Období, za které se platí pojistné – např. měsíc, čtvrtletí, rok.",
+        ex: "Pojistné období je jeden rok – pojistné se platí jednou ročně."
+      },
+      "časová cena": {
+        def: "Časovou cenou se rozumí cena, která se stanoví z nové ceny věci, přičemž se přihlíží ke stupni opotřebení nebo jiného znehodnocení anebo ke zhodnocení věci, k němuž došlo opravou, modernizací nebo jiným způsobem",
+        ex: "Představ si, že máš televizi, která stála před 5 lety 15 000 Kč. Dnes už není nová, možná má nějaké škrábance, ale pořád funguje. Teď bys ji třeba prodal za 5 000 Kč – to je její časová cena."
+      },
+      "dopravní nehoda": {
+        def: "Dopravní nehoda je definována jako událost v provozu na pozemních komunikacích, například havárie nebo srážka vozidla, která se stala nebo byla započata na pozemní komunikaci. Dále zahrnuje nehody při veřejné hromadné dopravě na železnici, vodních tocích a v letadlech. K pojistné události při dopravní nehodě je nutné doložit záznam státního orgánu o výsledku šetření dopravní nehody a zdravotnickou dokumentaci související s úrazem, pokud k němu došlo ",
+        ex: "Dopravní nehoda je srážka nebo havárie na silnici, ve vlaku, lodi nebo letadle. Může jít i o situaci, kdy je sražen chodec nebo cyklista.Pro vyplacení pojistky je potřeba zpráva od policie a lékařská dokumentace, pokud došlo k úrazu.."
+      }
     };
 
-    // === Normalizace (bez diakritiky) pro vyhledávání
-    const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-    const index = {}; Object.keys(terms).forEach(k => { index[norm(k)] = k; });
-
-    // === UI helpers
-    const $ = sel => document.querySelector(sel);
-    const $$ = sel => Array.from(document.querySelectorAll(sel));
-
-    function showSuggestions(){
-      const q = $('#search').value; const qn = norm(q);
-      const list = $('#suggestions'); list.innerHTML = '';
-      if(!qn) return;
-      Object.keys(terms).filter(t => norm(t).includes(qn)).forEach(t => {
-        const d = document.createElement('div'); d.textContent = t; d.setAttribute('role','option');
-        d.onclick = () => { $('#search').value = t; list.innerHTML = ''; showDefinition(true); };
-        list.appendChild(d);
-      });
+   // Normalize (diacritics insensitive)
+    function normalize(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
     }
 
-    let resultShown = false;
-    function showDefinition(force){
-      const input = $('#search'); const keyNorm = norm(input.value);
-      const realKey = index[keyNorm]; const out = $('#output'); const suggestions = $('#suggestions');
-      if(!resultShown && realKey){
-        suggestions.innerHTML = '';
-        out.innerHTML = `<strong>${realKey}</strong><br><div class="def">${terms[realKey].def}</div><div class="ex">${terms[realKey].ex}</div>`;
-        out.scrollIntoView({ behavior:'smooth', block:'center' });
-        resultShown = true;
-      } else if(resultShown || force){
-        input.value = ''; out.innerHTML = ''; suggestions.innerHTML = ''; resultShown = false;
+    // Našeptávač
+    const searchInput = document.getElementById('search');
+    const resultsBox = document.getElementById('autocomplete-results');
+    let currentFocus = -1;
+    let definitionShown = false;
+
+    searchInput.addEventListener("input", function () {
+      if (definitionShown) return; // Disable autocomplete after result shown
+      const val = this.value;
+      resultsBox.innerHTML = "";
+      if (!val) return false;
+      let matches = Object.keys(terms).filter(
+        t => normalize(t).includes(normalize(val))
+      );
+      if (matches.length === 0) return false;
+      matches.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.classList.add("autocomplete-item");
+        div.innerHTML = item.replace(new RegExp(val, "gi"), match =>
+          `<strong>${match}</strong>`
+        );
+        div.addEventListener("mousedown", function(e){
+          searchInput.value = item;
+          resultsBox.innerHTML = "";
+        });
+        resultsBox.appendChild(div);
+      });
+    });
+
+    searchInput.addEventListener("keydown", function(e) {
+      if (definitionShown) return; // Disable after result
+      let items = resultsBox.querySelectorAll(".autocomplete-item");
+      if (!items.length) return;
+      if (e.key === "ArrowDown") {
+        currentFocus++;
+        if (currentFocus >= items.length) currentFocus = 0;
+        addActive(items);
+      } else if (e.key === "ArrowUp") {
+        currentFocus--;
+        if (currentFocus < 0) currentFocus = items.length - 1;
+        addActive(items);
+      } else if (e.key === "Enter") {
+        if (currentFocus > -1) {
+          e.preventDefault();
+          items[currentFocus].dispatchEvent(new Event("mousedown"));
+        }
+      }
+    });
+
+    function addActive(items) {
+      if (!items) return false;
+      removeActive(items);
+      if (currentFocus >= items.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = items.length - 1;
+      items[currentFocus].classList.add("autocomplete-active");
+      items[currentFocus].scrollIntoView({ block: "nearest" });
+    }
+    function removeActive(items) {
+      for (let item of items) item.classList.remove("autocomplete-active");
+    }
+    document.addEventListener("click", function (e) {
+      if (e.target !== searchInput) resultsBox.innerHTML = "";
+      currentFocus = -1;
+    });
+
+    // Funkce pro zobrazení/vymazání výsledku
+    function showOrReset() {
+      const input = document.getElementById('search');
+      const out = document.getElementById('output');
+      const btn = document.getElementById('dict-btn');
+
+      if (!definitionShown) {
+        const key = input.value.trim().toLowerCase();
+        resultsBox.innerHTML = "";
+        if (terms[key]) {
+          out.innerHTML = `<strong>${key}</strong><br>
+            <div class="def">${terms[key].def}</div>
+            <div class="ex" style="color:#ffe580; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
+        } else {
+          out.innerHTML = `<span style="color:#ffd;">Pojem nebyl nalezen. Doporučujeme jej zaslat do sekce níže.</span>`;
+        }
+        btn.textContent = "Zpět";
+        definitionShown = true;
+        searchInput.blur();
+        setTimeout(() => {
+          out.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
       } else {
-        // Nic nenalezeno
-        out.innerHTML = '<em>Pojem nebyl nalezen. Zkuste prosím jiný výraz nebo klikněte na některý z návrhů.</em>';
-        out.scrollIntoView({ behavior:'smooth', block:'center' });
+        // Reset
+        input.value = "";
+        out.innerHTML = "";
+        btn.textContent = "Zobrazit / Zpět";
+        definitionShown = false;
+        resultsBox.innerHTML = "";
+        searchInput.focus();
       }
     }
 
-    // Enter v inputu spustí hledání
-    $('#search').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); showDefinition(); } });
-    $('#toggleDef').addEventListener('click', ()=> showDefinition());
+    // Potvrzovací hláška pro sekci návrhu pojmů (ponechána beze změny dle zadání)
+    document.getElementById('addTermForm').addEventListener('submit', function(e){
+      setTimeout(function(){
+        document.getElementById('addTermSuccess').innerText = "Děkujeme za návrh! Výraz bude po schválení přidán do slovníku.";
+      }, 800);
+    });
   </script>
 
   <!-- bezpečný helper pro tlačítko Nastavení cookies (když není načten banner) -->
