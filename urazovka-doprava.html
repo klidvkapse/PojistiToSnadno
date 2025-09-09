@@ -7,13 +7,37 @@
   <!-- jednotný stylesheet se zlatou patičkou -->
   <link rel="stylesheet" href="/site.css?v=2">
   
-  <!-- ✅ Footer rescue styles: vynutí centrování a vzhled i když se /site.css nenačte nebo je přebit -->
+  <!-- ✅ Footer rescue styles: jemná, nenápadná varianta -->
   <style>
-    .footer{background:#8b7a58;color:#fff;padding:24px 16px;margin-top:28px}
-    .footer__wrap{max-width:1140px;margin:0 auto;display:grid;gap:12px;justify-items:center;text-align:center}
-    .footer__links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    .footer__chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-weight:700}
-    .footer__chip:hover{background:rgba(255,255,255,.2)}
+    .footer{
+      background:transparent;
+      color:rgba(255,255,255,.82);
+      padding:12px 10px;
+      margin-top:28px;
+      box-shadow:none;
+      border:0;
+    }
+    .footer__wrap{
+      max-width:1140px; margin:0 auto;
+      display:grid; gap:8px; justify-items:center; text-align:center;
+    }
+    .footer__links{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
+    }
+    .footer__chip{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 6px;
+      border:0; border-radius:8px;
+      background:transparent;
+      color:inherit; text-decoration:none; font-weight:600; font-size:13.5px;
+    }
+    .footer__chip:hover{ text-decoration:underline; background:transparent; }
+    .footer__utils{ border:1px dashed rgba(255,255,255,.25); padding:4px 8px; border-radius:8px; }
+    @media (max-width:640px){
+      .footer{ padding:8px 8px; }
+      .footer__chip{ font-size:12.5px; color:rgba(255,255,255,.75); }
+      .footer__utils{ border-color:rgba(255,255,255,.2); }
+    }
   </style>
 
   <style>
@@ -132,7 +156,7 @@
     };
   </script>
 
-  <!-- jednotná zlatá patička s odkazy na podmínky -->
+  <!-- jednotná zlatá patička s odkazy na podmínky (jemná varianta) -->
   <footer class="footer" role="contentinfo">
     <div class="footer__wrap">
       <div class="footer__links">
