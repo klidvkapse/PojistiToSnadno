@@ -106,26 +106,31 @@
   .btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000;box-shadow:var(--shadow-md)}
   .btn--ghost{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.6)}
 
-  /* ===== Services sidebar (NOVĚ: seznam s ikonami) ===== */
-  .services-aside{position:relative}
-  @media (min-width:1100px){
-    .services-aside{position:sticky;top:84px}
-  }
-  .svc-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-  .svc-item{
-    display:grid;grid-template-columns:auto 1fr;gap:10px;
-    align-items:start;background:#fff;border-radius:14px;padding:14px;
-    box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)
-  }
-  .svc-item:hover{box-shadow:var(--shadow-md)}
-  .svc-icon{
-    width:28px;height:28px;border-radius:10px;
-    background:linear-gradient(135deg,var(--gold),#ffe87a);
-    display:grid;place-items:center;flex-shrink:0
-  }
-  .svc-icon svg{width:16px;height:16px}
-  .svc-title{font-weight:800;color:#1c1c1c;margin:0}
-  .svc-text{color:#6d6d6d;font-size:.95rem;margin:.2rem 0 0}
+/* ===== Services sidebar (minimal list with icon bullets) ===== */
+.services-aside{position:relative}
+@media (min-width:1100px){ .services-aside{position:sticky;top:84px} }
+
+.svc-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.svc-item{display:flex;align-items:center;gap:12px}
+
+.svc-bullet{
+  width:28px;height:28px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),#ffe87a);
+  display:grid;place-items:center;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.25)
+}
+.svc-bullet svg{width:16px;height:16px;opacity:.9}
+
+.svc-label{
+  color:#f6f2e7;          /* čitelná světlá na tmavém pozadí */
+  font-weight:800;
+  letter-spacing:.1px;
+  text-shadow:0 2px 8px rgba(0,0,0,.55);
+}
+
+@media (hover:hover){
+  .svc-item:hover .svc-label{ text-decoration:underline }
+}
 
   /* ===== Sections (below hero) ===== */
   .section{max-width:1140px;margin:0 auto;padding:40px 20px}
@@ -275,50 +280,50 @@
   <div class="hero__wrap">
     <div class="intro-grid">
 
-      <!-- Sidebar Služby (NOVĚ: seznam) -->
-      <aside class="services-aside" id="sluzby" aria-label="Služby">
-        <ul class="svc-list">
-          <li class="svc-item">
-            <span class="svc-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5.25-3.5 8.69-7 10-3.5-1.31-7-4.75-7-10V6l7-3z" stroke="#3a3320" stroke-width="1.5"/></svg>
-            </span>
-            <div>
-              <p class="svc-title">Úrazové a životní pojištění</p>
-              <p class="svc-text">Praktická ochrana pro jednotlivce i rodiny.</p>
-            </div>
-          </li>
+     <aside class="services-aside" id="sluzby" aria-label="Služby">
+  <ul class="svc-list">
+    <li class="svc-item">
+      <span class="svc-bullet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 3l7 3v5c0 5.25-3.5 8.69-7 10-3.5-1.31-7-4.75-7-10V6l7-3z" stroke="#3a3320" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="svc-label">Úrazové a životní pojištění</span>
+    </li>
 
-          <li class="svc-item">
-            <span class="svc-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="#3a3320" stroke-width="1.5"/><path d="M5 10v10h14V10" stroke="#3a3320" stroke-width="1.5"/></svg>
-            </span>
-            <div>
-              <p class="svc-title">Pojištění majetku</p>
-              <p class="svc-text">Byt, dům i odpovědnost. Rozsáhlé asistence zdarma.</p>
-            </div>
-          </li>
+    <li class="svc-item">
+      <span class="svc-bullet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M3 11l9-7 9 7" stroke="#3a3320" stroke-width="1.5"/>
+          <path d="M5 10v10h14V10" stroke="#3a3320" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="svc-label">Pojištění majetku</span>
+    </li>
 
-          <li class="svc-item">
-            <span class="svc-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5h14l2 5" stroke="#3a3320" stroke-width="1.5"/><circle cx="7" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/><circle cx="17" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/></svg>
-            </span>
-            <div>
-              <p class="svc-title">Vozidla a drobná elektrovozítka</p>
-              <p class="svc-text">Povinné, havarijní, připojištění a asistence.</p>
-            </div>
-          </li>
+    <li class="svc-item">
+      <span class="svc-bullet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M3 13l2-5h14l2 5" stroke="#3a3320" stroke-width="1.5"/>
+          <circle cx="7" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/>
+          <circle cx="17" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="svc-label">Vozidla a drobná elektrovozítka</span>
+    </li>
 
-          <li class="svc-item">
-            <span class="svc-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9" stroke="#3a3320" stroke-width="1.5"/><path d="M7 21v-4a3 3 0 013-3h4a3 3 0 013 3v4" stroke="#3a3320" stroke-width="1.5"/></svg>
-            </span>
-            <div>
-              <p class="svc-title">Hypotéky, úvěry na bydlení</p>
-              <p class="svc-text">Sjednání, refinancování, poradenství.</p>
-            </div>
-          </li>
-        </ul>
-      </aside>
+    <li class="svc-item">
+      <span class="svc-bullet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9" stroke="#3a3320" stroke-width="1.5"/>
+          <path d="M7 21v-4a3 3 0 013-3h4a3 3 0 013 3v4" stroke="#3a3320" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="svc-label">Hypotéky, úvěry na bydlení</span>
+    </li>
+  </ul>
+</aside>
+
 
       <!-- Hero main -->
       <div class="hero__grid" id="o-mne">
