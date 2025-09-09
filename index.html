@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -106,21 +107,47 @@
   .btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000;box-shadow:var(--shadow-md)}
   .btn--ghost{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.6)}
 
-/* ===== Services sidebar – FIXED na desktopu ===== */
-@media (min-width:1100px){
-  /* pevná pozice; zarovnání do levého okraje kontejneru 1200px + padding 20px */
-  .services-aside{
-    position: fixed;
-    top: 128px;  /* trochu níž pod headerem, můžeš klidně měnit */
-    left: calc((100vw - 1200px)/2 + 20px);
-    width: 320px;
-    z-index: 3;
-  }
-  /* placeholder, aby grid držel stejný layout a nic se nepřekrylo */
-  .services-spacer{ display:block; width:320px; }
+/* ===== Services sidebar (minimal list with icon bullets) ===== */
+.services-aside{position:relative}
+.svc-heading{
+  margin:0 0 10px;
+  color:#f6f2e7;
+  font-weight:800;
+  font-size:1.05rem;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,.55);
 }
-@media (max-width:1099.98px){
-  .services-spacer{ display:none; }
+
+.svc-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.svc-item{display:flex;align-items:center;gap:12px}
+
+.svc-bullet{
+  width:28px;height:28px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),#ffe87a);
+  display:grid;place-items:center;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.25)
+}
+.svc-bullet svg{width:16px;height:16px;opacity:.9}
+
+.svc-label{
+  color:#f6f2e7;
+  font-weight:800;
+  letter-spacing:.1px;
+  text-shadow:0 2px 8px rgba(0,0,0,.55);
+}
+
+@media (hover:hover){
+  .svc-item:hover .svc-label{ text-decoration:underline }
+}
+
+/* Desktop: ať je seznam „přilepený“ a o kousek níž */
+@media (min-width:1100px){
+  .services-aside{
+    position: sticky;   /* drží se při scrollu */
+    top: 120px;         /* o něco níž než header */
+    align-self: start;
+  }
 }
 
   /* ===== Sections (below hero) ===== */
@@ -314,8 +341,6 @@
     </li>
   </ul>
 </aside>
-      <!-- spacer pro desktop -->
-<div class="services-spacer" aria-hidden="true"></div>
 
 
       <!-- Hero main -->
