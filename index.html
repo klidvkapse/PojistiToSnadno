@@ -2,46 +2,48 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8" />
-  <!-- Google Analytics 4 (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4CRV15HQDX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4CRV15HQDX'); // základní page_view
-</script>
+
+  <!-- Google Analytics 4 (gtag.js) + Consent Mode v2 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CRV15HQDX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    /* Consent – defaultně jen nezbytné, dokud uživatel nerozhodne */
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-4CRV15HQDX', { anonymize_ip: true });
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>PojistiToSnadno.cz – Online pojištění snadno a férově</title>
   <meta name="description" content="Online pojištění úrazové, životní, majetkové i cestovní. Rychlá kalkulace a osobní přístup.">
-<meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, majetkové pojištění, cestovní pojištění, Šumperk, Jeseníky">
+  <meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, majetkové pojištění, cestovní pojištění, Šumperk, Jeseníky">
 
-<!-- Open Graph (pro náhledy na FB, WhatsApp, Messenger atd.) -->
-<meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online">
-<meta property="og:description" content="Online pojištění úrazové, životní, majetkové i cestovní. Rychlá kalkulace a osobní přístup.">
-<meta property="og:image" content="https://pojistitosnadno.cz/img/ogtag.webp">
-<meta property="og:url" content="https://pojistitosnadno.cz">
-<meta property="og:type" content="website">
+  <!-- Open Graph (pro náhledy na FB, WhatsApp, Messenger atd.) -->
+  <meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online">
+  <meta property="og:description" content="Online pojištění úrazové, životní, majetkové i cestovní. Rychlá kalkulace a osobní přístup.">
+  <meta property="og:image" content="https://pojistitosnadno.cz/img/ogtag.webp">
+  <meta property="og:url" content="https://pojistitosnadno.cz">
+  <meta property="og:type" content="website">
 
-<!-- Twitter Cards (pro Twitter/X a některé messengery) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online">
-<meta name="twitter:description" content="Online pojištění úrazové, životní, majetkové i cestovní. Rychlá kalkulace a osobní přístup.">
-<meta name="twitter:image" content="https://pojistitosnadno.cz/img/ogtag.webp">
-  <meta name="description" content="Sjednejte si úrazové, životní nebo majetkové pojištění jednoduše online s osobním poradcem. Férový přístup a reálné zkušenosti."/>
-  <meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, majetkové pojištění, kalkulačka pojištění, Šumperk, Jeseníky"/>
-
-  <meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online"/>
-  <meta property="og:description" content="Online pojištění úrazové, majetkové i životní. Rychlá kalkulace a osobní přístup."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://pojistitosnadno.cz/"/>
-  <meta property="og:image" content="https://pojistitosnadno.cz/og-image.jpg"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  <!-- Twitter Cards (pro Twitter/X a některé messengery) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online">
+  <meta name="twitter:description" content="Online pojištění úrazové, životní, majetkové i cestovní. Rychlá kalkulace a osobní přístup.">
+  <meta name="twitter:image" content="https://pojistitosnadno.cz/img/ogtag.webp">
 
   <link rel="canonical" href="https://pojistitosnadno.cz/"/>
- <link rel="icon" href="/favicon.ico">
-
+  <link rel="icon" href="/favicon.ico">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -182,120 +184,59 @@
     .hero .btn{width:100%;text-align:center;padding:12px 16px}
     .hero .btn--primary{box-shadow:0 8px 20px rgba(0,0,0,.18)}
   }
-/* === MOBILE: full-width portrét + překryvná kartička s menším textem === */
-@media (max-width:640px){
-  /* portrét přes celou šířku */
-  .hero__grid{ grid-template-columns: 1fr; gap: 0; }
-  .hero__portrait{ order:-1; position: relative; z-index: 1; }
-  .hero__portrait img{
-    width: 100%;
-    height: auto;
-    border-radius: 18px;
-    border: 0;
-    display: block;
+  /* === MOBILE portrét + kartička === */
+  @media (max-width:640px){
+    .hero__grid{ grid-template-columns: 1fr; gap: 0; }
+    .hero__portrait{ order:-1; position: relative; z-index: 1; }
+    .hero__portrait img{ width: 100%; height: auto; border-radius: 18px; border: 0; display: block; }
+    #rating-widget{display:grid;gap:12px;align-items:start;max-width:620px}
+    .rating-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    #rating-widget .star{background:none;border:0;padding:0;line-height:1}
+    #rating-widget .star:focus{outline:2px solid #c9b475;outline-offset:3px;border-radius:6px}
+    .rating-badge{font-weight:800;background:#fff;padding:4px 10px;border-radius:999px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
+    #rating-stats{display:flex;gap:10px;align-items:baseline;color:#1c1c1c}
+    #rating-status{margin-left:auto;color:#6d6d6d}
+    #review-form{display:grid;gap:10px}
+    #review-text{width:100%;min-height:84px;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff;resize:vertical}
+    #review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
+    #review-form .actions{display:flex;gap:10px;justify-content:flex-start}
+
+    .hero__grid > div:nth-child(2){ position: relative; z-index: 2; width: 92%; margin: -64px auto 12px; padding: 12px 14px; background: rgba(0,0,0,.75); border-radius: 14px; box-shadow: 0 12px 26px rgba(0,0,0,.25); color: #fff; }
+    .hero__grid > div:nth-child(2) h1{ font-size: 21px; line-height: 1.15; margin: 0 0 6px; }
+    .hero__grid > div:nth-child(2) .lead{ font-size: 13.5px; line-height: 1.4; margin: 0; display: block; -webkit-line-clamp: unset; -webkit-box-orient: unset; overflow: visible; }
+    .hero__grid > div:nth-child(2) .btn{ width: 100%; margin-top: 10px; }
+
+    .rating-layout{display:grid;gap:24px}
+    @media(min-width:960px){.rating-layout{grid-template-columns:1fr 1fr}}
+    .rating-card{background:#fff;padding:16px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
+    #review-form{display:grid;gap:10px}
+    #review-text{ width:100%;min-height:120px;padding:14px 16px;border-radius:12px; border:1px solid #d8d8d2;background:#fff;font:inherit;line-height:1.45;resize:vertical }
+    #review-text:focus{outline:2px solid var(--gold);border-color:var(--gold-dark)}
+    #review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
+
   }
-  /* Rating – vylepšení */
-#rating-widget{display:grid;gap:12px;align-items:start;max-width:620px}
-.rating-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-#rating-widget .stars{display:flex;gap:8px;font-size:2rem;cursor:pointer;user-select:none}
-#rating-widget .star{background:none;border:0;padding:0;line-height:1}
-#rating-widget .star:focus{outline:2px solid #c9b475;outline-offset:3px;border-radius:6px}
-.rating-badge{font-weight:800;background:#fff;padding:4px 10px;border-radius:999px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
-#rating-stats{display:flex;gap:10px;align-items:baseline;color:#1c1c1c}
-#rating-status{margin-left:auto;color:#6d6d6d}
+  /* === Layout pro sekci Hodnocení === */
+  .rating-wrap{ display:grid; gap:24px; align-items:start; }
+  @media (min-width: 980px){ .rating-wrap{ grid-template-columns: minmax(0,560px) 1fr; } }
+  .rating-side{ position: sticky; top: 90px; }
 
-/* Textová recenze */
-#review-form{display:grid;gap:10px}
-#review-text{width:100%;min-height:84px;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff;resize:vertical}
-#review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
-#review-form .actions{display:flex;gap:10px;justify-content:flex-start}
+  /* --- Společný právní footer --- */
+  footer .foot-actions{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:0 0 8px; }
+  footer .legal-links{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px 18px; margin:10px 0 6px; font-size:.95rem; }
+  footer .legal-links a{ text-decoration:underline; text-underline-offset:2px; color:inherit; }
+  footer small.copy{ display:block; text-align:center; opacity:.8; margin-top:6px; }
 
-
-  /* textová „kartička“ přes část portrétu */
-  .hero__grid > div:nth-child(2){
-    position: relative;
-    z-index: 2;
-    width: 92%;
-    margin: -64px auto 12px;            /* vytáhne přes spodní část portrétu */
-    padding: 12px 14px;
-    background: rgba(0,0,0,.75);
-    border-radius: 14px;
-    box-shadow: 0 12px 26px rgba(0,0,0,.25);
-    color: #fff;
-  }
-
-  /* menší nadpis i odstavec – bez ořezávání */
-  .hero__grid > div:nth-child(2) h1{
-    font-size: 21px;
-    line-height: 1.15;
-    margin: 0 0 6px;
-  }
-  .hero__grid > div:nth-child(2) .lead{
-    font-size: 13.5px;
-    line-height: 1.4;
-    margin: 0;
-    display: block;
-    -webkit-line-clamp: unset;
-    -webkit-box-orient: unset;
-    overflow: visible;                   /* celý text bez scrollu */
-  }
-
-  /* tlačítka pod sebou a na šířku */
-  .hero__grid > div:nth-child(2) .btn{
-    width: 100%;
-    margin-top: 10px;
-  }
-  /* === Rating layout + pěknější textové pole === */
-.rating-layout{display:grid;gap:24px}
-@media(min-width:960px){.rating-layout{grid-template-columns:1fr 1fr}}
-
-.rating-card{background:#fff;padding:16px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
-#review-form{display:grid;gap:10px}
-#review-text{
-  width:100%;min-height:120px;padding:14px 16px;border-radius:12px;
-  border:1px solid #d8d8d2;background:#fff;font:inherit;line-height:1.45;resize:vertical
-}
-#review-text:focus{outline:2px solid var(--gold);border-color:var(--gold-dark)}
-#review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
-
-/* === Layout pro sekci Hodnocení (2 sloupce na desktopu) === */
-.rating-wrap{
-  display:grid;
-  gap:24px;
-  align-items:start;
-}
-@media (min-width: 820px){ /* můžeš upravit breakpoint podle potřeby */
-  .rating-wrap{
-    grid-template-columns: minmax(0,560px) 1fr; /* vlevo obsah, vpravo recenze */
-  }
-}
-
-/* Pravý sloupek – ať se drží při scrollu pod headerem */
-.rating-side{
-  position:sticky;
-  top:90px;            /* když máš header 64px, ať je trochu odsazení */
-}
-
-/* (volitelně) titulek vpravo trochu zmenšit odsazení */
-.rating-side .rating-card h3{ margin:0 0 10px; }
-
-
- }
-    /* === Sekce Hodnocení – dvousloupcový layout === */
-.rating-wrap{
-  display:grid;
-  gap:24px;
-  align-items:start;
-}
-@media (min-width: 980px){
-  .rating-wrap{
-    grid-template-columns: minmax(0,560px) 1fr; /* vlevo hvězdy+form, vpravo poslední hodnocení */
-  }
-}
-.rating-side{ position: sticky; top: 90px; } /* ať drží při scrollu */
-
-
-
+  /* --- Cookie lišta --- */
+  .cookie-bar{ position:fixed; left:12px; right:12px; bottom:12px; z-index:2000; background:#fff; color:#1c1c1c; border:1px solid #e6e1d2; border-radius:14px; box-shadow:0 12px 28px rgba(0,0,0,.18); padding:12px; display:none; }
+  .cookie-bar.show{ display:block; }
+  .cookie-inner{ display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+  .cookie-text{ font-size:.95rem; line-height:1.45; }
+  .cookie-text a{ color:#1c1c1c; text-decoration:underline; text-underline-offset:2px; }
+  .cookie-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .btn-cookie{ border:0; border-radius:12px; padding:10px 14px; font-weight:800; cursor:pointer; }
+  .btn-cookie.primary{ background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; }
+  .btn-cookie.secondary{ background:#efefec; color:#1c1c1c; }
+  @media (max-width:640px){ .cookie-inner{ align-items:flex-start; } .cookie-actions{ width:100%; justify-content:flex-end; } }
   </style>
 </head>
 <body>
@@ -371,7 +312,6 @@
           <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
           <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
             <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
-           
           </div>
         </div>
       </div>
@@ -429,13 +369,9 @@
 </section>
 
 <!-- ===== Hodnocení ===== -->
-
-  <!-- ===== Hodnocení ===== -->
-<!-- ===== Hodnocení ===== -->
 <section class="section" id="hodnoceni">
   <h2>Ohodnoťte web</h2>
 
-  <!-- NOVÝ DVOU-SLOUPCOVÝ OBAL -->
   <div class="rating-wrap">
     <!-- Levý sloupek: hvězdy + statistiky + formulář -->
     <div class="rating-card">
@@ -468,7 +404,7 @@
       </div>
     </div>
 
-    <!-- Pravý sloupek: Poslední hodnocení (přesunuto na vyznačené místo) -->
+    <!-- Pravý sloupek: Poslední hodnocení -->
     <aside class="rating-side">
       <div class="rating-card">
         <h3 style="margin:0 0 10px;">Poslední hodnocení</h3>
@@ -479,8 +415,6 @@
     </aside>
   </div>
 </section>
-
-
 
 <!-- ===== Kontakt ===== -->
 <section class="section" id="kontakt">
@@ -496,43 +430,35 @@
     </a>
   </div>
 
- 
-  <form id="contact-form"
-      class="form"
-      method="POST"
-      data-action="https://formspree.io/f/mvgqqpev">
-  <!-- žádný _redirect, žádný action -->
-  <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
-  <input type="number" name="Věk" placeholder="Váš věk">
-  <textarea name="Zpráva" rows="4" placeholder="Co vás zajímá?"></textarea>
-  <input type="email" name="Email" placeholder="Váš e-mail" required>
-  <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}">
-  <div class="actions">
-    <button class="btn btn--primary" type="submit">Odeslat poptávku</button>
-    <button class="btn" type="reset" style="background:#e9e9e4">Vymazat</button>
-  </div>
-</form>
-
+  <form id="contact-form" class="form" method="POST" data-action="https://formspree.io/f/mvgqqpev">
+    <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+    <input type="number" name="Věk" placeholder="Váš věk">
+    <textarea name="Zpráva" rows="4" placeholder="Co vás zajímá?"></textarea>
+    <input type="email" name="Email" placeholder="Váš e-mail" required>
+    <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}">
+    <div class="actions">
+      <button class="btn btn--primary" type="submit">Odeslat poptávku</button>
+      <button class="btn" type="reset" style="background:#e9e9e4">Vymazat</button>
+    </div>
+  </form>
 </section>
 
-<!-- ===== Footer ===== -->
+<!-- ===== Footer (sjednocený) ===== -->
 <footer>
-  <div class="footer-wrap">
-    <div class="footer-links">
-      <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
-      <a href="cookies.html">Cookies</a>
-      <a href="podminky.html">Podmínky</a>
-    </div>
-    <div class="social">
-      <a aria-label="Facebook" href="https://www.facebook.com/share/1CFVmWB93J/" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v3H8v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z" fill="#1c1c1c"/></svg>
-      </a>
-      <a aria-label="Instagram" href="#" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#1c1c1c" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="#1c1c1c" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#1c1c1c"/></svg>
-      </a>
-    </div>
-    <div style="color:#666;font-size:.92rem">© 2025 Daniel Verner – PojistiToSnadno.cz</div>
+  <div class="foot-actions">
+    <a href="index.html" class="btn btn--ghost">Domů</a>
+    <a href="#o-mne" class="btn btn--ghost">Nahoru ↑</a>
   </div>
+
+  <nav class="legal-links" aria-label="Právní odkazy">
+    <a href="pravni.html">Právní informace &amp; ČNB</a>
+    <a href="gdpr.html">Ochrana osobních údajů</a>
+    <a href="cookies.html">Používání cookies</a>
+    <a href="podminky.html">Podmínky užívání</a>
+    <a href="nastaveni-cookies.html">Nastavení cookies</a>
+  </nav>
+
+  <small class="copy">© 2025 Daniel Verner – PojistiToSnadno.cz</small>
 </footer>
 
 <!-- ===== Skripty ===== -->
@@ -558,41 +484,20 @@
 </script>
 
 <!-- Rating: Firestore Web SDK -->
-<!-- Rating: Firestore Web SDK -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
   import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-  import {
-    getFirestore, doc, getDoc, runTransaction,
-    addDoc, collection, serverTimestamp,
-    getDocs, query, orderBy, limit
-  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+  import { getFirestore, doc, getDoc, runTransaction, addDoc, collection, serverTimestamp, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-  // === Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao",
-    authDomain: "pojistitosnadno-2025.firebaseapp.com",
-    projectId: "pojistitosnadno-2025"
-  };
-
+  const firebaseConfig = { apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao", authDomain: "pojistitosnadno-2025.firebaseapp.com", projectId: "pojistitosnadno-2025" };
   const app  = initializeApp(firebaseConfig);
   const db   = getFirestore(app);
   const auth = getAuth(app);
-
-  // UA posílat / neposílat (musí být povolené v rules, jinak nastav false)
   const SEND_UA = true;
 
-  // === Přihlášení (anon) – ať máme request.auth != null
   let signedIn = false;
-  try {
-    const cred = await signInAnonymously(auth);
-    signedIn = !!cred?.user;
-    console.debug('[rating] signed in as', cred?.user?.uid || '(anon)');
-  } catch (err) {
-    console.error('[rating] signInAnonymously failed:', err);
-  }
+  try { const cred = await signInAnonymously(auth); signedIn = !!cred?.user; } catch (err) { console.error('[rating] signInAnonymously failed:', err); }
 
-  // === DOM refs
   const starsRoot   = document.getElementById('stars');
   const avgEl       = document.getElementById('rating-avg');
   const countEl     = document.getElementById('rating-count');
@@ -608,63 +513,23 @@
   const ratingDoc = doc(db, 'ratings', 'global');
   const reviewsCol = collection(db, 'ratings', 'global', 'reviews');
 
-  let selectedVal = 0;
-  let submitting  = false;
+  let selectedVal = 0; let submitting  = false;
 
-  // === Helpers
-  function paintStars(val){
-    starsRoot?.querySelectorAll('[data-value]')?.forEach(el=>{
-      const v = Number(el.getAttribute('data-value'));
-      el.textContent = v <= val ? '★' : '☆';
-      el.setAttribute('aria-checked', String(v === val));
-    });
-  }
+  function paintStars(val){ starsRoot?.querySelectorAll('[data-value]')?.forEach(el=>{ const v = Number(el.getAttribute('data-value')); el.textContent = v <= val ? '★' : '☆'; el.setAttribute('aria-checked', String(v === val)); }); }
   function tinyStars(n){ return '★'.repeat(n) + '☆'.repeat(5-n); }
-  function escapeHtml(s){
-    return (s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  }
-  function setStats(sum,count){
-    const avg = count>0 ? sum/count : 0;
-    const pct = Math.round((avg/5)*100);
-    avgEl.textContent     = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno';
-    percentEl.textContent = count ? `${pct} %` : '— %';
-    countEl.textContent   = `(${count} hodnocení)`;
-  }
+  function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m])); }
+  function setStats(sum,count){ const avg = count>0 ? sum/count : 0; const pct = Math.round((avg/5)*100); avgEl.textContent = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno'; percentEl.textContent = count ? `${pct} %` : '— %'; countEl.textContent = `(${count} hodnocení)`; }
 
-  // === Načtení agregace
-  async function initRating(){
-    statusEl.textContent = 'Načítám hodnocení…';
-    try{
-      const snap = await getDoc(ratingDoc);
-      const data = snap.exists() ? snap.data() : { sum:0, count:0 };
-      setStats(Number(data.sum||0), Number(data.count||0));
-      statusEl.textContent = '';
-    }catch(err){
-      console.warn('[rating] load aggregate failed:', err);
-      statusEl.textContent = `Chyba při načítání hodnocení (${err.code||'unknown'}).`;
-    }
-  }
+  async function initRating(){ statusEl.textContent = 'Načítám hodnocení…'; try{ const snap = await getDoc(ratingDoc); const data = snap.exists() ? snap.data() : { sum:0, count:0 }; setStats(Number(data.sum||0), Number(data.count||0)); statusEl.textContent = ''; }catch(err){ statusEl.textContent = `Chyba při načítání hodnocení (${err.code||'unknown'}).`; }}
 
-  // === Načtení posledních 5 recenzí
   async function loadLastReviews(){
     try{
       const qy = query(reviewsCol, orderBy('ts','desc'), limit(5));
       const snap = await getDocs(qy);
       const items = [];
-      snap.forEach(d=>{
-        const r = d.data() || {};
-        const stars = Number(r.rating||0);
-        const text  = (r.text||'').trim();
-        const dt    = r.ts?.toDate ? r.ts.toDate() : null;
-        const date  = dt ? dt.toLocaleDateString('cs-CZ') : '';
-        items.push({stars,text,date});
-      });
-
+      snap.forEach(d=>{ const r = d.data() || {}; const stars = Number(r.rating||0); const text  = (r.text||'').trim(); const dt = r.ts?.toDate ? r.ts.toDate() : null; const date  = dt ? dt.toLocaleDateString('cs-CZ') : ''; items.push({stars,text,date}); });
       reviewsList.innerHTML = '';
-      if(!items.length){
-        reviewsList.innerHTML = `<div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>`;
-        return;
-      }
+      if(!items.length){ reviewsList.innerHTML = `<div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>`; return; }
       items.forEach(({stars,text,date})=>{
         const el = document.createElement('div');
         el.className = 'review-item';
@@ -677,170 +542,121 @@
         `;
         reviewsList.appendChild(el);
       });
-    }catch(err){
-      console.warn('[rating] loadLastReviews failed:', err);
-      reviewsList.innerHTML = `<div class="empty-reviews">Nepodařilo se načíst recenze (${err.code||'unknown'}).</div>`;
-    }
+    }catch(err){ reviewsList.innerHTML = `<div class="empty-reviews">Nepodařilo se načíst recenze (${err.code||'unknown'}).</div>`; }
   }
 
-  // === Odeslání hodnocení
   async function submitRating(e){
-    e.preventDefault();
-    if (submitting) return;
+    e.preventDefault(); if (submitting) return;
+    if (!selectedVal){ statusEl.textContent = 'Vyberte prosím počet hvězdiček.'; return; }
+    if (localStorage.getItem(LS_VOTED)) { statusEl.textContent = 'Už jste hodnotili na tomto zařízení.'; return; }
+    if (!signedIn){ statusEl.textContent = 'Nepodařilo se ověřit uživatele. Obnovte stránku a zkuste to znovu.'; return; }
 
-    if (!selectedVal){
-      statusEl.textContent = 'Vyberte prosím počet hvězdiček.';
-      return;
-    }
-    if (localStorage.getItem(LS_VOTED)) {
-      statusEl.textContent = 'Už jste hodnotili na tomto zařízení.';
-      return;
-    }
-    if (!signedIn){
-      statusEl.textContent = 'Nepodařilo se ověřit uživatele. Obnovte stránku a zkuste to znovu.';
-      return;
-    }
-
-    submitting = true;
-    statusEl.textContent = 'Ukládám…';
-    const reviewText = (textEl.value || '').trim();
-
+    submitting = true; statusEl.textContent = 'Ukládám…'; const reviewText = (textEl.value || '').trim();
     try{
-      // 1) Přičtení sum/count – pokud spadne, ukončíme hned (permission-denied apod.)
-      try{
-        await runTransaction(db, async (tx) => {
-          const snap = await tx.get(ratingDoc);
-          const d = snap.exists() ? snap.data() : { sum:0, count:0 };
-          tx.set(ratingDoc, {
-            sum: Number(d.sum||0) + selectedVal,
-            count: Number(d.count||0) + 1
-          }, { merge:true });
-        });
-      } catch (err) {
-        console.error('[rating] aggregate write failed:', err);
-        statusEl.textContent = `Nepodařilo se uložit skóre (${err.code||'unknown'}).`;
-        return;
-      }
-
-      // 2) Volitelně ulož text recenze (když je vyplněn)
-      try{
-        if (reviewText.length){
-          const payload = {
-            rating: selectedVal,
-            text: reviewText,
-            ts: serverTimestamp()
-          };
-          if (SEND_UA) payload.ua = navigator.userAgent?.slice(0,120) || '';
-          await addDoc(reviewsCol, payload);
-        }
-      } catch (err) {
-        console.error('[rating] review write failed:', err);
-        // agregace proběhla – jen informativní hláška
-        statusEl.textContent = `Hodnocení uloženo, text recenze se nepodařilo uložit (${err.code||'unknown'}).`;
-      }
-
-      // 3) Refresh UI
-      const snap2 = await getDoc(ratingDoc);
-      const d2 = snap2.data() || { sum:0, count:0 };
-      setStats(Number(d2.sum||0), Number(d2.count||0));
-      await loadLastReviews();
-
-      localStorage.setItem(LS_VOTED,'1');
-      statusEl.textContent = 'Děkujeme za hodnocení!';
-      formEl.querySelector('button[type="submit"]').disabled = true;
-      textEl.disabled = true;
-      starsRoot.querySelectorAll('.star').forEach(b=>b.disabled = true);
-
-    } finally {
-      submitting = false;
-    }
+      try{ await runTransaction(db, async (tx) => { const snap = await tx.get(ratingDoc); const d = snap.exists() ? snap.data() : { sum:0, count:0 }; tx.set(ratingDoc, { sum: Number(d.sum||0) + selectedVal, count: Number(d.count||0) + 1 }, { merge:true }); }); } catch (err) { statusEl.textContent = `Nepodařilo se uložit skóre (${err.code||'unknown'}).`; return; }
+      try{ if (reviewText.length){ const payload = { rating: selectedVal, text: reviewText, ts: serverTimestamp() }; if (SEND_UA) payload.ua = navigator.userAgent?.slice(0,120) || ''; await addDoc(reviewsCol, payload); } } catch (err) { statusEl.textContent = `Hodnocení uloženo, text recenze se nepodařilo uložit (${err.code||'unknown'}).`; }
+      const snap2 = await getDoc(ratingDoc); const d2 = snap2.data() || { sum:0, count:0 }; setStats(Number(d2.sum||0), Number(d2.count||0)); await loadLastReviews();
+      localStorage.setItem(LS_VOTED,'1'); statusEl.textContent = 'Děkujeme za hodnocení!'; formEl.querySelector('button[type="submit"]').disabled = true; textEl.disabled = true; starsRoot.querySelectorAll('.star').forEach(b=>b.disabled = true);
+    } finally { submitting = false; }
   }
 
-  // === Listenery
-  starsRoot?.addEventListener('click', e=>{
-    const el = e.target.closest('[data-value]');
-    if (!el) return;
-    selectedVal = Number(el.getAttribute('data-value'));
-    paintStars(selectedVal);
-  });
-  starsRoot?.addEventListener('keydown', e=>{
-    const el = e.target.closest('[data-value]');
-    if (!el) return;
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      selectedVal = Number(el.getAttribute('data-value'));
-      paintStars(selectedVal);
-    }
-  });
-
+  starsRoot?.addEventListener('click', e=>{ const el = e.target.closest('[data-value]'); if (!el) return; selectedVal = Number(el.getAttribute('data-value')); paintStars(selectedVal); });
+  starsRoot?.addEventListener('keydown', e=>{ const el = e.target.closest('[data-value]'); if (!el) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectedVal = Number(el.getAttribute('data-value')); paintStars(selectedVal); } });
   formEl?.addEventListener('submit', submitRating);
+  clearBtn?.addEventListener('click', ()=>{ selectedVal = 0; paintStars(0); textEl.value = ''; charLeftEl.textContent = `Zbývá ${600} znaků`; statusEl.textContent = ''; });
+  textEl?.addEventListener('input', ()=>{ const left = 600 - (textEl.value?.length || 0); charLeftEl.textContent = `Zbývá ${left} znaků`; });
 
-  clearBtn?.addEventListener('click', ()=>{
-    selectedVal = 0;
-    paintStars(0);
-    textEl.value = '';
-    charLeftEl.textContent = `Zbývá ${600} znaků`;
-    statusEl.textContent = '';
-  });
-
-  textEl?.addEventListener('input', ()=>{
-    const left = 600 - (textEl.value?.length || 0);
-    charLeftEl.textContent = `Zbývá ${left} znaků`;
-  });
-
-  // === Start
-  paintStars(0);
-  initRating();
-  loadLastReviews();
+  paintStars(0); initRating(); loadLastReviews();
 </script>
-  <!--folrmulář-->
+
+<!-- Form – odeslání na Formspree s GA4 eventem -->
 <script>
 (function(){
   function bind(){
     var form = document.getElementById('contact-form');
     if(!form) return;
-    // pro jistotu zakaž klasický submit
     form.addEventListener('submit', function(e){
       e.preventDefault();
-
       var endpoint = form.getAttribute('data-action');
       var data = new FormData(form);
-
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data
-      })
+      fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
       .then(function(res){
         if(!res.ok) throw new Error('Submit failed');
-        // GA4 event (pokud je gtag dostupný)
         if (typeof gtag === 'function') {
-          gtag('event', 'form_submit', {
-            form_id: 'contact-form',
-            page_path: location.pathname
-          });
+          gtag('event', 'form_submit', { form_id: 'contact-form', page_path: location.pathname });
         }
-        // přesměrování na tvou děkovací stránku
         window.location.href = '/dekujeme.html';
       })
-      .catch(function(){
-        alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
-      });
-
-      return false; // další pojistka
+      .catch(function(){ alert('Odeslání se nepodařilo. Zkuste to prosím znovu.'); });
+      return false;
     }, {passive:false});
   }
-
-  // jistota, že se binder spustí
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bind);
-  } else {
-    bind();
-  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bind); } else { bind(); }
 })();
 </script>
 
+<!-- Cookie lišta -->
+<div class="cookie-bar" id="cookie-bar" role="dialog" aria-live="polite" aria-label="Nastavení cookies">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      Používáme soubory cookies k zajištění chodu webu a měření návštěvnosti.
+      Podrobnosti najdete v <a href="cookies.html">zásadách cookies</a> a v <a href="nastaveni-cookies.html">nastavení</a>.
+    </div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-cookie secondary" id="cookie-decline">Pouze nezbytné</button>
+      <button type="button" class="btn-cookie primary" id="cookie-accept">Přijmout vše</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY = 'pts_cookie_consent_v1'; // 'all' | 'necessary'
+  var bar = document.getElementById('cookie-bar');
+  if(!bar) return;
+
+  function updateConsent(mode){
+    if (typeof gtag === 'function'){
+      if (mode === 'all'){
+        gtag('consent', 'update', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'granted',
+          functionality_storage: 'granted',
+          security_storage: 'granted'
+        });
+      } else {
+        gtag('consent', 'update', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          functionality_storage: 'granted',
+          security_storage: 'granted'
+        });
+      }
+    }
+  }
+
+  var saved = localStorage.getItem(KEY);
+  if (!saved){ bar.classList.add('show'); }
+  else { updateConsent(saved); }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', function(){
+    localStorage.setItem(KEY, 'all');
+    updateConsent('all');
+    bar.classList.remove('show');
+  });
+  document.getElementById('cookie-decline')?.addEventListener('click', function(){
+    localStorage.setItem(KEY, 'necessary');
+    updateConsent('necessary');
+    bar.classList.remove('show');
+  });
+})();
+</script>
 
 </body>
-  
 </html>
+
+
+
