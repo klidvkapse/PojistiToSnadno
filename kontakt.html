@@ -168,16 +168,24 @@
   </script>
 
   <!-- 🔻 Footer: původní text zachován + jemné odkazy -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer__wrap">
-      <div class="footer__links">
-        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
-        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
-        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
-        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
-        <button type="button" class="footer__chip" onclick="resetCookieConsent()">Nastavení cookies</button>
-      </div>
+ <footer class="footer" role="contentinfo">
+  <div class="footer__wrap">
+    <div class="footer__links">
+      <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+      <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+      <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+      <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+      <button type="button" class="footer__chip" onclick="resetCookieConsent()">Nastavení cookies</button>
+    </div>
 
-      <!-- ⬇️ původní označený text – beze změny obsahu -->
-      <p class="footer__contact">
-        Daniel
+    <!-- ⬇️ PŮVODNÍ OZNAČENÝ TEXT – zachován 1:1, jen v <address> -->
+    <address class="footer__contact" aria-label="Kontakt" itemscope itemtype="https://schema.org/Organization">
+      <strong itemprop="name">Daniel Verner</strong><br>
+      📞 <a href="tel:733782290" itemprop="telephone">733 782 290</a><br>
+      📩 <a href="mailto:pojistitosnadno@gmail.com" itemprop="email">pojistitosnadno@gmail.com</a><br>
+      📍 <span itemprop="areaServed">Olomoucký kraj – schůzky domlouvám individuálně</span>
+    </address>
+
+    <div class="footer__copy">© 2025 Daniel Verner — PojistiToSnadno.cz</div>
+  </div>
+</footer>
