@@ -5,9 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pojištění pracovní neschopnosti | PojistiToSnadno.cz</title>
 <meta name="description" content="Pojisti si pouze pracovní neschopnost bez zbytečných připojištění. Čekací doba 15/29/57 dní, u 29 a 57 možnost zpětného plnění od 1. dne. Zálohové měsíční výplaty během trvání neschopnosti.">
+
+<!-- sdílené styly (obsahují i výchozí vzhled patičky) -->
+<link rel="stylesheet" href="/site.css?v=2">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --sand:#b49661; --olive:#b7a97c; --beige:#ede3bb; --beige-hover:#e2ce8f;
@@ -21,18 +26,14 @@ html,body{
   background: url('img/pnpozadi.webp') center / cover no-repeat fixed, var(--bg);
 }
 
-.container{
-  max-width:1100px;
-  margin:0 auto;
-  padding:20px;
-}
-  /* Kontrast na fotopozadí (jen prvky, co neleží v bílých kartách) */
+.container{ max-width:1100px; margin:0 auto; padding:20px; }
+
+/* Kontrast na fotopozadí (jen prvky, co neleží v bílých kartách) */
 header.container h1,
 header.container p { color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.45); }
 header.container { color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.45); }
-header.container .btn { color:#3b321d; }         /* ponecháme tmavý text na tlačítku */
+header.container .btn { color:#3b321d; }
 .container > h2 { color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.45); }
-
 
 /* hero */
 .hero{border-radius:var(--radius);background:linear-gradient(120deg,#b49661 0%,#c7ad7e 100%);color:#fff;box-shadow:var(--shadow)}
@@ -95,6 +96,36 @@ details>summary{cursor:pointer;font-weight:700}
   .row{grid-template-columns:1fr}
   .stats .cards{grid-template-columns:1fr}
 }
+
+/* ─────────────────────────────────────
+   Jemné přebití stylů patičky (ultra-soft)
+   ──────────────────────────────────── */
+body footer.footer{
+  background:transparent !important;
+  padding:10px 8px !important;
+  text-align:center;
+}
+body footer.footer .footer__wrap{
+  max-width:1140px; margin:0 auto;
+  display:grid; gap:8px; justify-items:center;
+}
+body footer.footer .footer__links{
+  display:flex; gap:6px; flex-wrap:wrap; justify-content:center;
+}
+body footer.footer .footer__chip{
+  background:transparent !important; border:0 !important;
+  color:rgba(255,255,255,.85) !important; font-weight:600 !important;
+  font-size:13.5px !important; padding:4px 6px !important; border-radius:8px !important;
+  text-decoration:none !important;
+}
+body footer.footer .footer__chip:hover{ text-decoration:underline !important; }
+body footer.footer .footer__wrap > div:last-child{ opacity:.7 !important; font-size:.9rem !important; }
+
+/* na světlém pozadí (když je fotka hodně světlá) můžeme přitlumit barvu */
+@media (prefers-color-scheme: light){
+  body footer.footer .footer__chip{ color:rgba(34,34,34,.8) !important; }
+  body footer.footer .footer__wrap > div:last-child{ color:rgba(34,34,34,.75) !important; }
+}
 </style>
 </head>
 <body>
@@ -119,9 +150,8 @@ details>summary{cursor:pointer;font-weight:700}
   </div>
 </section>
 
-<!-- ŘÁDEK 1: vlevo kalkulačka, vpravo statistiky -->
+<!-- ŘÁDEK 1 -->
 <section id="kalkulatory" class="container row">
-  <!-- vlevo -->
   <div class="panel simple-calc">
     <h3>💼 Kalkulačka nemocenské (1 měsíc PN)</h3>
     <label for="netSalary">Čistá měsíční mzda (Kč):</label>
@@ -133,7 +163,6 @@ details>summary{cursor:pointer;font-weight:700}
       <p>Oproti plné mzdě vám bude chybět <b id="missingAmount"></b>.</p>
     </div>
   </div>
-  <!-- vpravo -->
   <div class="stats">
     <div class="ribbon" title="Zdroj: ČSSZ – roční statistika 2024">
       <b>📊 Pracovní neschopnost v ČR · 2024</b><br>
@@ -155,9 +184,8 @@ details>summary{cursor:pointer;font-weight:700}
   </div>
 </section>
 
-<!-- ŘÁDEK 2: vlevo „Jak to funguje“, vpravo stack (mini-úraz, obecná PN) -->
+<!-- ŘÁDEK 2 -->
 <section class="container row">
-  <!-- vlevo -->
   <div class="panel">
     <h3>🔧 Jak to funguje</h3>
     <ol style="margin:0 0 8px 18px;line-height:1.55">
@@ -167,16 +195,15 @@ details>summary{cursor:pointer;font-weight:700}
       <li>Pracovní neschopnost lze pojistit od 15 do 75 let.</li>
     </ol>
   </div>
-  <!-- vpravo: stack -->
-  <div class="right-stack">
-   
 
+  <div class="right-stack">
     <div class="panel">
       <h3>🛌 Obecná pracovní neschopnost</h3>
       <p>Výše pojistného se liší dle věku, zvolené denní částky a čekací doby. Přesný výpočet nelze zobrazit online – připravíme vám jej individuálně.</p>
       <a href="#kontakt" class="btn">Požádat o přesný výpočet</a>
     </div>
-     <div class="panel">
+
+    <div class="panel">
       <h3>🚦 Pracovní neschopnost <span class="underline">pouze</span> v případě úrazu při dopravní nehodě</h3>
       <div class="controls">
         <span>Vyberte si částku na den</span>
@@ -193,7 +220,7 @@ details>summary{cursor:pointer;font-weight:700}
 <section id="kontakt" class="container">
   <div class="form-wrap">
     <h3>📩 Nechte si poslat přesný výpočet</h3>
-     <a href="kontakt.html" class="btn pulse">Kontaktní formulář</a>
+    <a href="kontakt.html" class="btn pulse">Kontaktní formulář</a>
   </div>
 </section>
 
@@ -214,7 +241,30 @@ details>summary{cursor:pointer;font-weight:700}
   </details>
 </section>
 
-<footer class="container" style="padding-bottom:40px;text-align:center;color:#666">© 2025 PojistiToSnadno.cz</footer>
+<!-- bezpečný helper pro tlačítko Nastavení cookies -->
+<script>
+  window.resetCookieConsent = window.resetCookieConsent || function(){
+    try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
+    try{ localStorage.removeItem('cookie_consent_choice'); }catch(e){}
+    try{ document.cookie='cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax'; }catch(e){}
+    alert('Nastavení cookies bylo resetováno. Po obnovení stránky se znovu zobrazí lišta (pokud je nasazen cookie banner).');
+    try{ location.reload(); }catch(e){}
+  };
+</script>
+
+<!-- JEDNOTNÁ PATIČKA (jemná) -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__wrap">
+    <div class="footer__links">
+      <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+      <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+      <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+      <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+      <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
+    </div>
+    <div>© 2025 PojistiToSnadno.cz — Daniel Verner</div>
+  </div>
+</footer>
 
 <script>
 // Kalkulačka nemocenské (1 měsíc)
@@ -233,7 +283,7 @@ function clearSimpleCalc(){
   document.getElementById('resultSimple').style.display='none';
 }
 
-// Mini kalkulačka PN (úraz v dopravě) – jednoduché mapování
+// Mini kalkulačka PN (úraz v dopravě)
 const mapping = {100:9,200:18,300:28,400:37,500:45,600:55,700:65,800:74,900:83,1000:92};
 let current = 100;
 const pnInput = document.getElementById('pnInput');
@@ -245,3 +295,4 @@ updatePN();
 </script>
 </body>
 </html>
+
