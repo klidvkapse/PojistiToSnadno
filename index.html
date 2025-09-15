@@ -154,6 +154,16 @@
   .section{max-width:1140px;margin:0 auto;padding:40px 20px}
   .section h2{margin:0 0 16px}
 
+    /* --- mini baner soutěží ---*/
+.contest-callout{max-width:980px;margin:16px auto 0;padding:12px 14px;border:1px solid rgba(0,0,0,.06);border-radius:14px;background:linear-gradient(120deg,rgba(233,222,200,.85),rgba(187,166,127,.45)),url('img/pozadisouteze.webp') center/cover no-repeat;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.contest-callout .row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.contest-callout .left{display:flex;gap:10px;align-items:center}
+.contest-callout .ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(0,0,0,.35);color:#fff;font-size:20px}
+.contest-callout h3{margin:0;font-size:18px}
+.contest-callout p{margin:0;font-size:14px;opacity:.9}
+.contest-callout a.cta{display:inline-flex;align-items:center;gap:8px;background:#bba67f;color:#fff;border-radius:10px;padding:10px 14px;text-decoration:none;font-weight:700}
+.contest-callout a.cta:hover{background:#8b7a58}
+
   /* Cards grid used in "Podle situace" */
   .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .card{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;box-shadow:var(--shadow-sm);transition:transform .25s, box-shadow .25s}
@@ -267,18 +277,7 @@
   .btn-cookie{ border:0; border-radius:12px; padding:10px 14px; font-weight:800; cursor:pointer; }
   .btn-cookie.primary{ background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; }
   .btn-cookie.secondary{ background:#efefec; color:#1c1c1c; }
-  @media (max-width:640px){ .cookie-inner{ align-items:flex-start; } .cookie-actions{ width:100%; justify-content:flex-end; } 
-                           
-/* --- mini baner soutěží ---*/
-.contest-callout{max-width:980px;margin:16px auto 0;padding:12px 14px;border:1px solid rgba(0,0,0,.06);border-radius:14px;background:linear-gradient(120deg,rgba(233,222,200,.85),rgba(187,166,127,.45)),url('img/pozadisouteze.webp') center/cover no-repeat;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.contest-callout .row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.contest-callout .left{display:flex;gap:10px;align-items:center}
-.contest-callout .ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(0,0,0,.35);color:#fff;font-size:20px}
-.contest-callout h3{margin:0;font-size:18px}
-.contest-callout p{margin:0;font-size:14px;opacity:.9}
-.contest-callout a.cta{display:inline-flex;align-items:center;gap:8px;background:#bba67f;color:#fff;border-radius:10px;padding:10px 14px;text-decoration:none;font-weight:700}
-.contest-callout a.cta:hover{background:#8b7a58}
-  }
+  @media (max-width:640px){ .cookie-inner{ align-items:flex-start; } .cookie-actions{ width:100%; justify-content:flex-end; } }
 
   </style>
 </head>
