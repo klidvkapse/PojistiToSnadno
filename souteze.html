@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soutěže | PojistiToSnadno.cz</title>
+  <meta name="description" content="Zapojte se do soutěží na Facebooku. Přehled, jasná pravidla a odkazy na zapojení." />
+  <link rel="canonical" href="https://www.pojistitosnadno.cz/souteze.html" />
+  <meta property="og:title" content="Soutěže | PojistiToSnadno.cz" />
+  <meta property="og:description" content="Aktuální soutěže – přehled, podmínky a přihlášení." />
+  <meta property="og:image" content="img/ogtag.webp" />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index,follow" />
+  <style>
+    :root{
+      --bg:#f8f5ef;          /* světlé plátno */
+      --paper:#fffaf0;       /* teplé karty */
+      --ink:#1f1f1f;         /* text */
+      --muted:#6b6b6b;       /* sekundární text */
+      --primary:#e9dec8;     /* světle krémová */
+      --accent:#bba67f;      /* káva/zlato */
+      --accent-strong:#8b7a58; /* tmavší kontrast */
+      --success:#2e7d32;
+      --warning:#b26a00;
+      --danger:#a43e3e;
+      --radius:18px;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
+    .wrap{max-width:1060px;margin:0 auto;padding:24px}
+    header.hero{background:linear-gradient(140deg,rgba(233,222,200,.8),rgba(187,166,127,.55)),url('img/pozadisouteze.webp') center/cover no-repeat;border-bottom:1px solid rgba(0,0,0,.06)}
+    .hero .wrap{padding:42px 24px}
+    h1{margin:0 0 8px 0;font-size:clamp(28px,4vw,40px);letter-spacing:.2px}
+    .sub{color:var(--ink);opacity:.9;margin:0 0 16px}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap}
+    .tab{appearance:none;border:1px solid rgba(0,0,0,.08);background:#fff;border-radius:999px;padding:10px 16px;font-weight:600;cursor:pointer;box-shadow:var(--shadow);}
+    .tab[aria-selected="true"]{background:var(--accent);color:white;border-color:transparent}
+    main{padding:24px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{grid-column:span 12;background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;border:1px solid rgba(0,0,0,.06)}
+    @media (min-width:800px){.card.half{grid-column:span 6}}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-weight:700;font-size:12px;border:1px solid rgba(0,0,0,.08);background:#fff}
+    .badge.live{background:#e8f5e9;color:var(--success);border-color:rgba(46,125,50,.25)}
+    .badge.arch{background:#f4f6f8;color:#546e7a;border-color:rgba(84,110,122,.25)}
+    .meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+    .cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;text-decoration:none;box-shadow:var(--shadow);cursor:pointer}
+    .cta:hover{background:var(--accent-strong)}
+    .ghost{background:#fff;color:var(--ink);border:1px solid rgba(0,0,0,.08)}
+    .kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .fb-embed{display:grid;place-items:center;min-height:220px;background:repeating-linear-gradient(-45deg,#faf6ec,#faf6ec 10px,#f3ecde 10px,#f3ecde 20px);border-radius:12px;border:1px dashed rgba(0,0,0,.15)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{border:1px solid rgba(0,0,0,.08);background:#fff;border-radius:999px;padding:8px 12px;cursor:pointer}
+    .chip[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:transparent}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:999px}
+    .muted{color:var(--muted)}
+    .list{display:grid;gap:12px}
+    .list-item{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+    footer{padding:24px;color:var(--muted);font-size:14px}
+      /* Footer */
+    .site-footer{background:linear-gradient(0deg, rgba(0,0,0,.02), rgba(0,0,0,.02));border-top:1px solid rgba(0,0,0,.06)}
+    .site-footer .footer-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;padding:24px 0}
+    .site-footer .span-6{grid-column:span 12}
+    .site-footer .span-3{grid-column:span 12}
+    @media (min-width:800px){.site-footer .span-6{grid-column:span 6}.site-footer .span-3{grid-column:span 3}}
+    .site-footer h4{margin:0 0 8px;font-size:16px}
+    .site-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+    .site-footer a{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(0,0,0,.25)}
+    .site-footer a:hover{color:var(--accent-strong)}
+    .site-footer .fineprint{padding:12px 0 24px;color:var(--muted);font-size:13px;border-top:1px dashed rgba(0,0,0,.08)}
+      /* Mini‑form (rozbalovací) */
+    .disclosure{margin-top:10px}
+    .disclosure .toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.08);background:#fff;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+    .disclosure[aria-expanded="true"] .toggle{background:var(--accent);color:#fff}
+    .mini-form{margin-top:12px;display:none;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:14px}
+    .mini-form .row{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width:720px){.mini-form .row{grid-template-columns:1fr 1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-weight:600;font-size:14px}
+    .field input,.field select,.field textarea{padding:10px 12px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff}
+    .form-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
+    .note{font-size:13px;color:var(--muted)}
+    .err{color:var(--danger);font-size:13px;display:none}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">PojistiToSnadno.cz</p>
+      <h1>Soutěže</h1>
+      <p class="sub">Aktuální soutěže, jasná pravidla a možnost se rychle zapojit.</p>
+      
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- SOUTĚŽE -->
+    <section id="souteze" role="tabpanel" aria-labelledby="tab-souteze">
+      <div class="grid">
+        <article class="card">
+          <div class="meta" style="justify-content:space-between">
+            <div class="pill"><strong>Powerbanka</strong> · Losování 01.10.2025</div>
+            <span class="badge live">Probíhá 17.–30. 9. 2025</span>
+          </div>
+          <h2 style="margin:12px 0 6px">Soutěž pro ty, kdo využijí můj web</h2>
+          <p class="muted" style="margin:0 0 12px">Zažádejte o <strong>nezávaznou nabídku</strong> libovolného pojištění na PojistiToSnadno.cz a jste ve slosování o <strong>powerbanku</strong>. Uzavřené smlouvy mají dvojitou šanci. 2. místo: set nářadí (losování pouze z uzavřených smluv). 3. místo: pikniková deka (losování pouze z uzavřených smluv).</p>
+
+          <div class="meta">
+            <span>📅 17. 9. – 30. 9. 2025</span>
+            <span>📍 Online – Facebook stránka</span>
+            <span>📌 Pravidla níže</span>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px">
+            <a class="cta" href="/sluzby.html" onclick="gtagSafe('event','select_content',{content_type:'cta',item_id:'services-from-contest'})">Přejít na služby</a>
+            <a class="cta ghost" href="/" onclick="gtagSafe('event','select_content',{content_type:'cta',item_id:'home-from-contest'})">Domů</a>
+            <a class="cta ghost" href="#pravidla-powerbanka" onclick="gtagSafe('event','view_item',{content_type:'rules',item_id:'powerbanka-2025-09'})">Pravidla soutěže</a>
+          </div>
+          <p class="muted" style="margin-top:6px">Zapojíte se tak, že na stránce <a href="/sluzby.html">Služby</a> vyberete typ pojištění a odešlete <strong>nezávaznou nabídku</strong>.</p>
+
+          <!-- MINI-FORM (rozbalovací) -->
+          <div class="disclosure" aria-expanded="true" id="mini-form">
+            <button class="toggle" type="button" aria-controls="mini-form-body" aria-expanded="true" onclick="toggleMiniForm(this)">⚡ Chci nezávaznou nabídku teď (rychlé odeslání)</button>
+            <div class="mini-form" id="mini-form-body" style="display:block">
+              <form id="contest-mini-form" action="https://formspree.io/f/mjkwnelz" method="POST" onsubmit="return submitMiniForm(event)">
+                <input type="hidden" name="campaign" value="powerbanka_2025_09">
+                <input type="hidden" name="_subject" value="Soutěž – rychlá poptávka">
+                <input type="hidden" name="_redirect" value="/dekujeme.html">
+                <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+                  <label>Nechejte prázdné: <input type="text" name="website"></label>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <label for="mf-name">Jméno a příjmení *</label>
+                    <input id="mf-name" name="name" autocomplete="name" required>
+                  </div>
+                  <div class="field">
+                    <label for="mf-contact">E‑mail nebo telefon *</label>
+                    <input id="mf-contact" name="contact" autocomplete="email tel" required placeholder="např. jan@domena.cz nebo 777 123 456">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <label for="mf-type">Typ pojištění (volitelné)</label>
+                    <select id="mf-type" name="type">
+                      <option value="">Vyberte…</option>
+                      <option>Životní</option>
+                      <option>Úrazové</option>
+                      <option>Majetek/Nemovitost</option>
+                      <option>Auto</option>
+                      <option>Cestovní</option>
+                      <option>Děti</option>
+                      <option>Jiné</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="mf-note">Poznámka (volitelné)</label>
+                    <input id="mf-note" name="note" placeholder="Co potřebujete řešit…">
+                  </div>
+                </div>
+                <div class="field">
+                  <label><input type="checkbox" id="mf-gdpr" required> Souhlasím se zpracováním osobních údajů pro účely nezávazné nabídky. <a href="/zasady-ochrany-osobnich-udaju.html" target="_blank" rel="noopener">Zásady</a></label>
+                </div>
+                <div class="field">
+                  <label><input type="checkbox" id="mf-rules" required> Seznámil/a jsem se s <a href="#pravidla-powerbanka">pravidly soutěže</a>.</label>
+                </div>
+                <p id="mf-error" class="err">Zkontrolujte prosím vyplnění jména a kontaktu (e‑mail nebo telefon).</p>
+                <div class="form-actions">
+                  <button class="cta" type="submit">Odeslat nezávazně</button>
+                  <button class="cta ghost" type="button" onclick="toggleMiniForm(document.querySelector('#mini-form .toggle'))">Zavřít</button>
+                  <span class="note">odesláním souhlasíte s kontaktováním kvůli nabídce</span>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- /MINI-FORM -->
+
+          <figure style="margin:14px 0 0">
+            <img src="img/soutez-powerbanka.webp" alt="Promo vizuál soutěže o powerbanku" style="width:100%;border-radius:12px;border:1px solid rgba(0,0,0,.06)"/>
+          </figure>
+
+          <div class="fb-embed" style="margin-top:14px">
+            <div>
+              <p class="muted" style="margin-top:0">Embed příspěvku z Facebooku se načte po kliknutí (respekt k soukromí a cookies třetích stran).</p>
+              <button class="cta" data-embed-url="https://www.facebook.com/{VAŠE-STRÁNKA}/posts/{ID-PŘÍSPĚVKU}" onclick="loadFBEmbed(this)">Načíst příspěvek z Facebooku</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card half">
+          <p class="kicker">Archiv</p>
+          <h3 style="margin:8px 0">Minulé soutěže</h3>
+          <div class="list" id="archiv-soutezi">
+            <!-- Příklad archivní položky -->
+            <div class="list-item">
+              <div>
+                <strong>Bluetooth reproduktor</strong>
+                <div class="muted">Losováno 16. 9. 2025 · výherce kontaktován</div>
+              </div>
+              <span class="badge arch">Ukončeno</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card half">
+          <p class="kicker">Jak to funguje</p>
+          <h3 style="margin:8px 0">Jak soutěže probíhají</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Zapojení: vyplnění formuláře pro nezávaznou nabídku.</li>
+            <li>Dvojitá šance: u soutěží to může platit pro uzavřené smlouvy.</li>
+            <li>Transparentní losování: výherce zveřejňuji na FB stránce.</li>
+            <li>Kontakt: <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a></li>
+          </ul>
+          <p class="muted">Facebook/Meta soutěž nijak nesponzorují ani neorganizují.</p>
+        </aside>
+
+        <article id="pravidla-powerbanka" class="card">
+          <p class="kicker">Pravidla soutěže</p>
+          <h3 style="margin:8px 0">Pravidla – Powerbanka (17.–30. 9. 2025)</h3>
+          <ol style="margin:0 0 10px 18px">
+            <li>Soutěž probíhá 17. 9. 2025 00:00 – 30. 9. 2025 23:59 (CEST) na FB stránce PojistiToSnadno.cz.</li>
+            <li>Do losování je zařazen každý, kdo v období soutěže vyplní formulář pro nezávaznou nabídku pojištění na webu PojistiToSnadno.cz.</li>
+            <li>Uzavření smlouvy v období soutěže = dvojitá šance v losování hlavní ceny; 2. a 3. místo losuji pouze z uzavřených smluv.</li>
+            <li>Ceny: 1. místo powerbanka; 2. místo set nářadí; 3. místo pikniková deka.</li>
+            <li>Účast je možná pouze z území ČR. Účastník musí být starší 18 let.</li>
+            <li>Losování proběhne do 1. 10. 2025. Výherce oznámím ve FB příspěvku a kontaktuji zprávou/e‑mailem.</li>
+            <li>Pořadatel si vyhrazuje právo vyloučit podezřelé či podvodné účasti. Facebook/Meta soutěž nesponzorují.</li>
+            <li>Kontaktní e‑mail: <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a>.</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- REÁLNÉ ŠKODY -->
+    
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="f-col span-6">
+        <h4 style="font-size:18px;margin:0 0 8px">PojistiToSnadno.cz</h4>
+        <p class="muted" style="margin:0 0 10px">Osobní pojišťovací poradenství online. Přehledně, lidsky a s jasnými pravidly.</p>
+        <div class="chips" style="margin:8px 0 6px">
+          <span class="pill">✉️ <a href="mailto:pojistitosnadno@gmail.com">pojistitosnadno@gmail.com</a></span>
+          <span class="pill">📱 <a href="tel:+420733782290">733 782 290</a></span>
+          <span class="pill">👍 <a href="https://www.facebook.com/" rel="nofollow noopener" target="_blank">Facebook stránka</a></span>
+        </div>
+      </div>
+      <nav class="f-col span-3" aria-label="Hlavní odkazy">
+        <h4>Navigace</h4>
+        <ul>
+          <li><a href="/">Domů</a></li>
+          <li><a href="/souteze.html">Soutěže</a></li>
+          <li><a href="/formular.html">Formulář – nezávazná nabídka</a></li>
+          <li><a href="/o-mne.html">O mně</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+      <nav class="f-col span-3" aria-label="Právní">
+        <h4>Právní</h4>
+        <ul>
+          <li><a href="/pravni-informace.html">Právní informace a registr ČNB</a></li>
+          <li><a href="/zasady-ochrany-osobnich-udaju.html">Zásady ochrany osobních údajů</a></li>
+          <li><a href="/cookies.html">Zásady cookies</a></li>
+          <li><a href="/nastaveni-cookies.html" onclick="openCookieSettings();return false;">Nastavení cookies</a></li>
+          <li><a href="/souteze.html#pravidla-powerbanka">Soutěžní pravidla</a></li>
+          <li><a href="/podminky-pouzivani.html">Podmínky používání webu</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap fineprint">
+      <div>Informace na webu jsou obecné a slouží k orientaci. Konkrétní doporučení vždy vychází z vaší situace a je součástí individuální nabídky.</div>
+      <div style="margin-top:6px">Soutěže nejsou žádným způsobem sponzorovány, podporovány ani spravovány společností Meta Platforms, Inc. nebo jejími dceřinými společnostmi. Účastník poskytuje informace pořadateli stránky.</div>
+      <div style="margin-top:6px"></div>
+      <div style="margin-top:10px">© <span id="y"></span> PojistiToSnadno.cz · Poslední aktualizace: 13. 9. 2025</div>
+    </div>
+  </footer>
+
+  <!-- JSON-LD: WebPage + Breadcrumbs + CaseStudy ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Soutěž o powerbanku",
+    "startDate": "2025-09-17T00:00:00+02:00",
+    "endDate": "2025-09-30T23:59:59+02:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "location": {"@type": "VirtualLocation", "url": "https://www.pojistitosnadno.cz/souteze.html"},
+    "organizer": {"@type": "Organization", "name": "PojistiToSnadno.cz", "url": "https://www.pojistitosnadno.cz"},
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CZK", "url": "https://www.pojistitosnadno.cz/sluzby.html", "availability": "https://schema.org/InStock"}
+  }
+  </script>
+
+  <script>
+    // Bezpečné volání GA4 (pokud je gtag k dispozici a uživatel udělil souhlas)
+    function gtagSafe(){
+      if (typeof gtag === 'function') { try { gtag.apply(null, arguments); } catch(e){} }
+    }
+
+    // (Sekce Škody byla odstraněna – skripty pro taby/filtry nejsou potřeba)
+
+    // Opatrné načtení FB SDK až na vyžádání (kvůli třetím stranám)
+    function loadFBEmbed(btn){
+      const url = btn.getAttribute('data-embed-url');
+      const box = btn.closest('.fb-embed');
+      // Vložíme iframe s pluginem
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(url)}&width=500`;
+      iframe.width = '100%';
+      iframe.height = '560';
+      iframe.style.border = 'none';
+      iframe.style.overflow = 'hidden';
+      iframe.setAttribute('scrolling','no');
+      iframe.setAttribute('allow','encrypted-media; clipboard-write');
+      box.innerHTML = '';
+      box.appendChild(iframe);
+      gtagSafe('event','view_item',{content_type:'facebook-embed'});
+    }
+  </script>
+
+  <!--
+  ▶︎ MINI BLOK NA ÚVODNÍ STRÁNKU (vložit kamkoli):
+  <section class="card" style="margin:18px 0">
+    <div class="meta" style="justify-content:space-between">
+      <strong>🎁 Probíhá soutěž: Powerbanka</strong>
+      <span class="badge live">17.–30. 9. 2025</span>
+    </div>
+    <p class="muted" style="margin:8px 0 12px">Zapojte se – stačí si na webu vyžádat nezávaznou nabídku pojištění. Uzavřené smlouvy mají dvojitou šanci.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="cta" href="/souteze.html">Více o soutěži</a>
+      <a class="cta ghost" href="/formular.html">Vyplnit formulář</a>
+    </div>
+  </section>
+
+  ▶︎ TIPY K IMPLEMENTACI
+  1) Upravte odkaz na formulář (/formular.html) dle vašich stránek. Pokud používáte Formspree, můžete linkovat přímo na existující stránku s formulářem.
+  2) Nahrajte obrázky: img/soutez-powerbanka.webp, img/pozadi-papir.webp, img/ogtag.webp.
+  3) Ve FB embedu nahraďte {VAŠE-STRÁNKA} a {ID-PŘÍSPĚVKU} konkrétními údaji vaší FB stránky/příspěvku.
+  4) Pro rozdělení do dvou samostatných stránek stačí zkopírovat sekci <section id="souteze">…</section> do souboru souteze.html a <section id="skody">…</section> do souboru realne-skody.html. Titulek/OG/LD+JSON upravte pro každý soubor zvlášť.
+  5) GA4: gtagSafe() neháže chybu, i když GA4 není načtené nebo má uživatel odmítnuté analytické cookies.
+  -->
+  <script>
+    // Otevření nastavení cookies: integrace s vaším bannerem (pokud je k dispozici), jinak přesměrování
+    function openCookieSettings(){
+      if (typeof window.showCookieSettings === 'function') { window.showCookieSettings(); return; }
+      try { window.location.href = '/nastaveni-cookies.html'; } catch(e) { window.open('/nastaveni-cookies.html','_blank'); }
+    }
+    // Rok v patičce
+    (function(){ var el=document.getElementById('y'); if(el){ el.textContent = new Date().getFullYear(); } })();
+  </script>
+  <script>
+    // Mini‑form: toggle + validace + měření (bez regexů pro kompatibilitu)
+    function toggleMiniForm(btn){
+      var dis = btn.closest('.disclosure');
+      var body = document.getElementById('mini-form-body');
+      var expanded = dis.getAttribute('aria-expanded') === 'true';
+      expanded = !expanded;
+      dis.setAttribute('aria-expanded', expanded);
+      btn.setAttribute('aria-expanded', expanded);
+      if(body){
+        if(expanded){ body.hidden = false; body.style.display='block'; gtagSafe('event','select_content',{content_type:'mini_form',item_id:'open'}); }
+        else { body.style.display='none'; body.hidden = true; gtagSafe('event','select_content',{content_type:'mini_form',item_id:'close'}); }
+      }
+    }
+    function digitsCount(s){ s = (s||''); var c=0; for(var i=0;i<s.length;i++){ var ch=s.charCodeAt(i); if(ch>=48 && ch<=57) c++; } return c; }
+    function looksLikeEmail(v){ v=(v||'').trim(); var at=v.indexOf('@'); var dot=v.lastIndexOf('.'); return at>0 && dot>at+1 && dot<v.length-1; }
+    function looksLikePhone(v){ return digitsCount(v)>=9; }
+    function submitMiniForm(e){
+      var name = (document.getElementById('mf-name')||{}).value||'';
+      var contact = (document.getElementById('mf-contact')||{}).value||'';
+      var gdpr = (document.getElementById('mf-gdpr')||{}).checked;
+      var rules = (document.getElementById('mf-rules')||{}).checked;
+      var err = document.getElementById('mf-error');
+      if(!name.trim() || !contact.trim() || !(looksLikeEmail(contact)||looksLikePhone(contact)) || !gdpr || !rules){
+        if(err) err.style.display='block';
+        gtagSafe('event','select_content',{content_type:'mini_form',item_id:'error'});
+        e.preventDefault();
+        return false;
+      }
+      if(err) err.style.display='none';
+      gtagSafe('event','generate_lead',{source:'contest-mini-form',campaign:'powerbanka-2025-09'});
+      return true;
+    }
+  </script>
+</body>
+</html>
