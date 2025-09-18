@@ -2,428 +2,132 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Laický slovník pojistných pojmů | PojistiToSnadno.cz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Najděte význam pojistných pojmů jednoduše v našem slovníku."/>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-  <meta charset="UTF-8"/>
-  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="robots" content="index, follow"/>
-  <meta property="fb:app_id" content="your_app_id" />
 
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- SEO: Title + Description + Keywords -->
-  <title>PojistiToSnadno.cz – Online pojištění úrazové, životní i majetkové snadno a férově</title>
-  <meta name="description" content="Sjednejte si úrazové, životní nebo majetkové pojištění jednoduše online s osobním poradcem. Okamžitá kalkulace, zkušenosti klientů, férový přístup – vše online i v Šumperku a okolí."/>
-  <meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, majetkové pojištění, kalkulačka pojištění, pojišťovací poradce Šumperk a okolí, sjednání pojištění online, reálné škody klientů"/>
-  
-  <!-- Open Graph / Twitter Card -->
-  <meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online"/>
-  <meta property="og:description" content="Online pojištění úrazové, majetkové i životní. Rychlá kalkulace a osobní přístup."/>
-  <meta property="og:image" content="https://pojistitostnadno.cz/og-image.jpg"/>
-  <meta property="og:url" content="https://pojistitostnadno.cz/"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Laický slovník pojistných pojmů | PojistiToSnadno.cz"/>
+  <meta property="og:description" content="Najděte význam pojistných pojmů jednoduše v našem slovníku."/>
+  <meta property="og:image" content="https://www.pojistitosnadno.cz/img/ogtag.webp"/>
+  <meta property="og:url" content="https://www.pojistitosnadno.cz/slovnik.html"/>
   <meta property="og:type" content="website"/>
-  <meta name="twitter:card" content="summary_large_image"/>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://pojistitostnadno.cz/"/>
-  <!-- Strukturovaná data: WebSite + WebPage (bez personalizace) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "PojistiToSnadno.cz",
-  "url": "https://pojistitostnadno.cz/"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "PojistiToSnadno.cz – Online pojištění snadno a férově",
-  "url": "https://pojistitostnadno.cz/",
-  "description": "Sjednejte si úrazové, životní nebo majetkové pojištění jednoduše online. Rychlá kalkulace, zkušenosti klientů, férový přístup – vše online i v Šumperku a okolí."
-}
-</script>
-
-
-  <!-- Strukturovaná data - Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Daniel Verner",
-    "jobTitle": "Pojišťovací poradce",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "PojistiToSnadno.cz"
-    },
-    "url": "https://pojistitostnadno.cz/",
-    "email": "pojistitosnadno@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Šumperk",
-      "addressCountry": "CZ"
-    }
-  }
-  </script>
-
-  <!-- Preconnect & Preload fontů -->
+  <link rel="canonical" href="https://www.pojistitosnadno.cz/slovnik.html"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"/>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'"/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      min-width: 100vw;
-      font-family: 'Raleway', Arial, sans-serif;
-      color: #fffbe0;
-      background: url('pozadislovnik.webp') no-repeat center center fixed;
-      background-size: cover;
-      overflow-x: hidden;
-    }
-    header {
-      width: 100vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 24px 10px 20px;
-      background: none;
-      box-sizing: border-box;
-      z-index: 10;
-    }
-    .logo {
-      font-size: 1.35rem;
-      font-weight: bold;
-      color: #f6e9aa;
-      letter-spacing: 0.02em;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.20);
-      user-select: none;
-      text-decoration: none;
-    }
-    .nav-buttons {
-      display: flex;
-      gap: 12px;
-    }
-    .nav-buttons a {
-      background: #f5e2a7;
-      color: #5e5518;
-      padding: 8px 22px;
-      font-weight: 600;
-      border-radius: 14px;
-      text-decoration: none;
-      font-size: 1.07rem;
-      border: none;
-      box-shadow: 0 2px 12px rgba(80,60,8,0.08);
-      transition: background 0.2s, color 0.2s;
-      outline: none;
-    }
-    .nav-buttons a:hover, .nav-buttons a:focus {
-      background: #fff6ce;
-      color: #c79f2c;
-    }
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 70vh;
-      justify-content: center;
-      padding: 60px 10px 40px 10px;
-    }
-    .dict-box {
-      background: none;
-      border-radius: 17px;
-      padding: 36px 30px 24px 30px;
-      max-width: 420px;
-      width: 100%;
-      box-shadow: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 38px;
-      margin-bottom: 30px;
-      backdrop-filter: none;
-    }
-    .dict-box h1 {
-      color: #ffe580;
-      font-size: 1.33em;
-      text-align: center;
-      font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: 0.01em;
-      text-shadow: 0 1px 2px #604d0f;
-      background: none;
-      border-radius: 0;
-      padding: 0;
-    }
-    .dict-input {
-      width: 100%;
-      border-radius: 9px;
-      border: 1.5px solid #ffe580;
-      padding: 12px 16px;
-      font-size: 1.08em;
-      background: rgba(0,0,0,0.12);
-      color: #fffbe0;
-      margin-bottom: 0px;
-      box-sizing: border-box;
-      transition: border 0.18s, background 0.18s;
-      outline: none;
-      box-shadow: 0 2px 14px 0 rgba(80,60,8,0.10);
-      font-weight: bold;
-      backdrop-filter: blur(1px);
-    }
-    .dict-input:focus {
-      border: 1.5px solid #ffef91;
-      background: rgba(0,0,0,0.25);
-    }
-    .dict-input::placeholder {
-      color: #ffef91;
-      opacity: 1;
-      font-weight: normal;
-    }
-    .autocomplete-list {
-      position: relative;
-      width: 100%;
-      margin-bottom: 12px;
-    }
-    .autocomplete-items {
-      position: absolute;
-      left: 0; right: 0;
-      background: rgba(60,44,8,0.98);
-      border: 1.5px solid #ffe580;
-      border-top: none;
-      border-radius: 0 0 9px 9px;
-      z-index: 99;
-      max-height: 200px;
-      overflow-y: auto;
-      color: #ffe580;
-      font-size: 1.07em;
-      box-shadow: 0 7px 20px rgba(50,40,0,0.22);
-    }
-    .autocomplete-item {
-      padding: 11px 15px;
-      cursor: pointer;
-      border-bottom: 1px solid #e4cf99;
-      transition: background 0.17s;
-      font-weight: 500;
-    }
-    .autocomplete-item:last-child { border-bottom: none; }
-    .autocomplete-item:hover, .autocomplete-active {
-      background: #ffe580;
-      color: #624d00;
-    }
-    .dict-btn {
-      background: #cbb04a;
-      color: #fff;
-      border: none;
-      border-radius: 9px;
-      font-size: 1.06em;
-      padding: 10px 35px;
-      font-weight: bold;
-      margin: 13px 0 20px 0;
-      box-shadow: 0 2px 10px rgba(188,161,26,0.11);
-      cursor: pointer;
-      transition: background 0.16s;
-      outline: none;
-    }
-    .dict-btn:hover, .dict-btn:focus {
-      background: #ffe580;
-      color: #4a4412;
-    }
-    .dict-tip {
-      font-size: 1.06em;
-      color: #fffbe0;
-      margin-bottom: 8px;
-      text-align: left;
-      width: 100%;
-      font-weight: 600;
-      text-shadow: 0 2px 5px #000, 0 1px 5px #4d3b00;
-    }
-    .dict-tip b {
-      color: #ffe580;
-      text-shadow: 0 2px 5px #4d3b00;
-    }
-    .dict-missing {
-      font-size: 1.05em;
-      color: #fffbe0;
-      margin-bottom: 12px;
-      width: 100%;
-      text-align: left;
-      text-shadow: 0 2px 5px #4d3b00;
-    }
-    .dict-missing a {
-      color: #ffe580;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-    #output {
-      width: 100%;
-      min-height: 38px;
-      margin-top: 13px;
-      border-radius: 9px;
-      background: rgba(0,0,0,0.23);
-      color: #fffbe0;
-      padding: 13px 17px;
-      font-size: 1.03em;
-      box-sizing: border-box;
-      box-shadow: 0 1px 7px rgba(60,40,0,0.13);
-      word-break: break-word;
-      font-weight: 500;
-      text-shadow: 0 2px 5px #4d3b00;
-    }
-    /* Footer */
-    footer {
-      width: 100vw;
-      background: rgba(40, 30, 0, 0.5);
-      color: #ffe580;
-      text-align: center;
-      padding: 17px 6px 17px 6px;
-      font-size: 1em;
-      letter-spacing: 0.01em;
-      font-weight: 500;
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      z-index: 10;
-      box-shadow: 0 -1px 10px rgba(190,170,70,0.08);
-      user-select: none;
-      text-shadow: 0 2px 5px #4d3b00;
-    }
-    @media (max-width: 600px) {
-      .dict-box,
-      .add-term-section {
-        max-width: 97vw;
-        padding: 21px 2vw 22px 2vw;
-      }
-      .main-container {
-        padding: 23px 0 82px 0;
-        min-height: 60vh;
-      }
-      .logo {
-        font-size: 1.1rem;
-      }
-      .nav-buttons a {
-        padding: 7px 14px;
-        font-size: 1em;
-      }
-      footer {
-        font-size: 0.96em;
-        padding: 13px 2px 12px 2px;
-      }
-    }
-     <!-- ✅ Footer rescue styles: vynutí centrování a vzhled i když se /site.css nenačte nebo je přebit -->
- 
-    .footer{background:#8b7a58;color:#fff;padding:24px 16px;margin-top:28px}
-    .footer__wrap{max-width:1140px;margin:0 auto;display:grid;gap:12px;justify-items:center;text-align:center}
-    .footer__links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    .footer__chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-weight:700}
+    html, body {height: 100%;margin:0;padding:0;font-family:'Raleway',Arial,sans-serif;color:#fffbe0;background:url('pozadislovnik.webp') no-repeat center/cover fixed;}
+    header{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;}
+    .logo{font-size:1.35rem;font-weight:bold;color:#f6e9aa;text-decoration:none;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+    .nav-buttons a{background:#f5e2a7;color:#5e5518;padding:8px 22px;border-radius:14px;text-decoration:none;font-weight:600;}
+    .nav-buttons a:hover{background:#fff6ce;color:#c79f2c}
+    .main-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;padding:60px 10px 100px}
+    .dict-box{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(2px);border-radius:16px;padding:28px 24px;max-width:720px;width:100%;box-shadow:0 6px 28px rgba(0,0,0,.25)}
+    .dict-box h1{color:#ffe580;font-size:1.5rem;text-align:center;margin:0 0 18px;}
+    .dict-input{width:100%;border-radius:10px;border:1.5px solid #ffe580;padding:12px 14px;font-size:1.06rem;background:rgba(0,0,0,.12);color:#fffbe0;font-weight:600;margin-bottom:10px;}
+    .dict-input:focus{outline:none;border-color:#ffef91;background:rgba(0,0,0,.22)}
+    .dict-input::placeholder{color:#ffef91}
+    .dict-btn{background:#cbb04a;color:#1b1605;border:none;border-radius:10px;font-size:1.03rem;padding:12px 18px;font-weight:800;cursor:pointer}
+    .dict-btn:hover{background:#ffe580;}
+    .autocomplete-items{position:absolute;left:0;right:0;top:100%;background:rgba(60,44,8,.98);border:1.5px solid #ffe580;border-top:none;border-radius:0 0 10px 10px;z-index:99;max-height:240px;overflow-y:auto;color:#ffe580;font-size:1.02rem;}
+    .autocomplete-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid #e4cf99}
+    .autocomplete-item:hover,.autocomplete-active{background:#ffe580;color:#624d00}
+    #output{margin-top:12px;border-radius:10px;background:rgba(0,0,0,.23);color:#fffbe0;padding:14px 16px;font-size:1.02rem;box-shadow:0 1px 7px rgba(60,40,0,.13)}
+    #output .term{font-weight:800;color:#ffe580}
+    #output .ex{margin-top:8px;font-style:italic;color:#ffe580}
+    footer{position:fixed;left:0;right:0;bottom:0;background:rgba(40,30,0,.5);color:#ffe580;text-align:center;padding:14px;}
+    .footer__links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:6px}
+    .footer__chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-weight:700}
     .footer__chip:hover{background:rgba(255,255,255,.2)}
- 
   </style>
 </head>
 <body>
+<header>
+  <a class="logo" href="index.html">PojistiToSnadno.cz</a>
+  <nav class="nav-buttons"><a href="index.html">Domů</a></nav>
+</header>
+<main class="main-container">
+  <form class="dict-box" autocomplete="off" onsubmit="event.preventDefault(); showOrReset();">
+    <h1>Laický slovník pojistných pojmů</h1>
+    <input type="text" id="search" class="dict-input" placeholder="Napište pojem (např. spoluúčast, pojistná částka)…" autocomplete="off" />
+    <div id="autocomplete-results" class="autocomplete-items" style="display:none"></div>
+    <button type="submit" class="dict-btn" id="dict-btn">Zobrazit / Zpět</button>
+    <div id="output" aria-live="polite"></div>
+  </form>
+</main>
+<footer>
+  <div class="footer__links">
+    <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+    <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+    <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+    <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+  </div>
+  <div>© 2025 PojistiToSnadno.cz — Daniel Verner</div>
+</footer>
+<script>
+  const terms = {
+    "pojistná smlouva": {def:"Smluvní dohoda mezi pojišťovnou a klientem.",ex:"Např. smlouva na dům proti požáru."},
+    "pojistné": {def:"Částka, kterou platí pojistník pojišťovně za pojistnou ochranu.",ex:"Roční pojistné domácnosti 2 800 Kč."},
+    "pojistník": {def:"Osoba, která uzavřela smlouvu a platí pojistné.",ex:"Manžel je pojistník, pojištěná je manželka."},
+    "pojištěný": {def:"Osoba, na jejíž život, zdraví, majetek či odpovědnost se vztahuje pojištění.",ex:"Dítě je pojištěné v rámci úrazové smlouvy."},
+    "předmět pojištění": {def:"Věc, osoba nebo zájem, na který se pojištění vztahuje.",ex:"Rodinný dům a přilehlá garáž."},
 
-  <header>
-    <div class="logo">PojistiToSnadno.cz</div>
-    <nav class="nav-buttons">
-      <a href="index.html">Domů</a>
-    </nav>
-  </header>
+    "pojistná událost": {def:"Událost krytá pojištěním, která zakládá nárok na plnění.",ex:"Krupobití poškodilo pergolu."},
+    "pojistné plnění": {def:"Částka, kterou pojišťovna vyplatí po vzniku pojistné události.",ex:"Pojišťovna uhradila opravu střechy."},
+    "výluka z pojištění": {def:"Událost/okolnost, kterou pojištění nekryje.",ex:"Úmyslné jednání je výlukou."},
+    "spoluúčast": {def:"Část škody hrazená klientem.",ex:"Spoluúčast pevně 1 000 Kč nebo procentem (min. 1 000 Kč)."},
+    "pojistná částka": {def:"Maximální částka, kterou pojišťovna vyplatí.",ex:"Na dům sjednáno 2,5 mil. Kč."},
+    "pojistná doba": {def:"Období, na které je pojištění sjednáno.",ex:"Životní pojištění na 25 let."},
+    "pojistné období": {def:"Interval, za který se platí pojistné.",ex:"Měsíčně/čtvrtletně/ročně."},
+    "indexace": {def:"Automatické navyšování částek (typicky podle inflace).",ex:"Zachová reálnou hodnotu pojištění."},
+    "pojistná hodnota": {def:"Skutečná hodnota pojištěného majetku.",ex:"Dům oceněn na 4,2 mil. Kč."},
+    "nová cena": {def:"Cena nové stejné/srovnatelné věci.",ex:"Nová cena pračky 12 000 Kč."},
+    "časová cena": {def:"Hodnota po zohlednění opotřebení.",ex:"Notebook po 5 letech má časovou cenu 4 000 Kč."},
+    "podpojištění": {def:"Pojistná částka je nižší než hodnota majetku.",ex:"Dům 5 mil. pojištěn na 2,5 mil. → krácení plnění."},
+    "přepojištění": {def:"Pojistná částka je vyšší než hodnota majetku (plní se max. skutečná škoda).",ex:"Auto za 200 tis. pojištěné na 400 tis."},
 
-  <main class="main-container">
-    <form class="dict-box" autocomplete="off" onsubmit="event.preventDefault(); showOrReset();">
-      <h1>Laický slovník pojistných pojmů</h1>
-      <div class="autocomplete-list" style="width:100%;">
-        <input type="text" id="search" class="dict-input" placeholder="Napiš pojistovací pojem…" autocomplete="off" />
-        <div id="autocomplete-results" class="autocomplete-items"></div>
-      </div>
-      <button type="submit" class="dict-btn" id="dict-btn">Zobrazit / Zpět</button>
-      <div class="dict-tip">
-        <b>Tip:</b> Zadejte libovolný pojem nebo jeho část. Pokud vám tu něco chybí, napište mi – slovník rád rozšířím!
-      </div>
-      <div class="dict-missing">
-        <span style="font-size:1.1em;">❔</span> Nenašli jste výraz? Pošlete mi ho pomocí kontaktního formuláře na domovské stránce.
-      </div>
-      <div id="output"></div>
-    </form>
-  </main>
+    "smluvní ujednání": {def:"Konkrétní dohody a podmínky tvořící součást smlouvy.",ex:"Ujednání o výši spoluúčasti."},
+    "všeobecné pojistné podmínky": {def:"Soubor pravidel upravujících práva a povinnosti stran.",ex:"VPP jsou přílohou smlouvy."},
+    "zvláštní pojistné podmínky": {def:"Specifické podmínky pro daný produkt/pojistné riziko.",ex:"ZPP pro pojištění vozidel."},
+    "dodatek ke smlouvě": {def:"Dokument, kterým se mění/doplňuje smlouva.",ex:"Navýšení pojistné částky dodatkem."},
+    "podmínky plnění": {def:"Okolnosti, při kterých pojišťovna plní.",ex:"U krádeže nutný policejní protokol."},
+    "nepřetržitá doba pojištění": {def:"Doba trvání bez přerušení.",ex:"Ovlivňuje bonus u povinného ručení."},
 
-   <footer class="footer" role="contentinfo">
-    <div class="footer__wrap">
-      <div class="footer__links">
-        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
-        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
-        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
-        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
-        <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
-      </div>
-      <div style="opacity:.9">© 2025 PojistiToSnadno.cz — Daniel Verner</div>
-    </div>
-  </footer>
+    /* Životní pojištění */
+    "čekací doba": {def:"Období po začátku pojištění, kdy nevzniká nárok na plnění.",ex:"U závažných nemocí 3–6 měsíců."},
+    "karence": {def:"Doba po vzniku události, kdy se plnění ještě nevyplácí.",ex:"Denní dávky až po 14 dnech."},
+    "závažná nemoc": {def:"Nemoc s výrazným dopadem na zdraví/pracovní schopnost.",ex:"Infarkt myokardu, CMP apod."},
+    "invalidita": {def:"Dlouhodobý pokles pracovní schopnosti.",ex:"Přiznán 2. stupeň invalidity."},
+    "denní odškodné": {def:"Denní částka při pracovní neschopnosti/hospitalizaci.",ex:"Např. 500 Kč/den."},
+    "obmyšlená osoba": {def:"Osoba, která obdrží plnění při smrti pojištěného.",ex:"Typicky manžel/ka nebo děti."},
+    "odbytné": {def:"Částka vyplacená při předčasném ukončení rezervotvorné smlouvy.",ex:"Vyplaceno při zrušení smlouvy."},
+    "dožití": {def:"Pojištěný se dožije konce pojistné doby.",ex:"Vyplacení naspořených prostředků."},
 
-  <script>
-    const terms = {
-      "pojistná smlouva": {def: "Smluvní dohoda mezi pojišťovnou a klientem, která stanovuje podmínky pojištění, práva a povinnosti obou stran.", ex: "Pojistná smlouva na rodinný dům obsahuje podmínky, za kterých je dům pojištěn například proti požáru nebo krádeži."},
-      "pojistné": {def: "Částka, kterou platí pojistník pojišťovně za poskytování pojistné ochrany.", ex: "Roční pojistné na pojištění domácnosti činí 2 800 Kč."},
-      "pojistník": {def: "Osoba, která uzavřela pojistnou smlouvu a je povinna platit pojistné.", ex: "Manžel uzavřel pojistnou smlouvu – je tedy pojistník, přestože pojištěná je manželka."},
-      "pojištěný": {def: "Osoba, na jejíž život, zdraví, majetek nebo odpovědnost se vztahuje pojištění.", ex: "Dítě je pojištěné v rámci úrazového pojištění sjednaného rodičem."},
-      "pojistná událost": {def: "Událost krytá pojištěním, která zakládá nárok na plnění.", ex: "Škoda způsobená krupobitím na pergole je pojistnou událostí."},
-      "pojistné plnění": {def: "Částka, kterou pojišťovna vyplatí po vzniku pojistné události.", ex: "Pojišťovna uhradí opravu střechy jako pojistné plnění."},
-      "výluka z pojištění": {def: "Událost nebo okolnost, kterou pojištění nekryje.", ex: "Škody způsobené úmyslným jednáním jsou výlukou."},
-      "spoluúčast": {def: "Část škody, kterou si klient hradí sám.", ex: "Při havárii se spoluúčastí 1 000 Kč tuto částku zaplatí klient, zbytek pojišťovna."},
-      "pojistná částka": {def: "Maximální částka, kterou pojišťovna vyplatí při pojistné události.", ex: "Pojistná částka na dům byla stanovena na 2,5 milionu Kč."},
-      "pojistná doba": {def: "Období, na které je pojištění sjednáno.", ex: "Pojistná doba trvá 5 let – po tuto dobu je pojištění aktivní."},
-      "pojistné období": {def: "Interval, za který se platí pojistné (měsíc, čtvrtletí, rok).", ex: "Pojistné období je jeden rok – pojistné se platí ročně."},
-      "indexace": {def: "Automatické navyšování pojistné částky a pojistného (typicky kvůli inflaci).", ex: "Indexace zajistí, že hodnota pojištění odpovídá cenám v budoucnosti."},
-      "pojistná hodnota": {def: "Skutečná hodnota pojištěného majetku.", ex: "Pojistná hodnota domu byla stanovena na 4,2 milionu Kč."},
-      "nová cena": {def: "Cena, za kterou lze pořídit novou stejnou nebo srovnatelnou věc.", ex: "Nová cena pračky stejné třídy je 12 000 Kč."},
-      "časová cena": {def: "Hodnota věci po zohlednění opotřebení / znehodnocení.", ex: "Pět let starý notebook má časovou cenu 4 000 Kč."},
-      "podpojištění": {def: "Pojistná částka je nižší než skutečná hodnota majetku.", ex: "Dům v hodnotě 5 mil. je pojištěn na 2,5 mil. – dojde k podpojištění."},
-      "přepojištění": {def: "Pojistná částka je vyšší než hodnota majetku (pojišťovna neplní nad skutečnou škodu).", ex: "Auto za 200 tis. bylo pojištěno na 400 tis. – to je přepojištění."},
-      "předmět pojištění": {def: "Věc, osoba nebo zájem, na který se pojištění vztahuje.", ex: "Předmětem pojištění je rodinný dům a garáž."},
-      "smluvní ujednání": {def: "Konkrétní dohody a podmínky tvořící součást smlouvy.", ex: "Ujednání určují např. výši spoluúčasti."},
-      "všeobecné pojistné podmínky": {def: "Soubor pravidel upravujících práva a povinnosti stran.", ex: "Součástí smlouvy jsou i VPP pojišťovny."},
-      "zvláštní pojistné podmínky": {def: "Specifické podmínky pro daný produkt/pojistné riziko.", ex: "ZPP upravují pojištění vozidel."},
-      "dodatek ke smlouvě": {def: "Dokument, kterým se mění/doplňuje původní smlouva.", ex: "Dodatek navýšil pojistnou částku na 3 mil. Kč."},
-      "podmínky plnění": {def: "Okolnosti, při kterých pojišťovna plní.", ex: "Při krádeži je podmínkou plnění policejní protokol."},
-      "nepřetržitá doba pojištění": {def: "Doba trvání pojištění bez přerušení.", ex: "Bonus u povinného ručení se odvíjí od nepřetržité doby."},
+    /* Nemovitosti / domácnost */
+    "nemovitost": {def:"Budova, stavba nebo byt.",ex:"Rodinný dům pojištěn proti požáru a povodni."},
+    "domácnost": {def:"Vybavení bytu/domu (movité věci).",ex:"Kryto i elektronické vybavení."},
+    "vedlejší stavby": {def:"Garáž, kůlna, pergola apod.",ex:"Kryto poškození garáže po vichřici."},
+    "skla a sanita": {def:"Okna, výlohy, umyvadla, vana apod.",ex:"Uhrazeno rozbité okno."},
+    "stavba ve výstavbě": {def:"Nedokončená stavba – zvláštní režim pojištění.",ex:"Pojištění platí i během stavby."},
+    "tržní hodnota": {def:"Odhadovaná cena, za kterou lze věc prodat na trhu.",ex:"Tržní hodnota bytu 2+1 je 2,2 mil. Kč."},
 
-      /* Životní pojištění */
-      "čekací doba": {def: "Období po začátku pojištění, během kterého nevzniká nárok na plnění.", ex: "U závažných nemocí bývá čekací doba 3–6 měsíců."},
-      "karence": {def: "Doba po vzniku události, kdy se plnění ještě nevyplácí.", ex: "Denní dávky se vyplácí až po karenci 14 dnů."},
-      "závažná nemoc": {def: "Nemoc s výrazným dopadem na zdraví/pracovní schopnost pojištěného.", ex: "Infarkt myokardu patří mezi závažné nemoci."},
-      "invalidita": {def: "Dlouhodobě nepříznivý zdravotní stav s poklesem pracovní schopnosti.", ex: "Přiznána invalidita 2. stupně po úrazu."},
-      "dožití": {def: "Situace, kdy pojištěný přežije konec pojistné doby.", ex: "Po dožití 60 let vyplatila pojišťovna naspořené prostředky."},
-      "odbytné": {def: "Částka vyplacená při předčasném ukončení rezervotvorné smlouvy.", ex: "Klient po zrušení smlouvy obdržel odbytné."},
-      "obmyšlená osoba": {def: "Osoba, které bude vyplaceno plnění při smrti pojištěného.", ex: "Obmyšlenou osobou je manželka."},
-      "denní odškodné": {def: "Denní částka vyplácená při pracovní neschopnosti/hospitalizaci.", ex: "Sjednáno 500 Kč/den po dobu neschopnosti."},
+    /* Vozidla */
+    "povinné ručení": {def:"Pojištění odpovědnosti z provozu vozidla.",ex:"Bez něj nesmí vozidlo na silnici."},
+    "havarijní pojištění": {def:"Kryje škody na vlastním vozidle.",ex:"Oprava po střetu se zvěří."},
+    "asistenční služby": {def:"Odtah, náhradní vozidlo, pomoc v nouzi.",ex:"Asistence odtáhla auto z dálnice."},
+    "bonus-malus": {def:"Slevy/přirážky dle škodní historie.",ex:"Bezeškodní průběh = sleva."},
+    "regres": {def:"Nárok pojišťovny na náhradu škody vůči viníkovi při porušení povinností.",ex:"Jízda pod vlivem alkoholu."},
+    "technická prohlídka vozidla": {def:"STK s vlivem na plnění.",ex:"Bez platné STK může být plnění kráceno."},
+    "totální škoda": {def:"Škoda, kdy se oprava ekonomicky nevyplatí.",ex:"Vyplácí se obecná/tržní hodnota vozidla."},
+    "spoluúčast procentem": {def:"Spoluúčast vyjádřená procentem z škody (často s minimem).",ex:"5 % min. 5 000 Kč."},
+    "spoluúčast pevnou částkou": {def:"Spoluúčast ve fixní částce.",ex:"Pevná spoluúčast 1 000 Kč."}
+  };
 
-      /* Nemovitosti / domácnost */
-      "nemovitost": {def: "Budova, stavba nebo byt – předmět pojištění.", ex: "Rodinný dům je pojištěn proti požáru a povodni."},
-      "domácnost": {def: "Soubor movitých věcí tvořících vybavení domácnosti.", ex: "Pojištění domácnosti kryje nábytek i elektroniku."},
-      "vedlejší stavby": {def: "Stavby související s hlavní nemovitostí (garáž, kůlna, pergola).", ex: "Kryto i poškození garáže po vichřici."},
-      "skla a sanita": {def: "Specifické položky – okna, výlohy, umyvadla, vana apod.", ex: "Pojištění uhradilo rozbité okno."},
-      "stavba ve výstavbě": {def: "Nedokončená stavba – zvláštní režim pojištění.", ex: "Pojištění se vztahovalo i na dům ve výstavbě."},
-
-      /* Vozidla */
-      "povinné ručení": {def: "Pojištění odpovědnosti z provozu vozidla povinné ze zákona.", ex: "Bez povinného ručení nesmí vozidlo na silnici."},
-      "havarijní pojištění": {def: "Kryje škody na vlastním vozidle.", ex: "Zaplatilo opravu po střetu se zvěří."},
-      "asistenční služby": {def: "Služby při poruše/nehodě – odtah, náhradní vozidlo apod.", ex: "Asistence zajistila odtah z dálnice."},
-      "bonus-malus": {def: "Systém slev/přirážek dle škodní historie.", ex: "Bezeškodní průběh = sleva na pojistném."},
-      "regres": {def: "Nárok pojišťovny na náhradu škody vůči viníkovi při porušení povinností.", ex: "Regres při jízdě pod vlivem alkoholu."},
-      "technická prohlídka vozidla": {def: "Kontrola stavu vozidla s vlivem na plnění.", ex: "Bez platné STK může být plnění kráceno."}
-    };
-
-    
-    const searchInput=document.getElementById('search');
+  const searchInput=document.getElementById('search');
   const resultsBox=document.getElementById('autocomplete-results');
   const output=document.getElementById('output');
   const btn=document.getElementById('dict-btn');
@@ -462,6 +166,6 @@
       btn.textContent='Zpět';definitionShown=true;
     }else{searchInput.value='';output.innerHTML='';btn.textContent='Zobrazit / Zpět';definitionShown=false;}
   }
-  </script>
+</script>
 </body>
 </html>
