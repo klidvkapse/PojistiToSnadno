@@ -422,6 +422,15 @@
       "technická prohlídka vozidla": {def: "Kontrola stavu vozidla s vlivem na plnění.", ex: "Bez platné STK může být plnění kráceno."}
     };
 
+     // --- Pomocné funkce ---
+    const searchInput = document.getElementById('search');
+    const resultsBox = document.getElementById('autocomplete-results');
+    const output = document.getElementById('output');
+    const btn = document.getElementById('dict-btn');
+
+    function normalize(str){return (str||"").normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()}
+
+
     // Normalize (diacritics insensitive)
     function normalize(str) {
       return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
