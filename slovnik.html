@@ -422,124 +422,46 @@
       "technická prohlídka vozidla": {def: "Kontrola stavu vozidla s vlivem na plnění.", ex: "Bez platné STK může být plnění kráceno."}
     };
 
-     // --- Pomocné funkce ---
-    const searchInput = document.getElementById('search');
-    const resultsBox = document.getElementById('autocomplete-results');
-    const output = document.getElementById('output');
-    const btn = document.getElementById('dict-btn');
+    
+    const searchInput=document.getElementById('search');
+  const resultsBox=document.getElementById('autocomplete-results');
+  const output=document.getElementById('output');
+  const btn=document.getElementById('dict-btn');
+  let currentFocus=-1;let definitionShown=false;
+  function normalize(str){return(str||"").normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase()}
+  const normKeyMap=new Map(Object.keys(terms).map(k=>[normalize(k),k]));
 
-    function normalize(str){return (str||"").normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()}
-
-
-    // Normalize (diacritics insensitive)
-    function normalize(str) {
-      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    }
-
-    // Našeptávač
-    const searchInput = document.getElementById('search');
-    const resultsBox = document.getElementById('autocomplete-results');
-    let currentFocus = -1;
-    let definitionShown = false;
-
-    searchInput.addEventListener("input", function () {
-      if (definitionShown) return; // Disable autocomplete after result shown
-      const val = this.value;
-      resultsBox.innerHTML = "";
-      if (!val) return false;
-      let matches = Object.keys(terms).filter(
-        t => normalize(t).includes(normalize(val))
-      );
-      if (matches.length === 0) return false;
-      matches.forEach((item, idx) => {
-        const div = document.createElement("div");
-        div.classList.add("autocomplete-item");
-        div.innerHTML = item.replace(new RegExp(val, "gi"), match =>
-          `<strong>${match}</strong>`
-        );
-        div.addEventListener("mousedown", function(e){
-          searchInput.value = item;
-          resultsBox.innerHTML = "";
-        });
-        resultsBox.appendChild(div);
-      });
+  searchInput.addEventListener('input',function(){
+    if(definitionShown)return;
+    const val=this.value;resultsBox.innerHTML='';resultsBox.style.display='none';
+    if(!val)return;
+    const matches=Object.keys(terms).filter(t=>normalize(t).includes(normalize(val)));
+    if(!matches.length)return;
+    resultsBox.style.display='block';
+    matches.forEach(item=>{
+      const div=document.createElement('div');div.className='autocomplete-item';
+      div.innerHTML=item;
+      div.addEventListener('mousedown',()=>{searchInput.value=item;resultsBox.innerHTML='';resultsBox.style.display='none';});
+      resultsBox.appendChild(div);
     });
+  });
 
-    searchInput.addEventListener("keydown", function(e) {
-      if (definitionShown) return; // Disable after result
-      let items = resultsBox.querySelectorAll(".autocomplete-item");
-      if (!items.length) return;
-      if (e.key === "ArrowDown") {
-        currentFocus++;
-        if (currentFocus >= items.length) currentFocus = 0;
-        addActive(items);
-      } else if (e.key === "ArrowUp") {
-        currentFocus--;
-        if (currentFocus < 0) currentFocus = items.length - 1;
-        addActive(items);
-      } else if (e.key === "Enter") {
-        if (currentFocus > -1) {
-          e.preventDefault();
-          items[currentFocus].dispatchEvent(new Event("mousedown"));
-        }
-      }
-    });
+  searchInput.addEventListener('keydown',function(e){
+    if(definitionShown)return;const items=resultsBox.querySelectorAll('.autocomplete-item');if(!items.length)return;
+    if(e.key==='ArrowDown'){currentFocus=(currentFocus+1)%items.length;addActive(items);}else if(e.key==='ArrowUp'){currentFocus=(currentFocus-1+items.length)%items.length;addActive(items);}else if(e.key==='Enter'){if(currentFocus>-1){e.preventDefault();items[currentFocus].dispatchEvent(new Event('mousedown'));}}
+  });
 
-    function addActive(items) {
-      if (!items) return false;
-      removeActive(items);
-      if (currentFocus >= items.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = items.length - 1;
-      items[currentFocus].classList.add("autocomplete-active");
-      items[currentFocus].scrollIntoView({ block: "nearest" });
-    }
-    function removeActive(items) {
-      for (let item of items) item.classList.remove("autocomplete-active");
-    }
-    document.addEventListener("click", function (e) {
-      if (e.target !== searchInput) resultsBox.innerHTML = "";
-      currentFocus = -1;
-    });
+  function addActive(items){items.forEach(i=>i.classList.remove('autocomplete-active'));items[currentFocus].classList.add('autocomplete-active');items[currentFocus].scrollIntoView({block:'nearest'});}
+  document.addEventListener('click',e=>{if(e.target!==searchInput){resultsBox.innerHTML='';resultsBox.style.display='none';currentFocus=-1;}});
 
-    // Funkce pro zobrazení/vymazání výsledku
-    function showOrReset() {
-      const input = document.getElementById('search');
-      const out = document.getElementById('output');
-      const btn = document.getElementById('dict-btn');
-
-      if (!definitionShown) {
-        const key = input.value.trim().toLowerCase();
-        resultsBox.innerHTML = "";
-        if (terms[key]) {
-          out.innerHTML = `<strong>${key}</strong><br>
-            <div class="def">${terms[key].def}</div>
-            <div class="ex" style="color:#ffe580; margin-top:6px; font-style:italic;">${terms[key].ex}</div>`;
-        } else {
-          out.innerHTML = `<span style="color:#ffd;">Pojem nebyl nalezen. Doporučujeme jej zaslat do sekce níže.</span>`;
-        }
-        btn.textContent = "Zpět";
-        definitionShown = true;
-        searchInput.blur();
-        setTimeout(() => {
-          out.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 100);
-      } else {
-        // Reset
-        input.value = "";
-        out.innerHTML = "";
-        btn.textContent = "Zobrazit / Zpět";
-        definitionShown = false;
-        resultsBox.innerHTML = "";
-        searchInput.focus();
-      }
-    }
-
-    // Potvrzovací hláška pro sekci návrhu pojmů (ponechána beze změny dle zadání)
-    document.getElementById('addTermForm').addEventListener('submit', function(e){
-      setTimeout(function(){
-        document.getElementById('addTermSuccess').innerText = "Děkujeme za návrh! Výraz bude po schválení přidán do slovníku.";
-      }, 800);
-    });
+  function showOrReset(){
+    if(!definitionShown){
+      const raw=searchInput.value.trim();const key=normKeyMap.get(normalize(raw));
+      resultsBox.innerHTML='';resultsBox.style.display='none';
+      if(key){const t=terms[key];output.innerHTML=`<div class='term'>${key}</div><div>${t.def}</div><div class='ex'>${t.ex}</div>`;}else{output.innerHTML="<span style='color:#ffe580'>Pojem nebyl nalezen.</span>";}
+      btn.textContent='Zpět';definitionShown=true;
+    }else{searchInput.value='';output.innerHTML='';btn.textContent='Zobrazit / Zpět';definitionShown=false;}
+  }
   </script>
 </body>
 </html>
