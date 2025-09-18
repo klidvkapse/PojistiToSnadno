@@ -435,7 +435,498 @@
         def: "Dopravní nehoda je definována jako událost v provozu na pozemních komunikacích, například havárie nebo srážka vozidla, která se stala nebo byla započata na pozemní komunikaci. Dále zahrnuje nehody při veřejné hromadné dopravě na železnici, vodních tocích a v letadlech. K pojistné události při dopravní nehodě je nutné doložit záznam státního orgánu o výsledku šetření dopravní nehody a zdravotnickou dokumentaci související s úrazem, pokud k němu došlo ",
         ex: "Dopravní nehoda je srážka nebo havárie na silnici, ve vlaku, lodi nebo letadle. Může jít i o situaci, kdy je sražen chodec nebo cyklista.Pro vyplacení pojistky je potřeba zpráva od policie a lékařská dokumentace, pokud došlo k úrazu.."
       }
-    };
+      {
+  "pojištění": {
+    def: "Smluvní vztah, při kterém se pojišťovna zavazuje poskytnout pojistné plnění při nastalé pojistné události a pojistník platí pojistné.",
+    ex: "Pojištění domácnosti chrání byt nebo dům proti živelným pohromám a krádežím."
+  },
+  "riziko": {
+    def: "Možná budoucí událost, která může způsobit škodu na majetku, zdraví nebo životě.",
+    ex: "Rizikem je například povodeň, požár nebo nemoc."
+  },
+  "pojistné riziko": {
+    def: "Konkrétní nebezpečí, které je předmětem pojištění.",
+    ex: "Pojistným rizikem u havarijního pojištění je například odcizení vozidla."
+  },
+  "pojistná událost": {
+    def: "Událost, která je krytá pojištěním a zakládá nárok na pojistné plnění.",
+    ex: "Škoda způsobená krupobitím na pergole je pojistnou událostí."
+  },
+  "pojistná částka": {
+    def: "Maximální výše plnění, kterou pojišťovna vyplatí při pojistné události.",
+    ex: "Pojistná částka na byt byla sjednána na 3 miliony Kč."
+  },
+  "podpojištění": {
+    def: "Situace, kdy je pojistná částka nižší než skutečná hodnota majetku.",
+    ex: "Pokud má dům hodnotu 5 milionů Kč, ale je pojištěn jen na 2,5 milionu Kč, dojde k podpojištění."
+  },
+  "přepojištění": {
+    def: "Stav, kdy je pojistná částka vyšší než skutečná hodnota majetku – pojišťovna ale nikdy nevyplatí více, než je skutečná škoda.",
+    ex: "Auto má hodnotu 200 000 Kč, ale pojistná částka je nastavena na 400 000 Kč – to je přepojištění."
+  },
+  "nová cena": {
+    def: "Cena, za kterou lze v daném čase a místě pořídit novou stejnou nebo srovnatelnou věc.",
+    ex: "Nová cena televize, která shořela při požáru, je 12 000 Kč."
+  },
+  "časová cena": {
+    def: "Hodnota věci po započítání jejího opotřebení nebo znehodnocení.",
+    ex: "Pět let starý notebook má časovou cenu 4 000 Kč."
+  },
+  "rezervotvorné pojištění": {
+    def: "Životní pojištění, u kterého se vytváří rezerva (spořící složka).",
+    ex: "Rezervotvorné pojištění kombinuje krytí rizik a spoření."
+  },
+  "rizikové pojištění": {
+    def: "Životní pojištění, které kryje pouze rizika bez spořící složky.",
+    ex: "Rizikové životní pojištění slouží k ochraně rodiny při úmrtí živitele."
+  },
+  "trvalé následky úrazu": {
+    def: "Trvalé poškození zdraví v důsledku úrazu, které omezuje běžný život.",
+    ex: "Po vážné dopravní nehodě má klient trvalé následky úrazu."
+  },
+  "invalidita": {
+    def: "Dlouhodobě nepříznivý zdravotní stav, který omezuje pracovní schopnost.",
+    ex: "Invalidita 2. stupně znamená pokles pracovní schopnosti o 50 %."
+  },
+  "čekací doba": {
+    def: "Období po sjednání pojištění, během kterého ještě nevzniká nárok na plnění.",
+    ex: "U nemocenského pojištění bývá čekací doba 3 měsíce."
+  },
+  "karence": {
+    def: "Časový úsek, po který pojišťovna nevyplácí dávky, i když už vznikl nárok na plnění.",
+    ex: "Pojišťovna vyplácí denní dávku až po karenční době 14 dnů pracovní neschopnosti."
+  },
+  "bonus-malus": {
+    def: "Systém slev a přirážek k pojistnému podle bezeškodního nebo škodného průběhu pojištění.",
+    ex: "Řidič, který 5 let neboural, získal slevu na povinném ručení díky bonusu."
+  },
+  "regresní náhrada": {
+    def: "Částka, kterou pojišťovna vymáhá po škůdci, pokud za škodu odpovídá on.",
+    ex: "Pokud řidič způsobil škodu pod vlivem alkoholu, pojišťovna po něm uplatní regres."
+  },
+  "povinné ručení": {
+    def: "Pojištění odpovědnosti z provozu vozidla, které musí mít každé vozidlo v ČR.",
+    ex: "Bez povinného ručení není možné jezdit po silnici."
+  },
+  "havarijní pojištění": {
+    def: "Dobrovolné pojištění vozidla proti škodám na vlastním autě.",
+    ex: "Havarijní pojištění kryje škody po srážce, krádeži nebo vandalismu."
+  },
+  "pojištění odpovědnosti": {
+    def: "Pojištění, které kryje škody způsobené třetím osobám.",
+    ex: "Pojištění odpovědnosti z občanského života kryje škodu, když dítě rozbije sousedovi okno."
+  },
+  "asistenční služby": {
+    def: "Služby poskytované pojišťovnou v nouzových situacích, např. odtah vozidla.",
+    ex: "Po autonehodě zajistila asistenční služba odtah vozidla."
+  },
+  "zajištění": {
+    def: "Forma pojištění pro pojišťovny – přenesení části rizika na zajišťovnu.",
+    ex: "Pojišťovna snížila své riziko sjednáním zajištění."
+  },
+  "likvidace pojistné události": {
+    def: "Proces posouzení a vyřízení pojistné události pojišťovnou.",
+    ex: "Po nahlášení škody probíhá likvidace pojistné události do několika dnů."
+  },
+  "obmyšlená osoba": {
+    def: "Osoba určená pojistníkem, které bude vyplaceno plnění v případě smrti pojištěného.",
+    ex: "Obmyšlenou osobou bývá partner nebo děti."
+  },
+  "rezervotvorná složka": {
+    def: "Část pojistného, která se ukládá jako finanční rezerva.",
+    ex: "Část pojistného šla do rezervotvorné složky, která se klientovi vyplácí při dožití."
+  },
+  "výluka z pojištění": {
+    def: "Situace nebo událost, kterou pojištění nekryje.",
+    ex: "Škody způsobené úmyslným jednáním jsou výlukou z pojištění."
+  },
+
+  "pojištění": {
+    def: "Smluvní vztah, kdy se pojišťovna zavazuje poskytnout pojistné plnění a pojistník platí pojistné.",
+    ex: "Pojištění majetku kryje rizika spojená s požárem nebo povodní."
+  },
+  "riziko": {
+    def: "Možná budoucí událost, která může způsobit újmu na majetku, zdraví nebo životě.",
+    ex: "Rizikem je například úraz, povodeň nebo požár."
+  },
+  "pojistné riziko": {
+    def: "Konkrétní nebezpečí, proti kterému je sjednáno pojištění.",
+    ex: "U cestovního pojištění je pojistným rizikem například ztráta zavazadel."
+  },
+  "pojistný zájem": {
+    def: "Oprávněná potřeba ochrany před následky pojistného rizika.",
+    ex: "Pojistný zájem má vlastník domu, který si sjedná pojištění nemovitosti."
+  },
+  "pojistná hodnota": {
+    def: "Hodnota pojištěného majetku, která určuje výši pojistné částky.",
+    ex: "Pojistná hodnota domu je 4 miliony Kč."
+  },
+  "podpojištění": {
+    def: "Stav, kdy je pojistná částka nižší než skutečná hodnota majetku.",
+    ex: "Pokud je dům v hodnotě 5 milionů pojištěn jen na 2 miliony, je podpojištěn."
+  },
+  "přepojištění": {
+    def: "Stav, kdy pojistná částka převyšuje skutečnou hodnotu majetku – pojišťovna však neplní více, než je skutečná škoda.",
+    ex: "Auto v hodnotě 200 tisíc bylo pojištěno na 400 tisíc, což je přepojištění."
+  },
+  "nová cena": {
+    def: "Hodnota, za kterou je možné koupit novou stejnou nebo obdobnou věc.",
+    ex: "Nová cena notebooku stejného typu je 25 000 Kč."
+  },
+  "rezervotvorné pojištění": {
+    def: "Životní pojištění, které obsahuje i spořící složku.",
+    ex: "Klient si sjednal rezervotvorné pojištění s investiční složkou."
+  },
+  "rizikové pojištění": {
+    def: "Životní pojištění, které kryje jen rizika bez spořící složky.",
+    ex: "Rizikové pojištění slouží jako ochrana rodiny v případě úmrtí živitele."
+  },
+  "trvalé následky úrazu": {
+    def: "Dlouhodobé poškození zdraví, které omezuje běžný život.",
+    ex: "Po vážném úrazu ruky měl klient trvalé následky."
+  },
+  "invalidita": {
+    def: "Stav dlouhodobě snížené pracovní schopnosti v důsledku zdravotního stavu.",
+    ex: "Invalidita 3. stupně znamená pokles pracovní schopnosti o více než 70 %."
+  },
+  "čekací doba": {
+    def: "Období po sjednání pojištění, kdy ještě nevzniká nárok na plnění.",
+    ex: "U pojištění vážných nemocí bývá čekací doba 6 měsíců."
+  },
+  "karence": {
+    def: "Doba od začátku pojistné události, během které pojišťovna ještě neplní.",
+    ex: "Pojišťovna vyplácí denní dávky až po uplynutí karence 14 dnů."
+  },
+  "bonus-malus": {
+    def: "Systém slev a přirážek k pojistnému podle bezeškodního nebo škodného průběhu.",
+    ex: "Díky bonusu má řidič levnější povinné ručení."
+  },
+  "regresní náhrada": {
+    def: "Částka, kterou pojišťovna vymáhá zpět, pokud pojistník způsobil škodu porušením povinností.",
+    ex: "Pokud řidič havaruje pod vlivem alkoholu, pojišťovna po něm uplatní regres."
+  },
+  "povinné ručení": {
+    def: "Pojištění odpovědnosti z provozu vozidla, povinné ze zákona.",
+    ex: "Bez povinného ručení nelze legálně jezdit po silnicích."
+  },
+  "havarijní pojištění": {
+    def: "Dobrovolné pojištění vozidla proti škodám na vlastním autě.",
+    ex: "Havarijní pojištění kryje škody při srážce nebo vandalismu."
+  },
+  "pojištění odpovědnosti": {
+    def: "Pojištění kryjící škody, které pojištěný způsobí třetím osobám.",
+    ex: "Pojištění odpovědnosti kryje škodu, když dítě rozbije sousedovi okno."
+  },
+  "asistenční služby": {
+    def: "Služby poskytované klientům v nouzi, např. odtah auta, právní pomoc nebo lékařská asistence.",
+    ex: "Při poruše na dálnici zajistila asistenční služba odtah."
+  },
+  "zajištění": {
+    def: "Pojištění pojišťoven, kdy se riziko přenáší na zajišťovnu.",
+    ex: "Pojišťovna si snížila riziko sjednáním zajištění."
+  },
+  "rezervotvorná složka": {
+    def: "Část pojistného, která se ukládá a tvoří finanční rezervu.",
+    ex: "Klient může část rezervotvorné složky vybrat při dožití."
+  },
+  "amortizace": {
+    def: "Snížení hodnoty věci vlivem opotřebení a stáří.",
+    ex: "U starších vozidel se při likvidaci škody uplatňuje amortizace náhradních dílů."
+  },
+  "sublimit": {
+    def: "Maximální částka plnění pro určitou položku v rámci pojistné smlouvy.",
+    ex: "U pojištění domácnosti je sublimit na elektroniku 50 000 Kč."
+  },
+  "spolupracující osoba": {
+    def: "Osoba, která pomáhá pojistníkovi při sjednání nebo správě pojištění.",
+    ex: "Finanční poradce jedná jako spolupracující osoba."
+  },
+  "zásada nejvyšší dobré víry": {
+    def: "Právní princip, že pojistník i pojišťovna musí jednat čestně a pravdivě.",
+    ex: "Klient musí uvést pravdivě všechny zdravotní informace – to je zásada nejvyšší dobré víry."
+  },
+
+  "zajišťovna": {
+    def: "Specializovaná instituce, která poskytuje pojišťovnám zajištění, tedy krytí části jejich rizik.",
+    ex: "Česká pojišťovna přenesla část rizik na mezinárodní zajišťovnu."
+  },
+  "likvidátor": {
+    def: "Pracovník pojišťovny, který posuzuje a vyřizuje pojistné události.",
+    ex: "Likvidátor přijel na místo nehody a zdokumentoval škodu."
+  },
+  "hlášení pojistné události": {
+    def: "Oznámení klienta pojišťovně o vzniku pojistné události.",
+    ex: "Klient podal hlášení pojistné události po vytopení bytu."
+  },
+  "doba určitého plnění": {
+    def: "Období, po které pojišťovna vyplácí pojistné plnění, například u denních dávek.",
+    ex: "Doba určitého plnění byla sjednána na 365 dnů pracovní neschopnosti."
+  },
+  "rentní pojištění": {
+    def: "Pojištění, které vyplácí pravidelnou rentu po určitou dobu nebo doživotně.",
+    ex: "Rentní pojištění zajistilo klientovi měsíční příjem po úrazu."
+  },
+  "připojištění": {
+    def: "Doplňkové pojištění sjednané k hlavní smlouvě.",
+    ex: "K životnímu pojištění si klient sjednal připojištění hospitalizace."
+  },
+  "hospitalizace": {
+    def: "Pobyt pojištěného v nemocnici, který může být kryt připojištěním.",
+    ex: "Za každý den hospitalizace klient obdržel sjednanou denní dávku."
+  },
+  "spolupojištění": {
+    def: "Podíl více pojišťoven na jednom pojištění.",
+    ex: "Velké průmyslové riziko bylo kryto formou spolupojištění."
+  },
+ 
+  "pojištění majetku": {
+    def: "Pojištění kryjící škody na nemovitostech a movitých věcech.",
+    ex: "Pojištění majetku zahrnuje pojištění domu i domácnosti."
+  },
+  "pojištění domácnosti": {
+    def: "Pojištění movitých věcí v bytě nebo domě proti živelným pohromám, krádeži a dalším rizikům.",
+    ex: "Pojištění domácnosti kryje i vybavení kuchyně nebo elektroniku."
+  },
+  "pojištění nemovitosti": {
+    def: "Pojištění budov proti škodám způsobeným živly nebo jinými riziky.",
+    ex: "Pojištění nemovitosti krylo opravu střechy po vichřici."
+  },
+  "cestovní pojištění": {
+    def: "Pojištění kryjící rizika při cestách do zahraničí.",
+    ex: "Cestovní pojištění pokrylo náklady na ošetření při úrazu v Itálii."
+  },
+  "úrazové pojištění": {
+    def: "Pojištění kryjící následky úrazu – smrt, trvalé následky nebo denní odškodné.",
+    ex: "Úrazové pojištění vyplatilo klientovi plnění po zlomenině nohy."
+  },
+  "pojištění dětí": {
+    def: "Speciální pojištění zaměřené na úrazy a nemoci dětí.",
+    ex: "Rodiče sjednali pojištění dětí s denním odškodným."
+  },
+  "pojištění podnikatelů": {
+    def: "Pojištění určené pro firmy a živnostníky na ochranu majetku a odpovědnosti.",
+    ex: "Pojištění podnikatelů kryje stroje, budovy i odpovědnost za škody."
+  },
+  "pojištění profesní odpovědnosti": {
+    def: "Pojištění kryjící škody způsobené výkonem povolání.",
+    ex: "Advokát má sjednané pojištění profesní odpovědnosti."
+  },
+  "pojištění právní ochrany": {
+    def: "Pojištění, které hradí náklady na právní zastoupení a soudní spory.",
+    ex: "Pojištění právní ochrany pokrylo advokáta při řešení sporu o nájem."
+  },
+  "pojištění schopnosti splácet": {
+    def: "Pojištění, které kryje splátky úvěru při ztrátě zaměstnání, nemoci nebo invaliditě.",
+    ex: "Pojištění schopnosti splácet uhradilo klientovi hypotéku během pracovní neschopnosti."
+  },
+ 
+  "technická úroková míra": {
+    def: "Maximální garantovaná úroková míra, kterou pojišťovna používá při tvorbě rezerv.",
+    ex: "Technická úroková míra byla stanovena na 1,9 %."
+  },
+  "odbytné": {
+    def: "Částka vyplacená klientovi při předčasném ukončení rezervotvorného pojištění.",
+    ex: "Klient dostal odbytné po zrušení životní pojistky."
+  },
+  "kapitálová hodnota": {
+    def: "Hodnota rezervotvorného pojištění v čase, která se skládá z naspořených prostředků.",
+    ex: "Kapitálová hodnota smlouvy po 10 letech činila 80 000 Kč."
+  },
+  "investiční složka": {
+    def: "Část životního pojištění, která je investována do fondů.",
+    ex: "Investiční složka byla alokována do akciového fondu."
+  },
+  "riziková přirážka": {
+    def: "Zvýšení pojistného v důsledku vyššího zdravotního nebo profesního rizika.",
+    ex: "Kvůli rizikovému povolání měl klient rizikovou přirážku."
+  },
+    {
+  "předmět pojištění": {
+    def: "Věc, osoba nebo zájem, na který se pojištění vztahuje.",
+    ex: "Předmětem pojištění je rodinný dům a přilehlá garáž."
+  },
+  "pojistná hodnota": {
+    def: "Skutečná hodnota pojištěného majetku nebo sjednaná hodnota u životního pojištění.",
+    ex: "Pojistná hodnota domu byla stanovena na 4,2 milionu Kč."
+  },
+  "pojistná ochrana": {
+    def: "Rozsah krytí, který pojišťovna poskytuje v rámci sjednané smlouvy.",
+    ex: "Pojistná ochrana kryje škody na majetku i odpovědnost za škody způsobené třetím osobám."
+  },
+  "sjednané riziko": {
+    def: "Událost nebo situace, proti které je klient konkrétně pojištěn.",
+    ex: "Sjednaným rizikem u pojištění domácnosti je například krádež vloupáním."
+  },
+  "smluvní ujednání": {
+    def: "Dohody a podmínky, které jsou součástí pojistné smlouvy.",
+    ex: "Smluvní ujednání určují výši spoluúčasti při pojistné události."
+  },
+  "všeobecné pojistné podmínky": {
+    def: "Soubor pravidel, která upravují práva a povinnosti smluvních stran.",
+    ex: "Součástí smlouvy jsou i všeobecné pojistné podmínky pojišťovny."
+  },
+  "zvláštní pojistné podmínky": {
+    def: "Podmínky, které doplňují nebo upravují všeobecné pojistné podmínky pro konkrétní typ pojištění.",
+    ex: "Zvláštní pojistné podmínky se vztahují například na pojištění vozidel."
+  },
+  "dodatek ke smlouvě": {
+    def: "Dokument, kterým se mění nebo doplňuje původní pojistná smlouva.",
+    ex: "Klient podepsal dodatek ke smlouvě o navýšení pojistné částky."
+  },
+  "podmínky plnění": {
+    def: "Okolnosti, za kterých pojišťovna vyplatí pojistné plnění.",
+    ex: "Podmínkou plnění je doložení policejního protokolu při krádeži."
+  },
+  "nepřetržitá doba pojištění": {
+    def: "Období, po které pojištění trvá bez přerušení.",
+    ex: "Bonus u povinného ručení se odvíjí od nepřetržité doby pojištění."
+  },
+  "denní odškodné": {
+    def: "Denní částka vyplácená po dobu pracovní neschopnosti v rámci úrazového nebo životního pojištění.",
+    ex: "Klient dostal denní odškodné 500 Kč po dobu 30 dnů pracovní neschopnosti."
+  },
+  "trvalé následky": {
+    def: "Zdravotní postižení, které má trvalý charakter po prodělaném úrazu.",
+    ex: "Po nehodě byla vyplacena pojistka za trvalé následky úrazu."
+  },
+  "smrt následkem úrazu": {
+    def: "Pojištění, které kryje smrt způsobenou úrazem.",
+    ex: "Rodina obdržela pojistné plnění po smrti pojištěného při dopravní nehodě."
+  },
+  "hospitalizace následkem úrazu": {
+    def: "Pojištění vyplácí dávky za dobu strávenou v nemocnici v důsledku úrazu.",
+    ex: "Po úrazu ruky klient dostal 400 Kč za každý den hospitalizace."
+  },
+  "invalidita": {
+    def: "Dlouhodobý pokles pracovní schopnosti z důvodu zdravotního stavu.",
+    ex: "Životní pojištění krylo invaliditu 2. stupně po těžké nemoci."
+  },
+  "nemovitost": {
+    def: "Budova, stavba nebo byt, který je předmětem pojištění.",
+    ex: "Nemovitost byla pojištěna proti požáru a povodni."
+  },
+  "domácnost": {
+    def: "Soubor movitých věcí, které tvoří vybavení domácnosti.",
+    ex: "Do pojištění domácnosti patří nábytek, elektronika i oblečení."
+  },
+  "vedlejší stavby": {
+    def: "Stavby související s hlavní nemovitostí, například garáž nebo zahradní domek.",
+    ex: "Součástí pojištění jsou i vedlejší stavby na pozemku."
+  },
+  "skla a sanita": {
+    def: "Specifické položky v pojištění domácnosti nebo nemovitosti.",
+    ex: "Pojištění krylo rozbité okno i poškozenou vanu."
+  },
+  "povinné ručení": {
+    def: "Pojištění odpovědnosti z provozu vozidla povinné ze zákona.",
+    ex: "Bez povinného ručení není možné vozidlo provozovat."
+  },
+  "havarijní pojištění": {
+    def: "Pojištění vozidla kryjící škody na vlastním autě.",
+    ex: "Havarijní pojištění pokrylo škodu po nehodě na parkovišti."
+  },
+  "asistenční služby": {
+    def: "Doprovodné služby k pojištění vozidla, například odtah nebo náhradní vozidlo.",
+    ex: "Po poruše motoru zajistila asistenční služba odtah vozidla."
+  },
+  "bonus-malus": {
+    def: "Systém slev a přirážek k pojistnému v závislosti na škodním průběhu.",
+    ex: "Řidič bez nehod získal bonus a nižší cenu povinného ručení."
+  },
+  "regres": {
+    def: "Nárok pojišťovny na náhradu škody vůči viníkovi, pokud porušil povinnosti.",
+    ex: "Pojišťovna uplatnila regres na řidiče, který havaroval pod vlivem alkoholu."
+  },
+  "technická prohlídka vozidla": {
+    def: "Kontrola stavu vozidla, která může ovlivnit platnost pojištění.",
+    ex: "Bez platné technické prohlídky může mít klient problém s plněním."
+  },
+    {
+  "čekací doba": {
+    def: "Období po začátku pojištění, během kterého ještě nevzniká nárok na plnění.",
+    ex: "U pojištění závažných onemocnění je čekací doba obvykle 3–6 měsíců."
+  },
+  "karence": {
+    def: "Doba, po kterou se po vzniku pojistné události ještě nevyplácí plnění.",
+    ex: "Pojišťovna začala vyplácet denní dávky až po 15 dnech – to je karence."
+  },
+  "příčinná souvislost": {
+    def: "Podmínka, že mezi pojistnou událostí a škodou musí být přímá vazba.",
+    ex: "Plnění bylo odmítnuto, protože nebyla prokázána příčinná souvislost mezi úrazem a následkem."
+  },
+  "pojistná doba": {
+    def: "Délka trvání pojistné smlouvy.",
+    ex: "Pojistná doba životního pojištění byla sjednána na 25 let."
+  },
+  "dobrovolné připojištění": {
+    def: "Doplňkové krytí nad rámec základní smlouvy.",
+    ex: "K životnímu pojištění si klient sjednal dobrovolné připojištění invalidity."
+  },
+  "obmyšlená osoba": {
+    def: "Osoba, která dostane pojistné plnění při smrti pojištěného.",
+    ex: "Obmyšlenou osobou byla uvedena manželka klienta."
+  },
+  "úraz": {
+    def: "Neočekávané a náhlé působení zevních sil na tělo, které způsobí poškození zdraví nebo smrt.",
+    ex: "Pád ze schodů, který vedl ke zlomenině, je úrazem."
+  },
+  "závažná nemoc": {
+    def: "Onemocnění, které má zásadní vliv na zdravotní stav a pracovní schopnost pojištěného.",
+    ex: "Infarkt myokardu je považován za závažnou nemoc krytou životním pojištěním."
+  },
+  "invalidita": {
+    def: "Dlouhodobě nepříznivý zdravotní stav s poklesem pracovní schopnosti.",
+    ex: "Po úrazu byla klientovi přiznána invalidita 2. stupně."
+  },
+  "dožití": {
+    def: "Situace, kdy pojištěný přežije konec pojistné doby.",
+    ex: "Po dožití 60 let klient obdržel naspořené prostředky z životního pojištění."
+  },
+  "odbytné": {
+    def: "Částka, kterou pojišťovna vyplatí při předčasném ukončení smlouvy.",
+    ex: "Po pěti letech klient smlouvu zrušil a dostal odbytné 40 000 Kč."
+  },
+  "rezerva": {
+    def: "Finanční prostředky, které pojišťovna shromažďuje na budoucí závazky.",
+    ex: "Životní pojištění s rezervou má i spořící složku."
+  },
+  "nemovitost": {
+    def: "Budova, stavba nebo byt, který je předmětem pojištění.",
+    ex: "Rodinný dům byl pojištěn proti požáru a povodni."
+  },
+  "stavba ve výstavbě": {
+    def: "Pojištění nemovitosti, která ještě není dokončená.",
+    ex: "Pojištění se vztahovalo i na dům ve výstavbě."
+  },
+  "vedlejší stavby": {
+    def: "Stavby na pozemku, které doplňují hlavní nemovitost, například garáž nebo kůlna.",
+    ex: "K pojištění byly přidány i vedlejší stavby."
+  },
+  "skla": {
+    def: "Samostatná položka pojištění domácnosti nebo nemovitosti.",
+    ex: "Pojištění krylo i škodu na rozbitých oknech."
+  },
+  "povinné ručení": {
+    def: "Pojištění odpovědnosti z provozu vozidla, povinné ze zákona.",
+    ex: "Řidič bez povinného ručení nesmí vyjet na silnici."
+  },
+  "havarijní pojištění": {
+    def: "Pojištění kryjící škody na vlastním vozidle.",
+    ex: "Havarijní pojištění zaplatilo opravu po střetu se zvěří."
+  },
+  "asistenční služby": {
+    def: "Služby poskytované pojišťovnou v případě problémů na cestě.",
+    ex: "Po poruše motoru zajistila asistenční služba odtah auta."
+  },
+  "bonus-malus": {
+    def: "Systém slev a přirážek podle škodní historie řidiče.",
+    ex: "Díky bezeškodnímu průběhu získal řidič bonus a levnější pojistku."
+  },
+  "regres": {
+    def: "Nárok pojišťovny na náhradu škody vůči viníkovi, pokud porušil povinnosti.",
+    ex: "Pojišťovna uplatnila regres, protože viník havaroval pod vlivem alkoholu."
+  }
+ };
 
     // Normalize (diacritics insensitive)
     function normalize(str) {
