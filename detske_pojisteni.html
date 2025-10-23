@@ -469,21 +469,26 @@
   </script>
 
   <!-- jednotná jemná patička s podmínkami -->
-  <class="footer" role="contentinfo">
-    <div class="footer__wrap">
-      <div class="footer__links">
-        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
-        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
-        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
-        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
-        <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
-      </div>
-      <div>© 2025 PojistiToSnadno.cz — Daniel Verner</div>
-    </div>
-  
+ <footer style="background:rgba(255,255,255,0.85); backdrop-filter:blur(6px); padding:36px 20px; color:#1d1d1f; border-top:1px solid rgba(0,0,0,0.08);">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;">
 
-    <small class="copy">© 2025 Daniel Verner – PojistiToSnadno.cz</small>
-  </footer>
+    <div class="footer-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px 18px;">
+      <a href="/pravni.html" style="color:#1d1d1f;font-weight:600;">Právní informace &amp; ČNB</a>
+      <a href="/gdpr.html" style="color:#1d1d1f;font-weight:600;">Ochrana osobních údajů</a>
+      <a href="/cookies.html" style="color:#1d1d1f;font-weight:600;">Používání cookies</a>
+      <a href="/podminky.html" style="color:#1d1d1f;font-weight:600;">Podmínky užívání</a>
+      <button type="button" onclick="resetCookieConsent()" style="border:none;background:none;color:#af4876;font-weight:700;cursor:pointer;">Nastavení cookies</button>
+    </div>
+
+    <div class="footer-actions" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+      <a href="index.html" class="btn btn-ghost" style="background:#fff;">Domů</a>
+      <a href="#top" class="btn btn-ghost" style="background:#fff;">Nahoru ↑</a>
+    </div>
+
+    <small style="font-size:14px;color:#555;margin-top:8px;">© 2025 <strong>PojistiToSnadno.cz</strong> — Daniel Verner</small>
+  </div>
+</footer>
+
 
   <script>
   (function(){
