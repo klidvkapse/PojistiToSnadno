@@ -457,13 +457,30 @@
       <a href="#top" class="btn btn-ghost">Nahoru ↑</a>
     </div>
 
-    <nav class="container legal-links" aria-label="Právní odkazy">
-      <a href="pravni.html">Právní informace &amp; ČNB</a>
-      <a href="gdpr.html">Ochrana osobních údajů</a>
-      <a href="cookies.html">Používání cookies</a>
-      <a href="podminky.html">Podmínky užívání</a>
-      <a href="nastaveni-cookies.html">Nastavení cookies</a>
-    </nav>
+    <!-- helper pro „Nastavení cookies“ -->
+  <script>
+    window.resetCookieConsent = window.resetCookieConsent || function(){
+      try{ if (typeof gtag==='function'){ gtag('consent','update',{ ad_user_data:'denied', ad_personalization:'denied', ad_storage:'denied', analytics_storage:'denied'}); } }catch(e){}
+      try{ localStorage.removeItem('cookie_consent_choice'); }catch(e){}
+      try{ document.cookie='cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax'; }catch(e){}
+      alert('Nastavení cookies bylo resetováno. Po obnovení stránky se znovu zobrazí lišta (pokud je nasazen cookie banner).');
+      try{ location.reload(); }catch(e){}
+    };
+  </script>
+
+  <!-- jednotná jemná patička s podmínkami -->
+  <class="footer" role="contentinfo">
+    <div class="footer__wrap">
+      <div class="footer__links">
+        <a class="footer__chip" href="/pravni.html">Právní informace &amp; ČNB</a>
+        <a class="footer__chip" href="/gdpr.html">Ochrana osobních údajů</a>
+        <a class="footer__chip" href="/cookies.html">Používání cookies</a>
+        <a class="footer__chip" href="/podminky.html">Podmínky užívání</a>
+        <button type="button" class="footer__chip footer__utils" onclick="resetCookieConsent()">Nastavení cookies</button>
+      </div>
+      <div>© 2025 PojistiToSnadno.cz — Daniel Verner</div>
+    </div>
+  
 
     <small class="copy">© 2025 Daniel Verner – PojistiToSnadno.cz</small>
   </footer>
