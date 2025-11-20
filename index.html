@@ -760,6 +760,7 @@
   })();
 </script>
   
+    <!-- Klid Bot / Průvodce – skript -->
   <script>
     (function(){
       "use strict";
@@ -768,8 +769,8 @@
       window.__pruvodce_loaded__ = true;
 
       const CFG = {
-        VERSION: '3.0.0',
-        FORM_URL: 'https://formspree.io/f/mjkwnelz',   // soutěžní / konzultační formulář
+        VERSION: '3.0.1',
+        FORM_URL: 'https://formspree.io/f/mjkwnelz',
         BRAND: 'PojistiToSnadno.cz',
         NAME: 'Průvodce',
         PRIMARY: '#c9b475',
@@ -933,14 +934,18 @@
           if (panel.style.display === 'block') positionMascotByPanel();
         });
 
-        document.addEventListener('mousemove', e => {
+        // --- oči sledují myš i dotyk (desktop + mobil) ---
+        function handleEyeMove(e){
           const svg = mascot && mascot.querySelector('.pv-glasses');
           if (!svg) return;
           const rect = svg.getBoundingClientRect();
           const cx = rect.left + rect.width / 2;
           const cy = rect.top + rect.height / 2;
-          const dx = Math.max(-1, Math.min(1, (e.clientX - cx) / (rect.width / 2)));
-          const dy = Math.max(-1, Math.min(1, (e.clientY - cy) / (rect.height / 2)));
+          const clientX = e.clientX;
+          const clientY = e.clientY;
+          if (clientX == null || clientY == null) return;
+          const dx = Math.max(-1, Math.min(1, (clientX - cx) / (rect.width / 2)));
+          const dy = Math.max(-1, Math.min(1, (clientY - cy) / (rect.height / 2)));
           const r = 5;
           const baseLX = 55, baseRX = 95, baseY = 45;
           const pupL = svg.querySelector('#pupilL');
@@ -951,8 +956,11 @@
             pupR.setAttribute('cx', baseRX + dx * r);
             pupR.setAttribute('cy', baseY + dy * r);
           }
-        });
+        }
+        document.addEventListener('mousemove', handleEyeMove);
+        document.addEventListener('pointermove', handleEyeMove);
 
+        // ====== obsah panelu ======
         function clear(){ body.innerHTML = ''; }
 
         function msg(html){
@@ -978,24 +986,53 @@
           return c;
         }
 
+        // 1) ÚVODNÍ OBRAZOVKA – podle tvého screenshotu
         function renderIntro(){
           clear();
           const m = msg(
             'Dobrý den 👋<br>' +
             'Jsem váš <b>průvodce stránkou ' + CFG.BRAND + '</b>.<br><br>' +
+            'Možná jste se sem přišli jen podívat, nebo přemýšlíte, jestli vaše pojištění ještě ' +
+            'odpovídá dnešní době.<br><br>' +
             'Vyplnění formuláře vás k ničemu nezavazuje — jen pomůže zjistit, ' +
-            '<b>jestli vaše pojistka stále dává smysl</b> a kde by se dalo něco zlepšit.<br><br>' +
-            'Vyberte, co řešíte:'
+            '<b>jestli vaše pojistka stále dává smysl</b>, a kde by se dalo něco zlepšit.<br><br>' +
+            'Chcete zjistit, <b>které pojištění se vás teď nejvíce týká</b>?'
+          );
+          const c = cta([
+            ['🟡 Ano, chci to zjistit', renderSelectInsurance],
+            ['🟢 Ne, jen se rozhlížím', () => {
+              clear();
+              const m2 = msg(
+                'V pořádku 😊<br>' +
+                'Kdykoli se můžete k Průvodci vrátit kliknutím na tlačítko <b>Průvodce</b> dole vpravo.'
+              );
+              const c2 = cta([
+                ['↩️ Zpět na úvodní zprávu', renderIntro]
+              ]);
+              body.append(m2, c2);
+            }]
+          ]);
+          body.append(m, c);
+        }
+
+        // 2) Výběr pojištění
+        function renderSelectInsurance(){
+          clear();
+          const m = msg(
+            'Skvělé 👍<br>' +
+            'Vyberte, <b>které pojištění se vás teď nejvíce týká</b>:'
           );
           const c = cta([
             ['🏠 Dům / byt', () => renderPath('home')],
             ['🚗 Auto', () => renderPath('auto')],
             ['❤️ Životní / úrazové', () => renderPath('life')],
-            ['👨‍👩‍👧 Děti', () => renderPath('kids')]
+            ['👨‍👩‍👧 Děti', () => renderPath('kids')],
+            ['↩️ Zpět na úvodní zprávu', renderIntro]
           ]);
           body.append(m, c);
         }
 
+        // 3) Vysvětlení + CTA na formulář
         function renderPath(type){
           clear();
           let text = '';
@@ -1027,7 +1064,7 @@
           const m = msg(text);
           const c = cta([
             ['📋 Otevřít formulář', renderForm],
-            ['↩️ Zpět na výběr', renderIntro]
+            ['↩️ Zpět na výběr pojištění', renderSelectInsurance]
           ]);
           body.append(m, c);
         }
@@ -1059,8 +1096,8 @@
     })();
   </script>
 
-</body>
-</html>
+
+
 
 
 </body>
