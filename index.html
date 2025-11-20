@@ -1126,7 +1126,7 @@
         if (panel.style.display === 'block') return;
         inactivityTimer = setTimeout(() => {
           showBubble();
-        }, 180000); // 3 minuty
+        }, 60000); // 3 minuty
       }
 
       ['mousemove','pointermove','mousedown','touchstart','scroll','keydown'].forEach(evt => {
