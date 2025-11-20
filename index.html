@@ -760,106 +760,64 @@
   })();
 </script>
   
-    <!-- Klid Bot / Průvodce – skript -->
- <script>
-(function(){
-  "use strict";
+  <!-- Klid Bot / Průvodce – skript -->
+  <script>
+    (function(){
+      "use strict";
 
-  if (window.__pruvodce_loaded__) return;
-  window.__pruvodce_loaded__ = true;
+      if (window.__pruvodce_loaded__) return;
+      window.__pruvodce_loaded__ = true;
 
-  const CFG = {
-    VERSION: '2.11.0',
-    FORM_URL: 'https://formspree.io/f/mjkwnelz',
-    BRAND: 'PojistiToSnadno.cz',
-    NAME: 'Průvodce',
-    PRIMARY: '#c9b475',
-    ACCENT: '#ffe87a',
-    TEXT: '#2b2b2b',
-    DELAY_MS: 18000,
-    STORAGE_KEY: 'pruvodce_seen_at',
-    COOLDOWN_H: 24,
-    ROOT_ID: 'pruvodce-root',
-    STYLE_ID: 'pruvodce-styles',
-    AVATAR: 'quippy'
-  };
+      const CFG = {
+        VERSION: '3.0.1',
+        FORM_URL: 'https://formspree.io/f/mjkwnelz',
+        BRAND: 'PojistiToSnadno.cz',
+        NAME: 'Průvodce',
+        PRIMARY: '#c9b475',
+        ACCENT: '#ffe87a',
+        TEXT: '#2b2b2b',
+        ROOT_ID: 'pruvodce-root',
+        STYLE_ID: 'pruvodce-styles',
+        AVATAR: 'glasses'
+      };
 
-  const now = () => Date.now();
-  const hours = h => h * 60 * 60 * 1000;
+      const addHead = node => (document.head || document.documentElement).appendChild(node);
 
-  const canAutogreet = () => {
-    try {
-      const t = localStorage.getItem(CFG.STORAGE_KEY);
-      return !t || (now() - parseInt(t, 10)) > hours(CFG.COOLDOWN_H);
-    } catch (_) {
-      return true;
-    }
-  };
-
-  const saveSeen = () => {
-    try {
-      localStorage.setItem(CFG.STORAGE_KEY, String(now()));
-    } catch (_) {}
-  };
-
-  const addHead = node => (document.head || document.documentElement).appendChild(node);
-
-  function quippySVG(size) {
-    const s = size || 132;
-    const uid = 'q' + Math.random().toString(36).slice(2, 7);
-    return `
-<svg class="pv-quippy" width="${s}" height="${Math.round(s * 1.2)}" viewBox="0 0 150 190" aria-hidden="true">
-  <defs>
-    <linearGradient id="wire-${uid}" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="60%" stop-color="#f3f3f1"/>
-      <stop offset="100%" stop-color="#ececeb"/>
-    </linearGradient>
-    <filter id="softShadow-${uid}" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="2" stdDeviation="1.6" flood-color="#000" flood-opacity="0.18"/>
-    </filter>
-  </defs>
-  <g id="qwire">
-    <path id="qm" d="M112 26 C136 28 144 48 130 66 C120 78 98 84 86 98 C78 108 76 118 78 128" fill="none" stroke="url(#wire-${uid})" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#softShadow-${uid})"/>
+      function glassesSVG(size){
+        const s = size || 132;
+        const viewH = 90;
+        return `
+<svg class="pv-glasses" width="${s}" height="${(s*viewH)/150}" viewBox="0 0 150 90" aria-hidden="true">
+  <g id="glassesFrame"
+     stroke="#3b3b3b"
+     stroke-width="4.5"
+     fill="none"
+     stroke-linecap="round">
+    <circle cx="55" cy="45" r="26"/>
+    <circle cx="95" cy="45" r="26"/>
+    <path d="M69 45 h12"/>
   </g>
-  <g id="qdot">
-    <circle cx="112" cy="148" r="6.5" fill="url(#wire-${uid})" filter="url(#softShadow-${uid})"/>
-  </g>
-  <path id="noseWire" d="M108 53 v8" stroke="url(#wire-${uid})" stroke-width="3.4" stroke-linecap="round"/>
-  <g id="glasses" stroke="#8a784a" stroke-width="2.6" fill="none">
-    <circle cx="98" cy="54" r="13"/>
-    <circle cx="118" cy="54" r="13"/>
-    <path d="M110 54 h4"/>
-    <path d="M86 52 q-8 2 -10 7"/>
-  </g>
+
   <g id="eyes">
-    <circle cx="98" cy="54" r="11" fill="#fff" stroke="#2b2618" stroke-width="1.4"/>
-    <circle cx="118" cy="54" r="11" fill="#fff" stroke="#2b2618" stroke-width="1.4"/>
-    <circle id="pupilL" cx="98" cy="54" r="4.2" fill="#2b2618"/>
-    <circle id="pupilR" cx="118" cy="54" r="4.2" fill="#2b2618"/>
-    <rect id="lidL" x="87" y="43" width="22" height="22" fill="#ffffff" style="display:none"/>
-    <rect id="lidR" x="107" y="43" width="22" height="22" fill="#ffffff" style="display:none"/>
-  </g>
-  <g id="brows" stroke="#e6e6e6" stroke-width="2" stroke-linecap="round" fill="none">
-    <path id="browL" d="M86 42 q7 -6 16 -2"/>
-    <path id="browR" d="M114 40 q8 -5 16 0"/>
-  </g>
-  <path id="smile" d="M96 70 Q108 76 122 70" stroke="#cccccc" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <g id="beard" stroke="#e6e6e6" stroke-width="3" stroke-linecap="round" fill="none">
-    <path d="M112 155 C110 170 108 182 112 196"/>
-    <path d="M112 156 C118 174 120 188 118 198"/>
-    <path d="M112 156 C106 174 104 188 106 198"/>
+    <circle cx="55" cy="45" r="20" fill="#ffffff" stroke="#c9b475" stroke-width="2.2"/>
+    <circle cx="95" cy="45" r="20" fill="#ffffff" stroke="#c9b475" stroke-width="2.2"/>
+
+    <circle id="pupilL" cx="55" cy="45" r="7" fill="#222222"/>
+    <circle id="pupilR" cx="95" cy="45" r="7" fill="#222222"/>
+
+    <circle cx="52" cy="42" r="2" fill="#ffffff" opacity="0.85"/>
+    <circle cx="92" cy="42" r="2" fill="#ffffff" opacity="0.85"/>
   </g>
 </svg>`;
-  }
+      }
 
-  function init(){
-    if (document.getElementById(CFG.ROOT_ID)) return;
+      function init(){
+        if (document.getElementById(CFG.ROOT_ID)) return;
 
-    if (!document.getElementById(CFG.STYLE_ID)){
-      const style = document.createElement('style');
-      style.id = CFG.STYLE_ID;
-      style.textContent =
+        if (!document.getElementById(CFG.STYLE_ID)){
+          const style = document.createElement('style');
+          style.id = CFG.STYLE_ID;
+          style.textContent =
 `.pv-btn{position:fixed;right:16px;bottom:16px;z-index:999999;border:none;background:${CFG.PRIMARY};color:#000;padding:12px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.15);cursor:pointer;display:flex;align-items:center;gap:8px;font:600 14px/1.1 system-ui,-apple-system,Segoe UI,Roboto}
 .pv-btn:hover{filter:brightness(1.05)}
 .pv-dot{width:10px;height:10px;background:${CFG.ACCENT};border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.05)}
@@ -877,365 +835,266 @@
 .pv-link{display:inline-block;text-decoration:none;background:${CFG.PRIMARY};border:1px solid rgba(0,0,0,.1);color:#111;padding:10px 12px;border-radius:10px;font-weight:700}
 .pv-footer{padding:10px 14px;border-top:1px dashed rgba(0,0,0,.08);display:flex;align-items:center;gap:6px;color:#666;font-size:12px}
 @media (max-width:420px){.pv-panel{right:8px;left:8px;width:auto}}
-.pv-mascot{position:fixed;right:48px;bottom:44px;z-index:999998;pointer-events:none}
-@keyframes pv-nod{0%{transform:rotate(0)}30%{transform:rotate(-6deg)}60%{transform:rotate(5deg)}100%{transform:rotate(0)}}
-@keyframes pv-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes pv-wave{0%{transform:rotate(0)}40%{transform:rotate(-14deg)}80%{transform:rotate(0)}100%{transform:rotate(0)}}
-@keyframes pv-tilt{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg)}}
-@keyframes pv-brow{0%{transform:translateY(0)}50%{transform:translateY(-3px)}100%{transform:translateY(0)}}
-@keyframes pv-sway{0%{transform:rotate(0)}50%{transform:rotate(4deg)}100%{transform:rotate(0)}}
-.pv-mascot.idleTilt{animation: pv-tilt 6s ease-in-out infinite}
-.pv-mascot.raise #browL,.pv-mascot.raise #browR{animation: pv-brow .9s ease-in-out 1}
-.pv-mascot .tap{transform-origin:96px 102px;animation: pv-wave .9s ease-in-out 1}
-.pv-mascot.beardSway #beard{transform-origin:112px 156px;animation: pv-sway 1.2s ease-in-out 1}
-.pv-mascot.wave{animation: pv-wave 1.4s ease-in-out 1}
-.pv-bubble{position:fixed;max-width:240px;background:#fff;color:#222;border-radius:12px;padding:10px 12px;font:500 13px/1.4 system-ui,-apple-system,Segoe UI,Roboto;box-shadow:0 14px 30px rgba(0,0,0,.25);border:1px solid rgba(0,0,0,.12);z-index:999997;opacity:0;pointer-events:none;transition:opacity .25s ease}
-.pv-bubble.visible{opacity:1}`;
-      addHead(style);
-    }
+.pv-mascot{position:fixed;right:48px;bottom:44px;z-index:999998;pointer-events:none}`;
+          addHead(style);
+        }
 
-    const root = document.createElement('div');
-    root.id = CFG.ROOT_ID;
-    root.dataset.version = CFG.VERSION;
+        const root = document.createElement('div');
+        root.id = CFG.ROOT_ID;
+        root.dataset.version = CFG.VERSION;
 
-    const btn = document.createElement('button');
-    btn.className = 'pv-btn';
-    btn.setAttribute('aria-label', 'Otevřít Průvodce');
-    btn.innerHTML = '<span class="pv-dot"></span><span>' + CFG.NAME + '</span>';
+        const btn = document.createElement('button');
+        btn.className = 'pv-btn';
+        btn.setAttribute('aria-label', 'Otevřít Průvodce');
+        btn.innerHTML = '<span class="pv-dot"></span><span>' + CFG.NAME + '</span>';
 
-    const panel = document.createElement('div');
-    panel.className = 'pv-panel';
-    panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-modal', 'true');
-    panel.innerHTML =
-      '<div class="pv-header"><div class="pv-titlewrap"><span style="display:inline-block;width:22px;height:26px">' +
-      quippySVG(22) +
-      '</span><div><div class="pv-title">' +
-      CFG.NAME +
-      ' • ' +
-      CFG.BRAND +
-      '</div></div></div><button class="pv-close" aria-label="Zavřít">×</button></div>' +
-      '<div class="pv-body" id="pv-body"></div><div class="pv-footer">🤝 Nezávazná pomoc s orientací</div>';
+        const panel = document.createElement('div');
+        panel.className = 'pv-panel';
+        panel.setAttribute('role', 'dialog');
+        panel.setAttribute('aria-modal', 'true');
+        panel.innerHTML =
+          '<div class="pv-header">' +
+            '<div class="pv-titlewrap">' +
+              '<span style="display:inline-block;width:30px;height:20px">' + glassesSVG(30) + '</span>' +
+              '<div>' +
+                '<div class="pv-title">' + CFG.NAME + ' • ' + CFG.BRAND + '</div>' +
+                '<div class="pv-sub">Jemný průvodce – bez tlaku</div>' +
+              '</div>' +
+            '</div>' +
+            '<button class="pv-close" aria-label="Zavřít">×</button>' +
+          '</div>' +
+          '<div class="pv-body" id="pv-body"></div>' +
+          '<div class="pv-footer">🤝 Nezávazná pomoc s orientací</div>';
 
-    document.body.appendChild(root);
-    root.appendChild(btn);
-    root.appendChild(panel);
+        document.body.appendChild(root);
+        root.appendChild(btn);
+        root.appendChild(panel);
 
-    let mascot = null;
-    let bubble = null;
+        let mascot = null;
+        if (CFG.AVATAR === 'glasses'){
+          mascot = document.createElement('div');
+          mascot.className = 'pv-mascot';
+          document.body.appendChild(mascot);
+        }
 
-    if (CFG.AVATAR === 'quippy'){
-      mascot = document.createElement('div');
-      mascot.className = 'pv-mascot';
-      document.body.appendChild(mascot);
+        const renderMascotSVG = () => { if (mascot) mascot.innerHTML = glassesSVG(132); };
+        renderMascotSVG();
 
-      bubble = document.createElement('div');
-      bubble.className = 'pv-bubble';
-      bubble.textContent = 'Kdybyste potřeboval poradit s pojištěním, jsem tady 😊';
-      document.body.appendChild(bubble);
-    }
+        const body = panel.querySelector('#pv-body');
+        const closeBtn = panel.querySelector('.pv-close');
 
-    const renderMascotSVG = () => { if (mascot) mascot.innerHTML = quippySVG(132); };
-    renderMascotSVG();
+        function positionMascotNearButton(){
+          if (!mascot) return;
+          renderMascotSVG();
+          mascot.style.left = '';
+          mascot.style.top = '';
+          mascot.style.right = '48px';
+          mascot.style.bottom = '44px';
+        }
 
-    const body = panel.querySelector('#pv-body');
-    const closeBtn = panel.querySelector('.pv-close');
+        function positionMascotByPanel(){
+          if (!mascot) return;
+          renderMascotSVG();
+          const rect = panel.getBoundingClientRect();
+          const mW = 132;
+          const left = Math.max(8, rect.left - mW*1.05 - 10);
+          const top = rect.top + 24;
+          mascot.style.right = '';
+          mascot.style.bottom = '';
+          mascot.style.left = left + 'px';
+          mascot.style.top = top + 'px';
+        }
 
-    function positionBubble(){
-      if (!mascot || !bubble) return;
-      const r = mascot.getBoundingClientRect();
-      const w = bubble.offsetWidth || 220;
-      const left = Math.max(8, r.left - w - 12);
-      const top  = Math.max(8, r.top - 10);
-      bubble.style.left = left + 'px';
-      bubble.style.top  = top + 'px';
-    }
+        function show(){
+          renderMascotSVG();
+          panel.style.display = 'block';
+          if (closeBtn) closeBtn.focus();
+          positionMascotByPanel();
+        }
 
-    function showBubble(){
-      if (!bubble) return;
-      positionBubble();
-      bubble.classList.add('visible');
-    }
+        function hide(){
+          panel.style.display = 'none';
+          renderMascotSVG();
+          if (btn) btn.focus();
+          positionMascotNearButton();
+        }
 
-    function hideBubble(){
-      if (!bubble) return;
-      bubble.classList.remove('visible');
-    }
+        btn.addEventListener('click', () => {
+          if (panel.style.display === 'block') hide();
+          else { show(); renderIntro(); }
+        });
 
-    let idleTimer = null;
-    function scheduleIdle(){
-      if (idleTimer){ clearTimeout(idleTimer); idleTimer = null; }
-      if (!mascot || panel.style.display === 'block') return;
-      const delay = 3500 + Math.random() * 3500;
-      idleTimer = setTimeout(() => {
-        const roll = Math.random();
-        if (roll < 0.25){ mascot.classList.add('nod'); setTimeout(() => mascot && mascot.classList.remove('nod'), 1100); }
-        else if (roll < 0.5){ mascot.classList.add('bounce'); setTimeout(() => mascot && mascot.classList.remove('bounce'), 1600); }
-        else if (roll < 0.75){ mascot.classList.add('raise'); setTimeout(() => mascot && mascot.classList.remove('raise'), 1000); }
-        else { mascot.classList.add('beardSway'); setTimeout(() => mascot && mascot.classList.remove('beardSway'), 1200); }
-        scheduleIdle();
-      }, delay);
-    }
+        closeBtn.addEventListener('click', hide);
 
-    function positionMascotNearButton(){
-      if (!mascot) return;
-      renderMascotSVG();
-      mascot.style.left = '';
-      mascot.style.top = '';
-      mascot.style.right = '48px';
-      mascot.style.bottom = '44px';
-      mascot.classList.add('idleTilt');
-      scheduleIdle();
-      if (bubble && bubble.classList.contains('visible')) positionBubble();
-    }
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && panel.style.display === 'block') hide();
+        });
 
-    function positionMascotByPanel(){
-      if (!mascot) return;
-      renderMascotSVG();
-      const rect = panel.getBoundingClientRect();
-      const mW = 132;
-      const left = Math.max(8, rect.left - mW * 1.05 - 10);
-      const top = rect.top + 36;
-      mascot.style.right = '';
-      mascot.style.bottom = '';
-      mascot.style.left = left + 'px';
-      mascot.style.top = top + 'px';
-      mascot.classList.remove('idleTilt');
-      if (bubble && bubble.classList.contains('visible')) positionBubble();
-    }
+        window.addEventListener('resize', () => {
+          if (panel.style.display === 'block') positionMascotByPanel();
+        });
 
-    function show(){
-      if (idleTimer){ clearTimeout(idleTimer); idleTimer = null; }
-      hideBubble();
-      renderMascotSVG();
-      panel.style.display = 'block';
-      if (closeBtn) closeBtn.focus();
-      positionMascotByPanel();
-    }
+        // --- oči sledují myš i dotyk (desktop + mobil) ---
+        function handleEyeMove(e){
+          const svg = mascot && mascot.querySelector('.pv-glasses');
+          if (!svg) return;
+          const rect = svg.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const clientX = e.clientX;
+          const clientY = e.clientY;
+          if (clientX == null || clientY == null) return;
+          const dx = Math.max(-1, Math.min(1, (clientX - cx) / (rect.width / 2)));
+          const dy = Math.max(-1, Math.min(1, (clientY - cy) / (rect.height / 2)));
+          const r = 5;
+          const baseLX = 55, baseRX = 95, baseY = 45;
+          const pupL = svg.querySelector('#pupilL');
+          const pupR = svg.querySelector('#pupilR');
+          if (pupL && pupR){
+            pupL.setAttribute('cx', baseLX + dx * r);
+            pupL.setAttribute('cy', baseY + dy * r);
+            pupR.setAttribute('cx', baseRX + dx * r);
+            pupR.setAttribute('cy', baseY + dy * r);
+          }
+        }
+        document.addEventListener('mousemove', handleEyeMove);
+        document.addEventListener('pointermove', handleEyeMove);
 
-    function hide(){
-      panel.style.display = 'none';
-      renderMascotSVG();
-      if (btn) btn.focus();
-      positionMascotNearButton();
-    }
+        // ====== obsah panelu ======
+        function clear(){ body.innerHTML = ''; }
 
-    btn.addEventListener('mouseenter', () => {
-      if (!mascot) return;
-      mascot.classList.add('bounce');
-      setTimeout(() => mascot && mascot.classList.remove('bounce'), 1500);
-    });
+        function msg(html){
+          const d = document.createElement('div');
+          d.className = 'pv-msg';
+          d.innerHTML = html;
+          return d;
+        }
 
-    btn.addEventListener('click', () => {
-      if (panel.style.display === 'block') hide();
-      else { show(); renderIntro(); }
-    });
+        function opt(label, fn){
+          const b = document.createElement('button');
+          b.className = 'pv-opt';
+          b.type = 'button';
+          b.innerHTML = label;
+          b.addEventListener('click', fn);
+          return b;
+        }
 
-    closeBtn.addEventListener('click', hide);
+        function cta(items){
+          const c = document.createElement('div');
+          c.className = 'pv-cta';
+          items.forEach(([l, fn]) => c.appendChild(opt(l, fn)));
+          return c;
+        }
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && panel.style.display === 'block') hide();
-    });
+        // 1) ÚVODNÍ OBRAZOVKA – podle tvého screenshotu
+        function renderIntro(){
+          clear();
+          const m = msg(
+            'Dobrý den 👋<br>' +
+            'Jsem váš <b>průvodce stránkou ' + CFG.BRAND + '</b>.<br><br>' +
+            'Možná jste se sem přišli jen podívat, nebo přemýšlíte, jestli vaše pojištění ještě ' +
+            'odpovídá dnešní době.<br><br>' +
+            'Vyplnění formuláře vás k ničemu nezavazuje — jen pomůže zjistit, ' +
+            '<b>jestli vaše pojistka stále dává smysl</b>, a kde by se dalo něco zlepšit.<br><br>' +
+            'Chcete zjistit, <b>které pojištění se vás teď nejvíce týká</b>?'
+          );
+          const c = cta([
+            ['🟡 Ano, chci to zjistit', renderSelectInsurance],
+            ['🟢 Ne, jen se rozhlížím', () => {
+              clear();
+              const m2 = msg(
+                'V pořádku 😊<br>' +
+                'Kdykoli se můžete k Průvodci vrátit kliknutím na tlačítko <b>Průvodce</b> dole vpravo.'
+              );
+              const c2 = cta([
+                ['↩️ Zpět na úvodní zprávu', renderIntro]
+              ]);
+              body.append(m2, c2);
+            }]
+          ]);
+          body.append(m, c);
+        }
 
-    window.addEventListener('resize', () => {
-      if (panel.style.display === 'block') positionMascotByPanel();
-      else if (bubble && bubble.classList.contains('visible')) positionBubble();
-    });
+        // 2) Výběr pojištění
+        function renderSelectInsurance(){
+          clear();
+          const m = msg(
+            'Skvělé 👍<br>' +
+            'Vyberte, <b>které pojištění se vás teď nejvíce týká</b>:'
+          );
+          const c = cta([
+            ['🏠 Dům / byt', () => renderPath('home')],
+            ['🚗 Auto', () => renderPath('auto')],
+            ['❤️ Životní / úrazové', () => renderPath('life')],
+            ['👨‍👩‍👧 Děti', () => renderPath('kids')],
+            ['↩️ Zpět na úvodní zprávu', renderIntro]
+          ]);
+          body.append(m, c);
+        }
 
-    let firedExit = false;
+        // 3) Vysvětlení + CTA na formulář
+        function renderPath(type){
+          clear();
+          let text = '';
+          if (type === 'home') {
+            text =
+              'U pojištění domu/bytu se vyplatí <b>ověřit</b>, jestli částky odpovídají <b>dnešní hodnotě</b> ' +
+              'a podmínky mají <b>širší krytí</b> (fotovoltaiky, více elektrospotřebičů, přepětí/podpětí/zkrat, ' +
+              'domácí asistence).<br><br>' +
+              'Chcete nezávazně otevřít krátký formulář a mít v tom jasněji?';
+          } else if (type === 'auto') {
+            text =
+              'U auta dává smysl <b>každý rok přepočet</b> po novém předpisu. ' +
+              'U havarijního hlídejte <b>aktuální cenu vozu</b> a zvažte, zda starší <b>připojištění</b> ' +
+              'ještě dávají smysl.<br><br>' +
+              'Chcete nezávazně otevřít krátký formulář a podívat se na možnosti?';
+          } else if (type === 'life') {
+            text =
+              'Mnoho životních smluv <b>neodpovídá dnešním částkám</b>. ' +
+              'Novější pojištění mívají <b>méně výluk</b>, větší flexibilitu a oddělené spoření od rizik. ' +
+              'U dětí starší smlouvy často kryjí hlavně úraz, ale chybí nemoc.<br><br>' +
+              'Chcete nezávazně otevřít formulář a zjistit, jak by vypadala současná nabídka?';
+          } else if (type === 'kids') {
+            text =
+              'Starší dětské smlouvy často kryjí hlavně <b>úraz</b>, ale chybí <b>nemoci</b> či delší ošetřování. ' +
+              'Novější kryjí širší spektrum a bývají flexibilnější.<br><br>' +
+              'Chcete nezávazně otevřít formulář a mít v tom jasno?';
+          }
 
-    // --- DETEKCE NEOČINNOSTI A BUBLINY / MÁVNUTÍ ---
-    let inactivityTimer = null;
-    let helpWaveShown = false;
+          const m = msg(text);
+          const c = cta([
+            ['📋 Otevřít formulář', renderForm],
+            ['↩️ Zpět na výběr pojištění', renderSelectInsurance]
+          ]);
+          body.append(m, c);
+        }
 
-    function resetInactivity(){
-      if (!mascot) return;
-      if (panel.style.display === 'block'){
-        clearTimeout(inactivityTimer);
-        inactivityTimer = null;
-        hideBubble();
-        return;
+        function renderForm(){
+          clear();
+          const m = msg(
+            'Otevře se jednoduchý formulář — jméno, e-mail a krátce, co řešíte. ' +
+            '<b>Je to nezávazné.</b>'
+          );
+          const a = document.createElement('a');
+          a.href = CFG.FORM_URL;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.className = 'pv-link';
+          a.textContent = '📋 Otevřít formulář';
+          body.append(m, a);
+        }
+
+        positionMascotNearButton();
       }
-      clearTimeout(inactivityTimer);
-      inactivityTimer = setTimeout(() => {
-        if (!mascot || helpWaveShown) return;
-        helpWaveShown = true;
-        showBubble();
-        mascot.classList.add('wave');
-        setTimeout(() => mascot && mascot.classList.remove('wave'), 2000);
-      }, 180000); // 3 minuty
-    }
 
-    ['mousemove','pointermove','mousedown','touchstart','scroll','keydown'].forEach(evt => {
-      document.addEventListener(evt, () => {
-        hideBubble();
-        resetInactivity();
-      });
-    });
-
-    resetInactivity();
-
-    document.addEventListener('mouseout', e => {
-      if (firedExit || !canAutogreet()) return;
-      if (e.relatedTarget === null && e.clientY <= 0){
-        firedExit = true;
-        show();
-        renderIntro();
-        saveSeen();
+      if (document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
       }
-    });
 
-    if (canAutogreet()){
-      setTimeout(() => {
-        show();
-        renderIntro();
-        saveSeen();
-      }, CFG.DELAY_MS);
-    }
-
-    document.addEventListener('mousemove', e => {
-      const svg = mascot && mascot.querySelector('.pv-quippy');
-      if (!svg) return;
-      const rect = svg.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = Math.max(-1, Math.min(1, (e.clientX - cx) / (rect.width / 2)));
-      const dy = Math.max(-1, Math.min(1, (e.clientY - cy) / (rect.height / 2)));
-      const r = 3.2;
-      const pupL = svg.querySelector('#pupilL');
-      const pupR = svg.querySelector('#pupilR');
-      if (pupL && pupR){
-        pupL.setAttribute('cx', 98 + dx * r);
-        pupL.setAttribute('cy', 54 + dy * r);
-        pupR.setAttribute('cx', 118 + dx * r);
-        pupR.setAttribute('cy', 54 + dy * r);
-      }
-    });
-
-    function blinkOnce(){
-      const svg = mascot && mascot.querySelector('.pv-quippy');
-      if (!svg) return;
-      const lidL = svg.querySelector('#lidL');
-      const lidR = svg.querySelector('#lidR');
-      if (!lidL || !lidR) return;
-      lidL.style.display = 'block';
-      lidR.style.display = 'block';
-      setTimeout(() => {
-        lidL.style.display = 'none';
-        lidR.style.display = 'none';
-      }, 120);
-    }
-
-    (function loopBlink(){
-      setTimeout(() => {
-        blinkOnce();
-        loopBlink();
-      }, 3600 + Math.random() * 4200);
     })();
-
-    function clear(){ body.innerHTML = ''; }
-
-    function msg(html){
-      const d = document.createElement('div');
-      d.className = 'pv-msg';
-      d.innerHTML = html;
-      return d;
-    }
-
-    function opt(label, fn){
-      const b = document.createElement('button');
-      b.className = 'pv-opt';
-      b.type = 'button';
-      b.innerHTML = label;
-      b.addEventListener('click', fn);
-      return b;
-    }
-
-    function cta(items){
-      const c = document.createElement('div');
-      c.className = 'pv-cta';
-      items.forEach(([l, fn]) => c.appendChild(opt(l, fn)));
-      return c;
-    }
-
-    function renderIntro(){
-      clear();
-      const m = msg(
-        'Dobrý den 👋<br>Jsem váš <b>průvodce stránkou ' +
-        CFG.BRAND +
-        '</b>.<br><br>Vyplnění formuláře vás k ničemu nezavazuje — jen pomůže zjistit, ' +
-        '<b>jestli vaše pojistka stále dává smysl</b> a kde by se dalo něco zlepšit.<br><br>' +
-        'Chcete zjistit, <b>které pojištění se vás teď nejvíce týká</b>?'
-      );
-      const c = cta([
-        ['🟨 Ano, chci to zjistit', renderPick],
-        ['🟩 Ne, jen se rozhlížím', renderBrowsing]
-      ]);
-      body.append(m, c);
-    }
-
-    function renderPick(){
-      clear();
-      const m = msg('Skvěle 😊 Vyberte, co řešíte:');
-      const c = cta([
-        ['🏠 Pojištění domu/bytu', () => renderPath('home')],
-        ['🚗 Pojištění auta', () => renderPath('auto')],
-        ['❤️ Životní/úrazové', () => renderPath('life')],
-        ['👨‍👩‍👧 Pojištění pro děti', () => renderPath('kids')]
-      ]);
-      body.append(m, c);
-    }
-
-    function renderPath(type){
-      clear();
-      let text = '';
-      if (type === 'home') text = 'U pojištění domu/bytu se vyplatí <b>ověřit</b>, jestli částky odpovídají <b>dnešní hodnotě</b> a podmínky mají <b>širší krytí</b> (fotovoltaiky, přepětí/podpětí/zkrat, domácí asistence).<br><br>Chcete nezávazně otevřít krátký formulář a mít v tom jasněji?';
-      else if (type === 'auto') text = 'U auta dává smysl <b>každý rok přepočet</b> po novém předpisu. U havarijního hlídejte <b>aktuální cenu vozu</b> a zvažte, zda starší <b>připojištění</b> ještě dávají smysl.<br><br>Chcete nezávazně otevřít krátký formulář a podívat se na možnosti?';
-      else if (type === 'life') text = 'Mnoho životních smluv <b>neodpovídá dnešním částkám</b>. Novější pojištění mívají <b>méně výluk</b>, větší flexibilitu a oddělené spoření od rizik.<br><br>Chcete nezávazně otevřít formulář a zjistit, jak by vypadala současná nabídka?';
-      else if (type === 'kids') text = 'Starší dětské smlouvy často kryjí hlavně <b>úraz</b>, ale chybí <b>nemoci</b> či delší ošetřování. Novější kryjí širší spektrum a bývají flexibilnější.<br><br>Chcete nezávazně otevřít formulář a mít v tom jasno?';
-      const m = msg(text);
-      const c = cta([
-        ['📋 Otevřít formulář', renderForm],
-        ['↩️ Zpět', renderPick]
-      ]);
-      body.append(m, c);
-    }
-
-    function renderForm(){
-      clear();
-      const m = msg('Otevře se jednoduchý formulář — jméno, e-mail a krátce, co řešíte. <b>Je to nezávazné.</b>');
-      const a = document.createElement('a');
-      a.href = CFG.FORM_URL;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'pv-link';
-      a.textContent = '📋 Otevřít formulář';
-      body.append(m, a);
-    }
-
-    function renderBrowsing(){
-      clear();
-      const m = msg('V pořádku 🙂 Kdykoliv budete chtít, klikněte níže a formulář se otevře. <i>Tip:</i> účastníci soutěže o powerbanku mají výhodu 😉');
-      const a = document.createElement('a');
-      a.href = CFG.FORM_URL;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'pv-link';
-      a.textContent = '📋 Otevřít formulář';
-      body.append(m, a);
-    }
-
-    positionMascotNearButton();
-  }
-
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-})();
-</script>
+  </script>
 
 
 
