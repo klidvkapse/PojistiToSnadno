@@ -759,6 +759,309 @@
     }
   })();
 </script>
+  
+  <script>
+    (function(){
+      "use strict";
+
+      if (window.__pruvodce_loaded__) return;
+      window.__pruvodce_loaded__ = true;
+
+      const CFG = {
+        VERSION: '3.0.0',
+        FORM_URL: 'https://formspree.io/f/mjkwnelz',   // soutěžní / konzultační formulář
+        BRAND: 'PojistiToSnadno.cz',
+        NAME: 'Průvodce',
+        PRIMARY: '#c9b475',
+        ACCENT: '#ffe87a',
+        TEXT: '#2b2b2b',
+        ROOT_ID: 'pruvodce-root',
+        STYLE_ID: 'pruvodce-styles',
+        AVATAR: 'glasses'
+      };
+
+      const addHead = node => (document.head || document.documentElement).appendChild(node);
+
+      function glassesSVG(size){
+        const s = size || 132;
+        const viewH = 90;
+        return `
+<svg class="pv-glasses" width="${s}" height="${(s*viewH)/150}" viewBox="0 0 150 90" aria-hidden="true">
+  <g id="glassesFrame"
+     stroke="#3b3b3b"
+     stroke-width="4.5"
+     fill="none"
+     stroke-linecap="round">
+    <circle cx="55" cy="45" r="26"/>
+    <circle cx="95" cy="45" r="26"/>
+    <path d="M69 45 h12"/>
+  </g>
+
+  <g id="eyes">
+    <circle cx="55" cy="45" r="20" fill="#ffffff" stroke="#c9b475" stroke-width="2.2"/>
+    <circle cx="95" cy="45" r="20" fill="#ffffff" stroke="#c9b475" stroke-width="2.2"/>
+
+    <circle id="pupilL" cx="55" cy="45" r="7" fill="#222222"/>
+    <circle id="pupilR" cx="95" cy="45" r="7" fill="#222222"/>
+
+    <circle cx="52" cy="42" r="2" fill="#ffffff" opacity="0.85"/>
+    <circle cx="92" cy="42" r="2" fill="#ffffff" opacity="0.85"/>
+  </g>
+</svg>`;
+      }
+
+      function init(){
+        if (document.getElementById(CFG.ROOT_ID)) return;
+
+        if (!document.getElementById(CFG.STYLE_ID)){
+          const style = document.createElement('style');
+          style.id = CFG.STYLE_ID;
+          style.textContent =
+`.pv-btn{position:fixed;right:16px;bottom:16px;z-index:999999;border:none;background:${CFG.PRIMARY};color:#000;padding:12px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.15);cursor:pointer;display:flex;align-items:center;gap:8px;font:600 14px/1.1 system-ui,-apple-system,Segoe UI,Roboto}
+.pv-btn:hover{filter:brightness(1.05)}
+.pv-dot{width:10px;height:10px;background:${CFG.ACCENT};border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.05)}
+.pv-panel{position:fixed;right:16px;bottom:76px;width:320px;max-width:calc(100vw - 32px);background:#fff;border-radius:16px;box-shadow:0 18px 48px rgba(0,0,0,.18);z-index:999999;overflow:hidden;border:1px solid rgba(0,0,0,.06);display:none}
+.pv-header{background:${CFG.PRIMARY};padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
+.pv-titlewrap{display:flex;align-items:center;gap:8px}
+.pv-title{font:700 14px/1.2 system-ui,-apple-system,Segoe UI,Roboto;color:#111}
+.pv-sub{font:400 12px/1.2 system-ui,-apple-system,Segoe UI,Roboto;color:#222;opacity:.9}
+.pv-close{background:transparent;border:none;font:700 18px/1 system-ui;cursor:pointer;color:#111}
+.pv-body{padding:14px;background:#fff;color:${CFG.TEXT};font:400 14px/1.5 system-ui,-apple-system,Segoe UI,Roboto}
+.pv-msg{background:#f8f6ef;border:1px solid rgba(0,0,0,.06);padding:12px;border-radius:12px;margin-bottom:10px}
+.pv-cta{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.pv-opt{border:1px solid rgba(0,0,0,.12);background:#fff;border-radius:10px;padding:10px;cursor:pointer;text-align:left}
+.pv-opt:hover{background:#faf7e8}
+.pv-link{display:inline-block;text-decoration:none;background:${CFG.PRIMARY};border:1px solid rgba(0,0,0,.1);color:#111;padding:10px 12px;border-radius:10px;font-weight:700}
+.pv-footer{padding:10px 14px;border-top:1px dashed rgba(0,0,0,.08);display:flex;align-items:center;gap:6px;color:#666;font-size:12px}
+@media (max-width:420px){.pv-panel{right:8px;left:8px;width:auto}}
+.pv-mascot{position:fixed;right:48px;bottom:44px;z-index:999998;pointer-events:none}`;
+          addHead(style);
+        }
+
+        const root = document.createElement('div');
+        root.id = CFG.ROOT_ID;
+        root.dataset.version = CFG.VERSION;
+
+        const btn = document.createElement('button');
+        btn.className = 'pv-btn';
+        btn.setAttribute('aria-label', 'Otevřít Průvodce');
+        btn.innerHTML = '<span class="pv-dot"></span><span>' + CFG.NAME + '</span>';
+
+        const panel = document.createElement('div');
+        panel.className = 'pv-panel';
+        panel.setAttribute('role', 'dialog');
+        panel.setAttribute('aria-modal', 'true');
+        panel.innerHTML =
+          '<div class="pv-header">' +
+            '<div class="pv-titlewrap">' +
+              '<span style="display:inline-block;width:30px;height:20px">' + glassesSVG(30) + '</span>' +
+              '<div>' +
+                '<div class="pv-title">' + CFG.NAME + ' • ' + CFG.BRAND + '</div>' +
+                '<div class="pv-sub">Jemný průvodce – bez tlaku</div>' +
+              '</div>' +
+            '</div>' +
+            '<button class="pv-close" aria-label="Zavřít">×</button>' +
+          '</div>' +
+          '<div class="pv-body" id="pv-body"></div>' +
+          '<div class="pv-footer">🤝 Nezávazná pomoc s orientací</div>';
+
+        document.body.appendChild(root);
+        root.appendChild(btn);
+        root.appendChild(panel);
+
+        let mascot = null;
+        if (CFG.AVATAR === 'glasses'){
+          mascot = document.createElement('div');
+          mascot.className = 'pv-mascot';
+          document.body.appendChild(mascot);
+        }
+
+        const renderMascotSVG = () => { if (mascot) mascot.innerHTML = glassesSVG(132); };
+        renderMascotSVG();
+
+        const body = panel.querySelector('#pv-body');
+        const closeBtn = panel.querySelector('.pv-close');
+
+        function positionMascotNearButton(){
+          if (!mascot) return;
+          renderMascotSVG();
+          mascot.style.left = '';
+          mascot.style.top = '';
+          mascot.style.right = '48px';
+          mascot.style.bottom = '44px';
+        }
+
+        function positionMascotByPanel(){
+          if (!mascot) return;
+          renderMascotSVG();
+          const rect = panel.getBoundingClientRect();
+          const mW = 132;
+          const left = Math.max(8, rect.left - mW*1.05 - 10);
+          const top = rect.top + 24;
+          mascot.style.right = '';
+          mascot.style.bottom = '';
+          mascot.style.left = left + 'px';
+          mascot.style.top = top + 'px';
+        }
+
+        function show(){
+          renderMascotSVG();
+          panel.style.display = 'block';
+          if (closeBtn) closeBtn.focus();
+          positionMascotByPanel();
+        }
+
+        function hide(){
+          panel.style.display = 'none';
+          renderMascotSVG();
+          if (btn) btn.focus();
+          positionMascotNearButton();
+        }
+
+        btn.addEventListener('click', () => {
+          if (panel.style.display === 'block') hide();
+          else { show(); renderIntro(); }
+        });
+
+        closeBtn.addEventListener('click', hide);
+
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && panel.style.display === 'block') hide();
+        });
+
+        window.addEventListener('resize', () => {
+          if (panel.style.display === 'block') positionMascotByPanel();
+        });
+
+        document.addEventListener('mousemove', e => {
+          const svg = mascot && mascot.querySelector('.pv-glasses');
+          if (!svg) return;
+          const rect = svg.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = Math.max(-1, Math.min(1, (e.clientX - cx) / (rect.width / 2)));
+          const dy = Math.max(-1, Math.min(1, (e.clientY - cy) / (rect.height / 2)));
+          const r = 5;
+          const baseLX = 55, baseRX = 95, baseY = 45;
+          const pupL = svg.querySelector('#pupilL');
+          const pupR = svg.querySelector('#pupilR');
+          if (pupL && pupR){
+            pupL.setAttribute('cx', baseLX + dx * r);
+            pupL.setAttribute('cy', baseY + dy * r);
+            pupR.setAttribute('cx', baseRX + dx * r);
+            pupR.setAttribute('cy', baseY + dy * r);
+          }
+        });
+
+        function clear(){ body.innerHTML = ''; }
+
+        function msg(html){
+          const d = document.createElement('div');
+          d.className = 'pv-msg';
+          d.innerHTML = html;
+          return d;
+        }
+
+        function opt(label, fn){
+          const b = document.createElement('button');
+          b.className = 'pv-opt';
+          b.type = 'button';
+          b.innerHTML = label;
+          b.addEventListener('click', fn);
+          return b;
+        }
+
+        function cta(items){
+          const c = document.createElement('div');
+          c.className = 'pv-cta';
+          items.forEach(([l, fn]) => c.appendChild(opt(l, fn)));
+          return c;
+        }
+
+        function renderIntro(){
+          clear();
+          const m = msg(
+            'Dobrý den 👋<br>' +
+            'Jsem váš <b>průvodce stránkou ' + CFG.BRAND + '</b>.<br><br>' +
+            'Vyplnění formuláře vás k ničemu nezavazuje — jen pomůže zjistit, ' +
+            '<b>jestli vaše pojistka stále dává smysl</b> a kde by se dalo něco zlepšit.<br><br>' +
+            'Vyberte, co řešíte:'
+          );
+          const c = cta([
+            ['🏠 Dům / byt', () => renderPath('home')],
+            ['🚗 Auto', () => renderPath('auto')],
+            ['❤️ Životní / úrazové', () => renderPath('life')],
+            ['👨‍👩‍👧 Děti', () => renderPath('kids')]
+          ]);
+          body.append(m, c);
+        }
+
+        function renderPath(type){
+          clear();
+          let text = '';
+          if (type === 'home') {
+            text =
+              'U pojištění domu/bytu se vyplatí <b>ověřit</b>, jestli částky odpovídají <b>dnešní hodnotě</b> ' +
+              'a podmínky mají <b>širší krytí</b> (fotovoltaiky, více elektrospotřebičů, přepětí/podpětí/zkrat, ' +
+              'domácí asistence).<br><br>' +
+              'Chcete nezávazně otevřít krátký formulář a mít v tom jasněji?';
+          } else if (type === 'auto') {
+            text =
+              'U auta dává smysl <b>každý rok přepočet</b> po novém předpisu. ' +
+              'U havarijního hlídejte <b>aktuální cenu vozu</b> a zvažte, zda starší <b>připojištění</b> ' +
+              'ještě dávají smysl.<br><br>' +
+              'Chcete nezávazně otevřít krátký formulář a podívat se na možnosti?';
+          } else if (type === 'life') {
+            text =
+              'Mnoho životních smluv <b>neodpovídá dnešním částkám</b>. ' +
+              'Novější pojištění mívají <b>méně výluk</b>, větší flexibilitu a oddělené spoření od rizik. ' +
+              'U dětí starší smlouvy často kryjí hlavně úraz, ale chybí nemoc.<br><br>' +
+              'Chcete nezávazně otevřít formulář a zjistit, jak by vypadala současná nabídka?';
+          } else if (type === 'kids') {
+            text =
+              'Starší dětské smlouvy často kryjí hlavně <b>úraz</b>, ale chybí <b>nemoci</b> či delší ošetřování. ' +
+              'Novější kryjí širší spektrum a bývají flexibilnější.<br><br>' +
+              'Chcete nezávazně otevřít formulář a mít v tom jasno?';
+          }
+
+          const m = msg(text);
+          const c = cta([
+            ['📋 Otevřít formulář', renderForm],
+            ['↩️ Zpět na výběr', renderIntro]
+          ]);
+          body.append(m, c);
+        }
+
+        function renderForm(){
+          clear();
+          const m = msg(
+            'Otevře se jednoduchý formulář — jméno, e-mail a krátce, co řešíte. ' +
+            '<b>Je to nezávazné.</b>'
+          );
+          const a = document.createElement('a');
+          a.href = CFG.FORM_URL;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.className = 'pv-link';
+          a.textContent = '📋 Otevřít formulář';
+          body.append(m, a);
+        }
+
+        positionMascotNearButton();
+      }
+
+      if (document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+    })();
+  </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
