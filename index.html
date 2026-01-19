@@ -304,6 +304,24 @@
   .btn-cookie.primary{ background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; }
   .btn-cookie.secondary{ background:#efefec; color:#1c1c1c; }
   @media (max-width:640px){ .cookie-inner{ align-items:flex-start; } .cookie-actions{ width:100%; justify-content:flex-end; } }
+    /* === PATCH START: HERO GRID – VŽDY 2 SLOUPCE NA DESKTOPU === */
+@media (min-width: 900px){
+  .hero__grid{
+    grid-template-columns: minmax(420px, 520px) 1fr;
+    align-items: center;
+  }
+
+  /* zabrání nechtěnému zalomení */
+  .hero__portrait{
+    grid-column: 1;
+  }
+
+  .hero__grid > div:last-child{
+    grid-column: 2;
+  }
+}
+/* === PATCH END === */
+
 
   </style>
 </head>
