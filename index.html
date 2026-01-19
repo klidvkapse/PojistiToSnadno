@@ -1,137 +1,1130 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="utf-8" />
 
-  <!-- ================== SEO & AI OPTIMALIZACE ================== -->
-  <title>Daniel Verner – pojištění online | životní, úrazové, majetek | PojistiToSnadno.cz</title>
-  <meta name="description" content="Daniel Verner – férový pojišťovací poradce. Online pojištění životní, úrazové, majetku i vozidel. Nezávazná konzultace, lidský přístup, srozumitelně." />
-  <meta name="keywords" content="pojištění online, pojišťovací poradce, životní pojištění, úrazové pojištění, pojištění majetku, Daniel Verner, PojistiToSnadno.cz" />
-  <meta name="author" content="Daniel Verner" />
+  <!-- Google Analytics 4 (gtag.js) + Consent Mode v2 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CRV15HQDX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
 
-  <!-- AI / LLM čitelnost -->
-  <meta name="robots" content="index, follow" />
-  <meta name="googlebot" content="index, follow" />
+    /* Consent – defaultně jen nezbytné, dokud uživatel nerozhodne */
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    });
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Daniel Verner – férové pojištění online" />
-  <meta property="og:description" content="Osobní pojišťovací poradce. Pomohu vám zorientovat se v pojištění bez nátlaku." />
-  <meta property="og:url" content="https://pojistitosnadno.cz" />
-  <meta property="og:image" content="https://pojistitosnadno.cz/img/ogtag.webp" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Structured Data – Person + ProfessionalService -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Daniel Verner",
-    "jobTitle": "Pojišťovací poradce",
-    "url": "https://pojistitosnadno.cz",
-    "image": "https://pojistitosnadno.cz/v_saku.webp",
-    "description": "Férový pojišťovací poradce zaměřený na životní, úrazové a majetkové pojištění.",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "PojistiToSnadno.cz"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "CZ"
-    }
-  }
+    gtag('js', new Date());
+    gtag('config', 'G-4CRV15HQDX', { anonymize_ip: true });
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="canonical" href="https://pojistitosnadno.cz/" />
-  <link rel="icon" href="/favicon.ico" />
+
+  <title>PojistiToSnadno.cz – Online pojištění snadno a férově</title>
+  <meta name="description" content="Online pojištění úrazové, životní, majetkové i cestovní. Rychlá kalkulace a osobní přístup.">
+  <meta name="keywords" content="pojištění online, úrazové pojištění, životní pojištění, majetkové pojištění, cestovní pojištění, Šumperk, Jeseníky">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online">
+  <meta property="og:description" content="Online pojištění úrazové, životní, majetkové i cestovní. Rychlá kalkulace a osobní přístup.">
+  <meta property="og:image" content="https://pojistitosnadno.cz/img/ogtag.webp">
+  <meta property="og:url" content="https://pojistitosnadno.cz">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PojistiToSnadno.cz – Snadné a férové pojištění online">
+  <meta name="twitter:description" content="Online pojištění úrazové, životní, majetkové i cestovní. Rychlá kalkulace a osobní přístup.">
+  <meta name="twitter:image" content="https://pojistitosnadno.cz/img/ogtag.webp">
+
+  <link rel="canonical" href="https://pojistitosnadno.cz/"/>
+  <link rel="icon" href="/favicon.ico">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
   :root{
+    --paper:#ffffff;
     --ink:#1c1c1c;
+    --muted:#6d6d6d;
     --bg:#f6f6f4;
     --gold:#c9b475;
     --gold-dark:#b39f60;
+    --shadow-sm:0 2px 6px rgba(0,0,0,.08);
+    --shadow-md:0 10px 24px rgba(0,0,0,.14);
+    --radius:16px;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:'Raleway',Arial,sans-serif;color:var(--ink);background:var(--bg)}
 
   /* ===== Header ===== */
-  .header{position:fixed;top:0;left:0;right:0;height:64px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px)}
+  .header{
+    position:fixed;top:0;left:0;right:0;height:56px;z-index:1000;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 14px;background:rgba(255,255,255,.9);
+    border-bottom:1px solid rgba(0,0,0,.06);
+    backdrop-filter:blur(8px) saturate(140%);
+  }
   .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-  .brand__logo{width:28px;height:28px;border-radius:8px}
+  .brand__logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffe87a)}
+  .brand__name{white-space:nowrap}
+  .nav{position:fixed;top:56px;left:0;right:0;transform:translateY(-8px);opacity:0;pointer-events:none;background:#fff;transition:.25s;border-bottom:1px solid rgba(0,0,0,.06)}
+  .nav--open{transform:translateY(0);opacity:1;pointer-events:auto}
+  .nav ul{margin:0;padding:10px;list-style:none}
+  .nav a{display:block;padding:10px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:700}
+  .nav a:hover{background:rgba(0,0,0,.05)}
+  .burger{width:40px;height:40px;border:0;background:transparent;cursor:pointer;border-radius:10px;display:grid;place-items:center}
+  .burger span,.burger span::before,.burger span::after{content:"";display:block;width:22px;height:2px;background:#000;position:relative;transition:.25s;border-radius:2px}
+  .burger span::before{position:absolute;transform:translateY(-6px)}
+  .burger span::after{position:absolute;transform:translateY(6px)}
+  .burger[aria-expanded="true"] span{background:transparent}
+  .burger[aria-expanded="true"] span::before{transform:rotate(45deg)}
+  .burger[aria-expanded="true"] span::after{transform:rotate(-45deg)}
 
-  /* ===== Hero ===== */
-  .hero{padding-top:64px;position:relative;color:#fff;overflow:hidden}
-  .hero__bg::before{content:"";position:absolute;inset:0;background:url('img/fotouvod.webp') right center/cover no-repeat;filter:blur(10px) saturate(110%);opacity:.9}
-  .hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,.15))}
-  .hero__wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:72px 24px 96px}
+  /* ===== Hero + sidebar layout ===== */
+  .hero{padding-top:56px;position:relative;color:#fff}
+  .hero__bg::before{content:"";position:absolute;inset:0;background:url('img/fotouvod.webp') right center/cover no-repeat;filter:blur(8px) saturate(110%);opacity:.85}
+  .hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),rgba(0,0,0,.08))}
+  .hero__wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:32px 20px}
 
-  /* === HERO GRID (bez levého seznamu) === */
-  .hero__grid{display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:center}
-
-  /* === PORTRÉT – splývání s pozadím === */
-  .hero__portrait img{
-    width:100%;height:auto;display:block;object-fit:cover;border:none;border-radius:0;
-    -webkit-mask-image:radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-    mask-image:radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-    filter:contrast(1.02) saturate(1.05);
+  /* two-column intro grid (sidebar + hero main) */
+  .intro-grid{display:grid;gap:22px}
+  @media (min-width: 1100px){
+    .intro-grid{grid-template-columns:320px 1fr;align-items:start}
   }
 
-  h1{font-size:48px;margin:0 0 12px}
-  .lead{max-width:56ch;font-size:1.1rem;line-height:1.6}
+ 
+    /* === PATCH START: HERO PORTRÉT – SPLYNUTÍ S POZADÍM === */
+.hero__portrait img{
+  width:360px;
+  height:460px;
+  object-fit:cover;
 
-  .btn{display:inline-block;margin-top:18px;padding:14px 22px;border-radius:14px;font-weight:800;text-decoration:none}
-  .btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000}
+  /* odstranění rámečku */
+  border:none;
+  border-radius:0;
 
-  /* Responsive */
-  @media(max-width:900px){
-    .hero__grid{grid-template-columns:1fr;gap:28px}
-    .hero__portrait img{-webkit-mask-image:none;mask-image:none;border-radius:18px}
-    h1{font-size:34px}
+  /* jemné splývání s pozadím */
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 100%
+  );
+
+  filter: contrast(1.02) saturate(1.05);
+}
+/* === PATCH END === */
+
+
+/* ===== Services sidebar (minimal list with icon bullets) ===== */
+.services-aside{position:relative}
+.svc-heading{
+  margin:0 0 10px;
+  color:#f6f2e7;
+  font-weight:800;
+  font-size:1.05rem;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  text-shadow:0 2px 8px rgba(0,0,0,.55);
+}
+
+.svc-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.svc-item{display:flex;align-items:center;gap:12px}
+
+.svc-bullet{
+  width:28px;height:28px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),#ffe87a);
+  display:grid;place-items:center;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.25)
+}
+.svc-bullet svg{width:16px;height:16px;opacity:.9}
+
+.svc-label{
+  color:#f6f2e7;
+  font-weight:800;
+  letter-spacing:.1px;
+  text-shadow:0 2px 8px rgba(0,0,0,.55);
+}
+
+@media (hover:hover){
+  .svc-item:hover .svc-label{ text-decoration:underline }
+}
+
+/* Desktop: ať je seznam „přilepený“ a o kousek níž */
+@media (min-width:1100px){
+  .services-aside{
+    position: sticky;   /* drží se při scrollu */
+    top: 120px;         /* o něco níž než header */
+    align-self: start;
   }
+}
+
+  /* ===== Sections (below hero) ===== */
+  .section{max-width:1140px;margin:0 auto;padding:40px 20px}
+  .section h2{margin:0 0 16px}
+
+    /* --- mini baner soutěží ---*/
+.contest-callout{max-width:980px;margin:16px auto 0;padding:12px 14px;border:1px solid rgba(0,0,0,.06);border-radius:14px;background:linear-gradient(120deg,rgba(233,222,200,.85),rgba(187,166,127,.45)),url('img/pozadisouteze.webp') center/cover no-repeat;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.contest-callout .row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.contest-callout .left{display:flex;gap:10px;align-items:center}
+.contest-callout .ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(0,0,0,.35);color:#fff;font-size:20px}
+.contest-callout h3{margin:0;font-size:18px}
+.contest-callout p{margin:0;font-size:14px;opacity:.9}
+.contest-callout a.cta{display:inline-flex;align-items:center;gap:8px;background:#bba67f;color:#fff;border-radius:10px;padding:10px 14px;text-decoration:none;font-weight:700}
+.contest-callout a.cta:hover{background:#8b7a58}
+
+  /* Cards grid used in "Podle situace" */
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;box-shadow:var(--shadow-sm);transition:transform .25s, box-shadow .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .card__img{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.82);transition:transform .35s ease,filter .35s ease}
+  .card:hover .card__img{transform:scale(1.04);filter:brightness(.95)}
+  .card__text{position:absolute;inset:auto 0 0 0;color:#fff;padding:18px;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0))}
+
+  /* Rating */
+  #rating-widget{display:grid;gap:10px;align-items:center;max-width:520px}
+  #rating-widget .stars{display:flex;gap:8px;font-size:2rem;cursor:pointer;user-select:none}
+  #rating-stats{display:flex;gap:10px;align-items:baseline}
+  #rating-status{margin-left:auto;color:#6d6d6d}
+
+  /* Kontakt */
+  .contact-quick{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:8px}
+  .qi{display:flex;align-items:center;gap:10px;background:#fff;padding:12px 14px;border-radius:12px;box-shadow:var(--shadow-sm)}
+  .qi svg{width:18px;height:18px}
+  .form{display:grid;gap:10px}
+  .form input,.form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff}
+  .form .actions{display:flex;gap:10px;justify-content:center}
+
+  footer{background:#efefec;padding:22px 16px;margin-top:28px}
+  .footer-wrap{max-width:1140px;margin:0 auto;display:grid;gap:12px}
+  .footer-links,.social{display:flex;gap:14px;flex-wrap:wrap}
+
+  /* Desktop hero adjustments */
+  @media(min-width:960px){
+    .header{height:64px;padding:0 22px}
+    .burger{display:none}
+    .nav{position:static;transform:none;opacity:1;pointer-events:auto;background:transparent;border:0}
+    .nav ul{display:flex;gap:8px;padding:0}
+    .nav a{padding:10px 12px;border-radius:10px}
+
+    .hero__grid{grid-template-columns:360px 1fr;gap:22px;align-items:end}
+    .hero__portrait img{width:360px;height:460px;border-radius:24px}
+    .hero__wrap{padding:64px 24px 96px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .nav,.burger span,.burger span::before,.burger span::after,.card__img{transition:none}
+  }
+
+  /* Mobile finetuning */
+  @media (max-width: 640px){
+    .header{height:56px;padding:0 12px;padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+    .brand__name{font-size:18px;font-weight:800}
+    .nav{top:56px;max-height:calc(100dvh - 56px);overflow:auto;background:rgba(255,255,255,.98);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+    body.no-scroll{overflow:hidden}
+
+    .hero{padding-top:56px}
+    .hero__overlay{background:linear-gradient(to bottom,rgba(0,0,0,.65) 0%,rgba(0,0,0,.45) 35%,rgba(0,0,0,.2) 100%)}
+    .hero__wrap{padding:22px 16px 28px}
+    .hero__grid{grid-template-columns:1fr;gap:14px;align-items:start}
+    .hero__portrait{order:-1;display:flex;justify-content:center}
+    .hero__portrait img{width:132px;height:132px;border-radius:16px;border:1.5px solid rgba(255,255,255,.65)}
+    .hero h1{font-size:32px;line-height:1.12;margin:6px 0 6px;letter-spacing:.2px}
+    .hero .lead{font-size:1rem;line-height:1.45;max-width:36ch;margin:4px 0 10px}
+    .hero .btn{width:100%;text-align:center;padding:12px 16px}
+    .hero .btn--primary{box-shadow:0 8px 20px rgba(0,0,0,.18)}
+  }
+  /* === MOBILE portrét + kartička === */
+  @media (max-width:640px){
+    .hero__grid{ grid-template-columns: 1fr; gap: 0; }
+    .hero__portrait{ order:-1; position: relative; z-index: 1; }
+    .hero__portrait img{ width: 100%; height: auto; border-radius: 18px; border: 0; display: block; }
+    #rating-widget{display:grid;gap:12px;align-items:start;max-width:620px}
+    .rating-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    #rating-widget .star{background:none;border:0;padding:0;line-height:1}
+    #rating-widget .star:focus{outline:2px solid #c9b475;outline-offset:3px;border-radius:6px}
+    .rating-badge{font-weight:800;background:#fff;padding:4px 10px;border-radius:999px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
+    #rating-stats{display:flex;gap:10px;align-items:baseline;color:#1c1c1c}
+    #rating-status{margin-left:auto;color:#6d6d6d}
+    #review-form{display:grid;gap:10px}
+    #review-text{width:100%;min-height:84px;padding:12px;border-radius:10px;border:1px solid #ccc;font:inherit;background:#fff;resize:vertical}
+    #review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
+    #review-form .actions{display:flex;gap:10px;justify-content:flex-start}
+
+    .hero__grid > div:nth-child(2){ position: relative; z-index: 2; width: 92%; margin: -64px auto 12px; padding: 12px 14px; background: rgba(0,0,0,.75); border-radius: 14px; box-shadow: 0 12px 26px rgba(0,0,0,.25); color: #fff; }
+    .hero__grid > div:nth-child(2) h1{ font-size: 21px; line-height: 1.15; margin: 0 0 6px; }
+    .hero__grid > div:nth-child(2) .lead{ font-size: 13.5px; line-height: 1.4; margin: 0; display: block; -webkit-line-clamp: unset; -webkit-box-orient: unset; overflow: visible; }
+    .hero__grid > div:nth-child(2) .btn{ width: 100%; margin-top: 10px; }
+
+    .rating-layout{display:grid;gap:24px}
+    @media(min-width:960px){.rating-layout{grid-template-columns:1fr 1fr}}
+    .rating-card{background:#fff;padding:16px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.06)}
+    #review-form{display:grid;gap:10px}
+    #review-text{ width:100%;min-height:120px;padding:14px 16px;border-radius:12px; border:1px solid #d8d8d2;background:#fff;font:inherit;line-height:1.45;resize:vertical }
+    #review-text:focus{outline:2px solid var(--gold);border-color:var(--gold-dark)}
+    #review-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;color:#6d6d6d;font-size:.92rem}
+  }
+
+  /* === Layout pro sekci Hodnocení === */
+  .rating-wrap{ display:grid; gap:24px; align-items:start; }
+  @media (min-width: 980px){ .rating-wrap{ grid-template-columns: minmax(0,560px) 1fr; } }
+  .rating-side{ position: sticky; top: 90px; }
+
+  /* --- Společný právní footer --- */
+  footer .foot-actions{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:0 0 8px; }
+  footer .legal-links{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px 18px; margin:10px 0 6px; font-size:.95rem; }
+  footer .legal-links a{ text-decoration:underline; text-underline-offset:2px; color:inherit; }
+  footer small.copy{ display:block; text-align:center; opacity:.8; margin-top:6px; }
+
+  /* --- Cookie lišta --- */
+  .cookie-bar{ position:fixed; left:12px; right:12px; bottom:12px; z-index:2000; background:#fff; color:#1c1c1c; border:1px solid #e6e1d2; border-radius:14px; box-shadow:0 12px 28px rgba(0,0,0,.18); padding:12px; display:none; }
+  .cookie-bar.show{ display:block; }
+  .cookie-inner{ display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+  .cookie-text{ font-size:.95rem; line-height:1.45; }
+  .cookie-text a{ color:#1c1c1c; text-decoration:underline; text-underline-offset:2px; }
+  .cookie-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .btn-cookie{ border:0; border-radius:12px; padding:10px 14px; font-weight:800; cursor:pointer; }
+  .btn-cookie.primary{ background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; }
+  .btn-cookie.secondary{ background:#efefec; color:#1c1c1c; }
+  @media (max-width:640px){ .cookie-inner{ align-items:flex-start; } .cookie-actions{ width:100%; justify-content:flex-end; } }
+
   </style>
 </head>
 <body>
 
-<header class="header" role="banner">
+<!-- ===== Header ===== -->
+<header class="header">
   <div class="brand">
-    <img src="favicon.ico" alt="Logo PojistiToSnadno.cz" class="brand__logo">
-    <span>PojistiToSnadno.cz</span>
+    <!-- logo vlevo -->
+    <img src="favicon.ico" alt="Logo" class="brand__logo">
+    <div class="brand__name">PojistiToSnadno.cz</div>
   </div>
+  <nav class="nav" id="nav" aria-label="Hlavní navigace">
+    <ul>
+      <li><a href="#o-mne">O mně</a></li>
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#situace">Vyberte si pojištění</a></li>
+      <li><a href="#hodnoceni">Hodnocení</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+  <button class="burger" id="burger" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span></button>
 </header>
 
-<main>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__bg" aria-hidden="true"></div>
-    <div class="hero__overlay" aria-hidden="true"></div>
+<!-- ===== Intro (Hero + Services sidebar) ===== -->
+<section class="hero" aria-label="Úvod">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
+  <div class="hero__wrap">
+    <div class="intro-grid">
 
-    <div class="hero__wrap">
-      <div class="hero__grid">
-
-        <div class="hero__portrait">
-          <img src="v_saku.webp" alt="Daniel Verner, pojišťovací poradce – PojistiToSnadno.cz" loading="eager">
-        </div>
-
+     <!-- Hero main -->
+      <div class="hero__grid" id="o-mne">
+        <div class="hero__portrait"><img src="v_saku.webp" alt="Daniel Verner – pojišťovací poradce"></div>
         <div>
-          <h1 id="hero-title">Daniel Verner – pojišťovací poradce</h1>
-          <p class="lead">
-            Pomáhám lidem zorientovat se v pojištění bez nátlaku a složitých formulací.
-            Specializuji se na životní, úrazové a majetkové pojištění.
-            Vše vysvětluji srozumitelně a férově – online nebo osobně.
-          </p>
-          <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
+          <h1>Jmenuji se Daniel Verner</h1>
+          <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!--- minibaner soutěží --->
+ <section class="contest-callout" aria-label="Aktuální soutěž">
+<div class="row">
+<div class="left">
+<div class="ico">🎁</div>
+<div>
+<h3>Soutěž: Powerbanka · 17.09. – 31.10.2025 - JIŽ UKONČENO</h3>
+<p>Zapojení přes stránku <strong>Služby</strong> – nezávazná nabídka.</p>
+</div>
+</div>
+<div class="right">
+<a class="cta" href="/souteze.html" onclick="gtagSafe('event','select_content',{content_type:'banner',item_id:'contest-callout-home'})">Otevřít soutěž</a>
+</div>
+</div>
+</section> 
+   <!--- minibaner akcí --->
+ <section class="contest-callout" aria-label="Aktuální soutěž">
+<div class="row">
+<div class="left">
+<div class="ico">⏳</div>
+<div>
+<h3>AKCE: 50% SLEVA NA RIZIKO MOZKOVÉ PŘÍHODY · 01.11.2025 – 31.01.2026</h3>
+<p>Zapojení přes stránku <strong>Služby</strong> – nezávazná nabídka.</p>
+</div>
+</div>
+  <div class="right">
+<a class="cta" href="/kontakt.html" onclick="gtagSafe('event','select_content',{content_type:'banner',item_id:'contest-callout-home'})">Vyplnit žádost o informaci</a>
+</div>
+</div>
+</section> 
+
+<!-- ===== Podle situace ===== -->
+<section class="section" id="situace">
+  <h2>Vyberte si pojištění podle situace</h2>
+  <div class="grid">
+    <a class="card" href="pracovni-neschopnost.html" aria-label="Pracovní neschopnost">
+      <span class="card__img" style="background-image:url('PN.webp')"></span>
+      <div class="card__text"><h3>Pracovní neschopnost</h3><p>Možnost pojištění pouze pracovní neschopnosti bez dalších připojištění – pro zaměstnance i OSVČ.</p></div>
+    </a>
+    <a class="card" href="urazovka-doprava.html" aria-label="Úraz v dopravě">
+      <span class="card__img" style="background-image:url('traffic_300x300.webp')"></span>
+      <div class="card__text"><h3>Úraz v dopravě</h3><p>Úrazovka pouze pro nehody v dopravě – levně a účelně.</p></div>
+    </a>
+    <a class="card" href="pojisteni-nemovitosti.html" aria-label="Pojištění nemovitosti">
+      <span class="card__img" style="background-image:url('img/RD.webp')"></span>
+      <div class="card__text"><h3>Nemovitost</h3><p>Dům/byt + odpovědnost. Asistence v ceně.</p></div>
+    </a>
+
+    <a class="card" href="pojisteni-zdravotnepostizenychosob.html" aria-label="Pojištění pro zdravotně postižené osoby">
+      <span class="card__img" style="background-image:url('img/ozppozadi.webp')"></span>
+      <div class="card__text">
+        <h3>Pojištění pro zdravotně postižené</h3>
+        <p>Pojištění asistenčního/vodícího psa a zdravotních pomůcek doma i mimo domov.</p>
+      </div>
+    </a>
+
+    <a class="card" href="detske_pojisteni.html" aria-label="Dětské pojištění">
+      <span class="card__img" style="background-image:url('flexydeti.webp')"></span>
+      <div class="card__text"><h3>Děti</h3><p>Úraz i nemoc. Výhodné sazby.</p></div>
+    </a>
+    <a class="card" href="zivotni-pojisteni.html" aria-label="Životní pojištění">
+      <span class="card__img" style="background-image:url('flexy2.webp')"></span>
+      <div class="card__text"><h3>Životní pojištění</h3><p>Komplexní ochrana rodiny i jednotlivců.</p></div>
+    </a>
+    <a class="card" href="povinneruceni.html?typ=ridic" aria-label="Pojištění vozidel">
+      <span class="card__img" style="background-image:url('GL3.webp')"></span>
+      <div class="card__text"><h3>Vozidla</h3><p>Povinné i havarijní. Bonusy a asistence.</p></div>
+    </a>
+    <a class="card" href="rocni-karta.html" aria-label="Roční cestovní karta">
+      <span class="card__img" style="background-image:url('letiste.webp')"></span>
+      <div class="card__text"><h3>Cestování</h3><p>Roční karta se silnou asistencí.</p></div>
+    </a>
+    <a class="card" href="SLOVNIK.html" aria-label="Slovník pojmů">
+      <span class="card__img" style="background-image:url('slovnik.webp')"></span>
+      <div class="card__text"><h3>Slovník pojmů</h3><p>Rychlé vysvětlení, když smlouva mluví „cizí řečí“.</p></div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== Hodnocení ===== -->
+<section class="section" id="hodnoceni">
+  <h2>Hodnocení</h2>
+
+  <div class="rating-wrap">
+    <!-- Levý sloupek: hvězdy + statistiky + formulář -->
+    <div class="rating-card">
+      <div id="rating-widget">
+        <div class="rating-row" aria-label="Hvězdičkové hodnocení" role="radiogroup" id="stars">
+          <button type="button" class="star" data-value="1" aria-label="1 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="2" aria-label="2 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="3" aria-label="3 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="4" aria-label="4 z 5" role="radio" aria-checked="false">☆</button>
+          <button type="button" class="star" data-value="5" aria-label="5 z 5" role="radio" aria-checked="false">☆</button>
+          <span class="rating-badge" id="rating-percent" aria-live="polite">— %</span>
         </div>
 
+        <div id="rating-stats">
+          <strong id="rating-avg">Zatím nehodnoceno</strong>
+          <span id="rating-count" style="color:#6d6d6d">(0 hodnocení)</span>
+          <span id="rating-status"></span>
+        </div>
+
+        <form id="review-form">
+          <textarea id="review-text" maxlength="600" placeholder="Chcete přidat krátké slovní hodnocení? (nepovinné)"></textarea>
+          <div id="review-meta">
+            <span id="char-left">Zbývá 600 znaků</span>
+          </div>
+          <div class="actions">
+            <button class="btn btn--primary" type="submit">Odeslat hodnocení</button>
+            <button class="btn" type="button" id="clear-rating" style="background:#e9e9e4">Vymazat výběr</button>
+          </div>
+        </form>
       </div>
     </div>
-  </section>
-</main>
+
+    <!-- Pravý sloupek: Poslední hodnocení -->
+    <aside class="rating-side">
+      <div class="rating-card">
+        <h3 style="margin:0 0 10px;">Poslední hodnocení</h3>
+        <div class="reviews" id="reviews-list">
+          <div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== Kontakt ===== -->
+<section class="section" id="kontakt">
+  <h2>Kontakt</h2>
+  <div class="contact-quick" aria-label="Rychlé kontakty">
+    <a class="qi" href="tel:+420733782290">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h4l2 5-3 2a16 16 0 007 7l2-3 5 2v4c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1z" stroke="#333" stroke-width="1.5"/></svg>
+      <span>+420 733 782 290</span>
+    </a>
+    <a class="qi" href="mailto:pojistitosnadno@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#333" stroke-width="1.5"/><path d="M22 8l-10 7L2 8" stroke="#333" stroke-width="1.5"/></svg>
+      <span>pojistitosnadno@gmail.com</span>
+    </a>
+  </div>
+
+  <form id="contact-form" class="form" method="POST" data-action="https://formspree.io/f/mvgqqpev">
+    <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+    <input type="number" name="Věk" placeholder="Váš věk">
+    <textarea name="Zpráva" rows="4" placeholder="Co vás zajímá?"></textarea>
+    <input type="email" name="Email" placeholder="Váš e-mail" required>
+    <input type="tel" name="Telefon" placeholder="Telefon (9 číslic)" pattern="[0-9]{9}">
+    <div class="actions">
+      <button class="btn btn--primary" type="submit">Odeslat poptávku</button>
+      <button class="btn" type="reset" style="background:#e9e9e4">Vymazat</button>
+    </div>
+  </form>
+</section>
+   <div class="social">
+      <a aria-label="Facebook" href="https://www.facebook.com/share/1CFVmWB93J/" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v3H8v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z" fill="#1c1c1c"/></svg>
+      </a>
+      <a aria-label="Instagram" href="#" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#1c1c1c" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="#1c1c1c" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#1c1c1c"/></svg>
+      </a>
+    </div>
+
+<!-- ===== Footer (sjednocený) ===== -->
+<footer>
+  <nav class="legal-links" aria-label="Právní odkazy">
+    <a href="pravni.html">Právní informace &amp; ČNB</a>
+    <a href="gdpr.html">Ochrana osobních údajů</a>
+    <a href="cookies.html">Používání cookies</a>
+    <a href="podminky.html">Podmínky užívání</a>
+    <a href="#!" class="js-open-cookie-settings">Nastavení cookies</a>
+
+  </nav>
+
+  <small class="copy">© 2025 Daniel Verner – PojistiToSnadno.cz</small>
+</footer>
+
+<!-- ===== Skripty ===== -->
+<script>
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    nav.classList.toggle('nav--open');
+    document.body.classList.toggle('no-scroll', !open);
+  });
+
+  nav.addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if (a) {
+      burger.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('nav--open');
+      document.body.classList.remove('no-scroll');
+    }
+  });
+</script>
+
+<!-- Rating: Firestore Web SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+  import { getFirestore, doc, getDoc, runTransaction, addDoc, collection, serverTimestamp, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+  const firebaseConfig = { apiKey: "AIzaSyAQ1K5Bb2qv10-EWLvs2S6_lx2nQKdoUao", authDomain: "pojistitosnadno-2025.firebaseapp.com", projectId: "pojistitosnadno-2025" };
+  const app  = initializeApp(firebaseConfig);
+  const db   = getFirestore(app);
+  const auth = getAuth(app);
+  const SEND_UA = true;
+
+  let signedIn = false;
+  try { const cred = await signInAnonymously(auth); signedIn = !!cred?.user; } catch (err) { console.error('[rating] signInAnonymously failed:', err); }
+
+  const starsRoot   = document.getElementById('stars');
+  const avgEl       = document.getElementById('rating-avg');
+  const countEl     = document.getElementById('rating-count');
+  const statusEl    = document.getElementById('rating-status');
+  const percentEl   = document.getElementById('rating-percent');
+  const formEl      = document.getElementById('review-form');
+  const textEl      = document.getElementById('review-text');
+  const charLeftEl  = document.getElementById('char-left');
+  const clearBtn    = document.getElementById('clear-rating');
+  const reviewsList = document.getElementById('reviews-list');
+
+  const LS_VOTED  = 'pts_rating_v1_voted';
+  const ratingDoc = doc(db, 'ratings', 'global');
+  const reviewsCol = collection(db, 'ratings', 'global', 'reviews');
+
+  let selectedVal = 0; let submitting  = false;
+
+  function paintStars(val){ starsRoot?.querySelectorAll('[data-value]')?.forEach(el=>{ const v = Number(el.getAttribute('data-value')); el.textContent = v <= val ? '★' : '☆'; el.setAttribute('aria-checked', String(v === val)); }); }
+  function tinyStars(n){ return '★'.repeat(n) + '☆'.repeat(5-n); }
+  function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m])); }
+  function setStats(sum,count){ const avg = count>0 ? sum/count : 0; const pct = Math.round((avg/5)*100); avgEl.textContent = count ? `${avg.toFixed(1)} / 5` : 'Zatím nehodnoceno'; percentEl.textContent = count ? `${pct} %` : '— %'; countEl.textContent = `(${count} hodnocení)`; }
+
+  async function initRating(){ statusEl.textContent = 'Načítám hodnocení…'; try{ const snap = await getDoc(ratingDoc); const data = snap.exists() ? snap.data() : { sum:0, count:0 }; setStats(Number(data.sum||0), Number(data.count||0)); statusEl.textContent = ''; }catch(err){ statusEl.textContent = `Chyba při načítání hodnocení (${err.code||'unknown'}).`; }}
+
+  async function loadLastReviews(){
+    try{
+      const qy = query(reviewsCol, orderBy('ts','desc'), limit(5));
+      const snap = await getDocs(qy);
+      const items = [];
+      snap.forEach(d=>{ const r = d.data() || {}; const stars = Number(r.rating||0); const text  = (r.text||'').trim(); const dt = r.ts?.toDate ? r.ts.toDate() : null; const date  = dt ? dt.toLocaleDateString('cs-CZ') : ''; items.push({stars,text,date}); });
+      reviewsList.innerHTML = '';
+      if(!items.length){ reviewsList.innerHTML = `<div class="empty-reviews">Zatím tu nejsou žádné slovní recenze.</div>`; return; }
+      items.forEach(({stars,text,date})=>{
+        const el = document.createElement('div');
+        el.className = 'review-item';
+        el.innerHTML = `
+          <div class="review-head">
+            <div class="review-stars" aria-label="${stars} z 5 hvězdiček">${tinyStars(stars)}</div>
+            <div class="review-date">${date}</div>
+          </div>
+          <div class="review-text">${text ? escapeHtml(text) : '<span class="empty-reviews">bez slovního hodnocení</span>'}</div>
+        `;
+        reviewsList.appendChild(el);
+      });
+    }catch(err){ reviewsList.innerHTML = `<div class="empty-reviews">Nepodařilo se načíst recenze (${err.code||'unknown'}).</div>`; }
+  }
+
+  async function submitRating(e){
+    e.preventDefault(); if (submitting) return;
+    if (!selectedVal){ statusEl.textContent = 'Vyberte prosím počet hvězdiček.'; return; }
+    if (localStorage.getItem(LS_VOTED)) { statusEl.textContent = 'Už jste hodnotili na tomto zařízení.'; return; }
+    if (!signedIn){ statusEl.textContent = 'Nepodařilo se ověřit uživatele. Obnovte stránku a zkuste to znovu.'; return; }
+
+    submitting = true; statusEl.textContent = 'Ukládám…'; const reviewText = (textEl.value || '').trim();
+    try{
+      try{ await runTransaction(db, async (tx) => { const snap = await tx.get(ratingDoc); const d = snap.exists() ? snap.data() : { sum:0, count:0 }; tx.set(ratingDoc, { sum: Number(d.sum||0) + selectedVal, count: Number(d.count||0) + 1 }, { merge:true }); }); } catch (err) { statusEl.textContent = `Nepodařilo se uložit skóre (${err.code||'unknown'}).`; return; }
+      try{ if (reviewText.length){ const payload = { rating: selectedVal, text: reviewText, ts: serverTimestamp() }; if (SEND_UA) payload.ua = navigator.userAgent?.slice(0,120) || ''; await addDoc(reviewsCol, payload); } } catch (err) { statusEl.textContent = `Hodnocení uloženo, text recenze se nepodařilo uložit (${err.code||'unknown'}).`; }
+      const snap2 = await getDoc(ratingDoc); const d2 = snap2.data() || { sum:0, count:0 }; setStats(Number(d2.sum||0), Number(d2.count||0)); await loadLastReviews();
+      localStorage.setItem(LS_VOTED,'1'); statusEl.textContent = 'Děkujeme za hodnocení!'; formEl.querySelector('button[type="submit"]').disabled = true; textEl.disabled = true; starsRoot.querySelectorAll('.star').forEach(b=>b.disabled = true);
+    } finally { submitting = false; }
+  }
+
+  starsRoot?.addEventListener('click', e=>{ const el = e.target.closest('[data-value]'); if (!el) return; selectedVal = Number(el.getAttribute('data-value')); paintStars(selectedVal); });
+  starsRoot?.addEventListener('keydown', e=>{ const el = e.target.closest('[data-value]'); if (!el) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectedVal = Number(el.getAttribute('data-value')); paintStars(selectedVal); } });
+  formEl?.addEventListener('submit', submitRating);
+  clearBtn?.addEventListener('click', ()=>{ selectedVal = 0; paintStars(0); textEl.value = ''; charLeftEl.textContent = `Zbývá ${600} znaků`; statusEl.textContent = ''; });
+  textEl?.addEventListener('input', ()=>{ const left = 600 - (textEl.value?.length || 0); charLeftEl.textContent = `Zbývá ${left} znaků`; });
+
+  paintStars(0); initRating(); loadLastReviews();
+</script>
+
+<!-- Form – odeslání na Formspree s GA4 eventem -->
+<script>
+(function(){
+  function bind(){
+    var form = document.getElementById('contact-form');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('data-action');
+      var data = new FormData(form);
+      fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
+      .then(function(res){
+        if(!res.ok) throw new Error('Submit failed');
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', { form_id: 'contact-form', page_path: location.pathname });
+        }
+        window.location.href = '/dekujeme.html';
+      })
+      .catch(function(){ alert('Odeslání se nepodařilo. Zkuste to prosím znovu.'); });
+      return false;
+    }, {passive:false});
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bind); } else { bind(); }
+})();
+</script>
+
+<!-- Cookie lišta -->
+<div class="cookie-bar" id="cookie-bar" role="dialog" aria-live="polite" aria-label="Nastavení cookies">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      Používáme soubory cookies k zajištění chodu webu a měření návštěvnosti.
+      Podrobnosti najdete v <a href="cookies.html">zásadách cookies</a> a v
+<a href="#!" class="js-open-cookie-settings">nastavení</a>.
+
+    </div>
+    <div class="cookie-actions">
+      <button type="button" class="btn-cookie secondary" id="cookie-decline">Pouze nezbytné</button>
+      <button type="button" class="btn-cookie primary" id="cookie-accept">Přijmout vše</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY = 'pts_cookie_consent_v1'; // 'all' | 'necessary'
+  var bar = document.getElementById('cookie-bar');
+  if(!bar) return;
+
+  function updateConsent(mode){
+    if (typeof gtag === 'function'){
+      if (mode === 'all'){
+        gtag('consent', 'update', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'granted',
+          functionality_storage: 'granted',
+          security_storage: 'granted'
+        });
+      } else {
+        gtag('consent', 'update', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          functionality_storage: 'granted',
+          security_storage: 'granted'
+        });
+      }
+    }
+  }
+
+  var saved = localStorage.getItem(KEY);
+  if (!saved){ bar.classList.add('show'); }
+  else { updateConsent(saved); }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', function(){
+    localStorage.setItem(KEY, 'all');
+    updateConsent('all');
+    bar.classList.remove('show');
+  });
+  document.getElementById('cookie-decline')?.addEventListener('click', function(){
+    localStorage.setItem(KEY, 'necessary');
+    updateConsent('necessary');
+    bar.classList.remove('show');
+  });
+})();
+</script>
+<script>
+  // Otevření cookie lišty z odkazů „Nastavení cookies“
+  (function(){
+    function bindOpeners(){
+      document.querySelectorAll('.js-open-cookie-settings').forEach(function(a){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          var bar = document.getElementById('cookie-bar');
+          if (bar) bar.classList.add('show');
+        }, { passive:false });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindOpeners);
+    } else {
+      bindOpeners();
+    }
+  })();
+</script>
+  
+  <!-- Klid Bot / Průvodce – skript -->
+  <!-- Klid Bot / Průvodce – skript -->
+<script>
+  (function(){
+    "use strict";
+
+    if (window.__pruvodce_loaded__) return;
+    window.__pruvodce_loaded__ = true;
+
+    const CFG = {
+      VERSION: '3.1.0',
+      FORM_URL: '/kontakt.html#kontakt', 
+      BRAND: 'PojistiToSnadno.cz',
+      NAME: 'Průvodce',
+      PRIMARY: '#c9b475',
+      ACCENT: '#ffe87a',
+      TEXT: '#2b2b2b',
+      ROOT_ID: 'pruvodce-root',
+      STYLE_ID: 'pruvodce-styles',
+      AVATAR: 'glasses'
+    };
+
+    const addHead = node => (document.head || document.documentElement).appendChild(node);
+
+    function glassesSVG(size){
+      const s = size || 132;
+      const viewH = 90;
+      return `
+<svg class="pv-glasses" width="${s}" height="${(s*viewH)/150}" viewBox="0 0 150 90" aria-hidden="true">
+  <g id="glassesFrame"
+     stroke="#3b3b3b"
+     stroke-width="4.5"
+     fill="none"
+     stroke-linecap="round">
+    <circle cx="55" cy="45" r="26"/>
+    <circle cx="95" cy="45" r="26"/>
+    <path d="M69 45 h12"/>
+  </g>
+
+  <g id="eyes">
+    <circle cx="55" cy="45" r="20" fill="#ffffff" stroke="#c9b475" stroke-width="2.2"/>
+    <circle cx="95" cy="45" r="20" fill="#ffffff" stroke="#c9b475" stroke-width="2.2"/>
+
+    <circle id="pupilL" cx="55" cy="45" r="7" fill="#222222"/>
+    <circle id="pupilR" cx="95" cy="45" r="7" fill="#222222"/>
+
+    <circle cx="52" cy="42" r="2" fill="#ffffff" opacity="0.85"/>
+    <circle cx="92" cy="42" r="2" fill="#ffffff" opacity="0.85"/>
+  </g>
+</svg>`;
+    }
+
+    function init(){
+      if (document.getElementById(CFG.ROOT_ID)) return;
+
+      if (!document.getElementById(CFG.STYLE_ID)){
+        const style = document.createElement('style');
+        style.id = CFG.STYLE_ID;
+        style.textContent =
+`.pv-btn{position:fixed;right:16px;bottom:16px;z-index:999999;border:none;background:${CFG.PRIMARY};color:#000;padding:12px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.15);cursor:pointer;display:flex;align-items:center;gap:8px;font:600 14px/1.1 system-ui,-apple-system,Segoe UI,Roboto}
+.pv-btn:hover{filter:brightness(1.05)}
+.pv-dot{width:10px;height:10px;background:${CFG.ACCENT};border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.05)}
+.pv-panel{position:fixed;right:16px;bottom:76px;width:320px;max-width:calc(100vw - 32px);background:#fff;border-radius:16px;box-shadow:0 18px 48px rgba(0,0,0,.18);z-index:999999;overflow:hidden;border:1px solid rgba(0,0,0,.06);display:none}
+.pv-header{background:${CFG.PRIMARY};padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
+.pv-titlewrap{display:flex;align-items:center;gap:8px}
+.pv-title{font:700 14px/1.2 system-ui,-apple-system,Segoe UI,Roboto;color:#111}
+.pv-sub{font:400 12px/1.2 system-ui,-apple-system,Segoe UI,Roboto;color:#222;opacity:.9}
+.pv-close{background:transparent;border:none;font:700 18px/1 system-ui;cursor:pointer;color:#111}
+.pv-body{padding:14px;background:#fff;color:${CFG.TEXT};font:400 14px/1.5 system-ui,-apple-system,Segoe UI,Roboto}
+.pv-msg{background:#f8f6ef;border:1px solid rgba(0,0,0,.06);padding:12px;border-radius:12px;margin-bottom:10px}
+.pv-cta{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.pv-opt{border:1px solid rgba(0,0,0,.12);background:#fff;border-radius:10px;padding:10px;cursor:pointer;text-align:left}
+.pv-opt:hover{background:#faf7e8}
+.pv-link{display:inline-block;text-decoration:none;background:${CFG.PRIMARY};border:1px solid rgba(0,0,0,.1);color:#111;padding:10px 12px;border-radius:10px;font-weight:700}
+.pv-footer{padding:10px 14px;border-top:1px dashed rgba(0,0,0,.08);display:flex;align-items:center;gap:6px;color:#666;font-size:12px}
+@media (max-width:420px){.pv-panel{right:8px;left:8px;width:auto}}
+.pv-mascot{position:fixed;right:48px;bottom:44px;z-index:999998;pointer-events:none}
+.pv-bubble{position:fixed;max-width:240px;background:#fff;color:#222;border-radius:12px;padding:10px 12px;font:500 13px/1.4 system-ui,-apple-system,Segoe UI,Roboto;box-shadow:0 14px 30px rgba(0,0,0,.25);border:1px solid rgba(0,0,0,.12);z-index:999997;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.pv-bubble.visible{opacity:1}`;
+        addHead(style);
+      }
+
+      const root = document.createElement('div');
+      root.id = CFG.ROOT_ID;
+      root.dataset.version = CFG.VERSION;
+
+      const btn = document.createElement('button');
+      btn.className = 'pv-btn';
+      btn.setAttribute('aria-label', 'Otevřít Průvodce');
+      btn.innerHTML = '<span class="pv-dot"></span><span>' + CFG.NAME + '</span>';
+
+      const panel = document.createElement('div');
+      panel.className = 'pv-panel';
+      panel.setAttribute('role', 'dialog');
+      panel.setAttribute('aria-modal', 'true');
+      panel.innerHTML =
+        '<div class="pv-header">' +
+          '<div class="pv-titlewrap">' +
+            '<span style="display:inline-block;width:30px;height:20px">' + glassesSVG(30) + '</span>' +
+            '<div>' +
+              '<div class="pv-title">' + CFG.NAME + ' • ' + CFG.BRAND + '</div>' +
+             
+            '</div>' +
+          '</div>' +
+          '<button class="pv-close" aria-label="Zavřít">×</button>' +
+        '</div>' +
+        '<div class="pv-body" id="pv-body"></div>' +
+        '<div class="pv-footer">🤝 Nezávazná pomoc s orientací</div>';
+
+      document.body.appendChild(root);
+      root.appendChild(btn);
+      root.appendChild(panel);
+
+      let mascot = null;
+      let bubble = null;
+
+      if (CFG.AVATAR === 'glasses'){
+        mascot = document.createElement('div');
+        mascot.className = 'pv-mascot';
+        document.body.appendChild(mascot);
+
+        bubble = document.createElement('div');
+        bubble.className = 'pv-bubble';
+        bubble.textContent = 'Kdybyste potřeboval poradit s pojištěním, jsem tady 😊';
+        document.body.appendChild(bubble);
+      }
+
+      const renderMascotSVG = () => { if (mascot) mascot.innerHTML = glassesSVG(132); };
+      renderMascotSVG();
+
+      const body = panel.querySelector('#pv-body');
+      const closeBtn = panel.querySelector('.pv-close');
+
+      function positionBubble(){
+        if (!mascot || !bubble) return;
+        const r = mascot.getBoundingClientRect();
+        const w = bubble.offsetWidth || 220;
+        const left = Math.max(8, r.left - w - 12);
+        const top  = Math.max(8, r.top - 4);
+        bubble.style.left = left + 'px';
+        bubble.style.top  = top + 'px';
+      }
+
+      function showBubble(){
+        if (!bubble) return;
+        positionBubble();
+        bubble.classList.add('visible');
+      }
+
+      function hideBubble(){
+        if (!bubble) return;
+        bubble.classList.remove('visible');
+      }
+
+      function positionMascotNearButton(){
+        if (!mascot) return;
+        renderMascotSVG();
+        mascot.style.left = '';
+        mascot.style.top = '';
+        mascot.style.right = '48px';
+        mascot.style.bottom = '44px';
+        if (bubble && bubble.classList.contains('visible')) positionBubble();
+      }
+
+      function positionMascotByPanel(){
+        if (!mascot) return;
+        renderMascotSVG();
+        const rect = panel.getBoundingClientRect();
+        const mW = 132;
+        const left = Math.max(8, rect.left - mW*1.05 - 10);
+        const top = rect.top + 24;
+        mascot.style.right = '';
+        mascot.style.bottom = '';
+        mascot.style.left = left + 'px';
+        mascot.style.top = top + 'px';
+        if (bubble && bubble.classList.contains('visible')) positionBubble();
+      }
+
+      function show(){
+        hideBubble();
+        renderMascotSVG();
+        panel.style.display = 'block';
+        if (closeBtn) closeBtn.focus();
+        positionMascotByPanel();
+      }
+
+      function hide(){
+        panel.style.display = 'none';
+        renderMascotSVG();
+        if (btn) btn.focus();
+        positionMascotNearButton();
+      }
+
+      btn.addEventListener('click', () => {
+        if (panel.style.display === 'block') hide();
+        else { show(); renderIntro(); }
+      });
+
+      closeBtn.addEventListener('click', hide);
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && panel.style.display === 'block') hide();
+      });
+
+      window.addEventListener('resize', () => {
+        if (panel.style.display === 'block') positionMascotByPanel();
+        else if (bubble && bubble.classList.contains('visible')) positionBubble();
+      });
+
+      // --- oči sledují myš i dotyk (desktop + mobil) ---
+      function handleEyeMove(e){
+        const svg = mascot && mascot.querySelector('.pv-glasses');
+        if (!svg) return;
+        const rect = svg.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const clientX = e.clientX;
+        const clientY = e.clientY;
+        if (clientX == null || clientY == null) return;
+        const dx = Math.max(-1, Math.min(1, (clientX - cx) / (rect.width / 2)));
+        const dy = Math.max(-1, Math.min(1, (clientY - cy) / (rect.height / 2)));
+        const r = 5;
+        const baseLX = 55, baseRX = 95, baseY = 45;
+        const pupL = svg.querySelector('#pupilL');
+        const pupR = svg.querySelector('#pupilR');
+        if (pupL && pupR){
+          pupL.setAttribute('cx', baseLX + dx * r);
+          pupL.setAttribute('cy', baseY + dy * r);
+          pupR.setAttribute('cx', baseRX + dx * r);
+          pupR.setAttribute('cy', baseY + dy * r);
+        }
+      }
+      document.addEventListener('mousemove', handleEyeMove);
+      document.addEventListener('pointermove', handleEyeMove);
+
+      // ====== obsah panelu ======
+      function clear(){ body.innerHTML = ''; }
+
+      function msg(html){
+        const d = document.createElement('div');
+        d.className = 'pv-msg';
+        d.innerHTML = html;
+        return d;
+      }
+
+      function opt(label, fn){
+        const b = document.createElement('button');
+        b.className = 'pv-opt';
+        b.type = 'button';
+        b.innerHTML = label;
+        b.addEventListener('click', fn);
+        return b;
+      }
+
+      function cta(items){
+        const c = document.createElement('div');
+        c.className = 'pv-cta';
+        items.forEach(([l, fn]) => c.appendChild(opt(l, fn)));
+        return c;
+      }
+
+      function renderIntro(){
+        clear();
+        const m = msg(
+          'Dobrý den 👋<br>' +
+          'Jsem váš <b>průvodce stránkou ' + CFG.BRAND + '</b>.<br><br>' +
+          'Možná jste se sem přišli jen podívat, nebo přemýšlíte, jestli vaše pojištění ještě ' +
+          'odpovídá dnešní době.<br><br>' +
+          'Vyplnění formuláře vás k ničemu nezavazuje — jen pomůže zjistit, ' +
+          '<b>jestli vaše pojistka stále dává smysl</b>, a kde by se dalo něco zlepšit.<br><br>' +
+          'Chcete zjistit, <b>které pojištění se vás teď nejvíce týká</b>?'
+        );
+        const c = cta([
+          ['🟡 Ano, chci to zjistit', renderSelectInsurance],
+          ['🟢 Ne, jen se rozhlížím', () => {
+            clear();
+            const m2 = msg(
+              'V pořádku 😊<br>' +
+              'Kdykoli se můžete k Průvodci vrátit kliknutím na tlačítko <b>Průvodce</b> dole vpravo.'
+            );
+            const c2 = cta([
+              ['↩️ Zpět na úvodní zprávu', renderIntro]
+            ]);
+            body.append(m2, c2);
+          }]
+        ]);
+        body.append(m, c);
+      }
+
+      function renderSelectInsurance(){
+        clear();
+        const m = msg(
+          'Skvělé 👍<br>' +
+          'Vyberte, <b>které pojištění se vás teď nejvíce týká</b>:'
+        );
+        const c = cta([
+          ['🏠 Dům / byt', () => renderPath('home')],
+          ['🚗 Auto', () => renderPath('auto')],
+          ['❤️ Životní / úrazové', () => renderPath('life')],
+          ['👨‍👩‍👧 Děti', () => renderPath('kids')],
+          ['↩️ Zpět na úvodní zprávu', renderIntro]
+        ]);
+        body.append(m, c);
+      }
+
+      function renderPath(type){
+        clear();
+        let text = '';
+        if (type === 'home') {
+          text =
+            'U pojištění domu/bytu se vyplatí <b>ověřit</b>, jestli částky odpovídají <b>dnešní hodnotě</b> ' +
+            'a podmínky mají <b>širší krytí</b> (fotovoltaiky, více elektrospotřebičů, přepětí/podpětí/zkrat, ' +
+            'domácí asistence).<br><br>' +
+            'Chcete nezávazně otevřít krátký formulář a mít v tom jasněji?';
+        } else if (type === 'auto') {
+          text =
+            'U auta dává smysl <b>každý rok přepočet</b> po novém předpisu. ' +
+            'U havarijního hlídejte <b>aktuální cenu vozu</b> a zvažte, zda starší <b>připojištění</b> ' +
+            'ještě dávají smysl.<br><br>' +
+            'Chcete nezávazně otevřít krátký formulář a podívat se na možnosti?';
+        } else if (type === 'life') {
+          text =
+            'Mnoho životních smluv <b>neodpovídá dnešním částkám</b>. ' +
+            'Novější pojištění mívají <b>méně výluk</b>, větší flexibilitu a oddělené spoření od rizik. ' +
+            'U dětí starší smlouvy často kryjí hlavně úraz, ale chybí nemoc.<br><br>' +
+            'Chcete nezávazně otevřít formulář a zjistit, jak by vypadala současná nabídka?';
+        } else if (type === 'kids') {
+          text =
+            'Starší dětské smlouvy často kryjí hlavně <b>úraz</b>, ale chybí <b>nemoci</b> či delší ošetřování. ' +
+            'Novější kryjí širší spektrum a bývají flexibilnější.<br><br>' +
+            'Chcete nezávazně otevřít formulář a mít v tom jasno?';
+        }
+
+        const m = msg(text);
+        const c = cta([
+          ['📋 Otevřít formulář', renderForm],
+          ['↩️ Zpět na výběr pojištění', renderSelectInsurance]
+        ]);
+        body.append(m, c);
+      }
+
+      function renderForm(){
+        clear();
+        const m = msg(
+          'Otevře se jednoduchý formulář — jméno, e-mail a krátce, co řešíte. ' +
+          '<b>Je to nezávazné.</b>'
+        );
+        const a = document.createElement('a');
+        a.href = CFG.FORM_URL;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'pv-link';
+        a.textContent = '📋 Otevřít formulář';
+        body.append(m, a);
+      }
+
+      // --- 3 minuty nečinnosti → bublina ---
+      let inactivityTimer = null;
+
+      function resetInactivity(){
+        if (!mascot || !bubble) return;
+        clearTimeout(inactivityTimer);
+        hideBubble();
+        if (panel.style.display === 'block') return;
+        inactivityTimer = setTimeout(() => {
+          showBubble();
+        }, 60000); // 3 minuty
+      }
+
+      ['mousemove','pointermove','mousedown','touchstart','scroll','keydown'].forEach(evt => {
+        document.addEventListener(evt, resetInactivity, { passive:true });
+      });
+
+      resetInactivity();
+      positionMascotNearButton();
+    }
+
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+  })();
+</script>
+
+
+
+
+
 
 </body>
 </html>
