@@ -177,6 +177,39 @@
   #rating-stats{display:flex;gap:10px;align-items:baseline}
   #rating-status{margin-left:auto;color:#6d6d6d}
 
+  /* FAQ */
+    .faq-list{
+  max-width: 800px;
+}
+
+.faq-list details{
+  background:#fff;
+  border-radius:14px;
+  padding:14px 18px;
+  margin-bottom:12px;
+  box-shadow:var(--shadow-sm);
+}
+
+.faq-list summary{
+  cursor:pointer;
+  font-weight:800;
+  list-style:none;
+}
+
+.faq-list summary::-webkit-details-marker{
+  display:none;
+}
+
+.faq-list p{
+  margin:10px 0 0;
+  color:var(--muted);
+  line-height:1.6;
+}
+#faq{
+  scroll-margin-top: 96px;
+}
+
+
   /* Kontakt */
   .contact-quick{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:8px}
   .qi{display:flex;align-items:center;gap:10px;background:#fff;padding:12px 14px;border-radius:12px;box-shadow:var(--shadow-sm)}
@@ -538,6 +571,45 @@
     </aside>
   </div>
 </section>
+  <!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <h2>Často kladené dotazy (FAQ)</h2>
+
+  <div class="faq-list">
+    <details>
+      <summary>Jak poznám, že mám pojištění nastavené správně?</summary>
+      <p>
+        Správně nastavené pojištění odpovídá vaší aktuální životní situaci,
+        příjmům a závazkům. Starší smlouvy často neodpovídají dnešním potřebám.
+      </p>
+    </details>
+
+    <details>
+      <summary>Jaký je rozdíl mezi životním a úrazovým pojištěním?</summary>
+      <p>
+        Úrazové pojištění kryje pouze úrazy, zatímco životní pojištění zahrnuje
+        i nemoci, invaliditu a vážná onemocnění.
+      </p>
+    </details>
+
+    <details>
+      <summary>Musím se s pojišťovacím poradcem osobně sejít?</summary>
+      <p>
+        Ne, osobní schůzka není nutná. Konzultace může proběhnout online
+        nebo telefonicky.
+      </p>
+    </details>
+
+    <details>
+      <summary>Je konzultace opravdu nezávazná?</summary>
+      <p>
+        Ano, konzultace je zcela nezávazná a slouží pouze k orientaci
+        v možnostech pojištění.
+      </p>
+    </details>
+  </div>
+</section>
+
 
 <!-- ===== Kontakt ===== -->
 <section class="section" id="kontakt">
