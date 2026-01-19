@@ -413,7 +413,26 @@
       rgba(0,0,0,0) 100%
     );
   }
+/* ==================================================
+   DEFINITIVNÍ OPRAVA – RÁMEČEK JE NA KONTEJNERU
+   ================================================== */
+@media (min-width: 960px){
+
+  /* kontejner NESMÍ mít vlastní tvar */
+  .hero__portrait{
+    background: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  /* tvar patří POUZE obrázku */
+  .hero__portrait img{
+    display: block;
+    border-radius: 22px;
+  }
 }
+
 
 
 
