@@ -391,7 +391,30 @@
         rgba(0,0,0,0.0) 70%
       );
   }
+/* ==================================================
+   DESKTOP – PORTRÉT BEZ TVRDÝCH HRAN (DEFINITIVNÍ)
+   ================================================== */
+@media (min-width: 960px){
+
+  .hero__portrait img{
+    border-radius: 22px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 95% 95% at center,
+      rgba(0,0,0,1) 65%,
+      rgba(0,0,0,0.85) 75%,
+      rgba(0,0,0,0.4) 88%,
+      rgba(0,0,0,0) 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 95% 95% at center,
+      rgba(0,0,0,1) 65%,
+      rgba(0,0,0,0.85) 75%,
+      rgba(0,0,0,0.4) 88%,
+      rgba(0,0,0,0) 100%
+    );
+  }
 }
+
 
 
 
