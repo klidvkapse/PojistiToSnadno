@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="utf-8" />
@@ -95,43 +95,16 @@
 
   /* two-column intro grid (sidebar + hero main) */
   .intro-grid{display:grid;gap:22px}
-  /* === PATCH START: INTRO GRID – BEZ SIDEBARU === */
-@media (min-width:1100px){
-  .intro-grid{
-    grid-template-columns:1fr;
-    justify-items:center;
-}
-/* === PATCH END === */
-
+  @media (min-width: 1100px){
+    .intro-grid{grid-template-columns:320px 1fr;align-items:start}
   }
 
- 
-    /* === PATCH START: HERO PORTRÉT – SPLYNUTÍ S POZADÍM === */
-.hero__portrait img{
-  width:360px;
-  height:460px;
-  object-fit:cover;
-
-  /* odstranění rámečku */
-  border:none;
-  border-radius:0;
-
-  /* jemné splývání s pozadím */
-  -webkit-mask-image: radial-gradient(
-    ellipse at center,
-    rgba(0,0,0,1) 60%,
-    rgba(0,0,0,0) 100%
-  );
-  mask-image: radial-gradient(
-    ellipse at center,
-    rgba(0,0,0,1) 60%,
-    rgba(0,0,0,0) 100%
-  );
-
-  filter: contrast(1.02) saturate(1.05);
-}
-/* === PATCH END === */
-
+  /* hero main content (portrait + copy) */
+  .hero__grid{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center}
+  .hero__portrait img{width:120px;height:120px;border-radius:16px;object-fit:cover;border:2px solid rgba(255,255,255,.7)}
+  .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:800;text-decoration:none}
+  .btn--primary{background:linear-gradient(180deg,var(--gold),var(--gold-dark));color:#000;box-shadow:var(--shadow-md)}
+  .btn--ghost{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.6)}
 
 /* ===== Services sidebar (minimal list with icon bullets) ===== */
 .services-aside{position:relative}
@@ -304,24 +277,6 @@
   .btn-cookie.primary{ background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; }
   .btn-cookie.secondary{ background:#efefec; color:#1c1c1c; }
   @media (max-width:640px){ .cookie-inner{ align-items:flex-start; } .cookie-actions{ width:100%; justify-content:flex-end; } }
-    /* === PATCH START: HERO GRID – VŽDY 2 SLOUPCE NA DESKTOPU === */
-@media (min-width: 900px){
-  .hero__grid{
-    grid-template-columns: minmax(420px, 520px) 1fr;
-    align-items: center;
-  }
-
-  /* zabrání nechtěnému zalomení */
-  .hero__portrait{
-    grid-column: 1;
-  }
-
-  .hero__grid > div:last-child{
-    grid-column: 2;
-  }
-}
-/* === PATCH END === */
-
 
   </style>
 </head>
@@ -353,7 +308,52 @@
   <div class="hero__wrap">
     <div class="intro-grid">
 
-     <!-- Hero main -->
+    <aside class="services-aside" id="sluzby" aria-label="Služby">
+  <ul class="svc-list">
+    <li class="svc-item">
+      <span class="svc-bullet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 3l7 3v5c0 5.25-3.5 8.69-7 10-3.5-1.31-7-4.75-7-10V6l7-3z" stroke="#3a3320" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="svc-label">Úrazové a životní pojištění</span>
+    </li>
+
+    <li class="svc-item">
+      <span class="svc-bullet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M3 11l9-7 9 7" stroke="#3a3320" stroke-width="1.5"/>
+          <path d="M5 10v10h14V10" stroke="#3a3320" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="svc-label">Pojištění majetku</span>
+    </li>
+
+    <li class="svc-item">
+      <span class="svc-bullet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M3 13l2-5h14l2 5" stroke="#3a3320" stroke-width="1.5"/>
+          <circle cx="7" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/>
+          <circle cx="17" cy="17" r="2" stroke="#3a3320" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="svc-label">Vozidla a drobná elektrovozítka</span>
+    </li>
+
+    <li class="svc-item">
+      <span class="svc-bullet" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9" stroke="#3a3320" stroke-width="1.5"/>
+          <path d="M7 21v-4a3 3 0 013-3h4a3 3 0 013 3v4" stroke="#3a3320" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="svc-label">Hypotéky, úvěry na bydlení</span>
+    </li>
+  </ul>
+</aside>
+
+
+      <!-- Hero main -->
       <div class="hero__grid" id="o-mne">
         <div class="hero__portrait"><img src="v_saku.webp" alt="Daniel Verner – pojišťovací poradce"></div>
         <div>
