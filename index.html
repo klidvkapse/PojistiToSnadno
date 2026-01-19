@@ -276,7 +276,45 @@
   .btn-cookie{ border:0; border-radius:12px; padding:10px 14px; font-weight:800; cursor:pointer; }
   .btn-cookie.primary{ background:linear-gradient(180deg,var(--gold),var(--gold-dark)); color:#000; }
   .btn-cookie.secondary{ background:#efefec; color:#1c1c1c; }
-  @media (max-width:640px){ .cookie-inner{ align-items:flex-start; } .cookie-actions{ width:100%; justify-content:flex-end; } }
+  @media (max-width:640px){ .cookie-inner{ align-items:flex-start; } .cookie-actions{ width:100%; justify-content:flex-end; } 
+    /* ==================================================
+   DESKTOP ONLY – HERO ÚPRAVA (MOBIL ZŮSTÁVÁ BEZE ZMĚNY)
+   ================================================== */
+@media (min-width: 960px){
+
+  /* 1️⃣ Hero může být širší */
+  .hero__wrap{
+    max-width: 1320px;
+    padding: 72px 32px 96px;
+  }
+
+  /* 2️⃣ Lepší rozložení fotka / text */
+  .hero__grid{
+    grid-template-columns: 420px 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* 3️⃣ Portrét – méně „kartička“ */
+  .hero__portrait img{
+    border: none;
+    border-radius: 18px; /* jemné, ne tvrdé */
+  }
+
+  /* 4️⃣ Text – čitelnější, méně zalamování */
+  .hero h1{
+    font-size: clamp(40px, 3.8vw, 56px);
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+
+  .hero .lead{
+    max-width: 62ch;
+    font-size: 1.15rem;
+    line-height: 1.65;
+  }
+}
+
 
   </style>
 </head>
