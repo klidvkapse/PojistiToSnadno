@@ -316,9 +316,45 @@
   }
   }
 
+/* ==================================================
+   DESKTOP HERO – SKUTEČNÁ OPRAVA ŠÍŘKY A LAYOUTU
+   ================================================== */
 @media (min-width: 960px){
+
+  /* 1️⃣ intro-grid už není sidebar layout */
+  .intro-grid{
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+  }
+
+  /* 2️⃣ hero obsah může být skutečně široký */
+  .hero__wrap{
+    max-width: 1320px;
+    padding: 72px 32px 96px;
+  }
+
+  /* 3️⃣ vlastní hero grid */
   .hero__grid{
-    outline: 5px solid red !important;
+    display: grid;
+    grid-template-columns: 420px 1fr !important;
+    gap: 64px !important;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  /* 4️⃣ text už není úzký sloupec */
+  .hero .lead{
+    max-width: 60ch;
+    font-size: 1.15rem;
+    line-height: 1.65;
+  }
+
+  /* 5️⃣ nadpis má autoritu */
+  .hero h1{
+    font-size: clamp(40px, 4vw, 56px);
+    line-height: 1.1;
+    margin-bottom: 18px;
   }
 }
 
