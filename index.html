@@ -95,8 +95,14 @@
 
   /* two-column intro grid (sidebar + hero main) */
   .intro-grid{display:grid;gap:22px}
-  @media (min-width: 1100px){
-    .intro-grid{grid-template-columns:320px 1fr;align-items:start}
+  /* === PATCH START: INTRO GRID – BEZ SIDEBARU === */
+@media (min-width:1100px){
+  .intro-grid{
+    grid-template-columns:1fr;
+    justify-items:center;
+}
+/* === PATCH END === */
+
   }
 
  
