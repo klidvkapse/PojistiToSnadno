@@ -959,6 +959,12 @@ body > .pv-bubble{
 <script>
   (function(){
     "use strict";
+    function gtagSafe(event, params = {}) {
+  if (typeof gtag === 'function') {
+    gtag('event', event, params);
+  }
+
+
 
     if (window.__pruvodce_loaded__) return;
     window.__pruvodce_loaded__ = true;
@@ -1147,7 +1153,12 @@ body > .pv-bubble{
         positionMascotNearButton();
       }
 
+      
       btn.addEventListener('click', () => {
+  gtagSafe('pruvodce_open', {
+    source: 'floating_button'
+  });
+
         if (panel.style.display === 'block') hide();
         else { show(); renderIntro(); }
       });
@@ -1227,7 +1238,11 @@ body > .pv-bubble{
           'Chcete zjistit, <b>které pojištění se vás teď nejvíce týká</b>?'
         );
         const c = cta([
-          ['🟡 Ano, chci to zjistit', renderSelectInsurance],
+          ['🟡 Ano, chci to zjistit', () => {
+  gtagSafe('pruvodce_start');
+  renderSelectInsurance();
+}],
+
           ['🟢 Ne, jen se rozhlížím', () => {
             clear();
             const m2 = msg(
@@ -1250,10 +1265,23 @@ body > .pv-bubble{
           'Vyberte, <b>které pojištění se vás teď nejvíce týká</b>:'
         );
         const c = cta([
-          ['🏠 Dům / byt', () => renderPath('home')],
-          ['🚗 Auto', () => renderPath('auto')],
-          ['❤️ Životní / úrazové', () => renderPath('life')],
-          ['👨‍👩‍👧 Děti', () => renderPath('kids')],
+         ['🏠 Dům / byt', () => {
+  gtagSafe('pruvodce_select', { topic: 'home' });
+  renderPath('home');
+}],
+['🚗 Auto', () => {
+  gtagSafe('pruvodce_select', { topic: 'auto' });
+  renderPath('auto');
+}],
+['❤️ Životní / úrazové', () => {
+  gtagSafe('pruvodce_select', { topic: 'life' });
+  renderPath('life');
+}],
+['👨‍👩‍👧 Děti', () => {
+  gtagSafe('pruvodce_select', { topic: 'kids' });
+  renderPath('kids');
+}],
+
           ['↩️ Zpět na úvodní zprávu', renderIntro]
         ]);
         body.append(m, c);
@@ -1303,6 +1331,10 @@ body > .pv-bubble{
         );
         const a = document.createElement('a');
         a.href = CFG.FORM_URL;
+        a.addEventListener('click', () => {
+  gtagSafe('pruvodce_form_click');
+});
+
         a.target = '_blank';
         a.rel = 'noopener';
         a.className = 'pv-link';
