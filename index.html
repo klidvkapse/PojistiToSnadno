@@ -429,10 +429,21 @@
 .pv-btn:active{
   transform: translateY(1px);
 }
+ /* === FIX: Průvodce vždy NAD OBSAHEM === */
+body > .pv-btn,
+body > .pv-panel,
+body > .pv-mascot,
+body > .pv-bubble{
+  position: fixed !important;
+  z-index: 2147483647 !important;
+}
+.pv-btn{
+  bottom: 120px !important;
+}
+.pv-mascot{
+  bottom: 150px !important;
+}
   }
-
-
-
 
 
 
