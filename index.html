@@ -475,9 +475,19 @@ body > .pv-bubble{
   .cta-actions .btn{
     width:100%;
   }
+  /* === CTA ghost tlačítko – VIDITELNÉ NA MOBILU === */
+@media (max-width:640px){
+  .cta-soft .btn--ghost{
+    background: linear-gradient(180deg,var(--gold),var(--gold-dark));
+    color:#1c1c1c;
+    border:2px solid var(--gold-dark);
+    box-shadow:0 10px 24px rgba(0,0,0,.18);
+  }
 }
 
-}
+
+
+
 
 
 
