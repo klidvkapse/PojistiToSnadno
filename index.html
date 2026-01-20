@@ -1372,10 +1372,23 @@
 }
 </script>
   <script>
-  document.getElementById('open-pruvodce')?.addEventListener('click', function(){
-    document.querySelector('.pv-btn')?.click();
+document.addEventListener('DOMContentLoaded', function () {
+
+  const btn = document.getElementById('open-pruvodce');
+  if (!btn) return;
+
+  btn.addEventListener('click', function () {
+    const pruvodceBtn = document.querySelector('.pv-btn');
+    if (pruvodceBtn) {
+      pruvodceBtn.click();
+    } else {
+      console.warn('Průvodce ještě není připraven');
+    }
   });
+
+});
 </script>
+
 
 
 
