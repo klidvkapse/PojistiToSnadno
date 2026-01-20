@@ -453,6 +453,50 @@ body > .pv-bubble{
   border:none;
   box-shadow:0 8px 20px rgba(0,0,0,.18);
   }
+  /* CTA Soft Section - FIX PRO MOBIL */
+    .cta-soft {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 36px 24px;
+      box-shadow: var(--shadow-sm);
+      margin: 20px auto;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    /* OPRAVA: Tlačítko v sekci CTA soft musí být vždy tmavé/zlaté, aby bylo vidět na bílém podkladu */
+    .cta-soft .btn--ghost {
+      background: linear-gradient(180deg, var(--gold), var(--gold-dark)) !important;
+      color: #1c1c1c !important;
+      border: none !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+      opacity: 1 !important;
+      display: inline-block !important;
+      visibility: visible !important;
+    }
+
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+
+    /* Responsive */
+    @media (min-width: 960px) {
+      .burger { display: none; }
+      .nav { position: static; opacity: 1; pointer-events: auto; transform: none; background: transparent; }
+      .nav ul { display: flex; gap: 20px; }
+      .hero__grid { grid-template-columns: 320px 1fr; }
+      .hero__portrait img { width: 300px; height: 400px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero__grid { text-align: center; justify-items: center; }
+      .cta-actions .btn { width: 100%; text-align: center; }
+      
+      /* Dodatečná pojistka pro mobilní viditelnost */
+      #open-pruvodce {
+        display: block !important;
+        background: var(--gold) !important;
+        color: #000 !important;
+        font-weight: 800 !important;
+        padding: 14px !important;
+      }
 }
 
   </style>
