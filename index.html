@@ -444,37 +444,7 @@ body > .pv-bubble{
   border:none;
   box-shadow:0 8px 20px rgba(0,0,0,.18);
 }
-  /* Ghost tlačítko na světlém pozadí */
-.cta-soft .btn--ghost{
-  background: linear-gradient(180deg,var(--gold),var(--gold-dark));
-  color:#1c1c1c;
-  border:none;
-  box-shadow:0 8px 20px rgba(0,0,0,.18);
-}
 
-/* === FIX: CTA ghost tlačítko – kontrast === */
-.cta-soft .btn--ghost{
-  background: linear-gradient(180deg,var(--gold),var(--gold-dark));
-  color:#1c1c1c;
-  border:none;
-  box-shadow:0 8px 20px rgba(0,0,0,.18);
-}
-/* === FIX: CTA sekce na mobilu – nesmí se schovat === */
-@media (max-width: 640px){
-  .cta-soft{
-    position: relative;
-    z-index: 5;
-    margin-top: 24px;
-  }
-
-  .cta-actions{
-    display:flex;
-    flex-direction:column;
-  }
-
-  .cta-actions .btn{
-    width:100%;
-  }
   /* === CTA ghost tlačítko – VIDITELNÉ NA MOBILU === */
 @media (max-width:640px){
   .cta-soft .btn--ghost{
