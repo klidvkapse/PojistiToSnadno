@@ -853,80 +853,65 @@ body > .pv-bubble{
 </script>
 
 <!-- 🔧 ODESÍLÁNÍ FORMULÁŘE – shodně jako ve vzorovém kódu -->
-  <script>
-  (function(){
-    var DEFAULT_THANKS = '/dekujeme.html';
+<form
+  id="contact-form"
+  class="form"
+  method="POST"
+  action="https://formspree.io/f/mvgqqpev"
+>
+  <!-- Přesměrování po úspěchu -->
+  <input type="hidden" name="_next" value="https://pojistitosnadno.cz/dekujeme.html">
 
-    function paramsObj(search){
-      var p = new URLSearchParams(search), o = {};
-      p.forEach(function(v,k){ o[k]=v; });
-      return o;
-    }
-    function sendGA(name, params){
-      if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
-    }
+  <!-- Předmět e-mailu -->
+  <input type="hidden" name="_subject" value="Nová poptávka z PojistiToSnadno.cz">
 
-    function bindForm(form){
-      var endpoint = form.getAttribute('data-action');
-      if(!endpoint) return;
+  <!-- Ochrana proti spamu (doporučeno Formspree) -->
+  <input type="text" name="_gotcha" style="display:none">
 
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
+  <input
+    type="text"
+    name="Jméno"
+    placeholder="Jméno a příjmení"
+    required
+  >
 
-        var submitBtn = form.querySelector('[type="submit"]');
-        if (submitBtn){
-          submitBtn.disabled = true;
-          submitBtn.dataset.origText = submitBtn.textContent;
-          submitBtn.textContent = 'Odesílám…';
-        }
+  <input
+    type="number"
+    name="Věk"
+    placeholder="Váš věk"
+    min="0"
+    max="120"
+  >
 
-        var fd = new FormData(form);
+  <textarea
+    name="Zpráva"
+    rows="4"
+    placeholder="Co vás zajímá?"
+  ></textarea>
 
-        // přidáme UTM parametry a info o stránce
-        var q = paramsObj(location.search);
-        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
-          .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
-        fd.append('_page', location.pathname);
-        fd.append('_ts', new Date().toISOString());
+  <input
+    type="email"
+    name="Email"
+    placeholder="Váš e-mail"
+    required
+  >
 
-        fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: fd
-        })
-        .then(function(res){
-          if(!res.ok) throw new Error('submit-failed');
-          sendGA(form.getAttribute('data-event') || 'form_submit', {
-            form_id: form.id || '',
-            form_name: form.getAttribute('name') || '',
-            page_path: location.pathname
-          });
-          var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
-          location.href = thanks;
-        })
-        .catch(function(){
-          alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
-        })
-        .finally(function(){
-          if (submitBtn){
-            submitBtn.disabled = false;
-            submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
-          }
-        });
-      }, {passive:false});
-    }
+  <input
+    type="tel"
+    name="Telefon"
+    placeholder="Telefon (9 číslic)"
+    pattern="[0-9]{9}"
+  >
 
-    function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-
-    // Bonus: měření kliků na tel/mail (bezpečné i bez GA)
-    document.addEventListener('click', function(e){
-      var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
-      if(!a) return;
-      sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
-    });
-  })();
-  </script>
+  <div class="actions">
+    <button class="btn btn--primary" type="submit">
+      Odeslat poptávku
+    </button>
+    <button class="btn" type="reset" style="background:#e9e9e4">
+      Vymazat
+    </button>
+  </div>
+</form>
 
 
 <!-- Cookie lišta -->
