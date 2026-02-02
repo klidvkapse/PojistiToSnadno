@@ -853,66 +853,31 @@ body > .pv-bubble{
 </script>
 
 <!-- 🔧 ODESÍLÁNÍ FORMULÁŘE – shodně jako ve vzorovém kódu -->
-<form
-  id="contact-form"
-  class="form"
-  method="POST"
-  action="https://formspree.io/f/mvgqqpev"
->
-  <!-- Přesměrování po úspěchu -->
-  <input type="hidden" name="_next" value="https://pojistitosnadno.cz/dekujeme.html">
-
-  <!-- Předmět e-mailu -->
-  <input type="hidden" name="_subject" value="Nová poptávka z PojistiToSnadno.cz">
-
-  <!-- Ochrana proti spamu (doporučeno Formspree) -->
-  <input type="text" name="_gotcha" style="display:none">
-
-  <input
-    type="text"
-    name="Jméno"
-    placeholder="Jméno a příjmení"
-    required
-  >
-
-  <input
-    type="number"
-    name="Věk"
-    placeholder="Váš věk"
-    min="0"
-    max="120"
-  >
-
-  <textarea
-    name="Zpráva"
-    rows="4"
-    placeholder="Co vás zajímá?"
-  ></textarea>
-
-  <input
-    type="email"
-    name="Email"
-    placeholder="Váš e-mail"
-    required
-  >
-
-  <input
-    type="tel"
-    name="Telefon"
-    placeholder="Telefon (9 číslic)"
-    pattern="[0-9]{9}"
-  >
-
-  <div class="actions">
-    <button class="btn btn--primary" type="submit">
-      Odeslat poptávku
-    </button>
-    <button class="btn" type="reset" style="background:#e9e9e4">
-      Vymazat
-    </button>
-  </div>
-</form>
-
+<!-- Form – odeslání na Formspree s GA4 eventem -->
+<script>
+(function(){
+  function bind(){
+    var form = document.getElementById('contact-form');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var endpoint = form.getAttribute('data-action');
+      var data = new FormData(form);
+      fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
+      .then(function(res){
+        if(!res.ok) throw new Error('Submit failed');
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', { form_id: 'contact-form', page_path: location.pathname });
+        }
+        window.location.href = '/dekujeme.html';
+      })
+      .catch(function(){ alert('Odeslání se nepodařilo. Zkuste to prosím znovu.'); });
+      return false;
+    }, {passive:false});
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bind); } else { bind(); }
+})();
+</script>
 
 <!-- Cookie lišta -->
 <div class="cookie-bar" id="cookie-bar" role="dialog" aria-live="polite" aria-label="Nastavení cookies">
