@@ -852,31 +852,82 @@ body > .pv-bubble{
   paintStars(0); initRating(); loadLastReviews();
 </script>
 
-<!-- Form – odeslání na Formspree s GA4 eventem -->
-<script>
-(function(){
-  function bind(){
-    var form = document.getElementById('contact-form');
-    if(!form) return;
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
+<!-- 🔧 ODESÍLÁNÍ FORMULÁŘE – shodně jako ve vzorovém kódu -->
+  <script>
+  (function(){
+    var DEFAULT_THANKS = '/dekujeme.html';
+
+    function paramsObj(search){
+      var p = new URLSearchParams(search), o = {};
+      p.forEach(function(v,k){ o[k]=v; });
+      return o;
+    }
+    function sendGA(name, params){
+      if (typeof gtag === 'function'){ gtag('event', name, params || {}); }
+    }
+
+    function bindForm(form){
       var endpoint = form.getAttribute('data-action');
-      var data = new FormData(form);
-      fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
-      .then(function(res){
-        if(!res.ok) throw new Error('Submit failed');
-        if (typeof gtag === 'function') {
-          gtag('event', 'form_submit', { form_id: 'contact-form', page_path: location.pathname });
+      if(!endpoint) return;
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        var submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn){
+          submitBtn.disabled = true;
+          submitBtn.dataset.origText = submitBtn.textContent;
+          submitBtn.textContent = 'Odesílám…';
         }
-        window.location.href = '/dekujeme.html';
-      })
-      .catch(function(){ alert('Odeslání se nepodařilo. Zkuste to prosím znovu.'); });
-      return false;
-    }, {passive:false});
-  }
-  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bind); } else { bind(); }
-})();
-</script>
+
+        var fd = new FormData(form);
+
+        // přidáme UTM parametry a info o stránce
+        var q = paramsObj(location.search);
+        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
+          .forEach(function(k){ if(q[k]) fd.append(k, q[k]); });
+        fd.append('_page', location.pathname);
+        fd.append('_ts', new Date().toISOString());
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: fd
+        })
+        .then(function(res){
+          if(!res.ok) throw new Error('submit-failed');
+          sendGA(form.getAttribute('data-event') || 'form_submit', {
+            form_id: form.id || '',
+            form_name: form.getAttribute('name') || '',
+            page_path: location.pathname
+          });
+          var thanks = form.getAttribute('data-thanks') || DEFAULT_THANKS;
+          location.href = thanks;
+        })
+        .catch(function(){
+          alert('Odeslání se nepodařilo. Zkuste to prosím znovu.');
+        })
+        .finally(function(){
+          if (submitBtn){
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtn.dataset.origText || 'Odeslat';
+          }
+        });
+      }, {passive:false});
+    }
+
+    function init(){ document.querySelectorAll('form.js-formspree').forEach(bindForm); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+
+    // Bonus: měření kliků na tel/mail (bezpečné i bez GA)
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
+      if(!a) return;
+      sendGA('contact_click', { type: a.href.startsWith('tel:') ? 'tel' : 'email' });
+    });
+  })();
+  </script>
+
 
 <!-- Cookie lišta -->
 <div class="cookie-bar" id="cookie-bar" role="dialog" aria-live="polite" aria-label="Nastavení cookies">
