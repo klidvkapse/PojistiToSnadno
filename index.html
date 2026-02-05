@@ -486,39 +486,36 @@ text-decoration:none;
 font-weight:700;
 box-shadow:0 6px 16px rgba(0,0,0,.25);
 }
-  /* === HERO SOCIAL ICONS === */
+/* === HERO SOCIALS – FIX LAYOUT & SIZE === */
 .hero-socials{
-  display:flex;
-  gap:12px;
+  display:flex !important;
+  flex-direction:row !important; /* vždy vedle sebe */
+  gap:10px;
+  align-items:center;
 }
 
+/* jednotlivé ikonky */
 .hero-socials .hs{
-  width:44px;
-  height:44px;
+  width:36px;          /* ⬅️ MENŠÍ */
+  height:36px;
+  border-radius:10px;
   display:grid;
   place-items:center;
-  border-radius:12px;
   background:#fff;
-  color:#1c1c1c;
-  box-shadow:0 6px 16px rgba(0,0,0,.25);
-  transition:transform .2s ease, box-shadow .2s ease;
+  box-shadow:0 4px 12px rgba(0,0,0,.22);
 }
 
+/* samotná SVG ikona */
 .hero-socials .hs svg{
-  width:22px;
-  height:22px;
+  width:18px;          /* ⬅️ MENŠÍ */
+  height:18px;
 }
 
+/* jemnější hover */
 .hero-socials .hs:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 22px rgba(0,0,0,.3);
+  transform:translateY(-1px);
+  box-shadow:0 6px 14px rgba(0,0,0,.28);
 }
-
-/* Jemné barevné hinty podle služby */
-.hero-socials .wa{ color:#25D366; }
-.hero-socials .ms{ color:#0084FF; }
-.hero-socials .mail{ color:#444; }
-.hero-socials .fb{ color:#1877F2; }
 
 }
 
