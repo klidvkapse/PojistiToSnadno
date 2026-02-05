@@ -453,55 +453,35 @@ body > .pv-bubble{
   border:none;
   box-shadow:0 8px 20px rgba(0,0,0,.18);
   }
-  /* RODIČ – říká: pod sebe */
+ /* rodič – POD SEBE */
 .hero-cta-block{
 display:flex;
-flex-direction:column; /* 👈 DŮLEŽITÉ */
+flex-direction:column;
 gap:16px;
 }
 
 
-/* DÍTĚ – říká: vedle sebe */
+/* ikony – VEDLE SEBE */
 .hero-socials{
-display:flex; /* 👈 MUSÍ BÝT */
-flex-direction:row; /* 👈 JASNĚ */
-gap:12px;
+display:flex;
+gap:14px;
 }
 
 
-/* Ikona */
-.hero-socials a{
-width:42px;
-height:42px;
-display:grid;
-place-items:center;
-border-radius:12px;
-background:#fff;
-color:#000;
-text-decoration:none;
-font-weight:700;
-box-shadow:0 6px 16px rgba(0,0,0,.25);
-}
-  .hero-socials{
-display:flex; /* VŽDY VEDLE SEBE */
-gap:12px;
-}
-
-
+/* odkaz = čtverec */
 .hero-socials a{
 width:40px;
 height:40px;
 display:grid;
 place-items:center;
-border-radius:10px;
-background:#fff;
-box-shadow:0 4px 12px rgba(0,0,0,.25);
 }
 
 
+/* 🔑 SVG MUSÍ BÝT OMEZENÉ */
 .hero-socials svg{
 width:22px;
 height:22px;
+display:block;
 }
 }
 
@@ -545,41 +525,38 @@ height:22px;
         <div>
           <h1>Jmenuji se Daniel Verner</h1>
           <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
-          <div class="hero-cta-block">
+         <div class="hero-cta-block">
 <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
 
 
 <div class="hero-socials" aria-label="Rychlé kontakty">
-
-
-<a href="https://wa.me/420733782290" target="_blank" aria-label="WhatsApp">
-<svg viewBox="0 0 32 32" aria-hidden="true">
-<path fill="#25D366" d="M16 3C8.8 3 3 8.8 3 16c0 2.8.7 5.4 2.1 7.7L3 29l5.5-2c2.2 1.2 4.8 1.9 7.5 1.9 7.2 0 13-5.8 13-13S23.2 3 16 3zm6.6 18.4c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.2-2.1-.1-.5-.2-1.2-.4-2.1-.8-3.6-1.6-5.9-5.3-6.1-5.5-.2-.3-1.5-2-.1-3.9.7-.9 1.4-1 1.9-1 .5 0 .9 0 1.3 1 .4 1 .8 2.4.9 2.6.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.7 1.5 1.3 2.8 1.7 3.2 1.9.4.2.6.2.8-.1.3-.3 1-1.2 1.3-1.6.3-.4.6-.3 1-.1.4.2 2.4 1.1 2.8 1.3.4.2.7.3.8.5.1.2.1.9-.2 1.7z"/>
+<a href="https://wa.me/420733782290" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="#25D366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/>
 </svg>
 </a>
 
 
-<a href="https://m.me/pojistitosnadno" target="_blank" aria-label="Messenger">
-<svg viewBox="0 0 32 32" aria-hidden="true">
-<path fill="#1877F2" d="M16 3C8.8 3 3 8.3 3 14.8c0 3.7 1.8 6.9 4.7 9.1V29l4.6-2.6c1.2.3 2.5.4 3.7.4 7.2 0 13-5.3 13-11.8S23.2 3 16 3zm1.4 15.9l-3.3-3.5-6.3 3.5 7-7.4 3.3 3.5 6.3-3.5-7 7.4z"/>
+<a href="https://m.me/pojistitosnadno" aria-label="Messenger">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="#1877F2" d="M12 2C6.5 2 2 6 2 11c0 2.8 1.4 5.3 3.7 7l-.7 4 3.8-2.1c1 .3 2 .4 3.2.4 5.5 0 10-4 10-9s-4.5-9-10-9z"/>
 </svg>
 </a>
 
 
 <a href="mailto:pojistitosnadno@gmail.com" aria-label="E-mail">
-<svg viewBox="0 0 32 32" aria-hidden="true">
-<path fill="#555" d="M4 6h24c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2zm12 9L4 9v15h24V9l-12 6z"/>
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="#555" d="M2 4h20v16H2z"/>
+<path fill="#fff" d="M2 4l10 7 10-7"/>
 </svg>
 </a>
 
 
-<a href="https://www.facebook.com/share/1CFVmWB93J/" target="_blank" aria-label="Facebook">
-<svg viewBox="0 0 32 32" aria-hidden="true">
-<path fill="#1877F2" d="M18 29V17h4l1-5h-5V9c0-1.4.4-2.3 2.4-2.3H23V2.3C22.4 2.2 20.8 2 18.9 2c-4 0-6.9 2.4-6.9 6.8V12H8v5h4v12h6z"/>
+<a href="https://www.facebook.com/share/1CFVmWB93J/" aria-label="Facebook">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="#1877F2" d="M13 22v-8h3l1-4h-4V7c0-1 .3-2 2-2h2V1h-3c-4 0-6 2.5-6 6v3H6v4h3v8z"/>
 </svg>
 </a>
-
-
 </div>
 </div>
           
