@@ -453,6 +453,35 @@ body > .pv-bubble{
   border:none;
   box-shadow:0 8px 20px rgba(0,0,0,.18);
   }
+  /* RODIČ – říká: pod sebe */
+.hero-cta-block{
+display:flex;
+flex-direction:column; /* 👈 DŮLEŽITÉ */
+gap:16px;
+}
+
+
+/* DÍTĚ – říká: vedle sebe */
+.hero-socials{
+display:flex; /* 👈 MUSÍ BÝT */
+flex-direction:row; /* 👈 JASNĚ */
+gap:12px;
+}
+
+
+/* Ikona */
+.hero-socials a{
+width:42px;
+height:42px;
+display:grid;
+place-items:center;
+border-radius:12px;
+background:#fff;
+color:#000;
+text-decoration:none;
+font-weight:700;
+box-shadow:0 6px 16px rgba(0,0,0,.25);
+}
 }
 
   </style>
@@ -495,8 +524,17 @@ body > .pv-bubble{
         <div>
           <h1>Jmenuji se Daniel Verner</h1>
           <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
-          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-            <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
+          <div class="hero-cta-block">
+<a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
+
+
+<div class="hero-socials" aria-label="Rychlé kontakty">
+<a href="https://wa.me/420733782290" aria-label="WhatsApp">WA</a>
+<a href="https://m.me/pojistitosnadno" aria-label="Messenger">MS</a>
+<a href="mailto:pojistitosnadno@gmail.com" aria-label="E-mail">@</a>
+<a href="https://www.facebook.com/share/1CFVmWB93J/" aria-label="Facebook">FB</a>
+</div>
+</div>
           
           </div>
         </div>
