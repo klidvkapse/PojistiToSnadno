@@ -461,12 +461,12 @@ gap:16px;
 }
 
 
-/* ikony – VEDLE SEBE */
+/* DÍTĚ – říká: vedle sebe */
 .hero-socials{
-display:flex;
-gap:14px;
+display:flex; /* 👈 MUSÍ BÝT */
+flex-direction:row; /* 👈 JASNĚ */
+gap:12px;
 }
-
 
 /* odkaz = čtverec */
 .hero-socials a{
