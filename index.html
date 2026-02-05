@@ -455,17 +455,19 @@ body > .pv-bubble{
   }
   /* CTA blok: tlačítko + ikony pod sebou */
 .hero-cta-block{
-  margin-top:16px;
-  display:flex;
-  flex-direction: row;
-  align-items:flex-start;
-  gap:12px;
+  display: flex;
+  flex-direction: column; /* 👈 pod sebe */
+  gap: 12px;
 }
+
 
 /* ŘADA IKON – VEDLE SEBE */
 .hero-socials{
-  display:flex;
-  gap:12px;
+  display: flex;
+  flex-direction: row; /* 👈 vedle sebe (klidně můžeš vynechat) */
+  gap: 12px;
+}
+
 }
 
 /* JEDNA IKONA */
