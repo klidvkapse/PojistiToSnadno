@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="utf-8" />
@@ -453,48 +453,6 @@ body > .pv-bubble{
   border:none;
   box-shadow:0 8px 20px rgba(0,0,0,.18);
   }
- /* CTA blok: tlačítko + ikony pod sebou */
-.hero-cta-block{
-  margin-top:16px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:12px;
-}
-
-
-/* ŘADA IKON – VEDLE SEBE */
-.hero-socials{
-  display: flex;
-  flex-direction: row; /* 👈 vedle sebe (klidně můžeš vynechat) */
-  gap: 12px;
-}
-
-}
-
-/* JEDNA IKONA */
-.hero-socials a{
-  width:40px;          /* 👈 rozumná velikost */
-  height:40px;
-  border-radius:10px;
-  display:grid;
-  place-items:center;
-  background:rgba(255,255,255,.95);
-  box-shadow:0 6px 16px rgba(0,0,0,.25);
-  transition:transform .2s ease, box-shadow .2s ease;
-}
-
-.hero-socials a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 22px rgba(0,0,0,.35);
-}
-
-/* SVG uvnitř */
-.hero-socials svg{
-  width:20px;          /* 👈 menší, čisté */
-  height:20px;
-}
-
 }
 
   </style>
@@ -537,33 +495,8 @@ body > .pv-bubble{
         <div>
           <h1>Jmenuji se Daniel Verner</h1>
           <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
-          <div class="hero-cta-block">
-  <a href="#kontakt" class="btn btn--primary">
-    Nezávazně mě kontaktujte
-  </a>
-           </div>
-           <div class="hero-socials" aria-label="Rychlé kontakty">
-            <a href="https://wa.me/420733782290" target="_blank" aria-label="WhatsApp">
-  <svg viewBox="0 0 25 25" fill="#25D366">
-    <path d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.7-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.1-1.7 1.2-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.6-.3.8-.3h.6c.2 0 .4-.1.6.4.2.6.7 1.9.8 2.1.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.3.9 1.5 2 2.4 1.4 1.2 2.6 1.6 3 .1.4-.1.7-.4.9-.7.2-.3.4-.3.6-.2.2.1 1.5.7 1.7.9.2.1.4.2.4.4 0 .2 0 .6-.2 1.1z"/>
-  </svg>
-</a>
-<a href="https://m.me/pojistitosnadno" target="_blank" aria-label="Messenger">
-  <svg viewBox="0 0 200 200" fill="#0084FF">
-    <path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.2 1.9.3 2.9.3 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 11.7-2.5-2.6-4.9 2.6 5.4-5.7 2.5 2.6 4.9-2.6-5.4 5.7z"/>
-  </svg>
-</a>
-<a href="mailto:pojistitosnadno@gmail.com" aria-label="E-mail">
-  <svg viewBox="0 0 200 200" fill="#444">
-    <path d="M2 4h20v16H2V4zm10 9L4 6v12h16V6l-8 7z"/>
-  </svg>
-</a>
-<a href="https://www.facebook.com/share/1CFVmWB93J/" target="_blank" aria-label="Facebook">
-  <svg viewBox="0 0 200 200" fill="#1877F2">
-    <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.7c0-2 1.2-3.1 3-3.1.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
-  </svg>
-</a>
-
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
           
           </div>
         </div>
