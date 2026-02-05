@@ -480,48 +480,44 @@ body > .pv-bubble{
   width:22px;
   height:22px;
 }
-  .hero-cta-block{
+ /* CTA blok: tlačítko + ikony pod sebou */
+.hero-cta-block{
   margin-top:16px;
   display:flex;
-  align-items:center;
-  gap:18px;
-  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:12px;
 }
 
-/* řada ikon */
+/* ŘADA IKON – VEDLE SEBE */
 .hero-socials{
   display:flex;
-  gap:14px;
+  gap:12px;
 }
 
-/* samotná ikona */
+/* JEDNA IKONA */
 .hero-socials a{
-  width:54px;        /* 👈 větší */
-  height:54px;
-  border-radius:14px;
+  width:40px;          /* 👈 rozumná velikost */
+  height:40px;
+  border-radius:10px;
   display:grid;
   place-items:center;
   background:rgba(255,255,255,.95);
-  box-shadow:0 10px 26px rgba(0,0,0,.35);
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
   transition:transform .2s ease, box-shadow .2s ease;
 }
 
 .hero-socials a:hover{
-  transform:translateY(-2px) scale(1.05);
-  box-shadow:0 14px 34px rgba(0,0,0,.45);
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(0,0,0,.35);
 }
 
+/* SVG uvnitř */
 .hero-socials svg{
-  width:26px;        /* 👈 větší ikona */
-  height:26px;
+  width:20px;          /* 👈 menší, čisté */
+  height:20px;
 }
 
-/* mobil – centrovat pod sebe */
-@media (max-width:640px){
-  .hero-cta-block{
-    flex-direction:column;
-    align-items:flex-start;
-  }
 }
 
 
