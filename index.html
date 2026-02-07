@@ -455,16 +455,52 @@ body > .pv-bubble{
   }
 
 
-  
 
+  /* ===== Contact strip (stabilní) ===== */
 
+.contact-strip{
+  background:#fff;
+  border-top:1px solid rgba(0,0,0,.06);
+}
 
+.contact-strip__inner{
+  max-width:1140px;
+  margin:0 auto;
+  padding:14px 16px;
 
-   }
-  
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
 
+.contact-strip a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
 
-  
+  padding:10px 14px;
+  background:#f6f6f4;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  color:#1c1c1c;
+
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.contact-strip img{
+  width:20px;
+  height:20px;
+  display:block;
+}
+
+/* mobil – stejné chování, jen víc prostoru */
+@media (max-width:640px){
+  .contact-strip__inner{
+    gap:10px;
+  }
+}
 
 
 
@@ -483,7 +519,11 @@ body > .pv-bubble{
   <nav class="nav" id="nav" aria-label="Hlavní navigace">
     <ul>
       <li><a href="https://www.facebook.com/share/1CFVmWB93J/" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="img/facebook.webp" alt="">
+      <img src="img/facebook.webp" alt=""
+         width="150"
+    height="100"
+    loading="lazy">
+>
       <span>Facebook</span>
     </a></li>
       <li><a href="#o-mne">O mně</a></li>
