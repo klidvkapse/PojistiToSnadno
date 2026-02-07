@@ -457,34 +457,28 @@ body > .pv-bubble{
   
   
   
-  /* RODIČ – říká: pod sebe */
-.hero-cta-block{
-display:flex;
-flex-direction:column; /* 👈 DŮLEŽITÉ */
-gap:16px;
-}
-
-
-/* DÍTĚ – říká: vedle sebe */
 .hero-socials{
-display:flex; /* 👈 MUSÍ BÝT */
-flex-direction:row; /* 👈 JASNĚ */
-gap:12px;
+  display:flex;
+  gap:12px;
+  align-items:center; /* 👈 KLÍČOVÉ */
 }
 
-
-/* Ikona */
 .hero-socials a{
-width:42px;
-height:42px;
-display:grid;
-place-items:center;
-border-radius:12px;
-background:#fff;
-color:#000;
-text-decoration:none;
-font-weight:700;
-box-shadow:0 6px 16px rgba(0,0,0,.25);
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
+}
+
+.hero-socials img{
+  width:70%;
+  height:70%;
+  object-fit:contain;
+  display:block; /* 👈 ZRUŠÍ baseline bug */
 }
 }
 
@@ -532,7 +526,42 @@ box-shadow:0 6px 16px rgba(0,0,0,.25);
 <a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
 
 
+<div class="hero-socials" aria-label="Rychlé kontakty">
 
+  
+  <a href="https://wa.me/420733782290"
+   aria-label="Kontakt přes WhatsApp"
+   target="_blank" rel="noopener">
+
+  <img 
+    src="img/whatsupp.webp"
+    alt="WhatsApp kontakt"
+    loading="lazy">
+</a>
+
+  
+  <a href="https://m.me/pojistitosnadno"
+   aria-label="Kontakt přes Messenger"
+   target="_blank" rel="noopener">
+
+  <img 
+    src="img/messenger.webp"
+    alt="Messenger kontakt"
+    loading="lazy">
+</a>
+
+  <a href="https://www.facebook.com/share/1CFVmWB93J/"
+   aria-label="Kontakt přes Facebook"
+   target="_blank" rel="noopener">
+
+  <img 
+    src="img/facebook.webp"
+    alt="Facebook kontakt"
+    loading="lazy">
+</a>
+
+
+</div>
 </div>
 
     </div>
