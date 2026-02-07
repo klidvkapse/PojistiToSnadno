@@ -491,18 +491,45 @@ body > .pv-bubble{
 
 
 
-  .social{
+ /* === Floating contact icons (SAFE VERSION) === */
+.contact-icons{
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;   /* ❗ NE space-between */
-  align-items: center;
-  gap: 12px;                 /* vzdálenost mezi ikonami */
-  width: auto;               /* ❗ NE 100 % */
+  gap: 10px;
+  z-index: 1100; /* nad headerem, pod Průvodcem */
+  pointer-events: auto;
 }
 
-
-  .social a{
-  flex: 0 0 auto;   /* ❗ ZABRÁNÍ ROZTAHOVÁNÍ */
+.contact-icons a{
+  display: inline-flex;
 }
+
+.contact-icons img{
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+}
+
+/* === MOBILE === */
+@media (max-width: 640px){
+  .contact-icons{
+    top: 62px; /* pod header */
+    left: auto;
+    right: 12px;
+    transform: none;
+    gap: 8px;
+  }
+
+  .contact-icons img{
+    width: 34px;
+    height: 34px;
+  }
+}
+
 
 }
 
@@ -522,7 +549,7 @@ body > .pv-bubble{
   </div>
   <!--<nav class="nav" id="nav" aria-label="Hlavní navigace"> -->
    <!-- <ul>-->
-  <nav class="social" id="social" aria-label="rychlé kontakty">
+  <nav class="contact-icons" id="contact-icons" aria-label="rychlé kontakty">
       <li><a href="https://www.facebook.com/share/1CFVmWB93J/" target="_blank" rel="noopener" aria-label="Facebook">
         <img src="img/facebook.webp" alt=""
          width="150"
