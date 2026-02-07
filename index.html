@@ -460,7 +460,7 @@ body > .pv-bubble{
 .hero-socials{
   display:flex;
   gap:12px;
-  align-items:center; /* 👈 KLÍČOVÉ */
+  align-items:center;
 }
 
 .hero-socials a{
@@ -472,15 +472,18 @@ body > .pv-bubble{
   background:#fff;
   border-radius:12px;
   box-shadow:0 6px 16px rgba(0,0,0,.25);
+  overflow:hidden; /* 👈 EXTRA POJISTKA */
 }
 
 .hero-socials img{
-  width:70%;
-  height:70%;
+  max-width:70%;
+  max-height:70%;
+  width:auto;
+  height:auto;
   object-fit:contain;
-  display:block; /* 👈 ZRUŠÍ baseline bug */
+  display:block;
 }
-}
+
 
   </style>
 </head>
