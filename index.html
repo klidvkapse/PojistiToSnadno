@@ -456,46 +456,20 @@ body > .pv-bubble{
 
 
 
-  /* ===== Contact strip (stabilní) ===== */
-
-.contact-strip{
-  background:#fff;
-  border-top:1px solid rgba(0,0,0,.06);
-}
-
-.contact-strip__inner{
-  max-width:1140px;
-  margin:0 auto;
-  padding:14px 16px;
-
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.contact-strip a{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-
-  padding:10px 14px;
-  background:#f6f6f4;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:700;
-  color:#1c1c1c;
-
-  box-shadow:0 4px 12px rgba(0,0,0,.12);
-}
+<!--tačítka v liště-->
 
 .social a{
   flex: 0 0 auto;   /* ❗ ZABRÁNÍ ROZTAHOVÁNÍ */
 }
 
-
-
+@media (max-width: 640px){
+  .social{
+    gap: 8px;
+  }
 }
+
+
+
 
 
 
