@@ -458,38 +458,21 @@ body > .pv-bubble{
   
   
 
-  /* RODIČ – říká: pod sebe */
 .hero-cta-block{
-display:flex;
-flex-direction:column; /* 👈 DŮLEŽITÉ */
-gap:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start; /* default */
 }
 
+/* desktop – centrovat CTA skupinu */
+@media (min-width:960px){
+  .hero-cta-block{
+    align-items:flex-start;
+  }
 
-/* DÍTĚ – říká: vedle sebe */
-.hero-socials{
-display:flex; /* 👈 MUSÍ BÝT */
-
-justify-content:center;
-  gap:8px;
-  margin-top:8px;
-}
-
-
-
-/* Ikona */
-.hero-socials a{
-width:40px;
-height:40px;
-display:grid;
-place-items:center;
-border-radius:12px;
-background:#fff;
-color:#000;
-text-decoration:none;
-font-weight:700;
-box-shadow:0 6px 16px rgba(0,0,0,.25);
-}
+  .hero-socials{
+    justify-content:flex-start;
+  }
 }
 
   </style>
