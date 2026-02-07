@@ -457,7 +457,36 @@ body > .pv-bubble{
 
   
 
+.hero-cta{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
+
+/* alternativní kontakty */
+.hero-contacts{
+  display:flex;
+  gap:10px;
+}
+
+.hero-contacts a{
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.hero-contacts img{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+  display:block;
+}
+
 
   
 
@@ -504,8 +533,27 @@ body > .pv-bubble{
         <div>
           <h1>Jmenuji se Daniel Verner</h1>
           <p class="lead">Pracuji jako pojišťovací poradce v jedné z největších a nejsilnějších pojišťoven v ČR. Věřím, že férový a lidský přístup je základem dlouhodobé spokojenosti. Kvalitní pojištění je podle mě jistota, která vás podrží ve chvílích, kdy to nejvíce potřebujete.</p>
-      <div class="hero-cta">
-<a href="#kontakt" class="btn btn--primary">Nezávazně mě kontaktujte</a>
+     <div class="hero-cta">
+
+  <a href="#kontakt" class="btn btn--primary">
+    Nezávazně mě kontaktujte
+  </a>
+
+  <div class="hero-contacts" aria-label="Další možnosti kontaktu">
+    <a href="https://wa.me/420733782290" aria-label="WhatsApp" target="_blank" rel="noopener">
+      <img src="img/whatsupp.webp" alt="">
+    </a>
+
+    <a href="https://m.me/pojistitosnadno" aria-label="Messenger" target="_blank" rel="noopener">
+      <img src="img/messenger.webp" alt="">
+    </a>
+
+    <a href="https://www.facebook.com/share/1CFVmWB93J/" aria-label="Facebook" target="_blank" rel="noopener">
+      <img src="img/facebook.webp" alt="">
+    </a>
+  </div>
+
+</div>
 
 
 
