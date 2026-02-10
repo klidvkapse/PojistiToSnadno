@@ -455,24 +455,45 @@ body > .pv-bubble{
   }
 
 
+  /* QR kód – výchozí stav: skrytý */
+.mobile-qr{
+  display:none;
+  text-align:center;
+  padding:12px 0;
+  background:#fff;
+}
 
+/* Text nad QR */
+.mobile-qr p{
+  margin:0 0 8px;
+  font-weight:600;
+  font-size:14px;
+  color:#333;
+}
 
+/* Obrázek QR */
+.mobile-qr img{
+  width:96px;
+  height:auto;
+}
 
+/* MOBILNÍ ZOBRAZENÍ */
+@media (max-width: 768px){
+  .mobile-qr{
+    display:block;
+  }
 
-
-
+  /* desktopový textový odkaz můžeš klidně skrýt */
+  .nav .desktop-only{
+    display:none;
+  }
 }
 
 
 
 
 
-
-
-
-
-
-  </style>
+ </style>
 </head>
 <body>
 
@@ -506,6 +527,16 @@ body > .pv-bubble{
   </nav>
   <button class="burger" id="burger" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span></button>
 </header>
+  
+  <!-- QR kód – pouze pro mobil -->
+<div class="mobile-qr">
+  <p>Rezervace konzultace</p>
+  <img 
+    src="img/qr-rezervace.webp" 
+    alt="QR kód – rezervace nezávazné konzultace"
+  >
+</div>
+
 
 <!-- ===== Intro (Hero + Services sidebar) ===== -->
 <section class="hero" aria-label="Úvod">
