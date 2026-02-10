@@ -487,9 +487,25 @@ body > .pv-bubble{
   .nav .desktop-only{
     display:none;
   }
+  /* QR kód – výchozí stav: skrytý (desktop) */
+.qr-mobile{
+  display: none;
 }
 
+/* MOBIL */
+@media (max-width: 768px){
+  .qr-mobile{
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+  }
 
+  .qr-mobile img{
+    width: 140px;      /* 👈 ideální velikost pro mobil */
+    max-width: 60vw;   /* pojistka pro malé displeje */
+    height: auto;
+  }
+}
 
 
 
