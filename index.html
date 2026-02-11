@@ -280,15 +280,12 @@
     .hero .lead{font-size:1rem;line-height:1.45;max-width:36ch;margin:4px 0 10px}
     .hero .btn{width:100%;text-align:center;padding:12px 16px}
     .hero .btn--primary{box-shadow:0 8px 20px rgba(0,0,0,.18)}
-     .irq_kod img{width:132px;height:132px;border-radius:16px;border:1.5px solid rgba(255,255,255,.65)}
-   
   }
   /* === MOBILE portrét + kartička === */
   @media (max-width:640px){
     .hero__grid{ grid-template-columns: 1fr; gap: 0; }
     .hero__portrait{ order:-1; position: relative; z-index: 1; }
     .hero__portrait img{ width: 100%; height: auto; border-radius: 18px; border: 0; display: block; }
-     .irq_kod img{ width: 80%; height: auto; border-radius: 18px; border: 0; display: block; }
     #rating-widget{display:grid;gap:12px;align-items:start;max-width:620px}
     .rating-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
     #rating-widget .star{background:none;border:0;padding:0;line-height:1}
@@ -468,6 +465,9 @@ body > .pv-bubble{
         transform: translateY(-50%);
    
 }
+  @media (max-width: 640px){
+.irq_kod img{width:132px;height:132px;border-radius:16px;border:1.5px solid rgba(255,255,255,.65)}
+.irq_kod img{ width: 80%; height: auto; border-radius: 18px; border: 0; display: block; }
    
 }     
          
