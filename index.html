@@ -453,7 +453,40 @@ body > .pv-bubble{
   border:none;
   box-shadow:0 8px 20px rgba(0,0,0,.18);
   }
+}/* QR kód obecně */
+.hero-qr img {
+    width: 260px;
+    height: auto;
+    display: block;
 }
+
+/* DESKTOP */
+@media (min-width: 992px) {
+    .hero {
+        position: relative;
+    }
+
+    .hero-qr {
+        position: absolute;
+        right: 8%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+/* MOBIL */
+@media (max-width: 991px) {
+    .hero-qr {
+        position: static;
+        text-align: center;
+        margin: 30px 0 10px 0;
+    }
+
+    .hero-qr img {
+        width: 200px;
+    }
+}
+
 
 
 
@@ -518,6 +551,10 @@ body > .pv-bubble{
   <a href="#kontakt" class="btn btn--primary">
     Nezávazně mě kontaktujte
   </a>
+       <div class="hero-qr">
+    <img src="qr_1000x1000.png" alt="QR kód rezervace">
+</div>
+
        
       <!-- <div class="irq_kod"><img src="qr-rezervace.webp" alt="Rezervační kalendář"></div>-->
     
